@@ -1,4 +1,4 @@
-/*
+/*.js
   Access-Control-Allow-Origin: *
   Cache-Control: no-cache, no-store, must-revalidate
   Access-Control-Allow-Methods: GET, OPTIONS
