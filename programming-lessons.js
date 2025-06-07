@@ -19,8 +19,24 @@ export const course = {
             }
             // more lessons
           ]
+        },
+        
+        {
+          title: "Introduction",
+          lessons: [
+            {
+              title: "What is Testing?",
+              content: "Programming is a way to give instructions to a computer.",
+              image: "https://example.com/image.png"
+            },
+             {
+              title: "What is Debugging?",
+              content: "Codiing is a way to give instructions to a computer.",
+              image: "https://example.com/image.png"
+            }
+            // more lessons
+          ]
         }
-        // more modules
       ]
     }
     // more sections
