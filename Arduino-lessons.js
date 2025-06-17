@@ -8,8 +8,8 @@ export const course = {
           title: "Introduction",
           lessons: [
             {
-              title: "What is Programming?",
-              content: "Programming is a way to give instructions to a computer.",
+              title: "World Premise",
+              content: "The world is dead. Not in the way legends spoke of plague or war. Not by the hands of men. But by something far worse.",
               image: "https://cdn.pixabay.com/photo/2023/11/22/09/34/ai-generated-8405122_1280.jpg"
             },
              {
