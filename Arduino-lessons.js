@@ -1,11 +1,11 @@
 export const course = {
-  title: "Programming",
+  title: "Arduino",
   sections: [
     {
-      title: "Basics",
+      title: "The Awakening Signal",
       modules: [
         {
-          title: "Introduction",
+          title: "The Last Name on the Terminal",
           lessons: [
             {
               title: "World Premise",
