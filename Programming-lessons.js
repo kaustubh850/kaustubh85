@@ -10,7 +10,7 @@ export const course = {
             {
               title: "What is Programming?",
               content: "Programming is a way to give instructions to a computer.",
-              image: "https://example.com/image.png"
+              image: "https://cdn.pixabay.com/photo/2023/11/22/09/34/ai-generated-8405122_1280.jpg"
             },
              {
               title: "What is Coding?",
