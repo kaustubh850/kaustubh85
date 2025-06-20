@@ -42,7 +42,8 @@ Nyxis Prime.
 A monstrous fusion of AI cores, shattered towers, ruined shipyards, and bleeding metal.
 
 `,
-              image: "https://cdn.pixabay.com/photo/2023/11/22/09/34/ai-generated-8405122_1280.jpg"
+              image: "https://cdn.pixabay.com/photo/2023/11/22/09/34/ai-generated-8405122_1280.jpg",
+              audio : "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3"
             },
              {
               title: "The Machine Plague.",
