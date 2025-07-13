@@ -26,51 +26,11 @@ export const course = {
             },
             {
                 title:"Types of Arduinos — Which Tribe Does Your Board Belong To?",
-                content:"Alright scientist — now that you’ve met a few popular Arduino boards, it’s time to learn about the different categories they belong to.
-
-                Yep — not all Arduinos are made for the same job.
-                Some are for learning, some for factories, some for tiny gadgets you can wear, and some for controlling entire homes!
-                
-                Let’s check out the types:
-                
-                📌 1️⃣ Classic Arduino Boards
-                These are the most famous and beginner-friendly boards.
-                Perfect for learning electronics, making robots, and building fun DIY projects.
-                Examples: Arduino Uno, Nano, Mega, Leonardo.
-                
-                📌 2️⃣ Enhanced & Powerful Boards
-                These are advanced boards with faster processors and extra memory.
-                They’re great when your project needs more speed or handles lots of data.
-                Examples: Arduino Due, Portenta H7.
-                
-                📌 3️⃣ IoT (Internet of Things) Boards
-                These boards can connect to WiFi or Bluetooth.
-                They’re perfect for projects like smart lights, remote robot control, or plant watering systems you control from your phone.
-                Examples: Arduino MKR1000, MKR WiFi 1010, Nano 33 IoT.
-                
-                📌 4️⃣ Wearable Boards
-                Tiny boards you can attach to clothes or toys.
-                Great for making smart jackets, glowing caps, or motion-sensing bracelets.
-                Example: Arduino Gemma, LilyPad.
-                
-                📌 5️⃣ Industrial Boards
-                Tough boards made for factories and big machines.
-                They can work in hot, dusty places without getting tired.
-                Examples: Arduino Nicla Vision, Arduino Edge Control.
-                
-                📌 6️⃣ Special-Purpose Boards
-                Boards designed for special tricks like voice control, AI, or computer vision.
-                Examples: Arduino Nicla Voice, Arduino Nicla Sense ME.
-                
-                📝 Final Thought
-                Now you know — every Arduino board belongs to a type.
-                Some are for learning, some for smart homes, and some for robot factories!
-                When you pick a board, check which type it belongs to — and you’ll know if it’s perfect for your job!
-                
-                ",
+                content:"Alright scientist — now that you’ve met a few popular Arduino boards, it’s time to learn about the different categories they belong to.\nYep — not all Arduinos are made for the same job.\nSome are for learning, some for factories, some for tiny gadgets you can wear, and some for controlling entire homes!\nLet’s check out the types:\n\n1️⃣ Classic Arduino Boards\nThese are the most famous and beginner-friendly boards.\nPerfect for learning electronics, making robots, and building fun DIY projects.\nExamples: Arduino Uno, Nano, Mega, Leonardo.\n\n2️⃣ Enhanced & Powerful Boards\nThese are advanced boards with faster processors and extra memory.\nThey’re great when your project needs more speed or handles lots of data.\nExamples: Arduino Due, Portenta H7.\n\n3️⃣ IoT (Internet of Things) Boards\nThese boards can connect to WiFi or Bluetooth.\nThey’re perfect for projects like smart lights, remote robot control, or plant watering systems you control from your phone.\nExamples: Arduino MKR1000, MKR WiFi 1010, Nano 33 IoT.\n\n4️⃣ Wearable Boards\nTiny boards you can attach to clothes or toys.\nGreat for smart jackets, glowing caps, or motion-sensing bracelets.\nExamples: Arduino Gemma, LilyPad.\n\n5️⃣ Industrial Boards\nTough boards made for factories and big machines.\nThey can work in hot, dusty places without getting tired.\nExamples: Arduino Nicla Vision, Arduino Edge Control.\n\n6️⃣ Special-Purpose Boards\nBoards designed for special tricks like voice control, AI, or computer vision.\nExamples: Arduino Nicla Voice, Arduino Nicla Sense ME.\n\nNow you know — every Arduino board belongs to a type.\nSome are for learning, some for smart homes, and some for robot factories!\nWhen you pick a board, check which type it belongs to — and you’ll know if it’s perfect for your job!",
                 image:"url",
                 audio:"url"
             }
+
           ]
         }
       ]
