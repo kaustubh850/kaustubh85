@@ -42,8 +42,6 @@ image: "url",
 audio:"url"
   }
 ]
-        }, {//module 4 in section 1 
-title:""
         }
       ]
     },
