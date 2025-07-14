@@ -32,6 +32,18 @@ export const course = {
             }
 
           ]
+        },{//module 3 in section 1 
+title: "Know Your Robot Brain: Arduino Uno and Its Labels",
+lessons: [
+  { // lesson 1 in module 3 in section 1 
+title: "The Parts of an Arduino Uno — What’s That Part For?",
+content:"Okay scientist — time to meet your robot's brain up close!\nThis little green board is called the **Arduino Uno**, and it's packed with tiny parts that work together like a team.\nLet’s learn what each part is called and what it does!\n\n1️⃣ **USB Port**\nThis is where you plug in the USB cable to connect your Arduino to your computer.\nIt sends your code to the board and powers it up.\n\n2️⃣ **Power Jack**\nThis is where you can connect a battery or power adapter if you don’t want to use USB.\nIt’s handy when your project needs to run without a computer.\n\n3️⃣ **Digital Pins (0 to 13)**\nThese are little holes where you connect wires.\nThey can be used to turn LEDs on and off, read buttons, or send signals.\n\n4️⃣ **Analog Pins (A0 to A5)**\nThese pins read values like temperature, light, or sound.\nThey’re perfect for sensors.\n\n5️⃣ **GND (Ground)**\nThese are the black pins you connect to complete your circuit.\nWithout these, your LEDs and sensors won’t work.\n\n6️⃣ **5V and 3.3V Pins**\nThese give power to your sensors, LEDs, and other parts.\nUse 5V for most things, and 3.3V for some special modules.\n\n7️⃣ **Reset Button**\nIf your board gets stuck or acts weird, press this to restart it.\nIt’s like a mini refresh button.\n\n8️⃣ **ATmega328P Chip**\nThis tiny black chip is the real brain of the board.\nIt stores your code and controls everything.\n\n9️⃣ **TX and RX LEDs**\nThese tiny lights blink when your board is sending or receiving data.\nThey’re like the board’s little mouths and ears.\n\nAnd that’s it — now you know the main parts of your Arduino Uno!\nNext time you hold it, you can proudly point to a part and say, \"Hey, that’s the ATmega chip!\"\nReady to plug it in and make it blink? Let’s go!",
+image: "url",
+audio:"url"
+  }
+]
+        }, {//module 4 in section 1 
+title:""
         }
       ]
     },
