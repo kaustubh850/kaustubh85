@@ -1,7 +1,7 @@
 export const course = {
   title: "The Playful Arduino.",
-  sections: [
-    {
+  sections: [ 
+  {  //section 1 
       title: "A Little Bit About The Guy.",
       modules: [
         {
@@ -35,7 +35,7 @@ export const course = {
         }
       ]
     },
-    {
+    { //section 2
       title: "The Ashes of Mechronix",
       modules: [
         {
