@@ -79,6 +79,46 @@ audio:"url"
   audio:"urk",
   }
 ]
+        },{//module 7 in section 1
+          title:"The Secret Startup Code: What is a Bootloader?",
+          lessons:[
+            {//lesson 1 in module 7 in section 1 
+              title:"Why Your Arduino Needs a Bootloader?",
+              content:"Okay scientist — ever wondered how your Arduino knows what code to run when you power it on?\nThat’s thanks to something called a **Bootloader**.\nLet’s see what it does!\n\nA **Bootloader** is a tiny program already stored inside your Arduino’s chip.\nIts job is to wake up the board and get it ready to run your code.\nIt also helps your computer upload new code to the board through USB.\n\nWithout the bootloader, your Arduino wouldn’t know what to do when it’s turned on.\nIt’s like the tiny manager that starts work before the big machines do.\n\n🟢 **Can You Change It?**\nYes — you can erase and install a new bootloader using another Arduino or a special programmer.\nBut for now, we’ll leave that to the pros.\n\nNow you know why that little chip needs a bootloader — it’s the first thing that runs every time you power up your robot brain!",
+              image:"url",
+              audio:"url"
+            }
+          ]
+        },{//module 8 in section 1 
+        title:"The Brain’s Playground: What is a PCB?",
+        lessons:[
+          {//lesson 1 in module 8 in section 1
+            title:"How PCBs Work Inside Your Arduino",
+            content:"Alright scientist — have you ever seen that green board under your Arduino’s parts?\nThat’s called a **PCB**, short for **Printed Circuit Board**.\nLet’s learn how it works!\n\nA PCB is a flat board made of plastic or fiberglass with thin copper lines printed on it.\nThose copper lines act like tiny roads carrying electricity between all the parts.\n\nIt holds and connects the microcontroller, LEDs, resistors, and pins without using a bunch of messy wires.\nThis makes your board neat, safe, and fast.\n\n🟢 **Why Use a PCB?**\nIt makes electronics compact, easy to fix, and works faster because everything’s close together.\nIt also stops loose connections and saves tons of space compared to wires.\n\nNow you know — that green board isn’t just for looks.\nIt’s the streets and playground where your Arduino’s tiny parts live and talk to each other!",
+            audio:"url",
+            image:"url"
+          }
+        ]  
+        },{//module 9 in section 1 
+title:"Choose Your Hero: Picking the Right Arduino",
+lessons:[
+  {//lesson 1 in module 9 in section 1 
+  title:"How to Choose the Best Arduino Board for Your Project",
+  content:"Okay scientist — there are so many types of Arduino boards.\nBut which one should you use?\nLet’s figure it out!\n\n1️⃣ **Arduino Uno**\nBest for beginners, small robots, and learning.\nIt’s simple, reliable, and has all the basics.\n\n2️⃣ **Arduino Nano**\nGreat for projects where space is tight.\nSame brain as Uno but tiny.\n\n3️⃣ **Arduino Mega**\nUse this when you need lots of sensors or devices connected.\nIt has extra pins and memory.\n\n4️⃣ **Arduino Leonardo**\nPick this if you want your Arduino to act like a keyboard or mouse.\n\n5️⃣ **IoT Boards**\nLike the Nano 33 IoT or MKR WiFi 1010 for WiFi/Bluetooth projects.\n\n6️⃣ **Wearable Boards**\nLike Gemma or LilyPad for projects you wear.\n\n🟢 **Tip:** Check your project’s size, number of connections, and if it needs WiFi or Bluetooth.\nThat’ll tell you which board is your hero.\n\nNow you know how to pick the perfect robot brain for every mission!",
+  image:"url",
+  audio:"url"  
+  }
+]
+        },{//module 10 in section 1
+        title:"Meet the Team: Sensors, Motors, and More",
+        lessons:[
+          {//lesson 1 in module 10 in section 1 
+          title:"What Are the Parts You’ll Use with Arduino?",
+          content:"Alright scientist — your Arduino is smart, but it needs teammates to build cool gadgets.\nLet’s meet the types of components you’ll use!\n\n1️⃣ **Sensors**\nThese help your robot sense the world.\nThey detect light, temperature, distance, motion, sound, and more.\n\n2️⃣ **Actuators**\nParts that move or perform actions.\nLike motors, servos, relays, and buzzers.\nThey make stuff move or make noise.\n\n3️⃣ **Displays**\nShow information like numbers, text, or images.\nLike LCD screens or OLED displays.\n\n4️⃣ **LEDs and Lights**\nTiny bulbs that blink, glow, or signal.\n\n5️⃣ **Switches and Buttons**\nLet you give commands to your Arduino by pressing or flipping something.\n\n6️⃣ **Power Modules**\nBatteries, adapters, or solar panels that give power to your projects.\n\n🟢 **Fun Fact:** Combining sensors, actuators, and lights makes smart robots and gadgets.\nNow you know your Arduino’s dream team!\nLet’s get building!"  ,
+          image:"url",
+          audio:"url"
+          }
+        ]  
         }
       ]
     },
