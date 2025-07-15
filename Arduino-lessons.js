@@ -119,6 +119,36 @@ lessons:[
           audio:"url"
           }
         ]  
+        },{//module 11 in section 1 
+        title:"Tiny Computers: What is a Microcontroller?",
+        lessons:[
+          {//lesson 1 in module 11 in section 1 
+            title:"Meet the Brain Behind Your Gadgets",
+            content:"Alright scientist — before we dive into coding and gadgets, let’s learn about what makes your Arduino smart.\nIt’s something called a **Microcontroller**.\nSo, what is it?\n\nA **Microcontroller** is a tiny computer inside a small chip.\nIt doesn’t have a keyboard, mouse, or screen like your regular computer.\nBut it can think, remember, and control things like lights, motors, and sensors.\n\nYour Arduino board is built around a microcontroller called the **ATmega328P**.\nIt listens to your code, reads sensors, makes decisions, and controls machines.\n\nYou’ll find microcontrollers everywhere — in cars, toys, TVs, washing machines, drones, and robots.\nThey’re like tiny robot brains inside our gadgets.\n\nAnd that’s it!\nNow you know what a microcontroller is — a mini brain waiting to follow your orders!",
+            image:"url",
+            audio:"url"
+          }
+        ]  
+        },{//module 12 in section 1 
+        title:"The Invisible Team: Voltage, Current, and Resistance",
+        lessons:[
+{//lesson 1 in module 12 in section 1 
+title:"What Are Voltage, Current, and Resistance?",
+content:"Okay scientist — before building circuits, let’s meet the invisible players that run inside your wires.\nThey are called **Voltage**, **Current**, and **Resistance**.\nLet’s see what they do!\n\n1️⃣ **Voltage (V)**\nThink of voltage as the pressure pushing electricity through a wire.\nIt’s like the water pressure in a pipe.\nMore voltage means more push.\n\n2️⃣ **Current (A)**\nCurrent is the actual flow of electricity moving through your circuit.\nIt’s like the water flowing inside the pipe.\nMore current means more electricity moving.\n\n3️⃣ **Resistance (Ω)**\nResistance slows down the current.\nIt’s like a narrow spot in the pipe that makes it harder for water to flow.\nResistors, LEDs, and components add resistance to protect your circuits.\n\n🟢 **Fun Fact:**\nVoltage pushes, current flows, and resistance controls the flow.\nThey work together to make your gadgets light up and move safely.\n\nNow you know the invisible team inside every electronic project!",
+image:"url",
+audio:"url"  
+}
+        ]  
+        },{//module 13 in section 1 
+        title:"Making a Loop: What is a Circuit?",
+        lessons:[
+          {//lesson1 in module 13 in section 1 
+          title:"How Electricity Travels Through a Circuit",
+          content:"Alright scientist — now that you know about electricity, let’s see how it moves around to make things work.\nIt travels inside something called a **Circuit**.\nLet’s see what that means!\n\nA **Circuit** is a complete loop made by connecting wires, parts, and power.\nElectricity flows from the power source, through your parts like LEDs and motors, and back to the power source.\nThat’s called a closed circuit.\n\nIf there’s a break in the loop, it’s an open circuit, and nothing works.\nLike when you open a switch, the loop breaks, and your light turns off.\n\n🟢 **Important:**\nAlways connect your parts so the power can make a complete circle.\nIf it can’t, your gadgets won’t work.\n\nNow you know how to build a path for electricity and bring your projects to life!",
+          image:"url",
+          auido:"url"  
+          }
+        ]  
         }
       ]
     },
