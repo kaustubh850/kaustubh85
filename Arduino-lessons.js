@@ -53,6 +53,32 @@ audio:"url"
             }
           ]
 
+        },{//module 5 in section 1
+          title:"Tiny Legs vs Tiny Pads: DIP and SMD Explained",
+          lessons:[
+            {//lesson 1 in module 5 in section 1 
+              title:"What’s the Difference Between DIP and SMD?",
+              content:"Alright scientist — today we’re going to talk about the tiny parts that live on your Arduino and other electronic boards.\nYou might have seen some with long metal legs and others like tiny bugs stuck flat on the board.\nThey’re called **DIP** and **SMD** components!\nLet’s see what they are.\n\n1️⃣ **DIP (Dual In-Line Package)**\nThese are the classic electronic parts with two rows of metal legs sticking out.\nThey go through holes on the board and are soldered on the other side.\nDIP parts are big and easy to replace, perfect for beginners.\n**Example:** The ATmega328P chip on your Arduino Uno is a DIP.\n\n2️⃣ **SMD (Surface Mount Device)**\nThese are tiny parts that don’t have legs.\nInstead, they have tiny metal pads and stick flat on the surface of the board.\nThey’re soldered directly onto the board without holes.\nSMD parts are small, light, and used when you want to save space.\n**Example:** The little black chips on your Arduino Nano are SMD.\n\n🟢 **Why Does It Matter?**\nBecause it affects how easy it is to fix or upgrade your board.\nDIP parts are bigger and can be replaced with your hands and a soldering iron.\nSMD parts are tiny and need special tools.\n\nAnd that’s it!\nNow you know the difference between those long-legged parts and the tiny stuck-on bits on your electronics.\nLook at your Arduino and see if you can spot them both!",
+              audio:"ul",
+              image:"ul"
+              
+            }
+          ]
+        },{//module 6 in section 1 
+title:"Real vs Copy: Arduino Clone and Original Explained",
+lessons:[
+  {//lesson1 in module 6 in section 1 
+title:"What’s the Difference Between an Original and a Clone Arduino?",
+content:"Alright scientist — have you ever seen two Arduinos that look almost the same but one is cheaper?\nThat’s because one is an **Original** and the other is a **Clone**.\nLet’s learn the difference!\n\n1️⃣ **Original Arduino**\nThis is made by the official Arduino company in Italy.\nIt uses high-quality parts, has solid build quality, and comes with official support and updates.\nIt’s reliable and tested.\n\n2️⃣ **Clone Arduino**\nThis is made by other factories copying the original design.\nThey work the same for most projects but might use cheaper components and might not last as long.\nSome have small issues like USB connection problems.\n\n🟢 **Why It Matters**\nIf you’re just learning or making a hobby project, a good quality clone works fine.\nBut for serious projects, school competitions, or robots you’ll sell or keep, go for the Original.\n\nAnd that’s it!\nNow you know how to tell a clone from an original and when to use which one.",
+image:"url",
+audio:"url"
+  },{//lesson 2 in module 6 in section 1 
+  title:"Which One Should You Choose?",
+  content:"Okay scientist — now that you know about Original and Clone Arduinos, let’s figure out which one is right for you.\n\n🟢 **Go for an Original Arduino if:**\nYou’re working on a serious project that needs to be super reliable.\nYou’re entering a competition or building something important.\nYou want long-term support, updates, and guaranteed quality.\n\n🟢 **Go for a Clone Arduino if:**\nYou’re learning, experimenting, or building simple hobby projects.\nYou’re on a tight budget and want something affordable.\nYou don’t mind fixing little connection issues if they happen.\n\n💡 **Important Tip:** Always buy from trusted sellers, even for clones.\nSome very cheap clones use poor parts and may stop working suddenly.\n\nSo remember — it’s not about which is good or bad.\nIt’s about what your project needs and what you can afford.\nNow you know how to pick the right board for your mission!\nLet’s move to the next adventure!"  ,
+  image:"url",
+  audio:"urk",
+  }
+]
         }
       ]
     },
