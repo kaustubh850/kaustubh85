@@ -199,7 +199,62 @@ audio:"url"
         audio:"url"  
         }
       ]  
-      }
+      },{//module 19 in section 1
+  title: "Simulating Analog Magic: Understanding PWM",
+  lessons: [
+    {
+      title: "What is PWM and Why Arduino Uses It",
+      content: "Alright scientist — ever wondered how your Arduino can fade an LED or control motor speed without real analog output?\nIt’s all thanks to something called **PWM**, or **Pulse Width Modulation**.\n\nPWM is a trick where the Arduino turns a pin on and off very fast.\nBy changing how long the signal stays ON versus OFF, it creates an effect that feels like smooth control.\n\nThink of it like blinking a light so fast that it looks dim or bright.\nThe longer it stays ON in each blink, the brighter it looks — that’s PWM!\n\nPins with a **~** symbol on your Arduino can do PWM.\nThey let you control brightness, motor speed, and even tones!\n\nNow you know — PWM is your secret weapon for controlling analog-like behavior using digital pins!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 20 in section 1
+  title: "Arduino Meets Your PC: How They Talk",
+  lessons: [
+    {
+      title: "How Arduino Communicates with Your Computer",
+      content: "Okay scientist — ever wondered how your Arduino gets the code from your computer?\nIt talks using something called **Serial Communication**.\n\nYour Arduino has a chip that acts like a translator between USB and its brain.\nOn original Uno, that’s the **ATmega16U2** chip.\nOn clones, it’s often **CH340G** or **CP2102**.\n\nWhen you upload code, your computer sends it through USB.\nThis chip converts the USB data into serial data that the Arduino understands.\n\nYou can also send messages to and from Arduino using the **Serial Monitor** in the Arduino IDE.\n\nNow you know — there’s a tiny translator onboard that helps your robot understand your computer’s language!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 21 in section 1
+  title: "Speaking Robot: Arduino Communication Protocols",
+  lessons: [
+    {
+      title: "How Arduinos Talk to Other Devices",
+      content: "Alright scientist — Arduinos often need to talk to sensors, displays, or even other robots.\nTo do that, they use **communication protocols** — special rules for how data is sent.\n\nLet’s meet the three most common ones:\n\n1️⃣ **UART (Serial)**\nThis is what Arduino uses to talk to your computer using TX and RX pins.\nSimple and direct, good for short-distance talking.\n\n2️⃣ **I2C (Eye-Squared-C)**\nThis uses just two wires — SDA and SCL — to connect multiple devices.\nEach device has an address so Arduino knows who to talk to.\nGreat for sensors and displays.\n\n3️⃣ **SPI (Serial Peripheral Interface)**\nThis is super fast and uses four wires: MISO, MOSI, SCK, and SS.\nIt’s great for talking to memory cards, displays, and high-speed stuff.\n\nNow you know — Arduino speaks many languages, and each protocol is like a different accent for a different job!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 22 in section 1
+  title: "Know Every Pin: The Arduino Uno Pinout",
+  lessons: [
+    {
+      title: "Exploring Every Pin on the Arduino Uno",
+      content: "Okay scientist — your Arduino Uno has a lot of tiny holes called **pins**, and each one does something special.\nLet’s go through them all!\n\n🔹 **Digital Pins (0-13)**\nUsed for INPUT or OUTPUT. Pins 0 and 1 are also used for Serial (TX/RX).\n\n🔹 **PWM Pins (~3, ~5, ~6, ~9, ~10, ~11)**\nThese can simulate analog using PWM.\n\n🔹 **Analog Pins (A0-A5)**\nUsed to read analog sensor values like light or temperature.\n\n🔹 **Power Pins**\n- 3.3V: For low-voltage parts\n- 5V: Main power output for components\n- GND: Ground\n- Vin: External power input (7-12V)\n\n🔹 **AREF Pin**\nUsed to set an external reference voltage for analog readings.\n\n🔹 **Reset Pin**\nRestarts your Arduino if you connect it to GND.\n\nNow you know every single pin — time to plug and play like a real engineer!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 23 in section 1
+  title: "COM Ports and Virtual Wires",
+  lessons: [
+    {
+      title: "What is a COM Port and Why Arduino Needs It",
+      content: "Alright scientist — when you plug your Arduino into your PC, something called a **COM port** appears.\nIt’s a virtual serial port — like an invisible wire between your computer and Arduino.\n\nYour Arduino’s USB-to-Serial chip (like ATmega16U2 or CH340G) creates this COM port.\n\nThe Arduino IDE uses this COM port to upload code and receive data through the **Serial Monitor**.\n\nSometimes your Arduino won’t show up unless drivers are installed (especially for CH340G).\n\nYou can find the COM port number in the Tools > Port menu in the IDE.\nThat’s how the IDE knows where your robot is plugged in!\n\nNow you know — that COM port is your robot’s invisible phone line to your computer!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+}
+
       ]
     },
     { //section 2
