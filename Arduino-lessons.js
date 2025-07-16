@@ -149,7 +149,57 @@ audio:"url"
           auido:"url"  
           }
         ]  
+        },{//module 14 in section 1
+          title:"Talking to Robots: What is Programming?" ,
+          lessons:[
+            {//lesson 1 in module 14 in section 1 
+            title:"How Code Tells Your Arduino What to Do",
+            content:"Alright scientist — before we can make lights blink and motors move, you need to know what **programming** is.\nProgramming is when you write instructions for your robot brain to follow.\nThese instructions are called **code**.\n\nYour Arduino reads this code and does exactly what you tell it to do.\nYou can make it blink LEDs, play sounds, or control motors.\nIt’s like writing a recipe for your robot.\n\nAnd the cool part?\nEven one line of code can make something happen.\nWe’ll start writing code together very soon.\nNow you know — code is the language your robot brain understands!",
+            image:"url",
+            audio:"url"  
+            }
+          ]
+          },{//module 15 in section 1
+          title:"Your Robot's Workshop: What is the Arduino IDE?",
+        lessons:[
+            {//lesson 1 in module 15 in section 1
+            title:"Where You Write and Send Code to Your Arduino",
+            content:"Okay scientist — if you’re going to talk to your robot, you need a place to write your instructions.\nThat place is called the **Arduino IDE**.\nIt stands for **Integrated Development Environment**.\n\nThe IDE is a software on your computer where you type your code.\nIt checks your code for mistakes and sends it to your Arduino through the USB cable.\n\nIt has buttons like **Verify** to check your code, **Upload** to send it to the board, and a **Serial Monitor** to see messages from your Arduino.\n\nNow you know — the IDE is your robot’s control room!\nYou’ll be using it a lot very soon.",
+            image:"url",
+            audio:"url"
         }
+        ]
+      },{//module 16 in section 1
+        title:"Choosing Your Pins: What is Input and Output?",
+        lessons:[
+          {//lesson 1 in module 16 in section 1
+          title:"How Your Arduino Pins Listen and Talk",
+          content:"Alright scientist — your Arduino board has tiny holes called **pins**.\nSome of them listen to the world, and some of them control things.\nLet’s see how that works.\n\nWhen you set a pin as **INPUT**, it listens to buttons, sensors, or signals coming in.\nIt’s like a tiny ear waiting for information.\n\nWhen you set a pin as **OUTPUT**, it controls things like LEDs, buzzers, or motors.\nIt’s like a tiny mouth that gives commands.\n\nYou’ll tell your Arduino what each pin should do in your code.\nNow you know — some pins listen, some pins talk!",
+          image:"url",
+          audio:"url"  
+          }
+        ]
+      },{//module 17 in section 1
+        title:"Circuit Safety: Do’s and Don’ts",
+        lessons:[
+          {//lesson 1 in module 17 in section 1
+            title:"How to Keep Your Arduino and Yourself Safe",
+            content:"Okay scientist — before we start wiring things up, let’s learn a few safety tips so you don’t hurt your robot or yourself.\n\n1️⃣ Always double-check your connections before turning on power.\n2️⃣ Never connect power directly to ground — it can damage your board.\n3️⃣ Don’t touch wires or metal parts while power is on.\n4️⃣ Use the right power — never use more than 12 volts on your Arduino.\n5️⃣ Always disconnect your Arduino before changing connections.\n\nFollow these rules and your projects will stay safe and work perfectly!\nNow you’re ready to wire up your first circuit soon!",
+            image:"url",
+            audio:"url"
+          }
+        ]
+      },{//module 18 in section 1
+      title:"Meet the Breadboard: No Solder Needed",
+      lessons:[
+        {//lesson 1 in module 18 in section 1
+        title:"How a Breadboard Connects Wires and Parts",
+        content:"Alright scientist — before you start wiring up LEDs and buzzers, you need to meet your new friend: the **Breadboard**.\n\nA **Breadboard** is a plastic board with lots of tiny holes.\nYou can stick wires and parts into these holes to connect them without using solder.\n\nInside, the holes are connected in lines.\nThis lets electricity flow between the parts you plug in.\nIt’s perfect for testing circuits quickly and safely.\n\nYou’ll also use **Jumper Wires** — flexible colored wires you plug into the breadboard and Arduino pins.\nThey let you build your circuits easily.\n\nNow you know — breadboards and jumper wires make connecting parts fast and fun!",
+        image:"url",
+        audio:"url"  
+        }
+      ]  
+      }
       ]
     },
     { //section 2
