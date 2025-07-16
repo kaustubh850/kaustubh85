@@ -253,7 +253,95 @@ audio:"url"
       audio: "url"
     }
   ]
+},{//module 24 in section 1
+  title: "The Language of Robots: What Code Does Arduino Understand?",
+  lessons: [
+    {
+      title: "What Language is Arduino Coded In?",
+      content: "Okay scientist — now that you're almost ready to start coding, let’s answer one big question.\nWhat language does your Arduino speak?\n\nArduino uses a special version of **C++**, a powerful computer language.\nIt’s made super simple for beginners.\nYour files are called **.ino** files — short for ‘Arduino Sketches’.\n\nEvery Arduino sketch has two main parts:\n1️⃣ **setup()** – This runs once when the Arduino starts.\n2️⃣ **loop()** – This keeps running again and again forever.\n\nYou also use **libraries** to get extra powers — like controlling sensors or motors.\nLibraries are like magic toolboxes made by smart engineers.\n\nNow you know — you’ll be writing simplified C++ to make your robot brain follow your instructions!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 25 in section 1
+  title: "Behind the Scenes: What Happens When You Upload Code?",
+  lessons: [
+    {
+      title: "From Sketch to Robot Brain: Code Upload Explained",
+      content: "Okay scientist — ever wonder what happens when you click that UPLOAD button?\nLet’s break it down.\n\n1️⃣ Your Arduino IDE first checks your code.\nIt looks for mistakes and compiles it into a special machine language called **hex code**.\n\n2️⃣ This hex file is then sent through the USB cable.\nThe tiny chip on your board — called a **USB-to-Serial chip** — changes the data into a format your Arduino understands.\n\n3️⃣ The Arduino's **bootloader** reads the code and saves it into its flash memory.\nIt’s like your robot writing the instructions into its brain.\n\nAnd boom! Your Arduino restarts and begins running your new program instantly.\n\nNow you know — uploading is not just pressing a button, it’s a robot transformation!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 26 in section 1
+  title: "Sketchbooks and Storage: Where Your Code Lives",
+  lessons: [
+    {
+      title: "Understanding Arduino Sketches and Folders",
+      content: "Alright scientist — when you save your project, where does it all go?\nLet’s explore your robot’s notebook — the **Sketchbook**.\n\nEvery time you save a new Arduino sketch, it gets stored in your **Sketchbook folder**.\nThat’s a special place where the IDE keeps all your `.ino` files.\n\nEach sketch is saved in a folder with the same name.\nExample: `robotlight.ino` will live in a folder called `robotlight/`.\n\nYou can find your Sketchbook folder in the Arduino IDE settings.\nYou can also organize your sketches into folders to keep everything clean.\n\nNow you know — your code has a cozy digital home where all your robot ideas live!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 27 in section 1
+  title: "Time Magic: Delays and Waiting Wisely",
+  lessons: [
+    {
+      title: "How Delay and Timing Work on Arduino",
+      content: "Okay scientist — when your robot waits or blinks slowly, it’s using a trick called **delay**.\nLet’s understand how Arduino keeps time.\n\n`delay(1000)` means ‘wait 1000 milliseconds’ — or 1 second.\nDuring that time, Arduino does nothing else — it’s frozen!\n\nThat’s why we need to use it carefully.\nToo many delays, and your robot becomes lazy!\n\nFor smarter projects, you’ll later learn how to use **millis()**, which keeps time without freezing the robot.\nBut for now, delay is our beginner tool to control timing.\n\nNow you know — time is in your hands, use it wisely!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 28 in section 1
+  title: "Memory Matters: How Your Arduino Stores Stuff",
+  lessons: [
+    {
+      title: "Flash, SRAM, and EEPROM: What's Inside Your Board?",
+      content: "Okay scientist — let’s open up your robot brain and see how it stores things.\nYour Arduino Uno has three types of memory:\n\n🔹 **Flash** – This holds your code.\nWhen you upload a sketch, it’s written here.\nIt doesn’t get erased when you unplug your board.\n\n🔹 **SRAM** – This is your robot’s short-term memory.\nIt’s used for variables, calculations, and temporary data.\nWhen power goes off, this memory is lost.\n\n🔹 **EEPROM** – This is tiny long-term memory.\nYou can write data to it and it stays even when power is gone.\nIt’s great for saving settings.\n\nNow you know — your robot brain has different kinds of memory for different jobs!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 29 in section 1
+  title: "Resetting the Brain: How Arduino Reboots",
+  lessons: [
+    {
+      title: "How Arduino Starts Over With the Reset Button",
+      content: "Okay scientist — sometimes, your robot needs a fresh start.\nThat’s what the **reset button** is for!\n\nPressing the reset button restarts the code from the beginning, just like turning the power off and on.\n\nArduino also resets automatically when you upload new code.\nThis is done through a hidden trick — a small pulse sent over the DTR line and a tiny capacitor connected to the reset pin.\n\nResetting doesn’t erase your code, it just starts it again from the top.\n\nNow you know — when your robot is acting weird, try giving it a gentle reset!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 30 in section 1
+  title: "Tiny Symbols, Big Meaning: Code Punctuation",
+  lessons: [
+    {
+      title: "Why Semicolons and Brackets Matter",
+      content: "Alright scientist — time to talk about the tiny symbols in your code that hold big power!\nIn Arduino code, these symbols matter a LOT:\n\n🔹 `;` ends a statement. Miss one and your robot won’t understand the code.\n🔹 `{}` wrap blocks of code — like inside setup() and loop().\n🔹 `//` starts a comment — for notes and explanations in your code.\n\nWhen you write good punctuation, your robot reads smoothly.\nWhen you forget one, your IDE throws errors.\n\nNow you know — writing code is like writing a secret letter to your robot, and every dot and bracket counts!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 31 in section 1
+  title: "Tiny Computers Everywhere: What is Embedded?",
+  lessons: [
+    {
+      title: "Why Arduino is an Embedded System",
+      content: "Okay scientist — let’s zoom out and see where Arduino fits in the world.\nIt’s part of something called **embedded systems**.\n\nAn **embedded system** is a tiny computer built into a machine to do a special job.\nYour washing machine, car, microwave — all have embedded systems.\n\nArduino is also an embedded system — it runs one program at a time and controls hardware.\n\nUnlike full computers, it doesn’t have an operating system.\nIt just does what you told it to in your sketch.\n\nNow you know — your Arduino is part of the hidden world of tiny, smart machines!",
+      image: "url",
+      audio: "url"
+    }
+  ]
 }
+
 
       ]
     },
