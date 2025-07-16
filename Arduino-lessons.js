@@ -390,19 +390,80 @@ audio:"url"
       ]
     },
     { //section 2
-      title: "The Ashes of Mechronix",
+      title: "The Spark Awakens💡",
       modules: [
-        { // module 1 in section 2 
-          title: "The Awakening of Aeron Voss",
-          lessons: [
-            { //lesson 1 in module 1 in section 2 
-              title: "The Last Name on the Terminal",
-              content: "...lore-rich story or educational content...",
-              image: "URL",
-              audio: "URL"
-            }
-          ]
-        }
+        {//module 1 in section 2
+  title: "Getting Set for the First Code Zap",
+  lessons: [
+    {
+      title: "Download the Arduino IDE",
+      content: "🔧 What You Need: Laptop or PC, Internet access\n\nOkay scientist — let’s start setting up your lab!\n\n1️⃣ Go to [https://www.arduino.cc/en/software](https://www.arduino.cc/en/software)\n2️⃣ Scroll down and choose your OS (Windows, Mac, Linux)\n3️⃣ Click DOWNLOAD — you'll get the latest IDE installer\n\nThat’s it! Save the file and we’re ready to install!",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Install Arduino IDE on Your Computer",
+      content: "🔧 What You Need: Arduino IDE Installer, Laptop or PC\n\nLet’s install the software you just downloaded!\n\n**Windows**:\n1️⃣ Double-click the .exe file\n2️⃣ Click ‘I Agree’ → Next → Install\n3️⃣ Allow permissions if asked\n4️⃣ Wait till installation finishes\n\n**Mac**:\n1️⃣ Open the .zip or .dmg file\n2️⃣ Drag Arduino into Applications\n3️⃣ Done!\n\nNow the IDE is ready on your system.",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Plug In Your Arduino",
+      content: "🔧 What You Need: Arduino Uno, USB Cable, Laptop/PC\n\nTime to connect your board!\n\n1️⃣ Use a USB-A to B cable (printer-style)\n2️⃣ Plug one end into your Arduino\n3️⃣ Plug the other into your computer\n\nYou’ll see a green light on the board.\nThat means it’s getting power. It’s alive!",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Install Drivers for Arduino Uno",
+      content: "🔧 What You Need: Internet access, Laptop/PC\n\nLet’s make sure your PC knows how to talk to the Arduino.\n\n✅ For official Arduino Uno:\n- Drivers usually install automatically.\n- Windows should say 'Arduino Uno detected'.\n\n✅ If not:\n1️⃣ Go to Device Manager → Ports\n2️⃣ Right-click 'Unknown Device'\n3️⃣ Click 'Update Driver' and choose Arduino drivers from your install folder\n\nDone? Now the official Uno is ready!",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Install Drivers for Clone Boards",
+      content: "🔧 What You Need: Internet access, Laptop/PC\n\nIf you're using a clone Arduino (common online), you might need CH340 or CP210x drivers.\n\n1️⃣ Search 'CH340 driver Windows 10' or 'CH340 Mac driver'\n2️⃣ Download from a trusted source (like wch.cn or GitHub)\n3️⃣ Install and restart your PC\n\n✅ For CP210x boards:\n- Search ‘CP210x USB to UART Bridge VCP driver’\n- Follow installation steps\n\nOnce installed, reconnect your board and check Port again in Tools.\nIt should now appear!",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "First Look at the Arduino IDE",
+      content: "🔧 What You Need: Laptop/PC, Installed Arduino IDE\n\nLet’s open the IDE and get familiar!\n\nDouble-click the Arduino icon.\nYou’ll see a blank sketch with this structure:\nvoid setup() {\n  // setup things here\n}\nvoid loop() {\n  // repeat this code forever\n}\n\nOn top, you'll see buttons: Verify ✓, Upload →, Serial Monitor 🔍\nWe’ll use these soon!",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Select the Right Board",
+      content: "🔧 What You Need: Arduino connected, Arduino IDE open\n\nLet’s tell the IDE what board you’re using.\n\n1️⃣ Click **Tools** in the menu\n2️⃣ Go to **Board → Arduino AVR Boards → Arduino Uno**\nThat’s the classic board we’re using for now.\n\nIf you're using another board, select the correct one!",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Select the Right Port (COM/VCP)",
+      content: "🔧 What You Need: Arduino connected to USB\n\nNow pick the USB port your Arduino is using.\n\n1️⃣ Click **Tools → Port**\n2️⃣ Look for something like `COM3 (Arduino Uno)`\n3️⃣ Select it!\n\nNo Arduino listed? Try unplugging and replugging it.\nYour robot must be connected to the right path!",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Upload the First Blink Sketch",
+      content: "🔧 What You Need: Arduino + IDE + Correct port selected\n\nLet’s run your first robot command — BLINK!\n\n1️⃣ Go to **File → Examples → 01.Basics → Blink**\n2️⃣ Click the **Upload (→)** button\n3️⃣ Wait a few seconds\n\nIf everything worked — your onboard LED near pin 13 should start blinking!\nCongratulations, it’s alive!",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Read the IDE Messages and Errors",
+      content: "🔧 What You Need: IDE window\n\nLet’s learn how to read the messages Arduino shows.\n\n1️⃣ Bottom of the screen shows ‘Compiling’ and ‘Uploading’\n2️⃣ If success: it says ‘Done Uploading’\n3️⃣ If error: red message shows up\n\nMost common: wrong board or port, or missing driver\nWe’ll fix them next!",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Troubleshooting Upload Errors",
+      content: "🔧 What You Need: Patience and curiosity\n\nHere’s how to fix upload problems:\n\n🔹 Check USB cable (some are power-only)\n🔹 Recheck **Board** and **Port** under Tools\n🔹 Try a different USB port\n🔹 Close other apps using COM ports (like serial monitors)\n🔹 Reinstall drivers if needed\n\nTry again — this time it’ll work. Your scientist powers are growing!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+}
+
       ]
     }
   ]
