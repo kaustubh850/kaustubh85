@@ -340,7 +340,51 @@ audio:"url"
       audio: "url"
     }
   ]
+},{//module 32 in section 1
+  title: "Your Control Center: Touring the Arduino IDE",
+  lessons: [
+    {
+      title: "Buttons, Boards, Ports – Know Your IDE",
+      content: "Alright scientist — now let’s explore your robot’s mission control: the **Arduino IDE**!\n\n🔹 **Verify (✓):** Checks your code for errors before uploading.\n🔹 **Upload (→):** Sends your code to the Arduino board.\n🔹 **New/Open/Save:** Manage your sketches.\n🔹 **Serial Monitor (🔍):** Lets you talk to your robot.\n\n💡 Go to **Tools → Board** to select your Arduino model.\nGo to **Tools → Port** to choose the COM port.\nThese two settings must match, or your upload won’t work!\n\nNow you know — your IDE is your robot command center. Let’s master it!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 33 in section 1
+  title: "Oops! Common Beginner Mistakes",
+  lessons: [
+    {
+      title: "Troubleshooting Your First Uploads",
+      content: "Okay scientist — sometimes robots don’t listen. That’s okay!\nHere are common mistakes and how to fix them:\n\n1️⃣ **Wrong Board Selected:** Double check Tools → Board.\n2️⃣ **Wrong COM Port:** Go to Tools → Port and select the one with your Arduino.\n3️⃣ **Missing `setup()` or `loop()`:** Your code must have both!\n4️⃣ **Loose USB or Power Issues:** Try reconnecting or using another cable.\n5️⃣ **Bad Wiring:** Check if LEDs and components are wired right.\n\nNow you know — every scientist makes mistakes. But YOU now know how to fix them!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 34 in section 1
+  title: "Under the Hood: What the IDE Really Does",
+  lessons: [
+    {
+      title: "What Happens Behind the Upload Button",
+      content: "Okay scientist — let’s peek behind the scenes!\nWhen you click UPLOAD in the Arduino IDE, here’s what happens:\n\n🔹 **Step 1:** The IDE checks and compiles your sketch using a tool called **GCC** (a C++ compiler).\n🔹 **Step 2:** The code turns into a **.hex file** — a special format for your Arduino.\n🔹 **Step 3:** The IDE calls a helper tool called **avrdude** that sends this file to your board.\n🔹 **Step 4:** Your board’s bootloader takes it in and stores it in Flash memory.\n\nNow you know — the IDE is like a factory, and clicking UPLOAD starts a smart robot assembly line!",
+      image: "url",
+      audio: "url"
+    }
+  ]
+},
+{//module 35 in section 1
+  title: "Arduino vs Raspberry Pi: Two Robot Brains",
+  lessons: [
+    {
+      title: "How Arduino and Pi are Different",
+      content: "Alright scientist — people often ask: What’s the difference between Arduino and Raspberry Pi?\nLet’s make it crystal clear.\n\n🔹 **Arduino** is a **microcontroller**. It runs one sketch (program) again and again.\nIt’s great for controlling sensors, motors, and real-time tasks.\n\n🔹 **Raspberry Pi** is a **microprocessor**. It’s like a small computer with an operating system.\nIt can run many programs at once and even has a desktop.\n\nArduino is better for electronics and real-time robot tasks.\nRaspberry Pi is better for apps, internet, or camera projects.\n\nNow you know — both are powerful, but your Arduino is made to control the physical world like a pro!",
+      image: "url",
+      audio: "url"
+    }
+  ]
 }
+
 
 
       ]
