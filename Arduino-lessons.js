@@ -100,7 +100,7 @@ audio:"url"
           }
         ]  
         },{//module 9 in section 1 
-title:"Choose Your Hero: Picking the Right Arduino",
+title:"Choose Your Hero: Picking the Right Arduino Board.",
 lessons:[
   {//lesson 1 in module 9 in section 1 
   title:"How to Choose the Best Arduino Board for Your Project",
