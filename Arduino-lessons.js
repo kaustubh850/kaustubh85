@@ -460,7 +460,37 @@ audio:"url"
       content: "🔧 What You Need: Patience and curiosity\n\nHere’s how to fix upload problems:\n\n🔹 Check USB cable (some are power-only)\n🔹 Recheck **Board** and **Port** under Tools\n🔹 Try a different USB port\n🔹 Close other apps using COM ports (like serial monitors)\n🔹 Reinstall drivers if needed\n\nTry again — this time it’ll work. Your scientist powers are growing!",
       image: "url",
       audio: "url"
-    }
+    },
+{
+  title: "Install ArduinoDroid App",
+  content: "🔧 What You Need: Android phone or tablet, Internet access\n\nYes — you can code Arduino right from your phone!\n\n1️⃣ Go to Google Play Store\n2️⃣ Search for **ArduinoDroid**\n3️⃣ Install the app — it’s about 200MB\n4️⃣ Open it once to let it set up\n\nReady? Time to add some tools inside the app.",
+  image: "url",
+  audio: "url"
+},
+{
+  title: "Install Core and Compiler in ArduinoDroid",
+  content: "🔧 What You Need: ArduinoDroid installed, Internet access\n\nNow we need the board definitions and compiler.\n\n1️⃣ Open ArduinoDroid\n2️⃣ Tap the ⚙️ gear icon (top right)\n3️⃣ Select ‘Boards’ and install **Arduino AVR Boards**\n4️⃣ Then go to ‘Libraries’ and install **Standard Libraries**\n5️⃣ Tap ‘Sketch → Examples → 01.Basics → Blink’ to try it\n\nThat’s it — your phone can now write code for Arduino!",
+  image: "url",
+  audio: "url"
+},
+{
+  title: "Connect Arduino to Android Using OTG",
+  content: "🔧 What You Need: Arduino Uno, USB cable, Android phone, OTG adapter\n\nLet’s connect the board to your phone.\n\n1️⃣ Plug your USB cable into Arduino\n2️⃣ Connect that to an **OTG adapter**\n3️⃣ Plug OTG into your Android device\n\nYou’ll see a popup: ‘Arduino detected’.\nGive it permission — now you’re connected!",
+  image: "url",
+  audio: "url"
+},
+{
+  title: "Upload Blink Sketch from Android",
+  content: "🔧 What You Need: ArduinoDroid set up, Arduino + OTG connected\n\nLet’s upload the classic blink sketch right from your phone!\n\n1️⃣ Open ArduinoDroid\n2️⃣ Tap the folder 📂 and choose Blink from examples\n3️⃣ Tap the checkmark ✓ to compile\n4️⃣ Tap the arrow → to upload\n\nWait a few seconds... LED should blink on pin 13!\nYou just became a pocket scientist!",
+  image: "url",
+  audio: "url"
+},
+{
+  title: "Common Errors in Android Uploads",
+  content: "🔧 What You Need: Troubleshooting mindset\n\nHere’s what to check if it doesn’t work:\n\n🔸 OTG not detected? Try another adapter\n🔸 Permission denied? Reconnect and re-grant access\n🔸 Upload stuck? Unplug and plug Arduino again\n\nStill stuck? Try rebooting your phone and recompile.\nYou’ll master it in no time!",
+  image: "url",
+  audio: "url"
+}
   ]
 }
 
