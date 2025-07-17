@@ -421,7 +421,7 @@ audio:"url"
     },
     {
       title: "Install Drivers for Clone Boards",
-      content: "🔧 What You Need: Internet access, Laptop/PC\n\nIf you're using a clone Arduino (common online), you might need CH340 or CP210x drivers.\n\n1️⃣ Goto <a>https://www.wch-ic.com/downloads/ch341ser_exe.html#:~:text=Tool%20software-,CH341SER.EXE,to%20user%20with%20the%20product</a>.\n2️⃣ Download the Zip File According To Your System. (Windows, Mac, Linux or Android)\n3️⃣ Install and restart your PC OR Android Phone\n\n✅ For CP210x boards:\n- Goto https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads\n- Follow installation steps\n\nOnce installed, reconnect your board and check Port again in Tools.\nIt should now appear!",
+      content: "🔧 What You Need: Internet access, Laptop/PC\n\nIf you're using a clone Arduino (common online), you might need CH340 or CP210x drivers.\n\n1️⃣ Goto <a href='https://www.wch-ic.com/downloads/ch341ser_exe.html#:~:text=Tool%20software-,CH341SER.EXE,to%20user%20with%20the%20product'>WCN Website</a>.\n2️⃣ Download the Zip File According To Your System. (Windows, Mac, Linux or Android)\n3️⃣ Install and restart your PC OR Android Phone\n\n✅ For CP210x boards:\n- Goto <a href='https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads\n'> Silabs Website - Follow installation steps\n\nOnce installed, reconnect your board and check Port again in Tools.\nIt should now appear!",
       image: "url",
       audio: "url"
     },
