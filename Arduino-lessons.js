@@ -643,7 +643,7 @@ audio:"url"
     },
     {
       title: "RoboDict Simulators: Fast, Friendly, Free",
-      content: "Inside the RoboDict app’s homepage, we’ve embedded our own simulator section!\nNo need to go anywhere — it loads fast, supports common components, and is perfect for learning on the go.\nWhether it’s LED blinking or a basic sensor, our simulator makes it hands-on, even on mobile!",
+      content: "Inside the RoboDict app’s homepage, we’ve embedded a simulator section!\nNo need to go anywhere — it loads fast, supports common components, and is perfect for learning on the go.\nWhether it’s LED blinking or a basic sensor, our simulator makes it hands-on, even on mobile!",
       audio: "https://example.com/audio/robodict_sim.mp3",
       image: "https://example.com/images/robodict_sim_home.png"
     }
