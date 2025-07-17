@@ -492,7 +492,72 @@ audio:"url"
   audio: "url"
 }
   ]
+},{
+  title: "Mastering the IDE: Your Robot's Digital Playground",
+  lessons: [
+    {
+      title: "Welcome to the Playground",
+      content: "The Arduino IDE is where the magic happens.\nIt’s where you write, edit, and upload your code.\nThink of it as your robot’s brain gym.\nIn this module, you’ll explore every corner of this software — from writing your first line of code to using built-in tools like Serial Plotter.\nReady to unlock the IDE's full potential?\nLet’s begin!",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    },
+    {
+      title: "Touring the Interface",
+      content: "When you launch the IDE, you’re greeted by a sleek editor window.\nAt the top: buttons for Verify, Upload, New, Open, and Save.\nBelow that is your code editor — this is where you’ll spend most of your time.\nAt the bottom, there’s a black console for messages and error logs.\nAnd hidden in the menus are powerful tools — we'll explore those next.",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    },
+    {
+      title: "Your First Sketch: setup() and loop()",
+      content: "Every Arduino sketch has two main parts:\nvoid setup() {\n  // setup things here\n}\nvoid loop() {\n  // repeat this code forever\n}\nThe setup() runs once when your board powers up.\nThe loop() keeps repeating, like an infinite to-do list.\nWe'll break these down as we go forward, but this is your code’s skeleton.",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    },
+    {
+      title: "Verify and Upload: The Two Clicks You’ll Love",
+      content: "Once you’ve typed your sketch, click the ✓ (Verify) button.\nThis checks your code for errors — it’s like spell check for robots.\nThen click the → (Upload) button to send it to your Arduino.\nYou’ll see the RX/TX lights blink, and your board comes alive!\nThat’s it. Just two clicks to go from idea to execution.",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    },
+    {
+      title: "Serial Monitor: Talk to Your Robot",
+      content: "Want your robot to say hello back?\nUse the Serial Monitor.\nGo to Tools > Serial Monitor or press Ctrl+Shift+M.\nThis opens a new window where you can see messages sent from your board using Serial.println().\nIt’s perfect for debugging and checking sensor values in real time.",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    },
+    {
+      title: "Serial Plotter: Watch Data Come to Life",
+      content: "Imagine visualizing your sensor readings as live graphs.\nThat’s what the Serial Plotter does.\nGo to Tools > Serial Plotter.\nIt transforms your Serial.print data into real-time charts.\nGreat for monitoring temperature changes, motor speeds, or even pulse sensors.\nTrust me, it’s addictive!",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    },
+    {
+      title: "Board Manager: Add More Brains",
+      content: "By default, Arduino IDE supports a few official boards.\nBut with the Board Manager, you can unlock tons more.\nGo to Tools > Board > Boards Manager.\nHere, install support for ESP8266, ESP32, ATtiny, and more.\nSearch, click install, done.\nNow your IDE speaks multiple hardware languages.",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    },
+    {
+      title: "Installing Boards via URLs",
+      content: "Some advanced boards (like ESP32) need you to add a special URL.\nGo to File > Preferences.\nFind 'Additional Board Manager URLs'.\nPaste the board’s URL there (e.g., for ESP32).\nNow reopen Boards Manager, and you’ll see it available.\nThis step expands your Arduino IDE to endless possibilities.",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    },
+    {
+      title: "Library Manager: Download Pre-Made Magic",
+      content: "Libraries are like code modules made by experts.\nWant to use a servo motor? There's a library for that.\nGo to Sketch > Include Library > Manage Libraries.\nSearch, install, and you’re ready.\nIt’s like downloading superpowers for your code.\nDon’t reinvent the wheel — use libraries!",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    },
+    {
+      title: "Auto Format, Preferences, and Quick Shortcuts",
+      content: "Messy code? Click Edit > Auto Format (Ctrl+T).\nCustomize your experience in File > Preferences — like enabling line numbers or increasing font size.\nLearn a few shortcuts too — Ctrl+Shift+M for Serial Monitor, Ctrl+U to Upload.\nThese tiny habits will save you hours!",
+      audio: "audio_url_here",
+      image: "image_url_here"
+    }
+  ]
 }
+
 
       ]
     }
