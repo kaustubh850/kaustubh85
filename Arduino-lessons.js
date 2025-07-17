@@ -614,7 +614,42 @@ audio:"url"
       audio: "https://example.com/cloud_limitations.mp3"
     }
   ]
+},{
+  title: "Simulate Before You Innovate: Arduino and ESP32 Online Labs",
+  lessons: [
+    {
+      title: "Why Simulation Matters in Robotics Learning",
+      content: "Before diving into real-world hardware, it's powerful to test and validate your circuits virtually.\nSimulators help reduce hardware burnout, debug logic faster, and prototype without wires or smoke.\nWhether you're afraid of burning a component or just don't have the board yet — simulation has your back!\nAnd hey, RoboDict proudly offers these simulators right on the homepage — free and fast access!",
+      audio: "https://example.com/audio/simulation_intro.mp3",
+      image: "https://example.com/images/simulator_intro.png"
+    },
+    {
+      title: "Meet the Arena: Popular Arduino Simulators You Should Try",
+      content: "Here are some great options to start simulating Arduino and ESP32:\n1. Tinkercad Circuits (great for beginners)\n2. Wokwi (superb for advanced users)\n3. RoboDict Simulator (right inside our app)\n4. Proteus (industry-grade, but needs a license)\nPick the one that fits your level, and start experimenting without fear!",
+      audio: "https://example.com/audio/popular_simulators.mp3",
+      image: "https://example.com/images/simulator_list.png"
+    },
+    {
+      title: "Simulating Arduino UNO in Wokwi",
+      content: "Wokwi is like the boss level of simulation tools.\nYou can simulate LED blinking, sensors, OLEDs, and even full ESP32 projects!\nJust go to wokwi.com, select Arduino Uno, and start wiring virtually.\nBonus: It supports code editing in-browser, and it's super fast.",
+      audio: "https://example.com/audio/wokwi_uno.mp3",
+      image: "https://example.com/images/wokwi_uno.png"
+    },
+    {
+      title: "ESP32 Simulation: Wokwi vs Real Board",
+      content: "Wokwi isn’t just about Arduino — it supports ESP32 too.\nAnd trust me, for Wi-Fi-based testing, it’s a dream!\nYou can check serial output, simulate delays, and test network flows before uploading to your actual device.",
+      audio: "https://example.com/audio/wokwi_esp32.mp3",
+      image: "https://example.com/images/esp32_sim.png"
+    },
+    {
+      title: "RoboDict Simulators: Fast, Friendly, Free",
+      content: "Inside the RoboDict app’s homepage, we’ve embedded our own simulator section!\nNo need to go anywhere — it loads fast, supports common components, and is perfect for learning on the go.\nWhether it’s LED blinking or a basic sensor, our simulator makes it hands-on, even on mobile!",
+      audio: "https://example.com/audio/robodict_sim.mp3",
+      image: "https://example.com/images/robodict_sim_home.png"
+    }
+  ]
 }
+
 
 
 
