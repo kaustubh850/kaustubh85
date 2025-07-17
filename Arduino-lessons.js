@@ -556,7 +556,66 @@ audio:"url"
       image: "image_url_here"
     }
   ]
+},{
+  title: "Arduino in the Cloud: The Web IDE Adventure",
+  lessons: [
+    {
+      title: "Welcome to Arduino Cloud Editor",
+      content: "Required Components:\n- Arduino Board\n- USB Cable\n- Laptop/Desktop with Internet\n\nYou're about to enter the cloud side of Arduino — where you don't need to install anything! Just open your browser and code.\nThis lesson introduces the Arduino Cloud Editor (https://create.arduino.cc/editor), a powerful alternative to the offline IDE.\nWe’ll explore what makes it awesome, and why many users are shifting to it — especially for quick, cross-device prototyping.",
+      image: "https://example.com/cloud_intro_image.jpg",
+      audio: "https://example.com/cloud_intro_audio.mp3"
+    },
+    {
+      title: "Setting Up Arduino Cloud Editor",
+      content: "To start using the Arduino Cloud Editor:\n1. Go to https://create.arduino.cc/editor\n2. Sign in with your Arduino account (or create one).\n3. The dashboard will welcome you with the option to install the 'Arduino Create Agent'.\nThat’s a small background service allowing your browser to talk to the Arduino board.",
+      image: "https://example.com/setup_cloud_editor.jpg",
+      audio: "https://example.com/setup_cloud_editor.mp3"
+    },
+    {
+      title: "Installing the Arduino Create Agent",
+      content: "Required: Admin access on your PC\n\n1. Download the Create Agent from the Arduino Editor page.\n2. Run the installer and follow prompts.\n3. Once installed, refresh your browser — your board should now be visible when connected.\nThe Agent bridges your hardware and the web editor — don’t skip this!",
+      image: "https://example.com/create_agent_image.jpg",
+      audio: "https://example.com/create_agent_audio.mp3"
+    },
+    {
+      title: "Using the Cloud Editor Interface",
+      content: "The Arduino Cloud Editor UI is modern and clean:\n- Sketchbook on the left\n- Code editor in the center\n- Serial Monitor & Output at the bottom\n- Tools for board and port selection at the top\nExplore this layout and feel free to tinker — changes are saved automatically to your cloud account!",
+      image: "https://example.com/cloud_ui_image.jpg",
+      audio: "https://example.com/cloud_ui_audio.mp3"
+    },
+    {
+      title: "Creating and Saving Your First Cloud Sketch",
+      content: "Click the '+ New Sketch' button.\nA new tab opens with some default code.\nTry editing it — maybe change the LED blink speed.\nPress 'Upload' to flash your code to the board.\nYour sketch is saved online — access it from any device later. Handy, right?",
+      image: "https://example.com/first_cloud_sketch.jpg",
+      audio: "https://example.com/first_cloud_sketch.mp3"
+    },
+    {
+      title: "Accessing the Serial Monitor in Cloud Editor",
+      content: "Just like in the offline IDE, you can debug via Serial Monitor.\n1. Connect your board.\n2. Press the 'Serial Monitor' button at the bottom right.\n3. Watch your Arduino’s messages stream live!\nSuper helpful when working on cloud-connected IoT stuff.",
+      image: "https://example.com/cloud_serial_monitor.jpg",
+      audio: "https://example.com/cloud_serial_monitor.mp3"
+    },
+    {
+      title: "Advantages of the Cloud IDE",
+      content: "Why Cloud?\n- No installation headaches\n- All projects stored online\n- Accessible across devices\n- Great for Chromebook users or locked-down PCs\n- Integrates with Arduino IoT Cloud\nIt’s perfect for modern makers on the move.",
+      image: "https://example.com/cloud_advantages.jpg",
+      audio: "https://example.com/cloud_advantages.mp3"
+    },
+    {
+      title: "Using Libraries in Cloud Editor",
+      content: "Want to include a library?\nClick 'Libraries' on the left panel.\nSearch by name — for example: 'Adafruit GFX'\nClick 'Include' → It gets added to your sketch automatically.\nNo download or zip file extraction needed. Cloud FTW!",
+      image: "https://example.com/cloud_libraries.jpg",
+      audio: "https://example.com/cloud_libraries.mp3"
+    },
+    {
+      title: "Cloud Editor Limitations to Know",
+      content: "It’s great — but not perfect.\n- Needs internet to work\n- Not all custom boards are supported\n- Limited advanced debugging tools\nBut for daily use, prototyping, and learning — it’s more than sufficient.\nLet’s move ahead with confidence.",
+      image: "https://example.com/cloud_limitations.jpg",
+      audio: "https://example.com/cloud_limitations.mp3"
+    }
+  ]
 }
+
 
 
       ]
