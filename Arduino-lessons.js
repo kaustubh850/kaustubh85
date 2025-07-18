@@ -834,7 +834,141 @@ Try changing <code>delay(500)</code> to <code>delay(100)</code> and see what hap
 }
 
   ]
+},{
+  title: "The Sixth Sense: What Are Sensors?",
+  lessons: [
+
+    {
+      type: "text",
+      title: "👁️ Eyes for the Robot: The Magic of Sensors",
+      content: `
+        <div class="card">
+          Imagine walking through your room with your eyes closed. You wouldn’t know if a chair was in the way or if the lights were on, right?  
+          Well, robots are blind too — unless you give them *senses*. That’s where **sensors** come in.
+        </div>
+
+        <div class="card">
+          Sensors help your Arduino **feel** the world — detect light, sound, movement, distance, temperature, and even gas leaks.  
+          They're like **superpowers** for your robots!
+        </div>
+
+        <div class="card">
+          Some common sensors you'll use:
+          <ul>
+            <li>🌡️ Temperature Sensor (like DHT11)</li>
+            <li>🖐️ Touch Sensor</li>
+            <li>🌞 Light Sensor (LDR)</li>
+            <li>📢 Sound Sensor (Microphone Module)</li>
+            <li>🚶 Motion Sensor (PIR)</li>
+            <li>📏 Distance Sensor (Ultrasonic HC-SR04)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          In the next few lessons, you'll **see** how to connect and read data from these little detectives.  
+          🕵️ Get ready to spy the invisible!
+        </div>
+      `,
+      image: "https://robohash.org/sensorbot.png?size=300x300",
+      audio: "https://audio.roboacademy.in/lessons/what-are-sensors.mp3"
+    },
+
+    {
+      type: "game",
+      title: "🧠 Sensor Match: Game Time!",
+      content: `
+        <div class="card">
+          Match the sensor with what it detects. Drag and drop to pair them!
+        </div>
+
+        <style>
+          #game-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+          }
+          .draggable, .droppable {
+            padding: 10px 15px;
+            border: 2px dashed #aaa;
+            cursor: grab;
+            background-color: #1a1a1a;
+            color: #fff;
+            user-select: none;
+            border-radius: 8px;
+          }
+          .droppable {
+            min-width: 150px;
+            min-height: 40px;
+          }
+        </style>
+
+        <div id="game-container">
+          <div class="draggable" draggable="true" id="temp">Temperature Sensor</div>
+          <div class="draggable" draggable="true" id="ldr">LDR</div>
+          <div class="draggable" draggable="true" id="pir">PIR Motion Sensor</div>
+
+          <div class="droppable" data-match="temp">Detects: _______</div>
+          <div class="droppable" data-match="ldr">Detects: _______</div>
+          <div class="droppable" data-match="pir">Detects: _______</div>
+        </div>
+
+        <script>
+          const draggables = document.querySelectorAll('.draggable');
+          const droppables = document.querySelectorAll('.droppable');
+
+          draggables.forEach(drag => {
+            drag.addEventListener('dragstart', e => {
+              e.dataTransfer.setData("text/plain", drag.id);
+            });
+          });
+
+          droppables.forEach(drop => {
+            drop.addEventListener('dragover', e => e.preventDefault());
+            drop.addEventListener('drop', e => {
+              const draggedId = e.dataTransfer.getData("text/plain");
+              if (drop.dataset.match === draggedId) {
+                drop.innerText = "Detects: " + document.getElementById(draggedId).innerText;
+                drop.style.borderColor = "lime";
+                document.getElementById(draggedId).style.opacity = 0.4;
+              } else {
+                drop.innerText = "❌ Try again!";
+              }
+            });
+          });
+        </script>
+      `,
+      image: "https://robohash.org/matchgame.png?size=300x300",
+      audio: "https://audio.roboacademy.in/games/sensor-match.mp3"
+    },
+
+    {
+      type: "video",
+      title: "🎥 Watch This: How Sensors Work",
+      content: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/6Lz5FONXvW8" frameborder="0" allowfullscreen></iframe>`,
+      image: "https://img.youtube.com/vi/6Lz5FONXvW8/0.jpg",
+      audio: "https://audio.roboacademy.in/videos/sensor-intro-audio.mp3"
+    },
+
+    {
+      type: "interactive",
+      title: "💬 Did You Know? (Reveal Box)",
+      content: `
+        <div class="card">
+          <p>Click the button to reveal an interesting fact about sensors!</p>
+          <button onclick="document.getElementById('fact').style.display='block'">Reveal Fact</button>
+          <div id="fact" style="display:none; margin-top:10px;">
+            <strong>Fact:</strong> Your smartphone has over <u>10 different sensors</u> inside it — including a gyroscope, accelerometer, ambient light sensor, proximity sensor, and even a barometer!
+          </div>
+        </div>
+      `,
+      image: "https://robohash.org/sensorfact.png?size=300x300",
+      audio: "https://audio.roboacademy.in/facts/sensor-reveal.mp3"
+    }
+
+  ]
 }
+
 
 
 
