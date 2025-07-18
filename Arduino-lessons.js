@@ -721,7 +721,97 @@ Try changing <code>delay(500)</code> to <code>delay(100)</code> and see what hap
 </div>
 <p>✨ You don’t need to install anything. Explore and experiment.</p>
 `
-    }
+    },{
+  title: "🎮 PinMode Puzzle",
+  type: "game",
+  content: `
+<style>
+  .game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    font-family: 'Courier New', monospace;
+  }
+  .card {
+    padding: 1rem;
+    border: 2px dashed #00ffee;
+    background: #111;
+    color: #fff;
+    border-radius: 1rem;
+    width: 200px;
+    text-align: center;
+  }
+  .draggable, .droppable {
+    cursor: pointer;
+    user-select: none;
+  }
+  .droppable {
+    background: #222;
+    min-height: 50px;
+    margin-top: 0.5rem;
+    border: 1px solid #555;
+  }
+  .correct {
+    background-color: #005500 !important;
+  }
+  .wrong {
+    background-color: #550000 !important;
+  }
+</style>
+
+<div class="game-container">
+  <div class="card">
+    <strong>LED blinking</strong>
+    <div class="droppable" data-answer="OUTPUT"></div>
+  </div>
+  <div class="card">
+    <strong>Button Press</strong>
+    <div class="droppable" data-answer="INPUT"></div>
+  </div>
+  <div class="card">
+    <strong>Button w/o resistor</strong>
+    <div class="droppable" data-answer="INPUT_PULLUP"></div>
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 2rem;">
+  <div class="draggable" draggable="true" style="display:inline-block; margin: 0 1rem; padding: 0.5rem 1rem; background: #222; color: #0ff; border: 1px solid #0ff;">INPUT</div>
+  <div class="draggable" draggable="true" style="display:inline-block; margin: 0 1rem; padding: 0.5rem 1rem; background: #222; color: #0ff; border: 1px solid #0ff;">OUTPUT</div>
+  <div class="draggable" draggable="true" style="display:inline-block; margin: 0 1rem; padding: 0.5rem 1rem; background: #222; color: #0ff; border: 1px solid #0ff;">INPUT_PULLUP</div>
+</div>
+
+<script>
+  const draggables = document.querySelectorAll(".draggable");
+  const droppables = document.querySelectorAll(".droppable");
+
+  draggables.forEach(drag => {
+    drag.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("text/plain", drag.textContent);
+    });
+  });
+
+  droppables.forEach(drop => {
+    drop.addEventListener("dragover", e => {
+      e.preventDefault();
+    });
+    drop.addEventListener("drop", e => {
+      e.preventDefault();
+      const dragged = e.dataTransfer.getData("text/plain");
+      drop.textContent = dragged;
+      if (dragged === drop.dataset.answer) {
+        drop.classList.remove("wrong");
+        drop.classList.add("correct");
+      } else {
+        drop.classList.remove("correct");
+        drop.classList.add("wrong");
+      }
+    });
+  });
+</script>
+`
+}
+
   ]
 }
 
