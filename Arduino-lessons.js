@@ -658,7 +658,88 @@ audio:"url"
       audio: "https://robodict-audio.s3.amazonaws.com/lessons/blink-led-intro.mp3"
     }
   ]
+},{
+  title: "Understanding Digital Pins: Inputs, Outputs & Logic Magic",
+  lessons: [
+    {
+      title: "🧠 Digital Pins Demystified",
+      type: "text",
+      content: `
+<div class="card">
+<h3>What are Digital Pins?</h3>
+Digital pins on your Arduino are your board’s way of interacting with the physical world — like sending a signal to an LED or listening for a button press.
+</div>
+<div class="card">
+<h3>Output Mode (pinMode: OUTPUT)</h3>
+When you set a pin as OUTPUT, your Arduino can send either HIGH (5V) or LOW (0V) from that pin. Use this to control LEDs, buzzers, and more.
+</div>
+<div class="card">
+<h3>Input Mode (pinMode: INPUT)</h3>
+Set a pin to INPUT mode when you want your Arduino to "listen" to sensors, buttons, or switches. It reads either HIGH or LOW based on voltage.
+</div>
+<div class="card">
+<h3>Input Pullup (pinMode: INPUT_PULLUP)</h3>
+Sometimes a pin floats unpredictably when no voltage is connected. INPUT_PULLUP connects an internal resistor to keep it stable at HIGH until grounded.
+</div>
+<div class="card">
+<h3>Common Mistake to Avoid</h3>
+Don’t drive heavy components like motors directly from pins! Use a transistor or driver circuit. The digital pin outputs small current — not enough for power-hungry parts.
+</div>
+`
+    },
+    {
+      title: "🎮 PinMode Puzzle",
+      type: "game",
+      content: `
+<div class="card">
+Match the pin mode to the situation. Click to pair the right terms!
+</div>
+<ul>
+  <li>🔌 LED blinking → OUTPUT</li>
+  <li>🖲️ Button Press → INPUT</li>
+  <li>🎛️ Button without external resistor → INPUT_PULLUP</li>
+</ul>
+<p><em>This will be a drag/drop game in the real app — for now, simulate mentally!</em></p>
+`
+    },
+    {
+      title: "📺 Digital Pin Tutorial (Video)",
+      type: "video",
+      content: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/VyX4toKZgdo" title="Understanding Arduino Digital Pins" frameborder="0" allowfullscreen></iframe>`
+    },
+    {
+      title: "🔍 Explore the Simulator (Third-Party)",
+      type: "text",
+      content: `
+<div class="card">
+Open the simulator from the RoboDict homepage. Use the dropdown to pick an Arduino board.
+</div>
+<div class="card">
+Paste in this example code:
+<pre>
+void setup() {
+  pinMode(13, OUTPUT);
 }
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(500);
+  digitalWrite(13, LOW);
+  delay(500);
+}
+</pre>
+</div>
+<div class="card">
+Now hit "Start Simulation". Watch how the LED toggles ON and OFF.
+</div>
+<div class="card">
+Try changing <code>delay(500)</code> to <code>delay(100)</code> and see what happens!
+</div>
+<p>✨ You don’t need to install anything. Explore and experiment.</p>
+`
+    }
+  ]
+}
+
 
 
 
