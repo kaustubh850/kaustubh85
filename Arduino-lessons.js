@@ -688,21 +688,6 @@ Don’t drive heavy components like motors directly from pins! Use a transistor 
 `
     },
     {
-      title: "🎮 PinMode Puzzle",
-      type: "game",
-      content: `
-<div class="card">
-Match the pin mode to the situation. Click to pair the right terms!
-</div>
-<ul>
-  <li>🔌 LED blinking → OUTPUT</li>
-  <li>🖲️ Button Press → INPUT</li>
-  <li>🎛️ Button without external resistor → INPUT_PULLUP</li>
-</ul>
-<p><em>This will be a drag/drop game in the real app — for now, simulate mentally!</em></p>
-`
-    },
-    {
       title: "📺 Digital Pin Tutorial (Video)",
       type: "video",
       content: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/VyX4toKZgdo" title="Understanding Arduino Digital Pins" frameborder="0" allowfullscreen></iframe>`
