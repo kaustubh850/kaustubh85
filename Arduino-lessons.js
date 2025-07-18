@@ -646,7 +646,12 @@ audio:"url"
       content: "Inside the RoboDict app’s homepage, we’ve embedded a simulator section!\nNo need to go anywhere — it loads fast, supports common components, and is perfect for learning on the go.\nWhether it’s LED blinking or a basic sensor, our simulator makes it hands-on, even on mobile!",
       audio: "https://example.com/audio/robodict_sim.mp3",
       image: "https://example.com/images/robodict_sim_home.png"
-    }
+    },{
+  title: "The Sacred Blink: Lighting Up Your First LED",
+  content: "✨ <b>Welcome, brave tinkerer!</b>\nThis is where your journey truly begins. Today, we light the sacred LED — the age-old initiation rite of every Arduino warrior.\n\n🛠️ <b>Things You’ll Need:</b>\n- Arduino Uno (or any Arduino board)\n- USB cable\n- A computer\n- 1 LED (any color)\n- 220Ω resistor\n- Breadboard\n- Jumper wires\n\n🧠 <b>What’s Happening?</b>\nWe're going to write a tiny piece of code that tells your Arduino: \"Yo! Blink this light every second.\"\nIt’s like saying “hello” to the world… but in light.\n\n🧾 <b>Code Time:</b>\n<code>void setup() {\n  pinMode(13, OUTPUT); // Set pin 13 as output\n}\n\nvoid loop() {\n  digitalWrite(13, HIGH); // Turn the LED on\n  delay(1000); // Wait for a second\n  digitalWrite(13, LOW); // Turn the LED off\n  delay(1000); // Wait again\n}</code>\n\n⚡ <b>Pro Tip:</b> Pin 13 already has a built-in LED on most boards. So if you don’t connect anything externally, you’ll still see the magic happen!\n\n🎉 <i>And just like that, you’re no longer a noob. You’re a blinker.</i>",
+  audio: "https://robodict.app/audio/blink-intro.mp3",
+  image: "https://robodict.app/images/blinking-led-demo.png"
+}
   ]
 }
 
