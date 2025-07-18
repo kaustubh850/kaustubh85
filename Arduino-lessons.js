@@ -742,70 +742,91 @@ Try changing <code>delay(500)</code> to <code>delay(100)</code> and see what hap
     width: 200px;
     text-align: center;
   }
-  .draggable, .droppable {
-    cursor: pointer;
+  .draggable {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #222;
+    color: #0ff;
+    border: 1px solid #0ff;
+    border-radius: 0.5rem;
+    cursor: grab;
     user-select: none;
   }
   .droppable {
     background: #222;
-    min-height: 50px;
+    min-height: 40px;
     margin-top: 0.5rem;
     border: 1px solid #555;
+    padding: 0.3rem;
+    border-radius: 0.4rem;
   }
   .correct {
-    background-color: #005500 !important;
+    background-color: #004400 !important;
+    color: #0f0 !important;
   }
   .wrong {
-    background-color: #550000 !important;
+    background-color: #440000 !important;
+    color: #f00 !important;
   }
 </style>
 
 <div class="game-container">
   <div class="card">
     <strong>LED blinking</strong>
-    <div class="droppable" data-answer="OUTPUT"></div>
+    <div class="droppable" data-answer="OUTPUT">Drop here</div>
   </div>
   <div class="card">
     <strong>Button Press</strong>
-    <div class="droppable" data-answer="INPUT"></div>
+    <div class="droppable" data-answer="INPUT">Drop here</div>
   </div>
   <div class="card">
     <strong>Button w/o resistor</strong>
-    <div class="droppable" data-answer="INPUT_PULLUP"></div>
+    <div class="droppable" data-answer="INPUT_PULLUP">Drop here</div>
   </div>
 </div>
 
-<div style="text-align: center; margin-top: 2rem;">
-  <div class="draggable" draggable="true" style="display:inline-block; margin: 0 1rem; padding: 0.5rem 1rem; background: #222; color: #0ff; border: 1px solid #0ff;">INPUT</div>
-  <div class="draggable" draggable="true" style="display:inline-block; margin: 0 1rem; padding: 0.5rem 1rem; background: #222; color: #0ff; border: 1px solid #0ff;">OUTPUT</div>
-  <div class="draggable" draggable="true" style="display:inline-block; margin: 0 1rem; padding: 0.5rem 1rem; background: #222; color: #0ff; border: 1px solid #0ff;">INPUT_PULLUP</div>
+<div style="text-align: center; margin-top: 2rem;" id="drag-area">
+  <div class="draggable" draggable="true" data-value="INPUT">INPUT</div>
+  <div class="draggable" draggable="true" data-value="OUTPUT">OUTPUT</div>
+  <div class="draggable" draggable="true" data-value="INPUT_PULLUP">INPUT_PULLUP</div>
 </div>
 
 <script>
-  const draggables = document.querySelectorAll(".draggable");
+  const dragArea = document.getElementById("drag-area");
   const droppables = document.querySelectorAll(".droppable");
 
-  draggables.forEach(drag => {
-    drag.addEventListener("dragstart", e => {
-      e.dataTransfer.setData("text/plain", drag.textContent);
+  function addDragListeners(elem) {
+    elem.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("text/plain", e.target.dataset.value);
     });
-  });
+  }
+
+  document.querySelectorAll(".draggable").forEach(addDragListeners);
 
   droppables.forEach(drop => {
-    drop.addEventListener("dragover", e => {
-      e.preventDefault();
-    });
+    drop.addEventListener("dragover", e => e.preventDefault());
     drop.addEventListener("drop", e => {
       e.preventDefault();
-      const dragged = e.dataTransfer.getData("text/plain");
-      drop.textContent = dragged;
-      if (dragged === drop.dataset.answer) {
+      const draggedValue = e.dataTransfer.getData("text/plain");
+      drop.textContent = draggedValue;
+
+      if (draggedValue === drop.dataset.answer) {
         drop.classList.remove("wrong");
         drop.classList.add("correct");
       } else {
         drop.classList.remove("correct");
         drop.classList.add("wrong");
       }
+
+      // add a new clone to make dragging reusable
+      const newDrag = document.createElement("div");
+      newDrag.className = "draggable";
+      newDrag.setAttribute("draggable", "true");
+      newDrag.setAttribute("data-value", draggedValue);
+      newDrag.textContent = draggedValue;
+      addDragListeners(newDrag);
+      dragArea.appendChild(newDrag);
     });
   });
 </script>
