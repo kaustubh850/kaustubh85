@@ -1121,6 +1121,109 @@ Try changing <code>delay(500)</code> to <code>delay(100)</code> and see what hap
 
 
       ]
+    },{
+  title: "Arduino Coding: Speak Like a Board",
+  modules:[
+    {
+  title: "Talking to the Board — What is Code, Anyway?",
+  lessons: [
+    {
+      title: "Hey Arduino, Let’s Chat! (Intro to Code)",
+      content: `
+        <div class="card">
+          🧑‍🏫 So… what *is* code?  
+          Well, it’s like texting your Arduino — but with a way stricter friend who only understands *very specific* things.  
+          <br><br>
+          You tell it to blink, and it blinks (if you ask right). You mess up a semicolon? It throws a tantrum.  
+          <br><br>
+          But that’s what makes it fun 😉
+        </div>
+
+        <div class="card">
+          🛠 Arduino uses something called <b>C++</b>, but with a lot of helper functions.  
+          You don’t need to learn "full" C++, just enough to *boss around a board*.
+        </div>
+
+        <div class="card">
+          📜 Here's a super simple piece of code:
+          <pre><code>
+void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+          </code></pre>
+          Don’t stress! We’ll break all of this down. But first — let’s play a mini game to match parts of this code to what they actually *do*.
+        </div>
+      `
+    },
+    {
+      title: "Code Match Game: What’s This Line Do?",
+      content: `
+        <style>
+          .card { margin-bottom: 1rem; }
+          .option-btn { display: block; margin: 0.5rem 0; padding: 0.6rem; background: #111; color: #0f0; border: 1px solid #0f0; border-radius: 8px; cursor: pointer; }
+          .option-btn:hover { background: #0f0; color: #000; }
+        </style>
+
+        <div class="card">
+          <b>Question:</b> What does <code>pinMode(13, OUTPUT);</code> do?
+        </div>
+        <div class="card">
+          <button class="option-btn" onclick="alert('✅ Correct! This sets pin 13 as an output pin.')">It makes pin 13 an output.</button>
+          <button class="option-btn" onclick="alert('❌ Nope. This is used to read input.')">It reads data from pin 13.</button>
+          <button class="option-btn" onclick="alert('❌ Not quite. That’s for analog writing.')">It writes analog value to pin 13.</button>
+        </div>
+
+        <div class="card">
+          🕹 Want more? You’ll find cooler coding games in later lessons. Keep reading!
+        </div>
+      `
+    },
+    {
+      title: "Watch It: Code is Just a Conversation",
+      content: `
+        <div class="card">
+          📺 Watch this cool 1-minute explanation:
+          <br><br>
+          <iframe width="100%" height="215" src="https://www.youtube.com/embed/3vNm9jAFnEU" frameborder="0" allowfullscreen></iframe>
+        </div>
+      `
+    },
+    {
+      title: "Your Turn: Write Your First Code",
+      content: `
+        <div class="card">
+          🧪 <b>Try this:</b> Paste the following code into the Arduino IDE:
+          <pre><code>
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(500);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(500);
+}
+          </code></pre>
+          🔍 Hit verify, then upload it. You should see the onboard LED blink like a party light!
+        </div>
+
+        <div class="card">
+          <button class="gaming-btn">I Did It! What’s Next?</button>
+        </div>
+      `
+    }
+  ]
+}
+
+  ]
     }
   ]
 };
