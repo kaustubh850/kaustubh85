@@ -967,7 +967,82 @@ Try changing <code>delay(500)</code> to <code>delay(100)</code> and see what hap
     }
 
   ]
+},{
+  title: "Commanding the Physical World: Meet the Actuators",
+  lessons: [
+    {
+      type: "text",
+      title: "What is an Actuator?",
+      content: `
+<div class="card">Imagine your Arduino gets a command — like "turn on the lights", "make a noise", or "move forward". How does it make those things happen?</div>
+<div class="card">That's where actuators come in! They’re the output devices that respond to your code and *do something* in the physical world.</div>
+<div class="card">From spinning motors to buzzing buzzers, actuators are how your Arduino *talks back* to the real world.</div>
+<div class="card">In this module, we're going to learn how to control these devices and bring your robot to life.</div>`,
+      audio: "https://example.com/audio/what-is-an-actuator.mp3",
+      image: "https://example.com/images/actuator-intro.jpg"
+    },
+    {
+      type: "video",
+      title: "Watch Actuators in Action",
+      content: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/MY_ACTUATOR_DEMO" frameborder="0" allowfullscreen></iframe>`,
+      audio: "https://example.com/audio/watch-actuators.mp3",
+      image: "https://example.com/images/actuator-video-cover.jpg"
+    },
+    {
+      type: "game",
+      title: "Actuator Matching Game",
+      content: `
+<style>
+  #actuatorGame { display: flex; flex-direction: column; gap: 10px; font-family: sans-serif; }
+  .drag-target, .draggable { padding: 10px; border: 1px dashed #888; margin: 5px; cursor: grab; background: #1a1a1a; color: white; }
+  .drag-target { background: #111; border-style: solid; }
+</style>
+<div id="actuatorGame">
+  <div>Drag the actuator to its function:</div>
+  <div class="draggable" draggable="true" id="motor">Motor</div>
+  <div class="draggable" draggable="true" id="buzzer">Buzzer</div>
+  <div class="draggable" draggable="true" id="servo">Servo Motor</div>
+  <div class="drag-target" data-match="motor">🔄 Rotation</div>
+  <div class="drag-target" data-match="buzzer">🔊 Sound</div>
+  <div class="drag-target" data-match="servo">🎯 Angular Movement</div>
+</div>
+<script>
+  let drags = document.querySelectorAll(".draggable");
+  let targets = document.querySelectorAll(".drag-target");
+  drags.forEach(el => {
+    el.ondragstart = e => e.dataTransfer.setData("text/plain", el.id);
+  });
+  targets.forEach(tgt => {
+    tgt.ondragover = e => e.preventDefault();
+    tgt.ondrop = e => {
+      const dropped = e.dataTransfer.getData("text");
+      if (dropped === tgt.dataset.match) {
+        tgt.innerHTML += " ✅";
+        tgt.style.background = "#080";
+      } else {
+        tgt.innerHTML += " ❌";
+        tgt.style.background = "#800";
+      }
+    };
+  });
+</script>`,
+      audio: "https://example.com/audio/actuator-game.mp3",
+      image: "https://example.com/images/actuator-game.jpg"
+    },
+    {
+      type: "text",
+      title: "Where You'll Use Actuators",
+      content: `
+<div class="card">In your future Arduino projects, actuators will be your go-to for making something move, blink, or make noise.</div>
+<div class="card">Want to build a robot that walks? You'll need servos and motors.</div>
+<div class="card">Need to make sound alerts for your smart weather station? Bring in the buzzer!</div>
+<div class="card">Actuators are the *action heroes* of your robotic world.</div>`,
+      audio: "https://example.com/audio/where-you-use-actuators.mp3",
+      image: "https://example.com/images/actuator-usage.jpg"
+    }
+  ]
 }
+
 
 
 
