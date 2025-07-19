@@ -1041,7 +1041,77 @@ Try changing <code>delay(500)</code> to <code>delay(100)</code> and see what hap
       image: "https://example.com/images/actuator-usage.jpg"
     }
   ]
+},{
+  title: "Digital vs Analog: The Dual Worlds of Arduino Signals",
+  lessons: [
+
+    {
+      type: "text",
+      title: "Digital vs Analog: Two Languages of the Arduino",
+      content: `
+        <div class="card">Think of Arduino as a multilingual machine. It speaks two languages — Digital and Analog.</div>
+        <div class="card">📌 <strong>Digital signals</strong> are either ON (1) or OFF (0). That’s it. Like a switch.</div>
+        <div class="card">📈 <strong>Analog signals</strong> can have a range — like brightness levels, sound intensities, etc.</div>
+        <div class="card">Digital pins use <code>digitalRead()</code> or <code>digitalWrite()</code>. Analog pins use <code>analogRead()</code> or <code>analogWrite()</code>.</div>
+        <div class="card">We'll use <button class="gaming-btn">digitalRead</button> to detect states, and <button class="gaming-btn">analogWrite</button> to control LED brightness and motors later!</div>
+      `
+    },
+
+    {
+      type: "youtube",
+      title: "Watch: What is Analog and Digital in Arduino?",
+      url: "https://www.youtube.com/watch?v=qJ-KwZ7pSdw"
+    },
+
+    {
+      type: "game",
+      title: "Signal Sorter Mini Game",
+      content: `
+        <div style="padding: 10px;">
+          <p>Click the right button when a signal appears!</p>
+          <button class="gaming-btn" onclick="checkSignal('digital')">Digital</button>
+          <button class="gaming-btn" onclick="checkSignal('analog')">Analog</button>
+          <p id="signal-text" style="font-weight: bold; margin-top: 10px;"></p>
+          <p id="feedback" style="color: lime; font-weight: bold;"></p>
+        </div>
+        <script>
+          const signals = ['analog', 'digital', 'analog', 'digital', 'analog'];
+          let index = 0;
+
+          function showSignal() {
+            document.getElementById('signal-text').textContent = 'Signal: ' + signals[index];
+            document.getElementById('feedback').textContent = '';
+          }
+
+          function checkSignal(selected) {
+            if (signals[index] === selected) {
+              document.getElementById('feedback').textContent = '✅ Correct!';
+            } else {
+              document.getElementById('feedback').textContent = '❌ Wrong, try again.';
+            }
+            index = (index + 1) % signals.length;
+            setTimeout(showSignal, 1000);
+          }
+
+          window.onload = showSignal;
+        </script>
+      `
+    },
+
+    {
+      type: "interactive",
+      title: "Can You Guess The Pin Type?",
+      content: `
+        <div class="card">Q1: Which function would you use to control brightness of an LED?</div>
+        <div class="card"><button class="gaming-btn" onclick="alert('Correct!')">analogWrite()</button> <button class="gaming-btn" onclick="alert('Oops!')">digitalWrite()</button></div>
+        <div class="card">Q2: Which pin would you use to connect a temperature sensor?</div>
+        <div class="card"><button class="gaming-btn" onclick="alert('Correct!')">A0</button> <button class="gaming-btn" onclick="alert('Not quite.')">D13</button></div>
+      `
+    }
+
+  ]
 }
+
 
 
 
