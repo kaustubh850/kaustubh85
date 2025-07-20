@@ -1685,7 +1685,181 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "Endless Action: While Loops in Arduino",
+  "lessons": [
+    {
+      "title": "🔁 Meet the While Loop",
+      "content": "<div class=\"card\">\nSometimes, you don’t know *how many* times something needs to repeat — you just want it to run <b>until a condition is false</b>.\n</div>\n<div class=\"card\">\nSyntax:\n<pre>\nwhile(condition) {\n  // do something\n}\n</pre>\n🚨 Make sure your condition becomes false eventually — or you’ll get an infinite loop!\n</div>\n<div class=\"card\">\nExample:\n<pre>\nint x = 0;\nwhile(x < 5) {\n  Serial.println(x);\n  x++;\n}\n</pre>\nThis prints 0 to 4, like a for loop but more flexible.\n</div>\n<div class=\"card\">\nUse <b>while</b> when:\n<ul>\n<li>You don’t know how many times to loop</li>\n<li>You want to wait for user input or sensor value</li>\n</ul>\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Infinite Loop or Not?",
+      "content": "<div class=\"card\">\nWill this code cause an infinite loop?</div>\n<div class=\"card\">\n<pre>\nint x = 1;\nwhile(x < 10) {\n  Serial.println(x);\n}\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"whilegame\" placeholder=\"Yes or No\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkWhileGame()\">Submit</button>\n<script>\nfunction checkWhileGame() {\n  const answer = document.getElementById('whilegame').value.toLowerCase();\n  if(answer === \"yes\") {\n    alert('✅ Correct! x never changes, so condition never becomes false. Infinite loop!');\n  } else {\n    alert('❌ Nope! The value of x is never updated, so it loops forever.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: While Loops in Hindi",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/2Ey5UYtBqlg\" title=\"While Loop Arduino Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Project: Wait for Button Press",
+      "content": "<div class=\"card\">\nLet’s use a <b>while loop</b> to wait until a button is pressed — only then blink the LED.\n</div>\n<div class=\"card\">\nConnect:\n<ul>\n<li>Button to pin 2</li>\n<li>LED to pin 9</li>\n</ul>\n</div>\n<div class=\"card\">\n<pre>\nvoid setup() {\n  pinMode(2, INPUT_PULLUP);\n  pinMode(9, OUTPUT);\n}\n\nvoid loop() {\n  while(digitalRead(2) == HIGH) {\n    // wait until button is pressed\n  }\n  digitalWrite(9, HIGH);\n  delay(500);\n  digitalWrite(9, LOW);\n}\n</pre>\n</div>\n<div class=\"card\">\n🎮 Press the button — only then does the LED flash! Perfect for wait-until-user-input logic.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "Make Your Own Commands: Custom Functions in Arduino",
+  "lessons": [
+    {
+      "title": "🧠 Why Create Your Own Functions?",
+      "content": "<div class=\"card\">\nImagine writing the same code again and again. Not fun, right? 😅\nWith <b>custom functions</b>, you create your own reusable blocks of logic!\n</div>\n<div class=\"card\">\nSyntax:\n<pre>\nvoid myFunction() {\n  // code here\n}\n</pre>\nThen you just call:\n<pre>\nmyFunction();\n</pre>\n🎉 Done!\n</div>\n<div class=\"card\">\nExample:\n<pre>\nvoid blink() {\n  digitalWrite(13, HIGH);\n  delay(500);\n  digitalWrite(13, LOW);\n  delay(500);\n}\n\nvoid loop() {\n  blink();\n}\n</pre>\n</div>\n<div class=\"card\">\n✅ Benefits:\n<ul>\n<li>Organized code</li>\n<li>Easy to debug</li>\n<li>Reusability</li>\n<li>Modular structure</li>\n</ul>\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Function Creator Challenge",
+      "content": "<div class=\"card\">\n💡 What’s missing in this code?</div>\n<div class=\"card\">\n<pre>\nvoid loop() {\n  greet();\n}\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"funcgame\" placeholder=\"Type your answer...\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkFuncGame()\">Submit</button>\n<script>\nfunction checkFuncGame() {\n  const val = document.getElementById('funcgame').value.toLowerCase();\n  if(val.includes(\"define\") || val.includes(\"missing\") || val.includes(\"void greet\")) {\n    alert('✅ Correct! The function greet() must be defined before you can call it.');\n  } else {\n    alert('❌ Try again — greet() is undefined, we need to declare it.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Custom Functions in Arduino (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/yZ_FvcyZqiw\" title=\"Creating your own functions - Arduino Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Project: Dance with LEDs – Using Your Own Function",
+      "content": "<div class=\"card\">\n🎆 Let’s make a custom function that creates an LED pattern.</div>\n<div class=\"card\">\nConnect:\n<ul>\n<li>3 LEDs to pins 3, 4, 5</li>\n</ul>\n</div>\n<div class=\"card\">\n<pre>\nvoid blinkAll() {\n  for(int i=3; i<=5; i++) {\n    digitalWrite(i, HIGH);\n  }\n  delay(500);\n  for(int i=3; i<=5; i++) {\n    digitalWrite(i, LOW);\n  }\n  delay(500);\n}\n\nvoid setup() {\n  for(int i=3; i<=5; i++) pinMode(i, OUTPUT);\n}\n\nvoid loop() {\n  blinkAll();\n}\n</pre>\n</div>\n<div class=\"card\">\n🔁 You just created your own mini light show function! Call it anytime — and reuse it in bigger patterns.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "The Return of the Value: Using `return` in Arduino",
+  "lessons": [
+    {
+      "title": "📬 What is `return`?",
+      "content": "<div class=\"card\">\nSo far, our functions did stuff — but didn’t <b>give anything back</b>.\nWith <code>return</code>, you can ask Arduino to run some code and <b>send a result back</b>.\n</div>\n<div class=\"card\">\nSyntax:\n<pre>\ntype functionName() {\n  // logic\n  return value;\n}\n</pre>\nExample:\n<pre>\nint add(int a, int b) {\n  return a + b;\n}\n</pre>\nNow you can call:\n<pre>\nint sum = add(3, 4);\n</pre>\n</div>\n<div class=\"card\">\n📌 You must specify the return type:\n<ul>\n<li><code>int</code> for integers</li>\n<li><code>float</code> for decimals</li>\n<li><code>bool</code> for true/false</li>\n</ul>\n</div>\n<div class=\"card\">\n🎯 Use this when your function needs to calculate or decide something, and pass it back to the main program.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Return Detective!",
+      "content": "<div class=\"card\">\n🧠 What will this return?\n</div>\n<div class=\"card\">\n<pre>\nint multiply(int a, int b) {\n  return a * b;\n}\nvoid loop() {\n  int result = multiply(3, 5);\n  Serial.println(result);\n}\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"retgame\" placeholder=\"Your answer?\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkReturnGame()\">Submit</button>\n<script>\nfunction checkReturnGame() {\n  const val = document.getElementById('retgame').value.trim();\n  if(val === \"15\") {\n    alert('✅ Correct! 3 x 5 = 15.');\n  } else {\n    alert('❌ Nope! The result of 3 * 5 is 15.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: The `return` Keyword Explained (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/QC4RL4GAKtA\" title=\"Arduino Return Keyword Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Project: Auto Temp Reader with Return",
+      "content": "<div class=\"card\">\nLet’s build a function that reads LM35 sensor and returns temperature!</div>\n<div class=\"card\">\nConnect:\n<ul>\n<li>LM35 sensor to A0</li>\n<li>Optional: Serial Monitor</li>\n</ul>\n</div>\n<div class=\"card\">\n<pre>\nfloat getTemperature() {\n  int val = analogRead(A0);\n  return val * 0.488;\n}\n\nvoid setup() {\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  float temp = getTemperature();\n  Serial.println(temp);\n  delay(1000);\n}\n</pre>\n</div>\n<div class=\"card\">\n🎉 This keeps the main loop clean and puts the logic inside the return function. Much more readable!\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "Instant Reactions: Using Interrupts in Arduino",
+  "lessons": [
+    {
+      "title": "⚡ What are Interrupts?",
+      "content": "<div class=\"card\">\nUsually, Arduino checks things one-by-one in the loop. But what if you want it to react <b>immediately</b> — like when a button is pressed?\n</div>\n<div class=\"card\">\nThat’s where <b>Interrupts</b> come in! 💥\nThey <b>interrupt</b> the current task and jump to a special function when a pin changes state.\n</div>\n<div class=\"card\">\nSyntax:\n<pre>\nattachInterrupt(digitalPinToInterrupt(pin), ISR_function, mode);\n</pre>\n<ul>\n<li><b>pin:</b> the interrupt pin (like 2 or 3)</li>\n<li><b>ISR_function:</b> function that runs when triggered (no delay!)</li>\n<li><b>mode:</b> WHEN to trigger (RISING, FALLING, CHANGE)\n</li>\n</ul>\n</div>\n<div class=\"card\">\n🚫 Inside an interrupt, avoid using <code>delay()</code> or <code>Serial.print()</code>.\nKeep it super short and fast.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Interrupt Mode Match",
+      "content": "<div class=\"card\">\nWhich mode would you use to trigger an interrupt when a button goes from LOW to HIGH?\n</div>\n<div class=\"card\">\n<input id=\"intgame\" placeholder=\"Type RISING, FALLING or CHANGE\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkIntGame()\">Submit</button>\n<script>\nfunction checkIntGame() {\n  const val = document.getElementById('intgame').value.toLowerCase();\n  if(val === \"rising\") {\n    alert('✅ Correct! RISING triggers when the signal goes from LOW to HIGH.');\n  } else {\n    alert('❌ Nope! You’d use RISING for a LOW to HIGH transition.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Interrupts in Arduino (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/-zWQqYRLH08\" title=\"Arduino Interrupt Hindi Tutorial\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Project: Emergency Stop Button",
+      "content": "<div class=\"card\">\n🛑 Let’s make an emergency stop button using interrupts.\n</div>\n<div class=\"card\">\nConnect:\n<ul>\n<li>LED to pin 9</li>\n<li>Button to pin 2</li>\n</ul>\n</div>\n<div class=\"card\">\n<pre>\nvolatile bool stopped = false;\n\nvoid stopNow() {\n  stopped = true;\n}\n\nvoid setup() {\n  pinMode(9, OUTPUT);\n  pinMode(2, INPUT_PULLUP);\n  attachInterrupt(digitalPinToInterrupt(2), stopNow, FALLING);\n}\n\nvoid loop() {\n  if(!stopped) {\n    digitalWrite(9, HIGH);\n    delay(300);\n    digitalWrite(9, LOW);\n    delay(300);\n  } else {\n    digitalWrite(9, LOW);\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\n👀 Press the button — the LED immediately stops blinking. No delay, no waiting.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "Memory Magic: Understanding Pointers in Arduino",
+  "lessons": [
+    {
+      "title": "🧠 What is a Pointer?",
+      "content": "<div class=\"card\">\nA <b>pointer</b> is a variable that stores the <i>memory address</i> of another variable.\nSounds scary? Don’t worry — we’ll break it down 👇\n</div>\n<div class=\"card\">\nExample:\n<pre>\nint x = 10;\nint *ptr = &x;\n</pre>\n<code>*ptr</code> is a pointer. It stores the address of <code>x</code>. <code>&x</code> means \"address of x\".\n</div>\n<div class=\"card\">\nWant to know the actual value stored at that memory location?\n<pre>\nSerial.println(*ptr);  // prints 10\n</pre>\n<code>*</code> means \"dereference\" the pointer = get the value at the address.\n</div>\n<div class=\"card\">\nUse pointers when:\n<ul>\n<li>Passing values by reference</li>\n<li>Modifying variables inside functions</li>\n<li>Working with arrays efficiently</li>\n</ul>\n🔧 You’ve entered pro territory!\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Pointer Quiz - What's the Output?",
+      "content": "<div class=\"card\">\nWhat will this code print?</div>\n<div class=\"card\">\n<pre>\nint a = 7;\nint *p = &a;\na = a + 3;\nSerial.println(*p);\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"ptrgame\" placeholder=\"Type your answer...\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkPointerGame()\">Submit</button>\n<script>\nfunction checkPointerGame() {\n  const val = document.getElementById('ptrgame').value.trim();\n  if(val === \"10\") {\n    alert('✅ Correct! a = 7 + 3 = 10. *p points to a.');\n  } else {\n    alert('❌ Nope! a became 10. *p sees the new value.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Pointers Explained in Hindi",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/uv1WEgZ7svU\" title=\"Arduino Pointers Hindi Tutorial\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Project: Modify a Value Using a Function with Pointer",
+      "content": "<div class=\"card\">\nLet’s pass a variable <b>by pointer</b> to a function — and change its value.\n</div>\n<div class=\"card\">\n<pre>\nvoid doubleValue(int *val) {\n  *val = *val * 2;\n}\n\nvoid setup() {\n  Serial.begin(9600);\n  int x = 6;\n  doubleValue(&x);\n  Serial.println(x);  // prints 12\n}\n\nvoid loop() {}\n</pre>\n</div>\n<div class=\"card\">\n🪄 The function actually <b>modified</b> x because we passed its address! That's pointer power.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "Time Travelers: Mastering Arduino Timing Functions",
+  "lessons": [
+    {
+      "title": "⏳ Delay vs millis() vs micros()",
+      "content": "<div class=\"card\">\nArduino offers different tools to handle <b>time</b>. Each one has its use!\n</div>\n<div class=\"card\">\n🕒 <code>delay(ms)</code> blocks the entire code for that many milliseconds.\n<pre>\ndelay(1000); // pause for 1 second\n</pre>\n</div>\n<div class=\"card\">\n⏱️ <code>millis()</code> returns the number of milliseconds since the Arduino started.\nUse it for <b>non-blocking</b> delays!\n</div>\n<div class=\"card\">\n📏 <code>micros()</code> returns microseconds (1 millionth of a second!). Great for very precise timing.\n</div>\n<div class=\"card\">\n🔧 Use <code>millis()</code> when you want other code to run while waiting. Ideal for blinking, inputs, and sensors.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Choose the Best Time Function",
+      "content": "<div class=\"card\">\n🧠 Question: You want an LED to blink every second <b>without using delay()</b>. Which function should you use?\n</div>\n<div class=\"card\">\n<input id=\"timegame\" placeholder=\"Type: delay / millis / micros\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkTimeGame()\">Submit</button>\n<script>\nfunction checkTimeGame() {\n  const val = document.getElementById('timegame').value.trim().toLowerCase();\n  if(val === \"millis\") {\n    alert('✅ Correct! millis() lets other code run while you wait.');\n  } else {\n    alert('❌ Try again — delay blocks code, micros is too fast. millis is the one!');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Arduino Timing Functions (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/2nxzrSn8VJU\" title=\"Arduino Time Functions Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Project: Blink Without delay()!",
+      "content": "<div class=\"card\">\nLet’s blink an LED every second — <b>without using delay()</b> — using millis().\n</div>\n<div class=\"card\">\nConnect:\n<ul>\n<li>LED to pin 9</li>\n</ul>\n</div>\n<div class=\"card\">\n<pre>\nunsigned long lastTime = 0;\nconst int interval = 1000; // 1 second\n\nvoid setup() {\n  pinMode(9, OUTPUT);\n}\n\nvoid loop() {\n  if (millis() - lastTime >= interval) {\n    lastTime = millis();\n    digitalWrite(9, !digitalRead(9));\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\n🎉 This keeps blinking your LED every second — <i>while letting other code run too</i>. Pro-level multitasking!\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
+
+
+
+
+
 
 
 
