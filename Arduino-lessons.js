@@ -1221,7 +1221,42 @@ void loop() {
       `
     }
   ]
+},{//module 2 in section 3
+  title: "The Wizard's Language: Understanding Arduino Code",
+  lessons: [
+    {
+      title: "What's the Language Behind Arduino?",
+      content: "<div class='card'>Did you know that your Arduino speaks a magical mix of C and C++? 🤯<br><br>Yup — that little board is powered by one of the most powerful programming languages on the planet. But don’t worry — you don’t need to be a wizard to learn it!</div>\n<div class='card'>Arduino uses a simplified version of C++, meaning you get all the power, but with way fewer headaches. Plus, you get handy functions like <code>digitalWrite()</code>, <code>pinMode()</code>, and <code>delay()</code> — almost like cheat codes!</div>\n<div class='card'>You’ll soon be writing spells (aka code) to control LEDs, sensors, motors, and more — using real programming magic!</div>",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Watch: What is Arduino Programming?",
+      content: "<iframe width='100%' height='215' src='https://www.youtube.com/embed/Yl3j-M2lVSU' frameborder='0' allowfullscreen></iframe>",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Mini Game: Match the Arduino Commands!",
+      content: "<style>.wordbox { display: inline-block; padding: 8px; background: #222; color: #fff; border-radius: 8px; margin: 5px; cursor: pointer; }</style>\n<div class='card'>Match each function to what it does:</div>\n<div class='card'><b><u>Functions:</u></b><br><span class='wordbox'>digitalWrite()</span> <span class='wordbox'>pinMode()</span> <span class='wordbox'>delay()</span></div>\n<div class='card'><b><u>Meanings:</u></b><br><span class='wordbox'>Sets pin behavior</span> <span class='wordbox'>Waits</span> <span class='wordbox'>Sends signal</span></div>\n<div class='card'><button class='gaming-btn'>Check Your Matches</button></div>",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Card Walkthrough: First Look at Arduino Code",
+      content: "<div class='card'>Here’s how every Arduino sketch looks:</div>\n<div class='card'><code>void setup() {\n  // setup things here\n}\n\nvoid loop() {\n  // repeat this code forever\n}</code></div>\n<div class='card'>Let’s understand them one by one. Click to reveal!</div>\n<button class='gaming-btn' onclick='document.getElementById(\"c1\").style.display=\"block\"'>What is setup()?</button>\n<div class='card' id='c1' style='display:none;'>It runs only once when the board powers on. Great for preparing your pins and stuff.</div>\n<button class='gaming-btn' onclick='document.getElementById(\"c2\").style.display=\"block\"'>What is loop()?</button>\n<div class='card' id='c2' style='display:none;'>It keeps running forever. This is where your robot keeps listening, blinking, or doing cool tricks!</div>",
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Quiz Time: Decode the Code!",
+      content: "<div class='card'><b>Question:</b> What does <code>delay(1000);</code> do?</div>\n<div class='card'>A) Turn off the board<br>B) Wait 1 second<br>C) Set pin to LOW</div>\n<div class='card'><button class='gaming-btn'>Show Answer</button></div>",
+      image: "url",
+      audio: "url"
+    }
+  ]
 }
+
 
   ]
     }
