@@ -1399,7 +1399,36 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "Talk to Me, Robot: Serial Monitor Magic",
+  "lessons": [
+    {
+      "title": "🧠 What is the Serial Monitor and Why Use It?",
+      "content": "<div class=\"card\">\nHey scientist — wanna know what your robot is thinking?\nMeet your secret window: the <b>Serial Monitor</b>!\n</div>\n<div class=\"card\">\nIt’s a tool inside the Arduino IDE that lets your robot <i>talk back</i> to you — by printing messages, numbers, and even sensor readings.\n</div>\n<div class=\"card\">\nHere’s the basic setup:\n<pre>\nvoid setup() {\n  Serial.begin(9600); // Start communication\n  Serial.println(\"Hello Human!\");\n}\n\nvoid loop() {\n  Serial.println(\"I am looping...\");\n  delay(1000);\n}\n</pre>\n</div>\n<div class=\"card\">\nWhat does it do?\n- <code>Serial.begin(9600)</code>: Starts communication\n- <code>Serial.println()</code>: Prints text with a new line\n- <code>Serial.print()</code>: Prints on same line (no enter)\n</div>\n<div class=\"card\">\nTo use it: Upload the code → Click <b>Tools → Serial Monitor</b> or press <b>Ctrl + Shift + M</b>\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Serial Detective",
+      "content": "<div class=\"card\">What will the Serial Monitor print?</div>\n<div class=\"card\">\n<pre>\nint count = 0;\nvoid setup() {\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  Serial.println(count);\n  count++;\n  delay(500);\n}\n</pre>\n</div>\n<div class=\"card\">\nWhat’s your guess after 5 seconds?\n<input id=\"serialGuess\" placeholder=\"Enter output here\" style=\"width:100%;\"><br><br>\n<button class=\"gaming-btn\" onclick=\"checkSerialGuess()\">Check Answer</button>\n<script>\nfunction checkSerialGuess() {\n  let ans = document.getElementById('serialGuess').value;\n  if (ans.includes('0') && ans.includes('1') && ans.includes('2') && ans.includes('3')) {\n    alert('✅ Yup! It counts upward and prints each number.');\n  } else {\n    alert('❌ Try again! It prints the value of `count` every half second.');\n  }\n}\n</script>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Serial Monitor in Arduino (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/FZTzcp5uH3Q\" title=\"Arduino Tutorial - Serial Monitor in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Experiment: Say Hello with Input + Output",
+      "content": "<div class=\"card\">\nLet’s make your robot talk AND listen!\nYou’ll type something in the Serial Monitor — and Arduino will repeat it like a parrot. 🦜\n</div>\n<div class=\"card\">\n<pre>\nString inputText;\n\nvoid setup() {\n  Serial.begin(9600);\n  Serial.println(\"Type something:\");\n}\n\nvoid loop() {\n  if (Serial.available()) {\n    inputText = Serial.readString();\n    Serial.print(\"You said: \");\n    Serial.println(inputText);\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nUpload the sketch → Open Serial Monitor → Type something → BOOM! Robot speaks.\n</div>\n<div class=\"card\">\nTry funny messages, secret codes, or emojis. Your robot’s got voice now (well… almost 😅)\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
 
 
 
