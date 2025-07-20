@@ -1343,7 +1343,36 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "Storing Stuff: Understanding Variables",
+  "lessons": [
+    {
+      "title": "📦 What is a Variable and Why Do We Need It?",
+      "content": "<div class=\"card\">\nHey scientist! Imagine your robot needs to remember something — like how bright the LED should be. Where does it store that info?\n</div>\n<div class=\"card\">\nThat’s where <b>variables</b> come in. They’re like storage boxes inside your Arduino's brain!\n</div>\n<div class=\"card\">\nYou give each box a name, tell it what type of thing it holds, and boom — your robot remembers stuff.\n</div>\n<div class=\"card\">\nExample:\n<pre>int ledBrightness = 128;</pre>\nHere, <code>int</code> means it stores a number. <code>ledBrightness</code> is the name. And it’s currently 128.\n</div>\n<div class=\"card\">\nThere are many types of variables:\n<ul>\n<li><code>int</code> – whole numbers (e.g., 10, -5)</li>\n<li><code>float</code> – decimals (e.g., 3.14)</li>\n<li><code>char</code> – single letters ('A')</li>\n<li><code>boolean</code> – true or false</li>\n</ul>\n</div>\n<div class=\"card\">\nYou can change a variable later:\n<pre>ledBrightness = 200;</pre>\nNow your LED will shine brighter!\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Variable Vault",
+      "content": "<div class=\"card\">You’ve got 4 boxes (variables). Can you store the right items in each?</div>\n<div class=\"card\">\n<code>\n<script>\nfunction checkVaultAnswer() {\n  const ans = document.getElementById('vaultInput').value.toLowerCase();\n  if (ans.includes('int age = 12') && ans.includes('float temp = 36.5') && ans.includes(\"char grade = 'A'\") && ans.includes('boolean isOn = true')) {\n    alert('🎉 Well done! Your variables are all safe in the vault.');\n  } else {\n    alert('🧠 Try again! Make sure each variable has the right type and format.');\n  }\n}\n</script>\n</code>\n<pre>\n// Store these in Arduino-style:\n// 1. Age = 12\n// 2. Temp = 36.5\n// 3. Grade = 'A'\n// 4. isOn = true\n</pre>\n<textarea id=\"vaultInput\" rows=\"8\" style=\"width:100%; font-family:monospace\"></textarea><br>\n<button class=\"gaming-btn\" onclick=\"checkVaultAnswer()\">Check My Variables</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Variables Explained in Arduino (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/BsU-LCWWcFY\" title=\"Arduino Variables - Engineers & Electronics\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💡 Try It Yourself: LED Brightness with Variable",
+      "content": "<div class=\"card\">Try controlling the LED using a variable value instead of hardcoding numbers.</div>\n<div class=\"card\">\n<pre>\nint brightness = 100;  // create variable\n\nvoid setup() {\n  pinMode(9, OUTPUT);  // using pin 9 (PWM)\n}\n\nvoid loop() {\n  analogWrite(9, brightness);\n  delay(1000);\n}\n</pre>\n</div>\n<div class=\"card\">Change <code>brightness</code> to other values like 0, 255, or 180 and upload again. Your LED will shine accordingly!</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
 
       ]
     }
