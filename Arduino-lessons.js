@@ -1255,7 +1255,7 @@ void loop() {
       audio: "url"
     }
   ]
-},,{//module 2 in section 3
+},{//module 2 in section 3
   title: "🧠 Cracking the Code: Meet Variables",
   lessons: [
     {
