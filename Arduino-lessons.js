@@ -1371,7 +1371,36 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "Let’s Write It: Your First Real Arduino Program",
+  "lessons": [
+    {
+      "title": "✍️ Writing Your First Sketch — Line by Line!",
+      "content": "<div class=\"card\">\nAlright scientist — it’s finally time to write your *first full sketch* from scratch.\nWe’re going to make an LED blink with proper structure, comments, and even a variable. 🤓\n</div>\n<div class=\"card\">\nHere’s what our sketch will do:\n✅ Setup pin 13 as output\n✅ Store delay time in a variable\n✅ Turn LED ON and OFF with delay\n</div>\n<div class=\"card\">\n<pre>\nint delayTime = 500;  // delay in milliseconds\n\nvoid setup() {\n  pinMode(13, OUTPUT);  // set pin 13 as output\n}\n\nvoid loop() {\n  digitalWrite(13, HIGH);  // turn LED ON\n  delay(delayTime);        // wait\n  digitalWrite(13, LOW);   // turn LED OFF\n  delay(delayTime);        // wait\n}\n</pre>\n</div>\n<div class=\"card\">\nThat’s it! This simple program turns your Arduino into a blinking wizard.\nYou just wrote your first robot command. 🪄\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Sketch Slot Machine",
+      "content": "<div class=\"card\">Let’s play: match the code piece to its job!</div>\n<div class=\"card\">\n<code>\n<script>\nfunction checkSlotAnswers() {\n  let q1 = document.getElementById('q1').value.trim().toLowerCase();\n  let q2 = document.getElementById('q2').value.trim().toLowerCase();\n  let q3 = document.getElementById('q3').value.trim().toLowerCase();\n  if(q1.includes('setup') && q2.includes('loop') && q3.includes('digitalwrite')) {\n    alert('🎉 Correct! You know your sketch skeleton!');\n  } else {\n    alert('❌ Try again. Keep learning!');\n  }\n}\n</script>\n</code>\n<div><b>Q1:</b> Which function runs only once?</div>\n<input id=\"q1\" style=\"width:100%\" placeholder=\"Your answer\">\n<div><b>Q2:</b> Which function keeps running forever?</div>\n<input id=\"q2\" style=\"width:100%\" placeholder=\"Your answer\">\n<div><b>Q3:</b> Which command turns a pin ON or OFF?</div>\n<input id=\"q3\" style=\"width:100%\" placeholder=\"Your answer\"><br><br>\n<button class=\"gaming-btn\" onclick=\"checkSlotAnswers()\">Submit Answers</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Writing Our First Sketch (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ZL53o0JRwNg\" title=\"Arduino Programming - First Sketch\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Experiment Time: Custom Delay LED Blink",
+      "content": "<div class=\"card\">\nLet’s build a version of the blink sketch where YOU change the delay using Serial Monitor!\n</div>\n<div class=\"card\">\n<pre>\nint blinkTime;\n\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(13, OUTPUT);\n  Serial.println(\"Enter delay in ms:\");\n}\n\nvoid loop() {\n  if (Serial.available()) {\n    blinkTime = Serial.parseInt();\n  }\n\n  digitalWrite(13, HIGH);\n  delay(blinkTime);\n  digitalWrite(13, LOW);\n  delay(blinkTime);\n}\n</pre>\n</div>\n<div class=\"card\">\nUpload this code → Open Serial Monitor → Type a number like <code>100</code> and press Enter. The LED will blink at that speed!\n</div>\n<div class=\"card\">\nTry different values (e.g., 50, 500, 1000) and see how your robot listens to YOU in real time.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
 
 
       ]
