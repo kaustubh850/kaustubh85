@@ -1517,7 +1517,181 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "Controlling the World: Digital I/O in Arduino",
+  "lessons": [
+    {
+      "title": "⚡ Meet Digital I/O: Your Arduino’s Superpower",
+      "content": "<div class=\"card\">\nYour Arduino has <b>digital pins</b> — little magic gates that can either be <b>ON</b> or <b>OFF</b>.\nThey’re used to control LEDs, motors, buzzers, and to <i>read</i> buttons, sensors, and switches.\n</div>\n\n<div class=\"card\">\n💡 There are 2 modes for each pin:\n<code>pinMode(pin, mode)</code> sets it up:\n<ul>\n<li><b>OUTPUT</b> — Arduino sends signals</li>\n<li><b>INPUT</b> — Arduino listens</li>\n</ul>\n</div>\n\n<div class=\"card\">\n🖐️ To <b>write</b> to a pin:\n<pre>\ndigitalWrite(13, HIGH);  // turn ON\n</pre>\nTo <b>read</b> from a pin:\n<pre>\nint state = digitalRead(7);  // button pressed?\n</pre>\n</div>\n\n<div class=\"card\">\n🔁 Real example:\n<pre>\nvoid setup() {\n  pinMode(13, OUTPUT);\n}\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delay(1000);\n  digitalWrite(13, LOW);\n  delay(1000);\n}\n</pre>\nThis blinks an LED on pin 13 every second.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Input or Output?",
+      "content": "<div class=\"card\">\nPick the right mode for each case:</div>\n<div class=\"card\">\n<pre>\n1️⃣ Controlling a motor = ?\n2️⃣ Reading a button = ?\n3️⃣ Powering an LED = ?\n4️⃣ Getting a signal from sensor = ?\n</pre>\n</div>\n<div class=\"card\">\n<script>\nfunction checkIOAnswers() {\n  let a1 = document.getElementById('io1').value.toLowerCase();\n  let a2 = document.getElementById('io2').value.toLowerCase();\n  let a3 = document.getElementById('io3').value.toLowerCase();\n  let a4 = document.getElementById('io4').value.toLowerCase();\n  if (a1 === 'output' && a2 === 'input' && a3 === 'output' && a4 === 'input') {\n    alert('✅ Perfect! You’re a digital master.');\n  } else {\n    alert('❌ Hmm... Check which way the info flows.');\n  }\n}\n</script>\n<input id=\"io1\" placeholder=\"1\" style=\"width:100%\"><br>\n<input id=\"io2\" placeholder=\"2\" style=\"width:100%\"><br>\n<input id=\"io3\" placeholder=\"3\" style=\"width:100%\"><br>\n<input id=\"io4\" placeholder=\"4\" style=\"width:100%\"><br><br>\n<button class=\"gaming-btn\" onclick=\"checkIOAnswers()\">Check Answers</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Digital I/O Functions (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/qvUUFUCzPBY\" title=\"Arduino Digital I/O Functions in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Hands-On: Button → LED Reaction",
+      "content": "<div class=\"card\">\nConnect a push button to pin 7 and an LED to pin 13. Let’s make a reaction circuit!</div>\n<div class=\"card\">\n<pre>\nvoid setup() {\n  pinMode(7, INPUT);\n  pinMode(13, OUTPUT);\n}\n\nvoid loop() {\n  int button = digitalRead(7);\n  if (button == HIGH) {\n    digitalWrite(13, HIGH);\n  } else {\n    digitalWrite(13, LOW);\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nWhen you press the button, the LED lights up. Classic Arduino magic! 💡\n</div>\n<div class=\"card\">\nTry replacing the button with a touch sensor or vibration sensor to upgrade the circuit.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "Smooth Moves: Analog Input & Output in Arduino",
+  "lessons": [
+    {
+      "title": "🎛️ Reading the World: Analog Input & PWM Output",
+      "content": "<div class=\"card\">\nDigital signals = ON or OFF. But analog? It’s smooth, continuous, real-world data — like light levels, temperature, or sound.\n</div>\n<div class=\"card\">\n🎚️ Use <code>analogRead(pin)</code> to read analog inputs:\n<pre>int val = analogRead(A0);</pre>\nThis gives a value from <b>0 to 1023</b> — like a volume knob.\n</div>\n<div class=\"card\">\n⚡ And what if you want to <b>output</b> smooth values? Use PWM!\nArduino uses <b>Pulse Width Modulation</b> to fake analog output with fast ON/OFF pulses.\n<pre>analogWrite(pin, value);</pre>\nvalue = 0 to 255 (where 255 = full power)\n</div>\n<div class=\"card\">\n🎨 Use analogWrite to dim LEDs, control motor speed, and more. It feels smooth to your eyes — even though it's just fast switching.\n</div>\n<div class=\"card\">\n⚠️ Not all pins support PWM! Use the ones with <b>~</b> symbol next to them (like 3, 5, 6, 9, 10, 11 on UNO).\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: 0–1023 or 0–255?",
+      "content": "<div class=\"card\">\nTell whether these functions return 0–1023 or 0–255 range.</div>\n<div class=\"card\">\n<pre>\n1️⃣ analogRead(A0) → ?\n2️⃣ analogWrite(3, 128) → ?\n3️⃣ analogRead(A3) → ?\n4️⃣ analogWrite(5, 255) → ?\n</pre>\n</div>\n<div class=\"card\">\n<script>\nfunction checkAnalogGame() {\n  let a1 = document.getElementById('ag1').value;\n  let a2 = document.getElementById('ag2').value;\n  let a3 = document.getElementById('ag3').value;\n  let a4 = document.getElementById('ag4').value;\n  if (a1 === \"1023\" && a2 === \"255\" && a3 === \"1023\" && a4 === \"255\") {\n    alert('🎉 Correct! You know your analog domains.');\n  } else {\n    alert('❌ Oops! Remember: read = 1023, write = 255.');\n  }\n}\n</script>\n<input id=\"ag1\" placeholder=\"Range for #1\" style=\"width:100%\"><br>\n<input id=\"ag2\" placeholder=\"Range for #2\" style=\"width:100%\"><br>\n<input id=\"ag3\" placeholder=\"Range for #3\" style=\"width:100%\"><br>\n<input id=\"ag4\" placeholder=\"Range for #4\" style=\"width:100%\"><br><br>\n<button class=\"gaming-btn\" onclick=\"checkAnalogGame()\">Check Answers</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Analog I/O Explained (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/HnCZJjsYltE\" title=\"Arduino Analog Read and Write in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Project: Dim LED With Potentiometer",
+      "content": "<div class=\"card\">\n🎛️ You’ll use a potentiometer (knob) on A0 to control the brightness of an LED on pin 9.\n</div>\n<div class=\"card\">\n<pre>\nint pot = A0;\nint led = 9;\n\nvoid setup() {\n  pinMode(led, OUTPUT);\n}\n\nvoid loop() {\n  int val = analogRead(pot);\n  int brightness = map(val, 0, 1023, 0, 255);\n  analogWrite(led, brightness);\n}\n</pre>\n</div>\n<div class=\"card\">\n📏 We used <code>map()</code> to convert 0–1023 input into 0–255 output. Now turning the knob dims the LED in real time. 🌗\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "Decide Like a Pro: The if...else Statement",
+  "lessons": [
+    {
+      "title": "🧠 Meet the if...else Statement",
+      "content": "<div class=\"card\">\nWhat if your robot needs to decide: <i>Should I move?</i> <i>Is it dark?</i> That’s where <b>if...else</b> comes in!\n</div>\n<div class=\"card\">\nSyntax:\n<pre>\nif(condition) {\n  // do something\n} else {\n  // do something else\n}\n</pre>\n</div>\n<div class=\"card\">\nExample:\n<pre>\nint sensor = analogRead(A0);\nif(sensor > 500) {\n  digitalWrite(LED_BUILTIN, HIGH);\n} else {\n  digitalWrite(LED_BUILTIN, LOW);\n}\n</pre>\n🔍 This will light the LED if it’s bright!\n</div>\n<div class=\"card\">\n🧩 Conditions can use: <code>==</code>, <code>!=</code>, <code><</code>, <code>></code>, <code>&&</code> (AND), <code>||</code> (OR)\n</div>\n<div class=\"card\">\n💡 Think of it like a brain: If this happens — do that. Else — do something else. Simple logic, big power.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Predict the Output",
+      "content": "<div class=\"card\">\nWhat will this sketch do?</div>\n<div class=\"card\">\n<pre>\nint temp = 30;\nif(temp < 25) {\n  Serial.println(\"Cool\");\n} else {\n  Serial.println(\"Hot\");\n}\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"ifgame\" placeholder=\"What will print?\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkIfGame()\">Submit</button>\n<script>\nfunction checkIfGame() {\n  const ans = document.getElementById('ifgame').value.toLowerCase();\n  if(ans.includes(\"hot\")) {\n    alert('🔥 Correct! The temp is 30, so else block runs.');\n  } else {\n    alert('❄️ Oops! Check the condition again — temp is 30.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: If Else in Arduino (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/lT0NTCkK3vM\" title=\"If Else Statement Arduino Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Mini Project: Auto Night Light",
+      "content": "<div class=\"card\">\n🛏️ Build an auto night-light that turns ON when the room is dark.</div>\n<div class=\"card\">\nConnect a photoresistor (LDR) to A0 and LED to pin 9.\n</div>\n<div class=\"card\">\n<pre>\nint ldr = A0;\nint led = 9;\n\nvoid setup() {\n  pinMode(led, OUTPUT);\n}\n\nvoid loop() {\n  int light = analogRead(ldr);\n  if(light < 400) {\n    digitalWrite(led, HIGH);\n  } else {\n    digitalWrite(led, LOW);\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nTry changing the <code>400</code> threshold based on your room brightness. 🔦</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "Multiple Choices: if...else if in Arduino",
+  "lessons": [
+    {
+      "title": "🧠 Understanding if...else if",
+      "content": "<div class=\"card\">\nSometimes, two choices aren’t enough. What if your robot sees <b>LOW</b>, <b>MEDIUM</b>, or <b>HIGH</b> brightness? Enter the hero: <b>else if</b>.\n</div>\n<div class=\"card\">\nSyntax:\n<pre>\nif(condition1) {\n  // do something\n} else if(condition2) {\n  // do something else\n} else {\n  // default case\n}\n</pre>\n</div>\n<div class=\"card\">\nExample:\n<pre>\nint temp = 28;\nif(temp < 20) {\n  Serial.println(\"Cold\");\n} else if(temp < 30) {\n  Serial.println(\"Warm\");\n} else {\n  Serial.println(\"Hot\");\n}\n</pre>\n</div>\n<div class=\"card\">\nThe robot checks the first condition, then the second, then defaults to the last one. This is how you add <b>smart decisions</b>.\n</div>\n<div class=\"card\">\nPro Tip: Keep your conditions ordered from most specific to least. 🧩\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: What's the Output?",
+      "content": "<div class=\"card\">\nPredict the printed result:\n</div>\n<div class=\"card\">\n<pre>\nint x = 55;\nif(x < 30) {\n  Serial.println(\"Low\");\n} else if(x < 60) {\n  Serial.println(\"Medium\");\n} else {\n  Serial.println(\"High\");\n}\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"elseifgame\" placeholder=\"What will print?\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkElseIfGame()\">Submit</button>\n<script>\nfunction checkElseIfGame() {\n  const val = document.getElementById('elseifgame').value.toLowerCase();\n  if(val.includes(\"medium\")) {\n    alert('✅ Medium is correct! It matched the 2nd condition.');\n  } else {\n    alert('❌ Not quite. It skipped first, matched second.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: if else if Explained (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/XfGxZxXAxws\" title=\"Arduino else if in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Project: Temperature Range Indicator",
+      "content": "<div class=\"card\">\n🌡️ Let’s build a color indicator using 3 LEDs: green, yellow, and red for different temperature zones.</div>\n<div class=\"card\">\nConnect:\n<ul>\n<li>Green LED to pin 3</li>\n<li>Yellow LED to pin 4</li>\n<li>Red LED to pin 5</li>\n<li>LM35 sensor to A0</li>\n</ul>\n</div>\n<div class=\"card\">\n<pre>\nvoid setup() {\n  for(int i=3;i<=5;i++) pinMode(i, OUTPUT);\n}\n\nvoid loop() {\n  int val = analogRead(A0);\n  float temp = val * 0.488;\n  \n  digitalWrite(3, LOW);\n  digitalWrite(4, LOW);\n  digitalWrite(5, LOW);\n\n  if(temp < 20) {\n    digitalWrite(3, HIGH); // Green\n  } else if(temp < 30) {\n    digitalWrite(4, HIGH); // Yellow\n  } else {\n    digitalWrite(5, HIGH); // Red\n  }\n  delay(500);\n}\n</pre>\n</div>\n<div class=\"card\">\nTry touching the sensor to raise temp and see the color change.🔥</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "Control Center: Using switch...case in Arduino",
+  "lessons": [
+    {
+      "title": "🔀 When If...Else Gets Too Long: Use switch...case!",
+      "content": "<div class=\"card\">\nWhat if you're checking <b>one variable</b> against many exact values? Like checking user choices from 1 to 5?\n</div>\n<div class=\"card\">\nUse <code>switch...case</code> for a cleaner, structured alternative to multiple <code>if</code> statements.\n</div>\n<div class=\"card\">\nSyntax:\n<pre>\nswitch(variable) {\n  case value1:\n    // do this\n    break;\n  case value2:\n    // do that\n    break;\n  default:\n    // catch-all\n}\n</pre>\n</div>\n<div class=\"card\">\n🚨 Don't forget <code>break;</code> — or the code will 'fall through' to next case!\n</div>\n<div class=\"card\">\n🧠 Use this when:\n- You’re comparing 1 variable\n- To specific fixed values\n- And you want organized blocks\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Predict the LED Mode",
+      "content": "<div class=\"card\">\nCheck this code and guess what mode the LED will follow based on <code>mode = 2</code>.\n</div>\n<div class=\"card\">\n<pre>\nint mode = 2;\nswitch(mode) {\n  case 1:\n    Serial.println(\"Blink Slow\");\n    break;\n  case 2:\n    Serial.println(\"Blink Fast\");\n    break;\n  default:\n    Serial.println(\"Off\");\n}\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"switchgame\" placeholder=\"Your answer\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkSwitchGame()\">Submit</button>\n<script>\nfunction checkSwitchGame() {\n  const val = document.getElementById('switchgame').value.toLowerCase();\n  if(val.includes(\"fast\")) {\n    alert('✅ Correct! Mode 2 triggers \"Blink Fast\"');\n  } else {\n    alert('❌ Nope! switch(mode) was 2, so case 2 runs.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: switch...case in Hindi",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/6HiU77miGGc\" title=\"Arduino switch case Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Project: Fan Speed Selector (Mode Switch)",
+      "content": "<div class=\"card\">\n🌀 Let’s build a fan controller with 3 speeds and a button input!</div>\n<div class=\"card\">\nConnect:\n<ul>\n<li>Button to pin 2</li>\n<li>LED (as fan) to pin 9 (PWM)</li>\n</ul>\n</div>\n<div class=\"card\">\nEach time button is pressed, we change the speed (mode = 0 to 2).\n</div>\n<div class=\"card\">\n<pre>\nint btn = 2;\nint fan = 9;\nint mode = 0;\n\nvoid setup() {\n  pinMode(btn, INPUT_PULLUP);\n  pinMode(fan, OUTPUT);\n}\n\nvoid loop() {\n  if(digitalRead(btn) == LOW) {\n    mode++;\n    if(mode > 2) mode = 0;\n    delay(300);\n  }\n\n  switch(mode) {\n    case 0: analogWrite(fan, 0); break;\n    case 1: analogWrite(fan, 100); break;\n    case 2: analogWrite(fan, 200); break;\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nTry swapping the LED with a motor module — and now you have a real fan controller! 😎</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},{
+  "title": "The Loop Machine: Mastering the For Loop",
+  "lessons": [
+    {
+      "title": "♾️ What is a For Loop?",
+      "content": "<div class=\"card\">\nImagine telling Arduino: <b>Do this 5 times</b>. That’s exactly what a <b>for loop</b> does — repeat stuff in a clean, powerful way.\n</div>\n<div class=\"card\">\nSyntax:\n<pre>\nfor(int i = 0; i < 5; i++) {\n  // your repeated code\n}\n</pre>\nThis means: start with i = 0, stop when i = 5, and increase i by 1 each time.\n</div>\n<div class=\"card\">\nExample:\n<pre>\nfor(int i = 0; i < 10; i++) {\n  digitalWrite(13, HIGH);\n  delay(200);\n  digitalWrite(13, LOW);\n  delay(200);\n}\n</pre>\n💡 This will blink LED 10 times!\n</div>\n<div class=\"card\">\n✅ When to use a <code>for</code> loop:\n<ul>\n<li>Fixed repetitions</li>\n<li>Indexing arrays</li>\n<li>LED chasers, counters, timed blinks</li>\n</ul>\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: For Loop Output Quiz",
+      "content": "<div class=\"card\">\nWhat will be printed?\n</div>\n<div class=\"card\">\n<pre>\nfor(int i = 0; i < 3; i++) {\n  Serial.print(i);\n}\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"forgame\" placeholder=\"Your answer (eg. 012)\" style=\"width:100%\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkForGame()\">Submit</button>\n<script>\nfunction checkForGame() {\n  const val = document.getElementById('forgame').value;\n  if(val === \"012\") {\n    alert('✅ Correct! The loop prints 0, 1, 2.');\n  } else {\n    alert('❌ Nope. The loop runs for i = 0, 1, 2.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: For Loop Explained (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/1a3EjFvpkdU\" title=\"Arduino For Loop in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Project: LED Chaser (Knight Rider Style)",
+      "content": "<div class=\"card\">\n🔄 Make 6 LEDs connected to pins 2–7 light up one after the other — just like a running light!</div>\n<div class=\"card\">\n<pre>\nvoid setup() {\n  for(int i=2; i<=7; i++) {\n    pinMode(i, OUTPUT);\n  }\n}\n\nvoid loop() {\n  for(int i=2; i<=7; i++) {\n    digitalWrite(i, HIGH);\n    delay(100);\n    digitalWrite(i, LOW);\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\n💡 Try making it reverse too — or bounce like a scanner!\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
+
+
+
+
+
 
 
 
