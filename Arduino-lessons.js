@@ -1312,6 +1312,40 @@ void loop() {
 
 
   ]
+    },{
+      title: "Arduino Coding: The Serious Mode In The Course",
+      modules: [
+{
+  "title": "Cracking the Code Skeleton: Program Structure",
+  "lessons": [
+    {
+      "title": "🧠 What’s the Structure of an Arduino Program?",
+      "content": "<div class=\"card\">\nWelcome, scientist! 🧪 Before you make lights blink or robots dance, let’s learn the secret blueprint of every Arduino sketch.\n</div>\n<div class=\"card\">\nAn Arduino program always has two main blocks: <code>setup()</code> and <code>loop()</code>.\nThink of <b>setup()</b> as morning routines — runs only once.\n<b>loop()</b> is your daily grind — it repeats forever.\n</div>\n<div class=\"card\">\nHere’s the basic structure:\n<pre>void setup() {\n  // things to do ONCE\n}\n\nvoid loop() {\n  // things to do FOREVER\n}</pre>\n</div>\n<div class=\"card\">\nInside <code>setup()</code>, you initialize stuff like pin modes.\nInside <code>loop()</code>, you make your robot act — again and again.\n</div>\n<div class=\"card\">\nEvery line ends with a <code>;</code> — the famous semicolon warrior!\nAnd curly brackets <code>{ }</code> are code containers.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Sketch Scrambler Challenge",
+      "content": "<div class=\"card\">Your task: Fix the scrambled sketch!</div>\n<div class=\"card\">\n<pre>\n// Unscramble this!\nvoid loop() {\n}\npinMode(13, OUTPUT);\ndigitalWrite(13, HIGH);\nvoid setup() {\n}\n</pre>\n</div>\n<div class=\"card\">\n<code>\n<script>\nfunction checkSketchOrder() {\n  const answer = document.getElementById('sketch-input').value.trim();\n  if(answer.includes('setup') && answer.includes('pinMode') && answer.includes('loop')) {\n    alert('🎉 Correct! You’ve got the basic structure down.');\n  } else {\n    alert('😬 Not quite. Try again!');\n  }\n}\n</script>\n</code>\n<textarea id=\"sketch-input\" rows=\"8\" style=\"width:100%; font-family:monospace\"></textarea><br>\n<button class=\"gaming-btn\" onclick=\"checkSketchOrder()\">Check My Sketch</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Arduino Sketch Structure Explained",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/0Vq9dHifg0Q\" title=\"Arduino Sketch Structure\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💡 Try It Live: Blink with Basic Skeleton",
+      "content": "<div class=\"card\">Time to write your first structured sketch. Try this in RoboDict Simulator or Arduino IDE:</div>\n<div class=\"card\">\n<pre>\nvoid setup() {\n  pinMode(13, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delay(500);\n  digitalWrite(13, LOW);\n  delay(500);\n}\n</pre>\n</div>\n<div class=\"card\">Notice the structure? One-time setup. Forever loop. That’s Arduino’s rhythm!</div>\n<div class=\"card\">Change the delay to <code>100</code> and see how fast it blinks!</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+
+      ]
     }
   ]
 };
