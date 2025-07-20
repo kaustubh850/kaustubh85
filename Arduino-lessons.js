@@ -1489,7 +1489,36 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "Brains with Bins: Mastering Arrays in Arduino",
+  "lessons": [
+    {
+      "title": "📦 What Are Arrays and Why Use Them?",
+      "content": "<div class=\"card\">\nEver wanted to store 5 sensor values? Or 3 LED pins? \nBoom — you need an <b>array</b>. Think of it like a box with slots.\n</div>\n<div class=\"card\">\n📋 An array stores <b>multiple values</b> of the same type. \nExample:\n<pre>int ledPins[3] = {8, 9, 10};</pre>\nThis creates 3 slots to store pin numbers.\n</div>\n<div class=\"card\">\nYou access items using their position (called <b>index</b>), starting from 0:\n<pre>digitalWrite(ledPins[0], HIGH);  // controls pin 8\n</pre>\n</div>\n<div class=\"card\">\n🔁 Arrays + loops = ultimate power:\n<pre>\nfor(int i = 0; i < 3; i++) {\n  digitalWrite(ledPins[i], HIGH);\n  delay(500);\n}\n</pre>\nOne loop, many actions. That’s the power of bins. 🧠\n</div>\n<div class=\"card\">\n⚠️ Don’t go out of bounds!\nIf your array has 5 elements, <code>array[5]</code> will crash it.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Array Ping Pong",
+      "content": "<div class=\"card\">\nLet’s test your index IQ. What’s the output of this sketch?\n</div>\n<div class=\"card\">\n<pre>\nint values[4] = {10, 20, 30, 40};\nSerial.println(values[2]);\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"arrayAnswer\" style=\"width:100%\" placeholder=\"Your answer (number)\">\n<br><br>\n<button class=\"gaming-btn\" onclick=\"checkArrayAnswer()\">Submit</button>\n<script>\nfunction checkArrayAnswer() {\n  let ans = document.getElementById('arrayAnswer').value.trim();\n  if(ans === \"30\") {\n    alert('✅ Correct! Index 2 means the third item: 30.');\n  } else {\n    alert('❌ Nope! Arrays start at 0. Index 2 = third item.');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Arrays in Arduino (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/1EdHFLsp9Ms\" title=\"Arduino Arrays in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💡 Try It: Blink LEDs Using Arrays + Loop",
+      "content": "<div class=\"card\">\nHere’s a cool sketch that turns on 3 LEDs one by one using arrays and a loop:\n</div>\n<div class=\"card\">\n<pre>\nint ledPins[3] = {2, 3, 4};\n\nvoid setup() {\n  for(int i = 0; i < 3; i++) {\n    pinMode(ledPins[i], OUTPUT);\n  }\n}\n\nvoid loop() {\n  for(int i = 0; i < 3; i++) {\n    digitalWrite(ledPins[i], HIGH);\n    delay(300);\n    digitalWrite(ledPins[i], LOW);\n    delay(300);\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nYou just made a running light. Try changing the pins or delay to customize it!\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
 
 
 
