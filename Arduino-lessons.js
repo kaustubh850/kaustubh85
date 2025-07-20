@@ -1433,7 +1433,36 @@ void loop() {
 }
 
   ]
+},{
+  "title": "Know Your Numbers: Numeric Data Types in Arduino",
+  "lessons": [
+    {
+      "title": "🔢 All About Numbers in Arduino",
+      "content": "<div class=\"card\">\n🧠 In Arduino, numbers aren't just numbers. They have <b>types</b>, and each type decides how much space they use and what values they can hold.\n</div>\n\n<div class=\"card\">\n💡 Here's a cheat sheet:\n<ul>\n<li><code>int</code>: Whole numbers from -32,768 to 32,767</li>\n<li><code>long</code>: Bigger whole numbers</li>\n<li><code>float</code>: Decimal numbers like 3.14</li>\n<li><code>unsigned int</code>: Only positive numbers (0 to 65,535)</li>\n</ul>\n</div>\n\n<div class=\"card\">\n⚠️ Example:\n<pre>\nint speed = 100;\nfloat voltage = 4.96;\nlong bigNum = 100000;\n</pre>\nThis way, your Arduino stores the exact kind of number you need — nothing more, nothing less.\n</div>\n\n<div class=\"card\">\n📏 Why does it matter?\nArduino has <b>very limited memory</b> — wasting bytes can crash your code. Choosing the right type = efficient code!\n</div>\n\n<div class=\"card\">\n🏋️‍♂️ Use <code>int</code> for sensors, <code>float</code> for voltages/temperatures, and <code>long</code> for timers or millis().\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Data Type Battle Royale",
+      "content": "<div class=\"card\">\nYou have to pick the perfect data type for each case. Ready?\n</div>\n<div class=\"card\">\n<pre>\n1️⃣ Storing the value: 5.6 volts = ?\n2️⃣ Counting steps (0-100) = ?\n3️⃣ Measuring time in milliseconds (up to 10 million) = ?\n4️⃣ Distance in cm (no decimals) = ?\n</pre>\n</div>\n<div class=\"card\">\n<script>\nfunction checkTypes() {\n  const ans1 = document.getElementById('a1').value.toLowerCase();\n  const ans2 = document.getElementById('a2').value.toLowerCase();\n  const ans3 = document.getElementById('a3').value.toLowerCase();\n  const ans4 = document.getElementById('a4').value.toLowerCase();\n  if(ans1.includes('float') && ans2.includes('int') && ans3.includes('long') && ans4.includes('unsigned')) {\n    alert('🎉 Victory! You’ve mastered number logic.');\n  } else {\n    alert('😬 Try again! Hint: Think about size + decimals.');\n  }\n}\n</script>\n<input id=\"a1\" placeholder=\"Type for 5.6 volts\" style=\"width:100%\"><br>\n<input id=\"a2\" placeholder=\"Type for step counter\" style=\"width:100%\"><br>\n<input id=\"a3\" placeholder=\"Type for 10 million ms\" style=\"width:100%\"><br>\n<input id=\"a4\" placeholder=\"Type for distance in cm\" style=\"width:100%\"><br><br>\n<button class=\"gaming-btn\" onclick=\"checkTypes()\">Submit Answers</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Numeric Data Types Explained (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/lLBOgbMyyX8\" title=\"Arduino Numeric Data Types\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Type Overflow Crash Test",
+      "content": "<div class=\"card\">\nLet’s crash some data! 🧨 Try this sketch and observe what happens.\n</div>\n<div class=\"card\">\n<pre>\nint value = 32766;\n\nvoid setup() {\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  value++;\n  Serial.println(value);\n  delay(1000);\n}\n</pre>\n</div>\n<div class=\"card\">\nWatch closely. Once it hits 32767, it wraps around to... -32768! That’s called <b>overflow</b>. ⚠️\n</div>\n<div class=\"card\">\nTry changing <code>int</code> to <code>long</code> and see how long it goes now.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
 
 
 
