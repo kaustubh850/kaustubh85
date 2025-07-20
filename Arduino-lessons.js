@@ -1255,7 +1255,91 @@ void loop() {
       audio: "url"
     }
   ]
+},// Module: Variables in Arduino (Section 3 - Coding Fundamentals)
+{
+  title: "Taming the Bits: Meet Arduino Variables!",
+  lessons: [
+    {
+      title: "What Even is a Variable? (Text Style)",
+      type: "text",
+      content: `
+        <div class="card">Yo coder! 🚀 Welcome to your first coding adventure — Variables!</div>
+        <div class="card">Think of a variable as a *named box* in Arduino's brain where it stores stuff like numbers, sensor values, or even whether a button is pressed.</div>
+        <div class="card">There are many types, like <code>int</code> for integers, <code>float</code> for decimal numbers, <code>bool</code> for true/false, and <code>char</code> for single letters.</div>
+        <div class="card">Example:
+          <pre><code>int score = 0;
+float temperature = 25.5;
+bool isOn = true;</code></pre>
+        </div>
+        <div class="card">This is how you create and use memory in Arduino sketches. You change them anytime to make your robot smarter!</div>
+        <button class="gaming-btn" onclick="revealNextCard()">Next</button>
+      `,
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Game: Variable Type Matchup",
+      type: "game",
+      content: `
+        <style>
+          .box { border: 1px solid #ccc; padding: 1rem; display: inline-block; margin: 1rem; cursor: pointer; }
+        </style>
+        <div class="card">Match the value to its correct variable type!</div>
+        <div class="card">
+          <div class="box" onclick="check('int')">42</div>
+          <div class="box" onclick="check('float')">3.14</div>
+          <div class="box" onclick="check('char')">'A'</div>
+          <div class="box" onclick="check('bool')">true</div>
+        </div>
+        <script>
+          function check(type) {
+            alert('You picked: ' + type + ' ✅');
+          }
+        </script>
+        <button class="gaming-btn" onclick="revealNextCard()">Next</button>
+      `,
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Watch This: Variables in Real Arduino Code",
+      type: "video",
+      content: `
+        <div class="card">Here's a killer beginner video to visualize how variables control robot decisions.</div>
+        <div class="card">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/fjzG3BCy2tQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <button class="gaming-btn" onclick="revealNextCard()">Next</button>
+      `,
+      image: "url",
+      audio: "url"
+    },
+    {
+      title: "Code & Try: Variable Playground",
+      type: "interactive",
+      content: `
+        <div class="card">Paste this in your IDE and try tweaking the values!</div>
+        <div class="card">
+          <pre><code>int ledDelay = 500;
+void setup() {
+  pinMode(13, OUTPUT);
 }
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(ledDelay);
+  digitalWrite(13, LOW);
+  delay(ledDelay);
+}</code></pre>
+        </div>
+        <div class="card">Change <code>ledDelay</code> to see how fast or slow the LED blinks. BOOM 💥 you just manipulated timing using a variable!</div>
+        <button class="gaming-btn" onclick="revealNextCard()">Next</button>
+      `,
+      image: "url",
+      audio: "url"
+    }
+  ]
+}
+
 
 
   ]
