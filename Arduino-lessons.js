@@ -1425,7 +1425,13 @@ void loop() {
       "content": "<div class=\"card\">\nLet’s make your robot talk AND listen!\nYou’ll type something in the Serial Monitor — and Arduino will repeat it like a parrot. 🦜\n</div>\n<div class=\"card\">\n<pre>\nString inputText;\n\nvoid setup() {\n  Serial.begin(9600);\n  Serial.println(\"Type something:\");\n}\n\nvoid loop() {\n  if (Serial.available()) {\n    inputText = Serial.readString();\n    Serial.print(\"You said: \");\n    Serial.println(inputText);\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nUpload the sketch → Open Serial Monitor → Type something → BOOM! Robot speaks.\n</div>\n<div class=\"card\">\nTry funny messages, secret codes, or emojis. Your robot’s got voice now (well… almost 😅)\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
       "image": "url",
       "audio": "url"
-    }
+    },{
+  "title": "Baud Rate: Your Robot’s Talking Speed",
+  "content": "<div class=\"card\">\n📡 When your Arduino talks to your PC (via Serial Monitor), they need to agree on a <b>speed of conversation</b>.\nThis speed is called the <b>Baud Rate</b>.\n</div>\n\n<div class=\"card\">\n💬 A Baud Rate is the number of bits (tiny pieces of data) sent per second.\nSo when you write:\n<pre>Serial.begin(9600);</pre>\nit means: “Hey Arduino, talk at 9600 bits per second.”\n</div>\n\n<div class=\"card\">\n🎙️ The most common baud rate is <code>9600</code> — it’s fast enough for most sensors and messages.\nBut you can also use values like <code>115200</code> for high-speed projects.\n</div>\n\n<div class=\"card\">\n⚠️ Both Arduino and Serial Monitor must use the same Baud Rate.\nIf one talks faster than the other — you'll get garbage like this:\n<pre>�$%#*^@~</pre>\n</div>\n\n<div class=\"card\">\n🧠 Rule of thumb:\n- Use <b>9600</b> for simple text/debugging\n- Use <b>115200</b> for faster data (like graphs or sensors)\n</div>\n\n<div class=\"card\">\n🤔 Bonus: “Baud” comes from Émile Baudot — a French engineer who invented early communication systems.\nYour robot's talking tech is literally based on history!\n</div>\n\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+  "image": "url",
+  "audio": "url"
+}
+
   ]
 }
 
