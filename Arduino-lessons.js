@@ -1461,7 +1461,36 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "Talking in Text: char & String in Arduino",
+  "lessons": [
+    {
+      "title": "📝 Understanding char and String",
+      "content": "<div class=\"card\">\n📢 Your robot can count, light up, and make noise... but can it say words? Yes — using <b>text data types</b>!\n</div>\n<div class=\"card\">\nThere are 2 main types:\n<ul>\n<li><code>char</code>: Stores a <b>single character</b> — like <code>'A'</code> or <code>'5'</code></li>\n<li><code>String</code>: Stores a <b>sequence of characters</b> — like <code>\"Hello World!\"</code></li>\n</ul>\n</div>\n<div class=\"card\">\nExamples:\n<pre>\nchar grade = 'A';\nString name = \"Kaustubh\";\n</pre>\nStrings are powerful — you can join them, measure them, and compare them!\n</div>\n<div class=\"card\">\nYou can even mix text and numbers:\n<pre>\nString msg = \"Speed: \";\nint speed = 50;\nSerial.println(msg + speed);\n</pre>\nThis will print: <b>Speed: 50</b>\n</div>\n<div class=\"card\">\n⚠️ Bonus Tip: <code>char</code> uses 1 byte, but <code>String</code> uses dynamic memory.\nToo many Strings = 🔥 crash! Be smart, and free memory when needed.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: char or String?",
+      "content": "<div class=\"card\">\nDecide whether each line should use <code>char</code> or <code>String</code>.\n</div>\n<div class=\"card\">\n<pre>\n1️⃣ Grade = 'B'\n2️⃣ Name = \"Robot123\"\n3️⃣ KeyPressed = '?'\n4️⃣ WelcomeMsg = \"Hello Kaustubh!\"\n</pre>\n</div>\n<div class=\"card\">\n<script>\nfunction checkCharString() {\n  let a1 = document.getElementById('g1').value.toLowerCase();\n  let a2 = document.getElementById('g2').value.toLowerCase();\n  let a3 = document.getElementById('g3').value.toLowerCase();\n  let a4 = document.getElementById('g4').value.toLowerCase();\n  if (a1.includes('char') && a2.includes('string') && a3.includes('char') && a4.includes('string')) {\n    alert('🎉 Nice! You’ve nailed the text types.');\n  } else {\n    alert('🧐 Check again — remember 1 letter vs full word.');\n  }\n}\n</script>\n<input id=\"g1\" placeholder=\"Type for Grade\" style=\"width:100%\"><br>\n<input id=\"g2\" placeholder=\"Type for Name\" style=\"width:100%\"><br>\n<input id=\"g3\" placeholder=\"Type for KeyPressed\" style=\"width:100%\"><br>\n<input id=\"g4\" placeholder=\"Type for WelcomeMsg\" style=\"width:100%\"><br><br>\n<button class=\"gaming-btn\" onclick=\"checkCharString()\">Check Answers</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: Arduino Text Data Types (Hindi)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/dn78xZ0m6r4\" title=\"Arduino String and Char Types\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💬 Try It: Input and Reply with Strings",
+      "content": "<div class=\"card\">\nLet’s get your robot to talk to the user. Type your name, and Arduino will say hello.\n</div>\n<div class=\"card\">\n<pre>\nString name;\n\nvoid setup() {\n  Serial.begin(9600);\n  Serial.println(\"What's your name?\");\n}\n\nvoid loop() {\n  if (Serial.available()) {\n    name = Serial.readString();\n    Serial.print(\"Hello, \");\n    Serial.println(name);\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nUpload this sketch → Open Serial Monitor → Type your name and press Enter.\nBoom! Your robot just greeted you like a pal. 🥳\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
 
 
 
