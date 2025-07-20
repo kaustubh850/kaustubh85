@@ -1255,60 +1255,7 @@ void loop() {
       audio: "url"
     }
   ]
-},,{//module 2 in section 3
-  title: "🧠 Cracking the Code: Meet Variables",
-  lessons: [
-    {
-      title: "What's a Variable?",
-      content: `<div class="card">Let’s imagine your Arduino is a smart little brain. But even brains need a place to remember things, right?</div>
-<div class="card">In Arduino coding, <b>variables</b> are like memory slots. You create one, give it a name, and store something inside!</div>
-<div class="card">Example:<br><code>int ledPin = 13;</code><br>This creates a variable named <b>ledPin</b> and stores the number 13 inside it.</div>
-<div class="card">It helps you reuse the value anytime later in your code. Instead of writing 13 everywhere, you just write <b>ledPin</b>. Way cleaner!</div>
-<button class="gaming-btn" onclick="revealNextCard()">Next</button>`,
-      image: "url",
-      audio: "url"
-    },
-    {
-      title: "Mini Game: Variable Sorter",
-      content: `<div class="card">Tap the <b>correct type</b> of variable!</div>
-<style>
-  .var-btn { margin: 6px; padding: 12px 16px; background: #222; color: white; border-radius: 10px; border: 2px solid #0ff; cursor: pointer; }
-  .var-btn:hover { background: #0ff; color: black; }
-</style>
-<div class="card">
-  <p>💡 Value: 250</p>
-  <button class="var-btn" onclick="alert('✅ Correct! It’s an int')">int</button>
-  <button class="var-btn" onclick="alert('❌ Nope, that’s not correct')">char</button>
-  <button class="var-btn" onclick="alert('❌ Nope')">String</button>
-</div>
-<div class="card">
-  <p>💡 Value: 'A'</p>
-  <button class="var-btn" onclick="alert('❌ Nope')">String</button>
-  <button class="var-btn" onclick="alert('✅ Correct! It’s a char')">char</button>
-  <button class="var-btn" onclick="alert('❌')">int</button>
-</div>
-<button class="gaming-btn" onclick="revealNextCard()">Play Again</button>`,
-      image: "url",
-      audio: "url"
-    },
-    {
-      title: "Watch: Arduino Variables Explained Visually",
-      content: `<iframe width="100%" height="200" src="https://www.youtube.com/embed/8A3p9jdfCek" title="Arduino Variables"></iframe>`,
-      image: "url",
-      audio: "url"
-    },
-    {
-      title: "Try it Yourself: Modify a Variable",
-      content: `<div class="card">Let’s tweak some real code! Copy this into your IDE:</div>
-<div class="card"><code>int delayTime = 500;\n\nvoid setup() {\n  pinMode(13, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delay(delayTime);\n  digitalWrite(13, LOW);\n  delay(delayTime);\n}</code></div>
-<div class="card">Change <code>delayTime</code> to <b>100</b> or <b>1000</b>. What changes do you observe?</div>
-<button class="gaming-btn" onclick="revealNextCard()">I Tried It!</button>`,
-      image: "url",
-      audio: "url"
-    }
-  ]
 }
-
 
 
   ]
