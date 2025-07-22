@@ -558,6 +558,128 @@ audio:"url"
   ]
 },
 {
+  "title": "Iron Man's Lab: Arduino in VS Code!",
+  "lessons": [
+    {
+      "title": "🧠 Why Use VS Code for Arduino?",
+      "content": "<div class=\"card\">\nVisual Studio Code (VS Code) is a super-light, super-smart code editor.\nIt has everything Arduino IDE lacks:\n<ul><li>Autocomplete</li><li>Git support</li><li>Debugger</li><li>Multiple tabs</li></ul>\n</div>\n<div class=\"card\">\nArduino coding becomes pro-level with extensions like PlatformIO or Arduino IDE extension.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💡 2 Main Methods: Choose Your Style!",
+      "content": "<div class=\"card\">\n1. 🛠️ <b>PlatformIO Extension</b>: Complete Arduino workflow, works with all boards, best for large projects\n</div>\n<div class=\"card\">\n2. 🧪 <b>Arduino Extension by Arduino.cc</b>: Official but simpler, great for Uno/Nano users\n</div>\n<div class=\"card\">\nWe'll explore both — and help you choose!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧰 Install VS Code (Windows/Mac/Linux)",
+      "content": "<div class=\"card\">\n1. Go to: <a href='https://code.visualstudio.com/' target='_blank'>https://code.visualstudio.com/</a>\n2. Download & install for your OS\n3. Launch it, and explore the Extensions tab on the left\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "⚙️ Install PlatformIO Extension",
+      "content": "<div class=\"card\">\n1. Click on the <b>Extensions</b> icon\n2. Search: <b>PlatformIO IDE</b>\n3. Install it (big orange icon)\n</div>\n<div class=\"card\">\nPlatformIO installs its own toolchain, including Arduino CLI under the hood!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Install Official Arduino Extension (Optional)",
+      "content": "<div class=\"card\">\n1. Click Extensions\n2. Search for: <b>Arduino</b> by Arduino.cc\n3. Install it\n</div>\n<div class=\"card\">\nThis is lighter than PlatformIO, but supports only some boards.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📁 Create Your First PlatformIO Project",
+      "content": "<div class=\"card\">\n1. Click PlatformIO icon on left\n2. New Project → Name it\n3. Choose Board (e.g., Arduino Uno)\n4. Framework: Arduino\n5. Create → Project folder created\n</div>\n<div class=\"card\">\nStart editing <b>src/main.cpp</b> — that's your sketch!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Find the Project Folder",
+      "content": "<div class=\"card\">\nYour PlatformIO project is saved. Which folder will contain your Arduino sketch?\n</div>\n<div class=\"card\">\n<input id=\"foldergame\" placeholder=\"Type the folder name\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"checkFolderGame()\">Submit</button>\n<script>\nfunction checkFolderGame() {\n  const val = document.getElementById('foldergame').value.toLowerCase();\n  alert(val.includes('src') ? '✅ src/main.cpp is correct!' : '❌ Try again! It’s in src folder.');\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Full PlatformIO + VS Code Setup",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/rJkL60qMNiA\" title=\"VS Code for Arduino with PlatformIO\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔌 Detect & Upload to Board",
+      "content": "<div class=\"card\">\n1. Connect your Arduino\n2. Click the tick (✓) to build\n3. Click the right arrow (→) to upload\n</div>\n<div class=\"card\">\nYou can also use Terminal commands:\n<pre>pio run --target upload</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📦 Manage Libraries in PlatformIO",
+      "content": "<div class=\"card\">\nClick the PlatformIO sidebar → Libraries\nSearch and install anything (NeoPixel, Servo, etc.)\n</div>\n<div class=\"card\">\nAlternatively, run:\n<pre>pio lib install \"Adafruit NeoPixel\"</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📋 Serial Monitor in VS Code",
+      "content": "<div class=\"card\">\nClick <b>Monitor</b> in PlatformIO sidebar — or run:\n<pre>pio device monitor</pre>\n</div>\n<div class=\"card\">\nUse Ctrl+C to close it\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Extension Match!",
+      "content": "<div class=\"card\">\nMatch the features with the extension:\n<ul><li>Supports many boards</li><li>Built by Arduino.cc</li><li>Advanced debugging</li><li>CI/CD integration</li></ul>\nPlatformIO or Arduino Extension?\n</div>\n<div class=\"card\">\n<input id=\"matchgame\" placeholder=\"Your answer... (comma-separated)\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ If you answered: PlatformIO, Arduino, PlatformIO, PlatformIO — you rock!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🛠️ Add More Boards to PlatformIO",
+      "content": "<div class=\"card\">\nPlatformIO supports ESP32, STM32, Teensy, and more!\nClick PlatformIO > Boards and search what you want.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Debugger and Simulator (Optional)",
+      "content": "<div class=\"card\">\nWith advanced boards, PlatformIO can enable hardware debugging, breakpoints, etc.\n</div>\n<div class=\"card\">\nYou can also use simulators like Wokwi with PlatformIO or plain Arduino code.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💡 VS Code Shortcuts for Arduino Devs",
+      "content": "<div class=\"card\">\n<ul><li>Ctrl+Shift+P → Command Palette</li><li>Ctrl+` → Terminal toggle</li><li>Ctrl+S → Save</li><li>Ctrl+Click → Go to definition</li></ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📁 Opening Old Arduino Sketches in VS Code",
+      "content": "<div class=\"card\">\nJust open the folder containing your `.ino` file.\n</div>\n<div class=\"card\">\nVS Code (with the Arduino extension) will auto-detect and let you compile/upload.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎯 PlatformIO vs Arduino Extension",
+      "content": "<div class=\"card\">\n<b>Use PlatformIO</b> if:\n<ul><li>You love Git</li><li>You want more features</li><li>You use advanced boards</li></ul>\n<b>Use Arduino Extension</b> if:\n<ul><li>You want it simple</li><li>You use Uno/Nano only</li></ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💥 Quiz: Real or Fake (VS Code Edition)",
+      "content": "<div class=\"card\">\n1. PlatformIO supports ESP32 ✅ / ❌\n<br>2. You can’t use serial monitor in VS Code ✅ / ❌\n<br>3. Arduino Extension can compile `.ino` files ✅ / ❌\n</div>\n<div class=\"card\">\n✅, ❌, ✅ — You got it?\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎉 Final Step: Set VS Code as Your Main IDE?",
+      "content": "<div class=\"card\">\nYou’re now ready to ditch the basic Arduino IDE and level-up into a VS Code warrior!\n</div>\n<div class=\"card\">\nTry cloning RoboDict’s examples and open them directly in VS Code — edit, compile, upload — all in one click.\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+
+,
+
+{
   "title": "Commanding Arduino: Your CLI Superpower",
   "lessons": [
     {
