@@ -1726,7 +1726,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Variables Explained in Arduino (Hindi)",
+      "title": "📺 Watch: Variables Explained in Arduino ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/BsU-LCWWcFY\" title=\"Arduino Variables - Engineers & Electronics\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -1754,7 +1754,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Writing Our First Sketch (Hindi)",
+      "title": "📺 Watch: Writing Our First Sketch ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ZL53o0JRwNg\" title=\"Arduino Programming - First Sketch\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -1782,7 +1782,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Serial Monitor in Arduino (Hindi)",
+      "title": "📺 Watch: Serial Monitor in Arduino ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/FZTzcp5uH3Q\" title=\"Arduino Tutorial - Serial Monitor in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -1816,7 +1816,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Numeric Data Types Explained (Hindi)",
+      "title": "📺 Watch: Numeric Data Types Explained ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/lLBOgbMyyX8\" title=\"Arduino Numeric Data Types\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -1844,7 +1844,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Arduino Text Data Types (Hindi)",
+      "title": "📺 Watch: Arduino Text Data Types ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/dn78xZ0m6r4\" title=\"Arduino String and Char Types\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -1872,7 +1872,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Arrays in Arduino (Hindi)",
+      "title": "📺 Watch: Arrays in Arduino ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/1EdHFLsp9Ms\" title=\"Arduino Arrays in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -1900,7 +1900,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Digital I/O Functions (Hindi)",
+      "title": "📺 Watch: Digital I/O Functions ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/qvUUFUCzPBY\" title=\"Arduino Digital I/O Functions in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -1928,7 +1928,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Analog I/O Explained (Hindi)",
+      "title": "📺 Watch: Analog I/O Explained ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/HnCZJjsYltE\" title=\"Arduino Analog Read and Write in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -1956,7 +1956,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: If Else in Arduino (Hindi)",
+      "title": "📺 Watch: If Else in Arduino ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/lT0NTCkK3vM\" title=\"If Else Statement Arduino Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -1984,7 +1984,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: if else if Explained (Hindi)",
+      "title": "📺 Watch: if else if Explained ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/XfGxZxXAxws\" title=\"Arduino else if in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -2040,7 +2040,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: For Loop Explained (Hindi)",
+      "title": "📺 Watch: For Loop Explained ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/1a3EjFvpkdU\" title=\"Arduino For Loop in Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -2096,7 +2096,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Custom Functions in Arduino (Hindi)",
+      "title": "📺 Watch: Custom Functions in Arduino ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/yZ_FvcyZqiw\" title=\"Creating your own functions - Arduino Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -2124,7 +2124,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: The `return` Keyword Explained (Hindi)",
+      "title": "📺 Watch: The `return` Keyword Explained ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/QC4RL4GAKtA\" title=\"Arduino Return Keyword Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -2152,7 +2152,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Interrupts in Arduino (Hindi)",
+      "title": "📺 Watch: Interrupts in Arduino ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/-zWQqYRLH08\" title=\"Arduino Interrupt Hindi Tutorial\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
@@ -2208,7 +2208,7 @@ void loop() {
       "audio": "url"
     },
     {
-      "title": "📺 Watch: Arduino Timing Functions (Hindi)",
+      "title": "📺 Watch: Arduino Timing Functions ",
       "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/2nxzrSn8VJU\" title=\"Arduino Time Functions Hindi\" frameborder=\"0\" allowfullscreen></iframe>",
       "image": "url",
       "audio": "url"
