@@ -2356,7 +2356,54 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "Listening to the World: Say Hello to digitalRead()",
+  "lessons": [
+    {
+      "title": "👂 What is digitalRead()?",
+      "content": "<div class=\"card\">\n<code>digitalRead(pin)</code> asks: Is the pin receiving HIGH (5V) or LOW (0V)?\n</div>\n<div class=\"card\">\nIt returns either:\n<ul><li><b>HIGH</b> – Pin has voltage (pressed/connected)</li><li><b>LOW</b> – Pin is grounded or idle</li></ul>\n</div>\n<div class=\"card\">\nExample:\n<pre>int buttonState = digitalRead(2);</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Real-Life Example: Doorbell Button",
+      "content": "<div class=\"card\">\nWhen you press a doorbell, it connects a wire — that’s like sending HIGH to Arduino!\n</div>\n<div class=\"card\">\nSo your Arduino checks:\n<pre>if (digitalRead(4) == HIGH) {\n  ringBell();\n}</pre>\n</div>\n<div class=\"card\">\nSimple logic, massive possibilities 🔔\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Guess the Output!",
+      "content": "<div class=\"card\">\nWhat will happen if pin 7 is HIGH and you run this?\n<pre>\nif (digitalRead(7) == HIGH) {\n  digitalWrite(13, HIGH);\n}\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"dreadgame\" placeholder=\"LED ON or OFF?\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Answer: LED turns ON (pin 13 = HIGH)!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Push Button with digitalRead",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/E-H6GufFTwc\" title=\"digitalRead explained\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💡 digitalRead + LED Control",
+      "content": "<div class=\"card\">\nWiring:\n<ul><li>Button → Pin 2</li><li>LED → Pin 13</li></ul>\n</div>\n<div class=\"card\">\nCode:\n<pre>\nvoid loop() {\n  int state = digitalRead(2);\n  digitalWrite(13, state);\n}\n</pre>\n</div>\n<div class=\"card\">\nWhen you press → LED lights up. Simple echo machine!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔍 Pro Tip: Use INPUT_PULLUP",
+      "content": "<div class=\"card\">\nAvoid noisy readings? Use:\n<pre>pinMode(2, INPUT_PULLUP);</pre>\n</div>\n<div class=\"card\">\nThis means the pin is HIGH by default.\nPressing the button pulls it LOW.\nYou just reverse logic in your code 👇\n<pre>\nif (digitalRead(2) == LOW) {\n  // Button pressed!\n}\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Experiment: Button Counter!",
+      "content": "<div class=\"card\">\nMake Arduino count every time the button is pressed 👇\n</div>\n<div class=\"card\">\n<pre>\nint count = 0;\nvoid loop() {\n  if (digitalRead(2) == LOW) {\n    count++;\n    Serial.println(count);\n    delay(300); // debounce\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nNow press that button and count your fame 😄\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
 
       ]
     }
