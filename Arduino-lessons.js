@@ -556,7 +556,122 @@ audio:"url"
       image: "image_url_here"
     }
   ]
-},{
+},
+{
+  "title": "Commanding Arduino: Your CLI Superpower",
+  "lessons": [
+    {
+      "title": "🚀 What is a CLI?",
+      "content": "<div class=\"card\">\nCLI stands for <b>Command Line Interface</b>. It’s like chatting with your computer using words instead of buttons!\n</div>\n<div class=\"card\">\nInstead of clicking menus, you type commands. It’s super fast, powerful, and great for automation!\n</div>\n<div class=\"card\">\n🧪 Examples of CLIs:\n<ul><li>Windows Command Prompt</li><li>Linux Terminal</li><li>macOS Terminal</li></ul>\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: CLI or GUI?",
+      "content": "<div class=\"card\">\n🧠 GUI means Graphical Interface (like clicking icons), CLI means typing commands.\nDrag these into the right bucket (mentally 😉):\n<ul><li>Terminal</li><li>Arduino IDE</li><li>File Explorer</li><li>Bash Shell</li></ul>\nWhich ones are CLI?</div>\n<div class=\"card\">\n<input id=\"cli-game\" placeholder=\"Your answer...\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert(document.getElementById('cli-game').value.toLowerCase().includes('terminal') ? '✅ Great!' : '❌ Try again!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📦 What is Arduino CLI?",
+      "content": "<div class=\"card\">\n<b>Arduino CLI</b> is the command-line version of the Arduino IDE. You can:\n<ul><li>Compile sketches</li><li>Upload to boards</li><li>Install libraries</li><li>List connected devices</li></ul>\nAll with text commands!\n</div>\n<div class=\"card\">\nIt’s perfect for power users, automation lovers, CI/CD, and headless systems like Raspberry Pi!\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Why Use Arduino CLI?",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/Bb2kJ62WlBE\" title=\"Arduino CLI Explained\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💻 CLI on Windows: Step-by-Step Install",
+      "content": "<div class=\"card\">\n1. Go to: <a href='https://arduino.github.io/arduino-cli/latest/installation/' target='_blank'>arduino-cli download page</a>\n</div>\n<div class=\"card\">\n2. Download the ZIP file for Windows\n3. Extract to any folder like C:/arduino-cli\n4. Add it to PATH (search 'Environment Variables' > Edit PATH > Add that folder)\n5. Open CMD and type:\n<pre>arduino-cli version</pre>\n</div>\n<div class=\"card\">\n🎉 If it prints the version, you’re done!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🐧 CLI on Linux: Easy Setup",
+      "content": "<div class=\"card\">\nUse this terminal command:\n<pre>\nwget https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz\n</pre>\nThen:\n<pre>\ntar -xvzf arduino-cli_*.tar.gz\nsudo mv arduino-cli /usr/local/bin\n</pre>\n</div>\n<div class=\"card\">\n✅ Done! Now run:\n<pre>arduino-cli version</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🍎 CLI on macOS",
+      "content": "<div class=\"card\">\nOpen Terminal and run:\n<pre>\nbrew install arduino-cli\n</pre>\n(Hint: Use Homebrew. If you don’t have it, install from brew.sh)\n</div>\n<div class=\"card\">\nCheck install:\n<pre>arduino-cli version</pre>\nThat’s it!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧰 CLI Basics: First-Time Config",
+      "content": "<div class=\"card\">\nRun this once:\n<pre>arduino-cli config init</pre>\nIt creates a config file in your home folder. You can edit this to change default board, library path, etc.\n</div>\n<div class=\"card\">\nThen update your core index:\n<pre>arduino-cli core update-index</pre>\nThis downloads the list of supported boards!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 How to Install a Board Core (e.g. Uno)",
+      "content": "<div class=\"card\">\nRun:\n<pre>arduino-cli core install arduino:avr</pre>\nThis installs the board support package for Uno, Nano, Mega, etc.\n</div>\n<div class=\"card\">\nList installed cores:\n<pre>arduino-cli core list</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📋 See Connected Devices",
+      "content": "<div class=\"card\">\nTo see your Arduino boards connected:\n<pre>arduino-cli board list</pre>\n</div>\n<div class=\"card\">\nIt shows port, board name, and chip — like magic!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Upload a Sketch from CLI",
+      "content": "<div class=\"card\">\nCompile the code:\n<pre>arduino-cli compile --fqbn arduino:avr:uno Blink</pre>\n</div>\n<div class=\"card\">\nUpload it:\n<pre>arduino-cli upload -p COM3 --fqbn arduino:avr:uno Blink</pre>\n(Change COM3 to your board's port)\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📦 Install Libraries via CLI",
+      "content": "<div class=\"card\">\nInstall any Arduino library, like this:\n<pre>arduino-cli lib install \"Adafruit NeoPixel\"</pre>\n</div>\n<div class=\"card\">\nList installed libraries:\n<pre>arduino-cli lib list</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Mini Game: CLI Command Builder",
+      "content": "<div class=\"card\">\nYou want to upload to Arduino Uno on COM4. What command will you run?\n</div>\n<div class=\"card\">\n<input id=\"cli-upload\" placeholder=\"Type your command\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"checkCLIUpload()\">Submit</button>\n<script>\nfunction checkCLIUpload() {\n  const v = document.getElementById('cli-upload').value.trim().toLowerCase();\n  if (v.includes(\"upload\") && v.includes(\"--fqbn\") && v.includes(\"arduino:avr:uno\") && v.includes(\"com4\")) {\n    alert('✅ That’s perfect!');\n  } else {\n    alert('❌ Something’s missing!');\n  }\n}\n</script>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎯 Bonus: CLI in VS Code",
+      "content": "<div class=\"card\">\nWant to use CLI inside VS Code? Just open terminal and run CLI commands like normal.\n</div>\n<div class=\"card\">\nYou can even create tasks or use PlatformIO + CLI if you're a pro.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🛠️ CLI for CI/CD",
+      "content": "<div class=\"card\">\nYou can use Arduino CLI in GitHub Actions, Jenkins, or other automation workflows.\n</div>\n<div class=\"card\">\nThis is perfect for testing and uploading code automatically when changes happen.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💡 CLI Cheatsheet",
+      "content": "<div class=\"card\">\n<ul>\n<li>📥 Install core: <code>core install</code></li>\n<li>📤 Upload code: <code>upload -p PORT</code></li>\n<li>📚 Libraries: <code>lib install</code></li>\n<li>🔍 Devices: <code>board list</code></li>\n<li>🔧 Compile: <code>compile --fqbn</code></li>\n</ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔬 Quiz: True or False — CLI Edition!",
+      "content": "<div class=\"card\">\n1. Arduino CLI supports ESP32. ✅ / ❌\n<br>2. You can upload sketches using CLI. ✅ / ❌\n<br>3. CLI is available only for Windows. ✅ / ❌\n</div>\n<div class=\"card\">\nAnswers:\n✅, ✅, ❌\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📌 Final Tips for Mastering Arduino CLI",
+      "content": "<div class=\"card\">\n💪 You now know what CLI is, how to install, use, and automate Arduino with it!\n</div>\n<div class=\"card\">\nExplore more with:\n<pre>arduino-cli help</pre>\nOr check: <a href='https://arduino.github.io/arduino-cli' target='_blank'>Official Docs</a>\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+
+,{
   title: "Arduino in the Cloud: The Web IDE Adventure",
   lessons: [
     {
