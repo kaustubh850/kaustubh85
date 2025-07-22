@@ -2513,7 +2513,7 @@ void loop() {
       "title": "🧪 Try It: Measure Echo Time!",
       "content": "<div class=\"card\">\nWiring:\n- HC-SR04 Echo → Pin 7<br>\n- Trigger → Pin 6\n</div>\n<div class=\"card\">\n<pre>\ndigitalWrite(6, HIGH);\ndelayMicroseconds(10);\ndigitalWrite(6, LOW);\n\nlong duration = pulseIn(7, HIGH);\nSerial.println(duration);\n</pre>\nThis prints how long it took the echo to return 👂\n</div>",
       "image": "url",
-      "audio": "url"
+      "audio": "url" 
     }
   ]
 }
