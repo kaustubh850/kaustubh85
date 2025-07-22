@@ -556,7 +556,72 @@ audio:"url"
       image: "image_url_here"
     }
   ]
-},
+},{
+  "title": "Different Flavors of Arduino IDEs!",
+  "lessons": [
+    {
+      "title": "🍦 IDE Flavors? Yep, Arduino Has 3!",
+      "content": "<div class=\"card\">\nDid you know Arduino has <b>not just one</b> IDE, but <b>three types</b>?\n</div>\n<div class=\"card\">\nThink of it like:\n<ul><li>Modern IDE (v2+)</li><li>Legacy IDE (v1.x)</li><li>PLC IDE (for industry)</li></ul>\n</div>\n<div class=\"card\">\nLet’s explore each of them like a tasting menu. 🍽️\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🆕 Arduino IDE (Modern)",
+      "content": "<div class=\"card\">\nCurrent version: 2.x\n✅ Sleek UI, auto-complete, board manager, library search, and more!\n</div>\n<div class=\"card\">\nFeatures:\n<ul><li>Tabs + File Tree</li><li>Dark Mode</li><li>Integrated Serial Monitor + Plotter</li></ul>\n</div>\n<div class=\"card\">\nGreat for most users, students, and hobbyists.\nDownload from: <a href='https://www.arduino.cc/en/software' target='_blank'>official site</a>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧓 Legacy IDE (1.x)",
+      "content": "<div class=\"card\">\nThe OG Arduino IDE. Lightweight, basic, nostalgic.\n</div>\n<div class=\"card\">\nWhy still use it?\n<ul><li>Runs on older PCs</li><li>Used in school labs</li><li>Some tutorials still based on this</li></ul>\n</div>\n<div class=\"card\">\nStill downloadable from Arduino site under 'Legacy Downloads'.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🏭 PLC IDE (Ladder Logic + More)",
+      "content": "<div class=\"card\">\n<b>PLC IDE</b> is for professional, industrial Arduino users.\nIt supports:\n<ul><li>Ladder Diagrams</li><li>Function Block Diagrams</li><li>Structured Text</li></ul>\n</div>\n<div class=\"card\">\nYou can even control relays, motors, logic-based factories using Arduino Portenta + PLC IDE.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: IDE Speed Match",
+      "content": "<div class=\"card\">\nMatch the IDE with the feature:\n<ul><li>Dark mode</li><li>Ladder logic</li><li>Used in schools</li></ul>\n</div>\n<div class=\"card\">\n<input id=\"idespeed\" placeholder=\"Your guess... (modern, plc, legacy)\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Answer: modern, plc, legacy!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Compare All IDEs Visually",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/t_2cFwvZB9Q\" title=\"Arduino IDE Versions Compared\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📋 Table: IDEs at a Glance",
+      "content": "<div class=\"card\">\n<table border='1' style='width:100%; text-align:center'>\n<tr><th>IDE</th><th>Best For</th><th>UI Level</th><th>Unique Feature</th></tr>\n<tr><td>Modern</td><td>Students</td><td>Sleek</td><td>Autocomplete</td></tr>\n<tr><td>Legacy</td><td>Old PCs</td><td>Basic</td><td>Minimalist</td></tr>\n<tr><td>PLC</td><td>Industry</td><td>Technical</td><td>Ladder Logic</td></tr>\n</table>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🛠️ Try All 3! (Mini Guide)",
+      "content": "<div class=\"card\">\nWhy not try each one once?\n<ul><li><b>Modern:</b> install from official site</li><li><b>Legacy:</b> search 'Arduino IDE 1.8.19'</li><li><b>PLC:</b> for Portenta boards only – get from Arduino Pro site</li></ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎯 Final Thoughts: Use What Feels Right",
+      "content": "<div class=\"card\">\nThere’s no wrong choice. Use the one that makes YOU feel confident.\n</div>\n<div class=\"card\">\nPro Tip:\nUse Legacy for quick testing, Modern for real work, and PLC if you're building robots for a factory 😎\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎉 Poll: Which IDE Will You Use?",
+      "content": "<div class=\"card\">\n<input type=\"radio\" name=\"idepoll\"> Modern IDE (v2+)\n<br>\n<input type=\"radio\" name=\"idepoll\"> Legacy (v1.x)\n<br>\n<input type=\"radio\" name=\"idepoll\"> PLC IDE\n<br><br>\n<button class=\"gaming-btn\" onclick=\"alert('🗳️ Vote recorded! No matter what you pick, we’ll support you.')\">Vote!</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,
 {
   "title": "Iron Man's Lab: Arduino in VS Code!",
   "lessons": [
