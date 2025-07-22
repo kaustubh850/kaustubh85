@@ -886,6 +886,71 @@ audio:"url"
     }
   ]
 },{
+  "title": "Which One Should I Choose?",
+  "lessons": [
+    {
+      "title": "🤔 The Big Question: Which IDE Is Right For You?",
+      "content": "<div class=\"card\">\nThere are 5 main ways to code Arduino in 2025:\n<ul><li>Arduino IDE (classic)</li><li>Arduino CLI (command-line power)</li><li>VS Code (pro-style)</li><li>Arduino Cloud</li><li>Simulators like Wokwi</li></ul>\n</div>\n<div class=\"card\">\nLet’s compare them one by one — and help YOU decide what’s best for YOUR brain. 😄\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Arduino IDE: The Old But Gold",
+      "content": "<div class=\"card\">\nPros:\n<ul><li>✅ Easy to install</li><li>✅ Official & beginner-friendly</li><li>✅ One-click upload & Serial Monitor</li></ul>\n</div>\n<div class=\"card\">\nCons:\n<ul><li>❌ No autocomplete</li><li>❌ No file explorer</li><li>❌ Not good for big projects</li></ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💻 Arduino CLI: For Terminal Ninjas",
+      "content": "<div class=\"card\">\nPros:\n<ul><li>✅ Automation & CI/CD ready</li><li>✅ Super fast</li><li>✅ Scriptable uploads</li></ul>\n</div>\n<div class=\"card\">\nCons:\n<ul><li>❌ No visual UI</li><li>❌ Needs some terminal knowledge</li><li>❌ Tough for beginners</li></ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "👨‍💻 VS Code (with PlatformIO or Arduino Extension)",
+      "content": "<div class=\"card\">\nPros:\n<ul><li>✅ Autocomplete & IntelliSense</li><li>✅ File tabs, Git, Serial tools</li><li>✅ Great for advanced users</li></ul>\n</div>\n<div class=\"card\">\nCons:\n<ul><li>❌ Needs extension install</li><li>❌ Can feel overwhelming at first</li></ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "☁️ Arduino Cloud Editor",
+      "content": "<div class=\"card\">\nPros:\n<ul><li>✅ No download needed</li><li>✅ Works in browser</li><li>✅ Syncs sketches, boards, serial monitor</li></ul>\n</div>\n<div class=\"card\">\nCons:\n<ul><li>❌ Requires internet</li><li>❌ Needs Arduino Create Agent installed</li><li>❌ May feel limited for pros</li></ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Simulators (Wokwi, Tinkercad)",
+      "content": "<div class=\"card\">\nPros:\n<ul><li>✅ No physical board needed</li><li>✅ Test fast</li><li>✅ Try expensive sensors for free</li></ul>\n</div>\n<div class=\"card\">\nCons:\n<ul><li>❌ Limited hardware support</li><li>❌ Not all libraries work</li><li>❌ Not a replacement for real board</li></ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Match IDE to Personality",
+      "content": "<div class=\"card\">\nWho should use what?\n<ul><li>👦 Complete beginner</li><li>🧑‍🔧 Wants fast workflow</li><li>🧙‍♂️ CLI nerd</li><li>🧑‍💻 Loves Git & extensions</li><li>🌍 No board, just testing</li></ul>\nDrag answers (mentally) to these:\n</div>\n<div class=\"card\">\n<input id=\"ide-match\" placeholder=\"Type 5 IDEs in order here\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ IDE order: Arduino IDE, Arduino Cloud, Arduino CLI, VS Code, Simulator')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: IDE Comparison Showdown!",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/4jWaVdGm7qA\" title=\"Which Arduino IDE to choose?\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📋 Cheat Sheet: Which One For What?",
+      "content": "<div class=\"card\">\n<b>Use this as your mini decision helper:</b>\n<table border='1' style='width:100%; text-align:center'>\n<tr><th>Tool</th><th>Best For</th><th>Skill Level</th></tr>\n<tr><td>Arduino IDE</td><td>Quick Start</td><td>Beginner</td></tr>\n<tr><td>CLI</td><td>Automation</td><td>Pro</td></tr>\n<tr><td>VS Code</td><td>Power Projects</td><td>Intermediate+</td></tr>\n<tr><td>Cloud</td><td>No Install</td><td>Beginner+</td></tr>\n<tr><td>Simulators</td><td>Testing</td><td>All</td></tr>\n</table>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🏁 Final Decision Helper: Choose Your Path!",
+      "content": "<div class=\"card\">\nAsk yourself:\n<ul><li>👀 Want visual help? → Arduino IDE / VS Code</li><li>🌩️ Need remote or school PC? → Arduino Cloud</li><li>💡 Love automation or scripting? → Arduino CLI</li><li>🧪 Want to test circuits? → Simulators</li></ul>\n</div>\n<div class=\"card\">\n🎉 No wrong choice — you can switch any time. In fact, try them all!\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
   title: "Your First Spark: Blinking the LED",
   lessons: [
     {
