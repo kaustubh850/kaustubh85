@@ -2306,6 +2306,59 @@ void loop() {
 
 
       ]
+    },
+    {
+      title:"Let’s Get Pinny: Digital I/O Deep Dive",
+      modules:[
+        {
+  "title": "Toggling the World: Meet digitalWrite()",
+  "lessons": [
+    {
+      "title": "💡 What is digitalWrite()?",
+      "content": "<div class=\"card\">\n<code>digitalWrite(pin, value)</code> is your Arduino's way of saying:\n\"Turn that pin ON or OFF!\"\n</div>\n<div class=\"card\">\n<pre>\ndigitalWrite(13, HIGH);  // ON (5V)\ndigitalWrite(13, LOW);   // OFF (0V)\n</pre>\nSimple, right? Like flipping a light switch!\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔌 Real-Life Example: Kitchen Lights",
+      "content": "<div class=\"card\">\nThink of Pin 13 as your kitchen light.\n</div>\n<div class=\"card\">\nWhen Mom says:\n👉 “Alexa, turn on kitchen light!”\nYour Arduino says:\n<pre>digitalWrite(13, HIGH);</pre>\n</div>\n<div class=\"card\">\nAnd to turn it off before bed:\n<pre>digitalWrite(13, LOW);</pre>\nSimple, reliable, robotic home automation 😎\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: HIGH or LOW?",
+      "content": "<div class=\"card\">\nWhich command will turn on an LED?\n<pre>A. digitalWrite(9, LOW);\nB. digitalWrite(9, HIGH);</pre>\n</div>\n<div class=\"card\">\n<input id=\"pinQuiz\" placeholder=\"Type A or B\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ It’s B! HIGH = ON = 5V!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: LED Blink = digitalWrite in Action",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/XIIBY-1ZSsc\" title=\"Blink LED using digitalWrite()\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Button-Activated digitalWrite()",
+      "content": "<div class=\"card\">\nMake an LED turn ON only when you press a button:\n<pre>\nif (digitalRead(2) == HIGH) {\n  digitalWrite(13, HIGH);\n} else {\n  digitalWrite(13, LOW);\n}\n</pre>\n</div>\n<div class=\"card\">\n👆 Welcome to interactive electronics — press to shine! 💡\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📘 Pro Tip: Must Set pinMode First!",
+      "content": "<div class=\"card\">\nBefore using <code>digitalWrite()</code>, always set the pin as an OUTPUT:\n<pre>pinMode(13, OUTPUT);</pre>\nWithout this, your Arduino gets confused 😵‍💫\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎉 Bonus: Blink Without Delay Challenge",
+      "content": "<div class=\"card\">\nCan you make the LED blink without using <code>delay()</code>?\nUse <code>millis()</code> instead to stay responsive!\n</div>\n<div class=\"card\">\nIf you crack this, you’re officially leveled up! 🧙‍♂️\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+
+      ]
     }
   ]
 };
