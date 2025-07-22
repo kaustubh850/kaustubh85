@@ -2220,7 +2220,72 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "What Are Libraries?",
+  "lessons": [
+    {
+      "title": "📚 So… What *Exactly* Is a Library?",
+      "content": "<div class=\"card\">\nA library in Arduino is like a magic toolbox 🧰.\n</div>\n<div class=\"card\">\nNeed to control a servo? → Use Servo library.\nWant to light up LEDs in patterns? → Use NeoPixel library.\n</div>\n<div class=\"card\">\nThey contain ready-made code to make your life 100x easier.\nYou just include the library — and boom, features unlocked!\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Why Use Libraries?",
+      "content": "<div class=\"card\">\nImagine writing your own I2C driver from scratch... 😵\nWhy suffer?\n</div>\n<div class=\"card\">\nLibraries are built by pros — you can just use their functions:\n<pre>#include <Servo.h>\nmyservo.attach(9);</pre>\n</div>\n<div class=\"card\">\nThey save time, remove complexity, and increase reliability.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Library or Not?",
+      "content": "<div class=\"card\">\nType 'Yes' if this is a library, or 'No' if not:\n<pre>\n1. Servo.h\n2. digitalWrite\n3. Wire.h\n4. loop()\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"libgame\" placeholder=\"Your answers (Y/N, comma-separated)\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Correct: Yes, No, Yes, No! Libraries have .h headers!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎥 Video: What Are Arduino Libraries?",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/xq7g3Tz0D-Y\" title=\"What Are Arduino Libraries?\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔍 Types of Libraries",
+      "content": "<div class=\"card\">\nThere are 3 main types:\n<ul>\n<li>📦 Built-in (e.g., Servo, Wire)</li>\n<li>🌐 Official installable (NeoPixel, LiquidCrystal)</li>\n<li>🧑‍💻 Custom from GitHub</li>\n</ul>\n</div>\n<div class=\"card\">\nYou can even make your own library!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🛠️ Installing a Library (Arduino IDE)",
+      "content": "<div class=\"card\">\n1. Open Arduino IDE → Sketch → Include Library → Manage Libraries...\n</div>\n<div class=\"card\">\n2. Search for something (e.g., Adafruit NeoPixel)\n3. Click Install\n</div>\n<div class=\"card\">\nDone! Now you can <code>#include</code> it and use its functions.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧬 GitHub Library Installation (Manual)",
+      "content": "<div class=\"card\">\nSometimes, cool libraries are on GitHub!\n</div>\n<div class=\"card\">\nSteps:\n<ol>\n<li>Download ZIP from GitHub</li>\n<li>In Arduino IDE → Sketch → Include Library → Add .ZIP Library...</li>\n<li>Browse & select the ZIP file</li>\n</ol>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📁 Inside a Library Folder",
+      "content": "<div class=\"card\">\nLibrary folders usually contain:\n<ul><li><b>library.h</b> – main header</li>\n<li><b>library.cpp</b> – function code</li>\n<li><b>examples/</b> – test sketches</li>\n</ul>\n</div>\n<div class=\"card\">\nSome even include README.md and keywords.txt\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Quiz: Library Keywords!",
+      "content": "<div class=\"card\">\nMatch the keyword with what it refers to:\n<ul>\n<li><b>attach()</b> — ???</li>\n<li><b>Serial.begin()</b> — ???</li>\n<li><b>pixels.show()</b> — ???</li>\n</ul>\n</div>\n<div class=\"card\">\n<input id=\"quizmatch\" placeholder=\"Servo, Serial, NeoPixel?\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ attach = Servo, Serial.begin = Serial, pixels.show = NeoPixel!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎉 Final Tip: Use Examples!",
+      "content": "<div class=\"card\">\nAlmost every library comes with examples!\nFile → Examples → Choose your library → Pick a sketch!\n</div>\n<div class=\"card\">\nRun it, study it, remix it, and level up your Arduino skills! ⚡\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
 
 
 
