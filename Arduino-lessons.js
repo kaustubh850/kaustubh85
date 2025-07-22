@@ -2448,7 +2448,77 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "React Fast! Using attachInterrupt()",
+  "lessons": [
+    {
+      "title": "⏱️ What is an Interrupt?",
+      "content": "<div class=\"card\">\nAn interrupt is like a ninja tap on the shoulder —\nit pauses everything and runs special code instantly.\n</div>\n<div class=\"card\">\nImagine you're doing homework 📝 and someone rings the bell 🔔. You pause, check the door, then continue working.\n</div>\n<div class=\"card\">\nThat's exactly what interrupts do!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💻 attachInterrupt() Syntax",
+      "content": "<div class=\"card\">\n<pre>\nattachInterrupt(digitalPinToInterrupt(pin), ISR, mode);\n</pre>\n</div>\n<div class=\"card\">\n- <b>pin</b> — the pin that triggers it (use interrupt-capable pins)\n- <b>ISR</b> — function to call (Interrupt Service Routine)\n- <b>mode</b> — when to trigger (RISING, FALLING, CHANGE)\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Choose the Trigger",
+      "content": "<div class=\"card\">\nWhen should the interrupt run?\n<pre>\nattachInterrupt(digitalPinToInterrupt(2), alarm, ???);\n</pre>\n</div>\n<div class=\"card\">\nOptions:\n<ul><li><b>RISING</b> — button goes from LOW to HIGH</li>\n<li><b>FALLING</b> — from HIGH to LOW</li>\n<li><b>CHANGE</b> — any change</li></ul>\n</div>\n<div class=\"card\">\n<input placeholder=\"Your answer\" id=\"interruptGame\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ All valid depending on situation! Most use FALLING or RISING.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Using Interrupts",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/o2hrpZB2E9w\" title=\"Arduino Interrupt Tutorial\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Anti-Bounce Alarm",
+      "content": "<div class=\"card\">\nSet up a motion sensor or button → Pin 2\n</div>\n<div class=\"card\">\n<pre>\nvolatile bool alarmTriggered = false;\nvoid alarm() {\n  alarmTriggered = true;\n}\n\nvoid setup() {\n  attachInterrupt(digitalPinToInterrupt(2), alarm, RISING);\n}\n\nvoid loop() {\n  if (alarmTriggered) {\n    Serial.println(\"⚠️ Alert!\");\n    alarmTriggered = false;\n  }\n}\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+},  {
+  "title": "What's a Pulse? Understanding pulseIn()",
+  "lessons": [
+    {
+      "title": "🔊 What is a Pulse?",
+      "content": "<div class=\"card\">\nA pulse is a quick change in voltage — like a short beep or flash.\n</div>\n<div class=\"card\">\nThink of it like:\n- A hand clap 👏 (one pulse)\n- A quick flash of light 💡\n- A signal burst from an ultrasonic sensor 🔊\n</div>\n<div class=\"card\">\nArduino can measure the time length of such pulses using:\n<pre>pulseIn(pin, value);</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "⏱️ pulseIn() Syntax + Example",
+      "content": "<div class=\"card\">\n<pre>pulseIn(7, HIGH);</pre>\nThis returns how long pin 7 stayed HIGH (in microseconds!)\n</div>\n<div class=\"card\">\nUse it to measure:\n<ul>\n<li>Echo return time from ultrasonic sensors</li>\n<li>IR remote pulses</li>\n<li>Servo signals (advanced)</li>\n</ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Pulse or Not?",
+      "content": "<div class=\"card\">\nGuess which is a pulse signal:\n<ul>\n<li>A) Button press and hold</li>\n<li>B) IR remote click</li>\n<li>C) Constant 5V on pin</li>\n</ul>\n</div>\n<div class=\"card\">\n<input id=\"pulseGame\" placeholder=\"Your answers (e.g. A, B)\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ B is a pulse! A might be, C is not.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: pulseIn() with Ultrasonic",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/9xToP9Hvrqk\" title=\"pulseIn Arduino Ultrasonic Tutorial\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Measure Echo Time!",
+      "content": "<div class=\"card\">\nWiring:\n- HC-SR04 Echo → Pin 7<br>\n- Trigger → Pin 6\n</div>\n<div class=\"card\">\n<pre>\ndigitalWrite(6, HIGH);\ndelayMicroseconds(10);\ndigitalWrite(6, LOW);\n\nlong duration = pulseIn(7, HIGH);\nSerial.println(duration);\n</pre>\nThis prints how long it took the echo to return 👂\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
+
 
 
 
