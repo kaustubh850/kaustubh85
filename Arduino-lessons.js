@@ -2402,7 +2402,54 @@ void loop() {
       "audio": "url"
     }
   ]
+},{
+  "title": "Before You Read or Write: pinMode()",
+  "lessons": [
+    {
+      "title": "⚙️ Why pinMode() Matters",
+      "content": "<div class=\"card\">\nBefore talking to a pin, tell Arduino what role it plays:\n<pre>pinMode(pin, mode);</pre>\n</div>\n<div class=\"card\">\nThere are 3 main modes:\n<ul>\n<li><b>OUTPUT</b> — Send signal out (e.g., LED, buzzer)</li>\n<li><b>INPUT</b> — Read signal in (e.g., button)</li>\n<li><b>INPUT_PULLUP</b> — Read signal in, but with an internal safety net</li>\n</ul>\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🏠 Real-Life Analogy: Room Roles",
+      "content": "<div class=\"card\">\nImagine Arduino as a house.\n</div>\n<div class=\"card\">\nYou assign rooms for roles:\n<ul><li>Kitchen (OUTPUT) – makes stuff</li><li>Doorbell (INPUT) – listens for visitors</li><li>Sensor Room (INPUT_PULLUP) – quiet until triggered</li></ul>\n</div>\n<div class=\"card\">\n<code>pinMode(13, OUTPUT);</code> means: “Hey Pin 13, you’re now the kitchen!” 🍳\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: What's My Mode?",
+      "content": "<div class=\"card\">\nGuess the mode based on the situation:\n<ol>\n<li>Controlling an LED</li>\n<li>Detecting button press</li>\n<li>Using button without external resistor</li>\n</ol>\n</div>\n<div class=\"card\">\n<input id=\"pmgame\" placeholder=\"Type: OUTPUT, INPUT, or INPUT_PULLUP (comma-separated)\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Correct: OUTPUT, INPUT, INPUT_PULLUP!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Full pinMode Explanation",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/O4zmWqgA5l8\" title=\"pinMode Arduino Explained\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔍 INPUT_PULLUP Magic",
+      "content": "<div class=\"card\">\nNormal INPUT pins float — they pick up random noise.\n</div>\n<div class=\"card\">\nUsing <b>INPUT_PULLUP</b> connects an internal resistor to 5V. So the pin stays HIGH by default.\n</div>\n<div class=\"card\">\nWhen you press a button (to GND), it goes LOW.\n</div>\n<div class=\"card\">\nIt saves you from needing an external pull-up resistor!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: LED & Button Combo",
+      "content": "<div class=\"card\">\nWire:\n<ul>\n<li>LED → Pin 13 (OUTPUT)</li>\n<li>Button → Pin 2 (INPUT)</li>\n</ul>\n</div>\n<div class=\"card\">\nCode:\n<pre>\nvoid setup() {\n  pinMode(13, OUTPUT);\n  pinMode(2, INPUT);\n}\n\nvoid loop() {\n  if (digitalRead(2) == HIGH) {\n    digitalWrite(13, HIGH);\n  } else {\n    digitalWrite(13, LOW);\n  }\n}\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎓 Recap: Tell Pins Who They Are!",
+      "content": "<div class=\"card\">\nAlways set the mode before using a pin:\n<ul>\n<li><code>pinMode(pin, OUTPUT);</code></li>\n<li><code>pinMode(pin, INPUT);</code></li>\n<li><code>pinMode(pin, INPUT_PULLUP);</code></li>\n</ul>\n</div>\n<div class=\"card\">\nWithout this, Arduino pins are clueless 🙈\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+
 
 
       ]
