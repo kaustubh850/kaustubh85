@@ -2391,6 +2391,124 @@ void loop() {
     }
   ]
 }
+,{
+  "title": "Syntax Secrets — Exploring Hidden Gems of Arduino Language",
+  "lessons": [
+    {
+      "title": "💬 Block Comments (/* ... */)",
+      "content": "<div class='card'>Block comments help you hide multiple lines of code from being executed. Great for notes or disabling test code!</div>\n<div class='card'>Syntax:\n<pre>\n/*\nThis is a block comment.\nIt can span multiple lines.\n*/\n</pre></div>\n<div class='card'>Use them wisely to document your complex logic.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/S4HDm3O.png",
+      "audio": ""
+    },
+    {
+      "title": "🔍 Curly Braces: { }",
+      "content": "<div class='card'>Curly braces define blocks of code, like inside <code>if</code>, <code>for</code>, or <code>void loop()</code>.</div>\n<div class='card'>Example:\n<pre>\nif (temp > 50) {\n  digitalWrite(fan, HIGH);\n}\n</pre></div>\n<div class='card'>Always match your opening <code>{</code> with a closing <code>}</code>. Or expect some errors 😵‍💫</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Game: Match the Braces",
+      "content": "<script>\nconst codes = [\n  '{ digitalWrite(13, HIGH); }',\n  'if (x > 0) { y = 1;',\n  'for (int i = 0; i < 5; i++) { Serial.println(i); }'\n];\nfor (let i = 0; i < codes.length; i++) {\n  document.write(`<div class='card'>Code ${i + 1}: <pre>${codes[i]}</pre></div>`);\n  if (codes[i].split('{').length !== codes[i].split('}').length)\n    document.write(`<div class='card'>❌ Unmatched braces!</div>`);\n  else\n    document.write(`<div class='card'>✅ All good!</div>`);\n}\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🔠 #define Directive",
+      "content": "<div class='card'><code>#define</code> is used to create constants or aliases.</div>\n<div class='card'>Example:\n<pre>#define LED 13\nvoid setup() {\n  pinMode(LED, OUTPUT);\n}</pre></div>\n<div class='card'>It’s like a nickname for a number or text. But beware — it’s not a variable!</div>",
+      "image": "https://i.imgur.com/8RnrYQy.png",
+      "audio": ""
+    },
+    {
+      "title": "📦 #include Directive",
+      "content": "<div class='card'>Use <code>#include</code> to bring in libraries!</div>\n<div class='card'>Example:\n<pre>#include &lt;Servo.h&gt;</pre></div>\n<div class='card'>This line adds code that controls servo motors — without you writing all of it yourself!</div>",
+      "image": "https://i.imgur.com/t6cD72K.png",
+      "audio": ""
+    },
+    {
+      "title": "🚪 The Mighty Semicolon ( ; )",
+      "content": "<div class='card'>The semicolon is like a full stop. It ends every instruction.</div>\n<div class='card'>Example:\n<pre>\nint a = 5;\ndigitalWrite(LED_BUILTIN, HIGH);\n</pre></div>\n<div class='card'>Missing a semicolon? Get ready for errors! 🔥</div>",
+      "image": "https://i.imgur.com/g0a0Vmj.png",
+      "audio": ""
+    },
+    {
+      "title": "📢 Single Line Comments ( // )",
+      "content": "<div class='card'>Use <code>//</code> to comment a single line.</div>\n<div class='card'>Example:\n<pre>\n// This is a comment\nint led = 13; // Set LED pin\n</pre></div>\n<div class='card'>Comments don't affect the program — they're just for humans like us! 👨‍💻</div>",
+      "image": "https://i.imgur.com/7eyRMkx.png",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Syntax Recap Video",
+      "content": "<div class='card'>Here’s a casual video walkthrough of all these symbols and keywords together in a real Arduino sketch.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/N9M4k2W9G7s' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Quiz: Syntax Checker",
+      "content": "<div class='card'>Which of these lines has a syntax issue?</div>\n<pre>\n#define LED = 13;\n#include Servo.h\nint a = 5\n</pre>\n<div class='card'>Try fixing them mentally, then click below to reveal answers!</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Reveal Fixes</button>\n<div class='card'>✔️ #define should not use '=' or ';'<br>✔️ #include should use &lt;&gt;<br>✔️ int a = 5; needs semicolon</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "Locked & Loaded — Constants in Arduino",
+  "lessons": [
+    {
+      "title": "🔒 What are Constants?",
+      "content": "<div class='card'>Constants are values that <b>don’t change</b> during the program.</div>\n<div class='card'>They help us write <b>clear and error-proof</b> code.</div>\n<div class='card'>For example, instead of using <code>13</code> directly, we use <code>LED_BUILTIN</code>.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/PLknh0F.png",
+      "audio": ""
+    },
+    {
+      "title": "🔌 HIGH and LOW",
+      "content": "<div class='card'><code>HIGH</code> = 5V or 3.3V output\n<br><code>LOW</code> = 0V or ground</div>\n<div class='card'>Used with <code>digitalWrite()</code> and <code>digitalRead()</code>.</div>\n<div class='card'>Example:\n<pre>digitalWrite(LED_BUILTIN, HIGH);</pre>\nTurns ON the LED.</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🔁 INPUT, OUTPUT, INPUT_PULLUP",
+      "content": "<div class='card'>Used in <code>pinMode()</code> to set how a pin behaves.</div>\n<div class='card'>\n<ul>\n<li><b>INPUT</b> → Receives signal</li>\n<li><b>OUTPUT</b> → Sends signal</li>\n<li><b>INPUT_PULLUP</b> → Internal resistor enabled (default HIGH)</li>\n</ul></div>\n<div class='card'>Example:\n<pre>pinMode(2, INPUT_PULLUP);</pre></div>",
+      "image": "https://i.imgur.com/MVaBZWg.png",
+      "audio": ""
+    },
+    {
+      "title": "🎮 Game: Identify the Constants!",
+      "content": "<div class='card'>Which of these is NOT a constant?</div>\n<ul>\n<li>HIGH</li>\n<li>digitalWrite</li>\n<li>INPUT</li>\n<li>LED_BUILTIN</li>\n</ul>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Reveal Answer</button>\n<div class='card'>🎯 <code>digitalWrite</code> is a function, not a constant!</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧮 Floating Point & Integer Constants",
+      "content": "<div class='card'>Floating point constants: like <code>3.14</code> or <code>9.81</code></div>\n<div class='card'>Integer constants: whole numbers like <code>1</code>, <code>255</code>, or <code>0</code></div>\n<div class='card'>These values help with math, sensors, or configuration.</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "💡 LED_BUILTIN Constant",
+      "content": "<div class='card'>Built-in LED? That’s what <code>LED_BUILTIN</code> points to!</div>\n<div class='card'>Different boards have different pin numbers — but this constant always works!</div>\n<div class='card'>Example:\n<pre>pinMode(LED_BUILTIN, OUTPUT);\ndigitalWrite(LED_BUILTIN, HIGH);</pre></div>",
+      "image": "https://i.imgur.com/hxj2FPu.png",
+      "audio": ""
+    },
+    {
+      "title": "✅ true and false",
+      "content": "<div class='card'><code>true</code> = 1, <code>false</code> = 0</div>\n<div class='card'>Used in boolean expressions, conditions, and digital logic.</div>\n<div class='card'>Example:\n<pre>\nbool ledState = true;\ndigitalWrite(13, ledState);\n</pre></div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: Constants in Action",
+      "content": "<div class='card'>Watch how constants like <code>HIGH</code>, <code>INPUT</code>, and <code>LED_BUILTIN</code> make Arduino programs readable!</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/oH2sXq5lso4' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📚 Quiz: What's That Constant?",
+      "content": "<div class='card'>Which constant is used for internal pull-up resistor?</div>\n<ul>\n<li>INPUT</li>\n<li>INPUT_PULLUP</li>\n<li>HIGH</li>\n<li>LED_BUILTIN</li>\n</ul>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Reveal Answer</button>\n<div class='card'>✅ INPUT_PULLUP!</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
 
 
 ,{
