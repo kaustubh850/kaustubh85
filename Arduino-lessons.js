@@ -1817,7 +1817,85 @@ void loop() {
       "audio": "url"
     }
   ]
+},
+{
+  "title": "Meet the Math Squad: Arduino's Arithmetic Operators",
+  "lessons": [
+    {
+      "title": "🧮 Who Are the Arithmetic Operators?",
+      "content": "<div class='card'>\nOperators are how we <b>do math in Arduino</b>.\n</div>\n<div class='card'>\nThey let you add, subtract, divide, multiply, and find remainders. They’re the little symbols with BIG power.\n</div>\n<div class='card'>\nHere’s the squad:\n<ul>\n<li><code>+</code> ➜ Add things up</li>\n<li><code>-</code> ➜ Subtract</li>\n<li><code>*</code> ➜ Multiply</li>\n<li><code>/</code> ➜ Divide</li>\n<li><code>%</code> ➜ Remainder after division</li>\n<li><code>=</code> ➜ Assignment (not equal! This gives a value)</li>\n</ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🍕 Pizza Math: Real Examples",
+      "content": "<div class='card'>\nYou have 10 slices of pizza. You eat 3.\n<pre>\nint pizza = 10;\npizza = pizza - 3;  // Now you have 7\n</pre>\n</div>\n<div class='card'>\nYou split 12 cookies with 3 friends:\n<pre>\nint perPerson = 12 / 4; // = 3 each\n</pre>\n</div>\n<div class='card'>\nWant to check even/odd?\n<pre>\nif (x % 2 == 0) {\n  // Even number!\n}\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Operator Match Game",
+      "content": "<div class='card'>\nMatch the operator to its action:\n<pre>\nA) +     B) %     C) =\nD) *     E) /     F) -\n</pre>\nWhat does each one do?\n</div>\n<div class='card'>\n<input id='opMatch' placeholder='Type like: A-Add, B-Remainder, ...' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Nice! That’s how math powers electronics.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Arduino Math Operators in Action",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/T8DKCGbIsqI\" title=\"Arduino Math Operators\" frameborder=\"0\" allowfullscreen></iframe>\n<div class='card'>\nWatch how these simple operators control sensors, servos, and math-based decisions.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Challenge: Pulse Counter",
+      "content": "<div class='card'>\nYour mission: Count 10 button presses and reset back to 0 using arithmetic.\n</div>\n<div class='card'>\n<pre>\nint count = 0;\n\nvoid loop() {\n  if (digitalRead(buttonPin) == HIGH) {\n    count = count + 1;\n    if (count >= 10) count = 0;\n  }\n}\n</pre>\n</div>\n<div class='card'>\nThis is the power of simple math!\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
 }
+,
+{
+  "title": "Mastering Arduino Math: The Complete Arithmetic Operators",
+  "lessons": [
+    {
+      "title": "🤹 Meet the Math Squad",
+      "content": "<div class='card'>\nArduino gives you a tiny calculator inside the code.\nYou can add, subtract, divide, multiply, and even find remainders.\n</div>\n<div class='card'>\nLet’s meet the core math operators:\n<ul>\n<li><code>+</code> ➜ Addition</li>\n<li><code>-</code> ➜ Subtraction</li>\n<li><code>*</code> ➜ Multiplication</li>\n<li><code>/</code> ➜ Division</li>\n<li><code>%</code> ➜ Remainder (modulus)</li>\n<li><code>=</code> ➜ Assignment (NOT equality)</li>\n</ul>\n</div>\n<div class='card'>\nYou’ll use them in every project — even blinking LEDs.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🍕 Pizza Math: Real Life Arduino Examples",
+      "content": "<div class='card'>\nYou buy 8 LEDs. You burn out 2. What’s left?\n<pre>\nint leds = 8;\nleds = leds - 2;  // 6 left\n</pre>\n</div>\n<div class='card'>\nYour robot has 2 wheels and 3 legs. Total?\n<pre>\nint parts = 2 + 3; // = 5\n</pre>\n</div>\n<div class='card'>\nYou share 10 cookies with 4 sensors:\n<pre>\nint perSensor = 10 / 4; // = 2 (because Arduino ints drop decimals!)\n</pre>\n</div>\n<div class='card'>\nYou want to blink an LED only on even button presses:\n<pre>\nif (pressCount % 2 == 0) {\n   blink();\n}\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Guess the Operator!",
+      "content": "<div class='card'>\nMatch the code with the right operator:\n<pre>\nA) int x = 5 + 3;\nB) int x = 8 % 3;\nC) int x = 6 / 2;\nD) x = x * 2;\n</pre>\n</div>\n<div class='card'>\n<input id='mathGame' placeholder='Type like: A=Add, B=Modulus...' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Correct! A=Add, B=Modulus, C=Divide, D=Multiply')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Arduino Math Operators Explained",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/T8DKCGbIsqI\" title=\"Arduino Math Operators Tutorial\" frameborder=\"0\" allowfullscreen></iframe>\n<div class='card'>\nWatch this video to see real-life applications of each operator — especially for sensors and logic-based systems.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Project Challenge: LED Math Display",
+      "content": "<div class='card'>\nChallenge: Blink the LED as many times as the result of a math expression.\n</div>\n<div class='card'>\nExample:\n<pre>\nint blinks = 2 + 3 * 2; // = 8\n</pre>\nNow make it blink that many times:\n<pre>\nfor(int i=0; i<blinks; i++) {\n  digitalWrite(13, HIGH);\n  delay(200);\n  digitalWrite(13, LOW);\n  delay(200);\n}\n</pre>\n</div>\n<div class='card'>\nTry changing the math equation and watching the blinks!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💣 Common Mistakes (and how to avoid them)",
+      "content": "<div class='card'>\n❌ <code>x = x + 1</code> looks confusing, but it’s correct!\n✔️ It means: take x, add 1, and store it back in x.\n</div>\n<div class='card'>\n❌ Forgetting that Arduino uses <code>int</code> for whole numbers.\n<pre>\nint result = 7 / 2; // NOT 3.5 ➜ it's 3\n</pre>\n✔️ Want decimals? Use <code>float</code> instead.\n</div>\n<div class='card'>\n❌ Using <code>=</code> to compare. That’s wrong!\n✔️ Use <code>==</code> to compare values.\n</div>\n<div class='card'>\n<pre>\nif (x = 5) // wrong! assigns 5 to x\nif (x == 5) // correct! checks if x is 5\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+
 
 ,{
   "title": "Cracking the Code Skeleton: Program Structure",
