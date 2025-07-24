@@ -1815,12 +1815,6 @@ void loop() {
       "content": "<div class='card'>\nTry this simple project:\n</div>\n<div class='card'>\n<pre>\nvoid setup() {\n  pinMode(13, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delay(300);\n  digitalWrite(13, LOW);\n  delay(300);\n}\n</pre>\n</div>\n<div class='card'>\nWhy is pinMode in <code>setup()</code>? Because you only need to declare it once. ✅\n</div>",
       "image": "url",
       "audio": "url"
-    },
-    {
-      "title": "🧠 Bonus Lesson: Serial.begin() & setup()",
-      "content": "<div class='card'>\nWant to use <b>Serial Monitor</b>? You’ll always use this:\n<pre>Serial.begin(9600);</pre>\n</div>\n<div class='card'>\nIt belongs inside <code>setup()</code>.\n</div>\n<div class='card'>\nThis opens the serial connection and tells Arduino how fast to talk.\n9600 = speed. You’ll see this in every project that prints stuff.\n</div>",
-      "image": "url",
-      "audio": "url"
     }
   ]
 }
