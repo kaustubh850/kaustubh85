@@ -1742,6 +1742,48 @@ void loop() {
       title: "Arduino Coding: The Serious Mode In The Course",
       modules: [
 {
+  "title": "loop(): The Heartbeat That Never Stops",
+  "lessons": [
+    {
+      "title": "🫀 The Soul of Every Arduino Project",
+      "content": "<div class='card'>\nYou power on your Arduino. A tiny light blinks.\n</div>\n<div class='card'>\nThen... it blinks again.\nAnd again. And again.\nThat’s <code>loop()</code> — the part of your sketch that <b>never stops running</b> until your board is powered off.\n</div>\n<div class='card'>\nIt’s like your heartbeat. The brain is <code>setup()</code>. But <code>loop()</code> is your pulse.💓\n</div>\n<div class='card'>\n<pre>\nvoid loop() {\n   // Your repeating magic goes here\n}\n</pre>\nThis is where your robot moves, sensors react, LEDs flash, buzzers scream — again and again.\n</div>\n<button class=\"gaming-btn\" onclick=\"revealNextCard(this)\">Next Step</button>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎡 A Day in the Life of loop()",
+      "content": "<div class='card'>\nImagine loop() as your daily routine:\n<ul>\n<li>Wake up</li>\n<li>Brush your teeth</li>\n<li>Eat breakfast</li>\n<li>Repeat forever (like a robot 🤖)</li>\n</ul>\n</div>\n<div class='card'>\nArduino does the same:\n<pre>\nvoid loop() {\n  checkSensors();\n  updateScreen();\n  blinkLED();\n}\n</pre>\n</div>\n<div class='card'>\nIt repeats this cycle non-stop. Literally thousands of times per second!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: The Infinite Loop Room",
+      "content": "<div class='card'>\nYou're trapped in a room. Three doors appear:\n<ul>\n<li>A: A door labeled 'Run Once'</li>\n<li>B: A door labeled 'Run Forever'</li>\n<li>C: A door labeled 'Exit Loop'</li>\n</ul>\n</div>\n<div class='card'>\nWhich one is <code>loop()</code>?\n<input id='loopchoice' placeholder='Type A, B or C' style='width: 100%'/>\n<button class='gaming-btn' onclick=\"alert('✅ Correct! loop() is Door B – it never ends.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Watch: The Power of loop()",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/BvU0g_FxqpM\" title=\"Arduino loop() Explained with Real Projects\" frameborder=\"0\" allowfullscreen></iframe>\n<div class='card'>\nThis video shows how <code>loop()</code> powers real-time Arduino behaviors. Watch closely — you’ll see how timing and repeating patterns matter.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Project Challenge: Make Something Loop",
+      "content": "<div class='card'>\nYour challenge: Create a simple animation using an LED.\n</div>\n<div class='card'>\nHere’s a head start:\n<pre>\nvoid setup() {\n  pinMode(13, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delay(300);\n  digitalWrite(13, LOW);\n  delay(300);\n}\n</pre>\n</div>\n<div class='card'>\nTry:\n- Changing the delay to make it blink faster\n- Add a second LED (double trouble!)\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Deep Thought: When NOT to Use loop()",
+      "content": "<div class='card'>\nSome students put everything inside loop(). Like this:\n<pre>\nvoid loop() {\n  pinMode(13, OUTPUT); // ⚠️ bad!\n  digitalWrite(13, HIGH);\n}\n</pre>\n</div>\n<div class='card'>\nBut <code>pinMode()</code> only needs to run <b>once</b> — it belongs in <code>setup()</code>.\n</div>\n<div class='card'>\nDon’t overload <code>loop()</code> — just put the actions you want to repeat.\n</div>\n<div class='card'>\nYou don’t say “I’m right-handed” 1000x a second. You say it once. Then you write. Same logic. ✍️\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+
+,{
   "title": "Cracking the Code Skeleton: Program Structure",
   "lessons": [
     {
