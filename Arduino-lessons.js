@@ -621,6 +621,65 @@ audio:"url"
     }
   ]
 }
+,{
+  "title": "Code Without Coding: Welcome to ArduBlock!",
+  "lessons": [
+    {
+      "title": "🎨 What is ArduBlock?",
+      "content": "<div class=\"card\">\nArduBlock is a visual programming tool — you code by dragging colorful blocks instead of writing code.\n</div>\n<div class=\"card\">\nIt’s perfect for beginners, schools, and anyone scared of semicolons 😄\n</div>\n<div class=\"card\">\nThink of it like LEGO bricks for Arduino code!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🖥️ How to Install ArduBlock",
+      "content": "<div class=\"card\">\nStep-by-step:\n1. Install <b>Arduino IDE</b> (legacy version 1.8.x preferred)\n2. Download ArduBlock jar file from <a href='https://github.com/taweili/ardublock/releases'>here</a>\n3. Create a folder: <code>Arduino/tools/ArduBlockTool/tool/</code>\n4. Place the .jar file inside the <code>tool</code> folder\n</div>\n<div class=\"card\">\nNow restart the Arduino IDE → Go to Tools → You’ll see <b>ArduBlock</b>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎥 Video: Installing & Running ArduBlock",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/QqzR4WhV4iE\" title=\"ArduBlock Install Guide\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧱 ArduBlock vs Traditional Code",
+      "content": "<div class=\"card\">\n<b>Traditional Arduino:</b>\n<pre>digitalWrite(13, HIGH);</pre>\n</div>\n<div class=\"card\">\n<b>ArduBlock:</b>\nDrag a block: <code>[Set pin 13 HIGH]</code>\n</div>\n<div class=\"card\">\nIt’s easy to learn logic without writing code!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Match the Code to the Block",
+      "content": "<div class=\"card\">\nWhat ArduBlock block matches this code?\n<pre>digitalWrite(9, LOW);</pre>\n</div>\n<div class=\"card\">\n<input id=\"abgame\" placeholder=\"Your Answer (e.g. Set pin X to Y)\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ It is: Set pin 9 LOW')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔁 Looping in ArduBlock",
+      "content": "<div class=\"card\">\nYou can use <b>repeat</b> or <b>wait</b> blocks to control time and loops.\n</div>\n<div class=\"card\">\nExample: Blink LED every second.\n- Set pin 13 HIGH\n- Wait 1000 ms\n- Set pin 13 LOW\n- Wait 1000 ms\n</div>\n<div class=\"card\">\nDrag these blocks inside a loop block, and you’ve got a blinker 🔁💡\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: LED Blink Challenge",
+      "content": "<div class=\"card\">\nYour goal: blink the LED on pin 10 using blocks.\n</div>\n<div class=\"card\">\nSteps:\n1. Drag <b>Set Pin</b> block to set 10 HIGH\n2. Add <b>Wait 1000 ms</b>\n3. Drag another <b>Set Pin</b> to LOW\n4. Add Wait again\n5. Wrap in <b>loop</b>\n</div>\n<div class=\"card\">\nUpload → Watch the magic ✨\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🤔 Limitations of ArduBlock",
+      "content": "<div class=\"card\">\nArduBlock is great for beginners, but limited for advanced projects.\n</div>\n<div class=\"card\">\nYou won’t get custom libraries, advanced hardware access, or fast real-time stuff.\n</div>\n<div class=\"card\">\nEventually, you'll want to switch to C++ Arduino IDE or PlatformIO.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Why You Should Try ArduBlock First",
+      "content": "<div class=\"card\">\nIt helps you build logic, understand flow, and test real circuits without fear of syntax errors.\n</div>\n<div class=\"card\">\nEven pros recommend it for younger makers or teaching environments 👨‍🏫\n</div>\n<div class=\"card\">\nTry a few projects — it's fun, visual, and very beginner-safe! 🧩\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
 ,
 {
   "title": "Iron Man's Lab: Arduino in VS Code!",
