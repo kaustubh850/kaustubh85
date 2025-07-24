@@ -1782,6 +1782,48 @@ void loop() {
     }
   ]
 }
+,
+{
+  "title": "setup(): The One Who Prepares Everything",
+  "lessons": [
+    {
+      "title": "🛠️ What is setup()?",
+      "content": "<div class='card'>\nBefore your Arduino starts its infinite loop, it runs <code>setup()</code> once.\n</div>\n<div class='card'>\nIt's like the person who opens the gates, turns on the lights, and shouts: “Okay, we’re ready!”\n</div>\n<div class='card'>\n<pre>\nvoid setup() {\n  // This runs once when the board powers on\n}\n</pre>\n</div>\n<div class='card'>\nCommon things inside <code>setup()</code>:\n<ul>\n<li><code>pinMode()</code></li>\n<li><code>Serial.begin()</code></li>\n<li>Initializing sensors, displays</li>\n<li>Setting up libraries</li>\n</ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎬 Analogy: Setting Up the Stage",
+      "content": "<div class='card'>\nImagine you’re putting on a play. 🎭\n</div>\n<div class='card'>\n- <code>setup()</code> is you arranging the chairs, testing the lights, and putting the actors in place.\n- <code>loop()</code> is the performance.\n</div>\n<div class='card'>\nWithout setup, the show is a disaster.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Setup or Loop?",
+      "content": "<div class='card'>\nRead these tasks. Decide if they go in <code>setup()</code> or <code>loop()</code>:\n<pre>\n1. pinMode(13, OUTPUT);\n2. Turn on LED\n3. Serial.begin(9600);\n4. Check sensor value\n</pre>\n</div>\n<div class='card'>\n<input id='setupQuiz' placeholder='Type like: 1-setup, 2-loop...' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Correct: 1-setup, 2-loop, 3-setup, 4-loop')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: setup() Explained with Real Projects",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/Mv6AejNhdAM\" title=\"Arduino setup() Tutorial\" frameborder=\"0\" allowfullscreen></iframe>\n<div class='card'>\nThis video shows what goes into <code>setup()</code> and why it matters before your code runs wild.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Mini Project: Blinky with Setup()",
+      "content": "<div class='card'>\nTry this simple project:\n</div>\n<div class='card'>\n<pre>\nvoid setup() {\n  pinMode(13, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delay(300);\n  digitalWrite(13, LOW);\n  delay(300);\n}\n</pre>\n</div>\n<div class='card'>\nWhy is pinMode in <code>setup()</code>? Because you only need to declare it once. ✅\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Bonus Lesson: Serial.begin() & setup()",
+      "content": "<div class='card'>\nWant to use <b>Serial Monitor</b>? You’ll always use this:\n<pre>Serial.begin(9600);</pre>\n</div>\n<div class='card'>\nIt belongs inside <code>setup()</code>.\n</div>\n<div class='card'>\nThis opens the serial connection and tells Arduino how fast to talk.\n9600 = speed. You’ll see this in every project that prints stuff.\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
 
 ,{
   "title": "Cracking the Code Skeleton: Program Structure",
