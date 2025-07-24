@@ -1895,6 +1895,502 @@ void loop() {
     }
   ]
 }
+,
+{
+  "title": "Pointers? Nah, Just Magic Mirrors!",
+  "lessons": [
+    {
+      "title": "🪞 What Are Pointer Operators?",
+      "content": "<div class='card'>\nIn Arduino (and C++), pointers are like magic mirrors.\n</div>\n<div class='card'>\nThey don't hold the value — they hold the <i>address</i> of where that value lives in memory.\n</div>\n<div class='card'>\nThere are two main pointer operators:\n<ul>\n<li><code>&</code> ➜ Reference operator — gets the memory address</li>\n<li><code>*</code> ➜ Dereference operator — gets the value from that address</li>\n</ul>\n</div>\n<div class='card'>\nExample:\n<pre>\nint num = 42;\nint* ptr = &num; // ptr holds address of num\nSerial.println(*ptr); // prints 42\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Analogy: Secret House Addresses",
+      "content": "<div class='card'>\nImagine variables are houses, and inside each house is a gift 🎁.\n</div>\n<div class='card'>\nThe <code>&</code> operator gives you the <b>address</b> of a house.\n</div>\n<div class='card'>\nThe <code>*</code> operator lets you <b>peek inside</b> that house and see the gift!\n</div>\n<div class='card'>\n<pre>\nint present = 99;\nint* address = &present; // get address\nSerial.println(*address); // peek inside the gift\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Peek Into Memory!",
+      "content": "<div class='card'>\nGuess the output of this code:\n<pre>\nint a = 10;\nint* b = &a;\na = a + 5;\nSerial.println(*b);\n</pre>\n</div>\n<div class='card'>\n<input id='ptrQuiz' placeholder='What will be printed?' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Answer: 15. Because *b sees what a became!')\">Submit</button>\n</div>\n<div class='card'>\nPointers always see what’s happening at the real location in memory.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Understanding Pointers in Arduino",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/yezzh6tJvGM' title='Pointers in Arduino Hindi' frameborder='0' allowfullscreen></iframe>\n<div class='card'>\nA video walkthrough of what pointers are, how to use them, and where they’re useful in Arduino projects.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Mini Project: Control LED Using Pointers",
+      "content": "<div class='card'>\nLet’s use a pointer to turn on an LED. It’s weird — but fun!\n</div>\n<div class='card'>\n<pre>\nint ledPin = 13;\nint* ptr = &ledPin;\n\nvoid setup() {\n  pinMode(*ptr, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(*ptr, HIGH);\n  delay(500);\n  digitalWrite(*ptr, LOW);\n  delay(500);\n}\n</pre>\n</div>\n<div class='card'>\nHere, we're indirectly controlling pin 13 using its address!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🤯 Bonus: Where Are Pointers Used?",
+      "content": "<div class='card'>\nPointers are used in:\n<ul>\n<li>Custom libraries</li>\n<li>Interrupt routines</li>\n<li>Function parameters (pass-by-reference)</li>\n<li>Dynamic memory tricks</li>\n</ul>\n</div>\n<div class='card'>\nMost beginner projects don’t need them. But as you grow, you’ll LOVE what they let you do. 🧠⚡\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,
+{
+  "title": "Arduino's Truth Detectors: Comparison Operators",
+  "lessons": [
+    {
+      "title": "⚖️ What Are Comparison Operators?",
+      "content": "<div class='card'>\nThese operators help Arduino <b>compare two values</b> and decide if something is true or false.\n</div>\n<div class='card'>\nThey’re the reason your code can say:\n<ul>\n<li>\"If button is pressed...\"</li>\n<li>\"If temperature is too high...\"</li>\n<li>\"If you’ve reached the score...\"</li>\n</ul>\n</div>\n<div class='card'>\nLet’s meet them:\n<ul>\n<li><code>==</code> ➜ Equal to</li>\n<li><code>!=</code> ➜ Not equal to</li>\n<li><code>&gt;</code> ➜ Greater than</li>\n<li><code>&lt;</code> ➜ Less than</li>\n<li><code>&gt;=</code> ➜ Greater than or equal to</li>\n<li><code>&lt;=</code> ➜ Less than or equal to</li>\n</ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🍟 Real-Life Examples: Fries & Scores",
+      "content": "<div class='card'>\nExample 1:\n<pre>\nint fries = 10;\nif (fries == 10) {\n  eat();\n}\n</pre>\nChecks if fries are exactly 10.\n</div>\n<div class='card'>\nExample 2:\n<pre>\nint temp = 38;\nif (temp > 37) {\n  soundAlarm();\n}\n</pre>\nScreams if you're too hot 🌡️.\n</div>\n<div class='card'>\nExample 3:\n<pre>\nif (score != 100) {\n  keepTrying();\n}\n</pre>\nOnly rewards you when score hits 100.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Mini Game: True or False?",
+      "content": "<div class='card'>\nWhat does this print?\n<pre>\nint a = 3, b = 5;\nSerial.println(a >= b);\n</pre>\n</div>\n<div class='card'>\n<input id='compGame' placeholder='true or false?' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('❌ Nope! Answer is false (0) — 3 is not greater or equal to 5.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Comparison Operators in Action",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/WcJUGjhhLAo' title='Arduino Comparison Operators in Hindi' frameborder='0' allowfullscreen></iframe>\n<div class='card'>\nSee all six operators in action with sensors, decisions, and logic.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Real Challenge: Temp Checker",
+      "content": "<div class='card'>\nTry this logic:\n<pre>\nint temp = analogRead(A0);\nif (temp >= 700) {\n  digitalWrite(13, HIGH);\n} else {\n  digitalWrite(13, LOW);\n}\n</pre>\n</div>\n<div class='card'>\nYou're lighting an LED when a certain threshold is crossed.\nThis is exactly how fire alarms or plant watering systems work!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💣 Common Mistakes to Avoid",
+      "content": "<div class='card'>\n<pre>\nif (x = 5) // ❌ This assigns 5 to x — NOT a comparison!\n</pre>\nUse <code>==</code> for comparisons:\n<pre>\nif (x == 5) // ✅ Now it checks equality\n</pre>\n</div>\n<div class='card'>\n<pre>\nif (temp < 50) // ✅ All good\nif (temp =< 50) // ❌ That’s not a valid operator\n</pre>\n</div>\n<div class='card'>\nTip: Always double-check for <b>= vs ==</b> and operator typos!\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,
+{
+  "title": "Bits and Power: Mastering Bitwise Operators in Arduino",
+  "lessons": [
+    {
+      "title": "💡 What Are Bitwise Operators?",
+      "content": "<div class='card'>\nBitwise operators let you control data at the BIT level — pure 0s and 1s.\n</div>\n<div class='card'>\nThey work on binary versions of numbers. Like:\n<pre>\nint x = 6;   // 00000110\nint y = 3;   // 00000011\n</pre>\n</div>\n<div class='card'>\nHere's the squad:\n<ul>\n<li><code>&</code> ➜ AND</li>\n<li><code>|</code> ➜ OR</li>\n<li><code>^</code> ➜ XOR</li>\n<li><code>~</code> ➜ NOT</li>\n<li><code>&lt;&lt;</code> ➜ Bitshift Left</li>\n<li><code>&gt;&gt;</code> ➜ Bitshift Right</li>\n</ul>\n</div>\n<div class='card'>\nBitwise is 💥powerful for performance, pin control, memory-efficient tricks.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎯 Real-Life Example: Control 8 LEDs Using 1 Byte",
+      "content": "<div class='card'>\nLet’s say you control 8 LEDs with an 8-bit number:\n<pre>\nb11101101  ➜ Turns ON some LEDs, OFF others\n</pre>\nEach bit = one LED’s state!\n</div>\n<div class='card'>\n<pre>\nint pattern = 0b11101101;\nfor(int i=0; i<8; i++) {\n  digitalWrite(i, (pattern >> i) & 1);\n}\n</pre>\n</div>\n<div class='card'>\nThis loops through each bit and applies it to a pin — pure 🔥!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🕹️ Game: Bitwise Battle!",
+      "content": "<div class='card'>\nMatch the operation to its result:\n<pre>\nA = 0b1010 & 0b1100\nB = 0b1010 | 0b1100\nC = 0b1010 ^ 0b1100\n</pre>\n</div>\n<div class='card'>\n<input id='bitBattle' placeholder='Write answers like: A=1000, B=1110...' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Correct! A=1000, B=1110, C=0110')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Bitwise Operators Simplified",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/OZvwkec8XLs' title='Bitwise operators explained' frameborder='0' allowfullscreen></iframe>\n<div class='card'>\nThis video breaks down all the operators with simple charts, fun narrations, and a bit of Arduino demo.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Project: Bitshift Based LED Animator",
+      "content": "<div class='card'>\nUse bit shifting to animate LEDs like a wave:\n</div>\n<div class='card'>\n<pre>\nbyte leds = 0b00000001;\nvoid loop() {\n  for(int i=0; i<8; i++) {\n    digitalWrite(i, (leds >> i) & 1);\n  }\n  delay(100);\n  leds = leds << 1;\n  if (leds == 0) leds = 0b00000001;\n}\n</pre>\n</div>\n<div class='card'>\nThis moves a single ON bit from left to right like KITT from Knight Rider 🚗💨\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💣 Mistakes & Bit Traps",
+      "content": "<div class='card'>\n⚠️ <code>~</code> flips ALL bits — even unused ones.\n<pre>\nbyte x = 0b00001111;\nbyte y = ~x; // y = 0b11110000\n</pre>\n</div>\n<div class='card'>\n⚠️ Bitshift left or right too far?\nIt’ll push out bits and lose data.\n<pre>\nx = x << 8; // gone!\n</pre>\n</div>\n<div class='card'>\n✅ Always mask your bits with <code>& 1</code> to isolate bits:\n<pre>\nbit = (x >> i) & 1;\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,
+{
+  "title": "Thinking Like Arduino: Boolean Logic Mastery",
+  "lessons": [
+    {
+      "title": "🧠 What Are Logical (Boolean) Operators?",
+      "content": "<div class='card'>\nThese operators deal with <b>truth</b> — literally.\nThey help Arduino decide what to do based on <b>multiple conditions</b>.\n</div>\n<div class='card'>\n<ul>\n<li><code>&&</code> ➜ Logical AND (both must be true)</li>\n<li><code>||</code> ➜ Logical OR (at least one true)</li>\n<li><code>!</code> ➜ Logical NOT (opposite truth)</li>\n</ul>\n</div>\n<div class='card'>\nThis is Arduino’s way of asking:\n<b>“Should I act?”</b> — based on two sensors, or buttons, or states.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🌟 Real-Life Examples with Logic",
+      "content": "<div class='card'>\n<pre>\nif (temp > 35 && humidity > 70) {\n  activateCooler();\n}\n</pre>\nThis will only run if <b>both conditions are true</b>.\n</div>\n<div class='card'>\n<pre>\nif (button1Pressed || button2Pressed) {\n  startGame();\n}\n</pre>\nAny one button triggers the game.\n</div>\n<div class='card'>\n<pre>\nif (!isConnected) {\n  reconnect();\n}\n</pre>\nThis checks if <b>NOT connected</b>, then tries again.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Logic Locker Puzzle",
+      "content": "<div class='card'>\nImagine a locker with two keys. It opens only if:\nKey A is ON AND Key B is ON.\n</div>\n<div class='card'>\n<input id='logicLocker' placeholder='Write logic expression like: A && B' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Correct! It opens only if A && B are both true.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Boolean Logic Made Simple",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/71eO_v9CcoQ' title='Arduino Boolean Logic' frameborder='0' allowfullscreen></iframe>\n<div class='card'>\nA fun visual explanation of Boolean logic in real projects: motion detectors, alarms, safety shutdowns.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Project: The Dual-Sensor Alarm",
+      "content": "<div class='card'>\nHere’s a real circuit with two sensors (like smoke + heat):\n</div>\n<div class='card'>\n<pre>\nint fire = digitalRead(2);\nint heat = digitalRead(3);\nif (fire && heat) {\n  digitalWrite(13, HIGH);\n}\n</pre>\n</div>\n<div class='card'>\nThis will only sound the alarm if BOTH are active.\nUse <code>||</code> if you want either to be enough.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🌀 Bonus Lesson: Truth Tables",
+      "content": "<div class='card'>\nTruth tables help visualize logic outcomes. Here's one for AND:\n<pre>\nA | B | A && B\n0 | 0 |   0\n0 | 1 |   0\n1 | 0 |   0\n1 | 1 |   1\n</pre>\n</div>\n<div class='card'>\nTry making one for <code>||</code> and <code>!</code> on your own!\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "Compound Moves: Shortcuts to Powerful Arduino Logic",
+  "lessons": [
+    {
+      "title": "🤔 What Are Compound Operators?",
+      "content": "<div class='card'>\nCompound operators are <b>shorthand versions</b> of common arithmetic, logical, and bitwise operations.\n</div>\n<div class='card'>\nInstead of:\n<pre>x = x + 5;</pre>\nYou can write:\n<pre>x += 5;</pre>\n</div>\n<div class='card'>\nThis saves time, memory, and makes your code 💅 cleaner!\n</div>\n<div class='card'>\nPopular compound operators include:\n<ul>\n<li><code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code></li>\n<li><code>&=</code>, <code>|=</code>, <code>^=</code> (bitwise)</li>\n<li><code>++</code> and <code>--</code> (increment/decrement)</li>\n</ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎯 Real Use Cases in Arduino Projects",
+      "content": "<div class='card'>\n🎮 Want to count points?\n<pre>\nscore += 10;  // Add 10 points\n</pre>\n</div>\n<div class='card'>\n🌡️ Gradually reduce a temperature value:\n<pre>\ntemp -= 2;  // cool down\n</pre>\n</div>\n<div class='card'>\n💡 Toggle LED pattern with:\n<pre>\nleds ^= 0b00010000; // Flip bit 4\n</pre>\n</div>\n<div class='card'>\nLoop counter magic:\n<pre>\ni++;\n</pre>\nThis is same as: <code>i = i + 1;</code>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Code Crunch Challenge",
+      "content": "<div class='card'>\n🧠 What will this do?\n<pre>\nint x = 4;\nx *= 2;\nx++;\n</pre>\n</div>\n<div class='card'>\n<input id='compoundAnswer' placeholder='Your final value of x?' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Correct! x = 9')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Shorthand Superpowers in Arduino",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/Mk39k-YC_Y4' title='Arduino Compound Operators' frameborder='0' allowfullscreen></iframe>\n<div class='card'>\nThis visual explainer helps you understand how compound operators speed up loops, counters, and toggling in real projects.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Project: Automatic LED Dimmer",
+      "content": "<div class='card'>\nUse compound operators to gradually dim a light.\n</div>\n<div class='card'>\n<pre>\nint brightness = 255;\nvoid loop() {\n  analogWrite(9, brightness);\n  brightness -= 5;\n  if (brightness <= 0) brightness = 255;\n  delay(100);\n}\n</pre>\n</div>\n<div class='card'>\nThis repeats a dimming animation using <code>-=</code>. You could also try <code>brightness /= 2;</code> for funky effects!\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,
+{
+  "title": "Decisions, Decisions: Understanding the if Statement",
+  "lessons": [
+    {
+      "title": "🧠 Meet the if Statement",
+      "content": "<div class='card'>Ever had to decide whether to eat pizza or not? Arduino does the same using the <code>if</code> statement.</div>\n<div class='card'>The basic syntax:\n<pre>\nif (condition) {\n  // code to run if true\n}\n</pre>\n</div>\n<div class='card'>Example:\n<pre>\nif (temperature > 30) {\n  digitalWrite(fanPin, HIGH);\n}\n</pre>\nThis means: If the temperature is more than 30, turn the fan ON!</div>\n<div class='card'>You can use sensors, buttons, or values from anywhere in your code.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/JzF8Izo.png",
+      "audio": "https://example.com/audio/if_statement_intro.mp3"
+    },
+    {
+      "title": "🎮 Game: Help Arduino Decide!",
+      "content": "<div class='card'>Choose what Arduino should do based on the temperature!</div>\n<script>\nlet temp = Math.floor(Math.random() * 50);\ndocument.write('<div class=\"card\">Temperature is ' + temp + '°C</div>');\nif(temp > 30) {\n  document.write('<div class=\"card\">Arduino turns the FAN ON!</div>');\n} else {\n  document.write('<div class=\"card\">Arduino keeps the FAN OFF.</div>');\n}\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Watch: if Statement Explained Simply",
+      "content": "<div class='card'>Here's a fun video that visually explains how <code>if</code> works in Arduino!</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/fE7HVSHE6zA' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "💻 Try It: Write Your Own if Statement",
+      "content": "<div class='card'>Type out your first <code>if</code> statement here and test what it does.</div>\n<textarea rows='10' style='width:100%;'>if (digitalRead(buttonPin) == HIGH) {\n  digitalWrite(ledPin, HIGH);\n}</textarea>\n<div class='card'>You can use the Arduino Web Editor to test this, or even the simulator on RoboDict homepage.</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "The Power of Else — What If Not?",
+  "lessons": [
+    {
+      "title": "🧩 Meet the else Statement",
+      "content": "<div class='card'>Sometimes things don't go as planned. Arduino handles that with <code>else</code>!</div>\n<div class='card'>If the <code>if</code> condition is false, Arduino jumps to the <code>else</code> block.</div>\n<div class='card'>Example:\n<pre>\nif (temp > 30) {\n  fanOn();\n} else {\n  fanOff();\n}\n</pre>\nNow the fan will only run if the temperature is high, otherwise it’ll stay off.</div>\n<div class='card'>You can chain this with <code>if</code> to create alternate paths!</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/BYAkUdR.png",
+      "audio": "https://example.com/audio/else_explained.mp3"
+    },
+    {
+      "title": "🎮 Game: Arduino Needs a Choice!",
+      "content": "<div class='card'>Your robot is standing at a fork. Should it go left or right?</div>\n<script>\nlet batteryLevel = Math.floor(Math.random() * 100);\ndocument.write('<div class=\"card\">Battery: ' + batteryLevel + '%</div>');\nif (batteryLevel > 50) {\n  document.write('<div class=\"card\">Arduino decides to go exploring!</div>');\n} else {\n  document.write('<div class=\"card\">Arduino returns to base for recharge.</div>');\n}\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: else in Real Arduino Projects",
+      "content": "<div class='card'>This quick video walks through real-life Arduino uses of <code>if...else</code> logic.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/zNQYgky4qv8' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🛠️ Mini Challenge: else in Action",
+      "content": "<div class='card'>Write a short code snippet that uses <code>else</code> to blink a red LED if a sensor value is too low.</div>\n<textarea rows='10' style='width:100%;'>if (sensorVal > 500) {\n  digitalWrite(greenLED, HIGH);\n} else {\n  digitalWrite(redLED, HIGH);\n}</textarea>\n<div class='card'>Try it out in your IDE or simulator. What happens when you adjust the sensor?</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "Loop Like a Pro — The Mighty for Loop",
+  "lessons": [
+    {
+      "title": "🔁 What is a for Loop?",
+      "content": "<div class='card'>Ever wanted your Arduino to do something 10 times without writing it 10 times? Say hello to the <code>for</code> loop!</div>\n<div class='card'>Syntax:\n<pre>\nfor (int i = 0; i < 10; i++) {\n  // run this code\n}\n</pre></div>\n<div class='card'>It has 3 parts:\n<ul>\n<li><b>Start:</b> int i = 0</li>\n<li><b>Condition:</b> i < 10</li>\n<li><b>Update:</b> i++ (means i = i + 1)</li>\n</ul>\n</div>\n<div class='card'>Example:\n<pre>\nfor (int i = 0; i < 5; i++) {\n  digitalWrite(led, HIGH);\n  delay(500);\n  digitalWrite(led, LOW);\n  delay(500);\n}\n</pre>\nThis blinks the LED 5 times!</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/PO8bVje.png",
+      "audio": "https://example.com/audio/forloop_intro.mp3"
+    },
+    {
+      "title": "🎮 Game: The Loop Counter",
+      "content": "<div class='card'>Let’s simulate a countdown using a <code>for</code> loop!</div>\n<script>\nfor (let i = 5; i > 0; i--) {\n  document.write('<div class=\"card\">T-minus ' + i + '...</div>');\n}\ndocument.write('<div class=\"card\">🚀 Lift-off!</div>');\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Watch: Arduino for Loop Explained",
+      "content": "<div class='card'>This video covers <code>for</code> loops with LED patterns, sensors, and real projects.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/h2uQU7gYmmY' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "💡 Explore: Use for Loop with Arrays",
+      "content": "<div class='card'>Use <code>for</code> to control multiple LEDs from an array!</div>\n<pre>\nint leds[] = {2, 3, 4, 5};\nfor (int i = 0; i < 4; i++) {\n  digitalWrite(leds[i], HIGH);\n  delay(200);\n  digitalWrite(leds[i], LOW);\n}\n</pre>\n<div class='card'>That’s how scrolling lights are made! 🔥</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,
+{
+  "title": "Go With the Flow — Understanding the while Loop",
+  "lessons": [
+    {
+      "title": "🌊 Meet the while Loop",
+      "content": "<div class='card'>The <code>while</code> loop keeps running as long as its condition stays true — kind of like your brain thinking about pizza until you eat it.</div>\n<div class='card'>Syntax:\n<pre>\nwhile (condition) {\n  // do this stuff\n}\n</pre></div>\n<div class='card'>Example:\n<pre>\nwhile (digitalRead(buttonPin) == HIGH) {\n  digitalWrite(ledPin, HIGH);\n  delay(200);\n  digitalWrite(ledPin, LOW);\n  delay(200);\n}\n</pre>\nThis keeps blinking the LED while the button is pressed.</div>\n<div class='card'>⚠️ Warning: If the condition never turns false, it loops forever!</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/oKRB1Bk.png",
+      "audio": "https://example.com/audio/while_loop_intro.mp3"
+    },
+    {
+      "title": "🎮 Game: Button Hold Challenge",
+      "content": "<div class='card'>Simulate holding a button to keep the loop going:</div>\n<script>\nlet pressed = Math.random() > 0.5;\nif (pressed) {\n  for (let i = 0; i < 5; i++) {\n    document.write('<div class=\"card\">LED blink #' + (i+1) + '</div>');\n  }\n} else {\n  document.write('<div class=\"card\">Button not pressed — no blinks.</div>');\n}\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: while Loops for Motion and Sensors",
+      "content": "<div class='card'>Here's how while loops work in robotics and motion sensors. Super fun use cases!</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/3VBZTZS3kgI' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📦 DIY Challenge: while Loop with Sensor",
+      "content": "<div class='card'>Make a project that runs a motor while a light sensor detects darkness.</div>\n<pre>\nwhile (analogRead(lightSensor) < 300) {\n  digitalWrite(motorPin, HIGH);\n}\n</pre>\n<div class='card'>Try changing the condition to suit different thresholds!</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+},
+{
+  "title": "One-Time Guarantee — The do...while Loop",
+  "lessons": [
+    {
+      "title": "📍 Why do...while?",
+      "content": "<div class='card'>The <code>do...while</code> loop guarantees one execution — no matter what!</div>\n<div class='card'>Syntax:\n<pre>\ndo {\n  // code runs once minimum\n} while (condition);\n</pre></div>\n<div class='card'>Unlike <code>while</code>, the condition is checked <i>after</i> the loop body. That’s why it always runs once.</div>\n<div class='card'>Example:\n<pre>\nint tries = 0;\ndo {\n  Serial.println(\"Trying to connect...\");\n  tries++;\n} while (tries < 3);\n</pre>\nThis will print 3 attempts, even if it connects the first time.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/mUgakAM.png",
+      "audio": "https://example.com/audio/do_while_intro.mp3"
+    },
+    {
+      "title": "🎮 Game: How Many Times?",
+      "content": "<div class='card'>We will show a random condition and see how many times the loop runs!</div>\n<script>\nlet counter = 0;\nlet shouldContinue = Math.random() > 0.5;\ndo {\n  document.write('<div class=\"card\">Looping... Try #' + (counter+1) + '</div>');\n  counter++;\n} while (shouldContinue && counter < 5);\ndocument.write('<div class=\"card\">Loop ended after ' + counter + ' times.</div>');\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: do...while Explained Visually",
+      "content": "<div class='card'>This short animation makes the <code>do...while</code> loop crystal clear!</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/l2TfRHfiBfE' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Experiment: Retry Until Connected",
+      "content": "<div class='card'>Simulate retrying WiFi connection using <code>do...while</code>:</div>\n<pre>\nbool connected = false;\nint attempts = 0;\ndo {\n  connected = tryConnect();\n  attempts++;\n} while (!connected && attempts < 5);\n</pre>\n<div class='card'>Useful in IOT! Simulate this logic using RoboDict's simulator or serial print.</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,
+{
+  "title": "Switch It Up — Mastering switch...case",
+  "lessons": [
+    {
+      "title": "🎚️ Intro to switch...case",
+      "content": "<div class='card'>Ever had a menu where you press 1 for Pizza, 2 for Burger, 3 for Fries? Arduino has one too — it's called <code>switch...case</code>!</div>\n<div class='card'>Syntax:\n<pre>\nswitch (variable) {\n  case 1:\n    // do something\n    break;\n  case 2:\n    // do something else\n    break;\n  default:\n    // fallback if nothing matches\n}\n</pre></div>\n<div class='card'>Use this when you're checking a variable against multiple values.</div>\n<div class='card'>Example:\n<pre>\nswitch (day) {\n  case 1: Serial.println(\"Monday\"); break;\n  case 2: Serial.println(\"Tuesday\"); break;\n  default: Serial.println(\"Weekend!\");\n}\n</pre></div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/ySSooUB.png",
+      "audio": "https://example.com/audio/switchcase_intro.mp3"
+    },
+    {
+      "title": "🎮 Game: Choose Your LED",
+      "content": "<div class='card'>Pick a number (1-3) to turn ON a different LED!</div>\n<script>\nlet choice = Math.floor(Math.random() * 4);\ndocument.write('<div class=\"card\">Choice: ' + choice + '</div>');\nswitch (choice) {\n  case 1:\n    document.write('<div class=\"card\">Red LED ON</div>');\n    break;\n  case 2:\n    document.write('<div class=\"card\">Green LED ON</div>');\n    break;\n  case 3:\n    document.write('<div class=\"card\">Blue LED ON</div>');\n    break;\n  default:\n    document.write('<div class=\"card\">No LED selected</div>');\n}\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: switch...case in Action",
+      "content": "<div class='card'>This video breaks down how to use switch...case for buttons, modes, and menus!</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/zF5C5VP0nsM' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Project: Mini Menu System",
+      "content": "<div class='card'>Let’s simulate a text-based menu using <code>switch</code>:</div>\n<pre>\nint option = 2;\nswitch(option) {\n  case 1:\n    startGame();\n    break;\n  case 2:\n    showSettings();\n    break;\n  default:\n    showError();\n}\n</pre>\n<div class='card'>Use the Serial Monitor to take input and create your own menus!</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "Break It Off — Escaping Loops & Cases",
+  "lessons": [
+    {
+      "title": "🛑 Why Use break?",
+      "content": "<div class='card'>Imagine you’re in a loop or a <code>switch</code> block and you suddenly want to bail out. That’s what <code>break</code> does.</div>\n<div class='card'>It immediately exits the loop or <code>switch</code> block, skipping anything after it.</div>\n<div class='card'>Syntax:\n<pre>\nfor (int i = 0; i < 10; i++) {\n  if (i == 5) break;\n  Serial.println(i);\n}\n</pre>\nThis loop will print 0 to 4, then exit. ⚡</div>\n<div class='card'>Used in <code>switch</code> to avoid ‘fall-through’ (executing all cases after the match).</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/XUqN5Y9.png",
+      "audio": "https://example.com/audio/break_intro.mp3"
+    },
+    {
+      "title": "🎮 Game: Break the Loop!",
+      "content": "<div class='card'>Simulate a sensor that breaks a loop early!</div>\n<script>\nfor (let i = 0; i < 10; i++) {\n  if (i === 6) {\n    document.write('<div class=\"card\">Sensor triggered! Breaking loop at ' + i + '.</div>');\n    break;\n  }\n  document.write('<div class=\"card\">Running step ' + i + '</div>');\n}\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: break Explained Clearly",
+      "content": "<div class='card'>This video explains <code>break</code> in <code>for</code>, <code>while</code>, and <code>switch</code> scenarios. 📺</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/AsDsZXNMmjM' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Activity: break for Safety",
+      "content": "<div class='card'>Write an Arduino code that spins a motor, but stops if a sensor value exceeds 600.</div>\n<pre>\nfor (int i = 0; i < 100; i++) {\n  if (analogRead(sensor) > 600) break;\n  spinMotor();\n}\n</pre>\n<div class='card'>Try modifying it for different thresholds!</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "Skip Smart — Using the `continue` Statement",
+  "lessons": [
+    {
+      "title": "🏃‍♂️ What is `continue`?",
+      "content": "<div class='card'>The <code>continue</code> statement says: \"Skip this round, go to the next one!\" 🌀</div>\n<div class='card'>It’s used inside loops. When encountered, the rest of the current iteration is ignored — and the loop jumps straight to the next cycle.</div>\n<div class='card'>Example:\n<pre>\nfor (int i = 0; i < 10; i++) {\n  if (i % 2 == 0) continue;\n  Serial.println(i);\n}\n</pre>\nThis will print only odd numbers (1, 3, 5, 7, 9).</div>\n<div class='card'>Useful for skipping unwanted cases while keeping the loop running! 🚀</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/CqMAtCJ.png",
+      "audio": "https://example.com/audio/continue_intro.mp3"
+    },
+    {
+      "title": "🎮 Game: Even Filter",
+      "content": "<div class='card'>Watch how <code>continue</code> skips even numbers 👀</div>\n<script>\nfor (let i = 1; i <= 10; i++) {\n  if (i % 2 === 0) continue;\n  document.write('<div class=\"card\">Kept: ' + i + '</div>');\n}\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: continue Statement Explained",
+      "content": "<div class='card'>This fun animation shows how <code>continue</code> behaves differently than <code>break</code>. 🎯</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/vYd6cXJ_rTE' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Try: Skip Sensor Spikes",
+      "content": "<div class='card'>Use <code>continue</code> to skip values above 800 (spikes):</div>\n<pre>\nfor (int i = 0; i < 100; i++) {\n  int reading = analogRead(sensor);\n  if (reading > 800) continue;\n  Serial.println(reading);\n}\n</pre>\n<div class='card'>This way you filter out unwanted sensor data without ending the loop. Smart, right?</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "Go Where? — The Mysterious `goto` Statement",
+  "lessons": [
+    {
+      "title": "🌀 What is `goto`?",
+      "content": "<div class='card'>Think of <code>goto</code> as a portal. When used, your code jumps straight to a labeled section — skipping everything in between.</div>\n<div class='card'>Syntax:\n<pre>\ngoto label;\n...\nlabel:\n  // code here\n</pre></div>\n<div class='card'>But beware! 🛑 It can make your code messy and hard to follow if overused.</div>\n<div class='card'>Example:\n<pre>\nint x = 1;\nif (x == 1) goto skip;\nSerial.println(\"This won’t run\");\nskip:\nSerial.println(\"Jumped here!\");\n</pre></div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/D1wdRKa.png",
+      "audio": "https://example.com/audio/goto_intro.mp3"
+    },
+    {
+      "title": "🎮 Game: The Code Jumper",
+      "content": "<div class='card'>Try to guess where the code jumps!</div>\n<script>\nlet x = Math.random() > 0.5;\nif (x) {\n  document.write('<div class=\"card\">goto SKIPPED</div>');\n  document.write('<div class=\"card\">Code Block SKIPPED</div>');\n} else {\n  document.write('<div class=\"card\">No goto used — all code runs</div>');\n}\ndocument.write('<div class=\"card\">Final Block Reached ✅</div>');\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: Why `goto` is Rare (but Exists)",
+      "content": "<div class='card'>Watch why developers rarely use <code>goto</code>, but why Arduino still allows it.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/o4E1W-ZtkRc' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Lab Test: Panic Exit",
+      "content": "<div class='card'>Simulate a panic stop in your code using <code>goto</code>.</div>\n<pre>\nint value = analogRead(A0);\nif (value > 900) goto emergency;\nSerial.println(\"All normal\");\n...\nemergency:\nSerial.println(\"Emergency shutdown!\");\n</pre>\n<div class='card'>But remember — only use it when absolutely needed, like in legacy or hardware failure systems.</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "Return of the Jedi — Mastering `return` in Arduino",
+  "lessons": [
+    {
+      "title": "🚪 What is `return`?",
+      "content": "<div class='card'>The <code>return</code> statement is how a function finishes its job and sends back a result (or exits quietly).</div>\n<div class='card'>Types of return:\n<ul><li><code>return;</code> → Exit with nothing (for <code>void</code> functions)</li><li><code>return value;</code> → Send back a result (for <code>int</code>, <code>bool</code>, etc.)</li></ul></div>\n<div class='card'>Example 1:\n<pre>\nvoid blink() {\n  digitalWrite(LED_BUILTIN, HIGH);\n  delay(100);\n  digitalWrite(LED_BUILTIN, LOW);\n  delay(100);\n  return;\n}\n</pre>\nFunction ends silently.</div>\n<div class='card'>Example 2:\n<pre>\nint add(int a, int b) {\n  return a + b;\n}\n</pre>\nReturns the sum to wherever the function was called.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/KUVFPOq.png",
+      "audio": "https://example.com/audio/return_intro.mp3"
+    },
+    {
+      "title": "🎮 Game: Who Returns What?",
+      "content": "<div class='card'>Guess what this function returns:</div>\n<script>\nfunction multiply(a, b) {\n  return a * b;\n}\nlet result = multiply(4, 3);\ndocument.write('<div class=\"card\">Result: ' + result + '</div>');\n</script>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: return Explained Like a Pro",
+      "content": "<div class='card'>Here’s a short and fun tutorial on how <code>return</code> works in Arduino sketches.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/0aFUeJFrbgU' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Lab: Smart Temperature Function",
+      "content": "<div class='card'>Write a function that returns <code>true</code> if temperature is safe:</div>\n<pre>\nbool isSafe(int temp) {\n  if (temp < 50) return true;\n  return false;\n}\n</pre>\n<div class='card'>Use this to alert or control a fan.</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
 
 
 ,{
