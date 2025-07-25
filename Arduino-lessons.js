@@ -4478,6 +4478,134 @@ void loop() {
 }
 
       ]
+    },{
+      title:"⚡ Instant Reactions: Mastering External Interrupts",
+      modules:[
+        {
+  "title": "attachInterrupt(): The Lightning Listener",
+  "lessons": [
+    {
+      "title": "🌩️ What is attachInterrupt()?",
+      "content": "<div class='card'>Imagine you’re coding a robot, and suddenly, someone claps 👏. The robot must STOP what it’s doing and react instantly. <b>That’s what interrupts are for.</b></div>\n<div class='card'>An <b>interrupt</b> is a special event that makes Arduino pause everything and jump to a specific function instantly.\n<pre>attachInterrupt(digitalPinToInterrupt(pin), ISR, mode);</pre>\nWhere:\n<ul>\n<li><code>pin</code>: The digital pin you want to monitor</li>\n<li><code>ISR</code>: The function to run (Interrupt Service Routine)</li>\n<li><code>mode</code>: WHEN to trigger: <code>RISING</code>, <code>FALLING</code>, or <code>CHANGE</code></li>\n</ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💬 Real-Life Analogy: Doorbell Interrupt",
+      "content": "<div class='card'>You're watching Netflix 🍿, and someone rings the doorbell 🚪🔔.\nYou pause the movie, check the door (ISR), then resume watching. That’s an <b>interrupt</b>.</div>\n<div class='card'>Arduino does the same thing:\n<pre>\nvoid ringBell() {\n  Serial.println(\"🔔 Someone’s at the door!\");\n}\n\nattachInterrupt(digitalPinToInterrupt(2), ringBell, FALLING);</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: External Interrupts Tutorial",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/o2hrpZB2E9w\" title=\"Arduino Interrupt Tutorial\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: When to Interrupt?",
+      "content": "<div class='card'>Which situation needs an interrupt?\n<ol>\n<li>Checking a temperature sensor every 5 seconds</li>\n<li>Detecting sudden light using a photoresistor</li>\n<li>Counting button presses at any time</li>\n</ol></div>\n<div class='card'>\n<input placeholder='Type 2 and 3' id='interruptGame' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Use interrupts when immediate response is required.\")'>Submit</button></div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔍 What Pins Work with Interrupts?",
+      "content": "<div class='card'>It depends on your board:\n<ul>\n<li><b>Uno/Nano:</b> Pins 2 & 3 only</li>\n<li><b>Mega:</b> Pins 2, 3, 18, 19, 20, 21</li>\n<li><b>ESP32/ESP8266:</b> Almost all digital pins (⚡cool!)</li>\n</ul>\n</div>\n<div class='card'>Use <code>digitalPinToInterrupt(pin)</code> to be safe.\nExample:\n<pre>\nattachInterrupt(digitalPinToInterrupt(2), alarm, RISING);\n</pre></div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Experiment: Emergency Brake Button",
+      "content": "<div class='card'>Simulate an emergency stop using a pushbutton:\n<ul><li>Connect Button to Pin 2 (interrupt pin)</li>\n<li>LED to Pin 13</li></ul>\n</div>\n<div class='card'>\n<pre>\nvolatile bool stopNow = false;\nvoid emergencyStop() {\n  stopNow = true;\n}\n\nvoid setup() {\n  pinMode(13, OUTPUT);\n  attachInterrupt(digitalPinToInterrupt(2), emergencyStop, FALLING);\n}\n\nvoid loop() {\n  if (!stopNow) {\n    digitalWrite(13, HIGH);\n    delay(200);\n    digitalWrite(13, LOW);\n    delay(200);\n  }\n}</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📘 Pro Tips for attachInterrupt",
+      "content": "<div class='card'>⏱️ The ISR (interrupt function) must be fast! Don’t use <code>delay()</code> or <code>Serial.print()</code> inside it.</div>\n<div class='card'>Keep ISR logic short — just change a variable, then act on it in <code>loop()</code>.</div>\n<div class='card'>Use <code>volatile</code> keyword for any shared variables!</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "detachInterrupt(): Power Down the Listener",
+  "lessons": [
+    {
+      "title": "🔌 What is detachInterrupt()?",
+      "content": "<div class='card'>Once you <code>attachInterrupt()</code>, Arduino keeps listening for that trigger forever… unless you tell it to STOP.</div>\n<div class='card'><code>detachInterrupt(pin)</code> disables the interrupt from the specified pin.</div>\n<div class='card'>It’s like saying: “Ignore the doorbell now, I’m focused.”</div>\n<pre>\ndetachInterrupt(digitalPinToInterrupt(2));</pre>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔍 When to Use detachInterrupt()",
+      "content": "<div class='card'>🔊 Use cases:\n<ul>\n<li>✅ Once an alarm is triggered, no need to re-trigger it.</li>\n<li>✅ Avoid bounce or repeated triggers.</li>\n<li>✅ Switching from manual to auto mode in a system.</li>\n</ul></div>\n<div class='card'>🧠 It helps cleanly control WHEN your Arduino should react — or ignore — signals.</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🏡 Real-Life Example: Security System",
+      "content": "<div class='card'>In a home security system, once an intruder is detected, we sound the alarm and stop listening to further motion — until reset.</div>\n<div class='card'>Code:\n<pre>\nvoid intruderAlert() {\n  alarmOn = true;\n  detachInterrupt(digitalPinToInterrupt(2));\n}</pre></div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Disable After First Trigger",
+      "content": "<div class='card'>Wiring:\n<ul><li>Button → Pin 2 (interrupt)</li><li>LED → Pin 13</li></ul></div>\n<div class='card'>Code:\n<pre>\nvolatile bool pressed = false;\nvoid stopOnce() {\n  pressed = true;\n  detachInterrupt(digitalPinToInterrupt(2));\n}\n\nvoid setup() {\n  pinMode(13, OUTPUT);\n  attachInterrupt(digitalPinToInterrupt(2), stopOnce, FALLING);\n}\n\nvoid loop() {\n  if (pressed) digitalWrite(13, HIGH);\n}</pre></div>\n<div class='card'>✅ The LED lights up once, then ignores future presses!</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎓 Recap: Keep It Controlled",
+      "content": "<div class='card'>🚫 <code>detachInterrupt()</code> is your off switch for triggers.</div>\n<div class='card'>📦 Use it to pause/reactivate inputs intelligently — in alarms, counters, games, and more!</div>\n<div class='card'><code>attachInterrupt()</code> starts the reaction,<br><code>detachInterrupt()</code> ends it like a pro.</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "digitalPinToInterrupt(): Board-Safe Interrupt Mapping",
+  "lessons": [
+    {
+      "title": "🧭 Why digitalPinToInterrupt()?",
+      "content": "<div class='card'>Every Arduino board has different interrupt-capable pins.</div>\n<div class='card'>You can’t assume <code>pin 2</code> or <code>pin 3</code> works for all models.\nThat’s where <code>digitalPinToInterrupt()</code> comes in.</div>\n<div class='card'>It maps your pin to the internal interrupt number.</div>\n<pre>\nattachInterrupt(digitalPinToInterrupt(2), ISR, FALLING);</pre>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 When Should I Use It?",
+      "content": "<div class='card'>✅ Always!</div>\n<div class='card'>✅ Makes your code portable between Uno, Mega, Nano, Leonardo, ESP32, etc.</div>\n<div class='card'>✅ Avoids errors like: <code>'2' is not an interrupt</code> on some boards.</div>\n<div class='card'>💡 Treat it like a translator between your chosen pin and the chip’s actual interrupt number.</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔌 Real-Life Analogy: Hotel Room Numbers",
+      "content": "<div class='card'>Imagine you say: \"I want room 101,\" but the hotel staff uses internal room IDs.</div>\n<div class='card'>They use a map to find which actual corridor and key belong to Room 101.</div>\n<div class='card'>That’s exactly what <code>digitalPinToInterrupt()</code> does.</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Safer Interrupt Setup",
+      "content": "<div class='card'>Let’s use a button on Pin 3 and trigger an LED on Pin 13.</div>\n<pre>\nvolatile bool isOn = false;\n\nvoid toggle() {\n  isOn = !isOn;\n}\n\nvoid setup() {\n  pinMode(13, OUTPUT);\n  attachInterrupt(digitalPinToInterrupt(3), toggle, RISING);\n}\n\nvoid loop() {\n  digitalWrite(13, isOn);\n}</pre>\n<div class='card'>✅ This will work even if you move to an ESP32 or Mega!</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Interrupts on Different Boards",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/S5U7NWxKJTA' title='Interrupts across Arduino boards' frameborder='0' allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧩 Summary: Always Use It!",
+      "content": "<div class='card'><code>digitalPinToInterrupt()</code> = portable, error-free interrupts.</div>\n<div class='card'>It adapts your code to work with any compatible Arduino board automatically.</div>\n<div class='card'>🚀 Pro coders never hardcode pin numbers — they use this helper function!</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+
+      ]
     }
   ]
 };
