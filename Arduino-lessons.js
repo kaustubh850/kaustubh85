@@ -2509,6 +2509,169 @@ void loop() {
     }
   ]
 }
+,{
+  "title": "Types Unleashed — Exploring Data Types in Arduino",
+  "lessons": [
+    {
+      "title": "🔍 Why Do Data Types Matter?",
+      "content": "<div class='card'>Have you ever written a number and later wished it could store text? Or tried storing a sentence inside a light switch? 🤯 That’s what happens when you ignore <b>data types</b>.</div>\n<div class='card'>In Arduino, data types tell the microcontroller what kind of value to expect: numbers, text, on/off states, or floating points. It saves memory, increases speed, and prevents chaos!</div>\n<div class='card'>We’re going to explore every type — not just what it is, but <i>why</i> and <i>when</i> to use it.</div>\n<div class='card'>By the end, you’ll know exactly when to say: \"Hey, this variable should be an <code>unsigned long</code> and NOT a <code>float</code>!\"</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/7ug65du.png",
+      "audio": ""
+    },
+    {
+      "title": "📦 Whole Numbers: int, long, short, byte",
+      "content": "<div class='card'><code>int</code> is your classic whole number. From −32,768 to 32,767. Use it for things like temperature or score counters.</div>\n<div class='card'><code>long</code> handles HUGE numbers. Example: time in milliseconds — use <code>millis()</code>? You'll need <code>long</code>.</div>\n<div class='card'><code>short</code> is a compact <code>int</code> with smaller range. Rarely used. You’re better off with <code>int</code>.</div>\n<div class='card'><code>byte</code> stores 0 to 255. Perfect for RGB values, brightness levels, or small loops.</div>\n<pre class='card'>int score = 120;\nlong duration = 500000;\nbyte ledLevel = 128;</pre>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/VkLHwLr.png",
+      "audio": ""
+    },
+    {
+      "title": "💧 float & double — Hello Decimals!",
+      "content": "<div class='card'>Numbers with dots! 3.14, 27.5, 0.01 — you’ll need <code>float</code> for these.</div>\n<div class='card'><code>float</code> gives 6-7 digits precision. That’s enough for most sensors, like temperature, voltage, or distance.</div>\n<div class='card'><code>double</code> in most Arduinos is just another <code>float</code>. (On 32-bit boards it may give better precision.)</div>\n<pre class='card'>float temp = 36.7;\ndouble speed = 1.23456;</pre>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/0NSUfb1.png",
+      "audio": ""
+    },
+    {
+      "title": "📧 Text Types: char, string, and String()",
+      "content": "<div class='card'><code>char</code> holds a single character: 'A', 'B', 'z'. Just one!</div>\n<div class='card'><code>string</code> (lowercase) is a low-level array of <code>char</code> values — not easy to use.</div>\n<div class='card'><code>String()</code> (capital S) is Arduino’s friendly string object. You can use <code>String name = \"Kaustubh\";</code> and even check <code>name.length()</code>.</div>\n<pre class='card'>char letter = 'K';\nString name = \"RoboDict\";</pre>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧠 True or False: bool & boolean",
+      "content": "<div class='card'>This type stores <code>true</code> or <code>false</code>. Super useful in logic, buttons, conditions.</div>\n<pre class='card'>bool isOn = true;\nboolean gateOpen = false;</pre>\n<div class='card'><code>boolean</code> is the same as <code>bool</code>. Arduino made it to match C-style readability.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🚀 Unsigned Data Types",
+      "content": "<div class='card'>Need only positive numbers? Use <code>unsigned</code> types.</div>\n<ul class='card'>\n<li><code>unsigned char</code>: 0–255</li>\n<li><code>unsigned int</code>: 0–65,535</li>\n<li><code>unsigned long</code>: 0–4,294,967,295</li>\n</ul>\n<div class='card'>Faster, lighter, and memory-friendly if you KNOW you won't go negative.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📐 Special Types: size_t, void, word",
+      "content": "<div class='card'><code>size_t</code>: Used internally when dealing with array lengths or sizes. Think: 'how many items?'</div>\n<div class='card'><code>word</code>: Just a fancy way of saying 16-bit unsigned number. (Same as <code>unsigned int</code>)</div>\n<div class='card'><code>void</code>: Used for functions that return nothing. Like <code>setup()</code> or <code>loop()</code>.</div>\n<pre class='card'>void blinkLED() {\n  digitalWrite(13, HIGH);\n}</pre>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎮 Mini Game: Spot the Type!",
+      "content": "<div class='card'>What type would you use for:</div>\n<ul class='card'>\n<li>Pin voltage reading: __________</li>\n<li>Loop counter: __________</li>\n<li>Name of your robot: __________</li>\n<li>Time in ms: __________</li>\n</ul>\n<div class='card'>Answers: float, int, String, unsigned long</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 Video: Arduino Data Types Explained",
+      "content": "<div class='card'>Watch this easy-to-understand video that covers everything we’ve just learned about variables and types!</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/KY9xOb_X2P4' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "Types Unleashed — Exploring Data Types in Arduino",
+  "lessons": [
+    
+    {
+      "title": "🔒 Constant Variables with const",
+      "content": "<div class='card'>Want to lock a variable so it never changes again? Use <code>const</code>!</div>\n<div class='card'><code>const</code> means constant. Like a rule that can’t be broken.</div>\n<pre class='card'>const int ledPin = 13;\n// You can't reassign ledPin now!</pre>\n<div class='card'>Great for pin numbers, fixed speeds, default values — anything that should remain untouched.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/ABsM3xz.png",
+      "audio": ""
+    },
+    {
+      "title": "🌍 Scope — Where Do Variables Live?",
+      "content": "<div class='card'>Variables live in different places: globally or locally.</div>\n<div class='card'>A <b>global</b> variable is declared outside any function. It's accessible from anywhere!</div>\n<div class='card'>A <b>local</b> variable lives inside a function. It disappears once the function finishes.</div>\n<pre class='card'>int globalVar = 10;\nvoid loop() {\n  int localVar = 5;\n}</pre>\n<div class='card'>Keep your code tidy: use local when you can!</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧊 static — Freeze a Variable in Time",
+      "content": "<div class='card'><code>static</code> variables keep their value even after the function ends.</div>\n<div class='card'>It’s like putting the variable in a cryo-freeze and reviving it next time with all its memory intact.</div>\n<pre class='card'>void blinkCounter() {\n  static int count = 0;\n  count++;\n  Serial.println(count);\n}</pre>\n<div class='card'>Every time <code>blinkCounter()</code> runs, <code>count</code> continues from where it left off.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/gPXbJDI.png",
+      "audio": ""
+    },
+    {
+      "title": "⚠️ volatile — When Values Can Change Anytime!",
+      "content": "<div class='card'><code>volatile</code> tells the compiler: 'This variable might change at any moment!'</div>\n<div class='card'>Used in special cases like interrupts or when hardware updates a variable.</div>\n<pre class='card'>volatile int buttonState = 0;\nvoid ISR() {\n  buttonState = 1;\n}</pre>\n<div class='card'>Without <code>volatile</code>, the compiler may ignore real-time changes.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/OHa9Zxo.png",
+      "audio": ""
+    }
+  ]
+},
+{
+  "title": "Types Unleashed — Exploring Data Types in Arduino",
+  "lessons": [
+    
+    {
+      "title": "🔄 Type Conversions — Shape Shifting in Arduino",
+      "content": "<div class='card'>Ever needed to turn a decimal into an integer? Or a character into its numeric form? That’s what <b>type conversion</b> is for!</div>\n<div class='card'>In Arduino, you can convert between types using simple functions. But each has its rules — and risks!</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/hqTOmOf.png",
+      "audio": ""
+    },
+    {
+      "title": "🧱 Convert to byte()",
+      "content": "<div class='card'>Use <code>byte()</code> to shrink values to 0–255. Careful! Values beyond that range get trimmed.</div>\n<pre class='card'>int a = 350;\nbyte b = byte(a); // b = 94 (because 350 wraps around)</pre>\n<div class='card'>Great for RGB colors, PWM, or space-saving tricks.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🔡 Convert to char()",
+      "content": "<div class='card'><code>char()</code> changes numbers into ASCII characters. 65 becomes 'A', 97 becomes 'a'.</div>\n<pre class='card'>int asciiCode = 65;\nchar letter = char(asciiCode);</pre>\n<div class='card'>Fun way to decode or build strings!</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/fjDUIZf.png",
+      "audio": ""
+    },
+    {
+      "title": "💧 Convert to float()",
+      "content": "<div class='card'>Want decimal precision? <code>float()</code> converts any number into float form.</div>\n<pre class='card'>int temp = 25;\nfloat exactTemp = float(temp); // 25.0</pre>\n<div class='card'>Useful for smooth math or sensor blending.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📏 Convert to int() and long()",
+      "content": "<div class='card'><code>int()</code> drops decimal part. Use when precision isn't needed.</div>\n<pre class='card'>float reading = 23.78;\nint rounded = int(reading); // 23</pre>\n<div class='card'><code>long()</code> is like int, but stores big values. Useful when storing time or massive counters.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "⚙️ Unsigned Conversions: unsigned int() & unsigned long()",
+      "content": "<div class='card'><code>unsigned int()</code> and <code>unsigned long()</code> strip away negatives.</div>\n<pre class='card'>int x = -10;\nunsigned int y = unsigned(x); // y = a very large number</pre>\n<div class='card'>These convert values into positive range — be careful with signed to unsigned!</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧙 Convert to word()",
+      "content": "<div class='card'><code>word()</code> packs two bytes into a 16-bit number. You can also give it a single 16-bit value.</div>\n<pre class='card'>word w = word(255, 1); // 255 + (1 << 8) = 511</pre>\n<div class='card'>Used in timing, custom binary protocols, etc.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/ZzKP89c.png",
+      "audio": ""
+    }
+  ]
+},
+{
+  "title": "Types Unleashed — Exploring Data Types in Arduino",
+  "lessons": [
+    
+    {
+      "title": "🧰 Utilities — sizeof() & PROGMEM Magic",
+      "content": "<div class='card'>Let's explore two powerful tools that make your Arduino memory-savvy and smarter: <code>sizeof()</code> and <code>PROGMEM</code>.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📦 sizeof() — Know Your Variable Size",
+      "content": "<div class='card'><code>sizeof()</code> tells you how much space (in bytes) a variable or type takes.</div>\n<pre class='card'>int a = 10;\nSerial.println(sizeof(a)); // 2 on most boards</pre>\n<div class='card'>Great for optimizing memory, buffers, or checking array lengths.</div>\n<pre class='card'>char message[] = \"Kaustubh\";\nSerial.println(sizeof(message)); // includes null terminator</pre>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/y9FGVjz.png",
+      "audio": ""
+    },
+    {
+      "title": "🗂️ PROGMEM — Save Flash, Not SRAM!",
+      "content": "<div class='card'><code>PROGMEM</code> stores constant data in Flash memory instead of precious SRAM.</div>\n<div class='card'>SRAM is very limited on Arduinos. Use <code>PROGMEM</code> for big lookup tables, fonts, and texts.</div>\n<pre class='card'>const char message[] PROGMEM = \"Hello RoboDict!\";</pre>\n<div class='card'>To access PROGMEM data, use special functions like <code>pgm_read_byte()</code>.</div>\n<pre class='card'>char c = pgm_read_byte(&(message[0]));</pre>\n<div class='card'>Advanced tip — works great for menus, sensor maps, or static text screens.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.imgur.com/NHFX1Zk.png",
+      "audio": ""
+    }
+  ]
+}
+
+
 
 
 ,{
