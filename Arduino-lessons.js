@@ -4606,6 +4606,1034 @@ void loop() {
 }
 
       ]
+    },{
+      title:"Mastering Advanced I/O: Sounds, Signals & Data Streams",
+      modules:[
+        {
+  "title": "Let’s Make Some Noise: Exploring tone()",
+  "lessons": [
+    {
+      "title": "🔊 What is tone()?",
+      "content": "<div class='card'>The <code>tone()</code> function lets Arduino play musical notes or alert sounds by sending out square wave frequencies on a pin.</div>\n<div class='card'><pre>tone(pin, frequency);</pre>\nYou can even add duration:\n<pre>tone(pin, frequency, duration);</pre></div>\n<div class='card'>🎵 Frequency = pitch (e.g., 440Hz = A note)</div>\n<div class='card'>⌛ Duration = how long to play (in ms)</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🌍 Where and Why is tone() Used?",
+      "content": "<div class='card'>- Buzzers for alerts\n- Sound effects in projects\n- Musical instruments\n- Alarms and reminders\n- Sensor feedback tones</div>\n<div class='card'>🎮 Game consoles and microwaves use tone-like sound signals. So can your Arduino!</div>\n<div class='card'>Use any PWM-capable digital pin (e.g., Pin 8 or 9 on Uno) 🎧</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🏠 Real-Life Example: Doorbell Buzz",
+      "content": "<div class='card'>Imagine a smart home doorbell using Arduino. A visitor presses a button, and Arduino plays a tone:</div>\n<pre>\nif (digitalRead(2) == HIGH) {\n  tone(8, 1000, 500); // 1kHz tone for 0.5s\n}</pre>\n<div class='card'>This mimics the buzz you hear on apartment doors 🚪🔔</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Buzzer Melody with tone()",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/1JDEf1glEDA' title='Arduino Buzzer with tone()' frameborder='0' allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Guess That Frequency!",
+      "content": "<div class='card'>What happens when you run this?</div>\n<pre>tone(9, 261, 500);</pre>\n<div class='card'>A) A low-pitched rumble\nB) A mid-range beep\nC) A high-pitched squeak</div>\n<div class='card'>\n<input id='toneQuiz' placeholder='A, B or C?' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct: B! 261Hz = Middle C 🎹\")'>Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Motion Alarm System",
+      "content": "<div class='card'>Hook up a motion sensor and buzzer:</div>\n<pre>\n#define buzzerPin 10\nvoid setup() {\n  pinMode(2, INPUT); // Motion sensor\n}\nvoid loop() {\n  if (digitalRead(2) == HIGH) {\n    tone(buzzerPin, 1200, 1000);\n  }\n}</pre>\n<div class='card'>👣 Motion triggers sound — great for theft detection or hallway alerts!</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💡 Pro Tip: Only One tone() at a Time",
+      "content": "<div class='card'>Arduino can only play one tone at once.</div>\n<div class='card'>If you call <code>tone()</code> again on a different pin, it stops the previous one!</div>\n<div class='card'>Use <code>noTone(pin);</code> to manually stop sound.</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎓 Summary: Arduino + Sound = Fun Projects",
+      "content": "<div class='card'>You can make alarms, instruments, and interactive sounds using just a simple piezo buzzer!</div>\n<div class='card'>And it’s all powered by:\n<pre>tone(pin, frequency, duration);</pre></div>\n<div class='card'>Go compose your first Arduino music loop now 🎼🤖</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "Silence the Sound: Exploring noTone()",
+  "lessons": [
+    {
+      "title": "🤫 What is noTone()?",
+      "content": "<div class='card'>The <code>noTone(pin)</code> function is the OFF switch for any sound being played using <code>tone()</code>.</div>\n<div class='card'><pre>\nnoTone(8);  // Immediately stop sound on pin 8\n</pre></div>\n<div class='card'>It's perfect when you want to stop a buzzer on demand (e.g., after a button is released or a timeout).</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🌍 Where & Why Would You Use noTone()?",
+      "content": "<div class='card'>🔕 Alarms that should stop after a condition is resolved (e.g., motion stopped)</div>\n<div class='card'>🔄 Replace tones with silence in games or apps\n🛑 Stop continuous sounds after a set time</div>\n<div class='card'>🎯 Use it with the same pin used by <code>tone()</code>. E.g., Digital Pin 9 on Arduino Uno</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🏠 Real-Life Example: Security Buzzer Reset",
+      "content": "<div class='card'>Imagine a home alarm — it buzzes if motion is detected. But once the person walks away, the sound should stop!</div>\n<div class='card'>This logic works:</div>\n<pre>\nif (digitalRead(2) == HIGH) {\n  tone(9, 1500);\n} else {\n  noTone(9);\n}\n</pre>\n<div class='card'>🎯 Great for creating professional-feeling alarms, entry systems, or visitor alerts!</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: tone() + noTone() Demo",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/lW-wc__AsNw' title='Arduino tone and noTone Example' frameborder='0' allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: When to Silence?",
+      "content": "<div class='card'>When would you call <code>noTone()</code> in this logic?</div>\n<pre>\nif (digitalRead(2) == ???) {\n  noTone(9);\n}\n</pre>\n<div class='card'>A) HIGH – button pressed\nB) LOW – button released\nC) ALWAYS</div>\n<div class='card'>\n<input id='ntquiz' placeholder='Your answer (A/B/C)' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Best answer: B! Stop tone when button is released.\")'>Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Button-Silenced Alarm",
+      "content": "<div class='card'>Wire a button to Pin 2, buzzer to Pin 9:</div>\n<pre>\nvoid loop() {\n  if (digitalRead(2) == LOW) {\n    noTone(9); // Button released\n  } else {\n    tone(9, 2000); // Button held\n  }\n}\n</pre>\n<div class='card'>This setup lets the user cancel the alarm by releasing the button 🔇</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎓 Recap: tone() + noTone = 🔊🎚️ Control",
+      "content": "<div class='card'>Use <code>noTone(pin)</code> to stop a sound when it's no longer needed.</div>\n<div class='card'>Just like how you pause music on your phone, <code>noTone()</code> brings silence to your project 🎶❌</div>\n<div class='card'>Perfect for clean transitions and reducing power usage!</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "Catch the Pulse: Measuring with pulseIn()",
+  "lessons": [
+    {
+      "title": "📊 What is a Pulse?",
+      "content": "<div class='card'>A <b>pulse</b> is a quick burst of HIGH or LOW signal — like a clap of hands or a blink of light.</div>\n<div class='card'>It's used in sensors, remotes, servo control, and signal timing.</div>\n<div class='card'>When a signal turns ON then OFF rapidly, that’s a pulse. Arduino can measure how long it lasted using <code>pulseIn()</code>.</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📘 Syntax & Purpose of pulseIn()",
+      "content": "<div class='card'>Use <code>pulseIn(pin, value)</code> to measure how long a pin stayed <b>HIGH</b> or <b>LOW</b>.</div>\n<pre>\nlong duration = pulseIn(7, HIGH);\n</pre>\n<div class='card'>It returns the pulse length in microseconds (μs)!</div>\n<div class='card'>🎯 Common Use: Ultrasonic sensors, IR remotes, PWM signal analysis</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🌍 Real-Life Example: Ultrasonic Distance",
+      "content": "<div class='card'>Think of sonar — like a dolphin sending a sound pulse and listening for the echo.</div>\n<div class='card'>HC-SR04 sensor sends a HIGH pulse. Arduino listens for the echo using:</div>\n<pre>\nlong duration = pulseIn(echoPin, HIGH);\n</pre>\n<div class='card'>Longer the pulse, farther the object!</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔌 What Pins Can You Use?",
+      "content": "<div class='card'>✅ <b>Any digital pin</b> on Arduino can be used with <code>pulseIn()</code></div>\n<div class='card'>Just connect the signal wire (e.g. echo pin of sensor) to a digital pin — often Pin 7 or 8 for sensors</div>\n<div class='card'>⚠️ Avoid using PWM pins for both input and output at the same time.</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: pulseIn + Ultrasonic Sensor",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/9xToP9Hvrqk' title='Arduino Ultrasonic Sensor & pulseIn Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Echo Time with pulseIn()",
+      "content": "<div class='card'>Wiring:</div>\n<ul>\n<li>HC-SR04 Echo → Pin 7</li>\n<li>Trigger → Pin 6</li>\n</ul>\n<pre>\ndigitalWrite(6, LOW);\ndelayMicroseconds(2);\ndigitalWrite(6, HIGH);\ndelayMicroseconds(10);\ndigitalWrite(6, LOW);\n\nlong duration = pulseIn(7, HIGH);\nSerial.println(duration);\n</pre>\n<div class='card'>This prints the pulse duration in microseconds 📏</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: What's the Distance?",
+      "content": "<div class='card'>If pulseIn() gives 500 μs, how far is the object (in cm)?</div>\n<div class='card'>Use this rule: <br><code>distance_cm = duration / 58.0</code></div>\n<div class='card'>\n<input id='pulsegame' placeholder='Enter distance in cm' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ 500 / 58 = ~8.6 cm\")'>Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎓 Recap: When to Use pulseIn()",
+      "content": "<div class='card'>Use it when you want to:</div>\n<ul>\n<li>⏱️ Measure duration of a pulse (HIGH or LOW)</li>\n<li>📡 Read distance using ultrasonic sensors</li>\n<li>🛰️ Decode signals from IR remotes or radio</li>\n</ul>\n<div class='card'>It’s like Arduino’s stopwatch for electrical pulses 🕒⚡</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "Patience Pays: Using pulseInLong() for Longer Pulses",
+  "lessons": [
+    {
+      "title": "🧠 Why pulseInLong() Exists",
+      "content": "<div class='card'>While <code>pulseIn()</code> is great for measuring short pulses, it may <b>timeout early</b> when the pulse is long.</div>\n<div class='card'>That’s where <code>pulseInLong()</code> steps in — it's like <b>pulseIn with more patience</b>.</div>\n<div class='card'>⏳ It allows for longer timeout periods, perfect for slow signals or long-distance ultrasonic sensors.</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🛠️ Syntax & How to Use",
+      "content": "<div class='card'>Here's the syntax for <code>pulseInLong()</code>:</div>\n<pre>pulseInLong(pin, value)</pre>\n<pre>pulseInLong(pin, value, timeout)</pre>\n<div class='card'>Just like <code>pulseIn()</code>, it waits for the pin to go HIGH or LOW and measures the duration (in μs).</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🌐 When to Use pulseInLong()",
+      "content": "<div class='card'>✅ Use this when:</div>\n<ul>\n<li>You're dealing with <b>long pulse durations</b></li>\n<li>Your sensor’s signal is slow to return</li>\n<li>You need to measure PWM from slow devices (e.g. infrared sensors)</li>\n</ul>\n<div class='card'>⛔ Avoid in time-critical code — it still blocks while waiting for the pulse!</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🏠 Real-Life Analogy: Long Echo in a Cave",
+      "content": "<div class='card'>Imagine shouting into a deep cave.</div>\n<div class='card'>It takes longer for the echo to return — <b>pulseIn() may give up too soon</b>.</div>\n<div class='card'>But <code>pulseInLong()</code> waits longer, capturing even the slowest echo like a pro spelunker 🧗</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Using pulseIn vs pulseInLong",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/jFzJk6NK9eA' title='pulseInLong Arduino Example' frameborder='0' allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Compare Two Distance Modes",
+      "content": "<div class='card'>Wire HC-SR04 echo to Pin 7</div>\n<pre>\nlong duration1 = pulseIn(7, HIGH);\nlong duration2 = pulseInLong(7, HIGH);\n\nSerial.print(\"pulseIn: \");\nSerial.println(duration1);\nSerial.print(\"pulseInLong: \");\nSerial.println(duration2);\n</pre>\n<div class='card'>See the difference in results — especially over longer distances!</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Pulse Patience Test",
+      "content": "<div class='card'>If your ultrasonic pulse doesn't return in time using <code>pulseIn()</code>, what should you try?</div>\n<div class='card'>\n<input id='pulseLongQuiz' placeholder='Type your answer' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Use pulseInLong() to allow more time.\")'>Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎓 Recap: pulseInLong vs pulseIn",
+      "content": "<div class='card'><b>pulseIn()</b> — Quick, works great for short signals</div>\n<div class='card'><b>pulseInLong()</b> — Same job, but with extended timeout capability</div>\n<div class='card'>Use when pulse timing may be long (like deep-distance sensors)</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "shiftIn() — Talk to the 74HC165 Like a Pro",
+  "lessons": [
+    {
+      "title": "📦 What's a Shift Register? (74HC165)",
+      "content": "<div class=\"card\">\nA shift register is a chip that helps Arduino deal with <b>more inputs</b> using <b>fewer pins</b>.\n</div>\n<div class=\"card\">\n<b>74HC165</b> is a special kind:\n👉 Parallel-In, Serial-Out\nIt reads 8 switches <i>at once</i> but sends that data one bit at a time.\n</div>\n<div class=\"card\">\n📊 Example Use:\n- Read 8 buttons with just 3 Arduino pins 😲\n- Build a control panel\n- Old keyboard scanners\n</div>",
+      "image": "url_to_diagram",
+      "audio": "url"
+    },
+    {
+      "title": "📐 How shiftIn() Helps",
+      "content": "<div class=\"card\">\nYour Arduino <b>asks</b> the 74HC165: “Give me the next bit!” — and it replies... 0 or 1.\n</div>\n<div class=\"card\">\nThis happens 8 times, and Arduino builds a full <code>byte</code> from it.\n</div>\n<div class=\"card\">\nNow you know which buttons are pressed!\n</div>",
+      "image": "url_to_timing_diagram",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Wiring 74HC165 with Arduino",
+      "content": "<div class=\"card\">\nWiring:\n<ul>\n<li>74HC165 QH (output) → Arduino D8</li>\n<li>Clock → D9</li>\n<li>Load/Shld → D10</li>\n</ul>\nPull up all 8 data pins with resistors and buttons.\n</div>\n<div class=\"card\">\n<pre>\n#define DATA 8\n#define CLOCK 9\n#define LOAD 10\n\nvoid loop() {\n  digitalWrite(LOAD, LOW);\n  delayMicroseconds(5);\n  digitalWrite(LOAD, HIGH);\n\n  byte data = shiftIn(DATA, CLOCK, MSBFIRST);\n  Serial.println(data, BIN);\n}\n</pre>\n</div>\n<div class=\"card\">\nNow press buttons and see the byte change in Serial Monitor!\n</div>",
+      "image": "url_to_real_button_board",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: 74HC165 with shiftIn()",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/GUnUfpXcAqk\" title=\"74HC165 with Arduino\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "💡 Real-Life Analogy",
+      "content": "<div class=\"card\">\nImagine 8 kids raising hands (1 = up, 0 = down).\nBut the teacher (Arduino) can't see them all.\nSo one kid whispers each hand's state to the teacher one-by-one.\nThat’s how <b>serial data</b> works — bit by bit.\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "shiftOut() — More LEDs, Fewer Pins (Thanks 74HC595!)",
+  "lessons": [
+    {
+      "title": "💡 Why shiftOut()? What's 74HC595?",
+      "content": "<div class=\"card\">\nArduino has limited digital output pins.\n</div>\n<div class=\"card\">\nEnter the 🦸‍♂️ hero chip: <b>74HC595</b> —\nA <b>Serial-In, Parallel-Out</b> shift register!\nIt takes data <i>bit-by-bit</i> and lights up 8 outputs <i>at once</i>.\n</div>\n<div class=\"card\">\nUse it for:\n- LED matrix displays\n- 7-segment counters\n- Controlling 8+ relays, motors, etc.\n- DJ lights or game panels 🎮\n</div>",
+      "image": "url_to_chip_diagram",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 How it Works",
+      "content": "<div class=\"card\">\nImagine you're passing 8 boxes down a conveyor belt one at a time.\nEach box has ON/OFF info.\n</div>\n<div class=\"card\">\n<b>shiftOut()</b> sends those boxes (bits) to 74HC595.\nWhen ready, you say “GO!” — and the chip pushes out all signals at once 💥\n</div>\n<div class=\"card\">\nThat “GO!” is done via a <code>latch</code> pin.\n</div>",
+      "image": "url_to_conveyor_gif_or_static",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Wiring 74HC595 + 8 LEDs",
+      "content": "<div class=\"card\">\nWiring:\n<ul>\n<li>Pin 11 (Data) → 74HC595 DS</li>\n<li>Pin 12 (Clock) → SH_CP</li>\n<li>Pin 8 (Latch) → ST_CP</li>\n<li>Q0 to Q7 → LEDs with resistors</li>\n<li>Don't forget GND!</li>\n</ul>\n</div>\n<div class=\"card\">\n<pre>\n#define DATA 11\n#define CLOCK 12\n#define LATCH 8\n\nvoid setup() {\n  pinMode(DATA, OUTPUT);\n  pinMode(CLOCK, OUTPUT);\n  pinMode(LATCH, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(LATCH, LOW);\n  shiftOut(DATA, CLOCK, MSBFIRST, 0b10101010);\n  digitalWrite(LATCH, HIGH);\n  delay(500);\n}\n</pre>\n</div>\n<div class=\"card\">\nThis blinks alternate LEDs — neat!\n</div>",
+      "image": "url_to_led_array_wiring",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Guess the Pattern",
+      "content": "<div class=\"card\">\nWhat will this pattern do?\n<pre>shiftOut(DATA, CLOCK, MSBFIRST, 0b11110000);</pre>\n</div>\n<div class=\"card\">\nA) First 4 LEDs ON, rest OFF\n<br>B) All LEDs ON\n<br>C) Alternate ON/OFF\n</div>\n<div class=\"card\">\n<input id=\"patternQuiz\" placeholder=\"Type A, B or C\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Correct! A is the right answer.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: shiftOut() + LED Example",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/6aWf3_Qg_7k\" title=\"shiftOut tutorial\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🤔 Real-Life Analogy",
+      "content": "<div class=\"card\">\nThink of shiftOut like this:\n<ul>\n<li>You line up 8 toy soldiers in a line (shift bits)</li>\n<li>Then you pull the curtain (latch pin) and 💥 they all raise their weapons!</li>\n<li>This all happens using just 3 Arduino pins 😎</li>\n</ul>\n</div>",
+      "image": "url_to_fun_illustration",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Bonus: Count from 0 to 255 in Binary!",
+      "content": "<div class=\"card\">\nWant to flex the full power?\nLet’s make a binary counter using shiftOut:\n</div>\n<div class=\"card\">\n<pre>\nfor (int i = 0; i < 256; i++) {\n  digitalWrite(LATCH, LOW);\n  shiftOut(DATA, CLOCK, MSBFIRST, i);\n  digitalWrite(LATCH, HIGH);\n  delay(100);\n}\n</pre>\n</div>\n<div class=\"card\">\nWatch the LEDs dance through all binary combos 🕺\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+
+      ]
+    },{
+      title:"Know Your Characters: The Art of Detecting Letters, Digits & More!",
+      modules:[
+        {
+  "title": "isAlpha() — Is it a Letter?",
+  "lessons": [
+    {
+      "title": "🔍 What is isAlpha()?",
+      "content": "<div class=\"card\">\n<code>isAlpha(c)</code> checks if <b>c</b> is a letter from the alphabet (A–Z or a–z).\n</div>\n<div class=\"card\">\nIt returns:\n<ul>\n<li><b>true</b> if it's a letter</li>\n<li><b>false</b> if it's not (like a digit or symbol)</li>\n</ul>\n</div>\n<div class=\"card\">\nGreat for password checks, name filters, and input sanitization.\n</div>",
+      "image": "url_to_letter_icon",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Real-Life Example: Name Form Validation",
+      "content": "<div class=\"card\">\nYou're creating a smart name input field with Arduino + LCD.\n</div>\n<div class=\"card\">\nIf someone types <b>J0hn</b>,\n<pre>isAlpha('0')</pre>\nwill return <b>false</b> — because numbers aren't letters.\n</div>\n<div class=\"card\">\nSo you can flash a warning or buzz a buzzer 🔔\n</div>",
+      "image": "url_to_form_lcd",
+      "audio": "url"
+    },
+    {
+      "title": "💻 Code Example",
+      "content": "<div class=\"card\">\n<pre>\nchar c = 'A';\nif (isAlpha(c)) {\n  Serial.println(\"It's a letter!\");\n} else {\n  Serial.println(\"Not a letter!\");\n}\n</pre>\n</div>\n<div class=\"card\">\nTry with 'Z', 'm', '5', '$' — test what gets through!\n</div>",
+      "image": "url_to_serial_monitor_preview",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Is it Alpha?",
+      "content": "<div class=\"card\">\nWhat will this return?\n<pre>isAlpha('#')</pre>\n</div>\n<div class=\"card\">\n<input id=\"alphaGame\" placeholder=\"true or false?\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('❌ Nope! It’s FALSE — # is not a letter.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Letters vs. Not-Letters!",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/0z7QRejIW8M\" title=\"Character Functions in Arduino\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Challenge: Filter the Name!",
+      "content": "<div class=\"card\">\nWrite a sketch that reads a name via Serial and removes anything that’s not a letter:\n</div>\n<div class=\"card\">\n<pre>\nvoid loop() {\n  if (Serial.available()) {\n    char c = Serial.read();\n    if (isAlpha(c)) Serial.print(c);\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\n👏 Welcome to smart input validation Arduino-style!\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isAlphaNumeric() — Letters or Numbers?",
+  "lessons": [
+    {
+      "title": "🔍 What is isAlphaNumeric()?",
+      "content": "<div class=\"card\">\n<code>isAlphaNumeric(c)</code> checks if <b>c</b> is a letter (A-Z or a-z) <u>or</u> a digit (0–9).\n</div>\n<div class=\"card\">\nIt returns:\n<ul>\n<li><b>true</b> if it’s a letter or number</li>\n<li><b>false</b> if it’s anything else (like %, @, space, etc.)</li>\n</ul>\n</div>\n<div class=\"card\">\nIt’s like a security guard for your inputs.\n</div>",
+      "image": "url_to_mixed_input",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Real-Life Example: Username Filters",
+      "content": "<div class=\"card\">\nWant your user to enter a username like <code>RoboKid007</code>?\n</div>\n<div class=\"card\">\n<code>isAlphaNumeric()</code> ensures they don’t use invalid symbols like @ or #.\n</div>\n<div class=\"card\">\nPerfect for: forms, tags, LCD messages, keypads, and more.\n</div>",
+      "image": "url_to_username_input",
+      "audio": "url"
+    },
+    {
+      "title": "💻 Code Example",
+      "content": "<div class=\"card\">\n<pre>\nchar c = '7';\nif (isAlphaNumeric(c)) {\n  Serial.println(\"It’s a valid character!\");\n} else {\n  Serial.println(\"Not allowed!\");\n}\n</pre>\n</div>\n<div class=\"card\">\nTry testing it with '@', 'Q', '9', and a space.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Is it Alphanumeric?",
+      "content": "<div class=\"card\">\n<pre>isAlphaNumeric(' ')</pre>\nWhat will this return?\n</div>\n<div class=\"card\">\n<input id=\"alphaNumGame\" placeholder=\"true or false?\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('❌ Nope! Spaces are not alphanumeric.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Character Filtering in Arduino",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/FzCftKzZ1Bo\" title=\"isAlphaNumeric() Tutorial\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Challenge: Valid Username Collector",
+      "content": "<div class=\"card\">\nMake a Serial reader that accepts only letters and digits:\n</div>\n<div class=\"card\">\n<pre>\nvoid loop() {\n  if (Serial.available()) {\n    char c = Serial.read();\n    if (isAlphaNumeric(c)) {\n      Serial.print(c);\n    } else {\n      Serial.print(\"🔒\");\n    }\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nTry typing symbols — Arduino filters them instantly!\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isAscii() — ASCII or Not?",
+  "lessons": [
+    {
+      "title": "💡 What is isAscii()?",
+      "content": "<div class=\"card\">\n<code>isAscii(c)</code> checks if the character <b>c</b> belongs to the ASCII set.\n</div>\n<div class=\"card\">\nThat means its value is between 0 and 127.\n</div>\n<div class=\"card\">\nWhy care? Because Arduino's Serial, keypads, and displays often expect ASCII!\n</div>",
+      "image": "url_to_ascii_table",
+      "audio": "url"
+    },
+    {
+      "title": "🌍 Real-Life Analogy: Keyboard Typing",
+      "content": "<div class=\"card\">\nEvery time you press a key like <b>A</b> or <b>4</b>, the keyboard sends its ASCII value to your computer.\n</div>\n<div class=\"card\">\nIf someone tries to send emoji 🐱 — it’s <b>not</b> ASCII. That’s Unicode!\n</div>",
+      "image": "url_keyboard_ascii",
+      "audio": "url"
+    },
+    {
+      "title": "📘 Example: Check ASCII",
+      "content": "<div class=\"card\">\n<pre>\nchar c = '©'; // this is NOT ASCII\nif (isAscii(c)) {\n  Serial.println(\"ASCII accepted!\");\n} else {\n  Serial.println(\"Not ASCII! Ignored.\");\n}\n</pre>\n</div>\n<div class=\"card\">\nTry this with emojis, accented letters, or symbols from other languages!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Guess the ASCII Range",
+      "content": "<div class=\"card\">\nWhat's the range of ASCII values?\nA. 0–255<br>B. 0–127<br>C. 32–126\n</div>\n<div class=\"card\">\n<input id=\"asciiGame\" placeholder=\"Type A, B, or C\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Correct: B! ASCII values are 0–127.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: ASCII vs Unicode Explained",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/MijmeoH9LT4\" title=\"ASCII Explained\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: ASCII Filter for Serial Input",
+      "content": "<div class=\"card\">\nFilter out non-ASCII characters from Serial input:\n</div>\n<div class=\"card\">\n<pre>\nvoid loop() {\n  if (Serial.available()) {\n    char c = Serial.read();\n    if (isAscii(c)) {\n      Serial.print(c);\n    } else {\n      Serial.print(\"❌\");\n    }\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nTry typing in symbols like é, ✓, and see how Arduino filters them.\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isControl() — Silent but Powerful",
+  "lessons": [
+    {
+      "title": "🤐 What is a Control Character?",
+      "content": "<div class=\"card\">\n<code>isControl(c)</code> checks if a character is a <b>control character</b> — meaning it's not visible, but performs a function.\n</div>\n<div class=\"card\">\nASCII has 33 such characters (values 0–31 + 127).\n</div>\n<div class=\"card\">\nExamples include:\n<ul>\n<li><b>\\n</b> (newline) → moves cursor to next line</li>\n<li><b>\\t</b> (tab) → inserts a tab space</li>\n<li><b>\\b</b> (backspace)</li>\n<li>ASCII 0 (NUL) — null terminator for strings</li>\n</ul>\nThese aren’t seen, but are always at work behind the scenes!\n</div>",
+      "image": "url_control_chars_table",
+      "audio": "url"
+    },
+    {
+      "title": "🎤 Real-World Analogy: TV Remote",
+      "content": "<div class=\"card\">\nImagine you're watching TV and you press the 'volume up' button.\n</div>\n<div class=\"card\">\nYou don't see the infrared signal, but your TV does.\nThat invisible signal = control character — it's not seen, but it changes something.\n</div>",
+      "image": "url_tv_remote_control",
+      "audio": "url"
+    },
+    {
+      "title": "📘 Example: Detect Newline",
+      "content": "<div class=\"card\">\n<pre>\nchar c = '\\n';\nif (isControl(c)) {\n  Serial.println(\"Yep, it's a control character!\");\n}\n</pre>\n</div>\n<div class=\"card\">\nThis works for any invisible characters: tab, enter, backspace, etc.\n</div>",
+      "image": "url_serial_newline",
+      "audio": "url"
+    },
+    {
+      "title": "🔍 Why is isControl() Important?",
+      "content": "<div class=\"card\">\nWhen reading Serial input, sometimes you get extra characters.\n<pre>\\n</pre> or <pre>\\r</pre> sneak in and mess up your parsing!\n</div>\n<div class=\"card\">\nUse <code>isControl()</code> to filter those out or handle them differently.\n</div>\n<div class=\"card\">\nAlso helps in protocols, text formatting, communication debugging, etc.\n</div>",
+      "image": "url_serial_bug_example",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Control or Not?",
+      "content": "<div class=\"card\">\nWhich of the following are control characters?\n<pre>\nA. 'A'\nB. '\\n'\nC. ' '\nD. '\\t'</pre>\n</div>\n<div class=\"card\">\n<input id=\"controlGame\" placeholder=\"Type A, B, C, or D (multiple allowed)\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ B and D are control characters!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: ASCII Control Characters Explained",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/WVhmN1-vnnY\" title=\"ASCII Control Codes\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Filter Out Control Characters",
+      "content": "<div class=\"card\">\nRead a Serial input, and ignore control characters:</div>\n<div class=\"card\">\n<pre>\nvoid loop() {\n  if (Serial.available()) {\n    char c = Serial.read();\n    if (!isControl(c)) {\n      Serial.print(c);\n    } else {\n      Serial.print(\"❌\"); // filtered\n    }\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nTry pressing ENTER after some text and see it filter!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Recap: Invisible but Vital",
+      "content": "<div class=\"card\">\nControl characters are invisible warriors:\n<ul>\n<li>They move the cursor</li>\n<li>End strings</li>\n<li>Structure protocols</li>\n</ul>\nUse <code>isControl()</code> to detect and handle them smartly 😎\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isDigit() — Number Detective!",
+  "lessons": [
+    {
+      "title": "🔢 What is isDigit()?",
+      "content": "<div class=\"card\">\n<code>isDigit(c)</code> checks if the character <code>c</code> is a digit — like '0' to '9'.\n</div>\n<div class=\"card\">\nIt doesn't check for <b>numeric value</b>, it checks if the <b>character</b> is one of the digit characters in the ASCII table.\n</div>\n<div class=\"card\">\n<b>✔️ True for:</b> '0', '1', ..., '9' <br>\n<b>❌ False for:</b> '.', '-', 'A', etc.\n</div>",
+      "image": "url_ascii_digits_table",
+      "audio": "url"
+    },
+    {
+      "title": "📜 ASCII Refresher (Super Important)",
+      "content": "<div class=\"card\">\nEvery character you type has a numeric ID in the ASCII system:\n<ul>\n<li>'0' → ASCII 48</li>\n<li>'1' → ASCII 49</li>\n<li>...</li>\n<li>'9' → ASCII 57</li>\n</ul>\nSo <code>isDigit()</code> simply checks if ASCII value of character is between 48–57.\n</div>\n<div class=\"card\">\nTo see it:\n<pre>\nchar ch = '5';\nSerial.println((int)ch); // prints 53\n</pre>\nThat’s the magic behind it!\n</div>",
+      "image": "url_ascii_table_digits",
+      "audio": "url"
+    },
+    {
+      "title": "📘 Example: Serial Input Digit Check",
+      "content": "<div class=\"card\">\nLet's say a user is typing into Serial Monitor — you want to allow only numbers:\n</div>\n<div class=\"card\">\n<pre>\nchar input = Serial.read();\nif (isDigit(input)) {\n  Serial.println(\"✅ That's a digit!\");\n} else {\n  Serial.println(\"❌ Not a digit.\");\n}\n</pre>\n</div>\n<div class=\"card\">\nThis is perfect for menu systems, keypad validation, PIN inputs, etc.\n</div>",
+      "image": "url_serial_input_validation",
+      "audio": "url"
+    },
+    {
+      "title": "🎤 Real-Life Analogy: Cashier Scanner",
+      "content": "<div class=\"card\">\nImagine you're a cashier scanning barcodes. Some codes are numbers, some are letters.\n</div>\n<div class=\"card\">\nYou only want to process items with numeric codes (e.g., price tags).\nThat's what <code>isDigit()</code> does — it separates the numbers from noise.\n</div>",
+      "image": "url_barcode_scanner_example",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Guess the Output!",
+      "content": "<div class=\"card\">\nWhat does this print?\n<pre>\nchar a = '9';\nchar b = 'x';\nSerial.println(isDigit(a));\nSerial.println(isDigit(b));\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"digitGame\" placeholder=\"Type two numbers (e.g. 1, 0)\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Correct: 1 for digit, 0 for non-digit!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: ASCII Digits vs Numbers (Why '5' ≠ 5)",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/Q9qFb2tJf0M\" title=\"ASCII Characters Explained\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It: Parse Number from Serial",
+      "content": "<div class=\"card\">\nBuild a simple calculator that only adds digits entered by the user:\n</div>\n<div class=\"card\">\n<pre>\nint total = 0;\nvoid loop() {\n  if (Serial.available()) {\n    char c = Serial.read();\n    if (isDigit(c)) {\n      total += c - '0';\n      Serial.print(\"Running Total: \");\n      Serial.println(total);\n    }\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nTip: <code>c - '0'</code> converts char digit to actual number!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Recap: Character ≠ Number",
+      "content": "<div class=\"card\">\n<code>isDigit()</code> checks if a char is between '0' and '9' in ASCII.\n</div>\n<div class=\"card\">\nIt’s great for input validation, keypad readers, calculator inputs, and any time you’re working with typed characters.\n</div>\n<div class=\"card\">\nUse this wisely to build strong, bug-free Arduino apps!\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isGraph() — Detect the Printable Gang (Except Spaces!)",
+  "lessons": [
+    {
+      "title": "🧐 What is isGraph()?",
+      "content": "<div class=\"card\">\n<code>isGraph(c)</code> checks if a character has a visible shape (a graphic symbol) — excluding spaces.\n</div>\n<div class=\"card\">\nIf it makes a mark on the screen — like <b>'A'</b>, <b>'9'</b>, <b>'@'</b>, <b>'~'</b>, etc. — then it’s considered a graphical (printable) character.\n</div>\n<div class=\"card\">\n<b>Returns TRUE (1)</b> for ASCII 33 to 126.<br>\n<b>Returns FALSE (0)</b> for space (ASCII 32), control characters, and non-printables.\n</div>",
+      "image": "url_ascii_range_graphical",
+      "audio": "url"
+    },
+    {
+      "title": "🔤 Graphical Characters vs Printable vs Whitespace",
+      "content": "<div class=\"card\">\n🧠 Let’s break it down:\n</div>\n<div class=\"card\">\n<ul>\n<li><b>Printable characters (isPrint)</b>: everything you can see (includes space)</li>\n<li><b>Graphical characters (isGraph)</b>: same as printable, but <b>excludes</b> space</li>\n<li><b>Whitespace:</b> space, tab, newline — characters you don’t “see” but they take space</li>\n</ul>\n</div>\n<div class=\"card\">\nSo: <pre>isPrint(' ') → true<br>isGraph(' ') → false</pre>\nThat’s the main difference!\n</div>",
+      "image": "url_print_vs_graph",
+      "audio": "url"
+    },
+    {
+      "title": "🔢 ASCII Range: What Does isGraph() Cover?",
+      "content": "<div class=\"card\">\nLet’s dive deep into the ASCII table:\n</div>\n<div class=\"card\">\n<pre>\nASCII 33:  !\nASCII 34:  \"\n...\nASCII 57:  9\nASCII 65:  A\nASCII 90:  Z\nASCII 97:  a\nASCII 122: z\nASCII 126: ~\n</pre>\n</div>\n<div class=\"card\">\nAll characters from <b>!</b> to <b>~</b> are considered “graphical”. Space (ASCII 32) is NOT.\n</div>",
+      "image": "url_ascii_chart_slice",
+      "audio": "url"
+    },
+    {
+      "title": "🛠 Real-Life Example: Form Field Validation",
+      "content": "<div class=\"card\">\nSuppose you’re building a login form using a keypad. You don’t want empty spaces, but you want any visible character allowed.\n</div>\n<div class=\"card\">\nThat’s where <code>isGraph()</code> helps:\n<pre>\nchar c = Serial.read();\nif (isGraph(c)) {\n  username += c;\n} else {\n  Serial.println(\"Invalid input: not a visible character\");\n}\n</pre>\n</div>\n<div class=\"card\">\nIt’s perfect for usernames, PINs, passwords where you want NO blank spaces.\n</div>",
+      "image": "url_form_example",
+      "audio": "url"
+    },
+    {
+      "title": "🧮 Fun Trick: Count All Graphical Inputs",
+      "content": "<div class=\"card\">\nTry this code to count all visible keypresses, excluding spaces:\n</div>\n<div class=\"card\">\n<pre>\nint count = 0;\nvoid loop() {\n  if (Serial.available()) {\n    char c = Serial.read();\n    if (isGraph(c)) count++;\n  }\n  Serial.println(count);\n}\n</pre>\n</div>\n<div class=\"card\">\nOnly characters like A-Z, 0-9, @, !, %, etc., will be counted.\n</div>",
+      "image": "url_keylogger_simulation",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Guess Which One is Graphical",
+      "content": "<div class=\"card\">\nWhich of these characters return TRUE with <code>isGraph()</code>?\n<pre>\nA) '@'\nB) ' '\nC) '\\n'\nD) '9'\nE) '~'\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"graphGame\" placeholder=\"Type the letter(s), e.g., A, D, E\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Correct: A, D, E! B and C are not graphical.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: ASCII — Printable vs Graphical Explained",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/2TSqBEF4-cE\" title=\"Graphical ASCII Characters\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎓 Recap: When to Use isGraph()",
+      "content": "<div class=\"card\">\n✔️ Use <code>isGraph()</code> when you want to filter out empty or invisible characters from user input.\n</div>\n<div class=\"card\">\nIt’s great for:\n<ul>\n<li>Keypad text entry</li>\n<li>Username/password validation</li>\n<li>Ensuring no invisible garbage is being typed in</li>\n</ul>\n</div>\n<div class=\"card\">\n📍Remember: It’s like <code>isPrint()</code>, just stricter — no room for spaces!\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isHexadecimalDigit() — Hex Check Like a Pro!",
+  "lessons": [
+    {
+      "title": "🔢 What’s a Hexadecimal Digit?",
+      "content": "<div class='card'>\nA <b>hexadecimal digit</b> is any of these 16 characters:\n<pre>0 1 2 3 4 5 6 7 8 9 A B C D E F</pre>\nThey represent base-16 numbers used in memory addresses, colors, low-level coding, and more.\n</div>\n<div class='card'>\nIt includes both uppercase and lowercase versions:\n<pre>'0'-'9', 'A'-'F', 'a'-'f'</pre>\nSo 9, F, and f are all valid hex digits!\n</div>",
+      "image": "url_hex_chart",
+      "audio": "url"
+    },
+    {
+      "title": "🔍 What is isHexadecimalDigit()?",
+      "content": "<div class='card'>\n<code>isHexadecimalDigit(c)</code> checks whether a character is one of the valid hexadecimal characters above.\n</div>\n<div class='card'>\nIf it is, it returns <b>true</b> (1). If not — false (0).\n</div>\n<div class='card'>\nExamples:\n<pre>\nisHexadecimalDigit('A') → true\nisHexadecimalDigit('G') → false\nisHexadecimalDigit('4') → true\nisHexadecimalDigit('@') → false\n</pre>\n</div>",
+      "image": "url_function_demo",
+      "audio": "url"
+    },
+    {
+      "title": "📦 Why Use This in Arduino?",
+      "content": "<div class='card'>\nWhen you receive serial data or keypad input, and expect a user to enter a <b>hex code</b> (e.g., for colors or addresses), you can validate every character easily:\n</div>\n<div class='card'>\nExample:\n<pre>\nchar input = Serial.read();\nif (isHexadecimalDigit(input)) {\n  Serial.println(\"✔️ Valid hex digit\");\n} else {\n  Serial.println(\"❌ Not hex!\");\n}\n</pre>\n</div>\n<div class='card'>\n💡 Bonus: It's especially useful in systems involving sensors with hexadecimal configurations or communicating with EEPROM, displays, or RGB LEDs.\n</div>",
+      "image": "url_arduino_serial",
+      "audio": "url"
+    },
+    {
+      "title": "🌈 Real-Life Example: RGB Color Code Input",
+      "content": "<div class='card'>\nLet’s say you want users to enter a 6-digit hex color like #FF00AA.\n</div>\n<div class='card'>\nYou can verify each digit before constructing the color:\n<pre>\nchar r1 = Serial.read();\nif (!isHexadecimalDigit(r1)) {\n  Serial.println(\"Invalid color input!\");\n}\n</pre>\n</div>\n<div class='card'>\nThis ensures your color code won't break due to bad characters like '$' or 'Z'.\n</div>",
+      "image": "url_color_input_validation",
+      "audio": "url"
+    },
+    {
+      "title": "🧮 Hex and Memory — How it Helps",
+      "content": "<div class='card'>\nIn embedded systems, memory addresses and values are often written in hexadecimal — like <b>0x7F</b> or <b>0xFF</b>.\n</div>\n<div class='card'>\nIf you’re debugging or parsing memory dumps, knowing what’s valid hex helps avoid disaster 😱\n</div>\n<div class='card'>\n<code>isHexadecimalDigit()</code> helps ensure you're interpreting memory right when reading bytes and converting data.\n</div>",
+      "image": "url_memory_debug_hex",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Is It Hex?",
+      "content": "<div class='card'>\nType the letters that are valid hexadecimal digits:\n<pre>A) Z\nB) 4\nC) F\nD) 8\nE) G\nF) a</pre>\n</div>\n<div class='card'>\n<input id='hexCheckGame' placeholder='Type your answers (e.g. B, C, D, F)' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Correct: B, C, D, F — those are valid hex digits!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Hexadecimal Made Easy",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/b2C6Ry7Zw6A' title='What is Hexadecimal?' frameborder='0' allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎓 Recap: When to Use isHexadecimalDigit()",
+      "content": "<div class='card'>\nUse this function when:\n<ul>\n<li>You're asking users to input color values (#RRGGBB)</li>\n<li>You’re parsing hex strings for memory or device configs</li>\n<li>You're reading EEPROM dumps or address maps</li>\n</ul>\n</div>\n<div class='card'>\nIt’s simple, but powerful. You don’t want garbage where only valid hex should live!\n</div>",
+      "image": "url_summary_card",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isLowercase() — The Lowercase Letter Spy 🕵️‍♂️",
+  "lessons": [
+    {
+      "title": "🔡 What is a Lowercase Character?",
+      "content": "<div class='card'>\nLowercase characters are the little guys — the small letters from <code>'a'</code> to <code>'z'</code>. They’re the ones you use in normal writing, unlike SHOUTY CAPS like <code>'A'</code> to <code>'Z'</code>.\n</div>\n<div class='card'>\nIn ASCII (which is how Arduino stores characters), lowercase letters have codes from:\n<pre>'a' → 97\n'z' → 122</pre>\nSo checking if something is lowercase means checking if it's between 97 and 122.\n</div>",
+      "image": "url_ascii_table_zoomed",
+      "audio": "url"
+    },
+    {
+      "title": "🤖 What is isLowercase()?",
+      "content": "<div class='card'>\n<code>isLower(c)</code> is a handy function that checks if a character <code>c</code> is a lowercase letter.\n</div>\n<div class='card'>\nIt returns:\n<ul>\n<li><b>True (1)</b> if the character is between <code>'a'</code> and <code>'z'</code></li>\n<li><b>False (0)</b> for all other characters (digits, symbols, uppercase, etc)</li>\n</ul>\n</div>\n<div class='card'>\nExamples:\n<pre>\nisLower('a') → 1\nisLower('z') → 1\nisLower('G') → 0\nisLower('!') → 0\n</pre>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🛠️ Use Case: Validating Input from Serial",
+      "content": "<div class='card'>\nImagine you're making a game where the player types a word — and you only want lowercase letters. What do you do?\n</div>\n<div class='card'>\nUse <code>isLowercase()</code> to check each character:\n<pre>\nchar input = Serial.read();\nif (isLower(input)) {\n  // Accept input\n} else {\n  Serial.println(\"❌ Not lowercase!\");\n}\n</pre>\n</div>\n<div class='card'>\nThis makes sure your logic only processes clean lowercase data, avoiding errors in logic or string comparison.\n</div>",
+      "image": "url_serial_keyboard_game",
+      "audio": "url"
+    },
+    {
+      "title": "🌍 Real-World Analogy",
+      "content": "<div class='card'>\nThink of <code>isLowercase()</code> like a lowercase bouncer outside a club 🕶️:\n</div>\n<div class='card'>\nHe checks IDs. If your name is in small letters, he says: “Come on in.”\nIf you’re all uppercase or just a number? “Nah bro, you're not on the list.”\n</div>",
+      "image": "url_bouncer_cartoon",
+      "audio": "url"
+    },
+    {
+      "title": "💡 ASCII Secrets Behind the Scenes",
+      "content": "<div class='card'>\nEach character in C++ is actually just a number behind the scenes.\n</div>\n<div class='card'>\nHere's what happens when you call <code>isLowercase()</code>:\n<pre>\nbool isLower(char c) {\n  return (c >= 'a' && c <= 'z');\n}\n</pre>\nSo yes, you could write your own version too — but Arduino already gives it for free!\n</div>",
+      "image": "url_ascii_explained",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Lower or Not?",
+      "content": "<div class='card'>\nWhich of these are lowercase?\n<pre>A) 'm'\nB) 'Z'\nC) '7'\nD) 'x'</pre>\n</div>\n<div class='card'>\n<input id='lowerGame' placeholder='Type the correct ones (e.g. A, D)' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Correct: A and D!')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: ASCII Table + Lowercase Logic",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/o8NPllzkFhE' title='ASCII in 5 Minutes' frameborder='0' allowfullscreen></iframe>",
+      "image": "url_ascii_vid",
+      "audio": "url"
+    },
+    {
+      "title": "📘 Recap: When to Use isLowercase()",
+      "content": "<div class='card'>\nUse <code>isLowercase()</code> when you want to:\n<ul>\n<li>Accept only lowercase names, passwords, or strings</li>\n<li>Parse input from keyboards, sensors, or web forms</li>\n<li>Ensure text formatting in text-to-speech or file saving</li>\n<li>Teach kids or students about character handling with confidence!</li>\n</ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isPunct() — Is This a Punctuation Symbol?",
+  "lessons": [
+    {
+      "title": "🔎 What is isPunct() Exactly?",
+      "content": "<div class='card'>\n<code>isPunct(c)</code> checks if a character is a punctuation symbol.\nIt returns:\n<ul><li><b>1 (true)</b> if the character is punctuation</li>\n<li><b>0 (false)</b> otherwise</li></ul>\n</div>\n<div class='card'>\nPunctuation symbols include:\n<pre>!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~</pre>\nThese are all visible ASCII characters <b>between 33 and 47, 58–64, 91–96, and 123–126</b>\n</div>\n<div class='card'>\nIt does <b>not</b> include letters, numbers, or whitespace.\n</div>",
+      "image": "url_isPunct_intro",
+      "audio": "url"
+    },
+    {
+      "title": "💡 Why Use isPunct()?",
+      "content": "<div class='card'>\nWhen processing passwords, usernames, file names, or scanned texts — we often need to <b>filter out or detect punctuation</b>.\n</div>\n<div class='card'>\nExample: Want to remove all punctuation from a sentence for NLP?\nUse <code>isPunct()</code> in a loop.\n</div>\n<div class='card'>\nIt’s also useful in input validation, text formatting, and security filters.\n</div>",
+      "image": "url_usecase_punctuation_filter",
+      "audio": "url"
+    },
+    {
+      "title": "🌍 Real-World Use Case: Password Check",
+      "content": "<div class='card'>\nSuppose your Arduino password input system needs to ensure at least 1 punctuation character for strength.\n</div>\n<div class='card'>\nCode snippet:\n<pre>\nbool hasPunct = false;\nfor (int i = 0; i < strlen(input); i++) {\n  if (isPunct(input[i])) {\n    hasPunct = true;\n    break;\n  }\n}\n</pre>\n</div>\n<div class='card'>\nThis can reject passwords like <code>hello123</code> and accept <code>hello@123</code>\n</div>",
+      "image": "url_password_strength_check",
+      "audio": "url"
+    },
+    {
+      "title": "📘 ASCII Explanation: What Counts as Punctuation?",
+      "content": "<div class='card'>\nHere’s the breakdown by ASCII ranges:\n<ul>\n<li>33–47 → ! \" # $ % & ' ( ) * + , - . /</li>\n<li>58–64 → : ; < = > ? @</li>\n<li>91–96 → [ \\ ] ^ _ `</li>\n<li>123–126 → { | } ~</li>\n</ul>\n</div>\n<div class='card'>\nNot included:\n<ul>\n<li>32 (Space)</li>\n<li>48–57 (Digits)</li>\n<li>65–90 (Uppercase)</li>\n<li>97–122 (Lowercase)</li>\n</ul>\n</div>",
+      "image": "url_ascii_table_ranges",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It Yourself: Filter Punctuation",
+      "content": "<div class='card'>\nLet’s write a program that removes all punctuation and keeps the rest.\n</div>\n<div class='card'>\n<pre>\nchar original[] = \"Hello, World! How's it going?\";\nchar clean[50];\nint j = 0;\n\nfor (int i = 0; i < strlen(original); i++) {\n  if (!isPunct(original[i])) {\n    clean[j++] = original[i];\n  }\n}\nclean[j] = '\\0';\nSerial.println(clean);  // Output: Hello World Hows it going\n</pre>\n</div>",
+      "image": "url_punctuation_removal_example",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Is This a Punct?",
+      "content": "<div class='card'>\nGuess which of these will return true for <code>isPunct()</code>:\n<pre>A. 'A'\nB. '!'\nC. '\\n'\nD. '@'\nE. ' '</pre>\n</div>\n<div class='card'>\n<input id='isPunctGame' placeholder='Type A, B, etc' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Answer: B and D are punctuation.')\">Submit</button>\n</div>",
+      "image": "url_punct_quiz_card",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Punctuation in ASCII (Visual Tutorial)",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/ZfA3e7ZrxzQ' title='ASCII and Punctuation' frameborder='0' allowfullscreen></iframe>",
+      "image": "url_video_frame_ascii_punct",
+      "audio": "url"
+    },
+    {
+      "title": "📚 Recap: When is isPunct() Useful?",
+      "content": "<div class='card'>\nUse it to:\n<ul>\n<li>Build password rules</li>\n<li>Clean user input</li>\n<li>Ignore symbols when counting words/letters</li>\n<li>Visualize clean strings for displays or logs</li>\n</ul>\n</div>\n<div class='card'>\nAnything between ASCII 33 and 126 <b>that is not a letter, digit, or space</b> is likely a punctuation!\n</div>",
+      "image": "url_summary_punctuation_checker",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isSpace() — Spotting the Invisible!",
+  "lessons": [
+    {
+      "title": "🧩 What is isSpace()?",
+      "content": "<div class='card'>\n<code>isSpace(c)</code> checks if the character is a kind of <b>whitespace</b> — things like spaces, tabs, or line breaks.\n</div>\n<div class='card'>\nThese characters <b>don't print symbols</b>, but they control layout.\nThey’re essential in formatting strings, parsing commands, or cleaning input.\n</div>\n<div class='card'>\nIt returns:\n<ul>\n<li><b>1 (true)</b> if the character is whitespace</li>\n<li><b>0 (false)</b> otherwise</li></ul>\n</div>\n<div class='card'>\n<b>Pro Tip:</b> Great for skipping gaps while parsing or filtering user input.\n</div>",
+      "image": "url_whitespace_concept",
+      "audio": "url"
+    },
+    {
+      "title": "📘 What Counts As Whitespace?",
+      "content": "<div class='card'>\n`isSpace()` returns <b>true</b> for the following invisible characters:\n<ul>\n<li><code>' '</code> – space (ASCII 32)</li>\n<li><code>'\\t'</code> – tab (ASCII 9)</li>\n<li><code>'\\n'</code> – newline (ASCII 10)</li>\n<li><code>'\\r'</code> – carriage return (ASCII 13)</li>\n<li><code>'\\f'</code> – form feed (ASCII 12)</li>\n<li><code>'\\v'</code> – vertical tab (ASCII 11)</li>\n</ul>\n</div>\n<div class='card'>\nEven though these characters are invisible, they <b>change how text looks</b> on screen.\n</div>",
+      "image": "url_ascii_whitespace",
+      "audio": "url"
+    },
+    {
+      "title": "🌍 Real-Life Example: Parsing SMS Commands",
+      "content": "<div class='card'>\nImagine your Arduino receives a command string via Bluetooth:\n<code>\"SET LED ON\\n\"</code>\n</div>\n<div class='card'>\nTo process it cleanly, we may want to <b>skip all spaces, tabs, and line breaks</b>.\nThat’s where <code>isSpace()</code> comes in!\n</div>\n<div class='card'>\n<pre>\nfor (int i = 0; i < strlen(cmd); i++) {\n  if (!isSpace(cmd[i])) {\n    Serial.print(cmd[i]);\n  }\n}</pre>\nThis will only print <code>SETLEDON</code>!\n</div>",
+      "image": "url_sms_parse_example",
+      "audio": "url"
+    },
+    {
+      "title": "🔍 ASCII Deep Dive: Visualizing Whitespace",
+      "content": "<div class='card'>\nASCII codes for whitespace:\n<ul>\n<li><b>9</b> → TAB</li>\n<li><b>10</b> → LF (Line Feed aka \\n)</li>\n<li><b>11</b> → VT (Vertical Tab)</li>\n<li><b>12</b> → FF (Form Feed)</li>\n<li><b>13</b> → CR (Carriage Return aka \\r)</li>\n<li><b>32</b> → SPACE</li>\n</ul>\n</div>\n<div class='card'>\nThese codes exist from the era of old typewriters and early printers — CR meant <i>move to line start</i>, LF meant <i>move down</i>.\n</div>\n<div class='card'>\n💡 Even today, Linux uses <code>\\n</code> and Windows uses <code>\\r\\n</code> for new lines!\n</div>",
+      "image": "url_ascii_table_full",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try It Yourself: Remove Whitespace",
+      "content": "<div class='card'>\nWrite a program that removes all whitespace from a string.\n</div>\n<div class='card'>\n<pre>\nchar input[] = \"  Hello \\t World!\\n\";\nchar clean[30];\nint j = 0;\n\nfor (int i = 0; i < strlen(input); i++) {\n  if (!isSpace(input[i])) {\n    clean[j++] = input[i];\n  }\n}\nclean[j] = '\\0';\nSerial.println(clean);  // Output: HelloWorld!\n</pre>\n</div>",
+      "image": "url_whitespace_strip_code",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: True or False?",
+      "content": "<div class='card'>\nWill <code>isSpace()</code> return true for the following?\n<pre>\nA. ' '\nB. '\\n'\nC. 'A'\nD. '\\t'\nE. '!'\n</pre>\n</div>\n<div class='card'>\n<input id='isSpaceGame' placeholder='Write A, B, etc...' style='width:100%'>\n<button class='gaming-btn' onclick=\"alert('✅ Answer: A, B, D are spaces!')\">Submit</button>\n</div>",
+      "image": "url_quiz_card_space_check",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Understanding Whitespace in ASCII",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/DRrMZWGZd_E' title='ASCII Whitespace Explained' frameborder='0' allowfullscreen></iframe>",
+      "image": "url_video_frame_whitespace_ascii",
+      "audio": "url"
+    },
+    {
+      "title": "📚 Recap: isSpace() Is Essential For...",
+      "content": "<div class='card'>\n✅ Cleaning input from users or serial port\n✅ Parsing commands or text streams\n✅ Creating strong password logic (no leading/trailing spaces)\n✅ Skipping blanks when counting letters\n✅ Beautifying output display\n</div>\n<div class='card'>\n📌 Summary: Whitespace ≠ useless. It’s just invisible!\n</div>",
+      "image": "url_summary_cleaning_space",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isUpperCase() — Are You SHOUTING?",
+  "lessons": [
+    {
+      "title": "🔠 What is isUpperCase()?",
+      "content": "<div class=\"card\">\n<code>isUpperCase(c)</code> checks if the given character <code>c</code> is an uppercase letter: <code>'A'</code> to <code>'Z'</code>.\n</div>\n<div class=\"card\">\nIf you pass <code>'M'</code>, it returns <code>true</code>.\nIf you pass <code>'m'</code>, it returns <code>false</code>.\n</div>\n<div class=\"card\">\n✅ Used to filter inputs, handle keypresses, parse text, validate names or tags — anything involving alphabets!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Real World Analogy",
+      "content": "<div class=\"card\">\nImagine you're grading a test. Some answers are in CAPS:\n<code>\"SPEED = DISTANCE / TIME\"</code> — Easy to read, bold, visible.\n</div>\n<div class=\"card\">\nYou use <code>isUpperCase()</code> like your eye scanning for SHOUTING words 📢\n</div>\n<div class=\"card\">\nIn Arduino: maybe you're reading serial input character-by-character and want to respond **only** when the user sends a capital letter.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔤 ASCII & Behind-the-Scenes",
+      "content": "<div class=\"card\">\nCharacters in Arduino (and C/C++) are stored using <b>ASCII codes</b>.\n</div>\n<div class=\"card\">\nFor example:\n<ul>\n<li><b>'A'</b> = 65</li>\n<li><b>'B'</b> = 66</li>\n<li>...</li>\n<li><b>'Z'</b> = 90</li>\n</ul>\n</div>\n<div class=\"card\">\nSo internally, <code>isUpperCase('A')</code> checks if its ASCII is between 65 and 90.\nThat's it! 😎\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Code Example: Only Allow Caps",
+      "content": "<div class=\"card\">\nThis program reads a letter from the Serial Monitor and lights up an LED <b>only</b> if it's a capital letter.\n</div>\n<div class=\"card\">\n<pre>\nvoid setup() {\n  pinMode(13, OUTPUT);\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  if (Serial.available()) {\n    char ch = Serial.read();\n    if (isUpperCase(ch)) {\n      digitalWrite(13, HIGH);\n    } else {\n      digitalWrite(13, LOW);\n    }\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\n👆 Try typing letters in Serial Monitor. Only capital letters turn on the LED!\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Mini Game: UPPER or not?",
+      "content": "<div class=\"card\">\nWhat will <code>isUpperCase('H')</code> return?\n<pre>A) true\nB) false</pre>\n</div>\n<div class=\"card\">\n<input id=\"ucaseGame\" placeholder=\"Type A or B\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Correct! H is uppercase.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: ASCII + Case Detection",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/fm05REfNE9Y\" title=\"ASCII & isUpperCase Explanation\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try This Challenge",
+      "content": "<div class=\"card\">\nWrite a program that:\n<ul>\n<li>Reads a character from Serial</li>\n<li>If it's uppercase — blinks LED rapidly</li>\n<li>If not — blinks LED slowly</li>\n</ul>\n</div>\n<div class=\"card\">\nHint: use <code>delay()</code> to create different blink speeds based on <code>isUpperCase()</code> result.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📘 Recap & Use Cases",
+      "content": "<div class=\"card\">\n✅ <code>isUpperCase()</code> helps you validate and respond to <b>uppercase letters only</b>.\n</div>\n<div class=\"card\">\n🎯 It's useful in:\n<ul>\n<li>Command filtering (e.g. ‘R’ for RESET)</li>\n<li>Menu navigation via Serial</li>\n<li>Security/password entry where CAPS matter</li>\n</ul>\n</div>\n<div class=\"card\">\nNow you know how Arduino tells if you’re SHOUTING! 😉\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+,{
+  "title": "isWhitespace() — Not All Spaces Are Empty!",
+  "lessons": [
+    {
+      "title": "🧽 What is isWhitespace()?",
+      "content": "<div class=\"card\">\n<code>isWhitespace(c)</code> checks if the character <code>c</code> is a whitespace.\nThat means: a space, a tab, a newline — characters that ‘take space’ but don’t show anything.\n</div>\n<div class=\"card\">\nIt returns <code>true</code> if <code>c</code> is:\n<ul>\n<li>Space ( )</li>\n<li>Tab (\\t)</li>\n<li>Newline (\\n)</li>\n<li>Carriage return (\\r)</li>\n</ul>\nAnd <code>false</code> if it's anything else (letters, numbers, punctuation...)\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧠 Real-Life Analogy: The Invisible Characters",
+      "content": "<div class=\"card\">\nWhen you write a sentence, you leave spaces between words.\n</div>\n<div class=\"card\">\nBut also — when you hit \"Enter\", that’s a newline. Or when you press \"Tab\", that’s a tab.\n</div>\n<div class=\"card\">\nTo you, they’re just layout. But to your Arduino, they’re **real characters** with **ASCII codes**!\n</div>\n<div class=\"card\">\n<code>isWhitespace()</code> helps the Arduino say:\n🗣️ \"Hey! This character is a space-like thing. Ignore it for now.\"\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔎 ASCII View: What’s a Whitespace?",
+      "content": "<div class=\"card\">\nWhitespace characters and their ASCII codes:\n<ul>\n<li><b>' '</b> (Space) = 32</li>\n<li><b>\\t</b> (Tab) = 9</li>\n<li><b>\\n</b> (New Line) = 10</li>\n<li><b>\\r</b> (Carriage Return) = 13</li>\n</ul>\n</div>\n<div class=\"card\">\nThese don’t show up when printed normally. But they’re VERY common in text, especially Serial input.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧰 Why & When to Use isWhitespace()?",
+      "content": "<div class=\"card\">\n⚡ When reading a name from Serial Monitor, a user might accidentally type spaces:\n<pre>\"    John\\n\"</pre>\n</div>\n<div class=\"card\">\nYou want to clean this text before using it.\nUse <code>isWhitespace()</code> to skip or remove these extra characters.\n</div>\n<div class=\"card\">\nAlso great for:\n<ul>\n<li>Validating user input</li>\n<li>Parsing text</li>\n<li>Skipping garbage characters</li>\n</ul>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🔧 Code: Ignore Spaces in Name",
+      "content": "<div class=\"card\">\nThis reads name from Serial Monitor, skips whitespace, and prints only visible characters.\n</div>\n<div class=\"card\">\n<pre>\nvoid setup() {\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  if (Serial.available()) {\n    char c = Serial.read();\n    if (!isWhitespace(c)) {\n      Serial.print(c);\n    }\n  }\n}\n</pre>\n</div>\n<div class=\"card\">\nTry typing: <code>    Hello Arduino!\\n</code>\n👉 Output: <code>HelloArduino!</code> (spaces gone!)\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🎮 Game: Spot the Whitespace",
+      "content": "<div class=\"card\">\nWhich of these will <code>isWhitespace()</code> return <code>true</code> for?\n<pre>\nA. ' '\nB. 'A'\nC. '\\n'\nD. '7'\n</pre>\n</div>\n<div class=\"card\">\n<input id=\"wsGame\" placeholder=\"Your answer (e.g., A, C)\" style=\"width:100%\">\n<button class=\"gaming-btn\" onclick=\"alert('✅ Correct! A and C are whitespace characters.')\">Submit</button>\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📺 Video: Serial Input Cleanup",
+      "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/hSu_4K4U63U\" title=\"Remove whitespace from Serial data\" frameborder=\"0\" allowfullscreen></iframe>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "🧪 Try This Challenge: Trim Text!",
+      "content": "<div class=\"card\">\nWrite a sketch that reads an entire sentence and prints only non-whitespace characters (like a compact string).\n</div>\n<div class=\"card\">\nBonus: Count how many whitespace characters you removed!\n</div>\n<div class=\"card\">\nHint: Use a counter and <code>isWhitespace()</code> to track skipped ones.\n</div>",
+      "image": "url",
+      "audio": "url"
+    },
+    {
+      "title": "📘 Recap",
+      "content": "<div class=\"card\">\n✅ <code>isWhitespace()</code> helps identify invisible characters like spaces, tabs, and newlines.\n</div>\n<div class=\"card\">\n🎯 It's perfect for:\n<ul>\n<li>Text cleanup</li>\n<li>Skipping blanks</li>\n<li>Improving input parsing</li>\n</ul>\n</div>\n<div class=\"card\">\nWhitespace may be invisible, but now — it’s no longer a mystery to you! 🕵️‍♂️\n</div>",
+      "image": "url",
+      "audio": "url"
+    }
+  ]
+}
+
+      ]
+    },{
+      title:"Interrupt Mastery — Taking Full Control",
+      modules:[
+        {
+  "moduleTitle": "interrupts() — Resume Listening to the Outside World",
+  "lessons": [
+    {
+      "title": "🚀 Introduction to interrupts()",
+      "type": "text",
+      "content": "<div class=\"card\">\n<h2>What is interrupts()?</h2>\n<p>The <code>interrupts()</code> function is used to re-enable interrupt handling in your Arduino program after you've turned it off using <code>noInterrupts()</code>. This is essential for safely managing time-critical tasks or data access.</p>\n<p>Think of it as saying: <strong>\"Alright, I'm done with my delicate task. Now I'm ready to listen again.\"</strong></p>\n</div>\n\n<div class=\"card\">\n<h2>🧠 Why Use interrupts()?</h2>\n<ul>\n<li>To resume normal interrupt behavior after a protected section of code.</li>\n<li>To allow external sensors or buttons to trigger actions again.</li>\n<li>To return your Arduino to its reactive, event-driven state.</li>\n</ul>\n</div>\n\n<div class=\"card\">\n<h2>🔍 Real-World Analogy</h2>\n<p>Imagine you're a radio operator. During an emergency call, you put your headphones down to avoid distractions. Once done, you put them back on. <code>interrupts()</code> is like putting the headphones back on and saying, \"I'm listening again.\"</p>\n</div>"
+    },
+    {
+      "title": "🛠️ Live Use Case — Counter with Button",
+      "type": "text",
+      "content": "<div class=\"card\">\n<h2>Real Use Case Example</h2>\n<p>Imagine a pushbutton connected to pin 2 that increments a counter every time it's pressed. To read this counter safely from the main loop, you pause interrupts, copy the value, then resume them:</p>\n\n<pre><code>volatile int count = 0;\n\nvoid setup() {\n  Serial.begin(9600);\n  attachInterrupt(digitalPinToInterrupt(2), increaseCount, RISING);\n}\n\nvoid loop() {\n  int safeCopy;\n  noInterrupts();        // Pause interrupts\n  safeCopy = count;      // Critical section\n  interrupts();          // Resume interrupts\n\n  Serial.println(safeCopy);\n  delay(500);\n}\n\nvoid increaseCount() {\n  count++;\n}</code></pre>\n<p>Here, <code>interrupts()</code> lets the Arduino resume watching for new button presses once we’re done reading the shared variable safely.</p>\n</div>"
+    },
+    {
+      "title": "📌 What Pins Are Used?",
+      "type": "text",
+      "content": "<div class=\"card\">\n<h2>Pins Used in interrupt Functions</h2>\n<p>The <code>interrupts()</code> function itself does not use specific pins, but it re-enables hardware interrupts that may be attached to pins like 2 and 3 on an UNO.</p>\n<p>Common interrupt pins:</p>\n<ul>\n  <li><strong>UNO:</strong> 2 and 3</li>\n  <li><strong>Mega:</strong> 2, 3, 18, 19, 20, 21</li>\n  <li><strong>ESP32 / ESP8266:</strong> Most GPIOs can be interrupt-enabled</li>\n</ul>\n</div>"
+    },
+    {
+      "title": "🧪 Interactive Quiz",
+      "type": "quiz",
+      "content": {
+        "question": "What happens if you forget to call interrupts() after noInterrupts()?",
+        "options": [
+          "Your sketch runs normally.",
+          "Arduino stops all communication.",
+          "External interrupts won’t work until you call interrupts().",
+          "The board resets."
+        ],
+        "answerIndex": 2,
+        "explanation": "Once you disable interrupts using noInterrupts(), you must call interrupts() to resume normal interrupt-based actions like handling sensor input."
+      }
+    },
+    {
+      "title": "🎬 Recommended Video",
+      "type": "video",
+      "content": {
+        "url": "https://www.youtube.com/watch?v=ZCjdzkeXh5Y",
+        "description": "In-depth explanation of critical sections and safe interrupt usage in Arduino. Super useful for intermediate makers."
+      }
+    }
+  ]
+}
+,{
+  "moduleTitle": "noInterrupts() — How to Quiet Everything Down (Safely!)",
+  "lessons": [
+    {
+      "title": "🔍 What is noInterrupts()?",
+      "type": "text",
+      "content": "<div class=\"card\">\n<h2>Understanding noInterrupts()</h2>\n<p>The <code>noInterrupts()</code> function disables all interrupts on your Arduino board until you explicitly re-enable them with <code>interrupts()</code>.</p>\n<p>Think of it like telling your Arduino: <strong>“Do NOT listen to any distractions right now, I need your full focus.”</strong></p>\n<p>Use this when you’re doing something extremely sensitive — like working with data that might change mid-way if interrupted.</p>\n</div>\n\n<div class=\"card\">\n<h2>🧠 When Should You Use noInterrupts()?</h2>\n<ul>\n  <li>When copying or modifying <code>volatile</code> variables used in an ISR (Interrupt Service Routine)</li>\n  <li>When you need a precise timing window</li>\n  <li>When performing atomic (indivisible) operations</li>\n</ul>\n</div>"
+    },
+    {
+      "title": "📦 Real-Life Analogy — Do Not Disturb Mode",
+      "type": "text",
+      "content": "<div class=\"card\">\n<h2>Real-World Analogy</h2>\n<p>Imagine you're writing down a phone number someone is telling you, and you put on noise-cancelling headphones for 5 seconds just to not miss a digit.</p>\n<p><code>noInterrupts()</code> is like putting on those headphones. You're saying: \"Hold on world, I need silence!\"</p>\n</div>"
+    },
+    {
+      "title": "💻 Code Example — Handling Shared Variables",
+      "type": "text",
+      "content": "<div class=\"card\">\n<h2>Use Case: Accurate Counter Access</h2>\n<p>This is one of the most common uses. Imagine a pushbutton on pin 2 that increases a counter via an ISR:</p>\n<pre><code>volatile int counter = 0;\n\nvoid setup() {\n  Serial.begin(9600);\n  attachInterrupt(digitalPinToInterrupt(2), countUp, RISING);\n}\n\nvoid loop() {\n  int safeCopy;\n\n  noInterrupts();           // Stop interrupts temporarily\n  safeCopy = counter;       // Copy shared variable safely\n  interrupts();             // Resume interrupts\n\n  Serial.println(safeCopy);\n  delay(500);\n}\n\nvoid countUp() {\n  counter++;\n}</code></pre>\n<p>Without <code>noInterrupts()</code>, the value might change mid-copy, leading to weird bugs. This prevents that.</p>\n</div>"
+    },
+    {
+      "title": "📌 What Pins Are Affected?",
+      "type": "text",
+      "content": "<div class=\"card\">\n<h2>Which Pins Matter?</h2>\n<p>Technically, <code>noInterrupts()</code> doesn’t use any specific pin. It just stops <strong>all interrupts</strong>, including those triggered by pins.</p>\n<p>Typical external interrupt pins:</p>\n<ul>\n<li><strong>UNO:</strong> Digital pins 2 and 3</li>\n<li><strong>MEGA:</strong> Pins 2, 3, 18, 19, 20, 21</li>\n<li><strong>ESP32:</strong> Most digital pins can be used as interrupt pins</li>\n</ul>\n</div>"
+    },
+    {
+      "title": "🎯 Watch Out — What Happens If You Forget to Re-Enable?",
+      "type": "text",
+      "content": "<div class=\"card\">\n<h2>Important Caveat</h2>\n<p>If you forget to call <code>interrupts()</code> after <code>noInterrupts()</code>, your board will never handle any interrupts again.</p>\n<p>This means things like pushbutton triggers, sensor edge detection, serial receiving, etc., may silently fail!</p>\n</div>"
+    },
+    {
+      "title": "📺 Video Tutorial",
+      "type": "video",
+      "content": {
+        "url": "https://www.youtube.com/watch?v=ZCjdzkeXh5Y",
+        "description": "Clear explanation of how and when to use noInterrupts() and interrupts() — includes practical scope and usage warnings."
+      }
+    }
+  ]
+}
+
+      ]
+    },{
+      title:" Mastering Time Functions in Arduino",
+      modules:[
+        {
+  "title": "delayMicroseconds() — Ultra-Fine Delays",
+  "lessons": [
+    {
+      "title": "What is delayMicroseconds()?",
+      "content": "This function makes your Arduino pause, but for a VERY short time — measured in microseconds. One microsecond is one-millionth of a second. We use this when we need precise timing — like sending fast pulses or talking to sensitive sensors that expect exact gaps between signals.\n\n⚠️ While delay() waits in milliseconds, delayMicroseconds() waits in microseconds (1000× smaller)."
+    },
+    {
+      "title": "Where and Why?",
+      "content": "Imagine you are triggering an ultrasonic sensor. It expects a HIGH signal of exactly 10 microseconds. You can't use delay() because that waits too long (minimum is 1ms = 1000µs). That's why we use delayMicroseconds() — it's like a stopwatch for tiny timings."
+    },
+    {
+      "title": "Real-World Example",
+      "content": "Let’s say you're working with an IR remote signal or SPI communication. These protocols send data in waves that last for just a few microseconds. Arduino can create or interpret those waves using delayMicroseconds().\n\nThink of it like pressing a stoplight button with ninja-like speed. 😉"
+    },
+    {
+      "title": "Syntax and Range",
+      "content": "📘 Syntax: delayMicroseconds(time_in_microseconds);\n\nFor example: delayMicroseconds(10);\n\n📏 Valid range is around 3µs to 16383µs. Anything too small might be ignored because the chip can’t react fast enough!"
+    },
+    {
+      "title": "Example Code",
+      "content": "void setup() {\n  pinMode(13, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(13, HIGH);\n  delayMicroseconds(100);\n  digitalWrite(13, LOW);\n  delayMicroseconds(100);\n}"
+    },
+    {
+      "title": "Related Pins and Hardware",
+      "content": "delayMicroseconds() doesn’t use any specific pin itself — it just pauses the program. But you’ll often use it with digital pins to control things like sensors, IR transmitters, or precise timers. Especially used in ultrasonic sensor triggering pins or custom PWM generation."
+    },
+    {
+      "title": "Fun Fact 🌟",
+      "content": "Your brain takes about 200,000 microseconds to blink.\nArduino can do 20,000 delayMicroseconds(10) in that same blink. Now that's fast!"
+    }
+  ]
+},
+
+      ]
     }
   ]
 };
