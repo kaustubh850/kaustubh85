@@ -5631,7 +5631,43 @@ void loop() {
       "content": "Your brain takes about 200,000 microseconds to blink.\nArduino can do 20,000 delayMicroseconds(10) in that same blink. Now that's fast!"
     }
   ]
-},
+},{
+  "title": "micros() — Arduino’s Microsecond Stopwatch",
+  "lessons": [
+    {
+      "title": "What is micros()? 🤔",
+      "content": "<div class='card'>The <code>micros()</code> function in Arduino returns the number of microseconds (1 millionth of a second!) since the program started running.</div>\n<div class='card'>This is perfect when you want to measure tiny time intervals — like how long a sensor takes to respond or how fast something moves.</div>"
+    },
+    {
+      "title": "Where is it used? 📍",
+      "content": "<div class='card'>Use <code>micros()</code> when you need high-precision timing — for example, measuring the echo time of an ultrasonic sensor, or building your own IR remote decoder.</div>\n<div class='card'>Unlike <code>millis()</code>, which only updates every 1 ms, <code>micros()</code> gives you much finer detail, especially in time-sensitive projects.</div>"
+    },
+    {
+      "title": "How it Works ⚙️",
+      "content": "<div class='card'>When the Arduino turns on, <code>micros()</code> starts from 0 and counts up. Every time you call it, it tells you how many microseconds have passed.</div>\n<div class='card'><b>Important:</b> It rolls over back to 0 after ~70 minutes on UNO/Nano (because of 32-bit overflow). So plan accordingly!</div>"
+    },
+    {
+      "title": "Example Code ⌛",
+      "content": "<div class='card'><pre><code>unsigned long start = micros();\n// Do something here\nunsigned long end = micros();\nunsigned long duration = end - start;\nSerial.print(\"It took: \");\nSerial.print(duration);\nSerial.println(\" µs\");</code></pre></div>"
+    },
+    {
+      "title": "🎬 Watch: Arduino micros() Explained",
+      "content": "<div class='card'>Here's a video guide that walks you through how <code>micros()</code> works, with examples and cool applications!</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/jGz7gkaXQ4c' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "Mini-Game: microTime Hunter ⏱️",
+      "content": "<div class='card'>You’ll see a fast timer ticking in microseconds. Tap STOP as close to 1000000 µs (1 second) as you can!</div>\n<button class='gaming-btn' onclick='startMicroGame()'>Start Game</button>\n<div id='micro-timer'></div>\n<script>\nfunction startMicroGame() {\n  const display = document.getElementById('micro-timer');\n  let start = performance.now();\n  const btn = document.createElement('button');\n  btn.innerText = 'Stop!';\n  btn.className = 'gaming-btn';\n  btn.onclick = () => {\n    let end = performance.now();\n    let diff = Math.round((end - start) * 1000);\n    display.innerHTML = 'You stopped at ' + diff + ' microseconds!';\n  };\n  display.innerHTML = '';\n  display.appendChild(btn);\n}\n</script>"
+    },
+    {
+      "title": "Used Pins? 🧷",
+      "content": "<div class='card'><code>micros()</code> doesn’t use any particular pin. But it’s often paired with <b>pulse-based sensors</b> (e.g., ultrasonic, IR) that use <b>digital pins</b> to send or receive pulses.</div>"
+    },
+    {
+      "title": "Real World Example 🚘",
+      "content": "<div class='card'>Imagine you're building a car-reversing radar system using an ultrasonic sensor. You send a ping and use <code>micros()</code> to measure how long the echo takes to return. That tells you how far the obstacle is!</div>"
+    }
+  ]
+}
 
       ]
     }
