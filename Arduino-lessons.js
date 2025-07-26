@@ -5631,7 +5631,7 @@ void loop() {
       "content": "Your brain takes about 200,000 microseconds to blink.\nArduino can do 20,000 delayMicroseconds(10) in that same blink. Now that's fast!"
     }
   ]
-},{ 
+},{  
   "title": "micros() — Arduino’s Microsecond Stopwatch",
   "lessons": [
     {
