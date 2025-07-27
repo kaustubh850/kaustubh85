@@ -5667,7 +5667,794 @@ void loop() {
       "content": "<div class='card'>Imagine you're building a car-reversing radar system using an ultrasonic sensor. You send a ping and use <code>micros()</code> to measure how long the echo takes to return. That tells you how far the obstacle is!</div>"
     }
   ]
+},{
+  "title": "delay() — The Pause Button of Arduino",
+  "lessons": [
+    {
+      "title": "What's delay()? 🤔",
+      "content": "<div class='card'>In Arduino, <code>delay(ms)</code> pauses your program for a set number of milliseconds (1 second = 1000 ms).</div>\n<div class='card'>It’s like saying: 'Hold on... don't do anything for a while.'</div>"
+    },
+    {
+      "title": "Why Use delay()? 🧠",
+      "content": "<div class='card'><b>delay()</b> is useful when you want to create a pause between two actions.</div>\n<div class='card'>Example: Blink an LED every 1 second, or wait after displaying a message.</div>"
+    },
+    {
+      "title": "Code Example 🔁",
+      "content": "<div class='card'><pre><code>void loop() {\n  digitalWrite(LED_BUILTIN, HIGH);\n  delay(1000);\n  digitalWrite(LED_BUILTIN, LOW);\n  delay(1000);\n}</code></pre></div>\n<div class='card'>This blinks the LED ON and OFF every second — thanks to <code>delay()</code>.</div>"
+    },
+    {
+      "title": "What Happens Internally? ⚙️",
+      "content": "<div class='card'>delay() is a <b>blocking function</b>. Arduino will literally stop doing everything during that time.</div>\n<div class='card'>So if you use <code>delay(5000)</code>, it freezes for 5 seconds — no sensors, buttons, or anything else will work during that.</div>"
+    },
+    {
+      "title": "📹 Watch: Arduino delay() Visual Demo",
+      "content": "<div class='card'>This short video demonstrates how delay() works by blinking an LED and adjusting the timing. Watch how it pauses everything!</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/fvm0FntS1XM' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🕹️ Mini-Game: Delay Matcher!",
+      "content": "<div class='card'>Guess the delay time between two LED flashes! Tap to guess and see if you can match Arduino's delay speed!</div>\n<button class='gaming-btn' onclick='startDelayGame()'>Start Game</button>\n<div id='delay-result'></div>\n<script>\nfunction startDelayGame() {\n  const actual = Math.floor(Math.random() * 4000) + 1000;\n  setTimeout(() => {\n    const guess = prompt(\"How many milliseconds do you think the delay was?\");\n    const result = document.getElementById(\"delay-result\");\n    result.innerHTML = `Actual: ${actual}ms | Your Guess: ${guess}ms`;\n  }, actual);\n}\n</script>"
+    },
+    {
+      "title": "📌 When NOT to Use It",
+      "content": "<div class='card'><code>delay()</code> is simple but not ideal for multitasking. Instead, use <code>millis()</code> if you want to do things while still tracking time.</div>"
+    },
+    {
+      "title": "Pins Used?",
+      "content": "<div class='card'><code>delay()</code> doesn’t involve pins — but it’s <b>used alongside output pins</b> like <code>LED_BUILTIN</code> or pins connected to displays, buzzers, relays, etc.</div>"
+    },
+    {
+      "title": "IRL Example 🚦",
+      "content": "<div class='card'>Think of a traffic signal — delay() is like pausing the green light before switching to red. That pause is vital to avoid accidents!</div>"
+    }
+  ]
 }
+,{
+  "title": "millis() — Timekeeper of Arduino",
+  "lessons": [
+    {
+      "title": "⏱️ What is millis()?",
+      "content": "<div class='card'>The <code>millis()</code> function tells you how many milliseconds have passed <b>since your Arduino turned ON or reset</b>.</div>\n<div class='card'>It’s like a stopwatch that starts automatically when your board boots up!</div>"
+    },
+    {
+      "title": "🤔 Why use millis() instead of delay()?",
+      "content": "<div class='card'><code>delay()</code> <b>blocks everything</b> during its pause. But <code>millis()</code> lets Arduino <b>keep running</b> while you check the time!</div>\n<div class='card'>This means your Arduino can <b>read sensors, blink LEDs, check buttons</b> — all while keeping track of time. Multitasking FTW 🎉</div>"
+    },
+    {
+      "title": "⏳ millis() Example — LED Blink Without delay()",
+      "content": "<div class='card'>This is how you blink an LED without freezing your Arduino with delay:</div>\n<div class='card'><pre><code>\nunsigned long previousMillis = 0;\nconst long interval = 1000;\n\nvoid loop() {\n  unsigned long currentMillis = millis();\n  if (currentMillis - previousMillis >= interval) {\n    previousMillis = currentMillis;\n    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));\n  }\n}</code></pre></div>"
+    },
+    {
+      "title": "🔍 Behind the Scenes",
+      "content": "<div class='card'><code>millis()</code> uses an internal timer to count milliseconds (1/1000th of a second).</div>\n<div class='card'>It returns an <code>unsigned long</code> — which means it can count up to about <b>49 days</b> before it resets to 0!</div>"
+    },
+    {
+      "title": "📺 Video: millis() vs delay() Explained Clearly",
+      "content": "<div class='card'>This video shows why <code>millis()</code> is a smarter choice in many real projects (especially when you need responsiveness).</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/j3heVx2NZgU' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🧠 Real Life Analogy",
+      "content": "<div class='card'>Imagine you're boiling tea ☕. While waiting, you check the clock every minute to stir it — you don’t freeze like <code>delay()</code> would. That’s <code>millis()</code>!</div>"
+    },
+    {
+      "title": "🕹️ Mini-Game: millis() Challenge",
+      "content": "<div class='card'>Can you guess how many seconds passed?</div>\n<button class='gaming-btn' onclick='startMillisGame()'>Start Timer</button>\n<div id='millis-game-result'></div>\n<script>\nlet start;\nfunction startMillisGame() {\n  start = millis();\n  setTimeout(() => {\n    const stop = millis();\n    const guess = prompt(\"How many milliseconds passed?\");\n    document.getElementById(\"millis-game-result\").innerHTML = `Real: ${stop - start}ms | Your guess: ${guess}ms`;\n  }, Math.floor(Math.random()*3000 + 2000));\n}\nfunction millis() {\n  return new Date().getTime();\n}\n</script>"
+    },
+    {
+      "title": "📌 Pin Usage?",
+      "content": "<div class='card'><code>millis()</code> doesn’t use any physical pin — it’s a <b>software timer</b>.</div>\n<div class='card'>But it helps control timing logic for output pins (LEDs, buzzers, relays, etc).</div>"
+    },
+    {
+      "title": "🧪 DIY Project Idea",
+      "content": "<div class='card'>Build a countdown timer that updates a display or LED pattern every 1 second — all handled by <code>millis()</code> without stopping anything else!</div>"
+    }
+  ]
+}
+
+
+      ]
+    },{
+      title:"Generating Random Numbers in Arduino",
+      modules:[
+        {
+  "title": "random() — Generating Unpredictability",
+  "lessons": [
+    {
+      "title": "🎯 What is random() in Arduino?",
+      "content": "<div class='card'><code>random()</code> is a function that gives you a <b>pseudo-random number</b> each time you call it.</div><div class='card'>It’s commonly used to create unpredictable behavior in Arduino projects — like blinking LEDs at random intervals or making autonomous robots behave in fun, unexpected ways.</div><div class='card'>Remember, it's not truly random — it’s based on a formula. So it’s called <b>pseudo-random</b>.</div>"
+    },
+    {
+      "title": "🧪 Syntax of random()",
+      "content": "<div class='card'><code>random(max)</code> → Returns a number from 0 to (max - 1)</div><div class='card'><code>random(min, max)</code> → Returns a number from min to (max - 1)</div><div class='card'>Example: <code>random(5, 10)</code> could return 5, 6, 7, 8 or 9.</div>"
+    },
+    {
+      "title": "📍 Pin Usage",
+      "content": "<div class='card'><b>No specific pin</b> is used by <code>random()</code>. It runs entirely in software.</div><div class='card'>But — you’ll often use the output of <code>random()</code> to decide <b>which pin</b> to activate.</div><div class='card'>E.g., randomly turn ON one of 3 LEDs: pin 2, 3, or 4.</div>"
+    },
+    {
+      "title": "🎮 Live Example — Random LED Blinker",
+      "content": "<div class='card'>Here’s how to randomly blink one of 3 LEDs connected to pins 2, 3, and 4:</div><pre><code>int ledPins[] = {2, 3, 4};\n\nvoid setup() {\n  for (int i = 0; i < 3; i++) {\n    pinMode(ledPins[i], OUTPUT);\n  }\n}\n\nvoid loop() {\n  int index = random(0, 3);\n  digitalWrite(ledPins[index], HIGH);\n  delay(500);\n  digitalWrite(ledPins[index], LOW);\n  delay(500);\n}</code></pre><div class='card'>Run this and watch the LED dance randomly!</div>"
+    },
+    {
+      "title": "🌍 Real-World Use Case",
+      "content": "<div class='card'>You can use <code>random()</code> for:</div><ul class='card'><li>🎲 Dice simulation</li><li>🔔 Alarm buzzers with random tones</li><li>🎵 Music patterns</li><li>🎯 Random decision making (robot direction)</li></ul><div class='card'>Any project where unpredictability adds fun or realism!</div>"
+    },
+    {
+      "title": "🎥 Bonus Video",
+      "content": "<div class='card'>Watch this short demo of random LED blinking on an actual Arduino board.</div><iframe width='100%' height='215' src='https://www.youtube.com/embed/eB-V3VArs0s' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+}
+,{
+  "title": "randomSeed() — Seeding the Unpredictable",
+  "lessons": [
+    {
+      "title": "🌱 What is randomSeed()?",
+      "content": "<div class='card'><code>randomSeed()</code> is like giving a starting point for the random number generator.</div><div class='card'>Without this, your Arduino will generate the same 'random' sequence every time it starts. So it’s not really random unless seeded!</div><div class='card'>Using <code>randomSeed()</code> helps add more real-world randomness to your project.</div>"
+    },
+    {
+      "title": "🧪 Syntax of randomSeed()",
+      "content": "<div class='card'><code>randomSeed(seed)</code> → Sets the starting point for random numbers.</div><div class='card'>Example: <code>randomSeed(analogRead(0));</code> will use electrical noise on pin A0 as the seed.</div><div class='card'>This is a smart trick to introduce unpredictable behavior — especially when nothing is connected to A0!</div>"
+    },
+    {
+      "title": "⚡ How it Affects random()",
+      "content": "<div class='card'>Try running this two times without <code>randomSeed()</code> — the LED will blink the same pattern every time.</div><div class='card'>But when you use <code>randomSeed()</code> with analog input, you’ll get truly different patterns each time!</div>"
+    },
+    {
+      "title": "🎮 Live Example — Better Random Blinking",
+      "content": "<div class='card'>Let’s build a more unpredictable LED blinker:</div><pre><code>int ledPins[] = {2, 3, 4};\n\nvoid setup() {\n  randomSeed(analogRead(0));\n  for (int i = 0; i < 3; i++) {\n    pinMode(ledPins[i], OUTPUT);\n  }\n}\n\nvoid loop() {\n  int index = random(0, 3);\n  digitalWrite(ledPins[index], HIGH);\n  delay(300);\n  digitalWrite(ledPins[index], LOW);\n  delay(300);\n}</code></pre><div class='card'>Now, each run will be different — like magic 🪄</div>"
+    },
+    {
+      "title": "📍 Pin Usage",
+      "content": "<div class='card'><code>randomSeed()</code> doesn’t use a pin directly, but we often pass in <code>analogRead(A0)</code>.</div><div class='card'>So pin A0 is used as a <b>source of randomness</b>. If nothing is connected, it reads electrical noise — which is perfect!</div>"
+    },
+    {
+      "title": "🎥 Watch: Seeding Randomness in Arduino",
+      "content": "<div class='card'>This quick video shows how <code>randomSeed()</code> makes your project more unpredictable!</div><iframe width='100%' height='215' src='https://www.youtube.com/embed/8uXz3lSpqpo' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+}
+
+      ]
+    },{
+      title:"Communication in Arduino — Talking With the World",
+      modules:[
+        {
+  "title": "SPI — Serial Peripheral Interface (Full Breakdown)",
+  "lessons": [
+    {
+      "title": "🚦 What is SPI?",
+      "content": "<div class='card'><b>SPI</b> stands for <b>Serial Peripheral Interface</b>. It's a protocol used to transfer data between microcontrollers and peripherals like sensors, SD cards, displays, etc.</div><div class='card'>It uses **four wires** and works on a **Master-Slave** model — where one controller (like your Arduino) is the boss (Master), and all other devices obey it (Slaves).</div><div class='card'><b>Key Pins:</b><br>- MISO (Master In Slave Out)<br>- MOSI (Master Out Slave In)<br>- SCK (Serial Clock)<br>- SS (Slave Select)</div>"
+    },
+    {
+      "title": "🔍 What are Master and Slave Devices?",
+      "content": "<div class='card'><b>Master:</b> This is the Arduino (or another microcontroller) that <i>initiates</i> communication and controls the clock.</div><div class='card'><b>Slave:</b> These are modules or sensors (like an SD card, nRF24 module, etc.) that respond to the master’s commands.</div><div class='card'><b>Real-world example:</b> Your Arduino is the Master and an SD card module is the Slave — you send commands to read/write files.</div>"
+    },
+    {
+      "title": "📟 Real World Applications of SPI",
+      "content": "<div class='card'>- Communicating with SD cards (data logging projects)<br>- Driving OLED or TFT screens<br>- Talking to wireless modules like nRF24L01<br>- Reading sensor data from SPI-compatible modules</div><div class='card'>SPI is fast, lightweight, and widely supported!</div>"
+    },
+    {
+      "title": "🛠️ Basic SPI Wiring with Arduino UNO",
+      "content": "<div class='card'>Here’s the default SPI pins on an UNO:</div><ul class='card'><li><b>MOSI</b> - Pin 11</li><li><b>MISO</b> - Pin 12</li><li><b>SCK</b> - Pin 13</li><li><b>SS</b> - Any Digital Pin (like D10)</li></ul><div class='card'>Different boards have different default SPI pins — check the board’s datasheet!</div>"
+    },
+    {
+      "title": "💻 Code Example: Communicating with an SPI Sensor",
+      "content": "<div class='card'>Let’s say you're talking to a sensor via SPI — here's how to begin:</div><pre><code>#include &lt;SPI.h&gt;\n\nvoid setup() {\n  SPI.begin(); // Initializes SPI bus\n  pinMode(10, OUTPUT); // SS pin as output\n}\n\nvoid loop() {\n  digitalWrite(10, LOW); // Enable Slave\n  byte result = SPI.transfer(0x55); // Send data and receive a byte\n  digitalWrite(10, HIGH); // Disable Slave\n  delay(1000);\n}</code></pre><div class='card'>This code sends 0x55 and reads the result. The <code>SPI.transfer()</code> function does the magic.</div>"
+    },
+    {
+      "title": "📺 Video: How SPI Works (Watch this!)",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/Jd3TZGfdhHk' title='How SPI Communication Works' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🎮 Mini Game: SPI Master or Slave?",
+      "content": "<div class='card'>Question: Which one controls the clock in SPI?</div><button class='gaming-btn'>Master</button> <button class='gaming-btn'>Slave</button><div class='card'>✅ Answer: Master always controls the clock in SPI communication.</div>"
+    },
+    {
+      "title": "📍 Summary & Takeaway",
+      "content": "<div class='card'>SPI is a super-fast protocol perfect for sensors, screens, and SD cards. It uses 4 wires and works in a Master-Slave fashion. You can easily communicate using <code>SPI.transfer()</code> after calling <code>SPI.begin()</code>.</div><div class='card'>It's perfect when you need speed and stability in wired communication!</div>"
+    }
+  ]
+},{
+  "title": "🔍 SPI Pins — Deep Dive into MOSI, MISO, SCK, SS",
+  "lessons": [
+    {
+      "title": "💡 What is SPI?",
+      "content": "<div class='card'>SPI stands for <b>Serial Peripheral Interface</b> — it's a fast, full-duplex communication protocol that uses four wires: <code>MOSI</code>, <code>MISO</code>, <code>SCK</code>, and <code>SS</code>.</div>\n<div class='card'>It's used to communicate with SD cards, displays (like TFT), sensors, and even other microcontrollers.</div>"
+    },
+    {
+      "title": "🔁 How SPI Communication Works",
+      "content": "<div class='card'>Imagine a walkie-talkie system with two people.</div>\n<div class='card'>One talks (MOSI), one listens (MISO), and they only talk when the boss says it's their turn (SS), all while following a common rhythm (SCK).</div>"
+    },
+    {
+      "title": "📌 MOSI — Master Out Slave In",
+      "content": "<div class='card'><b>MOSI</b> sends data <i>from the Master</i> to the <i>Slave</i>.</div>\n<div class='card'>Example: Arduino (master) tells SD card (slave) to write a file.</div>\n<div class='card'>On Arduino UNO, MOSI = Pin 11</div>"
+    },
+    {
+      "title": "📌 MISO — Master In Slave Out",
+      "content": "<div class='card'><b>MISO</b> is the reverse: data travels from the <i>Slave to Master</i>.</div>\n<div class='card'>Example: SD card sends back 'success' to Arduino.</div>\n<div class='card'>On Arduino UNO, MISO = Pin 12</div>"
+    },
+    {
+      "title": "⏱️ SCK — Serial Clock",
+      "content": "<div class='card'><b>SCK</b> is the clock pulse generated by the Master.</div>\n<div class='card'>It tells the Slave when to read or write a bit.</div>\n<div class='card'>Like a drum beat controlling when everyone speaks.</div>\n<div class='card'>Arduino UNO: SCK = Pin 13</div>"
+    },
+    {
+      "title": "🎚️ SS / CS — Slave Select / Chip Select",
+      "content": "<div class='card'>This tells which Slave the Master is talking to.</div>\n<div class='card'>It’s pulled LOW (0) when selected, and HIGH (1) when idle.</div>\n<div class='card'>In real-world: like choosing which friend to talk to in a group chat.</div>\n<div class='card'>Usually any digital pin can be used as SS (commonly Pin 10)</div>"
+    },
+    {
+      "title": "🔌 Full SPI Pin Layout on Arduino UNO",
+      "content": "<div class='card'><ul><li>MOSI = Pin 11</li><li>MISO = Pin 12</li><li>SCK = Pin 13</li><li>SS = Pin 10 (can be others too)</li></ul></div>\n<div class='card'>Make sure to use <code>SPI.begin()</code> to initialize the communication.</div>"
+    },
+    {
+      "title": "📦 Common SPI Devices",
+      "content": "<div class='card'>Here are examples of SPI-based modules:</div>\n<ul class='card'><li>SD card modules</li><li>nRF24L01+ RF modules</li><li>TFT Displays</li><li>Digital Potentiometers</li></ul>"
+    },
+    {
+      "title": "🎥 Video: SPI Pins Explained Visually",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/AEz6FZrL3EM' title='SPI Explained - MOSI MISO SCK SS' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🎮 SPI Quiz — Quick Check",
+      "content": "<div class='card'>Which pin sends data <b>from Slave to Master</b>?</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>A. MOSI</button>\n<button class='gaming-btn' onclick='revealNextCard(this)'>B. MISO ✅</button>\n<button class='gaming-btn' onclick='revealNextCard(this)'>C. SS</button>"
+    }
+  ]
+}
+
+,{
+  "title": "Print — Sending Data to the Serial Monitor",
+  "lessons": [
+    {
+      "title": "🖨️ What is Print in Arduino?",
+      "content": "<div class='card'><code>print()</code> and <code>println()</code> are functions used to send data to the Serial Monitor — a handy tool to <b>debug</b> and display information from your Arduino.</div><div class='card'>It belongs to the <code>Print</code> class, which is inherited by <code>Serial</code>, <code>SoftwareSerial</code>, and even network classes like <code>WiFiClient</code>.</div>"
+    },
+    {
+      "title": "📜 print() vs println()",
+      "content": "<div class='card'><code>print()</code> → Prints data <i>on the same line</i><br><code>println()</code> → Prints data and moves to the <i>next line</i></div><div class='card'>These are extremely useful when you want to observe sensor data, test loops, or see what your code is doing!</div>"
+    },
+    {
+      "title": "🌐 Real-World Use Case",
+      "content": "<div class='card'>Let’s say you're building a <b>smart temperature sensor</b>. You want to see the temperature in real-time in your laptop. Just use:</div><pre><code>Serial.print(\"Temperature: \");\nSerial.println(temp);</code></pre><div class='card'>It will keep printing live data like:<br>Temperature: 29.3<br>Temperature: 29.7</div>"
+    },
+    {
+      "title": "🛠️ How to Use print() in Arduino",
+      "content": "<div class='card'>Step 1: Start serial communication in <code>setup()</code><br><code>Serial.begin(9600);</code></div><div class='card'>Step 2: Use <code>Serial.print()</code> or <code>Serial.println()</code> inside <code>loop()</code> to show values.</div><pre><code>void setup() {\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  Serial.println(\"Arduino is running!\");\n  delay(1000);\n}</code></pre>"
+    },
+    {
+      "title": "🧠 Data Types with print()",
+      "content": "<div class='card'>You can use <code>print()</code> with all kinds of data:</div><ul class='card'><li>Numbers: <code>Serial.print(123)</code></li><li>Strings: <code>Serial.print(\"Hello\")</code></li><li>Floats: <code>Serial.print(3.14)</code></li><li>Binary: <code>Serial.print(5, BIN)</code> → 101</li></ul><div class='card'>It even works with objects that inherit from the Print class!</div>"
+    },
+    {
+      "title": "📺 Video: Using Serial.print() in Arduino",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/3zNPEkGeHwM' title='Arduino print println explained' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🎮 Mini Game: Pick the Right Line!",
+      "content": "<div class='card'>What’s the output of the following?</div><pre><code>Serial.print(\"Temp: \");\nSerial.print(25);\nSerial.print(\" C\");</code></pre><div class='card'>✅ Output: <code>Temp: 25 C</code></div>"
+    },
+    {
+      "title": "📍 Summary & Takeaway",
+      "content": "<div class='card'>The <code>print()</code> and <code>println()</code> functions are <b>lifelines</b> when debugging and building Arduino projects. They help you see what's going on inside your code and test your logic in real-time.</div><div class='card'>No matter what you're building — lights, robots, sensors — <code>Serial.print()</code> is your window into the Arduino’s brain.</div>"
+    }
+  ]
+}
+,{
+  "title": "Serial — The Lifeline Between Arduino and Your PC",
+  "lessons": [
+    {
+      "title": "🔌 What is Serial Communication?",
+      "content": "<div class='card'>Serial communication is how your Arduino <b>talks to your computer</b> — one bit at a time, over a single wire.</div><div class='card'>It uses the <b>TX (transmit)</b> and <b>RX (receive)</b> pins (usually Pin 1 and Pin 0 on Arduino UNO).</div>"
+    },
+    {
+      "title": "📚 Full Form & Context",
+      "content": "<div class='card'><b>Serial</b> stands for <b>Serial Peripheral Interface</b> in general electronics — but in Arduino, <code>Serial</code> refers to UART (Universal Asynchronous Receiver-Transmitter).</div><div class='card'>It is asynchronous, meaning no external clock is needed. Just baud rate must match.</div>"
+    },
+    {
+      "title": "💻 Real-World Analogy",
+      "content": "<div class='card'>Imagine your Arduino is a friend texting you on WhatsApp (Serial Monitor). The TX pin is like sending the message, RX is reading the message.</div><div class='card'>Your phone (computer) and your friend (Arduino) must agree on the <b>typing speed</b> (baud rate).</div>"
+    },
+    {
+      "title": "📍 Common Serial Pins",
+      "content": "<ul class='card'><li>Arduino UNO: TX (Pin 1), RX (Pin 0)</li><li>Arduino Mega: TX0/RX0, TX1/RX1, etc.</li><li>SoftwareSerial: You can assign your own pins for TX/RX!</li></ul>"
+    },
+    {
+      "title": "🧪 Syntax of Serial",
+      "content": "<pre><code>Serial.begin(9600);      // Starts serial communication\nSerial.print(\"Hello\");   // Sends data without new line\nSerial.println(\"World\"); // Sends data with new line\nSerial.read();           // Reads incoming byte\nSerial.available();      // Checks if data is available</code></pre>"
+    },
+    {
+      "title": "🌍 Where is Serial Used?",
+      "content": "<ul class='card'><li>Debugging Arduino code</li><li>Sending sensor data to PC</li><li>Talking to Bluetooth/Wi-Fi modules (like HC-05 or ESP8266)</li><li>Logging data from GPS, RFID, GSM modules</li></ul>"
+    },
+    {
+      "title": "🛠️ Serial Wiring Example",
+      "content": "<div class='card'>If you’re using a module like Bluetooth HC-05:</div><ul class='card'><li>Connect TX of HC-05 to RX of Arduino</li><li>Connect RX of HC-05 to TX of Arduino (use voltage divider!)</li><li>Use <code>Serial.read()</code> to get the data</li></ul>"
+    },
+    {
+      "title": "📺 Video: Full Serial Communication Explained",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/BjZ5oYFQXJk' title='Arduino Serial Communication Tutorial' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🎮 Game: Decode the Serial Message",
+      "content": "<div class='card'>What happens here?</div><pre><code>Serial.begin(9600);\nSerial.print(\"Val: \");\nSerial.print(analogRead(A0));\nSerial.print(\"\\nDone\");</code></pre><div class='card'>✅ Output (example): <br>Val: 712<br>Done</div>"
+    },
+    {
+      "title": "🚀 Bonus: Serial Plotter",
+      "content": "<div class='card'>Serial Plotter is a visual graph tool in Arduino IDE. Just use <code>Serial.println()</code> with sensor values to see real-time plots!</div><div class='card'>Try: <pre><code>Serial.println(analogRead(A0));</code></pre></div>"
+    }
+  ]
+}
+,{
+  "title": "Stream — Power Behind Serial-like Interfaces",
+  "lessons": [
+    {
+      "title": "🌊 What is the Stream Class?",
+      "content": "<div class='card'>The <code>Stream</code> class is the backbone behind many Arduino communication methods like <code>Serial</code>, <code>Wire</code>, and <code>SoftwareSerial</code>.</div><div class='card'>It offers a unified way to read and write data through <b>streams</b> — like text from a serial port or data from an I2C sensor.</div>"
+    },
+    {
+      "title": "🔍 Why Use Stream?",
+      "content": "<div class='card'>When different libraries (e.g., Serial, Wire, Ethernet) inherit from <code>Stream</code>, they all share <b>common reading and writing functions</b>. That makes code more reusable and flexible.</div><div class='card'>Example: <code>.read()</code>, <code>.available()</code>, <code>.peek()</code> — all work across multiple interfaces!</div>"
+    },
+    {
+      "title": "🧱 Stream Functions You Should Know",
+      "content": "<ul class='card'><li><code>read()</code> → Reads the next byte of incoming data.</li><li><code>peek()</code> → Looks at the next byte without removing it.</li><li><code>available()</code> → Returns the number of bytes available to read.</li><li><code>find()</code> → Searches for a keyword.</li><li><code>readString()</code> → Reads characters into a String.</li></ul>"
+    },
+    {
+      "title": "📦 Where Do You See Stream in Real Life?",
+      "content": "<ul class='card'><li><b>Serial Monitor</b>: When you receive GPS or RFID data character-by-character.</li><li><b>Wi-Fi Modules</b>: When reading from ESP8266 or ESP32 via TCP streams.</li><li><b>Bluetooth</b>: When receiving SMS text over HC-05.</li></ul>"
+    },
+    {
+      "title": "📚 Inheritance — A Nerdy But Important Concept",
+      "content": "<div class='card'><code>Serial</code> inherits from <code>Stream</code>. So does <code>Wire</code>, <code>SoftwareSerial</code>, and others.</div><div class='card'>That means all these communication classes can use <code>.read()</code>, <code>.peek()</code>, <code>.find()</code>, etc. without redefining them!</div>"
+    },
+    {
+      "title": "💡 Real-World Analogy",
+      "content": "<div class='card'>Think of Stream like a <b>pipeline system</b>. Whether it carries water (Serial), juice (Wire), or soda (SoftwareSerial), the basic operations of opening, checking, and peeking remain the same!</div>"
+    },
+    {
+      "title": "🔌 Pin Usage",
+      "content": "<div class='card'>Stream itself doesn't use pins directly — but any class like Serial or Wire that inherits it <b>does</b>.</div><ul class='card'><li>Serial: TX/RX pins</li><li>Wire: SDA/SCL</li></ul>"
+    },
+    {
+      "title": "🧪 Example Code",
+      "content": "<pre><code>String incoming;\nif (Serial.available() > 0) {\n  incoming = Serial.readString();\n  Serial.println(\"You typed: \" + incoming);\n}</code></pre><div class='card'>This reads the full text typed in Serial Monitor and prints it back.</div>"
+    },
+    {
+      "title": "📺 Video: Stream and Inheritance in Arduino",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/L3R8iOBKZ7s' title='Understanding Stream in Arduino' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+},{
+  "title": "Wire — I²C Communication: Talking to Multiple Devices with 2 Wires",
+  "lessons": [
+    {
+      "title": "📡 What is I²C (Wire)?",
+      "content": "<div class='card'><b>I²C</b> (Inter-Integrated Circuit), pronounced \"I-squared-C\" or \"I-two-C\", is a serial communication protocol that allows multiple devices to communicate using just two wires: <b>SDA</b> (data) and <b>SCL</b> (clock).</div><div class='card'>In Arduino, the I²C protocol is implemented using the <code>Wire</code> library.</div>"
+    },
+    {
+      "title": "🧠 Master and Slave Devices",
+      "content": "<div class='card'>I²C uses a master-slave setup. The <b>master</b> controls the clock and initiates communication. <b>Slaves</b> wait to be addressed.</div><div class='card'>Arduino is usually the master, while sensors (like MPU6050 or SSD1306 OLED displays) act as slaves.</div>"
+    },
+    {
+      "title": "📍 Pins Used in I²C (Wire)",
+      "content": "<div class='card'><ul><li><b>UNO/Nano</b>: A4 (SDA), A5 (SCL)</li><li><b>MEGA</b>: 20 (SDA), 21 (SCL)</li><li><b>ESP32</b>: You can set any GPIO as SDA and SCL (commonly GPIO 21 and 22)</li></ul></div>"
+    },
+    {
+      "title": "🔍 Common Devices That Use I²C",
+      "content": "<div class='card'>✔️ OLED Displays (SSD1306)<br>✔️ Real-Time Clocks (DS1307, DS3231)<br>✔️ Accelerometers (MPU6050)<br>✔️ EEPROMs</div>"
+    },
+    {
+      "title": "🛠️ Wire Library Functions",
+      "content": "<ul class='card'><li><code>Wire.begin()</code> → Starts I²C as master or slave</li><li><code>Wire.beginTransmission(address)</code> → Tells which slave to talk to</li><li><code>Wire.write(data)</code> → Sends data</li><li><code>Wire.endTransmission()</code> → Ends communication</li><li><code>Wire.requestFrom(address, numBytes)</code> → Reads data from slave</li></ul>"
+    },
+    {
+      "title": "🧪 Real-World Example — Reading Temperature from a Sensor",
+      "content": "<pre><code>#include &lt;Wire.h&gt;\n\nvoid setup() {\n  Wire.begin();\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  Wire.beginTransmission(0x48); // Sensor address\n  Wire.write(0);\n  Wire.endTransmission();\n  Wire.requestFrom(0x48, 1);\n  int temp = Wire.read();\n  Serial.println(temp);\n  delay(1000);\n}</code></pre>"
+    },
+    {
+      "title": "🧠 How I²C Saves Pins",
+      "content": "<div class='card'>No matter how many devices you connect, you still use just <b>2 wires</b>. Each device gets a unique address (like house numbers).</div><div class='card'>This makes I²C perfect for small robots, wearables, or IoT devices where pin space is limited.</div>"
+    },
+    {
+      "title": "🎮 Mini Game — Identify the I²C Pins",
+      "content": "<div class='card'>Which of the following pins are I²C for Arduino UNO?<br><button class='gaming-btn' onclick='revealNextCard(this)'>A. D2, D3</button><br><button class='gaming-btn' onclick='revealNextCard(this)'>B. A4, A5 ✅</button><br><button class='gaming-btn' onclick='revealNextCard(this)'>C. D10, D11</button></div>"
+    },
+    {
+      "title": "🎥 YouTube: Learn I²C with OLED and Arduino",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/TiQwN9YbtaU' title='Arduino I2C Explained + OLED Example' frameborder='0' allowfullscreen></iframe>"
+    },{
+      "title": "👀 SCL and SDA — The Two I²C Lifelines",
+      "content": "<div class='card'><b>SCL</b> stands for <i>Serial Clock Line</i> — it controls the timing of data communication.</div>\n<div class='card'><b>SDA</b> stands for <i>Serial Data Line</i> — it carries the actual data between devices.</div>\n<div class='card'>Both are essential for <b>I²C</b> communication, and together they make two devices 'talk' on the same bus.</div>"
+    },
+    {
+      "title": "📡 How Do They Work Together?",
+      "content": "<div class='card'>Imagine SCL as a <b>metronome</b> (clock) and SDA as a <b>walkie-talkie</b> (data).</div>\n<div class='card'>SCL gives rhythm 🥁, while SDA sends the conversation 📣.</div>"
+    },
+    {
+      "title": "📍 Pin Numbers on Arduino",
+      "content": "<div class='card'><b>Arduino UNO / Nano</b>:<br>SDA = A4, SCL = A5</div>\n<div class='card'><b>Arduino MEGA</b>:<br>SDA = Pin 20, SCL = Pin 21</div>\n<div class='card'><b>ESP32</b>:<br>You can choose any GPIO for SDA/SCL (like 21/22)</div>"
+    },
+    {
+      "title": "🌍 Real-World Analogy",
+      "content": "<div class='card'>Think of a class monitor (Arduino) asking students (sensors) one by one for attendance.</div>\n<div class='card'>SCL = ringing bell ⏰ to start/stop speaking<br>SDA = student’s voice 🎤 carrying name</div>"
+    },
+    {
+      "title": "📦 What Can You Connect?",
+      "content": "<div class='card'>I²C is used for connecting:</div>\n<ul class='card'><li>OLED Displays (like SSD1306)</li><li>Temperature Sensors (like DS18B20)</li><li>Gyros (like MPU6050)</li><li>Real-Time Clocks (DS3231)</li></ul>"
+    },
+    {
+      "title": "🧪 Tiny Demo Code (Just Setup)",
+      "content": "<div class='card'>Here’s how you initialize I²C using the <code>Wire</code> library:</div>\n<pre><code>#include &lt;Wire.h&gt;\n\nvoid setup() {\n  Wire.begin(); // Starts I2C\n  Serial.begin(9600);\n}</code></pre>"
+    },
+    {
+      "title": "🎮 Quiz: SCL vs SDA",
+      "content": "<div class='card'>Which one controls the clock?</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>A. SDA</button>\n<button class='gaming-btn' onclick='revealNextCard(this)'>B. SCL ✅</button>\n<button class='gaming-btn' onclick='revealNextCard(this)'>C. SPI</button>"
+    },
+    {
+      "title": "🎥 Video: SCL and SDA Explained Simply",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/_ADxKQb2P4I' title='SDA and SCL Explained with Animation' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+}
+
+
+      ]
+    },{
+      title:"SPI Advanced Functions — Total Control over Communication",
+      modules:[
+        {
+  "title": "🧠 SPISettings — The Brain Behind SPI Transactions",
+  "lessons": [
+    {
+      "title": "🧾 What is SPISettings?",
+      "content": "<div class='card'><code>SPISettings</code> defines how communication happens in SPI — like speed, data mode, and bit order.</div><div class='card'>Instead of setting them manually every time, you wrap them inside SPISettings and use it in <code>beginTransaction()</code>.</div>"
+    },
+    {
+      "title": "📚 Syntax of SPISettings",
+      "content": "<div class='card'><code>SPISettings(clock, bitOrder, dataMode)</code></div><div class='card'>Example: <code>SPISettings(1000000, MSBFIRST, SPI_MODE0)</code> — 1 MHz speed, Most Significant Bit first, Mode 0.</div>"
+    },
+    {
+      "title": "📦 Why Use SPISettings?",
+      "content": "<div class='card'>It gives you <b>predictable behavior</b> especially when multiple SPI devices use different configs.</div><div class='card'>Best practice is to wrap all communication like this:</div><pre><code>SPI.beginTransaction(SPISettings(...));\n// Your code\nSPI.endTransaction();</code></pre>"
+    },
+    {
+      "title": "🌍 Real-World Analogy",
+      "content": "<div class='card'>Imagine writing a letter: you choose the <b>language (bitOrder)</b>, <b>speed of courier (clock speed)</b>, and <b>message formatting (dataMode)</b>. All of this is what <code>SPISettings</code> controls.</div>"
+    },
+    {
+      "title": "💻 Example Code",
+      "content": "<div class='card'>Let's set up a device with SPI using <code>SPISettings</code>:</div><pre><code>#include &lt;SPI.h&gt;\nvoid setup() {\n  SPI.begin();\n  SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0));\n  digitalWrite(SS, LOW); // Start talking to slave\n  SPI.transfer(0xAA); // Send data\n  digitalWrite(SS, HIGH); // End talk\n  SPI.endTransaction();\n}</code></pre>"
+    },
+    {
+      "title": "🔌 Pin Usage",
+      "content": "<div class='card'>Used with SPI pins:\n<ul><li>MOSI → D11</li><li>MISO → D12</li><li>SCK → D13</li><li>SS → Usually D10</li></ul></div>"
+    },
+    {
+      "title": "🎥 Video: Mastering SPISettings",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/G1KkW9d05pM' title='SPISettings Explained' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🎮 Mini Game: Match the SPI Setting",
+      "content": "<div class='card'>Match these values to their roles:<br><br><b>Options:</b><br>1. MSBFIRST<br>2. 1000000<br>3. SPI_MODE3</div><div class='card'><b>Q:</b> Which one sets data direction?</div><button class='gaming-btn'>MSBFIRST ✅</button><button class='gaming-btn'>SPI_MODE3 ❌</button><button class='gaming-btn'>1000000 ❌</button>"
+    }
+  ]
+}
+,{
+  "title": "🚀 SPI.begin() — Starting the SPI Engine",
+  "lessons": [
+    {
+      "title": "🧠 What is SPI.begin()?",
+      "content": "<div class='card'><code>SPI.begin()</code> initializes the SPI bus and sets the proper SPI pins (MOSI, MISO, SCK) to the right mode.</div><div class='card'>You MUST call this before using any other SPI functions, otherwise nothing will work!</div>"
+    },
+    {
+      "title": "🛠 Syntax",
+      "content": "<div class='card'><code>SPI.begin()</code> → Starts SPI communication.</div><div class='card'>On some boards, you can use <code>SPI.begin(SCK, MISO, MOSI, SS)</code> to set custom SPI pins (mostly ESP32).</div>"
+    },
+    {
+      "title": "🔌 Pin Setup — Arduino UNO",
+      "content": "<div class='card'><b>MOSI</b> → D11<br><b>MISO</b> → D12<br><b>SCK</b> → D13<br><b>SS (Slave Select)</b> → Usually D10</div><div class='card'>These pins are <b>hard-wired</b> for SPI and can’t be changed on basic boards.</div>"
+    },
+    {
+      "title": "📚 Why do we need begin()?",
+      "content": "<div class='card'>It configures SPI settings and sets the pins to INPUT/OUTPUT modes as required.</div><div class='card'>Think of it like 'turning on' the SPI engine before you start driving.</div>"
+    },
+    {
+      "title": "🌍 Real-World Analogy",
+      "content": "<div class='card'>Calling <code>SPI.begin()</code> is like putting the key in your car and turning on the engine before you shift gears (transfer data).</div>"
+    },
+    {
+      "title": "📦 Where is it used?",
+      "content": "<div class='card'>Any Arduino project that talks to SPI peripherals like:</div><ul><li>SD cards</li><li>Shift registers</li><li>Digital potentiometers</li><li>SPI displays like OLEDs</li></ul>"
+    },
+    {
+      "title": "💡 Example Code",
+      "content": "<pre><code>#include &lt;SPI.h&gt;\n\nvoid setup() {\n  SPI.begin();\n  // Ready to communicate via SPI\n}</code></pre>"
+    },
+    {
+      "title": "🎥 Video: SPI.begin() Explained Simply",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/Mv_w_8yTrFA' title='SPI.begin() for Beginners' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🎮 Quick Quiz: What Does It Do?",
+      "content": "<div class='card'>What happens if you forget to use <code>SPI.begin()</code> before sending data?</div><button class='gaming-btn'>SPI fails silently ✅</button><button class='gaming-btn'>Arduino resets ❌</button><button class='gaming-btn'>You burn the board ❌</button>"
+    }
+  ]
+}
+,{
+  "title": "🧾 SPI.beginTransaction() — Safe and Clean SPI Transfers",
+  "lessons": [
+    {
+      "title": "📘 What is SPI.beginTransaction()?",
+      "content": "<div class='card'><code>SPI.beginTransaction()</code> prepares the SPI bus for a device-specific data transfer.</div><div class='card'>It ensures that if multiple devices share the same SPI bus, each one gets the correct configuration (clock speed, data mode, bit order).</div>"
+    },
+    {
+      "title": "🧪 Syntax and Parameters",
+      "content": "<div class='card'><code>SPI.beginTransaction(SPISettings(clock, bitOrder, dataMode))</code></div><div class='card'>Example: <code>SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0))</code></div><ul><li><b>clock</b> = SPI clock speed (e.g., 1 MHz)</li><li><b>bitOrder</b> = MSBFIRST or LSBFIRST</li><li><b>dataMode</b> = SPI_MODE0 to SPI_MODE3</li></ul>"
+    },
+    {
+      "title": "🔍 Where and Why?",
+      "content": "<div class='card'>Used just before talking to a specific SPI device — like an SD card or display.</div><div class='card'>It avoids conflicts when multiple SPI devices need different settings.</div>"
+    },
+    {
+      "title": "🌍 Real-World Analogy",
+      "content": "<div class='card'>Imagine you and your friend both use the same laptop but change the screen resolution, brightness, and keyboard layout to your preference before starting work. That’s what <code>SPI.beginTransaction()</code> does — it applies settings before using the shared 'SPI bus'.</div>"
+    },
+    {
+      "title": "📦 Typical Use Case — Reading from SD Card",
+      "content": "<pre><code>digitalWrite(10, LOW); // Select SD card\nSPI.beginTransaction(SPISettings(8000000, MSBFIRST, SPI_MODE0));\n// Transfer data here\nSPI.endTransaction();\ndigitalWrite(10, HIGH);</code></pre>"
+    },
+    {
+      "title": "📍 Pin Usage Reminder",
+      "content": "<div class='card'>Just like <code>SPI.begin()</code>, this function uses:</div><ul><li>MOSI → D11</li><li>MISO → D12</li><li>SCK → D13</li><li>SS (Chip Select) → D10 (usually)</li></ul><div class='card'>Always manage <code>SS</code> (chip select) manually before and after the transaction.</div>"
+    },
+    {
+      "title": "🎥 YouTube: Why SPI.beginTransaction Matters",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/X4euqEAEQK0' title='SPI.beginTransaction() Explained' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🎮 Quick Game: Choose the Right Order",
+      "content": "<div class='card'>Arrange the proper sequence for SPI communication:</div><button class='gaming-btn'>SPI.begin() → digitalWrite(SS, LOW) → SPI.beginTransaction() → SPI.transfer() → SPI.endTransaction() ✅</button><button class='gaming-btn'>SPI.transfer() → SPI.begin() ❌</button><button class='gaming-btn'>SPI.beginTransaction() → SPI.end() ❌</button>"
+    }
+  ]
+}
+,{
+  "title": "🔚 SPI.endTransaction() — Wrap It Up!",
+  "lessons": [
+    {
+      "title": "📘 What is SPI.endTransaction()?",
+      "content": "<div class='card'><code>SPI.endTransaction()</code> is called after you finish communicating with an SPI device.</div><div class='card'>It signals the end of your settings-specific communication, allowing other SPI devices to safely start their own transactions without interference.</div>"
+    },
+    {
+      "title": "🧪 Syntax",
+      "content": "<div class='card'><code>SPI.endTransaction()</code></div><div class='card'>No parameters needed. It’s just a clean-up step after <code>SPI.beginTransaction()</code>.</div>"
+    },
+    {
+      "title": "🌍 Real-World Analogy",
+      "content": "<div class='card'>Imagine you're done using a public computer. You log out and leave so the next person can log in with their own settings. That's <code>endTransaction()</code>.</div>"
+    },
+    {
+      "title": "📍 Pin Info",
+      "content": "<div class='card'>Same pins involved as the SPI protocol:</div><ul><li><b>MOSI (D11)</b></li><li><b>MISO (D12)</b></li><li><b>SCK (D13)</b></li><li><b>SS (D10 or any CS pin)</b></li></ul><div class='card'>While <code>endTransaction()</code> doesn’t change pins directly, it ensures that they can be reused safely for the next SPI device.</div>"
+    },
+    {
+      "title": "📦 Use Case — Finishing a Sensor Read",
+      "content": "<div class='card'>Here’s how you'd use <code>SPI.endTransaction()</code> in a full read cycle:</div><pre><code>digitalWrite(SS, LOW);\nSPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0));\nSPI.transfer(0x90); // Example read command\nSPI.endTransaction();\ndigitalWrite(SS, HIGH);</code></pre>"
+    },
+    {
+      "title": "🧠 Why Is It Important?",
+      "content": "<div class='card'>If you're using multiple SPI devices with different settings (e.g., an SD card and a TFT screen), <code>endTransaction()</code> helps prevent cross-talk, incorrect data, or bus conflicts.</div><div class='card'>It keeps your SPI communication stable and well-managed — especially in bigger projects.</div>"
+    },
+    {
+      "title": "🎥 YouTube: Ending SPI Like a Pro",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/Yv3BwbT_p1Q' title='SPI.endTransaction() in Arduino' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🎮 Mini Quiz: When Do You Use SPI.endTransaction()?",
+      "content": "<div class='card'>What comes right after finishing SPI data transfer?</div><button class='gaming-btn'>✅ SPI.endTransaction()</button><button class='gaming-btn'>❌ SPI.begin()</button><button class='gaming-btn'>❌ pinMode()</button>"
+    }
+  ]
+}
+,{
+  "title": "🚫 SPI.end() — Turning Off the SPI Bus",
+  "lessons": [
+    {
+      "title": "📘 What is SPI.end()?",
+      "content": "<div class='card'><code>SPI.end()</code> is used to <b>disable the SPI bus</b> and return the SPI pins (MISO, MOSI, SCK) back to general I/O functionality.</div><div class='card'>If you’re done using SPI completely — like permanently stopping communication with all SPI devices — you call <code>SPI.end()</code>.</div>"
+    },
+    {
+      "title": "🧪 Syntax",
+      "content": "<div class='card'><code>SPI.end();</code><br>No parameters. Just call it when you’re sure SPI is no longer needed.</div>"
+    },
+    {
+      "title": "🧠 When Should You Use It?",
+      "content": "<div class='card'>You use <code>SPI.end()</code> when:</div><ul><li>You want to free up the SPI pins for other tasks like digital I/O</li><li>Your device is going into a sleep mode</li><li>You want to stop SPI for power-saving or reset purposes</li></ul>"
+    },
+    {
+      "title": "🌍 Real-World Analogy",
+      "content": "<div class='card'>Imagine SPI as a special walkie-talkie mode on your phone. <code>SPI.end()</code> means you’re done with that mode, and now the phone goes back to regular use.</div><div class='card'>Similarly, your Arduino pins go back to their default state.</div>"
+    },
+    {
+      "title": "📍 Pin Release Details",
+      "content": "<div class='card'><code>SPI.end()</code> disables the following SPI pins:</div><ul><li><b>MOSI (D11)</b> - Output</li><li><b>MISO (D12)</b> - Input</li><li><b>SCK (D13)</b> - Clock Output</li></ul><div class='card'>Once disabled, you can now use these pins like <code>digitalWrite()</code> or <code>analogRead()</code> if needed.</div>"
+    },
+    {
+      "title": "🧪 Example: Switch Between SPI and LED",
+      "content": "<pre><code>// Start SPI for sensor\nSPI.begin();\nSPI.beginTransaction(SPISettings(500000, MSBFIRST, SPI_MODE0));\n// Do SPI stuff\nSPI.endTransaction();\nSPI.end();\n\n// Now use the SPI pins as regular digital outputs\npinMode(11, OUTPUT);\ndigitalWrite(11, HIGH);</code></pre>"
+    },
+    {
+      "title": "🎥 Video: Why and When to Use SPI.end()",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/FLeBvB0NRV4' title='SPI.end() Explained' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🎮 Game: Right Time to Use SPI.end()?",
+      "content": "<div class='card'>When would you use <code>SPI.end()</code>?</div><button class='gaming-btn'>✅ After you’re completely done using SPI</button><button class='gaming-btn'>❌ Right before SPI.transfer()</button><button class='gaming-btn'>❌ Every time you use SPI.beginTransaction()</button>"
+    }
+  ]
+}
+,{
+  "title": "🔀 setBitOrder() — MSB or LSB First?",
+  "lessons": [
+    {
+      "title": "📘 What is setBitOrder()?",
+      "content": "<div class='card'><code>setBitOrder()</code> lets you decide which part of a byte — the <b>Most Significant Bit (MSB)</b> or the <b>Least Significant Bit (LSB)</b> — is sent first during SPI communication.</div><div class='card'>This matters when the device you're communicating with expects bits in a specific order!</div>"
+    },
+    {
+      "title": "📚 Terms to Know: MSB and LSB",
+      "content": "<div class='card'><b>MSB (Most Significant Bit):</b> The leftmost/highest bit. In binary 10010000, MSB is 1.</div><div class='card'><b>LSB (Least Significant Bit):</b> The rightmost/lowest bit. In 10010000, LSB is 0.</div><div class='card'>Some devices expect the first bit to be the MSB (default in Arduino), others need the LSB first. Hence, we choose.</div>"
+    },
+    {
+      "title": "🧪 Syntax",
+      "content": "<div class='card'><code>SPI.setBitOrder(MSBFIRST);</code><br><code>SPI.setBitOrder(LSBFIRST);</code></div><div class='card'>You choose <code>MSBFIRST</code> or <code>LSBFIRST</code> depending on your slave device's requirement.</div>"
+    },
+    {
+      "title": "🧠 When and Why Use It?",
+      "content": "<div class='card'>You use <code>setBitOrder()</code> when your peripheral device’s datasheet specifies a required bit order.</div><ul><li>LED drivers like MAX7219 → MSBFIRST</li><li>Shift registers like 74HC595 → LSBFIRST</li><li>Displays and sensors may vary</li></ul>"
+    },
+    {
+      "title": "🌍 Real-Life Analogy",
+      "content": "<div class='card'>Imagine reading a phone number. Some people say it as <code>+91-987</code> (MSB first), others say <code>789</code> (LSB first). The receiver must understand the order.</div>"
+    },
+    {
+      "title": "📍 Pins Used (for SPI)",
+      "content": "<div class='card'>This applies to devices communicating via SPI:</div><ul><li><b>MOSI (D11)</b> - Data sent out</li><li><b>SCK (D13)</b> - Clock</li><li><b>CS (any digital pin)</b> - Chip Select</li></ul>"
+    },
+    {
+      "title": "🧪 Practical Example",
+      "content": "<pre><code>SPI.begin();\nSPI.setBitOrder(LSBFIRST);  // Send Least Significant Bit first\nSPI.transfer(0b10100000);\nSPI.end();</code></pre>"
+    },
+    {
+      "title": "🎮 Game: Which Bit is Which?",
+      "content": "<div class='card'>In binary 10101010, which is the MSB?</div><button class='gaming-btn'>✅ 1 (leftmost)</button><button class='gaming-btn'>❌ 0 (rightmost)</button><button class='gaming-btn'>❌ All bits are same</button>"
+    },
+    {
+      "title": "🎥 Video: MSBFIRST vs LSBFIRST Explained",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/vzSF1N_M_Kw' title='Bit Order Arduino Explained' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+}
+,{
+  "title": "⏱️ setClockDivider() — Controlling SPI Speed",
+  "lessons": [
+    {
+      "title": "🔧 What is setClockDivider()?",
+      "content": "<div class='card'><code>setClockDivider()</code> is used to control the speed of SPI communication.</div><div class='card'>It determines how fast data is transferred from your Arduino to SPI devices — by dividing the system clock frequency (16 MHz on most boards).</div>"
+    },
+    {
+      "title": "🧪 Syntax of setClockDivider()",
+      "content": "<div class='card'><code>SPI.setClockDivider(divider);</code></div><div class='card'>Examples:<ul><li><code>SPI.setClockDivider(SPI_CLOCK_DIV2)</code> → 8 MHz</li><li><code>SPI.setClockDivider(SPI_CLOCK_DIV8)</code> → 2 MHz</li><li><code>SPI.setClockDivider(SPI_CLOCK_DIV64)</code> → 250 kHz</li></ul></div>"
+    },
+    {
+      "title": "🧠 When & Why to Use?",
+      "content": "<div class='card'>Not all SPI devices can handle high speed! If your slave device is slow, use a higher divider (slower clock).</div><div class='card'>Use faster clocks when dealing with displays or fast sensors. Use slower clocks for EEPROMs or long-distance cables (more noise).</div>"
+    },
+    {
+      "title": "🧰 How it Works",
+      "content": "<div class='card'>The Arduino has a 16 MHz system clock. If you set <code>SPI_CLOCK_DIV4</code>, the SPI speed becomes 4 MHz.</div><div class='card'>The formula: <code>SPI speed = System Clock / Divider</code></div>"
+    },
+    {
+      "title": "🌍 Real-World Analogy",
+      "content": "<div class='card'>Imagine two friends passing balls — one is fast, one is slow. You adjust your speed to match your friend. That’s what clock divider does.</div>"
+    },
+    {
+      "title": "📍 Pin Usage (SPI)",
+      "content": "<div class='card'>Same SPI pins are used:<ul><li><b>MOSI</b> → Data to Slave</li><li><b>SCK</b> → Clock (the one affected by setClockDivider!)</li><li><b>CS</b> → Chip Select</li></ul></div>"
+    },
+    {
+      "title": "🎮 Quiz: Match the Speed!",
+      "content": "<div class='card'>If your system clock is 16 MHz and you use <code>SPI_CLOCK_DIV8</code>, what is the SPI clock speed?</div><button class='gaming-btn'>✅ 2 MHz</button><button class='gaming-btn'>❌ 4 MHz</button><button class='gaming-btn'>❌ 8 MHz</button>"
+    },
+    {
+      "title": "🎥 Video: SPI Clock Divider Explained",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/X9fvDQGZmjI' title='Arduino SPI Clock Speed Tutorial' frameborder='0' allowfullscreen></iframe>"
+    },
+    {
+      "title": "🧪 Example Code",
+      "content": "<pre><code>SPI.begin();\nSPI.setClockDivider(SPI_CLOCK_DIV8); // 2 MHz\nSPI.transfer(0x42);\nSPI.end();</code></pre>"
+    }
+  ]
+}
+,{
+  "title": "📡 SPI.transfer() — The Real Data Mover",
+  "lessons": [
+    {
+      "title": "📘 What is SPI.transfer()?",
+      "content": "<div class='card'><code>SPI.transfer()</code> is the function that actually sends <b>and</b> receives one byte of data through the SPI bus.</div><div class='card'>SPI is full-duplex — which means when Arduino sends a byte, it simultaneously receives one from the slave.</div>"
+    },
+    {
+      "title": "🧪 Syntax of SPI.transfer()",
+      "content": "<div class='card'><code>byte received = SPI.transfer(byte data);</code></div><div class='card'>Example:<br><code>SPI.transfer(0x53);</code><br>This sends the byte 0x53 and simultaneously returns any byte received.</div>"
+    },
+    {
+      "title": "🧠 Why and When to Use?",
+      "content": "<div class='card'>Use <code>SPI.transfer()</code> every time you need to send commands or data to SPI devices like:<ul><li>OLED or TFT Displays</li><li>SD Cards</li><li>Sensor Modules</li><li>Digital Potentiometers</li></ul></div><div class='card'>Some devices send data back on the same transfer, like temperature sensors.</div>"
+    },
+    {
+      "title": "🌍 Real-Life Analogy",
+      "content": "<div class='card'>Imagine two walkie-talkies: you say something and hear something back — at the same time! That’s full-duplex — like <code>SPI.transfer()</code>.</div>"
+    },
+    {
+      "title": "📍 Pin Usage",
+      "content": "<div class='card'>SPI uses:</div><ul><li><b>MOSI (D11)</b> → Data sent from Arduino</li><li><b>MISO (D12)</b> → Data received into Arduino</li><li><b>SCK (D13)</b> → Clock signal</li><li><b>CS (any digital pin)</b> → Selects the slave device</li></ul>"
+    },
+    {
+      "title": "🧪 Practical Code Example",
+      "content": "<pre><code>#include &lt;SPI.h&gt;\n\nvoid setup() {\n  SPI.begin();\n  digitalWrite(10, LOW); // Select slave\n  byte response = SPI.transfer(0xA5);\n  digitalWrite(10, HIGH); // Deselect slave\n  Serial.begin(9600);\n  Serial.print(\"Received: \");\n  Serial.println(response, HEX);\n}</code></pre>"
+    },
+    {
+      "title": "🎮 Quiz Time: SPI.transfer",
+      "content": "<div class='card'>What does <code>SPI.transfer(0x34);</code> return?</div><button class='gaming-btn'>✅ The byte received from the slave</button><button class='gaming-btn'>❌ Nothing</button><button class='gaming-btn'>❌ A confirmation string</button>"
+    },
+    {
+      "title": "🎥 Video: SPI.transfer Explained Visually",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/mhYfMMqFM1E' title='SPI transfer Arduino Full Duplex' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+},{
+  "title": "SPI.setBitOrder() — Choose Your Bit Battle Strategy!",
+  "lessons": [
+    {
+      "title": "🧩 What is SPI.setBitOrder()?",
+      "content": "<div class='card'><code>SPI.setBitOrder()</code> is used to decide <b>which bit goes first</b> when sending data through the SPI bus.</div>\n<div class='card'>You can choose between:<br><code>MSBFIRST</code> → Most Significant Bit First (default)<br><code>LSBFIRST</code> → Least Significant Bit First</div>\n<div class='card'>This is important because some SPI devices expect data in different bit orders. Sending data in the wrong order can lead to unexpected results!</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📌 Real-World Example",
+      "content": "<div class='card'>Imagine you're sending the number <code>0b10101010</code> to a digital display over SPI.</div>\n<div class='card'>If the display expects <b>LSBFIRST</b> but you send <b>MSBFIRST</b>, the entire byte will be interpreted differently!</div>\n<div class='card'>Just like how English is read left-to-right and Arabic is right-to-left, some chips are picky about bit order too!</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "⚙️ Syntax",
+      "content": "<div class='card'><code>SPI.setBitOrder(bitOrder);</code><br>Where <code>bitOrder</code> is either <code>MSBFIRST</code> or <code>LSBFIRST</code>.</div>\n<div class='card'>This must be called <b>after</b> <code>SPI.begin()</code> and <b>before</b> any SPI transfer.</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "💡 Pin Usage",
+      "content": "<div class='card'>This function affects <b>MOSI</b> and <b>SCK</b> pins primarily — because that's where the bit shifting happens during data transfer.</div>\n<div class='card'>But make sure your <b>slave device</b> supports the bit order you set!</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎮 Try It Out — Live Code Demo",
+      "content": "<div class='card'>Here's a demo to send two bytes with different bit orders:</div>\n<pre><code>#include &lt;SPI.h&gt;\n\nvoid setup() {\n  SPI.begin();\n  SPI.setBitOrder(MSBFIRST);\n  SPI.transfer(0b10101010); // Sent MSB first\n\n  SPI.setBitOrder(LSBFIRST);\n  SPI.transfer(0b10101010); // Sent LSB first\n}\n\nvoid loop() {}\n</code></pre>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📺 YouTube Video",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/G0V1zE3pdlE' title='Bit Order Explained with SPI Animation' frameborder='0' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧠 Quiz Time!",
+      "content": "<div class='card'>You want to send <code>0b00000001</code> to a sensor that expects LSBFIRST. What would it receive if you sent it MSBFIRST instead?</div>\n<div class='card'><b>A)</b> 0b00000001<br><b>B)</b> 0b10000000<br><b>C)</b> It won’t understand<br><b>D)</b> It will explode 💥</div>\n<div class='card'>Correct Answer: <b>B</b>. The bit order completely changes the interpretation!</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+
 
       ]
     }
