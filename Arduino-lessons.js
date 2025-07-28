@@ -6553,6 +6553,115 @@ void loop() {
 
 
       ]
+    },{
+      title:"Print Functions — Communicating with the Serial Monitor",
+      modules:[
+          {
+  "title": "write() — Raw Byte Sender",
+  "lessons": [
+    {
+      "title": "💡 What is write() in Arduino?",
+      "content": "<div class='card'><code>write()</code> is used to send raw binary data (not human-readable text) over the Serial port.</div><div class='card'>Unlike <code>print()</code> which sends characters as readable text (like '1', '2', '3'), <code>write()</code> sends the **actual byte values** — like 0x31, 0x32, 0x33.</div><div class='card'>Think of it like this: <br><b>print(65)</b> → sends '65'<br><b>write(65)</b> → sends 'A' (ASCII 65).</div><div class='card'><b>Real-world use case:</b> Sending commands to Bluetooth modules or sending data packets to other microcontrollers where bytes matter more than text.</div>"
+    },
+    {
+      "title": "📘 Syntax of write()",
+      "content": "<div class='card'><code>Serial.write(val)</code> — Sends a single byte (0–255)<br><code>Serial.write(str)</code> — Sends each byte of a string<br><code>Serial.write(buf, len)</code> — Sends a buffer of length 'len'</div><div class='card'>Examples:<br><code>Serial.write(65);</code> // Sends ASCII 'A'<br><code>Serial.write(\"Hello\");</code> // Sends 'H', 'e', 'l', 'l', 'o'<br><code>byte data[] = {0x7E, 0x01, 0x02};<br>Serial.write(data, 3);</code> // Sends 3 bytes</div>"
+    },
+    {
+      "title": "🔌 Hardware & Pin Info",
+      "content": "<div class='card'>The <code>write()</code> function uses the TX (Transmit) pin of the Arduino — usually **Pin 1** on Uno, Nano, and Mega.</div><div class='card'>You can connect it to the RX pin of another microcontroller, Bluetooth module (like HC-05), or USB-to-Serial adapter to see raw data.</div>"
+    },
+    {
+      "title": "🌍 Real World Use Case",
+      "content": "<div class='card'>You're making a robot that receives movement commands like 0x01 for forward, 0x02 for reverse. Sending these values via <code>write()</code> keeps communication simple and fast.</div><div class='card'>Example:<br><code>Serial.write(0x02);</code> // Send command to move backward</div>"
+    },
+    {
+      "title": "🎥 Video Tutorial",
+      "content": "<iframe width='100%' height='215' src='https://www.youtube.com/embed/pW_zWv1MfOw' title='Arduino Serial.write() Explained'></iframe>"
+    },
+    {
+      "title": "🎮 Byte Blaster Game",
+      "content": "<div class='card'>You're given an ASCII character, like 'B'. You must choose the correct <code>write()</code> value that would send it. (Answer: 66)</div><div class='card'><b>Q:</b> What does <code>Serial.write(0x48)</code> send?<br><b>A:</b> 'H'</div>"
+    }
+  ]
+}
+,{
+  "title": "Serial.print() — Human-Readable Data via Serial",
+  "lessons": [
+    {
+      "title": "📝 What is Serial.print()?",
+      "content": "<div class='card'><code>Serial.print()</code> sends human-readable text from your Arduino to your computer's Serial Monitor.</div><div class='card'>It's mostly used for <b>debugging</b>, <b>displaying sensor values</b>, or communicating with humans through a terminal.</div><div class='card'>Unlike <code>Serial.write()</code>, this function <b>formats</b> your data before sending it.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Serial_monitor.png",
+      "audio": "https://cdn.pixabay.com/download/audio/2022/03/15/audio_1b8d04a34b.mp3?filename=typing-fast-92176.mp3"
+    },
+    {
+      "title": "💡 Syntax",
+      "content": "<div class='card'><code>Serial.print(val);</code> — Sends the value as readable text<br><code>Serial.print(val, format);</code> — Sends the value in a specified format (BIN, DEC, HEX, OCT)</div><div class='card'>Example:<br><code>Serial.print(255, BIN);</code> → Outputs <code>11111111</code></div>",
+      "image": "https://www.arduino.cc/wiki/static/8c07ad1a1c2b91d11c2fefc8390c4ef7/23fa3/serial-print.jpg",
+      "audio": "https://cdn.pixabay.com/download/audio/2022/03/15/audio_4b1e3f3be8.mp3?filename=digital-quick-sweep-92178.mp3"
+    },
+    {
+      "title": "📍 Pin Usage + Real-World Use",
+      "content": "<div class='card'><b>Pin used:</b> TX pin (Digital Pin 1 on Arduino UNO)<br><b>Board-to-PC connection:</b> via USB</div><div class='card'><b>Use case:</b> You want to display temperature from a DHT11 sensor. You use:<br><code>Serial.print(\"Temperature: \");<br>Serial.print(tempC);<br>Serial.print(\" C\");</code></div>",
+      "image": "https://www.circuitbasics.com/wp-content/uploads/2015/12/How-to-Use-the-Arduino-Serial-Print-Function.png",
+      "audio": "https://cdn.pixabay.com/download/audio/2023/03/09/audio_84f9e9a4a3.mp3?filename=soft-chime-notification-136689.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Guess the Output",
+      "content": "<div class='card'>What will this code print?<br><code>Serial.print(10, HEX);</code></div><div class='card'><b>Options:</b><br>A) 10<br>B) A<br>C) 0A<br><b>Correct: B) A</b> — Because 10 in decimal = A in hexadecimal</div><button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Arduino_Serial_Monitor.png",
+      "audio": "https://cdn.pixabay.com/download/audio/2023/06/06/audio_9e78813c8e.mp3?filename=correct-163121.mp3"
+    },
+    {
+      "title": "📺 YouTube — Serial.print() Demo",
+      "content": "<div class='card'>Watch how to use <code>Serial.print()</code> in your projects effectively:</div><iframe width='100%' height='215' src='https://www.youtube.com/embed/5nsgd_5zv9c' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://i.ytimg.com/vi/5nsgd_5zv9c/hqdefault.jpg",
+      "audio": "https://cdn.pixabay.com/download/audio/2022/03/15/audio_3dbd10a60e.mp3?filename=tech-interface-92175.mp3"
+    }
+  ]
+}
+,{
+  "title": "Serial.println() — Printing with New Line",
+  "lessons": [
+    {
+      "title": "🧾 What is Serial.println()?",
+      "content": "<div class='card'><code>Serial.println()</code> works exactly like <code>Serial.print()</code> — but adds a new line <code>\\n</code> after the printed text or value.</div><div class='card'>Think of it like pressing Enter after writing something. Every call to <code>Serial.println()</code> starts on a fresh line in the Serial Monitor.</div>",
+      "image": "https://i.stack.imgur.com/NMU0s.png",
+      "audio": "https://cdn.pixabay.com/download/audio/2022/03/28/audio_92b871d61a.mp3?filename=message-pop-alert-13439.mp3"
+    },
+    {
+      "title": "📜 Syntax of println()",
+      "content": "<div class='card'><code>Serial.println(val);</code> — Prints the value followed by a newline<br><code>Serial.println(val, format);</code> — Prints with specific number format (e.g., BIN, HEX, DEC, etc.)</div><div class='card'>Example:<br><code>Serial.println(42);</code> → prints 42 and moves to the next line</div>",
+      "image": "https://i.ytimg.com/vi/t4D9KjjZfKc/maxresdefault.jpg",
+      "audio": "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c23304203e.mp3?filename=typing-clicking-92181.mp3"
+    },
+    {
+      "title": "📍 Pin Usage & Where It's Used",
+      "content": "<div class='card'><b>Pin used:</b> TX pin (Digital Pin 1 on Uno)<br><b>Data Direction:</b> Arduino → PC (Serial Monitor)</div><div class='card'><b>Use Case:</b> You want to print sensor readings neatly:<br><code>Serial.print(\"Humidity: \");<br>Serial.println(humidity);</code><br>This prints:<br><code>Humidity: 47.00</code> (and moves to the next line)</div>",
+      "image": "https://lastminuteengineers.b-cdn.net/wp-content/uploads/arduino-serial-monitor-featured-image-LME.jpg",
+      "audio": "https://cdn.pixabay.com/download/audio/2023/03/15/audio_cfcde01f99.mp3?filename=button-click-menu-140881.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Predict the Output",
+      "content": "<div class='card'>What does this code print?</div><pre><code>Serial.println(\"Hello\");\nSerial.print(\"World\");</code></pre><div class='card'><b>Correct Answer:</b><br>Hello<br>World</div><div class='card'><i>The first line ends with newline. The second line continues from there without one.</i></div><button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://i.pinimg.com/originals/68/62/03/686203f9b40801b32c7fa35cc6f2c485.png",
+      "audio": "https://cdn.pixabay.com/download/audio/2022/10/26/audio_44530c8717.mp3?filename=game-correct-answer-116447.mp3"
+    },
+    {
+      "title": "🎥 YouTube — println() vs print()",
+      "content": "<div class='card'>This quick video shows how <code>print()</code> and <code>println()</code> behave differently on Serial Monitor:</div><iframe width='100%' height='215' src='https://www.youtube.com/embed/TvJuMeOm3f8' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://i.ytimg.com/vi/TvJuMeOm3f8/hqdefault.jpg",
+      "audio": "https://cdn.pixabay.com/download/audio/2022/04/19/audio_f4f2e64e63.mp3?filename=interface-navigation-110563.mp3"
+    }
+  ]
+}
+
+      ]
+    },{
+      title:"Serial Communication — Function-by-Function Mastery",
+      modules:[
+        
+      ]
     }
   ]
 };
