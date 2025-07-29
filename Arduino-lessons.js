@@ -7843,6 +7843,569 @@ void loop() {
     }
   ]
 }
+,{
+  "title": "available() — Check If Data Is Waiting",
+  "lessons": [
+    {
+      "title": "📦 What is available()?",
+      "content": "<div class='card'>The <code>available()</code> function tells you how many bytes are ready to be read from a Stream — like Serial, Wire, or even an SD file.</div><div class='card'>It helps you avoid reading before data is actually available, preventing bugs or empty reads.</div>",
+      "image": "https://example.com/images/stream_available_intro.png",
+      "audio": "https://example.com/audio/stream_available_intro.mp3"
+    },
+    {
+      "title": "🧠 Why is available() important?",
+      "content": "<div class='card'>Imagine someone is talking to you on a walkie-talkie. You don’t start writing what they say until they’ve actually spoken — same with <code>available()</code>.</div><div class='card'>It returns the number of bytes available in the buffer that you can safely <code>read()</code> or <code>parseInt()</code>.</div>",
+      "image": "https://example.com/images/stream_available_why.png",
+      "audio": "https://example.com/audio/stream_available_why.mp3"
+    },
+    {
+      "title": "🧪 Syntax + Output",
+      "content": "<div class='card'><code>Serial.available();</code><br>Returns: <b>int</b> — number of bytes available to read</div><div class='card'><b>Return values:</b><ul><li>0 = Nothing to read</li><li>>0 = Bytes waiting in buffer</li></ul></div>",
+      "image": "https://example.com/images/stream_available_syntax.png",
+      "audio": "https://example.com/audio/stream_available_syntax.mp3"
+    },
+    {
+      "title": "📍 Real-Life Example — Data Logger",
+      "content": "<div class='card'>Say you're building a sensor logger. Before grabbing Serial input from a Bluetooth device, you should always check <code>Serial.available()</code>.</div><pre><code>if (Serial.available() > 0) {\n  int data = Serial.read();\n  Serial.println(data);\n}</code></pre><div class='card'>Without this check, your <code>read()</code> might return -1 (nothing available)!</div>",
+      "image": "https://example.com/images/stream_available_real.png",
+      "audio": "https://example.com/audio/stream_available_real.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Data or No Data?",
+      "content": "<div class='card'>Which of these should you check with <code>available()</code> first?</div><ul><li>🔘 A. Reading from Serial</li><li>🔘 B. Reading from SD file</li><li>🔘 C. Reading from I2C sensor</li></ul><button class='gaming-btn' onclick='alert(\"Correct: A, B, and C — all use Stream and may need available()!\")'>Check Answer</button>",
+      "image": "https://example.com/images/stream_available_game.png",
+      "audio": "https://example.com/audio/stream_available_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — When To Use available()",
+      "content": "<div class='card'>Watch this 3-min tutorial that shows how not checking <code>available()</code> causes bugs in Serial communication.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/UGgdpL-zQuE' title='available() Arduino Serial Guide' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/stream_available_video.png",
+      "audio": "https://example.com/audio/stream_available_video.mp3"
+    }
+  ]
+}
+,{
+  "title": "read() — Reading One Byte at a Time",
+  "lessons": [
+    {
+      "title": "🧲 What is read() in Arduino?",
+      "content": "<div class='card'><code>read()</code> is a Stream function used to grab a single byte of data from the buffer — usually from Serial, Wire, or File.</div><div class='card'>If there’s no data available, it returns <code>-1</code>. That’s why <b>you should always check <code>available()</code> first</b> before using <code>read()</code>.</div>",
+      "image": "https://example.com/images/read_intro.png",
+      "audio": "https://example.com/audio/read_intro.mp3"
+    },
+    {
+      "title": "💡 Where is read() used?",
+      "content": "<div class='card'>You’ll use <code>read()</code> when reading bytes from:</div><ul><li>📡 Serial input (USB, Bluetooth, etc.)</li><li>📁 SD card files</li><li>📠 I2C or SPI buffers</li></ul><div class='card'>It’s ideal for low-level processing or when you know the format of incoming data.</div>",
+      "image": "https://example.com/images/read_where.png",
+      "audio": "https://example.com/audio/read_where.mp3"
+    },
+    {
+      "title": "🧪 Syntax + Return Type",
+      "content": "<div class='card'><code>stream.read();</code><br>Returns: <b>int</b> (0–255 for valid byte, or -1 if nothing to read)</div><div class='card'>Tip: You can store it in a <code>char</code> or <code>byte</code> variable, but always check if it’s <code>-1</code> first!</div>",
+      "image": "https://example.com/images/read_syntax.png",
+      "audio": "https://example.com/audio/read_syntax.mp3"
+    },
+    {
+      "title": "🌍 Real-World Example — Serial Chat Reader",
+      "content": "<div class='card'>Let’s say you are building a serial chat monitor between two Arduinos. You’d want to read and display incoming characters:</div><pre><code>if (Serial.available()) {\n  char incoming = Serial.read();\n  Serial.print(\"Received: \");\n  Serial.println(incoming);\n}</code></pre><div class='card'>This reads and echoes the latest character input.</div>",
+      "image": "https://example.com/images/read_realworld.png",
+      "audio": "https://example.com/audio/read_realworld.mp3"
+    },
+    {
+      "title": "🧠 Byte vs Character — What's the Difference?",
+      "content": "<div class='card'><b>Byte:</b> A single unit of data (0–255) — raw digital form.<br><b>Character:</b> A human-readable symbol (like 'A'), usually encoded in ASCII.</div><div class='card'>read() returns a <b>byte</b>, but we often treat it as a character using <code>char</code>.</div>",
+      "image": "https://example.com/images/byte_vs_char.png",
+      "audio": "https://example.com/audio/byte_vs_char.mp3"
+    },
+    {
+      "title": "🎮 Game — Guess the Byte!",
+      "content": "<div class='card'>Type a letter into Serial Monitor. The Arduino will show its numeric byte value.</div><pre><code>if (Serial.available()) {\n  int byteVal = Serial.read();\n  Serial.print(\"Byte: \");\n  Serial.println(byteVal);\n}</code></pre><div class='card'>Try typing 'A' — What number does it show? (Hint: ASCII!)</div>",
+      "image": "https://example.com/images/read_game.png",
+      "audio": "https://example.com/audio/read_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — read() in Real-Time Chat",
+      "content": "<div class='card'>Watch how <code>read()</code> works with <code>available()</code> in a real-time serial chat example between two Arduinos.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/rFhY0Ww9U-c' title='Arduino Serial read() tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/read_youtube.png",
+      "audio": "https://example.com/audio/read_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "flush() — Make Sure Everything is Sent!",
+  "lessons": [
+    {
+      "title": "🚿 What is flush() in Arduino Stream?",
+      "content": "<div class='card'><code>flush()</code> is a function that makes sure all outgoing data in the buffer is fully transmitted before the Arduino continues to do other stuff.</div><div class='card'>Imagine you're posting a letter — <code>flush()</code> ensures the postman has picked it up before you walk away!</div>",
+      "image": "https://example.com/images/flush_stream_intro.png",
+      "audio": "https://example.com/audio/flush_intro.mp3"
+    },
+    {
+      "title": "💡 Why Should We Use flush()?",
+      "content": "<div class='card'>Use <code>flush()</code> when your Arduino must not move on to the next task until the current message is fully delivered.</div><div class='card'>Example: if you're printing data to Serial or an SD card before a reset, you should <code>flush()</code> to make sure the data doesn’t get lost.</div>",
+      "image": "https://example.com/images/flush_usecase.png",
+      "audio": "https://example.com/audio/flush_usecase.mp3"
+    },
+    {
+      "title": "🧪 Syntax & Behavior",
+      "content": "<div class='card'><b>Syntax:</b><br><code>Serial.flush();</code></div><div class='card'>It waits until the output buffer is empty. It does not affect incoming data!</div><div class='card'><b>Important Note:</b> Prior to Arduino 1.0, <code>flush()</code> used to discard incoming data — not anymore! Now it only deals with output.</div>",
+      "image": "https://example.com/images/flush_syntax.png",
+      "audio": "https://example.com/audio/flush_syntax.mp3"
+    },
+    {
+      "title": "🌍 Real-World Example — SD Card Logging",
+      "content": "<div class='card'>Imagine you're logging temperature data to an SD card every 5 seconds.</div><div class='card'>To avoid data loss due to sudden power cuts or resets, you'd use <code>flush()</code> to write all remaining data to the file:</div><pre><code>logFile.print(\"Temp: \");\nlogFile.println(temp);\nlogFile.flush();</code></pre><div class='card'>This guarantees your data is saved!</div>",
+      "image": "https://example.com/images/flush_sdcard.png",
+      "audio": "https://example.com/audio/flush_sdcard.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Flush It or Risk It?",
+      "content": "<div class='card'>You’re writing a shutdown script that saves your game score. Should you use <code>flush()</code>?</div><ul><li>💾 A. Yes, always before shutdown</li><li>❌ B. No, it slows things</li><li>🧐 C. Only if using Serial</li></ul><button class='gaming-btn' onclick='alert(\"Correct answer: A — You always want to flush before shutdown!\")'>Check Answer</button>",
+      "image": "https://example.com/images/flush_game.png",
+      "audio": "https://example.com/audio/flush_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — Stream.flush() Explained",
+      "content": "<div class='card'>Watch this example of how <code>flush()</code> ensures safe SD card and Serial writing in Arduino:</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/arduino-flush-example' title='Arduino flush() tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/flush_youtube.png",
+      "audio": "https://example.com/audio/flush_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "find() — Search for a Keyword in Streaming Data",
+  "lessons": [
+    {
+      "title": "🔍 What is find() in Arduino Stream?",
+      "content": "<div class='card'><code>find()</code> scans incoming data until it finds a target string (or timeout happens).</div><div class='card'>Imagine a metal detector scanning sand — it keeps moving until it finds gold! That’s what <code>find()</code> does with characters in Serial input or file streams.</div>",
+      "image": "https://example.com/images/find_intro.png",
+      "audio": "https://example.com/audio/find_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax & How It Works",
+      "content": "<div class='card'><b>Syntax:</b><br><code>stream.find(target)</code><br><code>stream.find(target, length)</code></div><div class='card'>It returns <code>true</code> if the target string is found within the stream buffer before a timeout.</div><div class='card'>You can search for words like <code>\"OK\"</code>, <code>\"ERROR\"</code>, <code>\"END\"</code> in Serial responses from sensors or modules.</div>",
+      "image": "https://example.com/images/find_syntax.png",
+      "audio": "https://example.com/audio/find_syntax.mp3"
+    },
+    {
+      "title": "🌍 Real-World Use — Waiting for GPS Lock",
+      "content": "<div class='card'>You’re working with a GPS module that keeps sending NMEA strings via Serial.</div><div class='card'>Use <code>find()</code> to wait until you find the word <code>\"GGA\"</code> which signals GPS fix data:</div><pre><code>if(Serial.find(\"GGA\")) {\n  Serial.println(\"GPS Fix Detected!\");\n}</code></pre>",
+      "image": "https://example.com/images/find_gps.png",
+      "audio": "https://example.com/audio/find_gps.mp3"
+    },
+    {
+      "title": "📦 Pin & Protocol Context",
+      "content": "<div class='card'>This function is used over data streams like <code>Serial</code>, <code>WiFiClient</code>, <code>File</code>, etc.</div><div class='card'>No specific pins are involved — only software data flow.</div>",
+      "image": "https://example.com/images/find_context.png",
+      "audio": "https://example.com/audio/find_context.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Can You Find It?",
+      "content": "<div class='card'>Which line of code uses <code>find()</code> correctly?</div><ul><li>🅰️ <code>Serial.find(\"DONE\")</code></li><li>🅱️ <code>Serial.findDone()</code></li><li>🆎 <code>find.Serial(\"DONE\")</code></li></ul><button class='gaming-btn' onclick='alert(\"Correct Answer: A — Only this one is valid!\")'>Check Answer</button>",
+      "image": "https://example.com/images/find_game.png",
+      "audio": "https://example.com/audio/find_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — Watch find() in Action",
+      "content": "<div class='card'>See how <code>find()</code> can help you parse sensor data or responses from Bluetooth, GSM, or GPS modules.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/arduino-find-function-demo' title='Arduino find() tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/find_youtube.png",
+      "audio": "https://example.com/audio/find_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "findUntil() — Search Until a Target or Terminator is Found",
+  "lessons": [
+    {
+      "title": "🔎 What is findUntil()?",
+      "content": "<div class='card'><code>findUntil()</code> searches for a target string in a stream — but will stop early if a 'terminator' string is found first.</div><div class='card'>Imagine you're reading a book looking for the word “Arduino”… but if you reach “THE END” first, you stop reading. That's how <code>findUntil()</code> works!</div>",
+      "image": "https://example.com/images/finduntil_intro.png",
+      "audio": "https://example.com/audio/finduntil_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax & Behavior",
+      "content": "<div class='card'><b>Syntax:</b><br><code>stream.findUntil(target, terminator)</code></div><div class='card'><b>Returns:</b> <code>true</code> if <code>target</code> is found before <code>terminator</code>, else <code>false</code>.</div><div class='card'>Very useful when you're reading from sensors, GPS, GSM, or other communication-based devices.</div>",
+      "image": "https://example.com/images/finduntil_syntax.png",
+      "audio": "https://example.com/audio/finduntil_syntax.mp3"
+    },
+    {
+      "title": "🌐 Real World Example — Serial GSM Response",
+      "content": "<div class='card'>Let’s say you’re sending a command to a GSM module, and you're trying to detect <code>\"OK\"</code> in the response.</div><div class='card'>You also want to stop searching if you hit <code>\"ERROR\"</code> instead:</div><pre><code>if(Serial.findUntil(\"OK\", \"ERROR\")) {\n  Serial.println(\"Command accepted!\");\n} else {\n  Serial.println(\"Command failed or error occurred.\");\n}</code></pre>",
+      "image": "https://example.com/images/finduntil_gsm.png",
+      "audio": "https://example.com/audio/finduntil_example.mp3"
+    },
+    {
+      "title": "🔌 Pin & Hardware Involvement?",
+      "content": "<div class='card'>No physical pin is directly used.</div><div class='card'>The function works purely on data coming through <code>Stream</code>-based objects like <code>Serial</code>, <code>WiFiClient</code>, or <code>File</code>.</div>",
+      "image": "https://example.com/images/finduntil_context.png",
+      "audio": "https://example.com/audio/finduntil_context.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — What Happens?",
+      "content": "<div class='card'>What will <code>findUntil(\"READY\", \"FAIL\")</code> do if the stream sends: <br><code>.....FAIL....READY....</code>?</div><ul><li>🅰️ It returns <code>true</code></li><li>🅱️ It returns <code>false</code></li><li>🆎 It throws an error</li></ul><button class='gaming-btn' onclick='alert(\"Correct answer is 🅱️ — Terminator FAIL came first, so READY was never reached.\")'>Check Answer</button>",
+      "image": "https://example.com/images/finduntil_game.png",
+      "audio": "https://example.com/audio/finduntil_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — findUntil() in Use",
+      "content": "<div class='card'>Watch how <code>findUntil()</code> is used in real projects like AT command parsing and response verification from modules like Bluetooth or LoRa.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/arduino-findUntil-demo' title='findUntil() Arduino Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/finduntil_youtube.png",
+      "audio": "https://example.com/audio/finduntil_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "parseFloat() — Extracting Floating-Point Numbers from Serial Data",
+  "lessons": [
+    {
+      "title": "🔍 What is parseFloat()?",
+      "content": "<div class='card'><code>parseFloat()</code> reads characters from a stream (like Serial) and tries to extract a valid floating-point number.</div><div class='card'>It skips any characters that are not digits, decimal points, or signs (like + or -). It stops reading once it sees a non-number character after the number.</div>",
+      "image": "https://example.com/images/parseFloat_intro.png",
+      "audio": "https://example.com/audio/parseFloat_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax + Details",
+      "content": "<div class='card'><b>Syntax:</b><br><code>stream.parseFloat([lookahead, ignore]);</code></div><div class='card'><b>Returns:</b> The float value read from the stream, or 0.0 if none found.</div><div class='card'><b>Default behavior:</b> Stops reading when a non-numeric character is found.</div>",
+      "image": "https://example.com/images/parseFloat_syntax.png",
+      "audio": "https://example.com/audio/parseFloat_syntax.mp3"
+    },
+    {
+      "title": "🌍 Real-World Example — Sensor Parsing",
+      "content": "<div class='card'>Say your Arduino receives this over Serial:<br><code>temp: 25.7*C</code></div><div class='card'>You can easily extract the value <code>25.7</code> like this:</div><pre><code>float temperature = Serial.parseFloat();</code></pre><div class='card'>This is useful for parsing sensor data, API responses, Bluetooth commands, etc.</div>",
+      "image": "https://example.com/images/parseFloat_sensor.png",
+      "audio": "https://example.com/audio/parseFloat_sensor.mp3"
+    },
+    {
+      "title": "🔧 Additional Options",
+      "content": "<div class='card'>You can configure the timeout using <code>setTimeout()</code> before calling <code>parseFloat()</code>. This defines how long the function waits for data before giving up.</div><div class='card'>Example: <code>Serial.setTimeout(1000);</code></div>",
+      "image": "https://example.com/images/parseFloat_timeout.png",
+      "audio": "https://example.com/audio/parseFloat_timeout.mp3"
+    },
+    {
+      "title": "🧩 Pin Usage",
+      "content": "<div class='card'><code>parseFloat()</code> doesn’t use any pin directly. It simply works with stream-based data like Serial, Bluetooth, or Wi-Fi modules.</div>",
+      "image": "https://example.com/images/parseFloat_pins.png",
+      "audio": "https://example.com/audio/parseFloat_pins.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Can You Parse It?",
+      "content": "<div class='card'>Input: <code>abc12.34xyz</code><br>What does <code>parseFloat()</code> return?</div><ul><li>🅰️ 0.0</li><li>🅱️ 12.34</li><li>🆎 Error</li></ul><button class='gaming-btn' onclick='alert(\"Correct! It returns 🅱️ 12.34\")'>Check Answer</button>",
+      "image": "https://example.com/images/parseFloat_game.png",
+      "audio": "https://example.com/audio/parseFloat_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — Extract Floats Easily!",
+      "content": "<div class='card'>Watch a real-world demo where Arduino extracts float values from a GPS or sensor data stream.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/arduino-parsefloat-demo' title='parseFloat() Arduino Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/parseFloat_youtube.png",
+      "audio": "https://example.com/audio/parseFloat_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "parseInt() — Extracting Integer Values from Serial",
+  "lessons": [
+    {
+      "title": "🔍 What is parseInt()?",
+      "content": "<div class='card'><code>parseInt()</code> reads characters from a stream and tries to return the first valid <b>integer (whole number)</b> it finds.</div><div class='card'>It skips anything that's not a number and stops reading when a non-numeric character is reached. Perfect for extracting numbers from mixed data like <code>\"Temp:23C\"</code>.</div>",
+      "image": "https://example.com/images/parseInt_intro.png",
+      "audio": "https://example.com/audio/parseInt_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax & Default Behavior",
+      "content": "<div class='card'><b>Syntax:</b><br><code>stream.parseInt();</code></div><div class='card'><b>Returns:</b> The first valid integer found in the stream (e.g. Serial input).</div><div class='card'><b>Stops:</b> When it hits a non-numeric character.</div><div class='card'>You can use <code>setTimeout()</code> to limit how long it waits for input.</div>",
+      "image": "https://example.com/images/parseInt_syntax.png",
+      "audio": "https://example.com/audio/parseInt_syntax.mp3"
+    },
+    {
+      "title": "🌍 Real-World Example — Receiving Settings",
+      "content": "<div class='card'>Let’s say your Arduino receives <code>\"speed=120!\"</code> over Bluetooth. You want to extract <code>120</code> from that.</div><div class='card'>Just use: <code>int speed = Serial.parseInt();</code><br>Now speed = 120!</div><div class='card'>Super useful when receiving data from sensors, apps, or user input.</div>",
+      "image": "https://example.com/images/parseInt_realworld.png",
+      "audio": "https://example.com/audio/parseInt_realworld.mp3"
+    },
+    {
+      "title": "🧩 What About Timeout?",
+      "content": "<div class='card'>By default, <code>parseInt()</code> will wait up to 1 second (1000ms) for new characters before giving up.</div><div class='card'>You can change this using: <code>Serial.setTimeout(500);</code> to only wait half a second.</div>",
+      "image": "https://example.com/images/parseInt_timeout.png",
+      "audio": "https://example.com/audio/parseInt_timeout.mp3"
+    },
+    {
+      "title": "📦 Pin Usage?",
+      "content": "<div class='card'><code>parseInt()</code> doesn’t use any hardware pins. It just works on whatever data comes in through <code>Serial</code>, Bluetooth, Wi-Fi, etc.</div>",
+      "image": "https://example.com/images/parseInt_pins.png",
+      "audio": "https://example.com/audio/parseInt_pins.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — What’s the Result?",
+      "content": "<div class='card'>If Serial receives: <code>\"abc45x78\"</code><br>What does <code>Serial.parseInt()</code> return?</div><ul><li>🔢 A. 0</li><li>🔢 B. 45</li><li>🔢 C. 4578</li></ul><button class='gaming-btn' onclick='alert(\"Correct! It returns B — 45\")'>Check Answer</button>",
+      "image": "https://example.com/images/parseInt_game.png",
+      "audio": "https://example.com/audio/parseInt_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — Parsing Ints in Action",
+      "content": "<div class='card'>See <code>parseInt()</code> being used in real-time projects like keypad input and sensor data reading.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/arduino-parseint' title='parseInt Arduino Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/parseInt_youtube.png",
+      "audio": "https://example.com/audio/parseInt_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "parseInt() — Extracting Integer Values from Serial",
+  "lessons": [
+    {
+      "title": "🔍 What is parseInt()?",
+      "content": "<div class='card'><code>parseInt()</code> reads characters from a stream and tries to return the first valid <b>integer (whole number)</b> it finds.</div><div class='card'>It skips anything that's not a number and stops reading when a non-numeric character is reached. Perfect for extracting numbers from mixed data like <code>\"Temp:23C\"</code>.</div>",
+      "image": "https://example.com/images/parseInt_intro.png",
+      "audio": "https://example.com/audio/parseInt_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax & Default Behavior",
+      "content": "<div class='card'><b>Syntax:</b><br><code>stream.parseInt();</code></div><div class='card'><b>Returns:</b> The first valid integer found in the stream (e.g. Serial input).</div><div class='card'><b>Stops:</b> When it hits a non-numeric character.</div><div class='card'>You can use <code>setTimeout()</code> to limit how long it waits for input.</div>",
+      "image": "https://example.com/images/parseInt_syntax.png",
+      "audio": "https://example.com/audio/parseInt_syntax.mp3"
+    },
+    {
+      "title": "🌍 Real-World Example — Receiving Settings",
+      "content": "<div class='card'>Let’s say your Arduino receives <code>\"speed=120!\"</code> over Bluetooth. You want to extract <code>120</code> from that.</div><div class='card'>Just use: <code>int speed = Serial.parseInt();</code><br>Now speed = 120!</div><div class='card'>Super useful when receiving data from sensors, apps, or user input.</div>",
+      "image": "https://example.com/images/parseInt_realworld.png",
+      "audio": "https://example.com/audio/parseInt_realworld.mp3"
+    },
+    {
+      "title": "🧩 What About Timeout?",
+      "content": "<div class='card'>By default, <code>parseInt()</code> will wait up to 1 second (1000ms) for new characters before giving up.</div><div class='card'>You can change this using: <code>Serial.setTimeout(500);</code> to only wait half a second.</div>",
+      "image": "https://example.com/images/parseInt_timeout.png",
+      "audio": "https://example.com/audio/parseInt_timeout.mp3"
+    },
+    {
+      "title": "📦 Pin Usage?",
+      "content": "<div class='card'><code>parseInt()</code> doesn’t use any hardware pins. It just works on whatever data comes in through <code>Serial</code>, Bluetooth, Wi-Fi, etc.</div>",
+      "image": "https://example.com/images/parseInt_pins.png",
+      "audio": "https://example.com/audio/parseInt_pins.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — What’s the Result?",
+      "content": "<div class='card'>If Serial receives: <code>\"abc45x78\"</code><br>What does <code>Serial.parseInt()</code> return?</div><ul><li>🔢 A. 0</li><li>🔢 B. 45</li><li>🔢 C. 4578</li></ul><button class='gaming-btn' onclick='alert(\"Correct! It returns B — 45\")'>Check Answer</button>",
+      "image": "https://example.com/images/parseInt_game.png",
+      "audio": "https://example.com/audio/parseInt_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — Parsing Ints in Action",
+      "content": "<div class='card'>See <code>parseInt()</code> being used in real-time projects like keypad input and sensor data reading.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/arduino-parseint' title='parseInt Arduino Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/parseInt_youtube.png",
+      "audio": "https://example.com/audio/parseInt_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "readBytes() — Grab a Whole Block of Data in One Go",
+  "lessons": [
+    {
+      "title": "📦 What is readBytes()?",
+      "content": "<div class='card'><code>readBytes()</code> reads multiple bytes from the serial buffer and stores them into a character array.</div><div class='card'>It’s like scooping up a bunch of letters from the mailbox in one move instead of one at a time.</div><div class='card'>Great when you already know how many characters you expect — like reading a 6-digit OTP, or 10 characters from a sensor.</div>",
+      "image": "https://example.com/images/readbytes_intro.png",
+      "audio": "https://example.com/audio/readbytes_intro.mp3"
+    },
+    {
+      "title": "🔤 Syntax",
+      "content": "<div class='card'><code>stream.readBytes(buffer, length)</code></div><div class='card'>📌 <code>buffer</code> = an array where incoming characters will be stored.<br>📌 <code>length</code> = the number of characters to read.</div><div class='card'>The function returns the actual number of characters read (could be less if timeout hits).</div>",
+      "image": "https://example.com/images/readbytes_syntax.png",
+      "audio": "https://example.com/audio/readbytes_syntax.mp3"
+    },
+    {
+      "title": "📖 Example — Reading 6 Characters",
+      "content": "<div class='card'>This reads 6 characters from Serial and prints them as a word:</div><pre><code>char word[7];\nSerial.readBytes(word, 6);\nword[6] = '\\0'; // Null-terminate\nSerial.println(word);</code></pre>",
+      "image": "https://example.com/images/readbytes_example.png",
+      "audio": "https://example.com/audio/readbytes_example.mp3"
+    },
+    {
+      "title": "📌 When Should You Use readBytes()?",
+      "content": "<div class='card'>✅ When you’re expecting a fixed number of characters.<br>✅ When you want to store data into an array for string parsing.<br>✅ When timing is important — this function waits only for a set timeout.</div>",
+      "image": "https://example.com/images/readbytes_usecase.png",
+      "audio": "https://example.com/audio/readbytes_usecase.mp3"
+    },
+    {
+      "title": "⏱️ Timeout Behavior",
+      "content": "<div class='card'>If fewer bytes are received before the timeout, <code>readBytes()</code> gives you whatever it got.</div><div class='card'>Use <code>setTimeout(ms)</code> to control how long it waits!</div>",
+      "image": "https://example.com/images/readbytes_timeout.png",
+      "audio": "https://example.com/audio/readbytes_timeout.mp3"
+    },
+    {
+      "title": "🔌 Pins Used",
+      "content": "<div class='card'>Like other serial functions, <code>readBytes()</code> works on UART pins:<br>TX (transmit) → Digital pin 1<br>RX (receive) → Digital pin 0 (on Uno)</div><div class='card'>You don't need to do anything manually with these pins unless connecting external devices.</div>",
+      "image": "https://example.com/images/readbytes_pins.png",
+      "audio": "https://example.com/audio/readbytes_pins.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Spot the Bug!",
+      "content": "<div class='card'>What’s wrong with this code?</div><pre><code>char name[5];\nSerial.readBytes(name, 5);\nSerial.println(name);</code></pre><ul><li>🅰 No bug</li><li>🅱 Forgot null terminator</li><li>🅲 Used wrong pins</li></ul><button class='gaming-btn' onclick='alert(\"✅ Correct: Option B — you must add name[5] = '\\0'; to safely print\")'>Check Answer</button>",
+      "image": "https://example.com/images/readbytes_game.png",
+      "audio": "https://example.com/audio/readbytes_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — Mastering readBytes() in Arduino",
+      "content": "<div class='card'>Watch a real-world demo of <code>readBytes()</code> used to receive serial messages in blocks.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/arduino-readbytes' title='Arduino readBytes Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/youtube_readbytes.png",
+      "audio": "https://example.com/audio/youtube_readbytes.mp3"
+    }
+  ]
+}
+,{
+  "title": "readBytesUntil() — Read Until You Hit a Stop Character",
+  "lessons": [
+    {
+      "title": "📘 What is readBytesUntil()?",
+      "content": "<div class='card'><code>readBytesUntil()</code> is a powerful Serial function that reads incoming characters into a buffer <b>until a specific terminator character</b> is found or the timeout is reached.</div><div class='card'>It’s like asking your friend to speak until they say the word \"STOP\" — and you write everything down until then!</div>",
+      "image": "https://example.com/images/readbytesuntil_intro.png",
+      "audio": "https://example.com/audio/readbytesuntil_intro.mp3"
+    },
+    {
+      "title": "🔤 Syntax & Usage",
+      "content": "<div class='card'><code>stream.readBytesUntil(character, buffer, length)</code></div><div class='card'><b>📌 character:</b> The stop byte (like '\\n', a newline).<br><b>📌 buffer:</b> Where incoming data will be saved.<br><b>📌 length:</b> Max number of bytes to read.</div><div class='card'>It returns the number of characters read, not including the terminator.</div>",
+      "image": "https://example.com/images/readbytesuntil_syntax.png",
+      "audio": "https://example.com/audio/readbytesuntil_syntax.mp3"
+    },
+    {
+      "title": "🛠 Real Example — Read Until Newline",
+      "content": "<div class='card'>This example reads up to 20 characters until it sees a newline <code>\\n</code>:</div><pre><code>char msg[21];\nSerial.readBytesUntil('\\n', msg, 20);\nmsg[20] = '\\0';\nSerial.println(msg);</code></pre><div class='card'>The newline is <b>NOT</b> stored in the buffer!</div>",
+      "image": "https://example.com/images/readbytesuntil_example.png",
+      "audio": "https://example.com/audio/readbytesuntil_example.mp3"
+    },
+    {
+      "title": "⏳ Timeout Behavior",
+      "content": "<div class='card'>If the terminator character isn't found in time, the function still returns what it got so far.</div><div class='card'>Control how long it waits with <code>Serial.setTimeout(ms)</code> — default is 1000 ms.</div>",
+      "image": "https://example.com/images/readbytesuntil_timeout.png",
+      "audio": "https://example.com/audio/readbytesuntil_timeout.mp3"
+    },
+    {
+      "title": "📦 When to Use It?",
+      "content": "<div class='card'>✅ Receiving sensor data lines that end with '\\n'<br>✅ Parsing CSV data from GPS or Bluetooth modules<br>✅ Reading strings from PC over Serial Monitor</div>",
+      "image": "https://example.com/images/readbytesuntil_usecase.png",
+      "audio": "https://example.com/audio/readbytesuntil_usecase.mp3"
+    },
+    {
+      "title": "🔌 Hardware Pins Involved",
+      "content": "<div class='card'>All Serial functions use these default hardware pins on Arduino Uno:<br>📤 TX → Digital Pin 1<br>📥 RX → Digital Pin 0</div><div class='card'>If you're using a different board or software serial, the pins change accordingly.</div>",
+      "image": "https://example.com/images/readbytesuntil_pins.png",
+      "audio": "https://example.com/audio/readbytesuntil_pins.mp3"
+    },
+    {
+      "title": "💡 Real-World Example — Bluetooth Message Reader",
+      "content": "<div class='card'>Many Bluetooth modules like HC-05 send messages terminated by newline <code>\\n</code>.</div><div class='card'>You can use <code>readBytesUntil('\\n')</code> to receive full commands from your phone.</div><pre><code>char cmd[50];\nSerial.readBytesUntil('\\n', cmd, 49);\ncmd[49] = '\\0';\nif (strcmp(cmd, \"ON\") == 0) digitalWrite(LED_BUILTIN, HIGH);</code></pre>",
+      "image": "https://example.com/images/readbytesuntil_bt.png",
+      "audio": "https://example.com/audio/readbytesuntil_bt.mp3"
+    },
+    {
+      "title": "🎮 Mini Quiz — Terminator Trouble",
+      "content": "<div class='card'>What happens if <code>readBytesUntil()</code> never finds the terminator character?</div><ul><li>🅰️ It returns an error.</li><li>🅱️ It returns the full buffer.</li><li>🅲 It returns what was read before timeout.</li></ul><button class='gaming-btn' onclick='alert(\"✅ Correct: Option C — it returns what was read before the timeout!\")'>Check Answer</button>",
+      "image": "https://example.com/images/readbytesuntil_quiz.png",
+      "audio": "https://example.com/audio/readbytesuntil_quiz.mp3"
+    },
+    {
+      "title": "📺 YouTube — Mastering readBytesUntil()",
+      "content": "<div class='card'>Visual demo: see how <code>readBytesUntil()</code> helps read Bluetooth or Serial data clearly.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/arduino-readbytesuntil-demo' title='Arduino readBytesUntil Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/readbytesuntil_youtube.png",
+      "audio": "https://example.com/audio/readbytesuntil_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "readString() — Reading Full Strings with Ease",
+  "lessons": [
+    {
+      "title": "📖 What is readString()?",
+      "content": "<div class='card'><code>readString()</code> is a function that reads characters from a serial stream into a String until a timeout happens.</div><div class='card'>It’s useful when you want to read a whole sentence or command sent from Serial Monitor, Bluetooth, or another device.</div><div class='card'>If you’ve used <code>read()</code> or <code>readBytes()</code> before, this is like a more friendly version that returns a <code>String</code> object instead of a character array.</div>"
+    },
+    {
+      "title": "🔠 Syntax",
+      "content": "<div class='card'><code>myStream.readString();</code></div><div class='card'>Returns a <b>String</b> that includes all the characters read before a timeout.</div><div class='card'>⚠️ Unlike <code>readBytesUntil()</code>, it doesn’t wait for a specific terminator — it just waits until timeout.</div>"
+    },
+    {
+      "title": "🔌 Which Pins Are Used?",
+      "content": "<div class='card'>It uses serial pins by default:<br>📥 RX → Pin 0<br>📤 TX → Pin 1</div><div class='card'>If you're using <code>SoftwareSerial</code>, the pins change as per your setup.</div>"
+    },
+    {
+      "title": "🎯 Real World Use Case — Serial Command Receiver",
+      "content": "<div class='card'>Imagine sending a command like <code>LED_ON</code> from a mobile app to Arduino via Bluetooth.</div><div class='card'>You can easily read the full message with <code>readString()</code> and act on it:</div><pre><code>String command = Serial.readString();\nif (command == \"LED_ON\") {\n  digitalWrite(13, HIGH);\n}</code></pre>"
+    },
+    {
+      "title": "⏱ Controlling Timeout",
+      "content": "<div class='card'>By default, <code>readString()</code> waits for 1000 milliseconds (1 second).</div><div class='card'>You can change this using <code>setTimeout()</code>:</div><pre><code>Serial.setTimeout(3000); // 3 seconds</code></pre>"
+    },
+    {
+      "title": "🎮 Mini Game — Timeout Trap",
+      "content": "<div class='card'>You have 2 seconds timeout. A message arrives in 3 seconds. Will <code>readString()</code> capture it?</div><ul><li>A. Yes</li><li>B. No</li><li>C. Only partial message</li></ul><button class='gaming-btn' onclick='alert(\"✅ Correct: B — it won’t wait long enough to receive it!\")'>Check Answer</button>"
+    },
+    {
+      "title": "📺 YouTube — readString() Demo with Bluetooth",
+      "content": "<div class='card'>Watch a real-time demo of receiving full commands from a mobile Bluetooth app using <code>readString()</code>.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/readstring-arduino-demo' title='readString Arduino Demo' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+}
+,{
+  "title": "readStringUntil() — Read Until You Hit the Mark!",
+  "lessons": [
+    {
+      "title": "🎯 What is readStringUntil()?",
+      "content": "<div class='card'><code>readStringUntil()</code> is used to read a stream of characters from Serial until a specific character (like a comma or newline) is found — or until the timeout hits.</div><div class='card'>It returns a <b>String</b> containing all the characters read <b>before the terminator</b>.</div><div class='card'>Super useful when you're dealing with CSV data, sensor commands, or values separated by symbols.</div>"
+    },
+    {
+      "title": "📚 Syntax + Explanation",
+      "content": "<div class='card'><code>Serial.readStringUntil(char terminator);</code></div><div class='card'><b>Example:</b><br><code>Serial.readStringUntil('\\n');</code> — Reads everything until a newline character.</div><div class='card'>Returns a String (without including the terminator itself).</div>"
+    },
+    {
+      "title": "🔌 Pin Usage",
+      "content": "<div class='card'>This function uses Serial pins:</div><ul><li>📥 RX (Receive) — Pin 0</li><li>📤 TX (Transmit) — Pin 1</li></ul><div class='card'>You can also use it on any SoftwareSerial stream.</div>"
+    },
+    {
+      "title": "🛠 Real-World Example — CSV Reader",
+      "content": "<div class='card'>Let's say a sensor sends this over serial: <code>23.4,78.5,45.2</code></div><div class='card'>You can break it using <code>readStringUntil(',')</code> like this:</div><pre><code>String temp = Serial.readStringUntil(',');\nString humidity = Serial.readStringUntil(',');\nString pressure = Serial.readStringUntil('\\n');</code></pre>"
+    },
+    {
+      "title": "🧠 Where & When Should You Use It?",
+      "content": "<div class='card'>Use <code>readStringUntil()</code> when:</div><ul><li>💬 You're receiving data separated by a consistent character (like commas)</li><li>📩 You want to cleanly split commands, sentences, or sensor readings</li><li>⏲ You want to avoid waiting forever — it stops at timeout if terminator isn't found</li></ul>"
+    },
+    {
+      "title": "🎮 Mini Game — Pick the Terminator!",
+      "content": "<div class='card'>What’s the best terminator for splitting this line: <code>LED_ON;TEMP:23.5;HUM:56.0</code>?</div><ul><li>A. ';'</li><li>B. ':'</li><li>C. 'O'</li></ul><button class='gaming-btn' onclick='alert(\"✅ Correct Answer: A — each section is divided by semicolons!\")'>Check Answer</button>"
+    },
+    {
+      "title": "📺 YouTube — readStringUntil() In Action",
+      "content": "<div class='card'>Watch how <code>readStringUntil()</code> is used to split CSV-style data from sensors in real-time Arduino projects.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/readstringuntil-demo' title='readStringUntil Arduino Demo' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+}
+,{
+  "title": "setTimeout() — Setting Patience Limits for Serial!",
+  "lessons": [
+    {
+      "title": "⏳ What is setTimeout()?",
+      "content": "<div class='card'><code>setTimeout()</code> sets how long Arduino should wait (in milliseconds) for Serial functions like <code>readString()</code>, <code>parseInt()</code>, or <code>readBytes()</code> before giving up.</div><div class='card'>It’s like saying, “Hey Arduino, don’t wait forever! If the data doesn’t come in X milliseconds, just move on.”</div><div class='card'>This is very helpful in projects where speed matters or where incoming data may be missing or delayed.</div>"
+    },
+    {
+      "title": "📚 Syntax + How It Works",
+      "content": "<div class='card'><code>Serial.setTimeout(ms);</code></div><div class='card'><b>Parameter:</b> <code>ms</code> is the time in milliseconds to wait before timing out.</div><div class='card'><b>Example:</b><br><code>Serial.setTimeout(5000);</code> — Sets a timeout of 5 seconds for all relevant Serial reads.</div>"
+    },
+    {
+      "title": "🔌 Pin Usage",
+      "content": "<div class='card'><b>Serial.setTimeout()</b> works with the Serial communication pins:</div><ul><li>📥 RX (Receive) — Pin 0</li><li>📤 TX (Transmit) — Pin 1</li></ul><div class='card'>Or any software serial stream. It's purely a software-side delay control.</div>"
+    },
+    {
+      "title": "🌐 Real-World Example — Temperature Sensor",
+      "content": "<div class='card'>Say your Arduino is receiving temperature from another board over Serial, but sometimes the connection is unstable.</div><div class='card'>Using <code>setTimeout(3000)</code> makes sure it doesn’t freeze forever waiting for missing data.</div><pre><code>Serial.setTimeout(3000);\nString temp = Serial.readStringUntil('\\n');\nif (temp.length() == 0) {\n  Serial.println(\"⚠️ No data received!\");\n} else {\n  Serial.println(\"🌡 Temp: \" + temp);\n}</code></pre>"
+    },
+    {
+      "title": "📦 When Should You Use It?",
+      "content": "<div class='card'>Use <code>setTimeout()</code> when:</div><ul><li>💤 Your Serial functions are hanging due to no input</li><li>📡 You're reading from unreliable sources (like wireless modules)</li><li>⏲ You need quick failover when no response is available</li></ul>"
+    },
+    {
+      "title": "🎮 Mini Quiz — Timeout Scenario",
+      "content": "<div class='card'>Your sensor takes 2 seconds to send data. What timeout is best?</div><ul><li>🔴 A. 500ms</li><li>🟠 B. 2000ms</li><li>🟢 C. 10000ms</li></ul><button class='gaming-btn' onclick='alert(\"✅ Correct! B — 2000ms gives the sensor time but doesn’t hang forever.\")'>Check Answer</button>"
+    },
+    {
+      "title": "📺 YouTube — Visual Guide to Timeouts",
+      "content": "<div class='card'>Watch a visual demo showing how timeouts affect <code>readString()</code> and how to optimize them for real-world applications.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/settimeout-arduino-demo' title='Arduino setTimeout() Explained' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+}
 
       ]
     }
