@@ -7485,6 +7485,334 @@ void loop() {
 }
 
       ]
+    },{
+      title:"Serial Communication in Action — Real World Examples",
+      modules:[
+        {
+  "title": "ReadASCIIString — Handling Complete Messages from Serial",
+  "lessons": [
+    {
+      "title": "📨 What is ReadASCIIString?",
+      "content": "<div class='card'><b>ReadASCIIString</b> is a coding pattern (not a built-in function) used to read full strings (words or commands) from Serial input — not just one character at a time.</div><div class='card'>Arduino reads characters one-by-one, but with <code>ReadASCIIString</code> logic, you can capture whole lines like <code>LED ON</code> or <code>MOVE FORWARD</code> and act on them!</div>",
+      "image": "https://example.com/images/readascii_intro.png",
+      "audio": "https://example.com/audio/readascii_intro.mp3"
+    },
+    {
+      "title": "💡 Where is it Used?",
+      "content": "<div class='card'>Used when you want to send human-readable strings to Arduino and respond accordingly — like <i>voice assistant commands</i>, <i>robot directions</i>, or <i>device toggles</i>.</div><div class='card'>Common in Bluetooth-controlled projects and remote-controlled robots.</div>",
+      "image": "https://example.com/images/readascii_use.png",
+      "audio": "https://example.com/audio/readascii_usecase.mp3"
+    },
+    {
+      "title": "🧪 Example Code",
+      "content": "<div class='card'>This sketch waits for the user to type a message in Serial Monitor. If the message is <code>ON</code>, it turns an LED on. If <code>OFF</code>, it turns it off.</div><pre><code>String input = \"\";\n\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(8, OUTPUT);\n}\n\nvoid loop() {\n  if (Serial.available()) {\n    input = Serial.readStringUntil('\\n');\n    input.trim();\n\n    if (input == \"ON\") {\n      digitalWrite(8, HIGH);\n    } else if (input == \"OFF\") {\n      digitalWrite(8, LOW);\n    }\n  }\n}</code></pre>",
+      "image": "https://example.com/images/readascii_code.png",
+      "audio": "https://example.com/audio/readascii_code.mp3"
+    },
+    {
+      "title": "🔗 Related Serial Functions",
+      "content": "<div class='card'>This code uses:</div><ul><li><code>Serial.readStringUntil()</code> — to capture full commands</li><li><code>trim()</code> — to remove extra line breaks</li><li><code>digitalWrite()</code> — to control output pins</li></ul>",
+      "image": "https://example.com/images/readascii_related.png",
+      "audio": "https://example.com/audio/readascii_related.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Valid Serial Command?",
+      "content": "<div class='card'>Which of these will the Arduino react to?</div><ul><li>💡 A. \"on\"</li><li>🔌 B. \"ON\"</li><li>🪫 C. \"off \" (with space)</li></ul><button class='gaming-btn' onclick='alert(\"Correct: B. Only exact match ON and OFF will work\")'>Check Answer</button>",
+      "image": "https://example.com/images/readascii_game.png",
+      "audio": "https://example.com/audio/readascii_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — How to Read Full Commands on Serial",
+      "content": "<div class='card'>This tutorial demonstrates how to use <code>readStringUntil()</code> to handle complete commands like <code>START</code>, <code>STOP</code>, etc., using Bluetooth or Serial Monitor.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/ReadASCII-Arduino' title='ReadASCIIString Example' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/youtube_readascii.png",
+      "audio": "https://example.com/audio/youtube_readascii.mp3"
+    }
+  ]
+}
+,{
+  "title": "ASCII Table — The Backbone of Serial Communication",
+  "lessons": [
+    {
+      "title": "📚 What is ASCII?",
+      "content": "<div class='card'><b>ASCII</b> stands for <b>American Standard Code for Information Interchange</b>. It is a 7-bit character encoding system used to represent characters as numbers.</div><div class='card'>Every letter, digit, symbol, and even control keys (like newline or tab) has a numeric ASCII value. For example, <code>'A' = 65</code>, <code>'a' = 97</code>, <code>'1' = 49</code>.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/dd/ASCII-Table.svg",
+      "audio": "https://example.com/audio/ascii_intro.mp3"
+    },
+    {
+      "title": "🔍 Why is ASCII important in Arduino?",
+      "content": "<div class='card'>When you send data over Serial (USB, Bluetooth, etc.), you're actually sending <b>ASCII values</b> — not letters. So when you type <code>'A'</code>, the Arduino receives <code>65</code>.</div><div class='card'>Understanding ASCII helps in debugging, printing, reading serial data, and converting between characters and numbers.</div>",
+      "image": "https://example.com/images/ascii_use.png",
+      "audio": "https://example.com/audio/ascii_why.mp3"
+    },
+    {
+      "title": "🧪 Example Sketch — The ASCII Printer",
+      "content": "<div class='card'>This sketch prints the entire ASCII table from 32 (space) to 126 (tilde ~):</div><pre><code>void setup() {\n  Serial.begin(9600);\n  for (int i = 32; i <= 126; i++) {\n    Serial.print(i);\n    Serial.print(\": \");\n    Serial.write(i);\n    Serial.println();\n  }\n}\nvoid loop() {}</code></pre><div class='card'>Use Serial Monitor to view the table and notice how values match with characters.</div>",
+      "image": "https://example.com/images/ascii_printer.png",
+      "audio": "https://example.com/audio/ascii_example.mp3"
+    },
+    {
+      "title": "🧠 Real-World Applications",
+      "content": "<div class='card'>ASCII is used in almost every communication protocol — whether it’s Serial Monitor, I2C commands, Bluetooth messages, or USB keyboards.</div><div class='card'>It’s how microcontrollers talk in a language both humans and machines can understand.</div>",
+      "image": "https://example.com/images/ascii_realworld.png",
+      "audio": "https://example.com/audio/ascii_realworld.mp3"
+    },
+    {
+      "title": "🎮 Game — Match the ASCII",
+      "content": "<div class='card'>Can you match the character with its ASCII value?</div><ul><li>🔤 A. 'A' → ?</li><li>🔠 B. 'a' → ?</li><li>🔢 C. '0' → ?</li></ul><button class='gaming-btn' onclick='alert(\"Correct Answers: A → 65, B → 97, C → 48\")'>Check Answer</button>",
+      "image": "https://example.com/images/ascii_game.png",
+      "audio": "https://example.com/audio/ascii_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — ASCII for Beginners",
+      "content": "<div class='card'>Watch this short video to understand how ASCII works, why it’s still used, and how to decode Serial messages using it.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/Z8SGsYFs8uI' title='ASCII Explained for Arduino' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/youtube_ascii.png",
+      "audio": "https://example.com/audio/youtube_ascii.mp3"
+    }
+  ]
+}
+,{
+  "title": "Dimmer — Control Brightness Like a Pro",
+  "lessons": [
+    {
+      "title": "🌟 What is a Dimmer in Arduino?",
+      "content": "<div class='card'>A <b>dimmer</b> is a system that allows you to control the brightness of an LED (or speed of a motor) by adjusting the <b>PWM signal</b>.</div><div class='card'>It usually involves reading input from a <b>potentiometer</b> (using <code>analogRead()</code>) and controlling output to an LED (using <code>analogWrite()</code>).</div>",
+      "image": "https://example.com/images/dimmer_intro.png",
+      "audio": "https://example.com/audio/dimmer_intro.mp3"
+    },
+    {
+      "title": "🧠 Concept Behind Dimming",
+      "content": "<div class='card'>We use <b>PWM</b> (Pulse Width Modulation) to simulate variable voltage. It rapidly turns the LED ON/OFF to give an illusion of dimming.</div><div class='card'>The more the ON time (duty cycle), the brighter the LED appears. A lower duty cycle means dimmer light.</div><div class='card'>You can imagine it like blinking so fast that your eyes only see the average brightness!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/6a/PWM_Signal.svg",
+      "audio": "https://example.com/audio/pwm_explained.mp3"
+    },
+    {
+      "title": "📍 Pin Configuration",
+      "content": "<div class='card'>✅ <b>PWM Output:</b> Connect LED to any PWM pin like D3, D5, D6, D9, D10, D11 (on Uno).</div><div class='card'>✅ <b>Analog Input:</b> Connect the middle pin of the potentiometer to A0. Outer two pins to 5V and GND.</div>",
+      "image": "https://example.com/images/dimmer_pins.png",
+      "audio": "https://example.com/audio/dimmer_pins.mp3"
+    },
+    {
+      "title": "💻 Full Example Code",
+      "content": "<div class='card'>This sketch reads analog input and maps it to LED brightness:</div><pre><code>int potPin = A0;\nint ledPin = 9;\nint value = 0;\n\nvoid setup() {\n  pinMode(ledPin, OUTPUT);\n}\n\nvoid loop() {\n  value = analogRead(potPin);            // 0 to 1023\n  int brightness = map(value, 0, 1023, 0, 255); \n  analogWrite(ledPin, brightness);\n  delay(10);\n}</code></pre>",
+      "image": "https://example.com/images/dimmer_code.png",
+      "audio": "https://example.com/audio/dimmer_code.mp3"
+    },
+    {
+      "title": "🌍 Real-World Use Cases",
+      "content": "<div class='card'>🎛️ Dimming LED strips based on ambient light</div><div class='card'>🌀 Controlling fan speed using potentiometer</div><div class='card'>🔊 DIY volume knob or mood lamp projects</div>",
+      "image": "https://example.com/images/dimmer_realworld.png",
+      "audio": "https://example.com/audio/dimmer_usecases.mp3"
+    },
+    {
+      "title": "🎮 Game — PWM Master",
+      "content": "<div class='card'>Which of these values makes the LED <b>half brightness</b>?</div><ul><li>🔘 A. analogWrite(ledPin, 0)</li><li>🔘 B. analogWrite(ledPin, 128)</li><li>🔘 C. analogWrite(ledPin, 255)</li></ul><button class='gaming-btn' onclick='alert(\"B is correct! 128 is about 50% of 255\")'>Check Answer</button>",
+      "image": "https://example.com/images/dimmer_game.png",
+      "audio": "https://example.com/audio/dimmer_game.mp3"
+    },
+    {
+      "title": "📺 YouTube: Make a Dimmer in 2 Minutes",
+      "content": "<div class='card'>Watch this tutorial on how to build your own LED dimmer with Arduino and a potentiometer.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/QXyZ1zX1kQA' title='Arduino LED Dimmer' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/dimmer_youtube.png",
+      "audio": "https://example.com/audio/dimmer_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "Graph — Turning Sensor Data into a Live Chart",
+  "lessons": [
+    {
+      "title": "🖼️ What is the Graph Example?",
+      "content": "<div class='card'>The <b>Graph</b> example in Arduino is used to <b>visualize real-time data</b> (like temperature, light, etc.) as a flowing graph using the <b>Serial Plotter</b>.</div><div class='card'>Think of it as your Arduino's way of showing changing data values as a live line chart, just like a heartbeat monitor!</div>",
+      "image": "https://example.com/images/graph_intro.png",
+      "audio": "https://example.com/audio/graph_intro.mp3"
+    },
+    {
+      "title": "🎛️ Serial Plotter — What and Where?",
+      "content": "<div class='card'><b>Serial Plotter</b> is a tool built into the Arduino IDE.</div><div class='card'>You can open it from <b>Tools → Serial Plotter</b>. It graphs numeric values sent over Serial.</div><div class='card'>Instead of printing values with <code>Serial.println()</code>, you plot them as a line that moves over time.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/Arduino-serial-plotter.png",
+      "audio": "https://example.com/audio/serial_plotter.mp3"
+    },
+    {
+      "title": "📍 What You Need",
+      "content": "<div class='card'>You’ll need:</div><ul><li>🔌 Arduino Uno/Nano</li><li>🌡️ Analog Sensor (like LDR, potentiometer, temperature sensor)</li><li>📎 1 analog input pin (like A0)</li><li>🖥️ Arduino IDE with Serial Plotter</li></ul>",
+      "image": "https://example.com/images/graph_setup.png",
+      "audio": "https://example.com/audio/graph_requirements.mp3"
+    },
+    {
+      "title": "🧪 Full Sketch: Graphing Sensor Data",
+      "content": "<div class='card'>This code reads from analog pin A0 and sends values to the Serial Plotter:</div><pre><code>void setup() {\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  int sensorValue = analogRead(A0);\n  Serial.println(sensorValue);  // Value between 0 to 1023\n  delay(10);                    // Short delay for smoother plot\n}</code></pre><div class='card'>As the sensor changes (e.g., you turn a knob), the line on Serial Plotter rises and falls!</div>",
+      "image": "https://example.com/images/graph_code.png",
+      "audio": "https://example.com/audio/graph_code.mp3"
+    },
+    {
+      "title": "💡 Real-World Use Cases",
+      "content": "<div class='card'>📈 Monitor temperature trends</div><div class='card'>🕹️ Plot joystick X/Y values over time</div><div class='card'>🚨 Detect motion with PIR or vibration sensors</div><div class='card'>📊 Visualize battery voltage levels in real-time</div>",
+      "image": "https://example.com/images/graph_usecases.png",
+      "audio": "https://example.com/audio/graph_usecases.mp3"
+    },
+    {
+      "title": "🕹️ Interactive Mini Game — Plot It or Print It?",
+      "content": "<div class='card'>Choose what code you'd use for Serial Plotter:</div><ul><li>A. <code>Serial.print(\"Sensor: \")</code></li><li>B. <code>Serial.println(sensorValue)</code></li><li>C. <code>Serial.write(sensorValue)</code></li></ul><button class='gaming-btn' onclick='alert(\"Correct! B — Serial.println() sends clean numeric data needed for plotting.\")'>Check Answer</button>",
+      "image": "https://example.com/images/graph_game.png",
+      "audio": "https://example.com/audio/graph_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — See the Graph in Action",
+      "content": "<div class='card'>Watch a complete walk-through on building your first Serial Plotter Graph with a potentiometer:</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/DRkM93dpFZk' title='Arduino Serial Graph' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/graph_video.png",
+      "audio": "https://example.com/audio/graph_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "Physical Pixel — Controlling the Real World from Serial",
+  "lessons": [
+    {
+      "title": "🤔 What is the Physical Pixel Example?",
+      "content": "<div class='card'><b>Physical Pixel</b> lets you turn an actual LED on/off using serial commands from your computer.</div><div class='card'>It’s like talking to your Arduino from the Serial Monitor and watching it obey your command in real-time!</div>",
+      "image": "https://example.com/images/physical_pixel_intro.png",
+      "audio": "https://example.com/audio/physical_pixel_intro.mp3"
+    },
+    {
+      "title": "🧠 Why Use It?",
+      "content": "<div class='card'>This example teaches you how to send commands <b>from PC to Arduino</b> and how Arduino can <b>read that input using Serial.read()</b>.</div><div class='card'>It’s the base of every Serial-controlled robot, IoT device, or remote-controlled LED system you’ll ever build!</div>",
+      "image": "https://example.com/images/why_physical_pixel.png",
+      "audio": "https://example.com/audio/why_physical_pixel.mp3"
+    },
+    {
+      "title": "⚙️ What You Need",
+      "content": "<div class='card'>You’ll need:</div><ul><li>🔌 Arduino Uno/Nano</li><li>💡 1 LED</li><li>🔋 220Ω resistor</li><li>🔌 Breadboard + jumper wires</li><li>🖥️ Arduino IDE with Serial Monitor</li></ul>",
+      "image": "https://example.com/images/physical_pixel_setup.png",
+      "audio": "https://example.com/audio/physical_pixel_requirements.mp3"
+    },
+    {
+      "title": "📍 Pin Used",
+      "content": "<div class='card'>This sketch uses <code>pin 13</code> (built-in LED on most boards).</div><div class='card'>You can change it to any digital output pin if using an external LED.</div>",
+      "image": "https://example.com/images/physical_pixel_pin.png",
+      "audio": "https://example.com/audio/physical_pixel_pin.mp3"
+    },
+    {
+      "title": "💻 The Code — Talk to Arduino!",
+      "content": "<div class='card'>This sketch listens for serial input. Type <code>H</code> to turn the LED ON, and <code>L</code> to turn it OFF.</div><pre><code>char incomingByte;\n\nvoid setup() {\n  pinMode(13, OUTPUT);\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  if (Serial.available() > 0) {\n    incomingByte = Serial.read();\n    if (incomingByte == 'H') {\n      digitalWrite(13, HIGH);\n    } else if (incomingByte == 'L') {\n      digitalWrite(13, LOW);\n    }\n  }\n}</code></pre>",
+      "image": "https://example.com/images/physical_pixel_code.png",
+      "audio": "https://example.com/audio/physical_pixel_code.mp3"
+    },
+    {
+      "title": "🌍 Real-World Application",
+      "content": "<div class='card'>This is the foundation of <b>serial-controlled automation</b>:</div><ul><li>💡 Controlling lights from PC</li><li>🧠 Making serial-based games</li><li>🎮 Controlling robots from keyboard</li><li>📲 Linking with mobile apps</li></ul>",
+      "image": "https://example.com/images/realworld_physical_pixel.png",
+      "audio": "https://example.com/audio/realworld_physical_pixel.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — H or L?",
+      "content": "<div class='card'>Type a character in the Serial Monitor:<br>What will happen?</div><ul><li><code>H</code> → LED turns ON</li><li><code>L</code> → LED turns OFF</li><li><code>X</code> → No effect</li></ul><button class='gaming-btn' onclick='alert(\"Correct! Only H and L control the LED. Others are ignored.\")'>Check Answer</button>",
+      "image": "https://example.com/images/game_physical_pixel.png",
+      "audio": "https://example.com/audio/game_physical_pixel.mp3"
+    },
+    {
+      "title": "📺 YouTube — Watch It in Action!",
+      "content": "<div class='card'>This video shows how the code works and how to test it using Serial Monitor:</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/I6np2p3k4L8' title='Arduino Physical Pixel' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/video_physical_pixel.png",
+      "audio": "https://example.com/audio/video_physical_pixel.mp3"
+    }
+  ]
+}
+,{
+  "title": "Serial Call & Response — Talking Both Ways!",
+  "lessons": [
+    {
+      "title": "🧠 What Is 'Call and Response' in Arduino?",
+      "content": "<div class='card'>In a normal Serial sketch, you <b>send data from Arduino</b> to your PC. But what if you want your PC to send a command, and Arduino responds?</div><div class='card'><b>That's 'Call and Response'</b> — your computer 'calls' with a message, and Arduino 'responds' appropriately.</div>",
+      "image": "https://example.com/images/serial_call_intro.png",
+      "audio": "https://example.com/audio/serial_call_intro.mp3"
+    },
+    {
+      "title": "📦 Where Is It Used?",
+      "content": "<div class='card'>Used in:</div><ul><li>📱 Bluetooth or serial apps controlling Arduino</li><li>🖥️ Custom PC dashboards</li><li>📊 Graphing data on the computer</li><li>🎮 Real-time games using sensors</li></ul><div class='card'>This is also the base for communication with Python or Node.js via serial port.</div>",
+      "image": "https://example.com/images/serial_usecases.png",
+      "audio": "https://example.com/audio/serial_usecases.mp3"
+    },
+    {
+      "title": "💻 The Code",
+      "content": "<div class='card'>This code reads incoming data and sends a response back.</div><pre><code>int input = 0;\nvoid setup() {\n  Serial.begin(9600);\n  while (!Serial) {} // Wait for serial\n  Serial.println(\"Ready\");\n}\n\nvoid loop() {\n  if (Serial.available() > 0) {\n    int inByte = Serial.read();\n    input = analogRead(A0) / 4; // Simulated sensor value\n    Serial.println(input);\n  }\n}</code></pre><div class='card'>When the PC sends a byte, Arduino reads it, and replies with a sensor value!</div>",
+      "image": "https://example.com/images/serial_code.png",
+      "audio": "https://example.com/audio/serial_code.mp3"
+    },
+    {
+      "title": "📍 Pin Usage",
+      "content": "<div class='card'>This sketch uses analog pin <code>A0</code> to simulate a sensor input.</div><div class='card'>But you can replace this with a real sensor like a potentiometer or LDR.</div>",
+      "image": "https://example.com/images/pin_usage_serial_call.png",
+      "audio": "https://example.com/audio/pin_usage_serial_call.mp3"
+    },
+    {
+      "title": "🧪 Real-Life Example",
+      "content": "<div class='card'>Imagine a Python script sending a command every 5 seconds to get the light sensor value from your Arduino — this sketch makes it possible.</div><div class='card'>You could log data over time, control devices, or make interactive tools.</div>",
+      "image": "https://example.com/images/real_life_serial_call.png",
+      "audio": "https://example.com/audio/real_life_serial_call.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Decode the Flow",
+      "content": "<div class='card'>Arrange these steps in correct order:</div><ol><li>🧠 A. PC sends a byte</li><li>🔎 B. Arduino receives it</li><li>📊 C. Arduino reads sensor</li><li>📨 D. Arduino sends sensor value back</li></ol><button class='gaming-btn' onclick='alert(\"Correct order: A → B → C → D\")'>Check Answer</button>",
+      "image": "https://example.com/images/game_serial_call.png",
+      "audio": "https://example.com/audio/game_serial_call.mp3"
+    },
+    {
+      "title": "📺 YouTube — See It Working!",
+      "content": "<div class='card'>This video walks through the sketch, shows how to interact with it using Serial Monitor or Python script.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/MCj8Iqzsr_s' title='Serial Call Response Arduino Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/youtube_serial_call.png",
+      "audio": "https://example.com/audio/youtube_serial_call.mp3"
+    }
+  ]
+}
+,{
+  "title": "Serial Call & Response — ASCII Communication Magic",
+  "lessons": [
+    {
+      "title": "🔤 What Is ASCII-Based Serial Call?",
+      "content": "<div class='card'>Unlike sending raw numbers or bytes, this method sends characters (letters, digits, symbols) as <b>ASCII codes</b>.</div><div class='card'>This makes it easier to read, debug, and interact using Serial Monitor or software like Python, Processing, etc.</div>",
+      "image": "https://example.com/images/ascii_intro.png",
+      "audio": "https://example.com/audio/ascii_intro.mp3"
+    },
+    {
+      "title": "💡 Why ASCII? Benefits & Use-Cases",
+      "content": "<div class='card'>✅ Easy to debug with human-readable characters</div><div class='card'>✅ Works great with Python scripts, Processing, and Node.js</div><div class='card'>✅ Ideal for sending labels like <code>\"TEMP:32\"</code> instead of just numbers</div>",
+      "image": "https://example.com/images/ascii_benefits.png",
+      "audio": "https://example.com/audio/ascii_benefits.mp3"
+    },
+    {
+      "title": "🧠 Example Sketch: Send Labeled Values",
+      "content": "<pre><code>String inputString = \"\";\nbool stringComplete = false;\n\nvoid setup() {\n  Serial.begin(9600);\n  inputString.reserve(200);\n}\n\nvoid loop() {\n  if (stringComplete) {\n    Serial.print(\"You sent: \");\n    Serial.println(inputString);\n    inputString = \"\";\n    stringComplete = false;\n  }\n}\n\nvoid serialEvent() {\n  while (Serial.available()) {\n    char inChar = (char)Serial.read();\n    inputString += inChar;\n    if (inChar == '\\n') stringComplete = true;\n  }\n}</code></pre><div class='card'>This sketch reads a full ASCII string and replies with a response that includes the same message.</div>",
+      "image": "https://example.com/images/ascii_sketch.png",
+      "audio": "https://example.com/audio/ascii_sketch.mp3"
+    },
+    {
+      "title": "📍 Pin Usage & Protocol",
+      "content": "<div class='card'>ASCII serial communication uses the <b>Serial TX/RX pins</b> (usually pin 0 and 1 on Uno), or USB virtual serial for boards like Nano Every, Leonardo, or ESP32.</div>",
+      "image": "https://example.com/images/ascii_pin.png",
+      "audio": "https://example.com/audio/ascii_pin.mp3"
+    },
+    {
+      "title": "🌍 Real-World Example",
+      "content": "<div class='card'>You're building a weather station with Arduino. Instead of just sending numbers, you can send labels:</div><pre><code>Serial.println(\"TEMP:27.5\");\nSerial.println(\"HUM:43.2\");</code></pre><div class='card'>This helps your PC or web dashboard easily read what each number means.</div>",
+      "image": "https://example.com/images/ascii_usecase.png",
+      "audio": "https://example.com/audio/ascii_usecase.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — ASCII Decode",
+      "content": "<div class='card'>What does <code>Serial.println(\"BTN:1\")</code> mean?</div><ul><li>🟢 A. Sensor is high</li><li>🔴 B. A button was pressed</li><li>🔵 C. A command to press a button</li></ul><button class='gaming-btn' onclick='alert(\"Correct: B — It's a message that a button was pressed\")'>Check Answer</button>",
+      "image": "https://example.com/images/ascii_game.png",
+      "audio": "https://example.com/audio/ascii_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — ASCII Serial Explained",
+      "content": "<div class='card'>This video demonstrates sending ASCII messages from PC to Arduino and back.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/6N97Wv7UZw4' title='Arduino Serial ASCII Call and Response' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/youtube_ascii_serial.png",
+      "audio": "https://example.com/audio/youtube_ascii_serial.mp3"
+    }
+  ]
+}
+
+      ]
     }
   ]
 };
