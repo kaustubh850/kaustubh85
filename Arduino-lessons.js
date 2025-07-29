@@ -6660,7 +6660,124 @@ void loop() {
     },{
       title:"Serial Communication — Function-by-Function Mastery",
       modules:[
-        
+        {
+  "title": "🔌 if (Serial) — Serial Port Readiness Check",
+  "lessons": [
+    {
+      "title": "🤔 What is if (Serial)?",
+      "content": "<div class='card'>In Arduino, <code>if (Serial)</code> is a way to check if the Serial port is ready before you try to use it.</div>\n<div class='card'>This is especially useful when you're using boards like Leonardo, Micro, or other boards that handle USB communication differently. It ensures the USB serial connection is established before sending any data.</div>\n<div class='card'>Imagine talking into a walkie-talkie before the other person has turned theirs on — you’d be wasting your breath. <code>if (Serial)</code> avoids that in code.</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🔍 Syntax & Example",
+      "content": "<div class='card'>Basic syntax looks like this:</div>\n<pre><code>void setup() {\n  Serial.begin(9600);\n  while (!Serial) {\n    ; // Wait for serial port to connect. Needed for native USB\n  }\n  Serial.println(\"Ready!\");\n}</code></pre>\n<div class='card'>This ensures that the Serial monitor is fully ready to receive data. Without it, the first few messages might get lost.</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎮 Mini Game — Port or Not?",
+      "content": "<div class='card'>Can you identify when the serial port is ready?</div>\n<iframe height='300' style='width:100%' scrolling='no' title='Serial Port Game' src='https://jsfiddle.net/kaustubhlearn/serialreadygame/embed/' frameborder='no' allowtransparency='true' allowfullscreen='true'></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📺 Video: Why wait for Serial?",
+      "content": "<div class='card'>Watch this to understand the importance of waiting for the serial port:</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/zI6fJvK_eeA' title='Why use if(Serial) in Arduino?' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📌 Real-World Use",
+      "content": "<div class='card'>If you're building a data logger that communicates over USB, <code>if (Serial)</code> ensures your device doesn’t miss the first messages when the serial monitor opens.</div>\n<div class='card'>It's a best practice with USB boards like the Leonardo, Micro, or any SAMD-based Arduino.</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "📥 Serial.available() — Check How Much Data Is Waiting",
+  "lessons": [
+    {
+      "title": "🧐 What is Serial.available()?",
+      "content": "<div class='card'><code>Serial.available()</code> returns the number of bytes (characters) available to read from the serial buffer.</div>\n<div class='card'>Think of it like checking your mailbox: this function tells you how many letters (data) are waiting to be read.</div>\n<div class='card'>If there's something waiting, your Arduino can take action immediately!</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Syntax & Explanation",
+      "content": "<div class='card'><code>Serial.available()</code> returns an <code>int</code>.</div>\n<pre><code>void loop() {\n  if (Serial.available() > 0) {\n    char incoming = Serial.read();\n    Serial.print(\"You typed: \");\n    Serial.println(incoming);\n  }\n}</code></pre>\n<div class='card'>This checks if something is waiting. If yes, it reads it and echoes it back.</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎮 Mini Game — Type & Echo",
+      "content": "<div class='card'>Try simulating serial input — guess how many characters are waiting!</div>\n<iframe height='300' style='width:100%' scrolling='no' title='Serial.available() Game' src='https://jsfiddle.net/kaustubhlearn/serialavailable/embed/' frameborder='no' allowtransparency='true' allowfullscreen='true'></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📺 Video: Reading Serial Data Properly",
+      "content": "<div class='card'>Watch this quick visual explainer on how <code>Serial.available()</code> works and why it’s essential.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/xRGSpixGzBM' title='Serial.available() Explained' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🔍 Real-World Example",
+      "content": "<div class='card'>When making a password door lock with serial input, use <code>Serial.available()</code> to check if the user has typed enough characters before verifying the password.</div>\n<div class='card'>This avoids bugs from incomplete data reads.</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+,{
+  "title": "📤 Serial.availableForWrite() — Can I Send Now?",
+  "lessons": [
+    {
+      "title": "🤔 What's Serial.availableForWrite()?",
+      "content": "<div class='card'><code>Serial.availableForWrite()</code> tells you how many bytes can be written to the serial output buffer *right now* without blocking the program.</div>\n<div class='card'>If you've ever shouted into a walkie-talkie while your friend is still talking — that's what sending data to a full buffer is like. This function prevents that!</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧪 Syntax & Behavior",
+      "content": "<div class='card'><b>Syntax:</b> <code>Serial.availableForWrite()</code></div>\n<div class='card'>Returns an <code>int</code> — how many bytes you can write *right now* before the buffer fills up.</div>\n<pre><code>if (Serial.availableForWrite() > 10) {\n  Serial.print(\"Ready to send big data block!\");\n}</code></pre>\n<div class='card'>If your print data is too big and the buffer is full, Arduino will <i>pause</i> until it can send more — causing delays.</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "📡 Real-World Example — Fast Serial Chat",
+      "content": "<div class='card'>If you're building a chat between two Arduinos, and sending frequent messages, this function helps check if the buffer is ready.</div>\n<div class='card'>That way, you won't miss or delay data due to overload!</div>\n<pre><code>if (Serial.availableForWrite() > 0) {\n  Serial.write(nextByte);\n}</code></pre>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎮 Mini Game — Buffer Madness",
+      "content": "<div class='card'>Simulate serial writing! Can you fill the buffer responsibly?</div>\n<iframe height='300' style='width:100%' scrolling='no' title='Buffer Game' src='https://jsfiddle.net/kaustubhlearn/serialwritebuffer/embed/' frameborder='no' allowtransparency='true' allowfullscreen='true'></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🎥 YouTube: Serial Buffer Management",
+      "content": "<div class='card'>Learn how to avoid Arduino freezing due to serial buffer overflow. A must-watch when building high-speed serial apps!</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/SKvaHGSFqMo' title='Avoid Serial Freezing' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🧠 Important Tip: Use It With Serial.print() Loops",
+      "content": "<div class='card'>If you're inside a loop that prints lots of data, and the buffer fills up, your loop will block (pause) until space frees.</div>\n<div class='card'><code>Serial.availableForWrite()</code> avoids this. Only write when there's space.</div>",
+      "image": "",
+      "audio": ""
+    },
+    {
+      "title": "🔁 Summary — When Should You Use It?",
+      "content": "<div class='card'>✅ When sending large amounts of data quickly</div>\n<div class='card'>✅ When you want your code to stay responsive</div>\n<div class='card'>✅ In Serial-based chat, debug loggers, or file transfers</div>",
+      "image": "",
+      "audio": ""
+    }
+  ]
+}
+
       ]
     }
   ]
