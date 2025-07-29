@@ -7813,6 +7813,38 @@ void loop() {
 }
 
       ]
+    },{
+      title:"The Stream Class - Reading Data Smartly",
+      modules:[
+        {
+  "title": "📡 The Stream Class — The Hidden Engine Behind Serial Data",
+  "lessons": [
+    {
+      "title": "🔍 What Is Stream in Arduino?",
+      "content": "<div class='card'>The <code>Stream</code> class in Arduino is a base class used to handle serial-style data input and output. It's like a 'blueprint' that allows different hardware interfaces (like <code>Serial</code>, <code>Wire</code>, <code>Ethernet</code>, and <code>SD</code>) to read/write data using common methods.</div><div class='card'>When you use <code>Serial.read()</code> or <code>Serial.parseInt()</code>, you are actually using functions defined by the <b>Stream class</b> behind the scenes.</div>",
+      "image": "https://example.com/images/stream_intro.png",
+      "audio": "https://example.com/audio/stream_intro.mp3"
+    },
+    {
+      "title": "📦 Where Is It Used?",
+      "content": "<div class='card'><b>Any library that reads or writes a sequence of characters</b> (or bytes) will likely inherit from Stream — such as:</div><ul><li>📡 <code>Serial</code> (USB/UART communication)</li><li>🔌 <code>Wire</code> (I2C communication)</li><li>🌐 <code>Ethernet</code> (network data)</li><li>💾 <code>SD</code> (reading files)</li></ul>"
+    },
+    {
+      "title": "🧠 Why Use Stream?",
+      "content": "<div class='card'>Instead of writing custom code for every library, Arduino reuses a common set of data functions.</div><div class='card'>It saves memory and gives you a familiar way to read or write bytes, strings, and numbers across different protocols.</div>"
+    },
+    {
+      "title": "🕹️ Mini Game — Guess the Stream!",
+      "content": "<div class='card'>Which of these libraries uses the Stream class?</div><ul><li>A. Stepper</li><li>B. Wire</li><li>C. SD</li><li>D. Servo</li></ul><button class='gaming-btn' onclick='alert(\"Correct! Wire and SD both use Stream.\")'>Check Answer</button>"
+    },
+    {
+      "title": "🎥 YouTube — Visual Guide to Arduino Streams",
+      "content": "<div class='card'>Watch this short animation to understand how <b>Stream</b> powers <code>Serial</code> and other communication systems:</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/kU2g92pEbyE' title='What is Stream Class in Arduino' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+}
+
+      ]
     }
   ]
 };
