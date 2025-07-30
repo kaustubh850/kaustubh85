@@ -8408,6 +8408,552 @@ void loop() {
 }
 
       ]
+    },{
+      title:"Wire (I2C Communication)",
+      modules:[
+        {
+  "title": "Wire & I2C — Mastering Multi-Device Communication",
+  "lessons": [
+    {
+      "title": "📡 What is Wire Library in Arduino?",
+      "content": "<div class='card'>The <code>Wire</code> library lets Arduino boards communicate with each other or with sensors, displays, RTC modules, etc. using the <b>I2C protocol</b>.</div><div class='card'>It’s like a group chat — one master (Arduino) talks to many devices (slaves) using just two wires!</div>",
+      "image": "https://example.com/images/i2c_overview.png",
+      "audio": "https://example.com/audio/i2c_intro.mp3"
+    },
+    {
+      "title": "🔗 What is I2C (Inter-Integrated Circuit)?",
+      "content": "<div class='card'><b>I2C</b> stands for <b>Inter-Integrated Circuit</b>. It's a serial communication protocol designed for connecting multiple devices using just 2 pins.</div><div class='card'><ul><li><b>SDA (Serial Data)</b> — Carries the data</li><li><b>SCL (Serial Clock)</b> — Provides the timing for the data</li></ul></div><div class='card'>It uses 7-bit addresses to identify devices. One master can control up to 127 devices!</div>",
+      "image": "https://example.com/images/sda_scl.png",
+      "audio": "https://example.com/audio/i2c_basics.mp3"
+    },
+    {
+      "title": "🔍 How is I2C Different from Serial or UART?",
+      "content": "<div class='card'><b>Serial (UART)</b> uses 2 wires too — TX and RX — but it is for <i>point-to-point</i> communication only (1-to-1).</div><div class='card'><b>I2C</b> allows 1-to-many communication (1 master to many slaves) using <b>just two wires</b> shared across all devices.</div><div class='card'>Think of UART as a 1-on-1 phone call, while I2C is a group Zoom meeting.</div>",
+      "image": "https://example.com/images/i2c_vs_uart.png",
+      "audio": "https://example.com/audio/i2c_vs_uart.mp3"
+    },
+    {
+      "title": "🌍 Real-World Applications",
+      "content": "<div class='card'>I2C is used everywhere:</div><ul><li>📷 Camera modules</li><li>🕒 Real-time clocks (DS3231)</li><li>📱 OLED displays (SSD1306)</li><li>🌡 Environmental sensors (BME280)</li><li>🧠 External EEPROM chips</li></ul><div class='card'>You can chain multiple modules with different addresses to make complex systems using just two wires.</div>",
+      "image": "https://example.com/images/i2c_devices.png",
+      "audio": "https://example.com/audio/i2c_applications.mp3"
+    },
+    {
+      "title": "🧪 Wiring Example — Arduino + OLED",
+      "content": "<div class='card'>Let’s say you’re connecting a 0.96” OLED screen to Arduino using I2C:</div><ul><li>SDA → A4 (Uno/Nano)</li><li>SCL → A5 (Uno/Nano)</li></ul><div class='card'><pre><code>#include &lt;Wire.h&gt;\n\nvoid setup() {\n  Wire.begin();\n  Serial.begin(9600);\n  Serial.println(\"I2C Ready\");\n}\n\nvoid loop() {\n  // Ready for communication\n}</code></pre></div>",
+      "image": "https://example.com/images/oled_i2c_wiring.png",
+      "audio": "https://example.com/audio/i2c_wiring.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Guess the Bus",
+      "content": "<div class='card'>Which protocol is best for connecting 5 sensors using just 2 wires?</div><ul><li>🟢 A. I2C</li><li>🔴 B. UART</li><li>🔴 C. SPI</li></ul><button class='gaming-btn' onclick='alert(\"Correct! 🟢 A. I2C is perfect for multiple devices on two wires!\")'>Check Answer</button>",
+      "image": "https://example.com/images/i2c_game.png",
+      "audio": "https://example.com/audio/i2c_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — I2C Visual Demo",
+      "content": "<div class='card'>Watch this video to see I2C in action with multiple devices and only 2 wires!</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/3VJ2kL5s6dI' title='I2C Explained Visually' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/i2c_youtube.png",
+      "audio": "https://example.com/audio/i2c_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "Wire.begin() — Starting the I2C Engine",
+  "lessons": [
+    {
+      "title": "🚀 What is Wire.begin()?",
+      "content": "<div class='card'><code>Wire.begin()</code> is used to <b>initialize the I2C communication</b> on your Arduino board.</div><div class='card'>It prepares the board to act as a <b>master or slave</b> device — depending on whether an address is passed as a parameter.</div>",
+      "image": "https://example.com/images/wire_begin_what.png",
+      "audio": "https://example.com/audio/wire_begin_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax + Modes",
+      "content": "<div class='card'>There are two main forms of this function:</div><pre><code>Wire.begin();</code></pre><div class='card'>🔹 Used when Arduino is the <b>Master</b></div><pre><code>Wire.begin(address);</code></pre><div class='card'>🔹 Used when Arduino is the <b>Slave</b>, with its address specified (e.g., <code>Wire.begin(8);</code>)</div>",
+      "image": "https://example.com/images/wire_begin_syntax.png",
+      "audio": "https://example.com/audio/wire_begin_syntax.mp3"
+    },
+    {
+      "title": "🧠 Master vs Slave",
+      "content": "<div class='card'><b>Master</b> devices initiate and control communication. Usually, Arduino acts as master.</div><div class='card'><b>Slave</b> devices listen and respond to the master. Each must have a unique address between 1 and 127.</div><div class='card'>Multiple slaves can be connected using just SDA & SCL lines.</div>",
+      "image": "https://example.com/images/master_vs_slave.png",
+      "audio": "https://example.com/audio/master_slave.mp3"
+    },
+    {
+      "title": "⚙️ Wiring — Where is SDA & SCL?",
+      "content": "<div class='card'><b>UNO/Nano</b>: SDA = A4, SCL = A5<br><b>MEGA</b>: SDA = 20, SCL = 21<br><b>ESP32</b>: Default pins vary, but customizable</div><div class='card'>Connect all SDA lines together and all SCL lines together across devices.</div>",
+      "image": "https://example.com/images/sda_scl_pinout.png",
+      "audio": "https://example.com/audio/wire_begin_pins.mp3"
+    },
+    {
+      "title": "🧰 Real-World Example — Master Mode",
+      "content": "<div class='card'>Let's initialize the Arduino as a master and send data to a slave:</div><pre><code>#include &lt;Wire.h&gt;\n\nvoid setup() {\n  Wire.begin(); // Master mode\n  Serial.begin(9600);\n  Wire.beginTransmission(8);\n  Wire.write(\"Hello slave\");\n  Wire.endTransmission();\n}</code></pre>",
+      "image": "https://example.com/images/wire_master.png",
+      "audio": "https://example.com/audio/wire_master_example.mp3"
+    },
+    {
+      "title": "📥 Real-World Example — Slave Mode",
+      "content": "<div class='card'>To make Arduino a slave:</div><pre><code>#include &lt;Wire.h&gt;\n\nvoid setup() {\n  Wire.begin(8); // Slave with address 8\n  Wire.onReceive(receiveEvent);\n  Serial.begin(9600);\n}\n\nvoid receiveEvent(int bytes) {\n  while(Wire.available()) {\n    char c = Wire.read();\n    Serial.print(c);\n  }\n}</code></pre>",
+      "image": "https://example.com/images/wire_slave.png",
+      "audio": "https://example.com/audio/wire_slave_example.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Master or Slave?",
+      "content": "<div class='card'>Identify whether the given code snippet makes the Arduino a master or slave:</div><pre><code>Wire.begin(5);</code></pre><ul><li>🟢 A. Slave</li><li>🔴 B. Master</li></ul><button class='gaming-btn' onclick='alert(\"✅ Correct! Wire.begin(5) makes it a slave with address 5.\")'>Check Answer</button>",
+      "image": "https://example.com/images/wire_game.png",
+      "audio": "https://example.com/audio/wire_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — Wire.begin() Visual Guide",
+      "content": "<div class='card'>Watch this complete setup of master and slave I2C devices using Wire.begin()</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/i2c-wire-begin-tutorial' title='Wire.begin Explained' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/wire_youtube.png",
+      "audio": "https://example.com/audio/wire_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "Wire.end() — Stopping the I2C Communication",
+  "lessons": [
+    {
+      "title": "🛑 What is Wire.end()?",
+      "content": "<div class='card'><code>Wire.end()</code> is used to <b>terminate the I2C communication</b> that was previously started using <code>Wire.begin()</code>.</div><div class='card'>It disables the I2C hardware and frees the SDA and SCL pins, making them usable for other tasks in your program.</div>",
+      "image": "https://example.com/images/wire_end_what.png",
+      "audio": "https://example.com/audio/wire_end_intro.mp3"
+    },
+    {
+      "title": "🔧 Syntax",
+      "content": "<div class='card'><code>Wire.end();</code></div><div class='card'>It has no parameters and simply ends the I2C session on the microcontroller.</div>",
+      "image": "https://example.com/images/wire_end_syntax.png",
+      "audio": "https://example.com/audio/wire_end_syntax.mp3"
+    },
+    {
+      "title": "💡 Why & When To Use It?",
+      "content": "<div class='card'>You should use <code>Wire.end()</code> when:</div><ul><li>You are done communicating with I2C devices</li><li>You want to switch to a different protocol (like SPI)</li><li>You want to use SDA/SCL pins as regular digital I/O</li><li>You are switching between different I2C devices dynamically</li></ul>",
+      "image": "https://example.com/images/wire_end_why.png",
+      "audio": "https://example.com/audio/wire_end_why.mp3"
+    },
+    {
+      "title": "🔁 I2C Pin Usage After Wire.end()",
+      "content": "<div class='card'>After calling <code>Wire.end()</code>, the SDA and SCL pins become regular digital I/O.</div><div class='card'>You can use <code>pinMode()</code>, <code>digitalWrite()</code>, etc., on them.</div>",
+      "image": "https://example.com/images/wire_end_pins.png",
+      "audio": "https://example.com/audio/wire_end_pins.mp3"
+    },
+    {
+      "title": "🧪 Real-World Example — Freeing SDA/SCL",
+      "content": "<div class='card'>Example: You want to stop using an I2C sensor and turn the pins into LED control pins.</div><pre><code>#include &lt;Wire.h&gt;\n\nvoid setup() {\n  Wire.begin();\n  delay(2000);\n  Wire.end();\n  pinMode(A4, OUTPUT); // A4 is SDA on UNO\n  pinMode(A5, OUTPUT); // A5 is SCL on UNO\n  digitalWrite(A4, HIGH);\n  digitalWrite(A5, HIGH);\n}</code></pre>",
+      "image": "https://example.com/images/wire_end_code.png",
+      "audio": "https://example.com/audio/wire_end_code.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Should You End It?",
+      "content": "<div class='card'>After you have initialized I2C communication and finished reading sensor data, do you need to call <code>Wire.end()</code>?</div><ul><li>🔘 A. Always</li><li>✅ B. Only if you're switching functionality or saving power</li><li>🔘 C. Never</li></ul><button class='gaming-btn' onclick='alert(\"Correct! Use Wire.end() only when you're done using I2C or want to repurpose the pins.\")'>Check Answer</button>",
+      "image": "https://example.com/images/wire_end_game.png",
+      "audio": "https://example.com/audio/wire_end_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — When To Use Wire.end()",
+      "content": "<div class='card'>Here's a full demo on dynamically switching SDA/SCL between I2C and general I/O:</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/i2c-wire-end' title='Wire.end Explained' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/wire_end_youtube.png",
+      "audio": "https://example.com/audio/wire_end_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "Wire.requestFrom() — Asking Data from an I2C Device",
+  "lessons": [
+    {
+      "title": "🔍 What is Wire.requestFrom()?",
+      "content": "<div class='card'><code>Wire.requestFrom()</code> is used by an I2C Master to <b>ask for data</b> from a Slave device.</div><div class='card'>For example, if you're using an I2C temperature sensor, your Arduino (Master) will request data from that sensor (Slave) using this function.</div>",
+      "image": "https://example.com/images/requestfrom_what.png",
+      "audio": "https://example.com/audio/requestfrom_intro.mp3"
+    },
+    {
+      "title": "📚 Syntax",
+      "content": "<div class='card'><pre><code>Wire.requestFrom(address, quantity);\nWire.requestFrom(address, quantity, stop);</code></pre></div><div class='card'>• <code>address</code>: I2C address of the slave (usually 0x00 to 0x7F)<br>• <code>quantity</code>: Number of bytes to request<br>• <code>stop</code>: Optional. If true, releases the I2C bus after request</div>",
+      "image": "https://example.com/images/requestfrom_syntax.png",
+      "audio": "https://example.com/audio/requestfrom_syntax.mp3"
+    },
+    {
+      "title": "📍 Pin Usage",
+      "content": "<div class='card'>Uses SDA and SCL pins for I2C:</div><ul><li>🔹 On UNO: SDA → A4, SCL → A5</li><li>🔹 On Mega: SDA → 20, SCL → 21</li><li>🔹 On ESP32: User-defined</li></ul>",
+      "image": "https://example.com/images/requestfrom_pins.png",
+      "audio": "https://example.com/audio/requestfrom_pins.mp3"
+    },
+    {
+      "title": "🧠 Real-World Use — Reading From an I2C Sensor",
+      "content": "<div class='card'>Here’s how you request 2 bytes from a sensor at address <code>0x3C</code>:</div><pre><code>Wire.beginTransmission(0x3C);\nWire.write(0x00); // Command register\nWire.endTransmission();\nWire.requestFrom(0x3C, 2); // Ask for 2 bytes\n\nwhile (Wire.available()) {\n  int data = Wire.read();\n  Serial.println(data);\n}</code></pre><div class='card'>This is how most sensors send temperature, light, or pressure readings.</div>",
+      "image": "https://example.com/images/requestfrom_sensor.png",
+      "audio": "https://example.com/audio/requestfrom_code.mp3"
+    },
+    {
+      "title": "⚠️ Master-Slave Rule",
+      "content": "<div class='card'>Remember: Only the <b>Master</b> can initiate a <code>requestFrom()</code>.</div><div class='card'>Slaves can only respond. This is what makes I2C structured and predictable.</div>",
+      "image": "https://example.com/images/requestfrom_masterslave.png",
+      "audio": "https://example.com/audio/requestfrom_masterslave.mp3"
+    },
+    {
+      "title": "🔄 Without Stop Condition?",
+      "content": "<div class='card'>The third parameter <code>stop</code> lets you decide whether to release the bus.</div><div class='card'>Use <code>false</code> when you're chaining multiple requests without releasing the bus.</div><pre><code>Wire.requestFrom(0x3C, 2, false);</code></pre>",
+      "image": "https://example.com/images/requestfrom_stop.png",
+      "audio": "https://example.com/audio/requestfrom_stop.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Request Mastery",
+      "content": "<div class='card'>Which of these statements is correct about <code>Wire.requestFrom()</code>?</div><ul><li>📦 A. Slaves can request data from Masters</li><li>✅ B. Only Masters can request data from Slaves</li><li>🔍 C. You must always request 1 byte at a time</li></ul><button class='gaming-btn' onclick='alert(\"Correct! Only Masters can use requestFrom().\")'>Check Answer</button>",
+      "image": "https://example.com/images/requestfrom_game.png",
+      "audio": "https://example.com/audio/requestfrom_game.mp3"
+    },
+    {
+      "title": "📺 YouTube: Wire.requestFrom() Explained",
+      "content": "<div class='card'>Watch a real-world I2C example with requestFrom() in use:</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/i2c-requestfrom-example' title='Wire.requestFrom() Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/requestfrom_youtube.png",
+      "audio": "https://example.com/audio/requestfrom_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "Wire.beginTransmission() — Starting I2C Communication",
+  "lessons": [
+    {
+      "title": "🚦 What is Wire.beginTransmission()?",
+      "content": "<div class='card'><code>Wire.beginTransmission()</code> is used by the I2C <b>Master</b> to start a message to a specific Slave device.</div><div class='card'>It's like picking up the phone and dialing a specific contact — you’re saying, “Hey device at address 0x3C, I want to talk to you now.”</div>",
+      "image": "https://example.com/images/begin_transmission_intro.png",
+      "audio": "https://example.com/audio/begin_transmission_intro.mp3"
+    },
+    {
+      "title": "🧠 Real-World Analogy",
+      "content": "<div class='card'>Imagine a teacher (Master) trying to give a note to a specific student (Slave). <code>Wire.beginTransmission()</code> is like calling the student by name before handing over the note.</div>",
+      "image": "https://example.com/images/begin_transmission_realworld.png",
+      "audio": "https://example.com/audio/begin_transmission_realworld.mp3"
+    },
+    {
+      "title": "📚 Syntax Breakdown",
+      "content": "<div class='card'><pre><code>Wire.beginTransmission(address);</code></pre></div><div class='card'>• <code>address</code>: I2C address of the Slave device (usually 0x3C, 0x27, etc.)<br>This doesn’t send data yet — it just prepares to send data.</div>",
+      "image": "https://example.com/images/begin_transmission_syntax.png",
+      "audio": "https://example.com/audio/begin_transmission_syntax.mp3"
+    },
+    {
+      "title": "📍 Pin Usage",
+      "content": "<div class='card'><b>Same SDA/SCL pins used as all I2C:</b></div><ul><li>🔸 UNO: SDA = A4, SCL = A5</li><li>🔸 Mega: SDA = 20, SCL = 21</li><li>🔸 ESP32/ESP8266: Configurable in code</li></ul>",
+      "image": "https://example.com/images/begin_transmission_pins.png",
+      "audio": "https://example.com/audio/begin_transmission_pins.mp3"
+    },
+    {
+      "title": "📦 Real-World Code Example — Sending Commands",
+      "content": "<div class='card'>Let’s say you want to send a configuration command to an OLED display (I2C address 0x3C):</div><pre><code>Wire.beginTransmission(0x3C);  // Start talking to OLED\nWire.write(0x00);             // Control byte\nWire.write(0xAF);             // Display ON command\nWire.endTransmission();       // Done sending</code></pre>",
+      "image": "https://example.com/images/begin_transmission_example.png",
+      "audio": "https://example.com/audio/begin_transmission_example.mp3"
+    },
+    {
+      "title": "⚙️ What happens inside?",
+      "content": "<div class='card'>When you use <code>Wire.beginTransmission()</code>, it prepares the I2C bus and sets up the internal buffer.</div><div class='card'>Only when you call <code>Wire.endTransmission()</code> does the actual data go out.</div>",
+      "image": "https://example.com/images/begin_transmission_buffer.png",
+      "audio": "https://example.com/audio/begin_transmission_buffer.mp3"
+    },
+    {
+      "title": "📺 YouTube: beginTransmission() in Action",
+      "content": "<div class='card'>Watch how <code>beginTransmission()</code> is used to configure a sensor or display:</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/i2c-begin-transmission' title='Wire.beginTransmission Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/begin_transmission_youtube.png",
+      "audio": "https://example.com/audio/begin_transmission_youtube.mp3"
+    },
+    {
+      "title": "🎮 Mini Quiz — When to use beginTransmission?",
+      "content": "<div class='card'>Before calling <code>Wire.write()</code> to send I2C data, which function MUST you use first?</div><ul><li>🔌 A. Wire.endTransmission()</li><li>✅ B. Wire.beginTransmission()</li><li>🔧 C. Wire.requestFrom()</li></ul><button class='gaming-btn' onclick='alert(\"Correct! You must start with Wire.beginTransmission().\")'>Check Answer</button>",
+      "image": "https://example.com/images/begin_transmission_quiz.png",
+      "audio": "https://example.com/audio/begin_transmission_quiz.mp3"
+    }
+  ]
+}
+,{
+  "title": "Wire.endTransmission() — Finishing the I2C Message",
+  "lessons": [
+    {
+      "title": "📤 What is Wire.endTransmission()?",
+      "content": "<div class='card'><code>Wire.endTransmission()</code> is used by the <b>I2C Master</b> to finish a message that was started with <code>Wire.beginTransmission()</code>.</div><div class='card'>It sends all the data in the buffer to the selected Slave device and releases the I2C bus. Think of it like hanging up the phone after saying what you had to say.</div>"
+    },
+    {
+      "title": "🧪 Syntax and Return Value",
+      "content": "<div class='card'><pre><code>Wire.endTransmission();</code></pre></div><div class='card'>It returns a number (an error code):<br>0 = Success<br>1 = Data too long<br>2 = NACK on address<br>3 = NACK on data<br>4 = Other error</div><div class='card'>You can capture this return value in a variable to check for communication errors.</div>"
+    },
+    {
+      "title": "🛠️ Real-World Use Case — Sending Data to a Display",
+      "content": "<div class='card'>Here's a full example where we send 2 bytes to an OLED screen with address 0x3C:</div><pre><code>Wire.beginTransmission(0x3C);\nWire.write(0x00);   // Control byte\nWire.write(0xAE);   // Display OFF command\nWire.endTransmission();</code></pre><div class='card'>This will send both bytes and complete the I2C transaction.</div>"
+    },
+    {
+      "title": "📌 When Should You Use It?",
+      "content": "<div class='card'>Use <code>Wire.endTransmission()</code> ONLY after you've used <code>Wire.beginTransmission()</code> and written all your data with <code>Wire.write()</code>.</div><div class='card'>It must come at the end of every write sequence. Without it, the slave device won’t know that you're done sending data.</div>"
+    },
+    {
+      "title": "📍 Pin Usage Reminder",
+      "content": "<div class='card'>I2C always uses two pins:</div><ul><li>🔹 <b>SDA (Data)</b></li><li>🔹 <b>SCL (Clock)</b></li></ul><div class='card'>On Arduino UNO: SDA = A4, SCL = A5</div><div class='card'>On Mega: SDA = 20, SCL = 21</div><div class='card'>On ESP32: You define SDA/SCL using <code>Wire.begin(SDA, SCL)</code></div>"
+    },
+    {
+      "title": "🎮 Mini Game — Fix the Code!",
+      "content": "<div class='card'>Can you fix this broken I2C message?</div><pre><code>Wire.beginTransmission(0x3C);\nWire.write(0xAF);</code></pre><div class='card'>Which line is missing?</div><ul><li>A. Wire.begin();</li><li>✅ B. Wire.endTransmission();</li><li>C. Wire.requestFrom();</li></ul><button class='gaming-btn' onclick='alert(\"Correct! You forgot to finish the transmission.\")'>Check Answer</button>"
+    },
+    {
+      "title": "📺 YouTube Video — I2C Transaction Explained",
+      "content": "<div class='card'>Learn how to properly use <code>beginTransmission()</code> and <code>endTransmission()</code> together in I2C projects.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/i2c-arduino-basics' title='Wire.endTransmission Tutorial' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+},{
+  "title": "Wire.write() — Sending Data Over I2C",
+  "lessons": [
+    {
+      "title": "📤 What is Wire.write()?",
+      "content": "<div class='card'><code>Wire.write()</code> sends a single byte or a series of bytes from the <b>I2C master</b> to the <b>I2C slave</b>.</div><div class='card'>It must be called after <code>Wire.beginTransmission(address)</code> and before <code>Wire.endTransmission()</code>.</div><div class='card'>Think of it like typing characters in a message before clicking 'send'.</div>"
+    },
+    {
+      "title": "🧪 Syntax + Variants",
+      "content": "<div class='card'><pre><code>Wire.write(value);</code> // Single byte</pre><pre><code>Wire.write(buffer, length);</code> // Multiple bytes from a buffer</pre></div><div class='card'><b>value</b> can be a byte or a character (like 'A').</div><div class='card'><b>buffer</b> is an array of bytes, and <b>length</b> tells how many bytes to send.</div>"
+    },
+    {
+      "title": "🛠️ Real-World Use Case — Sending Commands to Display",
+      "content": "<div class='card'>Let’s say we want to send a command to turn off an OLED display using I2C.</div><pre><code>Wire.beginTransmission(0x3C);  // Start communication with OLED\nWire.write(0x00);              // Control byte\nWire.write(0xAE);              // Display OFF command\nWire.endTransmission();        // Finish communication</code></pre><div class='card'>Here, <code>Wire.write()</code> sends each byte to the device.</div>"
+    },
+    {
+      "title": "📍 What Pins are Used?",
+      "content": "<div class='card'>I2C always uses 2 pins:</div><ul><li>🔸 SDA (Data Line)</li><li>🔸 SCL (Clock Line)</li></ul><div class='card'>On Arduino UNO → SDA = A4, SCL = A5</div><div class='card'>On Mega → SDA = Pin 20, SCL = Pin 21</div><div class='card'>On ESP32 → Define them in <code>Wire.begin(SDA, SCL);</code></div>"
+    },
+    {
+      "title": "🤔 What Can You Send?",
+      "content": "<div class='card'>You can send:</div><ul><li>🔹 Numbers (e.g., 0–255)</li><li>🔹 ASCII characters (e.g., 'H')</li><li>🔹 Bytes of sensor data</li><li>🔹 Command codes for displays, sensors, etc.</li></ul><div class='card'>Every device understands different sets of commands — always check the datasheet!</div>"
+    },
+    {
+      "title": "🎮 Mini Game — Valid or Invalid?",
+      "content": "<div class='card'>Which of these is a correct use of <code>Wire.write()</code>?</div><ul><li>💡 A. <code>Wire.write(\"Hello\");</code></li><li>✅ B. <code>Wire.write('H');</code></li><li>✅ C. <code>Wire.write(0xAF);</code></li><li>❌ D. <code>Wire.write();</code></li></ul><button class='gaming-btn' onclick='alert(\"Correct answers: B and C\")'>Check Answer</button>"
+    },
+    {
+      "title": "📺 YouTube: I2C Data Transfer with Wire.write()",
+      "content": "<div class='card'>Watch how <code>Wire.write()</code> works in actual Arduino I2C projects and why it matters.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/i2c-wire-write-arduino' title='Wire.write Tutorial' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+},{
+  "title": "Wire.available() — Bytes Waiting to be Read",
+  "lessons": [
+    {
+      "title": "📦 What is Wire.available()?",
+      "content": "<div class='card'><code>Wire.available()</code> tells us how many bytes of data are waiting to be read after a request was made using <code>Wire.requestFrom()</code>.</div><div class='card'>Think of it like checking how many new messages you got in your inbox — before opening them.</div>"
+    },
+    {
+      "title": "🧪 Syntax",
+      "content": "<div class='card'><pre><code>Wire.available();</code></pre><div>This returns an <b>integer</b> (0 or more) representing how many bytes are waiting to be read from the I2C device.</div></div>"
+    },
+    {
+      "title": "🎯 When and Why to Use?",
+      "content": "<div class='card'>You use <code>Wire.available()</code> after <code>Wire.requestFrom()</code> to ensure data is ready before reading it using <code>Wire.read()</code>.</div><div class='card'>It prevents errors caused by reading when there’s nothing to read.</div>"
+    },
+    {
+      "title": "🔍 Real-World Example — Reading Temperature from Sensor",
+      "content": "<div class='card'>Let's say you're reading temperature from an I2C sensor:</div><pre><code>Wire.requestFrom(0x48, 2);  // Request 2 bytes from sensor\nwhile(Wire.available()) {\n  byte data = Wire.read();\n  Serial.print(data);\n}</code></pre><div class='card'>The <code>while(Wire.available())</code> loop makes sure you're not reading too soon.</div>"
+    },
+    {
+      "title": "📍 I2C Pins Involved",
+      "content": "<div class='card'>No special pin used by this function — it operates on the standard I2C pins:</div><ul><li>🔹 SDA — Data line</li><li>🔹 SCL — Clock line</li></ul><div class='card'>For Arduino UNO: SDA = A4, SCL = A5</div>"
+    },
+    {
+      "title": "🧠 Byte Buffer and Overflow",
+      "content": "<div class='card'>All data from <code>Wire.requestFrom()</code> is stored in a buffer (like a short-term memory).</div><div class='card'>You can call <code>Wire.available()</code> to check how much data you have received — and then read accordingly.</div><div class='card'>If you try to read more than what's available — you may get garbage values.</div>"
+    },
+    {
+      "title": "🎮 Mini Game — When is it Safe?",
+      "content": "<div class='card'>Guess: Which line is the best place to use <code>Wire.available()</code>?</div><ul><li>🔸 A. Before <code>Wire.requestFrom()</code></li><li>✅ B. After <code>Wire.requestFrom()</code></li><li>🔸 C. After <code>Wire.begin()</code> but before request</li></ul><button class='gaming-btn' onclick='alert(\"Correct: B — Only check available bytes after requesting data!\")'>Check Answer</button>"
+    },
+    {
+      "title": "📺 YouTube: I2C Read Demo (Using available())",
+      "content": "<div class='card'>Watch how <code>Wire.available()</code> ensures you don’t read data before it’s ready.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/i2c-available-demo' title='Wire.available Tutorial' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+},{
+  "title": "Wire.read() — Receiving Data from I2C Device",
+  "lessons": [
+    {
+      "title": "📨 What is Wire.read()?",
+      "content": "<div class='card'><code>Wire.read()</code> is used to read a single byte from an I2C device <b>after</b> you've requested data using <code>Wire.requestFrom()</code>.</div><div class='card'>Think of it like opening a message one at a time from your inbox.</div>"
+    },
+    {
+      "title": "🧪 Syntax & Return",
+      "content": "<div class='card'><pre><code>Wire.read();</code></pre><div>This function returns a <b>byte</b> (an integer between 0–255).</div><div class='card'>If no data is available, it returns -1.</div>"
+    },
+    {
+      "title": "📍 Where It’s Used?",
+      "content": "<div class='card'>This function is essential when receiving data from I2C sensors like temperature sensors, EEPROMs, displays, etc.</div><div class='card'>Example: Read 2 bytes of temperature data from a sensor:</div><pre><code>Wire.requestFrom(0x48, 2);\nwhile (Wire.available()) {\n  byte data = Wire.read();\n  Serial.println(data);\n}</code></pre>"
+    },
+    {
+      "title": "💡 Real-World Analogy",
+      "content": "<div class='card'>Imagine you're asking a vending machine for snacks (that's <code>Wire.requestFrom()</code>)…</div><div class='card'>Now you grab one snack at a time (that’s <code>Wire.read()</code>).</div>"
+    },
+    {
+      "title": "🎮 Mini Game — Can You Read It?",
+      "content": "<div class='card'>What will this code print?</div><pre><code>Wire.requestFrom(0x68, 3);\nSerial.println(Wire.read());</code></pre><ul><li>🟢 A. A byte of data from the device</li><li>🔴 B. Nothing at all</li><li>🔴 C. The I2C address</li></ul><button class='gaming-btn' onclick='alert(\"Correct! It will print the first byte of response from device 0x68\")'>Check Answer</button>"
+    },
+    {
+      "title": "📍 Pins Used in Wire.read()",
+      "content": "<div class='card'><b>Wire.read()</b> uses standard I2C pins, indirectly:</div><ul><li><b>SDA (Data Line)</b>: A4 on Arduino Uno</li><li><b>SCL (Clock Line)</b>: A5 on Arduino Uno</li></ul><div class='card'>Although the function itself is just a software read, the data was received via these pins.</div>"
+    },
+    {
+      "title": "📺 YouTube: Wire.read() in Action",
+      "content": "<div class='card'>See how to use <code>Wire.read()</code> step by step in real I2C communication:</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/wire-read-arduino' title='Wire.read Arduino Tutorial' frameborder='0' allowfullscreen></iframe>"
+    }
+  ]
+},{
+  "title": "Wire.setClock() — Changing I2C Speed Dynamically",
+  "lessons": [
+    {
+      "title": "🚀 What is Wire.setClock()?",
+      "content": "<div class='card'><code>Wire.setClock()</code> lets you change the speed of I2C communication <b>on-the-fly</b> in your Arduino sketch.</div>\n<div class='card'>It sets the clock frequency for I2C devices — faster speeds = faster communication, but only if your devices support it!</div>\n<div class='card'>You can use it to go from the default 100kHz (standard mode) to 400kHz (fast mode) or even higher (depending on the board).</div>",
+      "image": "https://example.com/images/wire_setclock_intro.png",
+      "audio": "https://example.com/audio/wire_setclock_intro.mp3"
+    },
+    {
+      "title": "⚙️ Syntax + Supported Frequencies",
+      "content": "<div class='card'>Syntax: <code>Wire.setClock(frequency);</code></div>\n<div class='card'>Example: <code>Wire.setClock(400000);</code> → Sets speed to 400kHz</div>\n<div class='card'>Supported values (board-dependent):</div>\n<ul>\n<li>100000 — Standard Mode (default)</li>\n<li>400000 — Fast Mode</li>\n<li>1000000 — Fast Mode Plus</li>\n<li>3400000 — High-Speed Mode (limited support)</li>\n</ul>",
+      "image": "https://example.com/images/wire_setclock_syntax.png",
+      "audio": "https://example.com/audio/wire_setclock_syntax.mp3"
+    },
+    {
+      "title": "📍 Real-World Use — Speeding Up OLED",
+      "content": "<div class='card'>Let’s say you're using an I2C OLED display and it refreshes slowly...</div>\n<div class='card'>Add this line after <code>Wire.begin()</code> to increase speed:</div>\n<pre><code>Wire.begin();\nWire.setClock(400000); // Boost to fast mode</code></pre>\n<div class='card'>This will speed up the refresh rate significantly! 🎉</div>",
+      "image": "https://example.com/images/wire_setclock_oled.png",
+      "audio": "https://example.com/audio/wire_setclock_oled.mp3"
+    },
+    {
+      "title": "🎮 Game Time: Choose the Right Clock!",
+      "content": "<div class='card'>You want to connect 3 sensors over I2C. Some support 400kHz, one only supports 100kHz. What should you do?</div>\n<ul>\n<li>A. Use 400kHz and hope it works</li>\n<li>B. Use 100kHz for compatibility</li>\n<li>C. Mix speeds using magic</li></ul>\n<button class='gaming-btn' onclick='alert(\"✅ Correct: B — Use 100kHz to ensure all devices work!\")'>Check Answer</button>",
+      "image": "https://example.com/images/wire_setclock_game.png",
+      "audio": "https://example.com/audio/wire_setclock_game.mp3"
+    },
+    {
+      "title": "📺 YouTube: Boosting I2C Speeds with Wire.setClock()",
+      "content": "<div class='card'>Watch this in action: increase OLED display speeds, speed up MPU6050 sensors, and more!</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/F8FHwUwNMrU' title='I2C Speed Explained' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/wire_setclock_youtube.png",
+      "audio": "https://example.com/audio/wire_setclock_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "Wire.onReceive() — Listening as an I2C Slave",
+  "lessons": [
+    {
+      "title": "🎧 What is Wire.onReceive()?",
+      "content": "<div class='card'><code>Wire.onReceive()</code> is used on an Arduino acting as an <b>I2C slave</b>. It lets you define a function that will be triggered <b>automatically</b> whenever the master sends data.</div>\n<div class='card'>This is how an Arduino can be programmed to “listen” and respond to incoming I2C messages. Think of it like a walkie-talkie — you get a message, and instantly react.</div>",
+      "image": "https://example.com/images/onreceive_intro.png",
+      "audio": "https://example.com/audio/onreceive_intro.mp3"
+    },
+    {
+      "title": "🔧 Syntax & Setup",
+      "content": "<div class='card'>Syntax: <code>Wire.onReceive(receiveEvent);</code></div>\n<div class='card'><code>receiveEvent</code> is the name of a function that takes one parameter (the number of bytes received):</div>\n<pre><code>void receiveEvent(int howMany) {\n  while (Wire.available()) {\n    char c = Wire.read();\n    Serial.print(c);\n  }\n}</code></pre>\n<div class='card'>You must also use <code>Wire.begin(address)</code> to set this Arduino as a slave first!</div>",
+      "image": "https://example.com/images/onreceive_syntax.png",
+      "audio": "https://example.com/audio/onreceive_syntax.mp3"
+    },
+    {
+      "title": "💡 Real-World Example — Remote LED Trigger",
+      "content": "<div class='card'>You're using a master Arduino to control a second (slave) Arduino. You want the slave to turn on an LED when the master sends '1'.</div>\n<pre><code>// Slave\n#include &lt;Wire.h&gt;\n#define LED 13\n\nvoid setup() {\n  pinMode(LED, OUTPUT);\n  Wire.begin(8); // Slave address\n  Wire.onReceive(receiveEvent);\n}\n\nvoid receiveEvent(int howMany) {\n  if (Wire.read() == '1') {\n    digitalWrite(LED, HIGH);\n  }\n}</code></pre>",
+      "image": "https://example.com/images/onreceive_led.png",
+      "audio": "https://example.com/audio/onreceive_led.mp3"
+    },
+    {
+      "title": "🧠 Where/Why to Use?",
+      "content": "<div class='card'>Use <code>Wire.onReceive()</code> whenever your Arduino needs to act as a reactive module in a bigger system — like a sensor module, display unit, or peripheral device controlled via I2C.</div>\n<div class='card'>Common in robotics, modular projects, distributed systems, or low-power sensor nodes.</div>",
+      "image": "https://example.com/images/onreceive_usage.png",
+      "audio": "https://example.com/audio/onreceive_usage.mp3"
+    },
+    {
+      "title": "🎮 Game Time — Master or Slave?",
+      "content": "<div class='card'>You’re building a temperature sensor module that only sends data when asked. Should it use <code>Wire.onReceive()</code> or <code>Wire.requestFrom()</code>?</div>\n<ul>\n<li>A. Wire.onReceive()</li>\n<li>B. Wire.requestFrom()</li></ul>\n<button class='gaming-btn' onclick='alert(\"✅ Correct: A — The sensor reacts to incoming requests using onReceive()!\")'>Check Answer</button>",
+      "image": "https://example.com/images/onreceive_game.png",
+      "audio": "https://example.com/audio/onreceive_game.mp3"
+    },
+    {
+      "title": "📺 YouTube: I2C Slaves with onReceive()",
+      "content": "<div class='card'>Watch this demo showing how <code>Wire.onReceive()</code> enables communication between two Arduino boards!</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/i2c-onreceive' title='Arduino I2C onReceive Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/onreceive_youtube.png",
+      "audio": "https://example.com/audio/onreceive_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "Wire.onRequest() — I2C Slave Responds to Master",
+  "lessons": [
+    {
+      "title": "📡 What is Wire.onRequest()?",
+      "content": "<div class='card'><code>Wire.onRequest()</code> is used on an Arduino acting as an <b>I2C slave</b>. It tells the slave what to do when the <b>master requests data</b> from it.</div>\n<div class='card'>If <code>Wire.onReceive()</code> is how a slave listens, then <code>Wire.onRequest()</code> is how it speaks up when asked!</div>",
+      "image": "https://example.com/images/onrequest_intro.png",
+      "audio": "https://example.com/audio/onrequest_intro.mp3"
+    },
+    {
+      "title": "🔧 Syntax & Function Structure",
+      "content": "<div class='card'>Syntax: <code>Wire.onRequest(requestEvent);</code></div>\n<div class='card'><code>requestEvent</code> is the name of a function that takes no parameters and contains the code to <b>send data back to the master</b>.</div>\n<pre><code>void requestEvent() {\n  Wire.write(\"Hi Master!\");\n}</code></pre>\n<div class='card'>This will send the string “Hi Master!” back to the I2C master whenever it calls <code>Wire.requestFrom()</code>.</div>",
+      "image": "https://example.com/images/onrequest_syntax.png",
+      "audio": "https://example.com/audio/onrequest_syntax.mp3"
+    },
+    {
+      "title": "💡 Real-World Example — Slave Sensor Module",
+      "content": "<div class='card'>Let’s say your slave Arduino is measuring temperature. When the master requests the temperature, it responds with the value.</div>\n<pre><code>#include &lt;Wire.h&gt;\nint temp = 25;\n\nvoid setup() {\n  Wire.begin(8);  // Set as slave\n  Wire.onRequest(requestEvent);\n}\n\nvoid loop() {\n  temp = analogRead(A0) / 2;  // Example temperature logic\n  delay(1000);\n}\n\nvoid requestEvent() {\n  Wire.write(temp);\n}</code></pre>",
+      "image": "https://example.com/images/onrequest_sensor.png",
+      "audio": "https://example.com/audio/onrequest_sensor.mp3"
+    },
+    {
+      "title": "🧠 Where & When to Use?",
+      "content": "<div class='card'>Use <code>Wire.onRequest()</code> when your Arduino (slave) needs to provide real-time info to another device (master), such as:</div>\n<ul>\n<li>📊 Sensors</li>\n<li>🧠 Peripheral logic boards</li>\n<li>📷 Image capture triggers</li>\n<li>📟 External display drivers</li>\n</ul><div class='card'>It makes your Arduino act like a smart component in a larger I2C network.</div>",
+      "image": "https://example.com/images/onrequest_uses.png",
+      "audio": "https://example.com/audio/onrequest_uses.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Talk Back!",
+      "content": "<div class='card'>You are designing a project where the master asks the slave for current humidity. Which I2C function will help the slave send that value back?</div>\n<ul>\n<li>💬 A. Wire.onReceive()</li>\n<li>🔊 B. Wire.onRequest()</li>\n<li>📡 C. Wire.begin()</li></ul>\n<button class='gaming-btn' onclick='alert(\"✅ Correct Answer: B — The slave uses Wire.onRequest() to reply to the master!\")'>Check Answer</button>",
+      "image": "https://example.com/images/onrequest_game.png",
+      "audio": "https://example.com/audio/onrequest_game.mp3"
+    },
+    {
+      "title": "📺 YouTube: Wire.onRequest() Explained",
+      "content": "<div class='card'>Watch how Arduino slaves respond to master queries using <code>Wire.onRequest()</code> in a full I2C demo.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/i2c-onrequest' title='Arduino I2C onRequest Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/onrequest_video.png",
+      "audio": "https://example.com/audio/onrequest_video.mp3"
+    }
+  ]
+}
+,{
+  "title": "Wire.setWireTimeout() — Timeout Control for I2C Transfers",
+  "lessons": [
+    {
+      "title": "⏱️ What is Wire.setWireTimeout()?",
+      "content": "<div class='card'>The <code>Wire.setWireTimeout()</code> function allows you to define how long your Arduino will wait for I2C communication to finish before giving up. It's like saying, \"I'll wait X milliseconds for a reply — if nothing, then move on!\"</div>\n<div class='card'>This is especially useful when you're talking to devices that may misbehave, or if you don't want your program to hang forever waiting for a response.</div>\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://example.com/images/wire_timeout_explained.png",
+      "audio": "https://example.com/audio/wire_timeout_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax & Parameters",
+      "content": "<div class='card'><code>Wire.setWireTimeout(timeout, reset_with_timeout);</code></div>\n<div class='card'><b>timeout</b> = time in microseconds (µs) to wait before timing out</div>\n<div class='card'><b>reset_with_timeout</b> = <code>true</code> or <code>false</code> — tells Arduino whether to reset the I2C hardware when timeout happens.</div>\n<div class='card'>Example: <code>Wire.setWireTimeout(30000, true);</code> → Wait for 30 milliseconds, then reset I2C hardware if needed.</div>",
+      "image": "https://example.com/images/wire_timeout_syntax.png",
+      "audio": "https://example.com/audio/wire_timeout_syntax.mp3"
+    },
+    {
+      "title": "🌍 Real-Life Use Case",
+      "content": "<div class='card'>Let’s say you’re reading data from an I2C sensor like an accelerometer. But sometimes, the sensor becomes unresponsive.</div>\n<div class='card'>If you don’t use <code>setWireTimeout()</code>, your Arduino might wait forever, stuck in a loop. Timeout avoids this by allowing the code to break free and continue running.</div>\n<div class='card'>This is critical in robotics and automation where delays can mess up real-time responses.</div>",
+      "image": "https://example.com/images/wire_timeout_realworld.png",
+      "audio": "https://example.com/audio/wire_timeout_usecase.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Timeout Tactics!",
+      "content": "<div class='card'>Why would you want to use <code>setWireTimeout()</code>?</div>\n<ul>\n  <li>🕵️ A. To improve accuracy</li>\n  <li>⏳ B. To prevent code from hanging</li>\n  <li>📊 C. To increase baud rate</li>\n</ul>\n<button class='gaming-btn' onclick='alert(\"Correct Answer: B — it prevents your sketch from getting stuck during faulty I2C transfers.\")'>Check Answer</button>",
+      "image": "https://example.com/images/wire_timeout_game.png",
+      "audio": "https://example.com/audio/wire_timeout_game.mp3"
+    },
+    {
+      "title": "📺 Video: I2C Timeouts in Action!",
+      "content": "<div class='card'>Watch this awesome tutorial explaining I2C timeout handling and how to use <code>setWireTimeout()</code> practically.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/HcZHBZVPrpI' title='Arduino I2C Timeout Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/wire_timeout_youtube.png",
+      "audio": "https://example.com/audio/wire_timeout_video.mp3"
+    }
+  ]
+}
+
+
+
+
+
+      ]
     }
   ]
 };
