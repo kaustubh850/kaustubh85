@@ -9024,6 +9024,276 @@ void loop() {
 
 
       ]
+    },{
+      "title": "Arduino Keyboard Library — Making Arduino Type Like a Pro!",
+      modules:[
+        {
+  "title": "Keyboard Library — Type Like a Robot!",
+  "lessons": [
+    {
+      "title": "⌨️ What is the Keyboard Library?",
+      "content": "<div class='card'>The <code>Keyboard</code> library allows specific Arduino boards to act like a physical keyboard and type on your computer!</div><div class='card'>It works by turning the microcontroller into a USB Human Interface Device (HID), just like your keyboard or mouse.</div><div class='card'>Boards like the Leonardo, Micro, Due, Zero, MKR series, and more support this feature. It can be super useful in automation, shortcuts, and building custom keyboards or macro pads.</div>",
+      "image": "https://example.com/images/keyboard_intro.png",
+      "audio": "https://example.com/audio/keyboard_intro.mp3"
+    },
+    {
+      "title": "🧠 How It Works — Behind the Scenes",
+      "content": "<div class='card'>The board sends keyboard commands via the USB interface. Functions like <code>Keyboard.print()</code> or <code>Keyboard.write()</code> simulate keypresses.</div><div class='card'>These functions use a special protocol called <b>USB HID</b> — Human Interface Device.</div><div class='card'>This is why only specific boards with 32u4 or SAMD chips (like Leonardo, Micro, Zero, etc.) can use this feature. The regular UNO doesn't support it!</div>",
+      "image": "https://example.com/images/hid_explained.png",
+      "audio": "https://example.com/audio/hid_explained.mp3"
+    },
+    {
+      "title": "🔐 Modifier Keys and Limitations",
+      "content": "<div class='card'>Modifier keys (like Ctrl, Shift, Alt) are supported, but not every ASCII character can be sent.</div><div class='card'>For example, non-printing characters (like arrow keys or function keys) might not work.</div><div class='card'>Use with caution: once your code starts typing automatically, it might make your PC go crazy! Always test with <code>Serial.print()</code> before switching to <code>Keyboard.print()</code>.</div>",
+      "image": "https://example.com/images/keyboard_limitations.png",
+      "audio": "https://example.com/audio/keyboard_limitations.mp3"
+    },
+    {
+      "title": "⚠️ Safety First!",
+      "content": "<div class='card'>It’s highly recommended to use a toggle or switch to enable/disable the keyboard functions.</div><div class='card'>If you upload a sketch with <code>Keyboard.print()</code> in <code>loop()</code> — you might not be able to reprogram the board easily.</div><div class='card'>Use conditions or external buttons to activate keyboard features smartly.</div>",
+      "image": "https://example.com/images/keyboard_warning.png",
+      "audio": "https://example.com/audio/keyboard_safety.mp3"
+    },
+    {
+      "title": "💻 Boards that Support Keyboard Library",
+      "content": "<div class='card'>✅ Fully Supported Boards:<ul><li>Leonardo</li><li>Micro</li><li>Due</li><li>Zero</li><li>UNO R4 Minima / WiFi</li><li>GIGA R1 WiFi</li><li>Nano ESP32</li><li>MKR Family</li></ul></div><div class='card'>All digital and analog pins can be used when acting as a keyboard!</div>",
+      "image": "https://example.com/images/supported_boards.png",
+      "audio": "https://example.com/audio/keyboard_boards.mp3"
+    },
+    {
+      "title": "📺 YouTube: Making Arduino Type!",
+      "content": "<div class='card'>Watch this real-world demonstration on how to turn your Arduino into a mini keyboard.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/VZsH2cYgY3Q' title='Arduino Keyboard Project' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/keyboard_video_thumb.png",
+      "audio": "https://example.com/audio/keyboard_video.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Safe or Not?",
+      "content": "<div class='card'>Which of the following is a safe way to use the Keyboard library?</div><ul><li>🔄 Loop <code>Keyboard.print(\"hello\")</code></li><li>🔘 Use a physical button to trigger typing</li><li>🚫 Start Keyboard function in <code>setup()</code> forever</li></ul><button class='gaming-btn' onclick='alert(\"Correct answer: Use a physical button!\")'>Check Answer</button>",
+      "image": "https://example.com/images/keyboard_game.png",
+      "audio": "https://example.com/audio/keyboard_game.mp3"
+    }
+  ]
+}
+,{
+  "title": "Keyboard.begin() — Let Arduino Start Typing",
+  "lessons": [
+    {
+      "title": "🧠 What is Keyboard.begin()?",
+      "content": "<div class='card'><code>Keyboard.begin()</code> is the function that tells the Arduino to start emulating a keyboard.</div><div class='card'>After this function is called, the Arduino can start sending keystrokes to a connected computer just like a real keyboard would.</div>",
+      "image": "https://example.com/images/keyboard_begin_intro.png",
+      "audio": "https://example.com/audio/keyboard_begin_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax & Use",
+      "content": "<div class='card'><b>Syntax:</b><br><code>Keyboard.begin();</code></div><div class='card'>It's usually placed inside <code>setup()</code> before you start sending any keys using functions like <code>Keyboard.print()</code>.</div>",
+      "image": "https://example.com/images/keyboard_begin_syntax.png",
+      "audio": "https://example.com/audio/keyboard_begin_syntax.mp3"
+    },
+    {
+      "title": "🛠️ Real-World Usage Example",
+      "content": "<div class='card'>Let’s say you want to press <b>Ctrl+Alt+Del</b> from an Arduino Leonardo when a button is pressed:</div><pre><code>#include &lt;Keyboard.h&gt;\n\nvoid setup() {\n  pinMode(2, INPUT_PULLUP);\n  Keyboard.begin();\n}\n\nvoid loop() {\n  if (digitalRead(2) == LOW) {\n    Keyboard.press(KEY_LEFT_CTRL);\n    Keyboard.press(KEY_LEFT_ALT);\n    Keyboard.press(KEY_DELETE);\n    delay(100);\n    Keyboard.releaseAll();\n  }\n}</code></pre>",
+      "image": "https://example.com/images/keyboard_example.png",
+      "audio": "https://example.com/audio/keyboard_example.mp3"
+    },
+    {
+      "title": "❓ Can All Arduinos Do This?",
+      "content": "<div class='card'><b>Nope!</b> Only some boards like the Arduino Leonardo, Micro, and Due can emulate keyboards. Boards like the Uno or Mega don’t support it.</div><div class='card'>Make sure you’re using a compatible board before trying!</div>",
+      "image": "https://example.com/images/keyboard_compatibility.png",
+      "audio": "https://example.com/audio/keyboard_compatibility.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Keyboard Master",
+      "content": "<div class='card'>Which function is used to start keyboard emulation in Arduino?</div><ul><li>A. <code>beginKeyboard()</code></li><li>B. <code>keyboardOn()</code></li><li>C. <code>Keyboard.begin()</code></li></ul><button class='gaming-btn' onclick='alert(\"Correct! It’s C — Keyboard.begin()\")'>Check Answer</button>",
+      "image": "https://example.com/images/keyboard_game.png",
+      "audio": "https://example.com/audio/keyboard_game.mp3"
+    },
+    {
+      "title": "📺 YouTube Video: Keyboard Basics",
+      "content": "<div class='card'>Watch how to simulate keypresses with Arduino!</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/wtf-video-keyboard' title='Arduino Keyboard Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/keyboard_youtube.png",
+      "audio": "https://example.com/audio/keyboard_youtube.mp3"
+    }
+  ]
+}
+,{
+  "title": "Keyboard.end() — Stop Typing, Arduino!",
+  "lessons": [
+    {
+      "title": "⛔ What is Keyboard.end()?",
+      "content": "<div class='card'><code>Keyboard.end()</code> stops the keyboard emulation on supported boards.</div><div class='card'>Once this function is called, the Arduino stops acting as a keyboard — like dropping the mic after you're done speaking 🎤</div>",
+      "image": "https://example.com/images/keyboard_end_intro.png",
+      "audio": "https://example.com/audio/keyboard_end_intro.mp3"
+    },
+    {
+      "title": "📚 Syntax and Quick Use",
+      "content": "<div class='card'><code>Keyboard.end();</code></div><div class='card'>You usually pair this with <code>Keyboard.begin()</code> at the start of your sketch.</div><div class='card'>Example:</div><pre><code>Keyboard.begin();\nKeyboard.print(\"Hello\");\nKeyboard.end();</code></pre>",
+      "image": "https://example.com/images/keyboard_end_syntax.png",
+      "audio": "https://example.com/audio/keyboard_end_syntax.mp3"
+    },
+    {
+      "title": "📦 When & Why To Use It?",
+      "content": "<div class='card'>If you're only sending a few keystrokes and don't want the Arduino to keep acting like a keyboard, use <code>Keyboard.end()</code> afterward.</div><div class='card'>This makes your program cleaner and safer — especially helpful if you're switching between Serial and Keyboard interfaces!</div>",
+      "image": "https://example.com/images/keyboard_end_usecase.png",
+      "audio": "https://example.com/audio/keyboard_end_usecase.mp3"
+    },
+    {
+      "title": "🌍 Real World Example",
+      "content": "<div class='card'>Imagine you're building a foot pedal that types a shortcut on your PC. You only want it to act like a keyboard <b>when the pedal is pressed</b>.</div><div class='card'>So you do:</div><pre><code>if(digitalRead(pedalPin) == HIGH) {\n  Keyboard.begin();\n  Keyboard.print(\"Ctrl+Z\"); // Undo!\n  Keyboard.end();\n}</code></pre>",
+      "image": "https://example.com/images/keyboard_end_project.png",
+      "audio": "https://example.com/audio/keyboard_end_project.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — When to Stop?",
+      "content": "<div class='card'>You’re automating login for a kiosk. When should you use <code>Keyboard.end()</code>?</div><ul><li>🔁 In every loop</li><li>✅ After typing the login info</li><li>🚫 Never</li></ul><button class='gaming-btn' onclick='alert(\"Correct answer: After typing the login info\")'>Check Answer</button>",
+      "image": "https://example.com/images/keyboard_end_game.png",
+      "audio": "https://example.com/audio/keyboard_end_game.mp3"
+    },
+    {
+      "title": "📺 YouTube: Keyboard.end() in Action",
+      "content": "<div class='card'>Here’s a quick tutorial showing when and how to use <code>Keyboard.end()</code> in Arduino projects.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/keyboard-end-example' title='Arduino Keyboard.end Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/keyboard_end_video_thumb.png",
+      "audio": "https://example.com/audio/keyboard_end_video.mp3"
+    }
+  ]
+}
+,{
+  "title": "Keyboard.press() — Hold That Key!",
+  "lessons": [
+    {
+      "title": "🎹 What is Keyboard.press()?",
+      "content": "<div class='card'><code>Keyboard.press()</code> simulates the physical **pressing down** of a key on a keyboard.</div><div class='card'>Just like holding a key on your laptop — the computer keeps receiving that key's signal until it's released.</div>",
+      "image": "https://example.com/images/keyboard_press_intro.png",
+      "audio": "https://example.com/audio/keyboard_press_intro.mp3"
+    },
+    {
+      "title": "📚 Syntax of Keyboard.press()",
+      "content": "<div class='card'>Basic syntax:</div><pre><code>Keyboard.press(key);</code></pre><div class='card'>Where <code>key</code> can be a character like <code>'a'</code> or a special constant like <code>KEY_RETURN</code>, <code>KEY_TAB</code>, etc.</div>",
+      "image": "https://example.com/images/keyboard_press_syntax.png",
+      "audio": "https://example.com/audio/keyboard_press_syntax.mp3"
+    },
+    {
+      "title": "🛠 How It Works (Behind the Scenes)",
+      "content": "<div class='card'>When you use <code>Keyboard.press('a')</code>, Arduino sends a USB HID message that tells the computer, \"Key 'a' is being held down.\"</div><div class='card'>The system keeps treating it like you're holding the key, until you use <code>Keyboard.release()</code> or <code>Keyboard.releaseAll()</code>.</div>",
+      "image": "https://example.com/images/keyboard_press_mechanics.png",
+      "audio": "https://example.com/audio/keyboard_press_mechanics.mp3"
+    },
+    {
+      "title": "💡 When and Why to Use It?",
+      "content": "<div class='card'>Use <code>Keyboard.press()</code> when you want to simulate **holding a key** — for instance, holding down the shift key, or making shortcuts like Ctrl+Alt+Del.</div><div class='card'>Unlike <code>Keyboard.print()</code> which taps a key and releases it instantly, <code>press()</code> allows combo behavior.</div>",
+      "image": "https://example.com/images/keyboard_press_usecases.png",
+      "audio": "https://example.com/audio/keyboard_press_usecases.mp3"
+    },
+    {
+      "title": "🌍 Real-World Example — Ctrl+Alt+Delete",
+      "content": "<div class='card'>Let’s say you want to trigger <b>Ctrl+Alt+Delete</b> from an Arduino when a button is pressed:</div><pre><code>if (digitalRead(buttonPin) == HIGH) {\n  Keyboard.begin();\n  Keyboard.press(KEY_LEFT_CTRL);\n  Keyboard.press(KEY_LEFT_ALT);\n  Keyboard.press(KEY_DELETE);\n  delay(100);\n  Keyboard.releaseAll();\n  Keyboard.end();\n}</code></pre>",
+      "image": "https://example.com/images/keyboard_ctrlaltdelete.png",
+      "audio": "https://example.com/audio/keyboard_ctrlaltdelete.mp3"
+    },
+    {
+      "title": "🎮 Mini Game — Press or Print?",
+      "content": "<div class='card'>Which one would you use for the following?</div><ul><li>✅ To send a shortcut like Ctrl+S?</li><li>❌ To type the full word 'Hello'?</li><li>✅ To simulate holding down a game control key?</li></ul><button class='gaming-btn' onclick='alert(\"Correct Answers: Ctrl+S ✅ — use press; 'Hello' ❌ — use print; Game control ✅ — use press\")'>Check Answer</button>",
+      "image": "https://example.com/images/keyboard_press_game.png",
+      "audio": "https://example.com/audio/keyboard_press_game.mp3"
+    },
+    {
+      "title": "📺 YouTube Tutorial: Press vs Print vs Write",
+      "content": "<div class='card'>Watch this detailed breakdown on the difference between <code>Keyboard.press()</code>, <code>Keyboard.print()</code>, and <code>Keyboard.write()</code>.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/keyboard-press-demo' title='Arduino Keyboard Press Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/keyboard_press_video.png",
+      "audio": "https://example.com/audio/keyboard_press_video.mp3"
+    }
+  ]
+}
+,{
+  "title": "Keyboard.release() — Releasing Pressed Keys",
+  "lessons": [
+    {
+      "title": "🔓 What is Keyboard.release()?",
+      "content": "<div class='card'><code>Keyboard.release()</code> tells your Arduino to simulate <b>lifting your finger off a key</b> — just like stopping a key press on your keyboard.</div><div class='card'>This works with keys that were previously pressed using <code>Keyboard.press()</code>.</div>",
+      "image": "https://example.com/images/release_intro.png",
+      "audio": "https://example.com/audio/release_intro.mp3"
+    },
+    {
+      "title": "📚 Syntax & How It Works",
+      "content": "<div class='card'><b>Syntax:</b></div><pre><code>Keyboard.release(key);</code></pre><div class='card'>The <code>key</code> can be any key you pressed before — like <code>'a'</code>, <code>KEY_LEFT_CTRL</code>, etc.<br>It tells the PC: “Hey! That key I was holding? I’ve released it now.”</div>",
+      "image": "https://example.com/images/release_syntax.png",
+      "audio": "https://example.com/audio/release_syntax.mp3"
+    },
+    {
+      "title": "⚠️ Important Note",
+      "content": "<div class='card'>If you call <code>Keyboard.press()</code> without a <code>release()</code>, the computer thinks the key is still being held down!</div><div class='card'>This can lead to **weird bugs** like repeated characters or stuck shortcuts.</div>",
+      "image": "https://example.com/images/release_warning.png",
+      "audio": "https://example.com/audio/release_warning.mp3"
+    },
+    {
+      "title": "🎮 Combo Example: Shift + A = 'A'",
+      "content": "<div class='card'>To send an uppercase 'A', hold <code>SHIFT</code> and press <code>'a'</code>, then release both:</div><pre><code>Keyboard.press(KEY_LEFT_SHIFT);\nKeyboard.press('a');\ndelay(100);\nKeyboard.release('a');\nKeyboard.release(KEY_LEFT_SHIFT);</code></pre>",
+      "image": "https://example.com/images/release_combo.png",
+      "audio": "https://example.com/audio/release_combo.mp3"
+    },
+    {
+      "title": "🤖 Real-World Scenario — Toggle Volume Key",
+      "content": "<div class='card'>If you want to increase volume using <code>KEY_MEDIA_VOLUME_UP</code> for just a blip:</div><pre><code>Keyboard.press(KEY_MEDIA_VOLUME_UP);\ndelay(100);\nKeyboard.release(KEY_MEDIA_VOLUME_UP);</code></pre><div class='card'>This prevents the volume from jumping too high like you're holding it down!</div>",
+      "image": "https://example.com/images/release_volume.png",
+      "audio": "https://example.com/audio/release_volume.mp3"
+    },
+    {
+      "title": "🎮 Mini Quiz — Release or Not?",
+      "content": "<div class='card'>You pressed Ctrl, C, and forgot to release. What happens?</div><ul><li>🅰️ Nothing</li><li>🅱️ PC thinks Ctrl+C is stuck</li><li>🆎 Works fine always</li></ul><button class='gaming-btn' onclick='alert(\"Answer: 🅱️ — You MUST release keys to avoid stuck input!\")'>Reveal Answer</button>",
+      "image": "https://example.com/images/release_quiz.png",
+      "audio": "https://example.com/audio/release_quiz.mp3"
+    },
+    {
+      "title": "📺 YouTube: How Keyboard.release() Saves You",
+      "content": "<div class='card'>This video shows the difference between holding and releasing simulated keys in Arduino.</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/keyboard-release-demo' title='Keyboard Release Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/release_video.png",
+      "audio": "https://example.com/audio/release_video.mp3"
+    }
+  ]
+}
+,{
+  "title": "Keyboard.releaseAll() — Release Every Key!",
+  "lessons": [
+    {
+      "title": "🧠 What is Keyboard.releaseAll()?",
+      "content": "<div class='card'>The <code>Keyboard.releaseAll()</code> function is used to release <b>all keys</b> that are currently being held down using <code>Keyboard.press()</code>.</div><div class='card'>Think of it as lifting your fingers off the keyboard — all at once!</div><div class='card'>It's especially useful when you're simulating multiple keypresses like <code>CTRL + ALT + DEL</code> or gaming controls.</div>",
+      "image": "https://example.com/images/releaseall_intro.png",
+      "audio": "https://example.com/audio/keyboard_releaseall_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax and Function Signature",
+      "content": "<div class='card'><b>Syntax:</b><br><code>Keyboard.releaseAll();</code></div><div class='card'>You don’t need to pass any parameters. This function simply tells the computer: “I’m done pressing all the keys!”</div><div class='card'><b>Returns:</b> Nothing (void)</div>",
+      "image": "https://example.com/images/releaseall_syntax.png",
+      "audio": "https://example.com/audio/releaseall_syntax.mp3"
+    },
+    {
+      "title": "🎮 Real-Life Use Case",
+      "content": "<div class='card'>Imagine your Arduino is simulating a gamepad. You press multiple keys at once like <code>W</code>, <code>A</code>, <code>D</code> to move forward, left, and right. When it’s time to stop, you call <code>releaseAll()</code> to stop all actions instantly.</div><pre><code>Keyboard.press('W');\nKeyboard.press('A');\nKeyboard.press('D');\ndelay(1000);\nKeyboard.releaseAll();</code></pre><div class='card'>This stops movement — just like letting go of the keys on a real keyboard.</div>",
+      "image": "https://example.com/images/releaseall_game.png",
+      "audio": "https://example.com/audio/releaseall_example.mp3"
+    },
+    {
+      "title": "⚠️ When Should You Use releaseAll()?",
+      "content": "<div class='card'>Use <code>releaseAll()</code> when:</div><ul><li>✅ You pressed multiple keys using <code>Keyboard.press()</code></li><li>✅ You want to stop all key presses at once</li><li>✅ You’re unsure which key was last pressed and just want a reset</li></ul><div class='card'>DO NOT use <code>releaseAll()</code> if you want to release just one key — use <code>Keyboard.release()</code> for that!</div>",
+      "image": "https://example.com/images/releaseall_when.png",
+      "audio": "https://example.com/audio/releaseall_when.mp3"
+    },
+    {
+      "title": "🧩 Mini Puzzle — When to Release?",
+      "content": "<div class='card'>You're automating a login screen using Arduino Keyboard.</div><div class='card'>You press <code>CTRL + ALT + DELETE</code> to trigger Windows login. Which function will you use afterward?</div><ul><li>A. <code>Keyboard.end()</code></li><li>B. <code>Keyboard.releaseAll()</code></li><li>C. <code>Keyboard.print()</code></li></ul><button class='gaming-btn' onclick='alert(\"Correct! Option B — releaseAll — releases the combo!\")'>Check Answer</button>",
+      "image": "https://example.com/images/releaseall_puzzle.png",
+      "audio": "https://example.com/audio/releaseall_puzzle.mp3"
+    },
+    {
+      "title": "📺 Watch It In Action",
+      "content": "<div class='card'>Check out this YouTube demo where <code>Keyboard.releaseAll()</code> is used to simulate keyboard shortcuts in a smart Arduino macro pad!</div><iframe width='100%' height='315' src='https://www.youtube.com/embed/3DxwEo9_mJA' title='Keyboard.releaseAll() in action' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/releaseall_youtube.png",
+      "audio": "https://example.com/audio/releaseall_youtube.mp3"
+    }
+  ]
+}
+
+      ]
+
     }
   ]
 };
