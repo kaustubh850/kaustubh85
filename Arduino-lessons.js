@@ -8948,6 +8948,76 @@ void loop() {
     }
   ]
 }
+,{
+  "title": "Wire.clearWireTimeoutFlag() — Resetting the Timeout Error",
+  "lessons": [
+    {
+      "title": "🧯 What is Wire.clearWireTimeoutFlag()?",
+      "content": "<div class='card'><code>Wire.clearWireTimeoutFlag()</code> is used to clear the timeout flag that gets set when an I2C timeout occurs due to <code>Wire.setWireTimeout()</code>.</div>\n<div class='card'>Basically, if your I2C device didn’t respond in time and triggered a timeout, this function helps you clear the error flag and continue your program smoothly.</div>",
+      "image": "https://example.com/images/clear_timeout_flag.png",
+      "audio": "https://example.com/audio/clear_timeout_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax + Behavior",
+      "content": "<div class='card'><code>Wire.clearWireTimeoutFlag();</code></div>\n<div class='card'>This function takes no parameters. It just resets the timeout state back to normal.</div>\n<div class='card'>You typically use it after detecting a timeout, so you can safely retry the I2C operation or move forward in your sketch.</div>",
+      "image": "https://example.com/images/clear_timeout_syntax.png",
+      "audio": "https://example.com/audio/clear_timeout_syntax.mp3"
+    },
+    {
+      "title": "🌍 Real-Life Example",
+      "content": "<div class='card'>Let’s say your Arduino reads temperature via I2C. Suddenly, the sensor doesn’t reply and a timeout happens.</div>\n<div class='card'>You can check <code>Wire.getWireTimeoutFlag()</code> to see if a timeout occurred, then use <code>Wire.clearWireTimeoutFlag()</code> to reset it and retry the communication.</div>\n<pre><code>if (Wire.getWireTimeoutFlag()) {\n  Serial.println(\"Timeout occurred!\");\n  Wire.clearWireTimeoutFlag();\n}</code></pre>",
+      "image": "https://example.com/images/clear_timeout_usecase.png",
+      "audio": "https://example.com/audio/clear_timeout_usecase.mp3"
+    },
+    {
+      "title": "🎮 Game Time — Timeout Tamer!",
+      "content": "<div class='card'>Your Arduino gets stuck waiting for a sensor. You fixed it with <code>setWireTimeout()</code>. What should you do before retrying?</div>\n<ul>\n  <li>🧠 A. Call <code>Wire.clearWireTimeoutFlag()</code></li>\n  <li>🔁 B. Reboot Arduino</li>\n  <li>⏩ C. Increase baud rate</li>\n</ul>\n<button class='gaming-btn' onclick='alert(\"Correct! A is the answer. Always clear the timeout flag before retrying.\")'>Check Answer</button>",
+      "image": "https://example.com/images/clear_timeout_game.png",
+      "audio": "https://example.com/audio/clear_timeout_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — Handling Wire Timeouts",
+      "content": "<div class='card'>Here’s a video explaining what timeout flags are and how to handle them using <code>Wire.clearWireTimeoutFlag()</code>.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/x_Wire_ClearTimeout' title='Wire Timeout Flag Explained' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/clear_timeout_video.png",
+      "audio": "https://example.com/audio/clear_timeout_video.mp3"
+    }
+  ]
+}
+,{
+  "title": "Wire.getWireTimeoutFlag() — Has I2C Timed Out?",
+  "lessons": [
+    {
+      "title": "🕵️ What is Wire.getWireTimeoutFlag()?",
+      "content": "<div class='card'><code>Wire.getWireTimeoutFlag()</code> checks whether an I2C timeout has occurred based on the threshold set using <code>Wire.setWireTimeout()</code>.</div>\n<div class='card'>It returns <code>true</code> if a timeout happened, and <code>false</code> otherwise. This helps you decide whether your I2C communication is stuck or not.</div>",
+      "image": "https://example.com/images/get_flag_intro.png",
+      "audio": "https://example.com/audio/get_flag_intro.mp3"
+    },
+    {
+      "title": "🧪 Syntax and Return Value",
+      "content": "<div class='card'><code>bool timeout = Wire.getWireTimeoutFlag();</code></div>\n<div class='card'>This returns a boolean value — <code>true</code> means a timeout has occurred, <code>false</code> means everything’s fine.</div>\n<div class='card'>You can use this to trigger fallback code, retries, or error handling.</div>",
+      "image": "https://example.com/images/get_flag_syntax.png",
+      "audio": "https://example.com/audio/get_flag_syntax.mp3"
+    },
+    {
+      "title": "🌍 Real-Life Scenario",
+      "content": "<div class='card'>Let’s say your Arduino is communicating with a digital temperature sensor using I2C.</div>\n<div class='card'>Sometimes, sensors hang or freeze. If you’ve set a timeout with <code>Wire.setWireTimeout()</code>, you can check whether the I2C bus timed out using this function.</div>\n<pre><code>if (Wire.getWireTimeoutFlag()) {\n  Serial.println(\"Oops! I2C timeout detected.\");\n  Wire.clearWireTimeoutFlag();\n}</code></pre>",
+      "image": "https://example.com/images/get_flag_usecase.png",
+      "audio": "https://example.com/audio/get_flag_usecase.mp3"
+    },
+    {
+      "title": "🎮 Game — Timeout Detective",
+      "content": "<div class='card'>You’re reading from an I2C sensor, and data suddenly stops coming. What will help you check if the I2C bus failed due to timeout?</div>\n<ul>\n  <li>🧩 A. <code>Wire.begin()</code></li>\n  <li>🚩 B. <code>Wire.getWireTimeoutFlag()</code></li>\n  <li>🔧 C. <code>Wire.setClock()</code></li>\n</ul>\n<button class='gaming-btn' onclick='alert(\"Correct! B is the one that checks for timeout!\")'>Check Answer</button>",
+      "image": "https://example.com/images/get_flag_game.png",
+      "audio": "https://example.com/audio/get_flag_game.mp3"
+    },
+    {
+      "title": "📺 YouTube — Diagnosing I2C Timeouts",
+      "content": "<div class='card'>Watch how you can monitor I2C health and detect communication failures using <code>Wire.getWireTimeoutFlag()</code>.</div>\n<iframe width='100%' height='315' src='https://www.youtube.com/embed/get-wire-flag' title='I2C Timeout Detection in Arduino' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://example.com/images/get_flag_video.png",
+      "audio": "https://example.com/audio/get_flag_video.mp3"
+    }
+  ]
+}
 
 
 
