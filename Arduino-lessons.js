@@ -9291,9 +9291,596 @@ void loop() {
     }
   ]
 }
+,{
+  "title": "Keyboard.print() — Type Like a Robot!",
+  "lessons": [
+    {
+      "title": "What is Keyboard.print() and How It Types for You",
+      "content": "<div class='card'>Alright scientist — imagine your Arduino acting like a real keyboard that types on its own. That’s what <code>Keyboard.print()</code> lets you do!</div>\n\n<div class='card'>With just one line of code like <code>Keyboard.print(\"Hello!\");</code> — your Arduino types that exact message into any text box on your computer. Crazy, right?</div>\n\n<div class='card'>But how does it work? 🤔\n- First, your board must support keyboard functions (like Leonardo, Micro, or Due).\n- Then you call <code>Keyboard.begin()</code> in <code>setup()</code> to activate keyboard mode.\n- Then, use <code>Keyboard.print()</code> to type words, numbers, even entire messages!</div>\n\n<div class='card'>This is different from <code>Serial.print()</code>. That sends text only to the Serial Monitor. But <code>Keyboard.print()</code> types directly into apps, browsers, editors — like a real keyboard would.</div>\n\n<div class='card'>Want your robot to fill out a form? Open a Notepad? Play a prank? You got the power now 😄</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Step</button>",
+      "image": "https://cdn.sparkfun.com//assets/parts/1/1/3/0/5/13672-01.jpg",
+      "audio": "https://audio-url-host/keyboard-print-intro.mp3"
+    },
+    {
+      "title": "🎮 Game: Real or Serial?",
+      "content": "<div class='card'>Which of these commands sends text to a real text editor (like Notepad)?</div>\n<div class='card'>\n<pre>\n1. Serial.print(\"Robot says hi!\");\n2. Keyboard.print(\"Robot says hi!\");\n</pre>\n</div>\n<div class='card'>Type your answer below:</div>\n<div class='card'>\n<input placeholder='Your Answer (1 or 2)' id='keyboardPrintGame' style='width: 100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct Answer: 2 — Keyboard.print() types into real apps!\")'>Submit</button>\n</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Keyboard_layout_US.svg/1280px-Keyboard_layout_US.svg.png",
+      "audio": "https://audio-url-host/keyboard-print-game.mp3"
+    },
+    {
+      "title": "📺 Watch: Keyboard.print() in Action!",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/T8akF3A_0lM' title='Arduino Keyboard Example with Leonardo' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Arduino_Leonardo_with_headers.jpg",
+      "audio": "https://audio-url-host/keyboard-print-video.mp3"
+    },
+    {
+      "title": "💡 Bonus: Build an Auto-Typer!",
+      "content": "<div class='card'>Want to create a robot that types your name every time you press a button?</div>\n<div class='card'>Let’s do it with just a few lines of code!</div>\n<div class='card'><pre>\n#include <Keyboard.h>\nconst int buttonPin = 2;\nvoid setup() {\n  pinMode(buttonPin, INPUT_PULLUP);\n  Keyboard.begin();\n}\nvoid loop() {\n  if (digitalRead(buttonPin) == LOW) {\n    Keyboard.print(\"Kaustubh\\n\");\n    delay(1000);\n  }\n}\n</pre></div>\n<div class='card'>💬 It types your name every time you press the button. This is a great starter project — and can be upgraded later into an auto-login, form filler, or chatbot typer 😎</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Show Me More</button>",
+      "image": "https://www.arduino.cc/wiki/static/4ea7ee3ae7f9896d848e24c86732adfd/94ddd/button_wiring_bb.jpg",
+      "audio": "https://audio-url-host/keyboard-print-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Keyboard.println() — The Auto Typer That Hits Enter Too!",
+  "lessons": [
+    {
+      "title": "What is Keyboard.println()? (And Why It Presses Enter)",
+      "content": "<div class='card'>Alright scientist — you've already learned how <code>Keyboard.print()</code> types stuff. But what if you want it to type and then press <b>Enter</b> automatically?</div>\n\n<div class='card'>Say hello to <code>Keyboard.println()</code>! This command does two things:\n<ul><li>Types your message</li><li>Then presses the Enter/Return key at the end</li></ul></div>\n\n<div class='card'>For example:\n<pre>Keyboard.println(\"Hello, world!\");</pre>\nThis types “Hello, world!” and then instantly presses Enter.</div>\n\n<div class='card'>It’s like your Arduino has its own finger to press Enter after every message 🖐️\nPerfect for filling forms, chatting, sending commands to terminals — all hands-free!</div>\n\n<div class='card'>🔍 Tip: You can even send multiple lines like this:\n<pre>\nKeyboard.println(\"First Line\");\nKeyboard.println(\"Second Line\");\n</pre></div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Try a Demo Example</button>",
+      "image": "https://cdn.sparkfun.com//assets/parts/1/1/3/0/5/13672-01.jpg",
+      "audio": "https://audio-url-host/keyboard-println-intro.mp3"
+    },
+    {
+      "title": "🎮 Game: Print or Println?",
+      "content": "<div class='card'>Let’s play a fast game! 👇</div>\n<div class='card'>Which of these commands will move the cursor to the next line after typing?</div>\n<div class='card'>\n<pre>\n1. Keyboard.print(\"Hi!\");\n2. Keyboard.println(\"Hi!\");\n</pre>\n</div>\n<div class='card'>Type your answer below:</div>\n<div class='card'>\n<input placeholder='Your Answer (1 or 2)' id='keyboardPrintlnGame' style='width: 100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct: 2 — println adds an automatic ENTER!\")'>Submit</button>\n</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/37/Enter-key.jpg",
+      "audio": "https://audio-url-host/keyboard-println-game.mp3"
+    },
+    {
+      "title": "📺 Watch: Keyboard.println() in Real Time",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/3Y74fS7ZhUc' title='Keyboard.println() Arduino Demo' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Arduino_Micro_MCU_board.jpg/1920px-Arduino_Micro_MCU_board.jpg",
+      "audio": "https://audio-url-host/keyboard-println-video.mp3"
+    },
+    {
+      "title": "🎯 Creative Project: Auto Login with Keyboard.println()",
+      "content": "<div class='card'>Let’s make a secret tool that types your username and password — and logs you in!</div>\n\n<div class='card'>⚠️ Use it ethically and ONLY on your own systems. This is just a fun project!</div>\n\n<div class='card'><pre>\n#include <Keyboard.h>\nvoid setup() {\n  Keyboard.begin();\n  delay(2000); // Wait for system to detect\n  Keyboard.println(\"myUsername\");\n  delay(500);\n  Keyboard.println(\"myPassword123\");\n}\nvoid loop() {}\n</pre></div>\n\n<div class='card'>💡 How it works:\n- Arduino types your username\n- Presses Enter automatically\n- Then types password\n- Presses Enter again — just like a human!</div>\n\n<div class='card'>Use it with tools like <b>Notepad login demo</b> to practice typing securely.</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Try on Your Leonardo</button>",
+      "image": "https://cdn.sparkfun.com/assets/home_page_posts/3/7/8/Keyboard-hero.jpg",
+      "audio": "https://audio-url-host/keyboard-println-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Keyboard.write() — Type Special Keys Like a Pro!",
+  "lessons": [
+    {
+      "title": "What is Keyboard.write()? (And Why It’s Different)",
+      "content": "<div class='card'>Alright scientist — you've seen how <code>Keyboard.print()</code> types messages, and <code>Keyboard.println()</code> types and hits Enter.</div>\n\n<div class='card'>But what if you want to type a single character… or even press <b>special keys</b> like ESC, TAB, arrows, or BACKSPACE?</div>\n\n<div class='card'>That’s where <code>Keyboard.write()</code> comes in! 🧠</div>\n\n<div class='card'>With <code>Keyboard.write()</code>, you can:\n<ul><li>Send a single character (like <code>'a'</code>)</li><li>Send ASCII codes (like <code>65</code> for 'A')</li><li>Send special keys using predefined constants (like <code>KEY_RETURN</code>)</li></ul></div>\n\n<div class='card'>Here’s an example:\n<pre>Keyboard.write('A'); // Sends capital A\nKeyboard.write(9);   // Sends TAB key (ASCII 9)</pre></div>\n\n<div class='card'>💡 Tip: Unlike <code>print()</code>, this only sends ONE character or key at a time. So to type “Hi”, you’d need:\n<pre>\nKeyboard.write('H');\nKeyboard.write('i');\n</pre></div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let's Explore Special Keys</button>",
+      "image": "https://cdn.sparkfun.com/assets/parts/1/1/3/0/5/13672-01.jpg",
+      "audio": "https://audio-url-host/keyboard-write-intro.mp3"
+    },
+    {
+      "title": "🎮 Game: Print, println, or write?",
+      "content": "<div class='card'>Choose which function you'd use for each situation!</div>\n<div class='card'>\n<ol>\n<li>I want to type my full name and press Enter</li>\n<li>I want to send the TAB key</li>\n<li>I want to type a message into a browser</li>\n</ol>\n</div>\n<div class='card'>Type your answers like this: 1=___, 2=___, 3=___</div>\n<div class='card'>\n<input placeholder='Your Answer...' id='keyboardWriteGame' style='width: 100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct: 1=println, 2=write, 3=print\")'>Submit</button>\n</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Special-keys-on-a-keyboard.jpg",
+      "audio": "https://audio-url-host/keyboard-write-game.mp3"
+    },
+    {
+      "title": "📺 Watch: Keyboard.write() Demo with Special Keys",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/zyo8FLC7pGs' title='Arduino Keyboard.write() Special Keys Tutorial' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://cdn-learn.adafruit.com/assets/assets/000/031/963/large1024/overview__1_.png",
+      "audio": "https://audio-url-host/keyboard-write-video.mp3"
+    },
+    {
+      "title": "💡 Project: Send a Magic Shortcut with One Button",
+      "content": "<div class='card'>Let’s make a one-button keyboard shortcut launcher!</div>\n\n<div class='card'>When you press a button, your Arduino will press TAB, type something, and hit Enter. All with <code>Keyboard.write()</code>.</div>\n\n<div class='card'><pre>\n#include <Keyboard.h>\nconst int buttonPin = 2;\nvoid setup() {\n  pinMode(buttonPin, INPUT_PULLUP);\n  Keyboard.begin();\n}\nvoid loop() {\n  if (digitalRead(buttonPin) == LOW) {\n    Keyboard.write(9); // TAB key\n    delay(300);\n    Keyboard.write('Y');\n    Keyboard.write('e');\n    Keyboard.write('s');\n    Keyboard.write(13); // ENTER key\n    delay(1000);\n  }\n}</pre></div>\n\n<div class='card'>⚙️ This can be used for automating repetitive keyboard shortcuts or form-filling steps. Super handy!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Try It Yourself!</button>",
+      "image": "https://cdn.sparkfun.com/assets/home_page_posts/3/7/8/Keyboard-hero.jpg",
+      "audio": "https://audio-url-host/keyboard-write-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "KeyboardAndMouseControl — Master Two Powers at Once!",
+  "lessons": [
+    {
+      "title": "What is KeyboardAndMouseControl?",
+      "content": "<div class='card'>Alright scientist — what if I told you your Arduino could move your mouse and type at the same time? 😱</div>\n\n<div class='card'>With this example sketch called <code>KeyboardAndMouseControl</code>, you unlock TWO hidden superpowers:\n<ul><li>Type using <code>Keyboard.print()</code></li><li>Control the mouse pointer using <code>Mouse.move()</code>, <code>Mouse.click()</code>, and more</li></ul></div>\n\n<div class='card'>This demo listens to analog inputs and button presses and then moves the cursor, clicks, or types depending on your input!</div>\n\n<div class='card'>🧠 It’s like turning your Arduino into a wild remote control — or even a gamepad for your computer.</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Explore How It Works</button>",
+      "image": "https://cdn.arduino.cc/static/keyboard-mouse.jpg",
+      "audio": "https://audio-url-host/kbmouse-intro.mp3"
+    },
+    {
+      "title": "📺 Video: Mouse and Keyboard from Arduino?!",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/o8FzivbBhdA' title='Arduino Keyboard and Mouse Example' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Mouse_event_diagram.png",
+      "audio": "https://audio-url-host/kbmouse-video.mp3"
+    },
+    {
+      "title": "🛠️ Try the Example Code",
+      "content": "<div class='card'>Here’s the core of the <code>KeyboardAndMouseControl</code> sketch:</div>\n\n<div class='card'><pre>\n#include <Keyboard.h>\n#include <Mouse.h>\n\nconst int upButton = 2;\nconst int downButton = 3;\nconst int leftButton = 4;\nconst int rightButton = 5;\nconst int mouseButton = 6;\n\nvoid setup() {\n  pinMode(upButton, INPUT);\n  pinMode(downButton, INPUT);\n  pinMode(leftButton, INPUT);\n  pinMode(rightButton, INPUT);\n  pinMode(mouseButton, INPUT);\n  Keyboard.begin();\n  Mouse.begin();\n}\n\nvoid loop() {\n  if (digitalRead(upButton) == HIGH) Mouse.move(0, -1, 0);\n  if (digitalRead(downButton) == HIGH) Mouse.move(0, 1, 0);\n  if (digitalRead(leftButton) == HIGH) Mouse.move(-1, 0, 0);\n  if (digitalRead(rightButton) == HIGH) Mouse.move(1, 0, 0);\n  if (digitalRead(mouseButton) == HIGH) Mouse.click();\n  delay(10);\n}\n</pre></div>\n\n<div class='card'>You control your PC with Arduino buttons! Now that’s powerful 💪</div>",
+      "image": "https://www.electronicwings.com/public/images/user_images/images/Arduino_Mouse.jpg",
+      "audio": "https://audio-url-host/kbmouse-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Match the Function!",
+      "content": "<div class='card'>Match the Arduino function with what it does:</div>\n<div class='card'>\n<ul>\n<li>Mouse.move()</li>\n<li>Mouse.click()</li>\n<li>Keyboard.print()</li>\n</ul>\n</div>\n<div class='card'>\nA. Types a message<br>\nB. Moves the cursor<br>\nC. Presses the left button\n</div>\n<div class='card'>Type your answers like: A=__, B=__, C=__</div>\n<div class='card'>\n<input id='kbmousegame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Answer: A=Keyboard.print(), B=Mouse.move(), C=Mouse.click()\")'>Submit</button>\n</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Computer-mouse.svg/1024px-Computer-mouse.svg.png",
+      "audio": "https://audio-url-host/kbmouse-game.mp3"
+    },
+    {
+      "title": "🧪 Project Idea: Build a Game Controller!",
+      "content": "<div class='card'>Use 5 push buttons and your Arduino Micro or Leonardo to build a basic computer game controller!</div>\n\n<div class='card'>Map buttons to:\n<ul>\n<li>W, A, S, D (with Keyboard.write())</li>\n<li>Mouse moves (with Mouse.move())</li>\n<li>Spacebar for jump (Keyboard.write(' '))</li>\n</ul></div>\n\n<div class='card'>💡 Want to take it further? Add a joystick module for analog control — and now you’ve made your own USB gamepad!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let's Move to the Next Sketch!</button>",
+      "image": "https://cdn.sparkfun.com/assets/home_page_posts/3/8/5/joystick_shield.jpg",
+      "audio": "https://audio-url-host/kbmouse-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "KeyboardMessage — Type a Message with One Click!",
+  "lessons": [
+    {
+      "title": "What is KeyboardMessage? (The One-Button Typer)",
+      "content": "<div class='card'>Alright scientist — imagine pressing a button on your Arduino and BAM 💥 — a full message is typed into your screen.</div>\n\n<div class='card'>That’s what the <code>KeyboardMessage</code> sketch does. When you press a physical button connected to your board, your Arduino types a prewritten message into any app.</div>\n\n<div class='card'>This is great for automating boring tasks like logging in, sending a welcome message, or even spamming your own name into Notepad 😄</div>\n\n<div class='card'>Here’s what happens inside the sketch:\n<ol>\n<li>Setup a button input</li>\n<li>When pressed, it uses <code>Keyboard.print()</code> or <code>Keyboard.println()</code> to type a string</li>\n<li>Delays to avoid repeats</li>\n</ol></div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let’s See It in Action</button>",
+      "image": "https://cdn.sparkfun.com/assets/8/3/f/8/f/KeyboardShieldHookup_Example.jpg",
+      "audio": "https://audio-url-host/keyboard-message-intro.mp3"
+    },
+    {
+      "title": "📺 Watch: One Button = One Typed Message!",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/RSkklgaO7uA' title='KeyboardMessage Arduino Demo' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Button_blue.svg/1024px-Button_blue.svg.png",
+      "audio": "https://audio-url-host/keyboard-message-video.mp3"
+    },
+    {
+      "title": "🧪 Try the Official Code",
+      "content": "<div class='card'>Here’s the official Arduino sketch used in <code>KeyboardMessage</code>:</div>\n\n<div class='card'><pre>\n#include <Keyboard.h>\nconst int buttonPin = 2;\nvoid setup() {\n  pinMode(buttonPin, INPUT_PULLUP);\n  Keyboard.begin();\n}\nvoid loop() {\n  if (digitalRead(buttonPin) == LOW) {\n    Keyboard.println(\"Hello from Arduino!\");\n    delay(1000);\n  }\n}</pre></div>\n\n<div class='card'>💬 When you press the button, it types “Hello from Arduino!” and presses Enter. It’s like your board is texting you 😎</div>",
+      "image": "https://cdn.sparkfun.com/assets/home_page_posts/3/7/8/Keyboard-hero.jpg",
+      "audio": "https://audio-url-host/keyboard-message-code.mp3"
+    },
+    {
+      "title": "🎮 Game: What Will It Type?",
+      "content": "<div class='card'>What will the following sketch output when the button is pressed?</div>\n<div class='card'><pre>\nKeyboard.println(\"System Access Granted!\");</pre></div>\n<div class='card'>Your Arduino will type: <input id='msgGame' placeholder='Your guess...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! It will type: System Access Granted! and then press Enter\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Check-mark-green-circle.svg",
+      "audio": "https://audio-url-host/keyboard-message-game.mp3"
+    },
+    {
+      "title": "💡 Mini Project: Make a USB 'Welcome Button'",
+      "content": "<div class='card'>Let’s build a single-button Arduino project that types a greeting every time you plug it in and press the button.</div>\n<div class='card'><pre>\n#include <Keyboard.h>\nvoid setup() {\n  pinMode(2, INPUT_PULLUP);\n  Keyboard.begin();\n}\nvoid loop() {\n  if (digitalRead(2) == LOW) {\n    Keyboard.print(\"Hey there, Kaustubh!\\n\");\n    delay(1500);\n  }\n}</pre></div>\n\n<div class='card'>📎 You can upgrade this by using EEPROM to store custom messages, or add multiple buttons for different outputs.</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Sketch: KeyboardLogout ➡️</button>",
+      "image": "https://cdn.arduino.cc/static/tutorials/en/usb/button-led.png",
+      "audio": "https://audio-url-host/keyboard-message-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "KeyboardLogout — Force Logout with a Button!",
+  "lessons": [
+    {
+      "title": "What is KeyboardLogout? (The Security Button)",
+      "content": "<div class='card'>Alright scientist — ready to build a gadget that can instantly log out your PC when you press a button? Like a self-destruct key? 😎</div>\n\n<div class='card'>The <code>KeyboardLogout</code> sketch sends a special keyboard combination (like <code>Ctrl + Alt + Delete</code> or <code>Windows + L</code>) that triggers logout on your computer.</div>\n\n<div class='card'>It’s just a regular button connected to Arduino. But when you press it, it types the correct system shortcut automatically. 💥</div>\n\n<div class='card'>⚠️ Only boards like Leonardo, Micro, or Due can run this because they support keyboard HID functions. And yes — it works just like a real keyboard!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let’s Watch It Happen</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Windows-logout-screen.png/1024px-Windows-logout-screen.png",
+      "audio": "https://audio-url-host/keyboard-logout-intro.mp3"
+    },
+    {
+      "title": "📺 Watch: One Button = Instant Logout",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/1Z7rYkMcpBY' title='Arduino Logout Button Demo' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/db/Shutdown_icon.svg",
+      "audio": "https://audio-url-host/keyboard-logout-video.mp3"
+    },
+    {
+      "title": "🧪 Try the KeyboardLogout Code",
+      "content": "<div class='card'>Here’s how to write a sketch that logs you out of Windows when a button is pressed:</div>\n\n<div class='card'><pre>\n#include <Keyboard.h>\nconst int buttonPin = 2;\nvoid setup() {\n  pinMode(buttonPin, INPUT_PULLUP);\n  Keyboard.begin();\n}\nvoid loop() {\n  if (digitalRead(buttonPin) == LOW) {\n    Keyboard.press(KEY_LEFT_GUI); // Windows key\n    Keyboard.press('l');          // + L key\n    delay(100);\n    Keyboard.releaseAll();\n    delay(1000);\n  }\n}</pre></div>\n\n<div class='card'>👀 For Mac, replace with <code>KEY_LEFT_CTRL + KEY_LEFT_SHIFT + POWER</code> or use <code>Cmd + Q</code> combos based on what you need.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Keyboard-shortcut.svg",
+      "audio": "https://audio-url-host/keyboard-logout-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Which Shortcut Logs Out?",
+      "content": "<div class='card'>Select the correct logout shortcut used in the Arduino sketch for Windows:</div>\n<div class='card'>\nA. Ctrl + C<br>\nB. Alt + F4<br>\nC. Windows + L<br>\nD. Shift + Esc\n</div>\n<div class='card'><input id='logoutGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! C: Windows + L locks/logs out Windows instantly\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/47/Windows_L_logout.svg",
+      "audio": "https://audio-url-host/keyboard-logout-game.mp3"
+    },
+    {
+      "title": "🧠 Ethical Note + Project Idea",
+      "content": "<div class='card'>⚠️ Use this sketch only on your own devices, or where you have permission. Logging others out without warning is not cool 😅</div>\n\n<div class='card'>💡 Project Idea: Build a <b>panic button</b> for your room. One press locks your PC, types an emergency message, or logs you out instantly.</div>\n\n<div class='card'>Upgrade this idea with a piezo buzzer, LEDs, or even a text display showing “LOGGED OUT” when pressed!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Almost There! Time for Serial Magic</button>",
+      "image": "https://cdn.sparkfun.com/assets/learn_tutorials/5/5/6/Panic_button.jpg",
+      "audio": "https://audio-url-host/keyboard-logout-ethics.mp3"
+    }
+  ]
+}
+,{
+  "title": "KeyboardSerial — Turn Serial Input Into Keystrokes!",
+  "lessons": [
+    {
+      "title": "What is KeyboardSerial? (Live Serial Typing)",
+      "content": "<div class='card'>Alright scientist — this one’s a game changer! What if your Arduino could listen to input from the Serial Monitor and type it out on your PC?</div>\n\n<div class='card'>That’s exactly what the <code>KeyboardSerial</code> sketch does. You send characters to the Arduino using the Serial Monitor — and the board instantly types them on your computer using <code>Keyboard.write()</code>.</div>\n\n<div class='card'>🚀 Think of it as a translator between serial input and USB keyboard output. Anything you type in Serial is echoed into real applications!</div>\n\n<div class='card'>This is great for command automation, secret message injections, or controlling your PC with another device.</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Watch the Concept in Action</button>",
+      "image": "https://cdn.arduino.cc/static/usb-serial-monitor.jpg",
+      "audio": "https://audio-url-host/keyboard-serial-intro.mp3"
+    },
+    {
+      "title": "📺 Watch: Serial to Keyboard Demo",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/6QEDcCrOIGs' title='Arduino KeyboardSerial Sketch Demo' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f9/SerialMonitor.jpg",
+      "audio": "https://audio-url-host/keyboard-serial-video.mp3"
+    },
+    {
+      "title": "🧪 Try the KeyboardSerial Code",
+      "content": "<div class='card'>Here’s the code that powers this serial-to-keystroke magic:</div>\n\n<div class='card'><pre>\n#include <Keyboard.h>\nvoid setup() {\n  Keyboard.begin();\n  Serial.begin(9600);\n  while (!Serial); // Wait for serial connection\n}\nvoid loop() {\n  if (Serial.available() > 0) {\n    char inputChar = Serial.read();\n    Keyboard.write(inputChar);\n  }\n}</pre></div>\n\n<div class='card'>💡 Type into the Serial Monitor — and Arduino will send that as keystrokes to your PC. It even works in Google Docs, Notepad, or any typing field!</div>",
+      "image": "https://cdn.sparkfun.com/assets/9/d/2/e/2/KeyboardSerial-diagram.png",
+      "audio": "https://audio-url-host/keyboard-serial-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Serial Guessing Game",
+      "content": "<div class='card'>Let’s test your understanding! What does the Arduino type if you enter “abc” in the Serial Monitor?</div>\n<div class='card'><input id='serialGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Arduino will type: abc (as if typed by a keyboard)\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Keyboard-usb.svg/1280px-Keyboard-usb.svg.png",
+      "audio": "https://audio-url-host/keyboard-serial-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Serial Terminal Commander",
+      "content": "<div class='card'>Let’s level this up! Create a project where your Arduino acts like a terminal-powered robot — receiving typed commands over Serial and performing actions.</div>\n\n<div class='card'>Example: If you type “1”, it types your name. If you type “2”, it logs you out. If you type “3”, it opens a browser. 🔥</div>\n\n<div class='card'>Bonus idea: Connect another microcontroller (like ESP32 or Nano) and use it to control your USB keyboard remotely!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Onward to the Final Sketch!</button>",
+      "image": "https://cdn.sparkfun.com/assets/5/b/8/f/3/Keyboard_serial_terminal.jpg",
+      "audio": "https://audio-url-host/keyboard-serial-project.mp3"
+    }
+  ]
+},{
+  "title": "KeyboardReprogram — When Arduino Programs Itself!",
+  "lessons": [
+    {
+      "title": "What is KeyboardReprogram? (A Self-Rewriting Board!)",
+      "content": "<div class='card'>Alright scientist — are you ready to watch your Arduino open the Arduino IDE, paste a full sketch, and upload it? WITHOUT YOU DOING ANYTHING? 🤯</div>\n\n<div class='card'>That’s the superpower of <code>KeyboardReprogram</code>. This sketch uses keyboard shortcuts to:</div>\n<ul>\n<li>Open the Arduino IDE</li>\n<li>Create a new sketch</li>\n<li>Type in a new program (like blink LED)</li>\n<li>Upload it automatically!</li>\n</ul>\n\n<div class='card'>It’s the Arduino programming... the Arduino. This is as meta as it gets!</div>\n\n<div class='card'>🧠 Uses a lot of <code>Keyboard.press()</code>, <code>Keyboard.release()</code>, <code>Keyboard.print()</code>, and precise delays to simulate human typing and IDE commands.</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let’s Watch the Magic</button>",
+      "image": "https://cdn.arduino.cc/static/ide-open.png",
+      "audio": "https://audio-url-host/keyboard-reprogram-intro.mp3"
+    },
+    {
+      "title": "📺 Watch: Arduino Reprograms Itself!",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/2Fv2cqS2J0U' title='KeyboardReprogram Demo — Self Writing Arduino' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/bc/ArduinoIDE-open.png",
+      "audio": "https://audio-url-host/keyboard-reprogram-video.mp3"
+    },
+    {
+      "title": "🧪 Try the Sample (With Caution!)",
+      "content": "<div class='card'>Here’s the idea of the sketch — shortened for safety. It presses <code>Ctrl+N</code> for new sketch, types code, then uploads it.</div>\n\n<div class='card'><pre>\n#include <Keyboard.h>\nvoid setup() {\n  delay(1000);\n  Keyboard.begin();\n  Keyboard.press(KEY_LEFT_CTRL);\n  Keyboard.press('n');\n  delay(100);\n  Keyboard.releaseAll();\n  delay(1000);\n\n  Keyboard.println(\"void setup() {\");\n  Keyboard.println(\"  pinMode(13, OUTPUT);\");\n  Keyboard.println(\"}\");\n  Keyboard.println(\"void loop() {\");\n  Keyboard.println(\"  digitalWrite(13, HIGH);\");\n  Keyboard.println(\"  delay(500);\");\n  Keyboard.println(\"  digitalWrite(13, LOW);\");\n  Keyboard.println(\"  delay(500);\");\n  Keyboard.println(\"}\");\n\n  delay(500);\n  Keyboard.press(KEY_LEFT_CTRL);\n  Keyboard.press('u'); // Upload sketch\n  delay(100);\n  Keyboard.releaseAll();\n}\nvoid loop() {}  // Empty loop</pre></div>\n\n<div class='card'>⚠️ Caution: Make sure Arduino IDE is open and focused before this runs. Otherwise, it may spam keys into whatever app is open!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Blink-sketch-ide.png",
+      "audio": "https://audio-url-host/keyboard-reprogram-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Put the Steps in Order",
+      "content": "<div class='card'>Put these steps in the correct order that Arduino does in <code>KeyboardReprogram</code>:</div>\n<div class='card'>\nA. Uploads the sketch<br>\nB. Types out code<br>\nC. Opens new sketch\n</div>\n<div class='card'><input id='reprogramGame' placeholder='Your answer (e.g. C-B-A)' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! First it opens sketch (C), then types (B), then uploads (A)\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Keyboard_light_icon.svg/1200px-Keyboard_light_icon.svg.png",
+      "audio": "https://audio-url-host/keyboard-reprogram-game.mp3"
+    },
+    {
+      "title": "💡 Advanced Idea: USB Arduino Virus Simulator (For Learning!)",
+      "content": "<div class='card'>⚠️ For educational use only: You can modify this sketch to type rapid commands, open websites, shutdown the PC, or simulate prank-like behavior.</div>\n\n<div class='card'>💡 Think of this as a ‘rubber ducky’ — a USB stick that executes code instantly when plugged in. Great for testing system security and automation.</div>\n\n<div class='card'>NEVER use on someone else's computer without permission.</div>\n\n<div class='card'>Want a fun idea? Create a prank that opens a browser and types: <i>“Kaustubh was here 😎”</i></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/28/Security-warning-icon.svg",
+      "audio": "https://audio-url-host/keyboard-reprogram-project.mp3"
+    }
+  ]
+}
+
 
       ]
 
+    },{
+  "title": "USB Mouse Mastery: Control Your Computer Like a Pro",
+  modules:[
+    {
+  "title": "Meet the Mouse Library — Move, Click, Control!",
+  "lessons": [
+    {
+      "title": "What is the Mouse Library?",
+      "content": "<div class='card'>Alright scientist — what if your Arduino could become a mouse? Not a joke — a real USB mouse. 🖱️✨</div>\n\n<div class='card'>The <b>Mouse library</b> lets you control the mouse pointer from your Arduino. You can:\n<ul><li>Move the mouse</li><li>Click or hold buttons</li><li>Build your own USB input devices</li></ul></div>\n\n<div class='card'>This works by turning your Arduino into a <b>HID device</b> (Human Interface Device). Just like real keyboards or mice!</div>\n\n<div class='card'>💡 Tip: Not all Arduinos support this. You need a board with native USB — like:\n<ul>\n<li>Arduino Leonardo</li>\n<li>Arduino Micro</li>\n<li>Arduino Due</li>\n</ul></div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>So... What Can You Do With This?</button>",
+      "image": "https://cdn.arduino.cc/static/hid-mouse.svg",
+      "audio": "https://audio-url-host/mouse-library-intro.mp3"
+    },
+    {
+      "title": "📺 Video: Arduino Controls a Mouse!",
+      "content": "<iframe width='100%' height='315' src='https://www.youtube.com/embed/lAA9XGldI2A' title='Arduino Mouse Control Demo' frameborder='0' allowfullscreen></iframe>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/USB_mouse_inside.jpg/1024px-USB_mouse_inside.jpg",
+      "audio": "https://audio-url-host/mouse-library-video.mp3"
+    },
+    {
+      "title": "🎮 Game: Which One Can Be a USB Mouse?",
+      "content": "<div class='card'>Pick the boards that support USB HID mouse features:</div>\n<div class='card'>\n<ul>\n<li>Arduino UNO</li>\n<li>Arduino Leonardo</li>\n<li>Arduino Nano</li>\n<li>Arduino Micro</li>\n</ul>\n</div>\n<div class='card'>Answer format: 1=Yes/No, 2=Yes/No, ...</div>\n<div class='card'>\n<input id='mouseGame1' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct: 1=No, 2=Yes, 3=No, 4=Yes\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/learn_tutorials/1/1/3/USB_HID_devices.jpg",
+      "audio": "https://audio-url-host/mouse-library-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: USB Volume Slider or Gamepad",
+      "content": "<div class='card'>Want to build something cool?</div>\n<div class='card'>Here are ideas you can make using the Mouse library:</div>\n<ul>\n<li>A volume knob that moves the mouse left/right to adjust system volume</li>\n<li>A gamepad with directional buttons controlling mouse movement</li>\n<li>A prank mouse that randomly moves the cursor 😈</li>\n</ul>\n<div class='card'>Coming up next, we’ll learn about <code>Mouse.begin()</code> — your very first mouse command!</div>",
+      "image": "https://cdn.sparkfun.com/assets/home_page_posts/2/2/6/Mouse-move-gamepad.jpg",
+      "audio": "https://audio-url-host/mouse-library-project.mp3"
     }
+  ]
+}
+,{
+  "title": "Mouse.begin() — Start the Mouse Engine!",
+  "lessons": [
+    {
+      "title": "What Does Mouse.begin() Do?",
+      "content": "<div class='card'>Alright scientist — every great machine has a start button. For mouse control on Arduino, that button is <code>Mouse.begin()</code> 🟢</div>\n\n<div class='card'><b>Mouse.begin()</b> is used in <code>setup()</code> to start the mouse communication with your PC. It’s required before you can move or click anything!</div>\n\n<div class='card'>⚠️ If you forget this function, none of the other mouse commands will work. It’s like trying to drive a car without starting the engine 🚗</div>\n\n<div class='card'>💡 Usually, you only call it once — during setup. You don’t need to repeat it.</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let’s See It in Code</button>",
+      "image": "https://cdn.arduino.cc/static/start-mouse.svg",
+      "audio": "https://audio-url-host/mouse-begin-intro.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Move Mouse After Startup",
+      "content": "<div class='card'>Here’s how to move the mouse right after starting mouse control:</div>\n\n<div class='card'><pre>\n#include <Mouse.h>\n\nvoid setup() {\n  Mouse.begin();     // 🟢 Start mouse control\n  delay(1000);       // Wait for system to respond\n  Mouse.move(20, 0); // Move cursor right\n}\n\nvoid loop() {\n  // Nothing here\n}</pre></div>\n\n<div class='card'>This code moves your cursor 20 pixels to the right, once. That’s proof your mouse engine is running!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/08/Mouse-pointer-move.png",
+      "audio": "https://audio-url-host/mouse-begin-code.mp3"
+    },
+    {
+      "title": "🎮 Game: When Should You Call Mouse.begin()?",
+      "content": "<div class='card'>🧠 Choose the best place to call <code>Mouse.begin()</code> in an Arduino sketch:</div>\n\n<div class='card'>A. Inside <code>loop()</code><br>B. Inside <code>setup()</code><br>C. Before <code>#include &lt;Mouse.h&gt;</code><br>D. Never — it's optional</div>\n\n<div class='card'>\n<input id='mouseBeginGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! B. Always call Mouse.begin() once in setup().\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/49/Power_button_icon.svg",
+      "audio": "https://audio-url-host/mouse-begin-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Auto Cursor Mover on Startup",
+      "content": "<div class='card'>Want to build something cool with <code>Mouse.begin()</code>?</div>\n\n<div class='card'>Try this fun idea: Make a prank project that automatically moves the cursor to a corner of the screen every time your computer boots up 🔄</div>\n\n<div class='card'>⚠️ You’ll need to power your Arduino through USB at startup. Use <code>Mouse.move()</code> after <code>Mouse.begin()</code> to make it happen!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Ready to Stop the Mouse? Let's Learn Mouse.end()</button>",
+      "image": "https://cdn.sparkfun.com/assets/4/3/8/1/AutoMove-MouseProject.jpg",
+      "audio": "https://audio-url-host/mouse-begin-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Mouse.end() — Stop Mouse Control Safely!",
+  "lessons": [
+    {
+      "title": "What Does Mouse.end() Do?",
+      "content": "<div class='card'>Alright scientist — we’ve learned how to start mouse control with <code>Mouse.begin()</code>. But what if you want to turn it OFF?</div>\n\n<div class='card'><b>Mouse.end()</b> is the function that stops the mouse communication between your Arduino and your computer.</div>\n\n<div class='card'>Once this is called, your Arduino stops acting like a mouse. All <code>Mouse.move()</code>, <code>click()</code>, or <code>press()</code> commands stop working.</div>\n\n<div class='card'>🧠 Use this function if:\n<ul><li>You want to limit how long the Arduino acts like a mouse</li><li>You want to pause mouse control based on user input</li><li>You want to safely disconnect HID behavior in a sketch</li></ul></div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let’s Look at an Example</button>",
+      "image": "https://cdn.arduino.cc/static/mouse-end-icon.svg",
+      "audio": "https://audio-url-host/mouse-end-intro.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Stop After One Move",
+      "content": "<div class='card'>Let’s move the mouse once, then stop HID control forever:</div>\n\n<div class='card'><pre>\n#include <Mouse.h>\n\nvoid setup() {\n  Mouse.begin();     // Start control\n  Mouse.move(40, 0); // Move right\n  delay(500);\n  Mouse.end();       // 🛑 Stop control\n}\n\nvoid loop() {}\n</pre></div>\n\n<div class='card'>After this runs, Arduino stops pretending to be a mouse. It becomes invisible to the OS again.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Mouse-pointer-stop.png/768px-Mouse-pointer-stop.png",
+      "audio": "https://audio-url-host/mouse-end-code.mp3"
+    },
+    {
+      "title": "🎮 Game: What Happens After Mouse.end()?",
+      "content": "<div class='card'>If you call <code>Mouse.end()</code> and then <code>Mouse.move(10, 0)</code>, what happens?</div>\n<div class='card'>\nA. Mouse moves\n<br>B. Compilation error\n<br>C. Nothing happens\n<br>D. Computer crashes 😆</div>\n<div class='card'>\n<input id='mouseEndGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! C. Nothing happens — Mouse.move() won't work after Mouse.end().\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/71/Stop-sign-icon.png",
+      "audio": "https://audio-url-host/mouse-end-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Smart Mouse Timeout",
+      "content": "<div class='card'>Build a USB prank mouse that moves the cursor randomly for 5 seconds — then automatically disables itself using <code>Mouse.end()</code>.</div>\n\n<div class='card'>Add a buzzer or LED to indicate 'mouse mode' is active, and turn it off when <code>Mouse.end()</code> is called!</div>\n\n<div class='card'>⚙️ Bonus: Create a secret combo to restart mouse control again. Like a real ninja tool 🥷</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Now Let’s Learn to Click — Next Up: Mouse.click()</button>",
+      "image": "https://cdn.sparkfun.com/assets/6/b/3/0/USB_mouse_timeout_project.jpg",
+      "audio": "https://audio-url-host/mouse-end-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Mouse.click() — One Line, One Click!",
+  "lessons": [
+    {
+      "title": "What Does Mouse.click() Do?",
+      "content": "<div class='card'>Alright scientist — need to simulate a mouse click in one command? That’s what <code>Mouse.click()</code> is made for! 🖱️⚡</div>\n\n<div class='card'>It presses a mouse button <i>and</i> releases it — just like a real click. You don’t have to call <code>press()</code> and <code>release()</code> separately.</div>\n\n<div class='card'>💡 Default behavior is left click. But you can pass an argument like:\n<ul>\n<li><code>MOUSE_LEFT</code></li>\n<li><code>MOUSE_RIGHT</code></li>\n<li><code>MOUSE_MIDDLE</code></li>\n</ul>\n</div>\n\n<div class='card'>This is awesome for triggering clicks on-screen, launching apps, or pressing buttons in games!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let’s See the Code</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Mouse-click-illustration.svg",
+      "audio": "https://audio-url-host/mouse-click-intro.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Auto Left Click",
+      "content": "<div class='card'>This code clicks once after starting the sketch:</div>\n\n<div class='card'><pre>\n#include <Mouse.h>\n\nvoid setup() {\n  Mouse.begin();\n  delay(1000);           // Give the OS some time\n  Mouse.click();          // 👈 Default = left click\n  delay(500);\n  Mouse.end();\n}\n\nvoid loop() {}\n</pre></div>\n\n<div class='card'>To do a <b>right click</b>, use: <code>Mouse.click(MOUSE_RIGHT);</code></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Mouse-left-right-diagram.svg",
+      "audio": "https://audio-url-host/mouse-click-code.mp3"
+    },
+    {
+      "title": "🎮 Game: What Does This Do?",
+      "content": "<div class='card'>What happens when you call <code>Mouse.click(MOUSE_MIDDLE)</code>?</div>\n<div class='card'>\nA. Left click<br>\nB. Right click<br>\nC. Middle click<br>\nD. Double click</div>\n<div class='card'>\n<input id='mouseClickGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! C. It simulates a middle mouse button click.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Mouse_buttons.svg",
+      "audio": "https://audio-url-host/mouse-click-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Auto Clicker for Games",
+      "content": "<div class='card'>Let’s build an Arduino that clicks every 2 seconds — perfect for automating boring click tasks or AFK farming in games 🎮</div>\n\n<div class='card'><pre>\n#include <Mouse.h>\n\nvoid setup() {\n  Mouse.begin();\n}\n\nvoid loop() {\n  Mouse.click();\n  delay(2000);\n}</pre></div>\n\n<div class='card'>⚠️ Warning: Don't use auto-clickers in online games. You could get banned!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Up: Mouse.isPressed()</button>",
+      "image": "https://cdn.sparkfun.com/assets/4/7/4/f/Arduino_AutoClicker_Project.jpg",
+      "audio": "https://audio-url-host/mouse-click-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Mouse.isPressed() — Is the Mouse Button Down?",
+  "lessons": [
+    {
+      "title": "What Does Mouse.isPressed() Do?",
+      "content": "<div class='card'>Alright scientist — want to check whether the mouse is currently being held down? That’s where <code>Mouse.isPressed()</code> shines 🧐🖱️</div>\n\n<div class='card'>This function returns:\n<ul>\n<li><code>true</code> if the specified mouse button is being held</li>\n<li><code>false</code> if not</li>\n</ul></div>\n\n<div class='card'>This is useful when building custom mouse input systems — like smart buttons, drag-and-drop tools, or gesture control.</div>\n\n<div class='card'>You can check:\n<ul><li><code>MOUSE_LEFT</code></li><li><code>MOUSE_RIGHT</code></li><li><code>MOUSE_MIDDLE</code></li></ul>\nOr even <code>Mouse.isPressed()</code> with no argument to check if <i>any</i> mouse button is held!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Try It in Code!</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Mouse_button_hold.png",
+      "audio": "https://audio-url-host/mouse-ispressed-intro.mp3"
+    },
+    {
+      "title": "🧪 Example: Flash LED While Button is Held",
+      "content": "<div class='card'>We’ll light up the LED whenever a mouse button is held:</div>\n\n<div class='card'><pre>\n#include <Mouse.h>\n\nvoid setup() {\n  pinMode(13, OUTPUT);\n  Mouse.begin();\n}\n\nvoid loop() {\n  if (Mouse.isPressed(MOUSE_LEFT)) {\n    digitalWrite(13, HIGH);\n  } else {\n    digitalWrite(13, LOW);\n  }\n}</pre></div>\n\n<div class='card'>🧠 The onboard LED will light up if the left button is being held. This is perfect for visual feedback!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Arduino_LED_Mouse_Button.jpg",
+      "audio": "https://audio-url-host/mouse-ispressed-code.mp3"
+    },
+    {
+      "title": "🎮 Game: What Does This Return?",
+      "content": "<div class='card'>What does this return?<br><code>Mouse.isPressed(MOUSE_RIGHT)</code></div>\n\n<div class='card'>\nA. true (if right button is held)<br>\nB. false (if left is held)<br>\nC. 1 (if any button is pressed)<br>\nD. It always throws an error</div>\n\n<div class='card'><input id='mousePressedGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! A. It returns true only if right mouse button is held.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Mouse_button_check.svg",
+      "audio": "https://audio-url-host/mouse-ispressed-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Smart Button Tester",
+      "content": "<div class='card'>Want to test your mouse? Build an Arduino setup that tells you which button is being held!</div>\n\n<div class='card'>Connect 3 LEDs — one for left, one for right, and one for middle. Then use <code>Mouse.isPressed()</code> to light the right LED 🔦</div>\n\n<div class='card'>Great for making a <i>mouse diagnostic tool</i> or testing wireless mouse signals!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Up: Learn Mouse.move()</button>",
+      "image": "https://cdn.sparkfun.com/assets/6/7/3/b/Mouse_Button_Tester_Project.jpg",
+      "audio": "https://audio-url-host/mouse-ispressed-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Mouse.move() — Control the Cursor Like a Pro",
+  "lessons": [
+    {
+      "title": "What Does Mouse.move() Do?",
+      "content": "<div class='card'>Alright scientist — ever wanted to move the mouse pointer from Arduino? With <code>Mouse.move()</code>, you're in full control of the cursor 🕹️</div>\n\n<div class='card'><b>Mouse.move(x, y, wheel)</b> does 3 things:\n<ul>\n<li><code>x</code> — horizontal movement (right = +, left = -)</li>\n<li><code>y</code> — vertical movement (down = +, up = -)</li>\n<li><code>wheel</code> — scroll wheel movement (forward = +, backward = -)</li>\n</ul></div>\n\n<div class='card'>🧠 All values are relative — for example, <code>Mouse.move(10, 0, 0)</code> moves the cursor 10 pixels to the right.</div>\n\n<div class='card'>Default is <code>Mouse.move(x, y)</code> (no scroll). But adding that third value gives you control of scrolling!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let’s Move It in Code!</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Cursor-movement-directions.svg/768px-Cursor-movement-directions.svg.png",
+      "audio": "https://audio-url-host/mouse-move-intro.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Spiral Cursor Movement",
+      "content": "<div class='card'>Here’s a fun sketch that moves the mouse in a small square loop:</div>\n\n<div class='card'><pre>\n#include <Mouse.h>\n\nvoid setup() {\n  Mouse.begin();\n}\n\nvoid loop() {\n  Mouse.move(10, 0); delay(200); // Right\n  Mouse.move(0, 10); delay(200); // Down\n  Mouse.move(-10, 0); delay(200); // Left\n  Mouse.move(0, -10); delay(200); // Up\n}</pre></div>\n\n<div class='card'>⚠️ Tip: Don’t forget to include delay — without it, the cursor moves like a rocket 🚀</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/13/Mouse-move-loop.gif",
+      "audio": "https://audio-url-host/mouse-move-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Decode the Movement!",
+      "content": "<div class='card'>What does this command do?<br><code>Mouse.move(0, 0, -1)</code></div>\n<div class='card'>\nA. No change<br>\nB. Scrolls up<br>\nC. Scrolls down<br>\nD. Moves cursor diagonally</div>\n<div class='card'>\n<input id='mouseMoveGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! B. It scrolls up using the mouse wheel.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Scroll-wheel-diagram.svg",
+      "audio": "https://audio-url-host/mouse-move-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Gyro Mouse!",
+      "content": "<div class='card'>Want to go pro? Use a gyroscope module with Arduino (like MPU6050) to control the mouse with hand movements 💪🧠</div>\n\n<div class='card'>Convert the gyro readings into <code>x</code>, <code>y</code>, and <code>wheel</code> values — and feed them into <code>Mouse.move()</code>!</div>\n\n<div class='card'>🎯 Result: A gesture-controlled air mouse — just like VR pointers.</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Up: Mouse.press() for Hold Click</button>",
+      "image": "https://cdn.sparkfun.com/assets/8/b/0/1/Gyro-Controlled-Mouse.jpg",
+      "audio": "https://audio-url-host/mouse-move-project.mp3"
+    }
+  ]
+}
+  ,{
+  "title": "Mouse.press() — Hold Down That Click!",
+  "lessons": [
+    {
+      "title": "What Does Mouse.press() Do?",
+      "content": "<div class='card'>Alright scientist — need to simulate holding a mouse button down? That’s where <code>Mouse.press()</code> comes in 🧲</div>\n\n<div class='card'>Unlike <code>Mouse.click()</code> which presses and releases instantly, <code>Mouse.press()</code> holds the button until you release it manually using <code>Mouse.release()</code> or <code>Mouse.releaseAll()</code>.</div>\n\n<div class='card'>Usage:\n<ul>\n<li><code>Mouse.press(MOUSE_LEFT)</code> → holds left button</li>\n<li><code>Mouse.press(MOUSE_RIGHT)</code> → holds right button</li>\n</ul>\nIf no argument is passed, it presses the <b>left</b> button by default.</div>\n\n<div class='card'>🧠 Useful for drag-and-drop actions, drawing programs, or holding buttons in games!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let’s Hold Some Code</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Hold_mouse_button.svg/1024px-Hold_mouse_button.svg.png",
+      "audio": "https://audio-url-host/mouse-press-intro.mp3"
+    },
+    {
+      "title": "🧪 Example: Hold Left Button for 2 Seconds",
+      "content": "<div class='card'>This sketch holds the left button down for 2 seconds, then releases it:</div>\n\n<div class='card'><pre>\n#include <Mouse.h>\n\nvoid setup() {\n  Mouse.begin();\n  delay(1000);\n  Mouse.press();         // 👈 Hold down left button\n  delay(2000);           // Wait while held\n  Mouse.release();       // ✋ Release\n}\n\nvoid loop() {}\n</pre></div>\n\n<div class='card'>Try moving your physical mouse during the delay — it behaves like a drag!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/00/Click-hold-drag.svg",
+      "audio": "https://audio-url-host/mouse-press-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Click or Hold?",
+      "content": "<div class='card'>Which function would you use to hold the right mouse button?</div>\n\n<div class='card'>\nA. <code>Mouse.click(MOUSE_RIGHT)</code><br>\nB. <code>Mouse.press(MOUSE_RIGHT)</code><br>\nC. <code>Mouse.move()</code><br>\nD. <code>Mouse.end()</code></div>\n\n<div class='card'>\n<input id='mousePressGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! B. Use Mouse.press(MOUSE_RIGHT) to hold it down.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Right-click-press.svg",
+      "audio": "https://audio-url-host/mouse-press-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Virtual Drawing Tool",
+      "content": "<div class='card'>Use <code>Mouse.press()</code> to hold down the mouse button and <code>Mouse.move()</code> to draw a shape — like a digital pen ✏️</div>\n\n<div class='card'>Make the cursor move in a square, drawing continuously while pressed.</div>\n\n<div class='card'><pre>\nMouse.press();\nMouse.move(20, 0); delay(100);\nMouse.move(0, 20); delay(100);\nMouse.move(-20, 0); delay(100);\nMouse.move(0, -20); delay(100);\nMouse.release();</pre></div>\n\n<div class='card'>🎯 Great for automation or making art bots!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next Up: Mouse.release()!</button>",
+      "image": "https://cdn.sparkfun.com/assets/5/e/b/5/Drawing_Square_With_Mouse.png",
+      "audio": "https://audio-url-host/mouse-press-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Mouse.release() — Let Go of That Button!",
+  "lessons": [
+    {
+      "title": "What Does Mouse.release() Do?",
+      "content": "<div class='card'>Alright scientist — we’ve learned to hold down a mouse button using <code>Mouse.press()</code>. But how do we release just one?</div>\n\n<div class='card'><b>Mouse.release(button)</b> is your precision tool for that. It releases the specified mouse button — and nothing else.</div>\n\n<div class='card'>Supported arguments are:\n<ul>\n<li><code>MOUSE_LEFT</code></li>\n<li><code>MOUSE_RIGHT</code></li>\n<li><code>MOUSE_MIDDLE</code></li>\n</ul></div>\n\n<div class='card'>If you leave the argument blank, it defaults to releasing the left button only.</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Let’s Try It in Code</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/07/Mouse_button_release.svg",
+      "audio": "https://audio-url-host/mouse-release-intro.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Hold Right, Then Release",
+      "content": "<div class='card'>Here’s how to press and release the right mouse button with timing control:</div>\n\n<div class='card'><pre>\n#include <Mouse.h>\n\nvoid setup() {\n  Mouse.begin();\n  Mouse.press(MOUSE_RIGHT); // Hold right click\n  delay(1500);               // Wait 1.5 seconds\n  Mouse.release(MOUSE_RIGHT); // Release it\n}\n\nvoid loop() {}\n</pre></div>\n\n<div class='card'>💡 Try changing <code>MOUSE_RIGHT</code> to <code>MOUSE_MIDDLE</code> to simulate scroll click!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Right-click-hold-release.svg",
+      "audio": "https://audio-url-host/mouse-release-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Which Button Is Released?",
+      "content": "<div class='card'>What does this do?<br><code>Mouse.release(MOUSE_MIDDLE)</code></div>\n\n<div class='card'>\nA. Releases left button<br>\nB. Releases all buttons<br>\nC. Releases middle button only<br>\nD. Starts scrolling</div>\n\n<div class='card'>\n<input id='mouseReleaseGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! C. It only releases the middle mouse button.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Mouse-button-labels.svg",
+      "audio": "https://audio-url-host/mouse-release-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Double Button Trap",
+      "content": "<div class='card'>Try holding down BOTH left and right buttons using <code>Mouse.press()</code> — then release them one by one using <code>Mouse.release()</code>.</div>\n\n<div class='card'>Make a program that simulates holding down two actions in a game (e.g., aim + shoot) — then gradually lets go.</div>\n\n<div class='card'><pre>\nMouse.press(MOUSE_LEFT);\nMouse.press(MOUSE_RIGHT);\ndelay(1000);\nMouse.release(MOUSE_RIGHT);\ndelay(500);\nMouse.release(MOUSE_LEFT);</pre></div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Now Prepare for Full Reset — Mouse.releaseAll()</button>",
+      "image": "https://cdn.sparkfun.com/assets/8/4/1/7/Hold-Multiple-Mouse-Buttons.jpg",
+      "audio": "https://audio-url-host/mouse-release-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Mouse.releaseAll() — Emergency Stop for All Buttons!",
+  "lessons": [
+    {
+      "title": "What Does Mouse.releaseAll() Do?",
+      "content": "<div class='card'>Alright scientist — your Arduino is holding multiple buttons at once? Time for a total release!</div>\n\n<div class='card'><code>Mouse.releaseAll()</code> is the full reset button. It immediately releases <i>all</i> pressed mouse buttons — left, right, and middle.</div>\n\n<div class='card'>This is super handy when:\n<ul>\n<li>You don’t remember what’s pressed</li>\n<li>You want to avoid stuck clicks</li>\n<li>You need an emergency stop 🔴</li>\n</ul></div>\n\n<div class='card'>Unlike <code>Mouse.release(button)</code>, this one doesn’t need any arguments — just call it and all buttons are free!</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Try It in Code</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/47/Mouse_release_all_buttons.svg",
+      "audio": "https://audio-url-host/mouse-releaseall-intro.mp3"
+    },
+    {
+      "title": "🧪 Example: Release Everything After 3 Seconds",
+      "content": "<div class='card'>Let’s hold two buttons, wait, then release them all with a single command:</div>\n\n<div class='card'><pre>\n#include <Mouse.h>\n\nvoid setup() {\n  Mouse.begin();\n  Mouse.press(MOUSE_LEFT);\n  Mouse.press(MOUSE_RIGHT);\n  delay(3000);\n  Mouse.releaseAll(); // 💥 All released\n}\n\nvoid loop() {}\n</pre></div>\n\n<div class='card'>✅ Great for cleanup before ending mouse control with <code>Mouse.end()</code>.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/06/Mouse-multi-button-control.svg",
+      "audio": "https://audio-url-host/mouse-releaseall-code.mp3"
+    },
+    {
+      "title": "🎮 Game: ReleaseAll vs Release?",
+      "content": "<div class='card'>Which of the following statements is TRUE?</div>\n\n<div class='card'>\nA. <code>Mouse.releaseAll()</code> only works for the left button<br>\nB. <code>Mouse.release()</code> is faster than <code>releaseAll()</code><br>\nC. <code>Mouse.releaseAll()</code> releases all buttons<br>\nD. They both do the same thing</div>\n\n<div class='card'><input id='mouseReleaseAllGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! C. releaseAll() releases all pressed buttons at once.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/d2/All-buttons-released.svg",
+      "audio": "https://audio-url-host/mouse-releaseall-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Emergency Click Stopper",
+      "content": "<div class='card'>Build a secret-button project that monitors a physical button — if pressed, it instantly calls <code>Mouse.releaseAll()</code> to stop all click activity 🔒</div>\n\n<div class='card'>Use it as an \"Oh no!\" escape switch for mouse prank setups or bot safety shutdowns.</div>\n\n<div class='card'>Bonus: Add a buzzer and LED flash to indicate the emergency mode was triggered 🔔</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Next: Learn All About Mouse Button Constants</button>",
+      "image": "https://cdn.sparkfun.com/assets/6/3/d/4/Emergency_Stop_Arduino_Mouse.jpg",
+      "audio": "https://audio-url-host/mouse-releaseall-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "MOUSE_LEFT, MOUSE_RIGHT, MOUSE_MIDDLE — Mouse Button Constants",
+  "lessons": [
+    {
+      "title": "What Are Mouse Button Constants?",
+      "content": "<div class='card'>Alright scientist — when using functions like <code>Mouse.click()</code>, <code>Mouse.press()</code>, or <code>Mouse.release()</code>, how does Arduino know *which* button you mean?</div>\n\n<div class='card'>You use special constants like:\n<ul>\n<li><code>MOUSE_LEFT</code> → for left button</li>\n<li><code>MOUSE_RIGHT</code> → for right button</li>\n<li><code>MOUSE_MIDDLE</code> → for middle button (scroll wheel press)</li>\n</ul></div>\n\n<div class='card'>💡 These constants are just special values (usually defined in the Mouse library) that map to the correct USB HID codes.</div>\n\n<div class='card'>You can pass them to most Mouse functions like this:\n<pre>\nMouse.press(MOUSE_RIGHT);\nMouse.click(MOUSE_MIDDLE);\nMouse.release(MOUSE_LEFT);\n</pre></div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>View a Button Map!</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Mouse_buttons_diagram.svg",
+      "audio": "https://audio-url-host/mouse-constants-intro.mp3"
+    },
+    {
+      "title": "📊 Table: Which Constant to Use?",
+      "content": "<div class='card'>Here’s a quick cheat sheet so you never get confused:</div>\n\n<div class='card'><table style='width:100%;text-align:left;'>\n<tr><th>Button Name</th><th>Constant</th></tr>\n<tr><td>Left Click</td><td><code>MOUSE_LEFT</code></td></tr>\n<tr><td>Right Click</td><td><code>MOUSE_RIGHT</code></td></tr>\n<tr><td>Middle Click (Scroll Wheel)</td><td><code>MOUSE_MIDDLE</code></td></tr>\n</table></div>\n\n<div class='card'>🧠 These constants are case-sensitive. Always write them in ALL CAPS as shown.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Mouse_buttons_real_and_labels.svg",
+      "audio": "https://audio-url-host/mouse-constants-table.mp3"
+    },
+    {
+      "title": "🎮 Game: Which Constant Is Correct?",
+      "content": "<div class='card'>Which constant would you use for a scroll wheel press?</div>\n\n<div class='card'>\nA. <code>MOUSE_SCROLL</code><br>\nB. <code>MOUSE_CENTER</code><br>\nC. <code>MOUSE_MIDDLE</code><br>\nD. <code>MOUSE_SCROLL_PRESS</code></div>\n\n<div class='card'><input id='mouseConstantGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! C. MOUSE_MIDDLE is for the middle click (scroll wheel press).\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Middle_Mouse_Button.svg",
+      "audio": "https://audio-url-host/mouse-constants-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Button Constant Tester",
+      "content": "<div class='card'>Build a program that clicks each button one at a time using these constants — then logs activity with an LED or Serial print.</div>\n\n<div class='card'><pre>\nMouse.click(MOUSE_LEFT);   // LED1\nMouse.click(MOUSE_RIGHT);  // LED2\nMouse.click(MOUSE_MIDDLE); // LED3\n</pre></div>\n\n<div class='card'>Great for beginners to learn which button each constant controls 🔍</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Final Lesson: USB Warnings!</button>",
+      "image": "https://cdn.sparkfun.com/assets/d/0/e/2/Arduino_Mouse_Test_Constants.jpg",
+      "audio": "https://audio-url-host/mouse-constants-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "⚠️ USB HID Warnings, Upload Tips & Best Practices",
+  "lessons": [
+    {
+      "title": "⚠️ Caution: Mouse Library Can Hijack Your Computer!",
+      "content": "<div class='card'>Alright scientist — before we build full-blown mouse bots, a serious warning:</div>\n\n<div class='card'><b>Once uploaded, the Mouse sketch runs IMMEDIATELY</b> and can move your cursor, click things, or even prevent you from using your computer.</div>\n\n<div class='card'>🧠 The Arduino becomes a <b>USB Human Interface Device (HID)</b>. It pretends to be a real mouse — which can go wild if the code has bugs!</div>\n\n<div class='card'>📌 Example of a risky sketch:</div>\n<pre>\nMouse.move(10000, 0); // Yikes — cursor flies off the screen\nMouse.click();        // Might randomly click somewhere dangerous\n</pre>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>So What Can You Do?</button>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/23/HID_warning_mouse.svg",
+      "audio": "https://audio-url-host/mouse-hid-warning.mp3"
+    },
+    {
+      "title": "🧯 Safe Upload Tips",
+      "content": "<div class='card'>Use these best practices to avoid getting locked out of your PC:</div>\n\n<div class='card'>✅ <b>Unplug Arduino immediately</b> if it misbehaves after upload.<br>✅ Use a button (e.g. a physical switch) in <code>loop()</code> to enable mouse control only when pressed.<br>✅ Add a long <code>delay()</code> at the beginning of <code>setup()</code> to give you time to cancel USB activity if needed.</div>\n\n<div class='card'>✅ Example: Delay for 5 seconds before mouse starts</div>\n<pre>\nvoid setup() {\n  delay(5000); // Time to cancel USB before chaos\n  Mouse.begin();\n  Mouse.move(100, 0);\n}</pre>\n\n<div class='card'>🎯 Bonus: Connect a button to a digital pin, and only move the mouse if it’s pressed. That gives you full manual control.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Arduino_USB_safe_sketch_tips.svg",
+      "audio": "https://audio-url-host/mouse-safety-tips.mp3"
+    },
+    {
+      "title": "🎮 Game: What’s the Safest Setup?",
+      "content": "<div class='card'>Which of the following helps make your Mouse sketch safer?</div>\n\n<div class='card'>\nA. Mouse.move() in loop with no delay<br>\nB. Add 5 second delay in setup()<br>\nC. Disable Mouse library<br>\nD. Upload from a locked PC</div>\n\n<div class='card'><input id='mouseSafetyGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! B. A 5-second delay gives you time to disconnect if something goes wrong.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Safety-upload-methods.svg",
+      "audio": "https://audio-url-host/mouse-safety-game.mp3"
+    },
+    {
+      "title": "💡 Pro Tip: Recovery Mode If Things Go Wrong",
+      "content": "<div class='card'>If you get locked out of your PC due to a wild sketch:</div>\n\n<div class='card'>1️⃣ Unplug the Arduino<br>2️⃣ Hold RESET button on Arduino<br>3️⃣ While holding RESET, click upload on Arduino IDE<br>4️⃣ As soon as uploading begins, release RESET</div>\n\n<div class='card'>This resets the board and uploads a blank or fixed sketch before the old one runs 💾</div>\n\n<div class='card'>🎯 Keep a minimal sketch ready on your IDE (like <code>void setup(){}</code>) for rescue uploads.</div>\n\n<div class='card'>And that’s it! You’re now fully trained to use the Mouse library like a pro 👨‍💻🖱️</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/f/e/f/Arduino_Recovery_Reset.png",
+      "audio": "https://audio-url-host/mouse-recovery-method.mp3"
+    }
+  ]
+}
+
+  ]
+}
+
   ]
 };
