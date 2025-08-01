@@ -9880,6 +9880,884 @@ void loop() {
 }
 
   ]
+},{
+  title:"WiFi with Arduino: Powering Wireless Projects",
+  modules:[
+    {
+  "title": "Welcome to WiFi: What Is It, and Why Use It?",
+  "lessons": [
+    {
+      "title": "📡 What Is WiFi, Really?",
+      "content": "<div class='card'>Alright scientist — welcome to the wireless revolution! 🔥</div>\n\n<div class='card'>WiFi (Wireless Fidelity) is a technology that allows devices to connect to the internet or each other **without wires** using radio waves. It's what powers your smart lights, phones, and now... your Arduino 🤖</div>\n\n<div class='card'>By adding WiFi to Arduino, you can:\n<ul>\n<li>📲 Control LEDs or motors from your phone</li>\n<li>📡 Send sensor data to cloud apps</li>\n<li>🧠 Build smart home projects</li>\n<li>🌐 Host a mini website from your Arduino board</li>\n</ul></div>\n\n<div class='card'>Pretty cool, huh? Let’s break down the parts you need next...</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4e/WiFi_symbol_3.svg",
+      "audio": "https://audio-url-host/wifi-intro.mp3"
+    },
+    {
+      "title": "🧰 Boards That Support WiFi",
+      "content": "<div class='card'>Not all Arduinos are WiFi-ready — but many can be!</div>\n\n<div class='card'><b>Boards with Built-in WiFi:</b>\n<ul>\n<li>🧠 ESP32 (🔥 Recommended)</li>\n<li>🌐 ESP8266 (NodeMCU, Wemos D1 Mini)</li>\n<li>📡 Arduino MKR WiFi 1010</li>\n<li>🔌 Arduino Uno R4 WiFi</li>\n</ul></div>\n\n<div class='card'><b>Boards that need a WiFi shield or module:</b>\n<ul>\n<li>Arduino UNO + ESP8266 module</li>\n<li>Arduino Mega + ESP-01 breakout</li>\n</ul></div>\n\n<div class='card'>We'll mostly focus on ESP32 in this course, but you can adapt it for ESP8266 too.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/ESP32_DevKitC_V4_top.jpg/640px-ESP32_DevKitC_V4_top.jpg",
+      "audio": "https://audio-url-host/wifi-boards.mp3"
+    },
+    {
+      "title": "🎮 Game: Is It WiFi-Ready?",
+      "content": "<div class='card'>Which of the following boards has built-in WiFi support?</div>\n\n<div class='card'>\nA. Arduino Nano<br>\nB. ESP32<br>\nC. Arduino Uno (original)<br>\nD. ATmega328P</div>\n\n<div class='card'><input id='wifiQuiz1' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! ESP32 has WiFi built-in.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/fe/WiFi-enabled-boards.svg",
+      "audio": "https://audio-url-host/wifi-game.mp3"
+    },
+    {
+      "title": "💡 Project Ideas: The Power of WiFi",
+      "content": "<div class='card'>Need some inspiration? Here’s what you’ll soon be able to build:</div>\n\n<div class='card'>\n🕹️ Control an LED strip from your phone<br>\n🌡️ Send temperature data to a web app<br>\n📱 Build a smart switch that works from anywhere<br>\n📊 Graph sensor data online live in real time</div>\n\n<div class='card'>You'll start small — connecting to your WiFi network — and then scale up to awesome full-scale projects 🚀</div>\n\n<button class='gaming-btn' onclick='revealNextCard(this)'>Ready to set up your board?</button>",
+      "image": "https://cdn.sparkfun.com/assets/5/5/1/f/WiFi-projects.png",
+      "audio": "https://audio-url-host/wifi-projects.mp3"
+    }
+  ]
+}
+,{
+  "title": "Setting Up Your ESP32 Board for WiFi Power",
+  "lessons": [
+    {
+      "title": "⚙️ What Is ESP32?",
+      "content": "<div class='card'>ESP32 is a supercharged microcontroller with **WiFi, Bluetooth, tons of GPIO pins, sensors**, and serious speed 🧠⚡</div>\n\n<div class='card'>Why do we use it?\n<ul>\n<li>✅ Built-in WiFi (no extra hardware)</li>\n<li>✅ Low cost (~₹250 or $3)</li>\n<li>✅ Fast and powerful (dual-core)</li>\n<li>✅ Works with Arduino IDE!</li>\n</ul></div>\n\n<div class='card'>You’ll use it to build **smart lights, IoT sensors, remote-controlled robots, web dashboards**, and more 🔥</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/ESP32_DevKitC_V4_top.jpg/640px-ESP32_DevKitC_V4_top.jpg",
+      "audio": "https://audio-url-host/esp32-intro.mp3"
+    },
+    {
+      "title": "🧩 Install ESP32 Support in Arduino IDE",
+      "content": "<div class='card'>Before you can upload code to ESP32, your Arduino IDE needs to know what it is.</div>\n\n<div class='card'>Follow these steps:</div>\n\n<div class='card'><b>1. Open Preferences (Ctrl+Comma)</b><br>Add this link in 'Additional Boards Manager URLs':<br>\n<code>https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json</code></div>\n\n<div class='card'><b>2. Open Boards Manager</b> and search <code>esp32</code>. Click 'Install' on the official ESP32 by Espressif package.</div>\n\n<div class='card'><b>3. Plug in your ESP32</b> via USB — select the correct port from Tools > Port</div>",
+      "image": "https://cdn.learn.sparkfun.com/assets/5/3/6/e/Installing_ESP32_in_Arduino_IDE.png",
+      "audio": "https://audio-url-host/esp32-setup.mp3"
+    },
+    {
+      "title": "🧪 Your First Sketch: Blink LED on ESP32",
+      "content": "<div class='card'>Let’s test if everything’s working by blinking the built-in LED on your ESP32 board (often GPIO 2).</div>\n\n<div class='card'><pre>\nvoid setup() {\n  pinMode(2, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(2, HIGH);\n  delay(500);\n  digitalWrite(2, LOW);\n  delay(500);\n}</pre></div>\n\n<div class='card'>✅ Select Board: <b>ESP32 Dev Module</b><br>✅ Select correct COM Port<br>✅ Click Upload</div>\n\n<div class='card'>If the LED blinks — you’re good to go! ✅</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e1/ESP32_onboard_LED_pin2.png",
+      "audio": "https://audio-url-host/esp32-blink.mp3"
+    },
+    {
+      "title": "🎮 Game: ESP32 Setup Quiz",
+      "content": "<div class='card'>What must you paste in 'Additional Board URLs' for ESP32?</div>\n\n<div class='card'>\nA. https://arduino.cc/package_esp.json<br>\nB. https://esp32.com/setup.html<br>\nC. https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json<br>\nD. https://install-esp.com/package.json</div>\n\n<div class='card'><input id='esp32Quiz1' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! C is the official board package URL.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/c/8/8/f/ESP32_setup_quiz.png",
+      "audio": "https://audio-url-host/esp32-quiz.mp3"
+    }
+  ]
+}
+,{
+  "title": "Connecting to WiFi: Your Arduino Joins the Network",
+  "lessons": [
+    {
+      "title": "📡 Say Hello to Your Network!",
+      "content": "<div class='card'>Alright scientist — let’s make your Arduino go online! 🌐</div>\n\n<div class='card'>To connect your ESP32 (or ESP8266) to WiFi, use the magical line:</div>\n<pre>WiFi.begin(ssid, password);</pre>\n\n<div class='card'>This command tells the chip to start connecting to your home router. Here’s how it looks in full:</div>\n<pre>\nconst char* ssid = \"MyNetwork\";\nconst char* password = \"MyPassword\";\n\nWiFi.begin(ssid, password);\n</pre>\n\n<div class='card'>The ESP32 will then try to connect using the provided network name and password. Easy, right? But there’s more you should know...</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/WiFi_symbol.svg/512px-WiFi_symbol.svg.png",
+      "audio": "https://audio-url-host/wifi-begin-intro.mp3"
+    },
+    {
+      "title": "⏳ How to Know You’re Connected?",
+      "content": "<div class='card'>After calling <code>WiFi.begin()</code>, we need to **wait until the board connects**.</div>\n\n<div class='card'>Use a loop to keep checking the connection status:</div>\n<pre>\nwhile (WiFi.status() != WL_CONNECTED) {\n  delay(500);\n  Serial.print(\".\");\n}</pre>\n\n<div class='card'>This keeps checking every 500ms until <code>WiFi.status()</code> returns <code>WL_CONNECTED</code>.</div>\n\n<div class='card'>Once connected, we can print the IP address:</div>\n<pre>Serial.println(WiFi.localIP());</pre>\n\n<div class='card'>🎯 This shows the IP address assigned by your router — the address you’ll use to access your Arduino if it’s hosting a server.</div>",
+      "image": "https://cdn.sparkfun.com/assets/2/b/e/0/Connecting_to_WiFi_loop.svg",
+      "audio": "https://audio-url-host/wifi-status-localip.mp3"
+    },
+    {
+      "title": "🧪 Full Example: Connect and Report",
+      "content": "<div class='card'>Here’s a full sketch that connects to WiFi and prints the local IP once connected:</div>\n<pre>\n#include <WiFi.h>\n\nconst char* ssid = \"YOUR_SSID\";\nconst char* password = \"YOUR_PASSWORD\";\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(ssid, password);\n\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(\".\");\n  }\n\n  Serial.println(\"\");\n  Serial.println(\"WiFi connected!\");\n  Serial.println(\"IP address: \");\n  Serial.println(WiFi.localIP());\n}\n\nvoid loop() {}\n</pre>\n\n<div class='card'>🔥 Tip: Make sure to open Serial Monitor at 115200 baud to see the logs.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/WiFi_connect_code_IP.svg",
+      "audio": "https://audio-url-host/wifi-connect-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Know Your Functions!",
+      "content": "<div class='card'>Which function gives you the IP address after connecting to WiFi?</div>\n\n<div class='card'>\nA. <code>WiFi.beginIP()</code><br>\nB. <code>WiFi.getStatus()</code><br>\nC. <code>WiFi.localIP()</code><br>\nD. <code>Serial.ip()</code></div>\n\n<div class='card'><input id='wifiFunctionQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! C. WiFi.localIP() returns the local IP assigned to your Arduino.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/59/IP-Address-Router-ESP32.svg",
+      "audio": "https://audio-url-host/wifi-function-game.mp3"
+    },
+    {
+      "title": "💡 Real Project Idea: WiFi Status LED",
+      "content": "<div class='card'>Build a project that uses an LED to show WiFi connection status!</div>\n\n<div class='card'>🔴 LED ON = Not Connected<br>🟢 LED OFF = Connected</div>\n\n<div class='card'><pre>\n#define STATUS_LED 2\n\nvoid setup() {\n  pinMode(STATUS_LED, OUTPUT);\n  WiFi.begin(ssid, password);\n  while (WiFi.status() != WL_CONNECTED) {\n    digitalWrite(STATUS_LED, HIGH);\n    delay(200);\n    digitalWrite(STATUS_LED, LOW);\n    delay(200);\n  }\n  digitalWrite(STATUS_LED, LOW);\n}\n</pre></div>\n\n<div class='card'>A great way to give visual feedback during startup or troubleshooting 🔧</div>",
+      "image": "https://cdn.sparkfun.com/assets/3/6/a/2/WiFi_status_LED_project.svg",
+      "audio": "https://audio-url-host/wifi-led-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Hosting a Web Page on Arduino: Your Personal Web Server",
+  "lessons": [
+    {
+      "title": "🌐 What’s a Web Server on Arduino?",
+      "content": "<div class='card'>Imagine this: you type an IP address in your browser, and your Arduino replies with a full web page 🤯</div>\n\n<div class='card'>That’s a web server! It listens for HTTP requests (like “GET /”), and sends back HTML. With <code>WiFiServer</code>, your ESP32 becomes a tiny server 📡</div>\n\n<div class='card'>Why is this cool?\n<ul>\n<li>⚙️ Control devices from your phone</li>\n<li>🧠 Build dashboards for sensor data</li>\n<li>🔒 Host local web tools without internet</li>\n</ul></div>",
+      "image": "https://cdn.sparkfun.com/assets/2/8/3/4/ESP32_webserver_diagram.svg",
+      "audio": "https://audio-url-host/arduino-webserver-intro.mp3"
+    },
+    {
+      "title": "🧱 Basic Web Server Code (ESP32)",
+      "content": "<div class='card'>Let’s start with a minimal server sketch — this serves a single web page on your local network.</div>\n\n<pre>\n#include <WiFi.h>\nWiFiServer server(80);\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"YOUR_SSID\", \"YOUR_PASS\");\n  while (WiFi.status() != WL_CONNECTED) delay(1000);\n\n  Serial.println(WiFi.localIP());\n  server.begin();\n}\n\nvoid loop() {\n  WiFiClient client = server.available();\n  if (client) {\n    while (client.connected()) {\n      if (client.available()) {\n        client.readStringUntil('\\r');\n        client.println(\"HTTP/1.1 200 OK\");\n        client.println(\"Content-Type: text/html\");\n        client.println();\n        client.println(\"<h1>Hello from ESP32!</h1>\");\n        break;\n      }\n    }\n    client.stop();\n  }\n}\n</pre>\n\n<div class='card'>⚠️ Connect to the same WiFi network as your PC or phone to test this. Type the ESP32’s IP in a browser.</div>",
+      "image": "https://cdn.sparkfun.com/assets/0/c/7/0/Simple_ESP32_Webpage.svg",
+      "audio": "https://audio-url-host/arduino-webserver-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Web Server Logic Quiz",
+      "content": "<div class='card'>What port number does the ESP32 web server use in our example?</div>\n\n<div class='card'>\nA. 8080<br>\nB. 443<br>\nC. 80<br>\nD. 21</div>\n\n<div class='card'><input id='webServerQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Port 80 is the default for HTTP servers.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Port-Number-Quiz-Diagram.svg",
+      "audio": "https://audio-url-host/webserver-quiz.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Create a Web Dashboard",
+      "content": "<div class='card'>Let’s go further — serve a page that displays sensor data (like temperature or light) from your Arduino!</div>\n\n<div class='card'>Your ESP32 reads the sensor, and generates a live webpage with data. You can even add auto-refresh using JavaScript.</div>\n\n<pre>\nclient.println(\"<meta http-equiv='refresh' content='2'>\");\nclient.println(\"<h2>Temp: \" + String(tempValue) + \" °C</h2>\");\n</pre>\n\n<div class='card'>🔥 This is the beginning of full web-based IoT dashboards.</div>",
+      "image": "https://cdn.sparkfun.com/assets/5/5/d/7/ESP32_web_sensor_dashboard.svg",
+      "audio": "https://audio-url-host/web-dashboard-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Control Arduino Pins Over WiFi! (Turn Things On/Off From Your Phone)",
+  "lessons": [
+    {
+      "title": "🕹️ Turning a Pin ON/OFF From Your Browser",
+      "content": "<div class='card'>Your ESP32 is more than just a sensor — it’s a remote control powerhouse 🔌</div>\n\n<div class='card'>Using a browser (like Chrome on your phone), you can send commands to ESP32 to turn pins HIGH or LOW.</div>\n\n<div class='card'>To do that, we serve an HTML page with buttons. Each button triggers a different HTTP request like:\n<code>http://192.168.1.45/ON</code> or <code>/OFF</code></div>\n\n<div class='card'>Let’s see how that’s done...</div>",
+      "image": "https://cdn.sparkfun.com/assets/0/6/6/d/Web_LED_Control.svg",
+      "audio": "https://audio-url-host/wifi-pincontrol-intro.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Toggle LED via Web Page",
+      "content": "<div class='card'>This sketch sets up a web server and reads the URL requested by the browser. Based on the request, it turns the LED ON or OFF.</div>\n\n<pre>\n#include <WiFi.h>\nWiFiServer server(80);\n\n#define LED 2\n\nvoid setup() {\n  pinMode(LED, OUTPUT);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n  while (WiFi.status() != WL_CONNECTED) delay(500);\n  server.begin();\n}\n\nvoid loop() {\n  WiFiClient client = server.available();\n  if (client) {\n    String req = client.readStringUntil('\\r');\n    if (req.indexOf(\"/ON\") != -1) digitalWrite(LED, HIGH);\n    if (req.indexOf(\"/OFF\") != -1) digitalWrite(LED, LOW);\n\n    client.println(\"HTTP/1.1 200 OK\");\n    client.println(\"Content-Type: text/html\");\n    client.println();\n    client.println(\"<h1>Control LED</h1>\");\n    client.println(\"<a href='/ON'>Turn ON</a><br>\");\n    client.println(\"<a href='/OFF'>Turn OFF</a>\");\n    client.stop();\n  }\n}\n</pre>\n\n<div class='card'>Test this by typing your ESP32’s IP in a browser — and clicking the ON/OFF links 🔴🟢</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/38/Web_LED_toggle_ESP32.svg",
+      "audio": "https://audio-url-host/wifi-led-toggle.mp3"
+    },
+    {
+      "title": "🎮 Game: What Does `/ON` Do?",
+      "content": "<div class='card'>In the code above, what happens when a user visits <code>/ON</code> in their browser?</div>\n\n<div class='card'>\nA. Board resets<br>\nB. LED turns on<br>\nC. WiFi reconnects<br>\nD. Serial prints \"ON\"</div>\n\n<div class='card'><input id='pinToggleGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Visiting /ON turns the LED HIGH via digitalWrite().\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/f/3/3/e/ON_OFF_button_logic.svg",
+      "audio": "https://audio-url-host/wifi-toggle-game.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Make a Phone-Controlled Switch",
+      "content": "<div class='card'>This same idea can power real appliances!</div>\n\n<div class='card'>Connect a relay module instead of an LED, and you can control AC bulbs, fans, or water pumps using your phone 📱💡💧</div>\n\n<div class='card'><pre>\n#define RELAY_PIN 23\n// Replace LED logic with:\ndigitalWrite(RELAY_PIN, HIGH); // or LOW</pre></div>\n\n<div class='card'>Just be sure to handle high voltage devices with safety precautions!</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/8/5/b/ESP32_relay_control.svg",
+      "audio": "https://audio-url-host/wifi-relay-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Sending Data to the Cloud (GET & POST Requests)",
+  "lessons": [
+    {
+      "title": "🌐 Why Send Data Online?",
+      "content": "<div class='card'>Your Arduino isn’t just about blinking LEDs — it can report real-world data to the internet 📊</div>\n\n<div class='card'>Use this power to:\n<ul>\n<li>📈 Graph temperature or humidity on the cloud</li>\n<li>📦 Log motion detections from a security system</li>\n<li>🧠 Send live updates to your phone</li>\n</ul></div>\n\n<div class='card'>You’ll learn how to use the ESP32 as an HTTP <b>client</b> to send info to online platforms.</div>",
+      "image": "https://cdn.sparkfun.com/assets/8/7/b/4/Arduino_to_Cloud_Data_Flow.svg",
+      "audio": "https://audio-url-host/wifi-senddata-intro.mp3"
+    },
+    {
+      "title": "📤 How to Use HTTP GET in Arduino",
+      "content": "<div class='card'>Let’s say you want to send a sensor value like this:</div>\n<pre>http://api.myserver.com/update?sensor=29</pre>\n\n<div class='card'>Here’s how it looks in Arduino using the <code>HTTPClient</code> library:</div>\n<pre>\n#include <WiFi.h>\n#include <HTTPClient.h>\n\nvoid loop() {\n  if (WiFi.status() == WL_CONNECTED) {\n    HTTPClient http;\n    http.begin(\"http://api.yourserver.com/update?sensor=29\");\n    int httpCode = http.GET();\n    String response = http.getString();\n    http.end();\n  }\n  delay(60000);\n}</pre>\n\n<div class='card'>This is perfect for things like weather data, logging switches, or detecting motion 🚨</div>",
+      "image": "https://cdn.sparkfun.com/assets/2/e/1/0/ESP32_GET_example.svg",
+      "audio": "https://audio-url-host/http-get-lesson.mp3"
+    },
+    {
+      "title": "🧪 How to Use HTTP POST to Send JSON",
+      "content": "<div class='card'>Sometimes, platforms require structured data (like JSON). That’s when you use HTTP POST 🔐</div>\n\n<pre>\n#include <HTTPClient.h>\n\nvoid loop() {\n  if (WiFi.status() == WL_CONNECTED) {\n    HTTPClient http;\n    http.begin(\"https://api.site.com/input\");\n    http.addHeader(\"Content-Type\", \"application/json\");\n\n    int httpCode = http.POST(\"{\\\"temp\\\":28, \\\"humidity\\\":80}\");\n    String response = http.getString();\n    http.end();\n  }\n  delay(60000);\n}</pre>\n\n<div class='card'>You can now post data to services like <b>ThingSpeak</b>, <b>IFTTT</b>, <b>Firebase</b>, or <b>Google Sheets</b>.</div>",
+      "image": "https://cdn.sparkfun.com/assets/4/4/7/0/ESP32_POST_to_server.svg",
+      "audio": "https://audio-url-host/http-post-lesson.mp3"
+    },
+    {
+      "title": "🎮 Game: GET or POST?",
+      "content": "<div class='card'>You want to send a temperature reading to a cloud server. Which method is better if the API needs JSON format?</div>\n\n<div class='card'>\nA. HTTP GET<br>\nB. HTTP POST<br>\nC. HTTP HEAD<br>\nD. HTTP PING</div>\n\n<div class='card'><input id='cloudMethodQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! POST is used when sending structured data like JSON.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/33/HTTP_methods_quiz_icon.svg",
+      "audio": "https://audio-url-host/http-game-post.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Log Sensor Data to Google Sheets",
+      "content": "<div class='card'>You can create a Google Apps Script Web App that accepts POST requests and logs them into a Sheet 🔥</div>\n\n<div class='card'>Then send data from ESP32 to that script — turning your Google Sheet into an online IoT dashboard 📈</div>\n\n<div class='card'>We’ll build this step-by-step in a future module!</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/6/1/c/Google_Sheets_Arduino_log.svg",
+      "audio": "https://audio-url-host/google-sheet-idea.mp3"
+    }
+  ]
+}
+,{
+  "title": "Receive Commands from a Web App (Arduino as a Web Client)",
+  "lessons": [
+    {
+      "title": "📥 ESP32 Fetches a Command from the Internet",
+      "content": "<div class='card'>Imagine this: You update a value on a cloud dashboard or mobile app — and your ESP32 reads it and reacts 🤯</div>\n\n<div class='card'>This is called <b>polling</b> — your Arduino sends an HTTP GET request to a remote server, reads the response, and acts on the data.</div>\n\n<div class='card'>Example use cases:\n<ul>\n<li>💡 Web-based light switch</li>\n<li>🔒 Remote door unlock</li>\n<li>📦 Start/stop a process from a cloud button</li>\n</ul></div>",
+      "image": "https://cdn.sparkfun.com/assets/e/5/c/6/ESP32_polling_data_flow.svg",
+      "audio": "https://audio-url-host/web-command-intro.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Polling for a Command",
+      "content": "<div class='card'>Here’s a sketch that requests a simple command (like <code>\"ON\"</code> or <code>\"OFF\"</code>) from a server and turns an LED on or off accordingly:</div>\n\n<pre>\n#include <WiFi.h>\n#include <HTTPClient.h>\n\n#define LED 2\n\nvoid loop() {\n  if (WiFi.status() == WL_CONNECTED) {\n    HTTPClient http;\n    http.begin(\"http://yourserver.com/command.txt\");\n    int httpCode = http.GET();\n    if (httpCode == 200) {\n      String command = http.getString();\n      if (command == \"ON\") digitalWrite(LED, HIGH);\n      else if (command == \"OFF\") digitalWrite(LED, LOW);\n    }\n    http.end();\n  }\n  delay(10000); // check every 10 seconds\n}</pre>\n\n<div class='card'>You can update <code>command.txt</code> manually or from another app — your ESP32 becomes a smart follower 🧠</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Polling_LED_from_web.svg",
+      "audio": "https://audio-url-host/web-command-polling.mp3"
+    },
+    {
+      "title": "🎮 Game: What Happens If The Server Says \"ON\"?",
+      "content": "<div class='card'>In the code above, what happens if the ESP32 reads the word <b>ON</b> from the URL?</div>\n\n<div class='card'>\nA. The LED turns on<br>\nB. The board resets<br>\nC. Serial prints \"ON\"<br>\nD. Nothing happens</div>\n\n<div class='card'><input id='commandFetchQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! The LED pin is set HIGH when command == 'ON'.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/f/d/f/f/ON_command_quiz.svg",
+      "audio": "https://audio-url-host/web-command-quiz.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Remote Device Manager",
+      "content": "<div class='card'>Use Google Sheets, Firebase, or a simple text file online to update commands — and let ESP32 follow your orders 💂‍♂️</div>\n\n<div class='card'>For example:\n<ul>\n<li>🕹️ Turn on garden lights remotely</li>\n<li>🚨 Trigger alarms from your dashboard</li>\n<li>🧪 Set thresholds for sensors remotely</li>\n</ul></div>\n\n<div class='card'>This opens up a world of remote automation!</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/d/b/2/Arduino_cloud_control.svg",
+      "audio": "https://audio-url-host/web-command-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiManager & Captive Portal: Auto SSID Selector for ESP32",
+  "lessons": [
+    {
+      "title": "🌐 What Is WiFiManager & Why You’ll Love It",
+      "content": "<div class='card'>Usually, when you build a WiFi project, you do this:</div>\n<pre>\nWiFi.begin(\"MyWiFi\", \"MyPassword\");\n</pre>\n<div class='card'>But what if someone else wants to use your project on a different WiFi network?</div>\n\n<div class='card'>Enter: <b>WiFiManager</b> 🧠</div>\n<ul>\n<li>📡 It creates a temporary WiFi access point</li>\n<li>📱 You connect using your phone</li>\n<li>🌍 A portal appears asking for SSID + Password</li>\n<li>🚀 ESP32 saves the WiFi and connects automatically next time</li>\n</ul>\n\n<div class='card'>No more editing code. No re-uploading. It’s like Arduino magic 🪄</div>",
+      "image": "https://cdn.sparkfun.com/assets/3/d/6/f/WiFiManager_flow_diagram.svg",
+      "audio": "https://audio-url-host/wifimanager-intro.mp3"
+    },
+    {
+      "title": "⚙️ Installing and Using WiFiManager",
+      "content": "<div class='card'>Let’s install and use it in your sketch 🧩</div>\n\n<div class='card'><b>Step 1: Install Library</b><br>In Arduino IDE, go to Library Manager and search for <b>WiFiManager</b> by tzapu. Click Install.</div>\n\n<div class='card'><b>Step 2: Basic Sketch</b></div>\n<pre>\n#include <WiFiManager.h>\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFiManager wifiManager;\n  wifiManager.autoConnect(\"MyDeviceAP\");\n  Serial.println(\"Connected to WiFi!\");\n}\n\nvoid loop() {\n  // your code here\n}</pre>\n\n<div class='card'>Now when your ESP32 boots for the first time, it creates an AP named <code>MyDeviceAP</code>. Visit <code>192.168.4.1</code> to configure WiFi 🔐</div>",
+      "image": "https://cdn.sparkfun.com/assets/0/b/b/2/WiFiManager_AP_setup.svg",
+      "audio": "https://audio-url-host/wifimanager-setup.mp3"
+    },
+    {
+      "title": "📱 Captive Portal Experience (Like Hotel WiFi!)",
+      "content": "<div class='card'>The coolest thing? When you connect to the ESP32’s access point, your phone shows a <b>popup web page</b> 📲</div>\n\n<div class='card'>It’s the same tech used in hotels, airports, or coffee shops (captive portals).</div>\n\n<div class='card'>Your ESP32 becomes a smart WiFi gateway. Users just:\n<ol>\n<li>Connect to ESP32’s AP</li>\n<li>Enter WiFi details in the portal</li>\n<li>Reconnects automatically in future boots</li>\n</ol></div>\n\n<div class='card'>🧠 It even stores multiple networks and handles reconnects automatically. Total game-changer.</div>",
+      "image": "https://cdn.sparkfun.com/assets/5/5/1/e/WiFiManager_captive_portal_flow.svg",
+      "audio": "https://audio-url-host/wifimanager-portal.mp3"
+    },
+    {
+      "title": "🎮 Game: What Does WiFiManager Do?",
+      "content": "<div class='card'>Why would you use WiFiManager in an ESP32 project?</div>\n\n<div class='card'>\nA. To add voice recognition<br>\nB. To let users connect the device to WiFi via a browser<br>\nC. To flash code wirelessly<br>\nD. To access Bluetooth faster</div>\n\n<div class='card'><input id='wifiManagerGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! B: WiFiManager lets users input WiFi credentials through a captive portal.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/89/Captive_portal_Quiz_UI.svg",
+      "audio": "https://audio-url-host/wifimanager-quiz.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Plug-and-Play WiFi Gadgets",
+      "content": "<div class='card'>Use WiFiManager to build gadgets you can sell or share — no tech skills required to set them up 🔌</div>\n\n<div class='card'>Ideas:\n<ul>\n<li>💡 Smart Lamp with mobile setup</li>\n<li>📸 WiFi Camera setup via phone</li>\n<li>📊 IoT Sensor Box for anyone to install at home</li>\n</ul></div>\n\n<div class='card'>WiFiManager helps make your device feel like a polished consumer product 🎁</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/f/f/e/WiFiManager_gadget_idea_diagram.svg",
+      "audio": "https://audio-url-host/wifimanager-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "OTA (Over-The-Air) Updates: Reprogram Your Arduino via WiFi!",
+  "lessons": [
+    {
+      "title": "🚀 What is OTA, and Why Use It?",
+      "content": "<div class='card'>OTA (Over-The-Air) means flashing your Arduino sketch wirelessly over WiFi 🛰️</div>\n\n<div class='card'>No USB cables. No physical access needed. Just open the Arduino IDE, select your board on WiFi, and boom — new code!</div>\n\n<div class='card'>Imagine uploading updates to:\n<ul>\n<li>🏠 IoT devices mounted on a wall</li>\n<li>🛰️ Weather stations outdoors</li>\n<li>🧰 Hidden gadgets inside products</li>\n</ul></div>\n\n<div class='card'>OTA is how real-world, production-grade IoT is maintained. Let’s learn how to do it 💪</div>",
+      "image": "https://cdn.sparkfun.com/assets/6/2/f/2/OTA_upload_diagram.svg",
+      "audio": "https://audio-url-host/ota-intro.mp3"
+    },
+    {
+      "title": "⚙️ How to Set Up OTA on ESP32 (Arduino IDE)",
+      "content": "<div class='card'>First, include this library:</div>\n<pre>#include <ArduinoOTA.h></pre>\n\n<div class='card'><b>Setup OTA inside your sketch:</b></div>\n<pre>\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n  while (WiFi.status() != WL_CONNECTED) delay(500);\n\n  ArduinoOTA.begin();\n  Serial.println(\"OTA Ready\");\n}\n\nvoid loop() {\n  ArduinoOTA.handle();\n}\n</pre>\n\n<div class='card'>That’s it! Now upload this sketch over USB once. From now on, you can send future sketches over WiFi 🚀</div>",
+      "image": "https://cdn.sparkfun.com/assets/8/9/6/6/ESP32_OTA_code_setup.svg",
+      "audio": "https://audio-url-host/ota-setup.mp3"
+    },
+    {
+      "title": "🖥️ Uploading Code Wirelessly from Arduino IDE",
+      "content": "<div class='card'>Once OTA is initialized and your board is connected to WiFi:</div>\n\n<div class='card'>1. 🔄 Restart your Arduino IDE if needed<br>2. 🧭 Go to <b>Tools → Port</b><br>3. Select the <b>network port</b> for your ESP32 (e.g., <code>ESP32 at 192.168.1.55</code>)<br>4. ✅ Upload sketch normally — it goes over WiFi!</div>\n\n<div class='card'>It’s super fast and doesn’t need physical access again.</div>\n\n<div class='card'>⚠️ Make sure your PC and board are on the same WiFi.</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/4/6/f/Arduino_OTA_upload_UI.svg",
+      "audio": "https://audio-url-host/ota-upload-guide.mp3"
+    },
+    {
+      "title": "🎮 Game: OTA Workflow Challenge",
+      "content": "<div class='card'>What do you need to do <b>before</b> OTA uploads will work?</div>\n\n<div class='card'>\nA. Add a relay\n<br>B. Upload one sketch with <code>ArduinoOTA.begin()</code> via USB\n<br>C. Install OTA App\n<br>D. Format board</div>\n\n<div class='card'><input id='otaGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! B. The first sketch must be uploaded via USB with OTA initialized.\")'>Submit</button></div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f7/OTA_flow_quiz.svg",
+      "audio": "https://audio-url-host/ota-quiz.mp3"
+    },
+    {
+      "title": "💡 Project Idea: Deploy OTA to Multiple Devices",
+      "content": "<div class='card'>Got multiple ESP32s in a smart home or project? Use OTA to deploy the same sketch to all without reconnecting cables 🔌</div>\n\n<div class='card'>Ideas:\n<ul>\n<li>📡 Push updates to 5 devices at once</li>\n<li>🔄 Automate daily firmware refresh</li>\n<li>📲 Update even in hard-to-reach areas</li>\n</ul></div>\n\n<div class='card'>🎯 Tip: Combine OTA with <b>WiFiManager</b> for the ultimate remote experience.</div>",
+      "image": "https://cdn.sparkfun.com/assets/9/5/e/f/Multi_device_OTA_update.svg",
+      "audio": "https://audio-url-host/ota-multidevice.mp3"
+    }
+  ]
+}
+,{
+  "title": "Final Project: Build a WiFi Smart Home Controller",
+  "lessons": [
+    {
+      "title": "🏠 What You’ll Build",
+      "content": "<div class='card'>You’re about to build your own <b>WiFi-powered Smart Home Dashboard</b> using ESP32!</div>\n\n<div class='card'>Features include:\n<ul>\n<li>🟢 Toggle lights and fans from a web dashboard</li>\n<li>🌡️ Monitor temperature and humidity in real-time</li>\n<li>🔁 Update firmware wirelessly with OTA</li>\n<li>📱 Control from phone, laptop, or tablet</li>\n</ul></div>\n\n<div class='card'>This project ties together everything you’ve learned in the WiFi section — and it’s just the beginning of your smart home empire 🧠💡</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/1/2/3/SmartHome_ESP32_Flow.svg",
+      "audio": "https://audio-url-host/smarthome-intro.mp3"
+    },
+    {
+      "title": "🔧 Hardware & Circuit Setup",
+      "content": "<div class='card'>You’ll need the following components:</div>\n<ul>\n<li>✅ ESP32 Dev Board</li>\n<li>✅ DHT11 or DHT22 sensor</li>\n<li>✅ Relay module (for controlling AC appliances)</li>\n<li>✅ LED for testing output</li>\n<li>✅ Jumper wires + breadboard</li>\n</ul>\n\n<div class='card'><b>Basic Connections:</b></div>\n<ul>\n<li>DHT11 → GPIO 14</li>\n<li>Relay → GPIO 23</li>\n<li>LED → GPIO 2</li>\n</ul>\n\n<div class='card'>Now let’s start building the web interface...</div>",
+      "image": "https://cdn.sparkfun.com/assets/1/2/3/a/ESP32_HomeControl_Wiring.svg",
+      "audio": "https://audio-url-host/smarthome-hardware.mp3"
+    },
+    {
+      "title": "🧠 Code: Web Dashboard + Sensor Data + Control",
+      "content": "<div class='card'>Here’s a snippet of what your ESP32 will serve as a web page:</div>\n<pre>\nclient.println(\"<h1>Smart Home Control</h1>\");\nclient.println(\"<p>Temp: \" + String(temp) + \" °C</p>\");\nclient.println(\"<a href='/LEDON'>LED ON</a><br>\");\nclient.println(\"<a href='/LEDOFF'>LED OFF</a><br>\");\nclient.println(\"<a href='/RELAYON'>Relay ON</a><br>\");\nclient.println(\"<a href='/RELAYOFF'>Relay OFF</a>\");\n</pre>\n\n<div class='card'>On the backend, use the same HTTP server logic to read the URL and act on it:</div>\n<pre>\nif (request.indexOf(\"LEDON\") != -1) digitalWrite(2, HIGH);\nif (request.indexOf(\"LEDOFF\") != -1) digitalWrite(2, LOW);\nif (request.indexOf(\"RELAYON\") != -1) digitalWrite(23, HIGH);\n</pre>\n\n<div class='card'>Add <code>DHT.readTemperature()</code> to update the page dynamically 🧪</div>",
+      "image": "https://cdn.sparkfun.com/assets/4/5/2/e/ESP32_SmartDashboard.svg",
+      "audio": "https://audio-url-host/smarthome-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Smart Home Debug Challenge",
+      "content": "<div class='card'>Your LED isn’t responding when you visit <code>/LEDON</code>. What could be wrong?</div>\n\n<div class='card'>\nA. WiFi is disconnected<br>\nB. Wrong GPIO pin<br>\nC. Missing <code>digitalWrite()</code><br>\nD. All of the above</div>\n\n<div class='card'><input id='smartHomeQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! All of the above can cause the LED to not respond.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/5/5/5/a/SmartHome_Troubleshoot_Quiz.svg",
+      "audio": "https://audio-url-host/smarthome-quiz.mp3"
+    },
+    {
+      "title": "💡 Final Tips & Expansion Ideas",
+      "content": "<div class='card'>You’ve built a full WiFi-powered smart home system 👏</div>\n\n<div class='card'>Here’s how to upgrade it further:\n<ul>\n<li>📊 Send data to Google Sheets or Firebase</li>\n<li>🔐 Add authentication to your dashboard</li>\n<li>🛜 Use WiFiManager for user setup</li>\n<li>📦 Deploy as a real product</li>\n</ul></div>\n\n<div class='card'>You’ve officially unlocked the world of connected electronics 🌍💻🛠️</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/6/f/f/SmartHome_Upgrade_Ideas.svg",
+      "audio": "https://audio-url-host/smarthome-wrapup.mp3"
+    }
+  ]
+}
+
+  ]
+},{
+  title:"WiFi Class Deep Dive: Mastering Every Function",
+  modules:[
+    {
+  "title": "WiFi.begin() — Connecting to a WiFi Network",
+  "lessons": [
+    {
+      "title": "🌐 What is WiFi.begin()?",
+      "content": "<div class='card'>The <code>WiFi.begin()</code> function is your Arduino’s way of asking: “Hey, can I join this WiFi network?”</div>\n\n<div class='card'>It’s the first command used to connect your ESP32 or other WiFi-compatible board to a local router 🌍</div>\n\n<div class='card'>When successful, your board becomes part of your home/office network, ready to send and receive data like a mini computer 💻</div>",
+      "image": "https://cdn.sparkfun.com/assets/3/0/4/f/WiFi_begin_intro_diagram.svg",
+      "audio": "https://audio-url-host/wifi-begin-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nWiFi.begin(ssid, password);</pre></div>\n\n<div class='card'><b>Parameters:</b>\n<ul>\n<li><code>ssid</code>: the name of your WiFi network (String)</li>\n<li><code>password</code>: the password for the network (String)</li>\n</ul></div>\n\n<div class='card'><b>Returns:</b> Nothing directly. But use <code>WiFi.status()</code> to check if connection was successful.</div>\n\n<div class='card'>It tries to connect asynchronously — so you must wait in a loop until the connection succeeds 🕓</div>",
+      "image": "https://cdn.sparkfun.com/assets/4/2/0/0/WiFi_begin_syntax_return.svg",
+      "audio": "https://audio-url-host/wifi-begin-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Connect to WiFi",
+      "content": "<div class='card'>This is the most basic and widely used setup for WiFi on ESP32:</div>\n\n<pre>\n#include <WiFi.h>\n\nconst char* ssid = \"YourWiFi\";\nconst char* password = \"YourPass\";\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(ssid, password);\n\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(\".\");\n  }\n\n  Serial.println(\"\");\n  Serial.println(\"Connected to WiFi!\");\n  Serial.println(WiFi.localIP());\n}\n\nvoid loop() {}\n</pre>\n\n<div class='card'>Once connected, your board gets a local IP like <code>192.168.1.37</code> and can begin internet communication 🌐</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/d/4/f/WiFi_begin_code_flow.svg",
+      "audio": "https://audio-url-host/wifi-begin-code.mp3"
+    },
+    {
+      "title": "🎮 Game: What Happens If WiFi.begin() Fails?",
+      "content": "<div class='card'>What will the ESP32 do if <code>WiFi.begin()</code> doesn’t succeed immediately?</div>\n\n<div class='card'>\nA. Board resets<br>\nB. It automatically connects to mobile data<br>\nC. It returns true<br>\nD. It keeps trying, and you must check <code>WiFi.status()</code></div>\n\n<div class='card'><input id='beginGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! You must check WiFi.status() in a loop until it's WL_CONNECTED.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/1/a/5/c/WiFi_begin_error_handling_quiz.svg",
+      "audio": "https://audio-url-host/wifi-begin-quiz.mp3"
+    },
+    {
+      "title": "💡 Real-World Tip: Make It Retry Smartly",
+      "content": "<div class='card'>You can make your <code>WiFi.begin()</code> loop smarter using a timeout or retries like this:</div>\n<pre>\nint attempts = 0;\nwhile (WiFi.status() != WL_CONNECTED && attempts < 10) {\n  delay(500);\n  Serial.print(\".\");\n  attempts++;\n}\n</pre>\n\n<div class='card'>💡 If it still fails, you can blink an LED, restart the board, or enter fallback mode like WiFiManager 🌐</div>\n\n<div class='card'>Smart connection handling is the secret to pro-level projects 💪</div>",
+      "image": "https://cdn.sparkfun.com/assets/0/e/1/3/WiFi_begin_retry_logic.svg",
+      "audio": "https://audio-url-host/wifi-begin-retry.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.disconnect() — Drop the Network & Reset Credentials",
+  "lessons": [
+    {
+      "title": "🔌 Why Disconnect from WiFi?",
+      "content": "<div class='card'>You may think, \"Why would I want to disconnect WiFi manually?\" Here’s when it's helpful:</div>\n<ul>\n<li>🔁 Resetting WiFi without rebooting</li>\n<li>🔐 Switching SSIDs or credentials</li>\n<li>🔕 Going offline to save power</li>\n<li>🧹 Cleaning saved networks from flash</li>\n</ul>\n\n<div class='card'>This is exactly what <code>WiFi.disconnect()</code> is for. It’s like unplugging your Arduino from the router 🧠</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/3/9/1/WiFi_disconnect_explained.svg",
+      "audio": "https://audio-url-host/wifi-disconnect-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Returns",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nWiFi.disconnect(wifiErase);\n</pre></div>\n\n<div class='card'><b>Parameter:</b>\n<ul>\n<li><code>wifiErase</code> (optional): <code>true</code> clears saved credentials from flash, <code>false</code> just disconnects</li>\n</ul></div>\n\n<div class='card'><b>Returns:</b> Nothing (void)</div>\n\n<div class='card'>So you can either temporarily drop WiFi or permanently forget a network 📴</div>",
+      "image": "https://cdn.sparkfun.com/assets/1/f/e/8/WiFi_disconnect_syntax.svg",
+      "audio": "https://audio-url-host/wifi-disconnect-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Disconnect and Reconnect",
+      "content": "<div class='card'>Let’s say you want to reset WiFi mid-project. Here’s how you do it:</div>\n\n<pre>\n#include <WiFi.h>\n\nvoid resetWiFi() {\n  Serial.println(\"Disconnecting...\");\n  WiFi.disconnect(true); // true = erase credentials\n  delay(1000);\n\n  Serial.println(\"Reconnecting...\");\n  WiFi.begin(\"NewSSID\", \"NewPassword\");\n}\n</pre>\n\n<div class='card'>Now your ESP32 drops the current network, erases the memory, and reconnects to a fresh one 🧼</div>",
+      "image": "https://cdn.sparkfun.com/assets/d/6/e/3/WiFi_disconnect_code.svg",
+      "audio": "https://audio-url-host/wifi-disconnect-code.mp3"
+    },
+    {
+      "title": "🎮 Game: What Happens with WiFi.disconnect(true)?",
+      "content": "<div class='card'>You call <code>WiFi.disconnect(true)</code>. What does the <code>true</code> do?</div>\n\n<div class='card'>\nA. Deletes WiFiManager<br>\nB. Erases saved WiFi credentials<br>\nC. Shuts down all power<br>\nD. Switches to Bluetooth</div>\n\n<div class='card'><input id='disconnectQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! True clears stored SSID and password from flash.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/9/0/f/4/WiFi_disconnect_quiz.svg",
+      "audio": "https://audio-url-host/wifi-disconnect-quiz.mp3"
+    },
+    {
+      "title": "💡 Real-World Uses: Dynamic Network Switching",
+      "content": "<div class='card'>With <code>WiFi.disconnect()</code>, you can:</div>\n<ul>\n<li>🧠 Switch between WiFi networks based on signal strength</li>\n<li>🔐 Let users reset networks via button press</li>\n<li>🛠️ Add a failover WiFi mechanism</li>\n<li>🕵️‍♂️ Create a self-resetting captive portal</li>\n</ul>\n\n<div class='card'>💡 Combine with <code>WiFi.scanNetworks()</code> to dynamically choose the best available WiFi around!</div>",
+      "image": "https://cdn.sparkfun.com/assets/6/b/0/5/WiFi_dynamic_switching_idea.svg",
+      "audio": "https://audio-url-host/wifi-disconnect-usecases.mp3"
+    }
+  ]
+},{
+  "title": "WiFi.config() — Set a Static IP, Gateway, and DNS",
+  "lessons": [
+    {
+      "title": "📡 Why Use a Static IP?",
+      "content": "<div class='card'>By default, when your Arduino connects using <code>WiFi.begin()</code>, it gets an IP address automatically using DHCP.</div>\n\n<div class='card'>But in some cases, this isn’t ideal:</div>\n<ul>\n<li>🛠️ Your router changes IP every reboot</li>\n<li>📱 Your mobile app expects a fixed IP</li>\n<li>💻 Your Arduino acts as a server</li>\n</ul>\n\n<div class='card'>That’s where <code>WiFi.config()</code> steps in — to set a static IP, gateway, and DNS manually ⚙️</div>",
+      "image": "https://cdn.sparkfun.com/assets/0/e/f/f/WiFi_config_intro_diagram.svg",
+      "audio": "https://audio-url-host/wifi-config-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nWiFi.config(local_ip, gateway, subnet, dns1, dns2);\n</pre></div>\n\n<div class='card'><b>Parameters:</b>\n<ul>\n<li><code>local_ip</code>: desired IP address (e.g., <code>192.168.1.50</code>)</li>\n<li><code>gateway</code>: usually your router (e.g., <code>192.168.1.1</code>)</li>\n<li><code>subnet</code>: often <code>255.255.255.0</code></li>\n<li><code>dns1</code>, <code>dns2</code>: optional DNS servers</li>\n</ul></div>\n\n<div class='card'><b>Returns:</b> <code>true</code> if successful, <code>false</code> otherwise</div>",
+      "image": "https://cdn.sparkfun.com/assets/2/c/a/6/WiFi_config_syntax.svg",
+      "audio": "https://audio-url-host/wifi-config-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Setup with Static IP",
+      "content": "<div class='card'>Here’s a sketch to set up ESP32 with a static IP:</div>\n<pre>\n#include <WiFi.h>\n\nIPAddress local_IP(192, 168, 1, 50);\nIPAddress gateway(192, 168, 1, 1);\nIPAddress subnet(255, 255, 255, 0);\nIPAddress dns(8, 8, 8, 8);\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.config(local_IP, gateway, subnet, dns);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(\".\");\n  }\n  Serial.println(WiFi.localIP());\n}\n</pre>\n\n<div class='card'>This guarantees your board always gets <code>192.168.1.50</code> — great for web servers 📶</div>",
+      "image": "https://cdn.sparkfun.com/assets/3/b/0/0/WiFi_config_static_ip_example.svg",
+      "audio": "https://audio-url-host/wifi-config-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Why Static IP Can Be Useful",
+      "content": "<div class='card'>Which of the following is a good reason to use <code>WiFi.config()</code>?</div>\n\n<div class='card'>\nA. To access Arduino as a web server at a fixed address<br>\nB. To switch to Bluetooth<br>\nC. To erase credentials<br>\nD. To scan nearby networks</div>\n\n<div class='card'><input id='wifiConfigGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! A static IP is essential when your board hosts a local server.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/6/6/a/0/WiFi_config_quiz_diagram.svg",
+      "audio": "https://audio-url-host/wifi-config-quiz.mp3"
+    },
+    {
+      "title": "💡 Tip: Use with OTA, Servers, or Remote Apps",
+      "content": "<div class='card'>If your Arduino runs:</div>\n<ul>\n<li>🌐 A web dashboard</li>\n<li>📡 An HTTP API for your mobile app</li>\n<li>🛰️ OTA update listener</li>\n</ul>\n\n<div class='card'>You should <b>always use static IP</b> with <code>WiFi.config()</code> to avoid IP conflicts and 404 errors 💪</div>\n\n<div class='card'>Pair this with <code>WiFi.begin()</code> + <code>WiFi.status()</code> to build rock-solid wireless systems.</div>",
+      "image": "https://cdn.sparkfun.com/assets/7/a/1/0/WiFi_static_ip_usecases.svg",
+      "audio": "https://audio-url-host/wifi-config-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.setDNS() — Set Custom DNS Servers Manually",
+  "lessons": [
+    {
+      "title": "🌐 What is DNS & Why Customize It?",
+      "content": "<div class='card'>DNS (Domain Name System) turns <code>example.com</code> into an IP like <code>93.184.216.34</code> — it’s the internet’s address book 📖</div>\n\n<div class='card'>By default, your router (DHCP) assigns a DNS to your ESP32. But sometimes you want to override that:</div>\n<ul>\n<li>🔐 Use Google DNS (8.8.8.8) or Cloudflare DNS (1.1.1.1)</li>\n<li>🌍 Use a private local DNS server</li>\n<li>🔒 Bypass parental filters or ISP blocks</li>\n<li>🧪 Debug name resolution issues</li>\n</ul>\n\n<div class='card'><b>That’s where <code>WiFi.setDNS()</code> comes in 🧠</b></div>",
+      "image": "https://cdn.sparkfun.com/assets/2/6/1/7/WiFi_setDNS_intro.svg",
+      "audio": "https://audio-url-host/wifi-setdns-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nWiFi.setDNS(dns1);\nWiFi.setDNS(dns1, dns2);\n</pre></div>\n\n<div class='card'><b>Parameters:</b>\n<ul>\n<li><code>dns1</code>: primary DNS server (IPAddress type)</li>\n<li><code>dns2</code>: optional secondary DNS (fallback)</li>\n</ul></div>\n\n<div class='card'><b>Returns:</b> Nothing</div>\n\n<div class='card'>Set this <b>before</b> calling <code>WiFi.begin()</code> for best results ✅</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/f/0/f/WiFi_setDNS_syntax.svg",
+      "audio": "https://audio-url-host/wifi-setdns-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Use Google DNS",
+      "content": "<div class='card'>Let’s use Google and Cloudflare DNS for global, reliable resolution 🌍</div>\n<pre>\n#include <WiFi.h>\n\nIPAddress dns1(8, 8, 8, 8);\nIPAddress dns2(1, 1, 1, 1);\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.config(IPAddress(192,168,1,100), IPAddress(192,168,1,1), IPAddress(255,255,255,0), dns1, dns2);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n}\n</pre>\n\n<div class='card'>Your Arduino now resolves domains using Google DNS → faster and globally available 🌐</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/4/c/1/WiFi_setDNS_example.svg",
+      "audio": "https://audio-url-host/wifi-setdns-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Which DNS Would You Choose?",
+      "content": "<div class='card'>You want fast, privacy-friendly name resolution for your ESP32. What’s the best DNS to set?</div>\n\n<div class='card'>\nA. 8.8.8.8 (Google)<br>\nB. 1.1.1.1 (Cloudflare)<br>\nC. 9.9.9.9 (Quad9)<br>\nD. All of the above</div>\n\n<div class='card'><input id='setDNSGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! All of the above are great public DNS servers you can safely use.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/5/8/e/0/WiFi_setDNS_quiz.svg",
+      "audio": "https://audio-url-host/wifi-setdns-quiz.mp3"
+    },
+    {
+      "title": "💡 Tip: Use DNS to Access Offline Devices Too",
+      "content": "<div class='card'>If you have a local DNS server (like in a router or Pi-hole), you can use <code>WiFi.setDNS()</code> to resolve custom domains like:</div>\n<ul>\n<li><code>my-device.local</code></li>\n<li><code>weatherstation.lab</code></li>\n<li><code>robot-1.dashboard</code></li>\n</ul>\n\n<div class='card'>Great for local IoT networks where internet may not be available!</div>",
+      "image": "https://cdn.sparkfun.com/assets/4/e/2/3/WiFi_setDNS_local_networks.svg",
+      "audio": "https://audio-url-host/wifi-setdns-tip.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.SSID() — Get the Connected WiFi Network Name",
+  "lessons": [
+    {
+      "title": "📡 What is SSID, and Why Read It?",
+      "content": "<div class='card'>SSID stands for <b>Service Set Identifier</b> — aka, the name of your WiFi 📶</div>\n\n<div class='card'><code>WiFi.SSID()</code> lets your Arduino know which network it’s connected to. This is useful when:</div>\n<ul>\n<li>🧠 You want to display the network name on a screen</li>\n<li>🔀 You connect to different networks in different places</li>\n<li>🛠️ You want your code to behave differently based on SSID</li>\n</ul>\n\n<div class='card'>It’s a simple, but very handy function 🔍</div>",
+      "image": "https://cdn.sparkfun.com/assets/4/5/f/4/WiFi_SSID_intro.svg",
+      "audio": "https://audio-url-host/wifi-ssid-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nWiFi.SSID();\n</pre></div>\n\n<div class='card'><b>Parameters:</b> None</div>\n\n<div class='card'><b>Returns:</b> A <code>String</code> containing the name (SSID) of the currently connected network</div>\n\n<div class='card'>⚠️ If not connected to WiFi, it returns an empty string</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/7/1/c/WiFi_SSID_syntax.svg",
+      "audio": "https://audio-url-host/wifi-ssid-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Print the SSID",
+      "content": "<div class='card'>This simple sketch will print the network name to Serial Monitor:</div>\n<pre>\n#include <WiFi.h>\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(\".\");\n  }\n\n  Serial.print(\"Connected to: \");\n  Serial.println(WiFi.SSID());\n}\n\nvoid loop() {}\n</pre>\n\n<div class='card'>You can also display this on an OLED or LCD as part of a smart dashboard 🖥️</div>",
+      "image": "https://cdn.sparkfun.com/assets/1/0/3/8/WiFi_SSID_example_code.svg",
+      "audio": "https://audio-url-host/wifi-ssid-code.mp3"
+    },
+    {
+      "title": "🎮 Game: When Does WiFi.SSID() Return Empty?",
+      "content": "<div class='card'>You run <code>WiFi.SSID()</code> and get nothing. What could be the reason?</div>\n\n<div class='card'>\nA. WiFi not initialized<br>\nB. Not connected yet<br>\nC. Wrong library<br>\nD. All of the above</div>\n\n<div class='card'><input id='ssidQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! If you’re not connected to WiFi, SSID will return an empty string.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/c/5/8/3/WiFi_SSID_quiz.svg",
+      "audio": "https://audio-url-host/wifi-ssid-quiz.mp3"
+    },
+    {
+      "title": "💡 Smart Uses for SSID",
+      "content": "<div class='card'>You can use <code>WiFi.SSID()</code> to add intelligent behavior to your sketch:</div>\n<ul>\n<li>🔀 Run different code depending on location</li>\n<li>🧪 Debug which router the device is using</li>\n<li>📱 Display SSID on mobile dashboards</li>\n<li>🛠️ Trigger captive portal if wrong SSID</li>\n</ul>\n\n<div class='card'>✅ Pro tip: Combine with <code>WiFi.RSSI()</code> for full connection diagnostics!</div>",
+      "image": "https://cdn.sparkfun.com/assets/d/3/4/5/WiFi_SSID_realworld_uses.svg",
+      "audio": "https://audio-url-host/wifi-ssid-uses.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.BSSID() — Get the MAC Address of the Connected Access Point",
+  "lessons": [
+    {
+      "title": "📡 What is BSSID?",
+      "content": "<div class='card'>BSSID stands for <b>Basic Service Set Identifier</b> — it's the MAC address of the router or access point you’re connected to 🔒</div>\n\n<div class='card'>While SSID is the human-friendly name of the network, BSSID is the hardware-level unique ID of that specific access point 📟</div>\n\n<div class='card'><b>Why care about it?</b> Because large networks (like colleges, offices, malls) may have many routers with the same SSID. BSSID tells you <i>exactly which one</i> your Arduino is using 🧠</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/1/2/8/WiFi_BSSID_intro.svg",
+      "audio": "https://audio-url-host/wifi-bssid-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nWiFi.BSSID();\n</pre></div>\n\n<div class='card'><b>Parameters:</b> None</div>\n\n<div class='card'><b>Returns:</b> A pointer to a 6-byte array (uint8_t*) containing the MAC address of the connected AP</div>\n\n<div class='card'>To convert this to a readable string (like <code>4A:FB:C3:89:12:33</code>), you must format it manually ⚙️</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/3/2/0/WiFi_BSSID_syntax.svg",
+      "audio": "https://audio-url-host/wifi-bssid-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example: Print BSSID as a MAC Address",
+      "content": "<div class='card'>Here’s a snippet that prints the access point’s BSSID in standard MAC format:</div>\n<pre>\nvoid printBSSID() {\n  const uint8_t* bssid = WiFi.BSSID();\n  char macStr[18];\n  sprintf(macStr, \"%02X:%02X:%02X:%02X:%02X:%02X\",\n          bssid[0], bssid[1], bssid[2],\n          bssid[3], bssid[4], bssid[5]);\n  Serial.println(macStr);\n}\n</pre>\n\n<div class='card'>Use this to log which physical router your Arduino is on — even if the SSID is identical elsewhere 🔐</div>",
+      "image": "https://cdn.sparkfun.com/assets/0/a/9/c/WiFi_BSSID_mac_address.svg",
+      "audio": "https://audio-url-host/wifi-bssid-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Why Use BSSID?",
+      "content": "<div class='card'>You’re on a campus WiFi with 5 access points named \"CampusNet\". Why would you use <code>WiFi.BSSID()</code>?</div>\n\n<div class='card'>\nA. To download faster<br>\nB. To access hidden SSIDs<br>\nC. To identify exactly which router you’re on<br>\nD. To change your IP</div>\n\n<div class='card'><input id='bssidQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! BSSID lets you see the unique MAC address of your connected router.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/a/f/2/f/WiFi_BSSID_quiz.svg",
+      "audio": "https://audio-url-host/wifi-bssid-quiz.mp3"
+    },
+    {
+      "title": "💡 Real-World Use: WiFi Tracking & Roaming",
+      "content": "<div class='card'>In advanced systems, you can track which access point gives the best signal and roam smartly 💡</div>\n<ul>\n<li>📡 If BSSID changes, you know a switch occurred</li>\n<li>📶 Pair with <code>WiFi.RSSI()</code> to choose the best AP</li>\n<li>🧠 Build diagnostics dashboards to debug networks</li>\n</ul>\n\n<div class='card'>This is useful in smart buildings, robots, or mobile devices 🔄</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/1/0/6/WiFi_BSSID_usecases.svg",
+      "audio": "https://audio-url-host/wifi-bssid-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.RSSI() — Measure Signal Strength in Real-Time",
+  "lessons": [
+    {
+      "title": "📶 What is RSSI and Why It Matters",
+      "content": "<div class='card'>RSSI stands for <b>Received Signal Strength Indicator</b>. It tells you how strong your WiFi connection is 📡</div>\n\n<div class='card'><code>WiFi.RSSI()</code> gives you that strength in dBm (decibel-milliwatts).</div>\n\n<ul>\n<li>🟢 -30 dBm = Excellent</li>\n<li>🟡 -67 dBm = Good for streaming</li>\n<li>🔴 -90 dBm = Nearly unusable</li>\n</ul>\n\n<div class='card'>Knowing the signal strength lets your Arduino react smartly — change modes, log data, or show warnings 💡</div>",
+      "image": "https://cdn.sparkfun.com/assets/3/f/9/2/WiFi_RSSI_intro.svg",
+      "audio": "https://audio-url-host/wifi-rssi-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nWiFi.RSSI();\n</pre></div>\n\n<div class='card'><b>Parameters:</b> None</div>\n\n<div class='card'><b>Returns:</b> A signed integer (int32_t) representing signal strength in dBm</div>\n\n<div class='card'>💡 A stronger signal has a value closer to 0. So -40 is stronger than -75 🧠</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/8/a/4/WiFi_RSSI_syntax.svg",
+      "audio": "https://audio-url-host/wifi-rssi-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Print Signal Strength",
+      "content": "<div class='card'>Want to know how strong your connection is?</div>\n<pre>\n#include <WiFi.h>\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(\".\");\n  }\n  Serial.println(\"\\nConnected\");\n  Serial.print(\"Signal Strength (RSSI): \");\n  Serial.print(WiFi.RSSI());\n  Serial.println(\" dBm\");\n}\n</pre>\n\n<div class='card'>Try placing your board in different spots and compare the RSSI values 📊</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/6/e/1/WiFi_RSSI_code.svg",
+      "audio": "https://audio-url-host/wifi-rssi-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Which RSSI Value Is Best?",
+      "content": "<div class='card'>Your ESP32 is connected and reporting signal strength. Which of these is the strongest?</div>\n\n<div class='card'>\nA. -35 dBm<br>\nB. -65 dBm<br>\nC. -80 dBm<br>\nD. -90 dBm</div>\n\n<div class='card'><input id='rssiQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! -35 dBm is stronger than -90 dBm. RSSI values are negative!\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/9/4/1/9/WiFi_RSSI_quiz.svg",
+      "audio": "https://audio-url-host/wifi-rssi-quiz.mp3"
+    },
+    {
+      "title": "💡 Real Uses: Smart Dashboards & Range Warnings",
+      "content": "<div class='card'>Here’s how people use <code>WiFi.RSSI()</code> in real projects:</div>\n<ul>\n<li>📊 Display signal strength on OLED screens</li>\n<li>🚦 Show red/yellow/green status lights</li>\n<li>📉 Log signal data for analysis</li>\n<li>📡 Trigger re-positioning or failover</li>\n</ul>\n\n<div class='card'>🔥 Combine with <code>WiFi.BSSID()</code> to track roaming and handoffs between access points</div>",
+      "image": "https://cdn.sparkfun.com/assets/2/f/4/3/WiFi_RSSI_usecases.svg",
+      "audio": "https://audio-url-host/wifi-rssi-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.encryptionType() — Know Your Network’s Security Level",
+  "lessons": [
+    {
+      "title": "🔐 What is WiFi Encryption?",
+      "content": "<div class='card'>Encryption secures your WiFi so no one can spy on your data 🔒</div>\n\n<div class='card'>There are several types of WiFi encryption:</div>\n<ul>\n<li>🔓 <b>Open</b> = no password, no encryption</li>\n<li>🔑 <b>WEP</b> = old & insecure</li>\n<li>🛡️ <b>WPA/WPA2</b> = modern & secure</li>\n</ul>\n\n<div class='card'><code>WiFi.encryptionType()</code> tells you what security type a scanned network is using.</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/2/4/9/WiFi_encryption_intro.svg",
+      "audio": "https://audio-url-host/wifi-encryption-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nWiFi.encryptionType(networkIndex);\n</pre></div>\n\n<div class='card'><b>Parameter:</b>\n<ul>\n<li><code>networkIndex</code>: the index of a network found via <code>WiFi.scanNetworks()</code></li>\n</ul></div>\n\n<div class='card'><b>Returns:</b> An integer code for encryption type:</div>\n<ul>\n<li><code>ENC_TYPE_NONE</code> (0) = Open</li>\n<li><code>ENC_TYPE_WEP</code> (1)</li>\n<li><code>ENC_TYPE_TKIP</code> (2)</li>\n<li><code>ENC_TYPE_CCMP</code> (4) = WPA2</li>\n</ul>\n\n<div class='card'>📌 These are defined in <code>WiFiEncryptionType.h</code></div>",
+      "image": "https://cdn.sparkfun.com/assets/b/a/1/2/WiFi_encryption_syntax.svg",
+      "audio": "https://audio-url-host/wifi-encryption-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example: Scan and List Security Type",
+      "content": "<div class='card'>Here’s how to list all nearby networks with their security types:</div>\n<pre>\nvoid listNetworks() {\n  int n = WiFi.scanNetworks();\n  for (int i = 0; i < n; ++i) {\n    Serial.print(WiFi.SSID(i));\n    Serial.print(\" - \");\n    byte encryption = WiFi.encryptionType(i);\n    switch (encryption) {\n      case WIFI_AUTH_OPEN: Serial.println(\"Open\"); break;\n      case WIFI_AUTH_WEP: Serial.println(\"WEP\"); break;\n      case WIFI_AUTH_WPA_PSK:\n      case WIFI_AUTH_WPA2_PSK: Serial.println(\"WPA/WPA2\"); break;\n      default: Serial.println(\"Unknown\"); break;\n    }\n  }\n}\n</pre>",
+      "image": "https://cdn.sparkfun.com/assets/1/3/f/4/WiFi_encryption_code.svg",
+      "audio": "https://audio-url-host/wifi-encryption-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Which Network is Most Secure?",
+      "content": "<div class='card'>You scan 3 networks. Which encryption type is best for security?</div>\n\n<div class='card'>\nA. ENC_TYPE_NONE<br>\nB. ENC_TYPE_WEP<br>\nC. ENC_TYPE_CCMP (WPA2)<br>\nD. ENC_TYPE_TKIP</div>\n\n<div class='card'><input id='encryptionQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! WPA2 (CCMP) is the most secure among these.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/f/9/0/7/WiFi_encryption_quiz.svg",
+      "audio": "https://audio-url-host/wifi-encryption-quiz.mp3"
+    },
+    {
+      "title": "💡 Real Uses: Choose Safe Networks",
+      "content": "<div class='card'>Want to build an Arduino that picks the <b>safest</b> available network?</div>\n<ul>\n<li>📶 Scan networks</li>\n<li>🔐 Use <code>WiFi.encryptionType()</code> to filter out open/WEP</li>\n<li>🔁 Pick the strongest WPA2 or WPA3 network</li>\n</ul>\n\n<div class='card'>🔥 Combine with <code>WiFi.RSSI()</code> for a smart auto-connect system!</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/b/d/8/WiFi_encryption_usecases.svg",
+      "audio": "https://audio-url-host/wifi-encryption-uses.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.scanNetworks() — Detect Nearby WiFi Networks",
+  "lessons": [
+    {
+      "title": "🔍 What Does scanNetworks() Do?",
+      "content": "<div class='card'><code>WiFi.scanNetworks()</code> tells your Arduino to search the airwaves for all WiFi signals nearby 📡</div>\n\n<div class='card'>It returns a count of how many networks were found. Then you can use:</div>\n<ul>\n<li><code>WiFi.SSID(i)</code> → name</li>\n<li><code>WiFi.RSSI(i)</code> → signal strength</li>\n<li><code>WiFi.encryptionType(i)</code> → security</li>\n</ul>\n\n<div class='card'>Perfect for dashboards, signal mapping, auto-connect systems, and even WiFi sniffers 🧠</div>",
+      "image": "https://cdn.sparkfun.com/assets/1/a/6/0/WiFi_scanNetworks_intro.svg",
+      "audio": "https://audio-url-host/wifi-scanNetworks-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nint n = WiFi.scanNetworks();\n</pre></div>\n\n<div class='card'><b>Parameters:</b> None</div>\n\n<div class='card'><b>Returns:</b> An integer: total number of networks found</div>\n\n<div class='card'>Call this in <code>setup()</code> or a button click to refresh the list 🔄</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/1/f/2/WiFi_scanNetworks_syntax.svg",
+      "audio": "https://audio-url-host/wifi-scanNetworks-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example: Scan & Print All Nearby Networks",
+      "content": "<div class='card'>Let’s list every visible network with signal and security:</div>\n<pre>\nvoid scanNetworks() {\n  int n = WiFi.scanNetworks();\n  Serial.println(\"Networks found:\");\n  for (int i = 0; i < n; ++i) {\n    Serial.print(i + 1);\n    Serial.print(\": \");\n    Serial.print(WiFi.SSID(i));\n    Serial.print(\" (RSSI: \");\n    Serial.print(WiFi.RSSI(i));\n    Serial.print(\" dBm)  Security: \");\n    Serial.println(WiFi.encryptionType(i));\n  }\n}\n</pre>\n\n<div class='card'>Try walking around your house — see how signals change 🚶‍♂️📶</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/e/d/2/WiFi_scanNetworks_example.svg",
+      "audio": "https://audio-url-host/wifi-scanNetworks-code.mp3"
+    },
+    {
+      "title": "🎮 Game: What’s the Correct Use?",
+      "content": "<div class='card'>You want to list all SSIDs and their signal strength. What’s the correct combo?</div>\n\n<div class='card'>\nA. <code>WiFi.begin()</code> + <code>WiFi.SSID()</code><br>\nB. <code>WiFi.scanNetworks()</code> + <code>WiFi.SSID(i)</code><br>\nC. <code>WiFi.config()</code> only<br>\nD. <code>WiFi.disconnect()</code> + <code>WiFi.status()</code></div>\n\n<div class='card'><input id='scanGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! You must use scanNetworks() + SSID(index) to list scanned SSIDs.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/d/8/4/f/WiFi_scanNetworks_quiz.svg",
+      "audio": "https://audio-url-host/wifi-scanNetworks-quiz.mp3"
+    },
+    {
+      "title": "💡 Real Projects Using scanNetworks()",
+      "content": "<div class='card'>What kind of cool stuff can you build with this?</div>\n<ul>\n<li>📊 WiFi analyzer dashboard (OLED/LCD)</li>\n<li>📡 Smart auto-connect to strongest network</li>\n<li>🚦 Signal strength alert with LEDs</li>\n<li>🛠️ DIY network mapping robot!</li>\n</ul>\n\n<div class='card'>Try combining <code>scanNetworks()</code> + <code>WiFi.RSSI()</code> + <code>WiFi.encryptionType()</code> to create a full wireless scanner 🔍</div>",
+      "image": "https://cdn.sparkfun.com/assets/0/f/0/2/WiFi_scanNetworks_usecases.svg",
+      "audio": "https://audio-url-host/wifi-scanNetworks-uses.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.status() — Check Connection Status Like a Pro",
+  "lessons": [
+    {
+      "title": "📶 What is WiFi.status()?",
+      "content": "<div class='card'>Want to know if your Arduino is online or not? <code>WiFi.status()</code> tells you exactly that 🧠</div>\n\n<div class='card'>It returns an integer code that tells you whether your board is:</div>\n<ul>\n<li>🔌 Not connected</li>\n<li>🔄 Connecting</li>\n<li>✅ Connected with IP address</li>\n<li>⚠️ Connection failed</li>\n</ul>\n\n<div class='card'>This is the *heartbeat* of most WiFi projects. Use it in <code>loop()</code> to stay connected 💡</div>",
+      "image": "https://cdn.sparkfun.com/assets/3/2/1/4/WiFi_status_intro.svg",
+      "audio": "https://audio-url-host/wifi-status-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Return Values & Meaning",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nint status = WiFi.status();\n</pre></div>\n\n<div class='card'><b>Returns:</b> A status constant from these options:</div>\n<ul>\n<li><code>WL_NO_SHIELD</code> → No WiFi hardware found</li>\n<li><code>WL_IDLE_STATUS</code> → Hardware is idle</li>\n<li><code>WL_NO_SSID_AVAIL</code> → Network not found</li>\n<li><code>WL_SCAN_COMPLETED</code></li>\n<li><code>WL_CONNECTED</code> → ✅ Connected!</li>\n<li><code>WL_CONNECT_FAILED</code></li>\n<li><code>WL_CONNECTION_LOST</code></li>\n<li><code>WL_DISCONNECTED</code></li>\n</ul>\n\n<div class='card'>These are all defined in <code>WiFiStatus.h</code> ⚙️</div>",
+      "image": "https://cdn.sparkfun.com/assets/6/9/7/e/WiFi_status_constants.svg",
+      "audio": "https://audio-url-host/wifi-status-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example Code: Auto-Reconnect When Dropped",
+      "content": "<div class='card'>This sketch will auto-reconnect if the connection drops:</div>\n<pre>\n#include <WiFi.h>\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n}\n\nvoid loop() {\n  if (WiFi.status() != WL_CONNECTED) {\n    Serial.println(\"WiFi dropped. Reconnecting...\");\n    WiFi.begin(\"YourSSID\", \"YourPassword\");\n    delay(5000);\n  } else {\n    Serial.println(\"Connected!\");\n  }\n  delay(10000);\n}\n</pre>\n\n<div class='card'>Your Arduino will stay connected like a boss 🤖</div>",
+      "image": "https://cdn.sparkfun.com/assets/7/f/5/2/WiFi_status_example.svg",
+      "audio": "https://audio-url-host/wifi-status-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Which Status Code Means Connected?",
+      "content": "<div class='card'>You call <code>WiFi.status()</code> and get <code>WL_CONNECTED</code>. What does that mean?</div>\n\n<div class='card'>\nA. Connection failed<br>\nB. Successfully connected<br>\nC. Still scanning<br>\nD. No WiFi shield</div>\n\n<div class='card'><input id='statusQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! WL_CONNECTED means you are online and ready to go!\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/9/5/e/1/WiFi_status_quiz.svg",
+      "audio": "https://audio-url-host/wifi-status-quiz.mp3"
+    },
+    {
+      "title": "💡 Real Uses: Uptime, Reliability & Reconnects",
+      "content": "<div class='card'>Pro WiFi projects always use <code>WiFi.status()</code> to:</div>\n<ul>\n<li>🔁 Retry connection on failure</li>\n<li>📉 Display status to users</li>\n<li>💤 Go into low-power mode if WiFi is down</li>\n<li>📶 Log disconnection reasons</li>\n</ul>\n\n<div class='card'>🔥 Combine this with <code>WiFi.reconnect()</code> and a watchdog timer for unbeatable reliability!</div>",
+      "image": "https://cdn.sparkfun.com/assets/4/3/a/b/WiFi_status_usecases.svg",
+      "audio": "https://audio-url-host/wifi-status-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.getSocket() — Access the Low-Level Socket Number",
+  "lessons": [
+    {
+      "title": "🔌 What is a Network Socket?",
+      "content": "<div class='card'>A <b>socket</b> is like a channel or pipe that connects your Arduino to the internet 🌍</div>\n\n<div class='card'>Each time your Arduino connects to a server (like a cloud API or web page), it uses a <i>socket number</i>.</div>\n\n<div class='card'><code>WiFi.getSocket()</code> returns this number so advanced users can:</div>\n<ul>\n<li>🧪 Debug which socket is used</li>\n<li>🔁 Handle multiple connections</li>\n<li>⚙️ Tune socket behavior for raw TCP/UDP</li>\n</ul>\n\n<div class='card'>⚠️ You usually won’t need this unless you're doing advanced networking 📡</div>",
+      "image": "https://cdn.sparkfun.com/assets/2/c/8/0/WiFi_getSocket_intro.svg",
+      "audio": "https://audio-url-host/wifi-getSocket-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return Value",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nint socket = WiFi.getSocket();\n</pre></div>\n\n<div class='card'><b>Parameters:</b> None</div>\n\n<div class='card'><b>Returns:</b> An integer representing the socket number (usually between 0–3 depending on the board)</div>\n\n<div class='card'>🔍 On ESP32 or Uno WiFi, multiple sockets may be available (e.g., for concurrent TCP clients)</div>",
+      "image": "https://cdn.sparkfun.com/assets/d/0/5/f/WiFi_getSocket_syntax.svg",
+      "audio": "https://audio-url-host/wifi-getSocket-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example: Print Socket After Connecting",
+      "content": "<div class='card'>Let’s see which socket is used once WiFi connects:</div>\n<pre>\n#include <WiFi.h>\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"SSID\", \"Password\");\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(\".\");\n  }\n  Serial.println(\"\\nConnected!\");\n  int sock = WiFi.getSocket();\n  Serial.print(\"Socket in use: \");\n  Serial.println(sock);\n}\n\nvoid loop() {}\n</pre>\n\n<div class='card'>Note: This may return <code>-1</code> if not supported or connection isn't yet fully active 🧠</div>",
+      "image": "https://cdn.sparkfun.com/assets/5/2/a/1/WiFi_getSocket_code.svg",
+      "audio": "https://audio-url-host/wifi-getSocket-code.mp3"
+    },
+    {
+      "title": "🎮 Game: When Should You Use getSocket()?",
+      "content": "<div class='card'>You want to monitor socket usage in a multi-client TCP server. Which Arduino function helps?</div>\n\n<div class='card'>\nA. WiFi.begin()<br>\nB. WiFi.SSID()<br>\nC. WiFi.getSocket()<br>\nD. WiFi.status()</div>\n\n<div class='card'><input id='sockQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! WiFi.getSocket() returns the current socket in use.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/e/1/9/9/WiFi_getSocket_quiz.svg",
+      "audio": "https://audio-url-host/wifi-getSocket-quiz.mp3"
+    },
+    {
+      "title": "💡 Real Uses: Socket Debugging & Protocols",
+      "content": "<div class='card'>Here’s where you’ll find <code>WiFi.getSocket()</code> useful:</div>\n<ul>\n<li>🔧 Low-level TCP client/server debugging</li>\n<li>📶 Handling multiple open sockets</li>\n<li>🕵️ Diagnosing strange WiFi behavior</li>\n<li>🔗 Custom protocol stacks (MQTT, CoAP, etc.)</li>\n</ul>\n\n<div class='card'>⚠️ Use with care. This is a low-level tool for pros 🧑‍💻</div>",
+      "image": "https://cdn.sparkfun.com/assets/a/8/e/3/WiFi_getSocket_usecases.svg",
+      "audio": "https://audio-url-host/wifi-getSocket-uses.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFi.macAddress() — Get Your Board’s Unique Hardware ID",
+  "lessons": [
+    {
+      "title": "🆔 What is a MAC Address?",
+      "content": "<div class='card'>A MAC (Media Access Control) address is your Arduino’s unique network ID 📡</div>\n\n<div class='card'>Think of it like a fingerprint for your WiFi module. It’s hard-coded into the hardware and looks like:</div>\n\n<div class='card'><code>94:B9:7E:0C:3A:FA</code></div>\n\n<div class='card'>🛡️ Useful for device registration, filtering, and logging which device connected when</div>",
+      "image": "https://cdn.sparkfun.com/assets/9/7/1/a/WiFi_macAddress_intro.svg",
+      "audio": "https://audio-url-host/wifi-macAddress-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return Type",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nuint8_t* mac = WiFi.macAddress();\n</pre></div>\n\n<div class='card'><b>Parameters:</b> None</div>\n\n<div class='card'><b>Returns:</b> A pointer to an array of 6 bytes (<code>uint8_t*</code>) representing the MAC address</div>\n\n<div class='card'>💡 Format it manually to print it nicely!</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/4/c/f/WiFi_macAddress_syntax.svg",
+      "audio": "https://audio-url-host/wifi-macAddress-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example: Print Your MAC Address",
+      "content": "<div class='card'>Here’s how to display your board’s MAC address in standard form:</div>\n<pre>\nvoid printMAC() {\n  const uint8_t* mac = WiFi.macAddress();\n  char macStr[18];\n  sprintf(macStr, \"%02X:%02X:%02X:%02X:%02X:%02X\",\n          mac[0], mac[1], mac[2],\n          mac[3], mac[4], mac[5]);\n  Serial.print(\"My MAC Address is: \");\n  Serial.println(macStr);\n}\n</pre>\n\n<div class='card'>⚠️ This is helpful if you want to whitelist your device on a router 🔐</div>",
+      "image": "https://cdn.sparkfun.com/assets/4/f/b/3/WiFi_macAddress_code.svg",
+      "audio": "https://audio-url-host/wifi-macAddress-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Which Use Case Needs a MAC?",
+      "content": "<div class='card'>You want to identify your Arduino before allowing it to access a secure network. What’s required?</div>\n\n<div class='card'>\nA. IP Address<br>\nB. DNS Server<br>\nC. MAC Address<br>\nD. Signal Strength</div>\n\n<div class='card'><input id='macQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! MAC addresses are used to uniquely identify devices on a network.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/7/2/3/e/WiFi_macAddress_quiz.svg",
+      "audio": "https://audio-url-host/wifi-macAddress-quiz.mp3"
+    },
+    {
+      "title": "💡 Real-World Uses of MAC Addresses",
+      "content": "<div class='card'>Real projects that use MAC addresses:</div>\n<ul>\n<li>📲 Device whitelisting on secured routers</li>\n<li>📊 Tagging which board sent which data to the cloud</li>\n<li>🚫 Blocking unknown devices in enterprise networks</li>\n<li>📍 Tracking device location across routers</li>\n</ul>\n\n<div class='card'>🧠 Combine with <code>WiFi.BSSID()</code> and <code>WiFi.RSSI()</code> for smart roaming + identity</div>",
+      "image": "https://cdn.sparkfun.com/assets/8/0/a/7/WiFi_macAddress_usecases.svg",
+      "audio": "https://audio-url-host/wifi-macAddress-uses.mp3"
+    }
+  ]
+}
+
+
+  ]
+},{
+  title:"Understanding Arduino IP Networking: The IPAddress Class",
+  modules:[
+    {
+  "title": "IPAddress.localIP() — Understanding Arduino's Network Identity",
+  "lessons": [
+    {
+      "title": "🌐 What is an IP Address? (Beginner Friendly)",
+      "content": "<div class='card'>Every device on a network — including your Arduino — needs a unique ID to send/receive data. That ID is an <b>IP Address</b> 🧠</div>\n\n<div class='card'><b>IP = Internet Protocol</b> — and the address looks like this: <code>192.168.0.10</code></div>\n\n<div class='card'>Just like your home has a street address, your Arduino gets an IP address so routers and other devices know where to send data 📬</div>\n\n<ul>\n<li><b>Private IP</b> (e.g. 192.168.x.x): Used within your home/router</li>\n<li><b>Public IP</b>: Seen by the internet (usually your router's IP)</li>\n</ul>\n\n<div class='card'>We'll now see how Arduino accesses this IP using the <code>localIP()</code> function.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/IP_address_example.svg/1024px-IP_address_example.svg.png",
+      "audio": "https://audio-url-host/ipaddress-intro.mp3"
+    },
+    {
+      "title": "🔍 What is IPAddress.localIP()? And When to Use It",
+      "content": "<div class='card'><code>WiFi.localIP()</code> returns the IP address assigned to your Arduino after it connects to a WiFi network 📡</div>\n\n<div class='card'>This is the IP you'll use to:</div>\n<ul>\n<li>🔗 Connect to Arduino from your phone</li>\n<li>🌍 Host web servers (like dashboards)</li>\n<li>📲 Communicate with mobile apps or APIs</li>\n</ul>\n\n<div class='card'><b>Fun fact:</b> Every time your Arduino reconnects, it might get a <i>different</i> local IP — unless you use static IPs or reservations!</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/8/2/5/WiFi_localIP_meaning.svg",
+      "audio": "https://audio-url-host/localIP-meaning.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters & Return Type",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nIPAddress ip = WiFi.localIP();\n</pre></div>\n\n<div class='card'><b>Returns:</b> An <code>IPAddress</code> object. You can print it or split into bytes (octets)</div>\n\n<div class='card'>To display:\n<pre>\nSerial.println(WiFi.localIP());\n</pre>\nTo break into bytes:\n<pre>\nIPAddress ip = WiFi.localIP();\nSerial.println(ip[0]); // First octet</pre></div>",
+      "image": "https://cdn.sparkfun.com/assets/3/2/f/6/WiFi_localIP_syntax.svg",
+      "audio": "https://audio-url-host/localIP-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example: Connect to WiFi and Show Local IP",
+      "content": "<div class='card'>Use this example to connect to WiFi and print your board’s IP address:</div>\n<pre>\n#include <WiFi.h>\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(\".\");\n  }\n  Serial.println(\"\\nConnected!\");\n  Serial.print(\"My IP is: \");\n  Serial.println(WiFi.localIP());\n}\n\nvoid loop() {}\n</pre>\n\n<div class='card'>Open the Serial Monitor and note the IP. Try opening it in a browser if you're running a server!</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/5/a/f/WiFi_localIP_example.svg",
+      "audio": "https://audio-url-host/localIP-code.mp3"
+    },
+    {
+      "title": "🎮 Game: What Type of IP is 192.168.1.5?",
+      "content": "<div class='card'>Quiz time! What type of IP is <code>192.168.1.5</code>?</div>\n\n<div class='card'>\nA. Public IP<br>\nB. Broadcast IP<br>\nC. Private (Local) IP<br>\nD. Invalid IP</div>\n\n<div class='card'><input id='ipQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! It’s a private IP address used inside local networks.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/4/8/6/2/IP_quiz.svg",
+      "audio": "https://audio-url-host/ip-quiz.mp3"
+    },
+    {
+      "title": "💡 Real Projects Using localIP()",
+      "content": "<div class='card'>Here are real-world uses of <code>localIP()</code>:</div>\n<ul>\n<li>🌐 Hosting a web dashboard at your Arduino’s IP</li>\n<li>📲 Connecting your phone app to Arduino over local WiFi</li>\n<li>📸 Sending IP streams from a camera module</li>\n<li>🔄 Sending sensor data to another ESP32 by IP</li>\n</ul>\n\n<div class='card'>Combine it with <code>WiFi.status()</code> to build stable, connectable IoT systems 🚀</div>",
+      "image": "https://cdn.sparkfun.com/assets/6/4/2/8/localIP_usecases.svg",
+      "audio": "https://audio-url-host/localIP-uses.mp3"
+    }
+  ]
+}
+,{
+  "title": "IPAddress.subnetMask() — Understand Your Network Boundary",
+  "lessons": [
+    {
+      "title": "🌐 What is a Subnet Mask (Simply Explained)?",
+      "content": "<div class='card'>A <b>Subnet Mask</b> tells your Arduino which devices are \"close by\" on the same network 🧠</div>\n\n<div class='card'>It splits the IP address into:</div>\n<ul>\n<li>🏠 <b>Network part</b> (shared by all local devices)</li>\n<li>🚪 <b>Host part</b> (unique per device)</li>\n</ul>\n\n<div class='card'>For example:<br>\n<code>IP: 192.168.1.10</code><br>\n<code>Mask: 255.255.255.0</code> → all devices starting with 192.168.1 are local!</div>\n\n<div class='card'>⚠️ Subnets define who your Arduino can talk to directly. All else goes through the gateway 🔁</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Subnetting-diagram.svg/1024px-Subnetting-diagram.svg.png",
+      "audio": "https://audio-url-host/subnetMask-intro.mp3"
+    },
+    {
+      "title": "🔍 What Does IPAddress.subnetMask() Return?",
+      "content": "<div class='card'><code>WiFi.subnetMask()</code> returns the <i>subnet mask</i> assigned by your router when connecting to WiFi</div>\n\n<div class='card'>Usually it looks like:</div>\n<ul>\n<li><code>255.255.255.0</code> → /24 network</li>\n<li><code>255.255.0.0</code> → /16 network (more hosts)</li>\n</ul>\n\n<div class='card'>Advanced setups may have different masks depending on the router or static config ⚙️</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/8/b/f/WiFi_subnetMask_meaning.svg",
+      "audio": "https://audio-url-host/subnetMask-meaning.mp3"
+    },
+    {
+      "title": "📘 Syntax, Parameters, and Return",
+      "content": "<div class='card'><b>Syntax:</b>\n<pre>\nIPAddress mask = WiFi.subnetMask();\n</pre></div>\n\n<div class='card'><b>Returns:</b> An <code>IPAddress</code> object containing the subnet mask</div>\n\n<div class='card'><b>Parameters:</b> None</div>\n\n<div class='card'>📏 Use <code>Serial.println(WiFi.subnetMask())</code> to see what your router gave your Arduino</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/9/7/2/WiFi_subnetMask_syntax.svg",
+      "audio": "https://audio-url-host/subnetMask-syntax.mp3"
+    },
+    {
+      "title": "🧪 Example: Show Your Subnet Mask",
+      "content": "<div class='card'>Here’s a simple sketch to print the current subnet mask:</div>\n<pre>\n#include <WiFi.h>\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n  }\n  IPAddress mask = WiFi.subnetMask();\n  Serial.print(\"Subnet Mask: \");\n  Serial.println(mask);\n}\n\nvoid loop() {}\n</pre>\n\n<div class='card'>👀 Compare this on different networks — see if it changes!</div>",
+      "image": "https://cdn.sparkfun.com/assets/6/4/0/1/WiFi_subnetMask_code.svg",
+      "audio": "https://audio-url-host/subnetMask-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Which Subnet Is 255.255.255.0?",
+      "content": "<div class='card'>You get the mask <code>255.255.255.0</code>. How many IPs are available for devices?</div>\n\n<div class='card'>\nA. 255 total<br>\nB. 254 usable<br>\nC. 256 usable<br>\nD. Only 1</div>\n\n<div class='card'><input id='subnetQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! A /24 subnet gives 254 usable IPs for devices.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/d/6/0/b/WiFi_subnetMask_quiz.svg",
+      "audio": "https://audio-url-host/subnetMask-quiz.mp3"
+    },
+    {
+      "title": "💡 Real-World Uses of Subnet Masks",
+      "content": "<div class='card'>How can you use <code>subnetMask()</code> in real Arduino projects?</div>\n<ul>\n<li>📍 Detect if another device is local or remote</li>\n<li>🌐 Custom WiFi router configs with static masks</li>\n<li>📶 IP range scanner robots</li>\n<li>🧠 Learn how home vs public networks are structured</li>\n</ul>\n\n<div class='card'>Pro tip: Combine this with <code>WiFi.gatewayIP()</code> to fully understand your network</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/3/f/4/WiFi_subnetMask_usecases.svg",
+      "audio": "https://audio-url-host/subnetMask-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "IPAddress.gatewayIP() — How Your Arduino Finds the Internet",
+  "lessons": [
+    {
+      "title": "🚪 What is a Gateway? (Beginner Explanation)",
+      "content": "<div class='card'>A <b>gateway</b> is like the door from your local network to the outside world 🌍</div>\n\n<div class='card'>When your Arduino connects to WiFi, the router gives it three things:</div>\n<ul>\n<li>🎯 An IP address (like 192.168.1.22)</li>\n<li>🧩 A subnet mask (like 255.255.255.0)</li>\n<li>🚪 A <b>gateway</b> (like 192.168.1.1)</li>\n</ul>\n\n<div class='card'>All traffic going to the internet passes through this gateway (usually your WiFi router).</div>\n\n<div class='card'>Without a valid gateway, your Arduino can only talk to devices on the same LAN — no cloud APIs, no websites 🌐</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Internet_gateway_network.svg/1024px-Internet_gateway_network.svg.png",
+      "audio": "https://audio-url-host/gateway-intro.mp3"
+    },
+    {
+      "title": "📘 What Does IPAddress.gatewayIP() Do?",
+      "content": "<div class='card'><code>WiFi.gatewayIP()</code> returns the <b>IP address of the gateway</b> assigned by the router when your Arduino connects to WiFi</div>\n\n<div class='card'><b>Usually:</b> <code>192.168.1.1</code> or <code>192.168.0.1</code></div>\n\n<div class='card'>This tells your board where to send data that's not meant for the local network 🔁</div>\n\n<div class='card'><b>Syntax:</b>\n<pre>\nIPAddress gate = WiFi.gatewayIP();\n</pre></div>\n\n<div class='card'>💡 Tip: Use it to debug routing problems in large home/office networks</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/9/f/0/WiFi_gatewayIP_syntax.svg",
+      "audio": "https://audio-url-host/gatewayIP-syntax.mp3"
+    },
+    {
+      "title": "🧠 Gateway vs Router vs DNS — Know the Difference",
+      "content": "<div class='card'>Let’s clear up some confusing terms:</div>\n<ul>\n<li>🌐 <b>Router:</b> A device that connects two or more networks (usually local & internet)</li>\n<li>🚪 <b>Gateway:</b> The IP of your router from the Arduino’s point of view</li>\n<li>📛 <b>DNS:</b> Server that translates <code>example.com</code> into an IP like 142.250.180.78</li>\n</ul>\n\n<div class='card'>➡️ Think of gateway as the <i>first step</i> toward the internet 🌎</div>\n\n<div class='card'>You need all three for a reliable, connected IoT project!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/DNS_en.svg/1280px-DNS_en.svg.png",
+      "audio": "https://audio-url-host/gateway-vs-router-vs-dns.mp3"
+    },
+    {
+      "title": "🧪 Example: Print Your Gateway IP",
+      "content": "<div class='card'>Try this sketch to print your Arduino’s gateway IP address:</div>\n<pre>\n#include <WiFi.h>\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n  }\n  Serial.print(\"Gateway IP: \");\n  Serial.println(WiFi.gatewayIP());\n}\n\nvoid loop() {}\n</pre>\n\n<div class='card'>Compare this with the router IP shown on your PC/Phone. They should match!</div>",
+      "image": "https://cdn.sparkfun.com/assets/1/f/0/f/WiFi_gatewayIP_example.svg",
+      "audio": "https://audio-url-host/gateway-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Why Would You Need gatewayIP()?",
+      "content": "<div class='card'>Why might a web-connected Arduino project need to know its gateway IP?</div>\n\n<div class='card'>\nA. To make local LED blink<br>\nB. To convert float to string<br>\nC. To route traffic beyond local network<br>\nD. To get MAC address</div>\n\n<div class='card'><input id='gatewayQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! The gateway tells your Arduino where to send traffic destined for the internet.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/3/a/0/c/WiFi_gatewayIP_quiz.svg",
+      "audio": "https://audio-url-host/gateway-quiz.mp3"
+    },
+    {
+      "title": "💡 Real-World Uses of gatewayIP() in Projects",
+      "content": "<div class='card'>🔍 Here’s where <code>gatewayIP()</code> becomes essential:</div>\n<ul>\n<li>📡 Debugging if your board can’t access online APIs</li>\n<li>📶 Building mesh/bridge networks and routing between nodes</li>\n<li>🌍 Manually crafting raw TCP/UDP packets for remote servers</li>\n<li>🧪 Teaching students about networking layers (IP, transport, app)</li>\n</ul>\n\n<div class='card'>🎓 Many Arduino networking errors are just missing DNS or incorrect gateway settings — know your basics!</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/e/2/4/WiFi_gatewayIP_uses.svg",
+      "audio": "https://audio-url-host/gateway-usecases.mp3"
+    }
+  ]
+}
+
+  ]
 }
 
   ]
