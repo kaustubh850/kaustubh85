@@ -10843,6 +10843,616 @@ void loop() {
 
 
   ]
+},{
+  title:"WiFiClient Deep Dive: Internet, APIs & Debugging for Beginners",
+  modules:[
+   {
+  "title": "What is WiFiClient? (Final Recap & Real-World Vision)",
+  "lessons": [
+    {
+      "title": "🌐 Meet WiFiClient Again — But Now as a Master!",
+      "content": "<div class='card'>After exploring 13 powerful modules, it’s time to step back and ask again — what exactly is <code>WiFiClient</code>?</div>\n<div class='card'>In simple words: <b>WiFiClient is your Arduino’s way of talking to the internet</b>.</div>\n<div class='card'>It lets your board connect to websites, APIs, servers — and exchange data through simple code.</div>\n<div class='card'>It’s like giving your Arduino a digital mouth and ears 👂🗣️</div>",
+      "image": "https://i.imgur.com/OzQJtbY.png",
+      "audio": "https://audio-url-host/wificlient-recap-intro.mp3"
+    },
+    {
+      "title": "📦 Everything WiFiClient Can Do",
+      "content": "<div class='card'>By now, you’ve learned how WiFiClient can:</div>\n<ul>\n<li>🌐 Connect to websites using <code>connect()</code></li>\n<li>📤 Send data using <code>write()</code>, <code>print()</code>, and <code>println()</code></li>\n<li>📥 Read server responses using <code>read()</code> and <code>available()</code></li>\n<li>⏱️ Control timing and buffering with <code>flush()</code></li>\n<li>❌ Close connections with <code>stop()</code></li>\n<li>🔍 Check if it’s still online with <code>connected()</code></li>\n</ul>\n<div class='card'>All of this adds up to powerful web interaction — straight from your microcontroller 🔌</div>",
+      "image": "https://i.imgur.com/g4KFK3E.png",
+      "audio": "https://audio-url-host/wificlient-capabilities.mp3"
+    },
+    {
+      "title": "🌟 Real Projects That Use WiFiClient",
+      "content": "<div class='card'>Here’s where WiFiClient shines:</div>\n<ul>\n<li>🌦️ Weather station using live OpenWeatherMap data</li>\n<li>📈 IoT sensor logger sending data to Google Sheets</li>\n<li>⏰ Real-time clock synced with worldtimeapi.org</li>\n<li>📡 Home automation system that receives server commands</li>\n</ul>\n<div class='card'>You now have the tools to build these from scratch — no libraries, just full control 💪</div>",
+      "image": "https://i.imgur.com/k1kbltB.png",
+      "audio": "https://audio-url-host/wificlient-projects.mp3"
+    },
+    {
+      "title": "🎓 What You’ve Learned in This Section",
+      "content": "<div class='card'>You now understand:</div>\n<ul>\n<li>✅ How the client-server model works</li>\n<li>✅ How to send and receive HTTP data</li>\n<li>✅ How to call public APIs</li>\n<li>✅ How to handle common WiFiClient errors</li>\n<li>✅ How to debug and improve reliability</li>\n</ul>\n<div class='card'>Most Arduino users use libraries. <b>You now understand what’s under the hood</b> 🚗🔧</div>",
+      "image": "https://i.imgur.com/yQVKjuF.png",
+      "audio": "https://audio-url-host/wificlient-knowledge.mp3"
+    },
+    {
+      "title": "🎮 Game: WiFiClient Power-Up Quiz",
+      "content": "<div class='card'>Question: What’s the correct way to connect to an API and send a request?</div>\n<pre>\nA. client.connect(\"weather.com\", 80);\n   client.print(\"GET /data HTTP/1.1\\r\\nHost: weather.com\\r\\n\\r\\n\");\n\nB. client.connect(\"weather.com\", 443);\n   client.print(\"Hello!\");\n\nC. client.write(404);\n</pre>\n<div class='card'><input id='quizRecap' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Option A is the valid HTTP request using WiFiClient.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/FYFbNS5.png",
+      "audio": "https://audio-url-host/wificlient-recap-quiz.mp3"
+    },
+    {
+      "title": "🚀 What’s Next? Level Up!",
+      "content": "<div class='card'>From here, you can explore:</div>\n<ul>\n<li>🔒 Secure connections with <code>WiFiClientSecure</code></li>\n<li>📤 Uploading data to Google Sheets or Firebase</li>\n<li>🔁 Creating your own server using <code>WiFiServer</code></li>\n<li>💬 Building a real-time messaging system using APIs</li>\n</ul>\n<div class='card'>You’ve unlocked the superpower of Arduino-to-Internet communication 🧠⚡</div>",
+      "image": "https://i.imgur.com/TJUXpuM.png",
+      "audio": "https://audio-url-host/wificlient-whats-next.mp3"
+    }
+  ]
+}
+ ,
+    {
+  "title": "What is a WiFiClient? (Beginner's Guide to Internet Communication in Arduino)",
+  "lessons": [
+    {
+      "title": "🌐 The Internet is Made of Clients and Servers",
+      "content": "<div class='card'>Every time you visit a website, your browser acts as a <b>client</b> — it connects to a <b>server</b> and requests data 📡</div>\n\n<div class='card'>Arduino can also be a <b>client</b>! With the <code>WiFiClient</code> class, your board can:</div>\n<ul>\n<li>🌍 Connect to a website</li>\n<li>📥 Download a file</li>\n<li>📤 Send sensor data to a server</li>\n</ul>\n\n<div class='card'>The server waits. The client asks. That’s how the internet works 🚀</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Client-server-model.svg/1280px-Client-server-model.svg.png",
+      "audio": "https://audio-url-host/client-server-intro.mp3"
+    },
+    {
+      "title": "💡 Meet the WiFiClient Class in Arduino",
+      "content": "<div class='card'>The <code>WiFiClient</code> class is your Arduino’s <b>internet buddy</b>. It lets your board talk to other machines over TCP (Transmission Control Protocol)</div>\n\n<div class='card'>It’s like a tiny browser — but for code!</div>\n\n<div class='card'>Main features:</div>\n<ul>\n<li>🔌 Connect to a server (IP + Port)</li>\n<li>📤 Send text/data (print, write)</li>\n<li>📥 Receive replies (read, available)</li>\n<li>🛑 Close connections (stop)</li>\n</ul>\n\n<div class='card'>Use <code>WiFiClient</code> when your Arduino needs to <i>fetch data</i> or <i>push data</i> to the cloud ☁️</div>",
+      "image": "https://cdn.sparkfun.com/assets/2/3/a/8/WiFiClient_overview_diagram.svg",
+      "audio": "https://audio-url-host/wificlient-intro.mp3"
+    },
+    {
+      "title": "🧠 Behind the Scenes: How WiFiClient Actually Works",
+      "content": "<div class='card'>WiFiClient uses the <b>TCP protocol</b>, which ensures safe delivery of data (like a mail service that checks delivery!) 📬</div>\n\n<div class='card'>When you call <code>client.connect()</code> — your board:</div>\n<ol>\n<li>🧭 Looks up the IP address of the server</li>\n<li>🔗 Opens a TCP socket on a port (like 80 or 443)</li>\n<li>🔒 Sends & receives data in packets</li>\n</ol>\n\n<div class='card'>💥 It handles retries, confirmations, and errors in the background, so you don’t have to!</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/a/b/0/tcp_packet_diagram.svg",
+      "audio": "https://audio-url-host/tcp-process.mp3"
+    },
+    {
+      "title": "📘 Syntax and How to Use It in Setup()",
+      "content": "<div class='card'>To use a WiFiClient, you first create an object:</div>\n<pre>\nWiFiClient client;\n</pre>\n\n<div class='card'>Then you connect like this:\n<pre>\nif (client.connect(\"example.com\", 80)) {\n  client.print(\"GET / HTTP/1.1\\r\\nHost: example.com\\r\\n\\r\\n\");\n}</pre></div>\n\n<div class='card'>💡 The rest of the module series will explain all these pieces (connect, print, read, etc.) one by one in depth.</div>",
+      "image": "https://cdn.sparkfun.com/assets/7/1/6/e/wificlient_setup_code_example.svg",
+      "audio": "https://audio-url-host/wificlient-setup.mp3"
+    },
+    {
+      "title": "🎮 Mini Game: Client or Server?",
+      "content": "<div class='card'>You open a weather website on your Arduino using WiFiClient. What role does your Arduino play?</div>\n\n<div class='card'>\nA. Server<br>\nB. DHCP<br>\nC. Client<br>\nD. Gateway</div>\n\n<div class='card'><input id='clientQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Your Arduino is the client. It initiates the request.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/e/1/a/b/client_or_server_quiz.svg",
+      "audio": "https://audio-url-host/client-vs-server-quiz.mp3"
+    },
+    {
+      "title": "💡 Real Projects That Use WiFiClient",
+      "content": "<div class='card'>Here are some amazing things you can build with <code>WiFiClient</code>:</div>\n<ul>\n<li>🌤️ Weather dashboards (get data from APIs)</li>\n<li>📈 IoT data loggers (push sensor data to cloud)</li>\n<li>📱 Communicate with an Android/iOS app</li>\n<li>🖥️ Control devices via online dashboard</li>\n</ul>\n\n<div class='card'>Every IoT product starts by being a good <i>client</i> first 🔥</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/7/5/4/wificlient_project_usecases.svg",
+      "audio": "https://audio-url-host/wificlient-projects.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiClient.connect() — How Arduino Connects to the Internet",
+  "lessons": [
+    {
+      "title": "🔌 What Does connect() Really Do?",
+      "content": "<div class='card'><code>WiFiClient.connect()</code> tells your Arduino to create a TCP connection to a server 🌍</div>\n\n<div class='card'>It’s like dialing a phone number: you give it the address (like <code>example.com</code>) and a port (like <code>80</code> for websites)</div>\n\n<div class='card'>If the server picks up — boom! You’re connected 🔗</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/TCP_connection_setup.svg/1280px-TCP_connection_setup.svg.png",
+      "audio": "https://audio-url-host/connect-what-it-does.mp3"
+    },
+    {
+      "title": "📘 Syntax: Two Ways to Call connect()",
+      "content": "<div class='card'>You can connect using either a domain name (like <code>example.com</code>) or an IP address</div>\n\n<pre>\nWiFiClient client;\nclient.connect(\"example.com\", 80);\n</pre>\n<pre>\nIPAddress server(93, 184, 216, 34);\nclient.connect(server, 80);\n</pre>\n\n<div class='card'>Port <code>80</code> = websites (HTTP)<br>Port <code>443</code> = secure websites (HTTPS)<br>Port <code>1883</code> = MQTT, and so on...</div>",
+      "image": "https://cdn.sparkfun.com/assets/6/a/0/e/wificlient_connect_syntax.svg",
+      "audio": "https://audio-url-host/connect-syntax.mp3"
+    },
+    {
+      "title": "🧠 TCP vs UDP — Why connect() Uses TCP",
+      "content": "<div class='card'><b>TCP</b> guarantees delivery, order, and error checking — perfect for web communication 🌐</div>\n\n<div class='card'><b>UDP</b> is faster but riskier — good for real-time video/audio/gaming</div>\n\n<div class='card'><code>WiFiClient</code> uses TCP because:</div>\n<ul>\n<li>📦 You need reliable data</li>\n<li>📬 It checks if your message arrived</li>\n<li>🧩 It works well with HTTP APIs</li>\n</ul>\n\n<div class='card'>That’s why we use <code>client.connect()</code> — it does all the TCP handshake work for you 🤝</div>",
+      "image": "https://cdn.sparkfun.com/assets/1/f/8/9/tcp_vs_udp_diagram.svg",
+      "audio": "https://audio-url-host/tcp-vs-udp.mp3"
+    },
+    {
+      "title": "🧪 Example: Connect to a Web Server",
+      "content": "<div class='card'>This sketch connects to <code>example.com</code> on port 80 and prints a basic HTTP request:</div>\n<pre>\n#include <WiFi.h>\nWiFiClient client;\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(\"YourSSID\", \"YourPassword\");\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n  }\n\n  if (client.connect(\"example.com\", 80)) {\n    Serial.println(\"Connected to server!\");\n    client.print(\"GET / HTTP/1.1\\r\\nHost: example.com\\r\\n\\r\\n\");\n  } else {\n    Serial.println(\"Connection failed.\");\n  }\n}\n\nvoid loop() {}\n</pre>",
+      "image": "https://cdn.sparkfun.com/assets/4/5/4/0/wificlient_connect_code.svg",
+      "audio": "https://audio-url-host/connect-example.mp3"
+    },
+    {
+      "title": "🎮 Game: What Does connect() Need?",
+      "content": "<div class='card'>Which two things must <code>WiFiClient.connect()</code> have?</div>\n\n<div class='card'>\nA. MAC address and port<br>\nB. DNS and socket<br>\nC. Hostname/IP and port<br>\nD. Server name and loop()\n</div>\n\n<div class='card'><input id='connectQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! connect() needs a hostname or IP, and a port.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/d/7/9/3/connect_quiz.svg",
+      "audio": "https://audio-url-host/connect-quiz.mp3"
+    },
+    {
+      "title": "💡 When to Use connect() in Real Projects",
+      "content": "<div class='card'>Use <code>connect()</code> when your Arduino must:</div>\n<ul>\n<li>🌐 Fetch live data (weather, time, sensors)</li>\n<li>🧠 Talk to your own web server/API</li>\n<li>📊 Push data to a database or cloud dashboard</li>\n<li>📱 Communicate with phone apps (as a client)</li>\n</ul>\n\n<div class='card'>It’s your entry door to the online world 🚪</div>",
+      "image": "https://cdn.sparkfun.com/assets/8/9/0/0/wificlient_connect_usecases.svg",
+      "audio": "https://audio-url-host/connect-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiClient.connected() — How to Check If You're Still Online",
+  "lessons": [
+    {
+      "title": "🔌 What Is connected() Used For?",
+      "content": "<div class='card'>After calling <code>client.connect()</code>, how do you know if the connection is still alive?</div>\n\n<div class='card'><b><code>client.connected()</code></b> returns <code>true</code> if the TCP connection is still active 💡</div>\n\n<div class='card'>Useful for checking before you try to <code>read()</code>, <code>write()</code>, or <code>print()</code> again.</div>\n\n<div class='card'>If it returns <code>false</code>, the remote server has closed the connection or timed out ⏱️</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/e/3/4/client_connected_state.svg",
+      "audio": "https://audio-url-host/connected-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax and Return Type",
+      "content": "<div class='card'>The method has no parameters and returns a boolean:</div>\n<pre>\nbool isOnline = client.connected();\n</pre>\n\n<div class='card'><code>true</code> = Still connected<br><code>false</code> = Disconnected or closed</div>\n\n<div class='card'>Always use this before attempting any new data transfer!</div>",
+      "image": "https://cdn.sparkfun.com/assets/7/3/5/0/client_connected_syntax.svg",
+      "audio": "https://audio-url-host/connected-syntax.mp3"
+    },
+    {
+      "title": "🧠 Why Use connected()? Common Pitfalls",
+      "content": "<div class='card'>Many beginners assume once a connection is made, it will stay forever 🔄</div>\n\n<div class='card'>In reality, connections often break due to:</div>\n<ul>\n<li>🌐 Server timeouts</li>\n<li>🔌 WiFi instability</li>\n<li>🧱 Router reset or DHCP change</li>\n</ul>\n\n<div class='card'>Without checking <code>connected()</code>, you might try sending data to a dead socket ⚰️</div>",
+      "image": "https://cdn.sparkfun.com/assets/2/0/4/2/client_disconnected_scenarios.svg",
+      "audio": "https://audio-url-host/connected-pitfalls.mp3"
+    },
+    {
+      "title": "🧪 Example: Check Before You Read or Write",
+      "content": "<div class='card'>Here’s a simple sketch using <code>connected()</code> for reliability:</div>\n<pre>\nif (client.connected()) {\n  client.print(\"GET /data HTTP/1.1\\r\\nHost: api.example.com\\r\\n\\r\\n\");\n} else {\n  Serial.println(\"⚠️ Disconnected from server. Trying to reconnect...\");\n  client.connect(\"api.example.com\", 80);\n}</pre>\n\n<div class='card'>✅ Ensures the board doesn’t crash or hang on dead sockets</div>",
+      "image": "https://cdn.sparkfun.com/assets/5/9/b/7/client_connected_check_code.svg",
+      "audio": "https://audio-url-host/connected-example.mp3"
+    },
+    {
+      "title": "🎮 Game: Guess the State",
+      "content": "<div class='card'>You sent data and got no response. Which of these could be true?</div>\n\n<div class='card'>\nA. client.connected() is false<br>\nB. client was never connected<br>\nC. Server closed the connection<br>\nD. All of the above\n</div>\n\n<div class='card'><input id='connectedQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Any of those reasons might mean you're no longer connected.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/1/9/b/f/client_connected_quiz.svg",
+      "audio": "https://audio-url-host/connected-quiz.mp3"
+    },
+    {
+      "title": "💡 Real Project Uses of connected()",
+      "content": "<div class='card'>Use <code>connected()</code> in projects like:</div>\n<ul>\n<li>📈 Reconnecting to APIs after loss</li>\n<li>📲 Mobile app-to-Arduino comms</li>\n<li>🧪 IoT dashboards that post data hourly</li>\n<li>🔄 Restarting sensors if WiFi drops</li>\n</ul>\n\n<div class='card'>💪 Smart IoT devices always check their connection before sending anything</div>",
+      "image": "https://cdn.sparkfun.com/assets/6/1/3/3/client_connected_usecases.svg",
+      "audio": "https://audio-url-host/connected-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiClient.print() — Sending Text Data to a Server",
+  "lessons": [
+    {
+      "title": "🖨️ What Does print() Do in WiFiClient?",
+      "content": "<div class='card'>Just like <code>Serial.print()</code> sends data to the Serial Monitor, <code>WiFiClient.print()</code> sends data to the server you’re connected to 📡</div>\n\n<div class='card'>You can use it to send:</div>\n<ul>\n<li>📄 HTTP GET or POST requests</li>\n<li>🧪 Sensor values</li>\n<li>📦 JSON strings</li>\n<li>🖐️ Any raw text you want to transmit</li>\n</ul>\n\n<div class='card'>This is how your Arduino speaks to websites!</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/4/b/7/wificlient_print_idea.svg",
+      "audio": "https://audio-url-host/wificlient-print-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax & Usage",
+      "content": "<div class='card'>Works just like <code>Serial.print()</code>:</div>\n<pre>\nWiFiClient client;\nclient.connect(\"example.com\", 80);\nclient.print(\"GET /data HTTP/1.1\\r\\nHost: example.com\\r\\n\\r\\n\");\n</pre>\n\n<div class='card'>This example sends a raw HTTP request to the server on port 80</div>\n\n<div class='card'><code>\\r\\n</code> is required in HTTP — it means newline + carriage return 🔄</div>",
+      "image": "https://cdn.sparkfun.com/assets/4/2/8/3/wificlient_print_syntax.svg",
+      "audio": "https://audio-url-host/wificlient-print-syntax.mp3"
+    },
+    {
+      "title": "📦 Behind the Scenes: Sending Packets",
+      "content": "<div class='card'>When you call <code>print()</code>, Arduino:</div>\n<ol>\n<li>💾 Stores the text in a TCP buffer</li>\n<li>📡 Sends that buffer over the WiFi network</li>\n<li>📬 Waits for the server to respond</li>\n</ol>\n\n<div class='card'>TCP ensures the packet arrives safely in order 💌</div>\n\n<div class='card'>If the connection is dropped mid-transfer, data may be lost — always check <code>connected()</code> before!</div>",
+      "image": "https://cdn.sparkfun.com/assets/0/a/7/1/wificlient_tcp_packetflow.svg",
+      "audio": "https://audio-url-host/print-how-it-works.mp3"
+    },
+    {
+      "title": "🧪 Real Arduino Code Example",
+      "content": "<div class='card'>Here’s how to use <code>print()</code> to send an HTTP request with a sensor reading:</div>\n<pre>\nWiFiClient client;\nfloat temperature = 24.6;\n\nif (client.connect(\"example.com\", 80)) {\n  client.print(\"GET /log?temp=\");\n  client.print(temperature);\n  client.print(\" HTTP/1.1\\r\\nHost: example.com\\r\\n\\r\\n\");\n}</pre>\n\n<div class='card'>💡 This sends the sensor data to a web server via a GET request</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/6/f/a/wificlient_print_temp_code.svg",
+      "audio": "https://audio-url-host/print-example.mp3"
+    },
+    {
+      "title": "🎮 Game: Will It Work?",
+      "content": "<div class='card'>Which of these <b>must</b> come at the end of an HTTP header?</div>\n\n<div class='card'>\nA. <code>\\n</code><br>\nB. <code>\\r</code><br>\nC. <code>\\n\\n</code><br>\nD. <code>\\r\\n\\r\\n</code>\n</div>\n\n<div class='card'><input id='printQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! HTTP requests end with \\r\\n\\r\\n to separate headers from the body.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/e/4/6/3/print_rn_game.svg",
+      "audio": "https://audio-url-host/print-game.mp3"
+    },
+    {
+      "title": "💡 When to Use WiFiClient.print() in Projects",
+      "content": "<div class='card'>Use <code>print()</code> when you want to:</div>\n<ul>\n<li>🌡️ Send sensor data to an API</li>\n<li>📈 Push values to a database or dashboard</li>\n<li>💬 Talk to a text-based server</li>\n<li>🎮 Control remote devices with HTTP commands</li>\n</ul>\n\n<div class='card'>It’s the go-to method for writing text to servers ✍️</div>",
+      "image": "https://cdn.sparkfun.com/assets/9/7/7/3/print_usecases_project_diagram.svg",
+      "audio": "https://audio-url-host/print-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiClient.println() — Sending Lines with Auto Line Breaks",
+  "lessons": [
+    {
+      "title": "🖨️ What Does println() Do?",
+      "content": "<div class='card'><code>WiFiClient.println()</code> sends data to a server just like <code>print()</code> — <b>but it adds a line break at the end</b> 🧵</div>\n\n<div class='card'>Specifically, it appends <code>\\r\\n</code> — which is how the internet marks line ends 🌐</div>\n\n<div class='card'>Great for sending formatted commands, headers, or logs line-by-line!</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/2/8/4/wificlient_println_linebreaks.svg",
+      "audio": "https://audio-url-host/println-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax: Just Like print(), But Cleaner",
+      "content": "<div class='card'>Use <code>println()</code> when you want to send a full line and move to the next one automatically:</div>\n<pre>\nclient.println(\"GET / HTTP/1.1\");\nclient.println(\"Host: example.com\");\nclient.println(); // Empty line ends HTTP request\n</pre>\n\n<div class='card'><b>Why use it?</b> Less typing! You don’t have to manually add <code>\\r\\n</code> to each string.</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/1/3/9/wificlient_println_syntax.svg",
+      "audio": "https://audio-url-host/println-syntax.mp3"
+    },
+    {
+      "title": "🔍 print() vs println() — What’s the Difference?",
+      "content": "<div class='card'>Let’s compare:</div>\n<table>\n<tr><th>Function</th><th>What It Sends</th></tr>\n<tr><td><code>print(\"Hello\")</code></td><td><code>Hello</code></td></tr>\n<tr><td><code>println(\"Hello\")</code></td><td><code>Hello\\r\\n</code></td></tr>\n</table>\n\n<div class='card'><b>println()</b> is useful when communicating with:</div>\n<ul>\n<li>🧠 Text-based servers (like Telnet)</li>\n<li>🌍 Web servers expecting properly terminated headers</li>\n<li>🪵 Logging servers or serial bridges</li>\n</ul>",
+      "image": "https://cdn.sparkfun.com/assets/7/c/b/e/print-vs-println-comparison.svg",
+      "audio": "https://audio-url-host/print-vs-println.mp3"
+    },
+    {
+      "title": "🧪 Example: Use println() for HTTP Headers",
+      "content": "<div class='card'>Here’s how to use <code>println()</code> to send an HTTP request more cleanly:</div>\n<pre>\nif (client.connect(\"example.com\", 80)) {\n  client.println(\"GET /data HTTP/1.1\");\n  client.println(\"Host: example.com\");\n  client.println(\"Connection: close\");\n  client.println(); // Important! Ends the request\n}</pre>\n\n<div class='card'>👀 Notice how easy this is without typing <code>\\r\\n</code> every time!</div>",
+      "image": "https://cdn.sparkfun.com/assets/1/2/c/4/println_http_example.svg",
+      "audio": "https://audio-url-host/println-example.mp3"
+    },
+    {
+      "title": "🎮 Game: Which One is Right?",
+      "content": "<div class='card'>You’re sending an HTTP request. Which line properly ends the headers?</div>\n\n<div class='card'>\nA. <code>client.print(\"\\n\")</code><br>\nB. <code>client.print(\"\\r\\n\")</code><br>\nC. <code>client.println()</code><br>\nD. <code>client.stop()</code>\n</div>\n\n<div class='card'><input id='printlnQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! println() sends \\r\\n automatically — perfect for ending HTTP headers.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/3/2/4/e/println_game_quiz.svg",
+      "audio": "https://audio-url-host/println-game.mp3"
+    },
+    {
+      "title": "💡 println() in Real IoT Applications",
+      "content": "<div class='card'>Use <code>println()</code> in projects like:</div>\n<ul>\n<li>🌦️ Weather sensors posting data to cloud</li>\n<li>📡 IoT devices sending HTTP GET requests</li>\n<li>🧪 Diagnostic logs to a text-based server</li>\n<li>📨 Sending commands to custom APIs</li>\n</ul>\n\n<div class='card'>✅ Faster and cleaner than <code>print()</code> when you're sending structured, line-based data</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/e/b/a/println_project_usecases.svg",
+      "audio": "https://audio-url-host/println-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiClient.available() — Is There Data to Read?",
+  "lessons": [
+    {
+      "title": "📥 What Does available() Do?",
+      "content": "<div class='card'><code>WiFiClient.available()</code> checks if there's any data received from the server that hasn’t been read yet 👀</div>\n\n<div class='card'>It’s like peeking into your mailbox 📫\n<ul><li>📦 If there’s mail: it returns a number > 0</li>\n<li>❌ If empty: it returns 0</li></ul></div>\n\n<div class='card'>It helps you decide: <b>Should I call read() now?</b></div>",
+      "image": "https://cdn.sparkfun.com/assets/b/5/6/9/available_mailbox_check.svg",
+      "audio": "https://audio-url-host/available-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax & Return Value",
+      "content": "<div class='card'>Simple to use and doesn’t need any parameters:</div>\n<pre>\nint bytes = client.available();\n</pre>\n\n<div class='card'>If <code>bytes > 0</code>, there is something ready to be read!</div>\n\n<div class='card'>💡 Great for non-blocking reads — it prevents your sketch from freezing if there's no data yet.</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/b/2/e/wificlient_available_syntax.svg",
+      "audio": "https://audio-url-host/available-syntax.mp3"
+    },
+    {
+      "title": "🧠 Why available() Is Crucial",
+      "content": "<div class='card'>Imagine calling <code>client.read()</code> when nothing has arrived yet 📭</div>\n\n<div class='card'>You’d either get <code>-1</code> (no data), or your code might block (wait forever!) ⏳</div>\n\n<div class='card'>That’s why <b>smart code always checks <code>available()</code> first</b> — especially when working with APIs or sensors that respond slowly.</div>",
+      "image": "https://cdn.sparkfun.com/assets/d/1/f/4/available_checking_warning.svg",
+      "audio": "https://audio-url-host/available-warning.mp3"
+    },
+    {
+      "title": "🧪 Example: Use available() With read()",
+      "content": "<div class='card'>Here’s a simple sketch that reads server replies character-by-character:</div>\n<pre>\nif (client.available() > 0) {\n  char c = client.read();\n  Serial.print(c);\n}</pre>\n\n<div class='card'>Wrap this in <code>loop()</code> and you can continuously read from the server, as soon as new data arrives ✅</div>",
+      "image": "https://cdn.sparkfun.com/assets/8/6/3/f/wificlient_available_code_example.svg",
+      "audio": "https://audio-url-host/available-example.mp3"
+    },
+    {
+      "title": "🎮 Game: What Happens If You Skip available()?",
+      "content": "<div class='card'>You call <code>client.read()</code> before checking <code>available()</code>. What might happen?</div>\n\n<div class='card'>\nA. It always works instantly<br>\nB. Arduino may freeze/wait forever<br>\nC. You’ll get -1 or garbage data<br>\nD. B and C\n</div>\n\n<div class='card'><input id='availableQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Without checking available(), you might get -1 or block your code.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/5/1/9/8/available_game_quiz.svg",
+      "audio": "https://audio-url-host/available-quiz.mp3"
+    },
+    {
+      "title": "💡 When to Use available() in Real Projects",
+      "content": "<div class='card'>Use <code>available()</code> in:</div>\n<ul>\n<li>📬 Reading replies from a web server</li>\n<li>📡 Decoding incoming messages (like JSON or CSV)</li>\n<li>🛑 Avoiding blocking loops that freeze your UI</li>\n<li>🎮 Real-time control panels or dashboards</li>\n</ul>\n\n<div class='card'>💪 It’s one of the most important checks before reading anything from a connection.</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/f/4/c/available_real_projects.svg",
+      "audio": "https://audio-url-host/available-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiClient.read() — Receiving Data from a Server",
+  "lessons": [
+    {
+      "title": "📥 What Is read() and What Does It Do?",
+      "content": "<div class='card'>After you send a request to a server using <code>client.print()</code> or <code>client.println()</code>, the server usually replies 📡</div>\n\n<div class='card'><code>WiFiClient.read()</code> reads <b>one byte at a time</b> from the response buffer 🧱</div>\n\n<div class='card'>It’s like reading one letter at a time from a message 📜</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/7/4/6/wificlient_read_byte_flow.svg",
+      "audio": "https://audio-url-host/wificlient-read-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax: Simple but Powerful",
+      "content": "<div class='card'><code>int byte = client.read();</code></div>\n\n<div class='card'>- If data is available: returns the next byte (0–255)<br>- If no data: returns <code>-1</code></div>\n\n<div class='card'>💡 Always use <code>client.available()</code> before calling <code>read()</code>, to avoid getting <code>-1</code></div>",
+      "image": "https://cdn.sparkfun.com/assets/a/4/e/2/wificlient_read_syntax.svg",
+      "audio": "https://audio-url-host/wificlient-read-syntax.mp3"
+    },
+    {
+      "title": "📦 Reading Full Server Replies",
+      "content": "<div class='card'>Reading one byte at a time is slow — so use a loop to build a full response string 🧩</div>\n<pre>\nString reply = \"\";\nwhile (client.available()) {\n  char c = client.read();\n  reply += c;\n}\nSerial.println(reply);\n</pre>\n\n<div class='card'>💡 This reads the entire response until there's no data left</div>",
+      "image": "https://cdn.sparkfun.com/assets/5/c/8/a/read_loop_response.svg",
+      "audio": "https://audio-url-host/read-loop-example.mp3"
+    },
+    {
+      "title": "🧪 Example: Full Read After Sending GET",
+      "content": "<div class='card'>Here's a real Arduino sketch:</div>\n<pre>\nclient.print(\"GET / HTTP/1.1\\r\\nHost: example.com\\r\\n\\r\\n\");\n\nwhile (client.connected()) {\n  while (client.available()) {\n    char c = client.read();\n    Serial.write(c);\n  }\n}</pre>\n\n<div class='card'>💡 This displays the HTTP response from the server line-by-line on the Serial Monitor</div>",
+      "image": "https://cdn.sparkfun.com/assets/6/0/1/1/read_serial_example.svg",
+      "audio": "https://audio-url-host/read-serial-example.mp3"
+    },
+    {
+      "title": "🎮 Game: Decode the Server",
+      "content": "<div class='card'>If <code>client.read()</code> returns <code>-1</code>, what does it mean?</div>\n\n<div class='card'>\nA. The WiFi is off<br>\nB. The server is down<br>\nC. No data is available right now<br>\nD. You typed something wrong\n</div>\n\n<div class='card'><input id='readQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! -1 means there's nothing in the buffer to read yet.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/4/b/6/8/read_quiz_visual.svg",
+      "audio": "https://audio-url-host/read-quiz.mp3"
+    },
+    {
+      "title": "💡 When to Use read() in Real Projects",
+      "content": "<div class='card'>You’ll use <code>read()</code> in all sorts of real-world scenarios:</div>\n<ul>\n<li>🌐 Parsing HTTP responses from web APIs</li>\n<li>📨 Reading remote commands sent by another device</li>\n<li>🧪 Decoding sensor data sent over WiFi</li>\n<li>🔐 Reading tokens, keys, or status codes</li>\n</ul>\n\n<div class='card'>✅ It’s the bridge that lets Arduino receive info from the internet 🛰️</div>",
+      "image": "https://cdn.sparkfun.com/assets/b/3/1/9/read_real_world_apps.svg",
+      "audio": "https://audio-url-host/read-real-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiClient.flush() — Clear the Output Buffer",
+  "lessons": [
+    {
+      "title": "🧹 What Does flush() Actually Do?",
+      "content": "<div class='card'><code>client.flush()</code> is used to make sure all data you've written gets pushed out through the connection ✉️➡️</div>\n\n<div class='card'>It clears (or <i>flushes</i>) the outgoing write buffer — <b>not the incoming data</b></div>\n\n<div class='card'>✅ Used after <code>print()</code>, <code>write()</code>, or <code>println()</code> when you want to be 100% sure the data has left your Arduino</div>",
+      "image": "https://cdn.sparkfun.com/assets/4/4/c/7/flush_buffer_pipe.svg",
+      "audio": "https://audio-url-host/flush-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax and What It Returns",
+      "content": "<div class='card'>Syntax is simple — it takes no arguments:</div>\n<pre>\nclient.flush();\n</pre>\n\n<div class='card'>It returns <code>void</code> (nothing)</div>\n\n<div class='card'>Call it <b>after sending data</b>, especially in time-sensitive apps like real-time control or logging 📈</div>",
+      "image": "https://cdn.sparkfun.com/assets/2/6/a/3/flush_code.svg",
+      "audio": "https://audio-url-host/flush-syntax.mp3"
+    },
+    {
+      "title": "🧠 Do You Always Need It?",
+      "content": "<div class='card'>Not always! Arduino automatically sends the data pretty quickly after <code>print()</code> or <code>write()</code> ✅</div>\n\n<div class='card'><b>But you should use <code>flush()</code>:</b>\n<ul>\n<li>Before closing the connection with <code>stop()</code></li>\n<li>When streaming data to avoid truncation</li>\n<li>When debugging why no data is received</li>\n</ul></div>",
+      "image": "https://cdn.sparkfun.com/assets/7/f/5/a/flush_optional_usecases.svg",
+      "audio": "https://audio-url-host/flush-usecases.mp3"
+    },
+    {
+      "title": "🧪 Example: Print, Flush, Then Stop",
+      "content": "<div class='card'>Here’s a reliable communication pattern:</div>\n<pre>\nclient.print(\"GET /api/data HTTP/1.1\\r\\nHost: example.com\\r\\n\\r\\n\");\nclient.flush();\nclient.stop();</pre>\n\n<div class='card'>💡 This guarantees the data is pushed before disconnecting ⚠️</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/8/c/9/flush_then_stop.svg",
+      "audio": "https://audio-url-host/flush-example.mp3"
+    },
+    {
+      "title": "🎮 Game: Should You Flush?",
+      "content": "<div class='card'>You just sent a temperature reading to your cloud API. Before calling <code>client.stop()</code>, should you flush?</div>\n\n<div class='card'>\nA. Yes, always flush before stopping<br>\nB. No, it's automatic<br>\nC. Only if you're paranoid<br>\nD. Depends on the size of the data\n</div>\n\n<div class='card'><input id='flushQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! It's safest to flush before stopping to ensure full delivery.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/1/f/a/2/flush_game_quiz.svg",
+      "audio": "https://audio-url-host/flush-quiz.mp3"
+    },
+    {
+      "title": "💡 When to Use flush() in Real Projects",
+      "content": "<div class='card'>Use <code>flush()</code> in projects like:</div>\n<ul>\n<li>📊 Remote data logging (so logs aren't lost)</li>\n<li>📡 Real-time sensor streaming to dashboards</li>\n<li>📬 Sending structured protocols where timing matters</li>\n<li>⏱️ Devices that wake, send, and sleep immediately</li>\n</ul>\n\n<div class='card'>🧠 It’s your last chance to <i>guarantee</i> delivery before closing the line</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/d/9/3/flush_project_cases.svg",
+      "audio": "https://audio-url-host/flush-real-projects.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiClient.stop() — Safely Ending a Connection",
+  "lessons": [
+    {
+      "title": "🛑 What Does stop() Do?",
+      "content": "<div class='card'><code>WiFiClient.stop()</code> ends your connection with a server 📴</div>\n\n<div class='card'>Once called, you can no longer send or receive data with that <code>client</code> object.</div>\n\n<div class='card'>✅ It also frees up system resources — like sockets, memory, and WiFi handles.</div>\n\n<div class='card'>💡 Think of it as hanging up a call after you're done talking! ☎️</div>",
+      "image": "https://cdn.sparkfun.com/assets/stop-call-drop.svg",
+      "audio": "https://audio-url-host/wificlient-stop-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax and Return",
+      "content": "<div class='card'>It’s very straightforward:</div>\n<pre>\nclient.stop();\n</pre>\n\n<div class='card'>This method returns nothing. But after calling it, your client object becomes disconnected.</div>\n\n<div class='card'>⚠️ Any attempt to <code>print()</code>, <code>read()</code> or <code>available()</code> after <code>stop()</code> will fail.</div>",
+      "image": "https://cdn.sparkfun.com/assets/client-stop-syntax.svg",
+      "audio": "https://audio-url-host/wificlient-stop-syntax.mp3"
+    },
+    {
+      "title": "🧠 Why stop() Is Important",
+      "content": "<div class='card'>Arduino has limited network sockets 🧠</div>\n\n<div class='card'>If you don’t call <code>stop()</code>, the connection might stay open, using memory and preventing new ones.</div>\n\n<div class='card'>💡 Always call <code>stop()</code> when you're done — especially in <b>loop()</b> or when dealing with many requests.</div>",
+      "image": "https://cdn.sparkfun.com/assets/memory-leak-sockets.svg",
+      "audio": "https://audio-url-host/stop-why-important.mp3"
+    },
+    {
+      "title": "🧪 Example: Send, Stop, Repeat",
+      "content": "<div class='card'>Here’s a loop that connects to a server, sends a request, reads the response, and ends the session:</div>\n<pre>\nif (client.connect(\"example.com\", 80)) {\n  client.println(\"GET / HTTP/1.1\");\n  client.println(\"Host: example.com\");\n  client.println();\n\n  while (client.available()) {\n    Serial.write(client.read());\n  }\n\n  client.stop();\n}</pre>\n\n<div class='card'>✅ Connection is opened and closed cleanly. Good networking hygiene!</div>",
+      "image": "https://cdn.sparkfun.com/assets/client-stop-fullflow.svg",
+      "audio": "https://audio-url-host/stop-full-example.mp3"
+    },
+    {
+      "title": "🎮 Game: What If You Don’t Stop?",
+      "content": "<div class='card'>What happens if you forget to call <code>stop()</code>?</div>\n\n<div class='card'>\nA. Nothing at all<br>\nB. Your ESP/Arduino may crash later<br>\nC. It works better without stop<br>\nD. The client reconnects automatically\n</div>\n\n<div class='card'><input id='stopQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Not calling stop() may crash your board due to memory or socket leaks.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/game-sockets-leak.svg",
+      "audio": "https://audio-url-host/stop-game.mp3"
+    },
+    {
+      "title": "💡 Real Use Cases for stop()",
+      "content": "<div class='card'>Use <code>stop()</code> in:</div>\n<ul>\n<li>📈 Data loggers that upload once per loop</li>\n<li>📮 POST/GET once, then sleep</li>\n<li>📡 WiFi sensors that talk to a server every few seconds</li>\n<li>🎮 Web control projects where a command finishes the job</li>\n</ul>\n\n<div class='card'>✅ Always end cleanly — it’s good practice in both embedded and real-world internet systems.</div>",
+      "image": "https://cdn.sparkfun.com/assets/usecases-stop.svg",
+      "audio": "https://audio-url-host/stop-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "WiFiClient.connected() — Is the Client Still Online?",
+  "lessons": [
+    {
+      "title": "🔌 What Does connected() Do?",
+      "content": "<div class='card'><code>WiFiClient.connected()</code> checks if the client is still connected to the server ✅</div>\n\n<div class='card'>It’s your way of asking: “Am I still in touch with the server?” 🧠</div>\n\n<div class='card'>Returns <code>true</code> if the connection is alive, <code>false</code> if closed or disconnected.</div>",
+      "image": "https://cdn.sparkfun.com/assets/wificlient_connected_heartbeat.svg",
+      "audio": "https://audio-url-host/connected-intro.mp3"
+    },
+    {
+      "title": "📘 Syntax & Return Type",
+      "content": "<div class='card'>Syntax is very straightforward:</div>\n<pre>\nbool online = client.connected();\n</pre>\n\n<div class='card'>Returns a <code>boolean</code> (true/false).</div>\n\n<div class='card'>Use it in loops or before sending/reading to ensure your connection is still alive 🔍</div>",
+      "image": "https://cdn.sparkfun.com/assets/connected_syntax_return.svg",
+      "audio": "https://audio-url-host/connected-syntax.mp3"
+    },
+    {
+      "title": "🧠 Why It Matters: Avoid Sending to a Dead Connection",
+      "content": "<div class='card'>If you send data on a dead connection, it might fail silently — or cause bugs 🐛</div>\n\n<div class='card'>Checking <code>connected()</code> helps keep your communication clean, especially if your sketch runs for long hours or needs reliability ✅</div>\n\n<div class='card'>💡 Great for reconnecting logic, error handling, and debugging tricky server drops</div>",
+      "image": "https://cdn.sparkfun.com/assets/connected_safecheck.svg",
+      "audio": "https://audio-url-host/connected-safety.mp3"
+    },
+    {
+      "title": "🧪 Example: Auto Reconnect Logic",
+      "content": "<div class='card'>Here's a sketch that reconnects automatically if the connection is lost:</div>\n<pre>\nif (!client.connected()) {\n  Serial.println(\"Reconnecting...\");\n  client.connect(\"example.com\", 80);\n}</pre>\n\n<div class='card'>💡 Use this pattern to make robust long-running systems 🌐</div>",
+      "image": "https://cdn.sparkfun.com/assets/connected_autoreconnect.svg",
+      "audio": "https://audio-url-host/connected-example.mp3"
+    },
+    {
+      "title": "🎮 Game: True or False?",
+      "content": "<div class='card'>You call <code>connected()</code> and it returns <code>false</code>. What does it mean?</div>\n\n<div class='card'>\nA. The server disconnected you<br>\nB. Timeout occurred<br>\nC. The internet went out<br>\nD. Any of the above\n</div>\n\n<div class='card'><input id='connectedQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! All of the above can cause connected() to return false.\")'>Submit</button></div>",
+      "image": "https://cdn.sparkfun.com/assets/connected_quiz_logic.svg",
+      "audio": "https://audio-url-host/connected-quiz.mp3"
+    },
+    {
+      "title": "💡 Where to Use connected() in Projects",
+      "content": "<div class='card'>Use <code>connected()</code> in:</div>\n<ul>\n<li>📡 Long-running IoT apps</li>\n<li>🔁 Auto-reconnect loops</li>\n<li>📬 Messaging clients (MQTT, REST)</li>\n<li>📈 Remote data monitors</li>\n</ul>\n\n<div class='card'>✅ It’s your watchdog — always keeping you connected 💼</div>",
+      "image": "https://cdn.sparkfun.com/assets/connected_real_world.svg",
+      "audio": "https://audio-url-host/connected-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "What is an API? — Arduino Meets the Internet",
+  "lessons": [
+    {
+      "title": "🌐 What Is an API, Really?",
+      "content": "<div class='card'>API stands for <b>Application Programming Interface</b>.</div>\n<div class='card'>It’s like a menu card in a restaurant 🧾 — it tells your Arduino what services are available from a web server, and how to ask for them.</div>\n<div class='card'>Example: An API might let you ask a weather server: “What’s the temperature in Mumbai?” — and you’ll get a reply like <code>{\"temp\": 32}</code></div>\n<div class='card'>APIs let your Arduino talk to powerful internet services in real-time — from weather to messaging, and beyond 🌍</div>",
+      "image": "https://i.imgur.com/YtrmwkQ.png",
+      "audio": "https://audio-url-host/api-what-is-it.mp3"
+    },
+    {
+      "title": "🔁 Request & Response: The Basic API Flow",
+      "content": "<div class='card'><b>1. Your Arduino sends a request</b> using <code>client.print()</code> to the server’s API URL.</div>\n<div class='card'><b>2. The server receives your request</b> and prepares the data you asked for.</div>\n<div class='card'><b>3. The server sends back a response</b> — often in <b>JSON</b> format.</div>\n<div class='card'><b>4. Your Arduino reads it using <code>client.read()</code></b> and decodes the result 🎯</div>\n<div class='card'>Example: You hit an API that gives time data, and the reply is:\n<pre>{ \"time\": \"18:47:00\", \"timezone\": \"IST\" }</pre></div>",
+      "image": "https://i.imgur.com/ff49t7U.png",
+      "audio": "https://audio-url-host/api-flow.mp3"
+    },
+    {
+      "title": "📬 Real API Example: OpenWeatherMap",
+      "content": "<div class='card'>Let’s say we want to get current weather on our Arduino.</div>\n<div class='card'>Here’s a real OpenWeather API URL:\n<pre>http://api.openweathermap.org/data/2.5/weather?q=Mumbai&appid=YOUR_API_KEY</pre></div>\n<div class='card'>You’ll use <code>client.print()</code> to send this as a GET request.</div>\n<div class='card'>The server replies with JSON data like:\n<pre>{ \"main\": { \"temp\": 304.15 }, \"name\": \"Mumbai\" }</pre></div>\n<div class='card'>Then you parse that data and display it on an LCD or serial monitor.</div>",
+      "image": "https://i.imgur.com/jEG6BbZ.png",
+      "audio": "https://audio-url-host/api-weather-example.mp3"
+    },
+    {
+      "title": "🧠 What’s JSON? And Why Do APIs Use It?",
+      "content": "<div class='card'><b>JSON = JavaScript Object Notation</b>. It’s a lightweight, easy-to-read data format used by most APIs 🧾</div>\n<div class='card'>A JSON response looks like this:\n<pre>{ \"city\": \"Delhi\", \"humidity\": 82 }</pre></div>\n<div class='card'>Your Arduino code must extract these values using string manipulation or a JSON library 🛠️</div>\n<div class='card'>JSON is easy to parse, human-readable, and works great over WiFi</div>",
+      "image": "https://i.imgur.com/5Yy6mPw.png",
+      "audio": "https://audio-url-host/api-json-explained.mp3"
+    },
+    {
+      "title": "🛠️ Arduino Sketch: Calling an API",
+      "content": "<div class='card'>Let’s say you want to call the time API:</div>\n<pre>\nclient.print(\"GET /api/time HTTP/1.1\\r\\n\");\nclient.print(\"Host: worldtimeapi.org\\r\\n\\r\\n\");\nwhile (client.available()) {\n  char c = client.read();\n  Serial.print(c);\n}\n</pre>\n<div class='card'>This code sends a request to the time server, and prints the JSON reply on Serial Monitor 💻</div>\n<div class='card'>You can extend this to extract specific values and use them in your project (e.g., setting an RTC)</div>",
+      "image": "https://i.imgur.com/DOlZpsE.png",
+      "audio": "https://audio-url-host/api-code-example.mp3"
+    },
+    {
+      "title": "🎮 Game: What Happens When You Use an API?",
+      "content": "<div class='card'>You send a request to <code>api.example.com/data</code>. What will you likely receive?</div>\n<div class='card'>\nA. A string of emojis 😎<br>\nB. An error message from your Arduino<br>\nC. JSON data like <code>{ \"value\": 42 }</code><br>\nD. The Arduino will explode 💥\n</div>\n<div class='card'><input id='apiGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Most APIs reply with JSON-formatted data.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/ZX1Wlnx.png",
+      "audio": "https://audio-url-host/api-quiz.mp3"
+    },
+    {
+      "title": "💡 Real Use Cases for APIs in Arduino",
+      "content": "<div class='card'>APIs unlock powerful capabilities in your Arduino projects. Here are some ideas:</div>\n<ul>\n<li>⛅ Display weather and forecasts from the internet</li>\n<li>🕒 Auto-sync time using a world clock API</li>\n<li>🔐 Control devices based on cloud messages (IoT)</li>\n<li>💬 Send Telegram or WhatsApp alerts via APIs</li>\n<li>🧠 Use ChatGPT-like AI tools to process sensor data</li>\n</ul>\n<div class='card'>💥 APIs = Superpowers for your Arduino 🚀</div>",
+      "image": "https://i.imgur.com/s3y43Vb.png",
+      "audio": "https://audio-url-host/api-usecases.mp3"
+    },
+    {
+      "title": "🎓 Recap: What You Learned",
+      "content": "<div class='card'>✅ API is how Arduino talks to web services<br>✅ You send a request, get a response<br>✅ Most APIs return JSON<br>✅ Use <code>WiFiClient</code> methods to send/receive<br>✅ APIs open up real-world data in your embedded projects</div>\n<div class='card'>Next, we’ll learn about the <b>Client-Server model</b> — and how Arduino fits into it 🔄</div>",
+      "image": "https://i.imgur.com/84wQyFb.png",
+      "audio": "https://audio-url-host/api-recap.mp3"
+    }
+  ]
+}
+,{
+  "title": "How Client–Server Communication Works — Arduino’s Internet Journey",
+  "lessons": [
+    {
+      "title": "🧠 What’s a Client and What’s a Server?",
+      "content": "<div class='card'>In networking, a <b>client</b> is the device that <b>makes a request</b>.</div>\n<div class='card'>A <b>server</b> is the machine that <b>listens for requests</b> and sends back a reply 📨</div>\n<div class='card'>Your Arduino, using <code>WiFiClient</code>, acts as the client. It connects to a website or API (the server), asks for data, and waits for a response 📡</div>\n<div class='card'>💡 Think of it like ordering food — you’re the client, the waiter is the server.</div>",
+      "image": "https://i.imgur.com/ZLgsZwL.png",
+      "audio": "https://audio-url-host/client-server-intro.mp3"
+    },
+    {
+      "title": "🌐 Step-by-Step: What Happens When Arduino Connects",
+      "content": "<div class='card'>Here’s what really happens inside your sketch when you use <code>client.connect()</code>:</div>\n<ol>\n<li>🔍 DNS is resolved (e.g., api.openweathermap.org ➝ IP)</li>\n<li>🔌 Arduino opens a TCP connection to the server IP</li>\n<li>📨 You send a GET or POST request (e.g., for weather)</li>\n<li>🖥️ Server processes it and replies with data (like JSON)</li>\n<li>📥 Arduino reads it byte-by-byte using <code>read()</code></li>\n<li>📴 When done, you call <code>stop()</code> to end the session</li>\n</ol>\n<div class='card'>💬 All of this usually happens in milliseconds!</div>",
+      "image": "https://i.imgur.com/HD9Qxk3.png",
+      "audio": "https://audio-url-host/client-server-flow.mp3"
+    },
+    {
+      "title": "📦 What is TCP, and Why Do We Use It?",
+      "content": "<div class='card'>TCP stands for <b>Transmission Control Protocol</b></div>\n<div class='card'>It ensures data is delivered <b>completely and in order</b>. It's like sending a document via courier and getting confirmation it was received ✉️✅</div>\n<div class='card'>Arduino uses TCP for most API and internet interactions via <code>WiFiClient</code> — not UDP.</div>\n<div class='card'>💡 TCP makes sure your messages to the server aren’t lost, jumbled, or incomplete.</div>",
+      "image": "https://i.imgur.com/9SzogkP.png",
+      "audio": "https://audio-url-host/tcp-explained.mp3"
+    },
+    {
+      "title": "🔐 What is a Port?",
+      "content": "<div class='card'>Every server has an IP address — like a house 🏠</div>\n<div class='card'>Ports are like room numbers inside that house — different services live on different ports.</div>\n<div class='card'>Common ports:<br>🌐 HTTP → Port 80<br>🔒 HTTPS → Port 443<br>📨 SMTP → Port 25</div>\n<div class='card'>When you use <code>client.connect(\"example.com\", 80)</code>, you’re calling the HTTP room 🔔</div>",
+      "image": "https://i.imgur.com/5MCzlmf.png",
+      "audio": "https://audio-url-host/ports-explained.mp3"
+    },
+    {
+      "title": "🧪 Visual Example: Full Arduino to API Call",
+      "content": "<div class='card'>Let’s say you want to get the time from an API:</div>\n<pre>\nclient.connect(\"worldtimeapi.org\", 80);\nclient.println(\"GET /api/timezone/Asia/Kolkata HTTP/1.1\");\nclient.println(\"Host: worldtimeapi.org\");\nclient.println();</pre>\n<div class='card'>This sends the request → server replies → you read it.\nYou’re a client, server’s the waiter, and JSON is the menu card 📜</div>",
+      "image": "https://i.imgur.com/utGeQGj.png",
+      "audio": "https://audio-url-host/full-api-call.mp3"
+    },
+    {
+      "title": "🎮 Game: Who’s the Client?",
+      "content": "<div class='card'>Which device is the client in this scenario?</div>\n<div class='card'>Your Arduino connects to api.sunrise-sunset.org to get sunrise time ⛅</div>\n<div class='card'>\nA. The API server<br>\nB. Arduino<br>\nC. WiFi router<br>\nD. JSON\n</div>\n<div class='card'><input id='clientQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Arduino is the client because it initiates the request.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/4LPhhvf.png",
+      "audio": "https://audio-url-host/client-server-quiz.mp3"
+    },
+    {
+      "title": "💡 Where You’ll See This In Real Projects",
+      "content": "<div class='card'>The client-server model is everywhere:</div>\n<ul>\n<li>📱 When your Arduino sends data to Google Sheets</li>\n<li>⏰ Fetching live time from a world clock API</li>\n<li>📈 Sending sensor data to cloud dashboards</li>\n<li>📬 Receiving messages from home automation systems</li>\n</ul>\n<div class='card'>You are now ready to understand <i>how the internet works</i> from your Arduino 🔥</div>",
+      "image": "https://i.imgur.com/f8qNZCu.png",
+      "audio": "https://audio-url-host/client-server-usecases.mp3"
+    }
+  ]
+}
+,{
+  "title": "Why WiFiClient Fails (And How to Fix It)",
+  "lessons": [
+    {
+      "title": "😬 Why WiFiClient Sometimes Just... Doesn’t Work",
+      "content": "<div class='card'>You wrote the code perfectly, but your Arduino isn’t getting a response? Or <code>client.connect()</code> keeps returning <code>false</code>?</div>\n<div class='card'>Don’t panic 😅 — WiFiClient is powerful, but it depends on several external things like your router, DNS, server response time, and more.</div>\n<div class='card'>Let’s break it down step by step so you can confidently debug these issues.</div>",
+      "image": "https://i.imgur.com/OMANv0O.png",
+      "audio": "https://audio-url-host/wificlient-fails-intro.mp3"
+    },
+    {
+      "title": "🚧 Issue #1: DNS Problems",
+      "content": "<div class='card'>Your Arduino can’t connect using the website name (like <code>api.example.com</code>)? It might be a DNS issue 😩</div>\n<div class='card'>Try connecting directly with the server’s IP address:</div>\n<pre>client.connect(\"93.184.216.34\", 80);</pre>\n<div class='card'>If that works, then your DNS lookup is broken — either use <code>WiFi.config()</code> to set a DNS, or manually hardcode IPs 🔍</div>",
+      "image": "https://i.imgur.com/bFHUYo1.png",
+      "audio": "https://audio-url-host/dns-issues.mp3"
+    },
+    {
+      "title": "🌐 Issue #2: Wrong API URL or Port",
+      "content": "<div class='card'>Always check:</div>\n<ul>\n<li>Is the API endpoint correct?</li>\n<li>Are you using HTTP (port 80) or HTTPS (port 443)?</li>\n<li>Arduino’s <code>WiFiClient</code> only supports HTTP. For HTTPS, use <code>WiFiClientSecure</code></li>\n</ul>\n<div class='card'>✅ Start with public, HTTP-based APIs while testing.</div>",
+      "image": "https://i.imgur.com/qYOMg3x.png",
+      "audio": "https://audio-url-host/api-port-problems.mp3"
+    },
+    {
+      "title": "⏱️ Issue #3: No Response or Timeout",
+      "content": "<div class='card'>Your request was sent, but nothing is coming back?</div>\n<div class='card'>Check if you sent the full HTTP request headers — especially the double <code>\\r\\n</code> at the end:</div>\n<pre>\nclient.print(\"GET /api/ HTTP/1.1\\r\\n\");\nclient.print(\"Host: example.com\\r\\n\");\nclient.print(\"Connection: close\\r\\n\\r\\n\");\n</pre>\n<div class='card'>⏳ If your loop waits forever, add a timeout check with <code>millis()</code> so you don’t freeze the whole Arduino!</div>",
+      "image": "https://i.imgur.com/WtbyRfO.png",
+      "audio": "https://audio-url-host/no-response-fix.mp3"
+    },
+    {
+      "title": "📶 Issue #4: Poor WiFi Signal or Credentials",
+      "content": "<div class='card'>Check your signal strength using <code>WiFi.RSSI()</code> 📶</div>\n<div class='card'>Weak signals may cause dropouts or failed connections.</div>\n<div class='card'>Also double-check your <code>ssid</code> and <code>password</code>. Yes — even one wrong character ruins everything 😅</div>\n<div class='card'>You can also call <code>WiFi.status()</code> to see if you're connected at all!</div>",
+      "image": "https://i.imgur.com/OHHG3GW.png",
+      "audio": "https://audio-url-host/wifi-checklist.mp3"
+    },
+    {
+      "title": "🔁 Issue #5: Server Closes the Connection Too Soon",
+      "content": "<div class='card'>Some APIs expect proper headers or authentication.</div>\n<div class='card'>If the server sees an incomplete request, it may hang up on your Arduino 😡</div>\n<div class='card'>Use <code>Serial.println()</code> to print every byte of your outgoing message to double-check what’s going out.</div>\n<div class='card'>💡 Some APIs require a special API key or token — read their docs carefully!</div>",
+      "image": "https://i.imgur.com/tay40Mn.png",
+      "audio": "https://audio-url-host/api-close-issue.mp3"
+    },
+    {
+      "title": "🛠️ Debugging Checklist",
+      "content": "<div class='card'>Here’s a quick checklist to follow when things go wrong:</div>\n<ul>\n<li>✅ Use <code>Serial.println()</code> to print your outgoing request</li>\n<li>✅ Use <code>WiFi.status()</code> to confirm you're online</li>\n<li>✅ Try <code>ping</code> the API from a PC to verify it's alive</li>\n<li>✅ Replace hostname with IP and test</li>\n<li>✅ Use a known-good HTTP API to test like <code>worldtimeapi.org</code></li>\n</ul>\n<div class='card'>You’re not alone — 90% of first API failures are fixable with these steps 🧠</div>",
+      "image": "https://i.imgur.com/NyNJDun.png",
+      "audio": "https://audio-url-host/wifi-debug-checklist.mp3"
+    },
+    {
+      "title": "🎮 Game: Why Did It Fail?",
+      "content": "<div class='card'>Scenario: You typed <code>client.connect(\"https://api.time.com\", 80)</code> and got no response.</div>\n<div class='card'>Why did it fail?</div>\n<div class='card'>\nA. Port 80 is wrong for HTTPS<br>\nB. You forgot \\r\\n\\r\\n<br>\nC. Should’ve used WiFiClientSecure<br>\nD. All of the above\n</div>\n<div class='card'><input id='failGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! All of the above are valid reasons why that call failed.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/Z19S3zQ.png",
+      "audio": "https://audio-url-host/wifi-failure-game.mp3"
+    }
+  ]
+}
+
+  ]
 }
 
   ]
