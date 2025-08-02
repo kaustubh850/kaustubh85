@@ -10755,7 +10755,92 @@ void loop() {
       "audio": "https://audio-url-host/gateway-usecases.mp3"
     }
   ]
+},{
+  "title": "IP Address Structure — How Numbers Define Devices",
+  "lessons": [
+    {
+      "title": "🔢 What Does an IP Address Actually Mean?",
+      "content": "<div class='card'>An IP address is a 32-bit number split into 4 chunks (called octets), like:</div>\n\n<div class='card'><code>192.168.1.42</code></div>\n\n<div class='card'>Each part can range from 0 to 255 — it’s just binary math! 🧠</div>\n\n<ul>\n<li><code>192</code> = 11000000</li>\n<li><code>168</code> = 10101000</li>\n<li><code>1</code>   = 00000001</li>\n<li><code>42</code>  = 00101010</li>\n</ul>\n\n<div class='card'>So that “dotted decimal” address is really a big 32-bit address behind the scenes 🎯</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/IPv4_header-en.svg/1280px-IPv4_header-en.svg.png",
+      "audio": "https://audio-url-host/ip-structure.mp3"
+    },
+    {
+      "title": "📘 Classes A, B, C — Legacy but Good to Know",
+      "content": "<div class='card'>In the past, IPs were grouped into “classes”:</div>\n<ul>\n<li>🅰️ Class A: 0.0.0.0 to 127.255.255.255</li>\n<li>🅱️ Class B: 128.0.0.0 to 191.255.255.255</li>\n<li>🌍 Class C: 192.0.0.0 to 223.255.255.255</li>\n</ul>\n\n<div class='card'>Most Arduino devices will fall in Class C (like 192.168.x.x).</div>\n\n<div class='card'>This helps routers decide how to route packets efficiently 📦</div>",
+      "image": "https://cdn.sparkfun.com/assets/a/4/3/5/IP_classes.svg",
+      "audio": "https://audio-url-host/ip-classes.mp3"
+    }
+  ]
 }
+,{
+  "title": "Static vs Dynamic IPs — Should You Fix It or Let It Flow?",
+  "lessons": [
+    {
+      "title": "🌀 What is DHCP and Dynamic IP?",
+      "content": "<div class='card'>By default, your router uses <b>DHCP</b> (Dynamic Host Configuration Protocol) to assign IPs to devices.</div>\n\n<div class='card'>Each time Arduino connects to WiFi, the IP may change (like 192.168.1.22 today, .24 tomorrow)</div>\n\n<div class='card'>💡 Dynamic = Automatic. No manual config needed.</div>",
+      "image": "https://cdn.sparkfun.com/assets/9/f/d/4/dhcp_auto_assign.svg",
+      "audio": "https://audio-url-host/dhcp-intro.mp3"
+    },
+    {
+      "title": "🧷 What is a Static IP? And Why Use It?",
+      "content": "<div class='card'>A <b>Static IP</b> stays fixed — you manually set it on your Arduino or reserve it on the router</div>\n\n<ul>\n<li>🌐 Useful for Web Servers</li>\n<li>📲 Phone apps can connect using saved IP</li>\n<li>📡 Reliable communication between multiple devices</li>\n</ul>\n\n<div class='card'>Downside: You must ensure the IP you choose is <b>not in use</b> and matches your subnet mask!</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/3/f/f/static_ip_vs_dynamic.svg",
+      "audio": "https://audio-url-host/static-vs-dynamic.mp3"
+    }
+  ]
+}
+,{
+  "title": "Subnetting Visualized — How IPs Get Divided",
+  "lessons": [
+    {
+      "title": "📏 What is a Subnet Again?",
+      "content": "<div class='card'>A subnet splits your IP range into smaller groups (or ‘networks’)</div>\n\n<div class='card'>Example: <code>255.255.255.0</code> subnet allows <b>254 devices</b> per network (last octet varies)</div>\n\n<div class='card'>It keeps your network fast, efficient, and organized 🔀</div>",
+      "image": "https://cdn.sparkfun.com/assets/f/f/9/f/subnet_division_diagram.svg",
+      "audio": "https://audio-url-host/subnetting-visual.mp3"
+    },
+    {
+      "title": "🧮 CIDR Notation: /24, /16, /8 Explained",
+      "content": "<div class='card'><code>/24</code> = 255.255.255.0 = 256 addresses<br>\n<code>/16</code> = 255.255.0.0 = 65,536 addresses<br>\n<code>/8</code> = 255.0.0.0 = 16.7 million addresses!</div>\n\n<div class='card'>CIDR (Classless Inter-Domain Routing) is how modern networks describe IP ranges ✍️</div>",
+      "image": "https://cdn.sparkfun.com/assets/e/8/9/2/cidr_chart.svg",
+      "audio": "https://audio-url-host/cidr-explained.mp3"
+    }
+  ]
+}
+,{
+  "title": "How Routing Works on Arduino",
+  "lessons": [
+    {
+      "title": "🚀 Local vs Remote Traffic — The Role of Routing",
+      "content": "<div class='card'>Routing decides: do we send this data <b>inside the LAN</b> or to the internet?</div>\n\n<div class='card'>Arduino checks if the target IP is in its subnet — if not, it forwards the packet to the <b>gateway</b> 🌍</div>\n\n<div class='card'><code>if (destinationIP & subnetMask) != (myIP & subnetMask)</code> → go via gateway</div>",
+      "image": "https://cdn.sparkfun.com/assets/d/3/5/9/arduino_routing_logic.svg",
+      "audio": "https://audio-url-host/routing-logic.mp3"
+    },
+    {
+      "title": "🌐 Visual Example of Routing Decisions",
+      "content": "<div class='card'>Arduino: 192.168.1.15<br>\nTarget A: 192.168.1.40 → same subnet → direct<br>\nTarget B: 192.168.2.10 → different subnet → use gateway</div>\n\n<div class='card'>Routing is automatic, but knowing it helps you troubleshoot faster 🧠</div>",
+      "image": "https://cdn.sparkfun.com/assets/5/a/8/c/routing_table_example.svg",
+      "audio": "https://audio-url-host/routing-example.mp3"
+    }
+  ]
+}
+,{
+  "title": "Common IP Configuration Errors (And How to Fix Them)",
+  "lessons": [
+    {
+      "title": "❌ Wrong Subnet or Gateway",
+      "content": "<div class='card'>If subnet or gateway are wrong:</div>\n<ul>\n<li>❌ Arduino connects but can’t reach internet</li>\n<li>❌ Cannot be found by other devices</li>\n<li>❌ DNS resolution fails</li>\n</ul>\n\n<div class='card'>✅ Always confirm: IP range, subnet mask, and gateway belong to the same block</div>",
+      "image": "https://cdn.sparkfun.com/assets/c/9/b/2/wrong_ip_config.svg",
+      "audio": "https://audio-url-host/ip-error-fix.mp3"
+    },
+    {
+      "title": "🛠️ Diagnostic Checklist",
+      "content": "<div class='card'>Run this checklist when IP-based communication fails:</div>\n<ul>\n<li>✅ <code>Serial.println(WiFi.localIP())</code></li>\n<li>✅ Check <code>WiFi.gatewayIP()</code></li>\n<li>✅ Ping from another device</li>\n<li>✅ Make sure no IP conflict exists</li>\n</ul>\n\n<div class='card'>📡 Use <code>WiFi.status()</code> to verify actual connection state</div>",
+      "image": "https://cdn.sparkfun.com/assets/0/f/7/a/arduino_network_debug.svg",
+      "audio": "https://audio-url-host/debug-checklist.mp3"
+    }
+  ]
+}
+
 
   ]
 }
