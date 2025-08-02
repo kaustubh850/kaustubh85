@@ -11705,6 +11705,75 @@ void loop() {
     }
   ]
 }
+,{
+  "title": "What is a Port Number? (Like Port 80, 443, etc.)",
+  "lessons": [
+    {
+      "title": "🛣️ What is a Port in Networking?",
+      "content": "<div class='card'>A <b>port</b> is like a virtual doorway into your device 📱</div>\n<div class='card'>Just like a house has many rooms (kitchen, bedroom...), a computer or Arduino has many ports — each for a different kind of communication.</div>\n<div class='card'>For example:\n<ul><li>Port 80 — for websites (HTTP)</li><li>Port 443 — for secure websites (HTTPS)</li><li>Port 22 — for SSH</li></ul></div>\n<div class='card'>When you write <code>WiFiServer server(80);</code>, you're saying: \"Start listening for website requests on port 80\" 🌐</div>",
+      "image": "https://i.imgur.com/HOei8vh.png",
+      "audio": "https://audio-url-host/port-intro.mp3"
+    },
+    {
+      "title": "🧠 Why You Must Choose the Right Port",
+      "content": "<div class='card'>Some ports are globally recognized (like 80 or 443). Using those helps browsers or apps understand how to talk to your device.</div>\n<div class='card'>But you can also use custom ports like 8080, 5000, or 3001 — just make sure the browser knows!</div>\n<pre>\nWiFiServer server(8080);\n</pre>\n<div class='card'>To access it, use: <code>http://192.168.1.47:8080</code></div>",
+      "image": "https://i.imgur.com/fovwSVS.png",
+      "audio": "https://audio-url-host/port-why.mp3"
+    },
+    {
+      "title": "🎮 Game: Match the Port!",
+      "content": "<div class='card'>Which service uses which port?</div>\n<ul>\n<li>HTTP → ?</li>\n<li>HTTPS → ?</li>\n<li>Arduino Server → ?</li>\n</ul>\n<div class='card'><input placeholder='Type like: 80, 443, 8080' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! 80 for HTTP, 443 for HTTPS, and Arduino can use any port!\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/9b9dUcl.png",
+      "audio": "https://audio-url-host/port-quiz.mp3"
+    }
+  ]
+}
+,{
+  "title": "What is a Client? Who is Connecting to Arduino?",
+  "lessons": [
+    {
+      "title": "🧍‍♂️ What is a Client in WiFi?",
+      "content": "<div class='card'>In networking, a <b>client</b> is the person or device that requests something 📱</div>\n<div class='card'>When your Arduino becomes a server, anything connecting to it (like your phone or browser) becomes the client.</div>\n<div class='card'>This line checks for clients:</div>\n<pre>\nWiFiClient client = server.available();\n</pre>",
+      "image": "https://i.imgur.com/lVRQmnU.png",
+      "audio": "https://audio-url-host/client-intro.mp3"
+    },
+    {
+      "title": "🔄 Server vs. Client (Who Does What?)",
+      "content": "<div class='card'><b>Server:</b> Arduino, hosting the website, sending data</div>\n<div class='card'><b>Client:</b> You — accessing Arduino via a browser or app</div>\n<div class='card'>Your browser says: \"Hey Arduino, give me the temp!\"<br>Arduino replies: \"Sure! Temp is 25°C\"</div>",
+      "image": "https://i.imgur.com/I1jWx3J.png",
+      "audio": "https://audio-url-host/server-vs-client.mp3"
+    },
+    {
+      "title": "🎮 Game: Client or Server?",
+      "content": "<div class='card'>Which is the client?</div>\n<ul>\n<li>A. Arduino sending sensor data to your phone</li>\n<li>B. Phone requesting dashboard page from Arduino</li>\n</ul>\n<div class='card'><input placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! The phone is the client in both cases.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/FWbbNvC.png",
+      "audio": "https://audio-url-host/client-quiz.mp3"
+    }
+  ]
+}
+,{
+  "title": "What Does “Available” Mean? (server.available & client.available)",
+  "lessons": [
+    {
+      "title": "👀 The Word 'Available' in Arduino",
+      "content": "<div class='card'>In Arduino, <code>available()</code> is like asking: \"Is there anything here yet?\" 👀</div>\n<div class='card'>It checks for:</div>\n<ul><li>👂 Has a user connected to the server? (<code>server.available()</code>)</li>\n<li>📩 Has the client sent any data yet? (<code>client.available()</code>)</li></ul>",
+      "image": "https://i.imgur.com/2FJkFbH.png",
+      "audio": "https://audio-url-host/available-intro.mp3"
+    },
+    {
+      "title": "🔁 Real World Example",
+      "content": "<div class='card'>You don’t want to read from an empty connection. So always check:</div>\n<pre>\nif (client.available()) {\n  String msg = client.readString();\n}\n</pre>\n<div class='card'>This prevents bugs, freezes, and weird junk data 🛡️</div>",
+      "image": "https://i.imgur.com/U6mAemF.png",
+      "audio": "https://audio-url-host/available-check.mp3"
+    },
+    {
+      "title": "🎮 Game: True or False?",
+      "content": "<div class='card'>You should always use <code>available()</code> before reading from a client.</div>\n<div class='card'>A. True<br>B. False</div>\n<div class='card'><input placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ True! It ensures there’s data to read.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/4QnZuQA.png",
+      "audio": "https://audio-url-host/available-quiz.mp3"
+    }
+  ]
+}
 
   ]
 }
