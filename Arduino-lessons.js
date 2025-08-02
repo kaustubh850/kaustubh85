@@ -11450,6 +11450,263 @@ void loop() {
       "audio": "https://audio-url-host/wifi-failure-game.mp3"
     }
   ]
+},{
+  title:"WiFiServer Magic: Building Real-Time Web Interfaces with Arduino",
+  modules:[
+    {
+  "title": "WiFiServer — Hosting Your Own Server With Arduino!",
+  "lessons": [
+    {
+      "title": "💡 What is WiFiServer?",
+      "content": "<div class='card'>Up until now, your Arduino was always the one connecting to a server.</div>\n<div class='card'><b>But now, your Arduino becomes the server itself!</b></div>\n<div class='card'>Yes, with <code>WiFiServer</code>, your Arduino listens for connections and replies to incoming requests, just like a web server 🌐</div>\n<div class='card'>It's like turning your Arduino into a mini website host 📡</div>",
+      "image": "https://i.imgur.com/NJpVvWz.png",
+      "audio": "https://audio-url-host/wifiserver-intro.mp3"
+    },
+    {
+      "title": "🏠 What Does Hosting Mean in Arduino?",
+      "content": "<div class='card'>When you use <code>WiFiServer</code>, your Arduino opens a specific port (like port 80 for HTTP).</div>\n<div class='card'>Any device on the same WiFi network can visit your Arduino’s IP address and <b>see the response</b> — just like a local website 👀</div>\n<div class='card'>You become the restaurant 🍽️ — and the clients (browsers or apps) come to you!</div>",
+      "image": "https://i.imgur.com/8qkMYp2.png",
+      "audio": "https://audio-url-host/wifiserver-hosting.mp3"
+    },
+    {
+      "title": "🔨 Constructor: WiFiServer(port)",
+      "content": "<div class='card'>To create a server, use:</div>\n<pre>\nWiFiServer server(80); // 80 is HTTP default port\n</pre>\n<div class='card'>This sets up the object — but it doesn’t start listening yet!</div>\n<div class='card'><b>Fun fact:</b> You can use other ports too like 8080 or 3000 — just make sure clients connect to the correct one.</div>",
+      "image": "https://i.imgur.com/o3K8dZ7.png",
+      "audio": "https://audio-url-host/wifiserver-constructor.mp3"
+    },
+    {
+      "title": "🧠 When Should You Use WiFiServer?",
+      "content": "<div class='card'>You should use <code>WiFiServer</code> when:</div>\n<ul>\n<li>📊 You want to show sensor data via web browser</li>\n<li>🕹️ You want users to control Arduino via WiFi</li>\n<li>📡 You need to create a local device dashboard</li>\n<li>🛠️ You want to build an ESP-based home automation server</li>\n</ul>\n<div class='card'>In short: when you want Arduino to <i>serve</i> data, not just request it 🔁</div>",
+      "image": "https://i.imgur.com/3UYuPxP.png",
+      "audio": "https://audio-url-host/wifiserver-usecases.mp3"
+    },
+    {
+      "title": "🎮 Game: Client or Server?",
+      "content": "<div class='card'>Your Arduino listens on port 80 and waits for connections. What is it?</div>\n<div class='card'>A. Client<br>B. Server<br>C. Database<br>D. Cloud</div>\n<div class='card'><input id='serverQuiz1' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! It’s a Server because it’s listening for clients.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/kHHhgAs.png",
+      "audio": "https://audio-url-host/wifiserver-quiz.mp3"
+    },
+    {
+      "title": "💬 Final Recap: The Power of Hosting",
+      "content": "<div class='card'>With just one line:</div>\n<pre>\nWiFiServer server(80);\n</pre>\n<div class='card'>You can build a weather station, a home control panel, or even a mini HTML page hosted inside your Arduino 🤯</div>\n<div class='card'>This is where your device becomes a <b>talker</b>, not just a <b>listener</b> 🔁</div>",
+      "image": "https://i.imgur.com/lJceazj.png",
+      "audio": "https://audio-url-host/wifiserver-recap.mp3"
+    }
+  ]
+}
+,{
+  "title": "server.begin() — Wake Up the Web Host in Arduino!",
+  "lessons": [
+    {
+      "title": "🚀 What is server.begin()?",
+      "content": "<div class='card'>You've declared <code>WiFiServer server(80);</code>, but nothing is actually listening yet...</div>\n<div class='card'>To activate your server, you must call:</div>\n<pre>\nserver.begin();\n</pre>\n<div class='card'>This starts the listening process — your Arduino now waits for incoming devices to connect 🛎️</div>",
+      "image": "https://i.imgur.com/smcMQ5Z.png",
+      "audio": "https://audio-url-host/server-begin-intro.mp3"
+    },
+    {
+      "title": "🧠 Why You Need It",
+      "content": "<div class='card'>Without <code>begin()</code>, your server won’t respond to anything — it’s like opening a restaurant but forgetting to unlock the door 🚪</div>\n<div class='card'>This is usually placed in <code>setup()</code> after connecting to WiFi.</div>\n<pre>\nWiFi.begin(ssid, pass);\nwhile (WiFi.status() != WL_CONNECTED) {\n  delay(500);\n}\nserver.begin();\n</pre>\n<div class='card'>Now you’re live and accepting connections 🌐</div>",
+      "image": "https://i.imgur.com/GmPjga4.png",
+      "audio": "https://audio-url-host/server-begin-why.mp3"
+    },
+    {
+      "title": "🕵️ Behind the Scenes: What begin() Does",
+      "content": "<div class='card'>Calling <code>begin()</code> sets up internal buffers and tells your ESP/Arduino core to watch the specified port (like 80).</div>\n<div class='card'>From this moment on, the Arduino is ready to handle incoming TCP requests.</div>\n<div class='card'>It becomes a mini server — a webpage or command listener for your home network 💬📡</div>",
+      "image": "https://i.imgur.com/9G8lQ4C.png",
+      "audio": "https://audio-url-host/server-begin-how.mp3"
+    },
+    {
+      "title": "⚠️ Common Mistake: Forgetting server.begin()",
+      "content": "<div class='card'>This is a super common beginner error 😅</div>\n<div class='card'>If your Arduino doesn’t respond to local browser requests (like 192.168.1.58), check:</div>\n<ul>\n<li>✅ Did you call <code>server.begin()</code>?</li>\n<li>✅ Is WiFi connected first?</li>\n<li>✅ Are you on the same local network?</li>\n</ul>\n<div class='card'>Missing <code>begin()</code> is like having a server that doesn’t exist 😶</div>",
+      "image": "https://i.imgur.com/U5VG90f.png",
+      "audio": "https://audio-url-host/server-begin-mistake.mp3"
+    },
+    {
+      "title": "🎮 Game: When Should You Begin?",
+      "content": "<div class='card'>Where should <code>server.begin()</code> go in your Arduino sketch?</div>\n<div class='card'>A. In <code>setup()</code>, right after WiFi connects<br>B. Inside <code>loop()</code><br>C. After <code>server.available()</code><br>D. At the very end of the program</div>\n<div class='card'><input id='beginGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! It should go in setup(), after WiFi is connected.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/GWmFRtr.png",
+      "audio": "https://audio-url-host/server-begin-quiz.mp3"
+    },
+    {
+      "title": "🔧 Pro Tip: Begin Once, Listen Forever",
+      "content": "<div class='card'>You only need to call <code>server.begin()</code> once — usually in <code>setup()</code>.</div>\n<div class='card'>After that, it keeps running in the background — ready to accept any connections at any time 📲</div>\n<div class='card'>Think of it like turning on the lights in a shop. You don’t keep turning them on again and again!</div>",
+      "image": "https://i.imgur.com/euFtNTV.png",
+      "audio": "https://audio-url-host/server-begin-protip.mp3"
+    }
+  ]
+}
+,{
+  "title": "server.available() — How Arduino Accepts Visitors",
+  "lessons": [
+    {
+      "title": "👋 What is server.available()?",
+      "content": "<div class='card'><code>server.available()</code> checks if someone (a client) has connected to your Arduino.</div>\n<div class='card'>When a browser or app sends a request, this function <b>catches it</b> and gives you a way to talk to that client 🤝</div>\n<pre>\nWiFiClient client = server.available();\n</pre>\n<div class='card'>Now you can use that <code>client</code> just like in WiFiClient!</div>",
+      "image": "https://i.imgur.com/v5tvNBu.png",
+      "audio": "https://audio-url-host/server-available-intro.mp3"
+    },
+    {
+      "title": "🧠 Why It’s Needed",
+      "content": "<div class='card'>Without <code>server.available()</code>, you’d never know when a user tries to access your Arduino!</div>\n<div class='card'>It works like a door sensor — when someone rings the doorbell, this function tells you: \"Hey, we’ve got a guest!\" 🛎️</div>\n<div class='card'>It returns a <code>WiFiClient</code> object so you can read/write just like you did in earlier lessons.</div>",
+      "image": "https://i.imgur.com/RWjc9xw.png",
+      "audio": "https://audio-url-host/server-available-why.mp3"
+    },
+    {
+      "title": "🔄 The Classic Loop Pattern",
+      "content": "<div class='card'>Here’s how it’s usually used:</div>\n<pre>\nWiFiClient client = server.available();\nif (client) {\n  // someone connected\n  if (client.available()) {\n    String req = client.readStringUntil('\\r');\n    Serial.println(req);\n  }\n}\n</pre>\n<div class='card'>You wait for a client, then check if they've sent any data — just like a real web server!</div>",
+      "image": "https://i.imgur.com/1H8m1Iw.png",
+      "audio": "https://audio-url-host/server-available-loop.mp3"
+    },
+    {
+      "title": "📦 What It Returns",
+      "content": "<div class='card'><code>server.available()</code> gives you a <b>WiFiClient</b> object if a user is connected.</div>\n<div class='card'>If no one’s connected, it returns a client that’s not valid (like an empty envelope 📭)</div>\n<pre>\nif (client) {\n  // This means it's a valid connection!\n}\n</pre>\n<div class='card'>Use this check to avoid errors or timeouts.</div>",
+      "image": "https://i.imgur.com/5NVLaSh.png",
+      "audio": "https://audio-url-host/server-available-return.mp3"
+    },
+    {
+      "title": "📊 Real World Use: Sensor Dashboard",
+      "content": "<div class='card'>Imagine this:</div>\n<div class='card'>You build a temperature logger using Arduino and DHT11 🌡️</div>\n<div class='card'>When someone visits <code>http://192.168.1.23</code>, your Arduino shows them the current temperature — served live!</div>\n<div class='card'>All possible because of <code>server.available()</code> 💪</div>",
+      "image": "https://i.imgur.com/K7jOZqi.png",
+      "audio": "https://audio-url-host/server-available-dashboard.mp3"
+    },
+    {
+      "title": "🎮 Game: Real or Not Real?",
+      "content": "<div class='card'>What does this code do?</div>\n<pre>\nWiFiClient client = server.available();\nif (client) {\n  Serial.println(\"Client connected!\");\n}\n</pre>\n<div class='card'>A. Waits for client and confirms it<br>B. Sends temperature<br>C. Does nothing<br>D. Crashes Arduino</div>\n<div class='card'><input id='availQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! It waits and prints when a client connects.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/yXf9VmP.png",
+      "audio": "https://audio-url-host/server-available-quiz.mp3"
+    },
+    {
+      "title": "📎 Bonus: Keep Connections Short",
+      "content": "<div class='card'>Remember: Arduino has limited memory.</div>\n<div class='card'>Once you’re done with a client (after replying), close it using:</div>\n<pre>\nclient.stop();\n</pre>\n<div class='card'>It’s polite and smart to free up space for new users 🧠</div>",
+      "image": "https://i.imgur.com/MrA2bYM.png",
+      "audio": "https://audio-url-host/server-available-tip.mp3"
+    }
+  ]
+}
+,{
+  "title": "server.write() — Sending Raw Data to Your Visitors",
+  "lessons": [
+    {
+      "title": "💬 What Does server.write() Do?",
+      "content": "<div class='card'><code>server.write()</code> is how your Arduino sends raw byte data back to a connected client 📤</div>\n<div class='card'>It works on the client object received from <code>server.available()</code> — just like <code>client.write()</code>.</div>\n<div class='card'>It’s best for binary data: like sending image bytes, sensor dumps, or custom formats 🧠</div>",
+      "image": "https://i.imgur.com/vVpr15P.png",
+      "audio": "https://audio-url-host/server-write-intro.mp3"
+    },
+    {
+      "title": "✍️ Syntax & Overloads",
+      "content": "<div class='card'>You can use it in multiple ways:</div>\n<pre>\nclient.write(byteVal);\nclient.write(buffer, length);\n</pre>\n<div class='card'>This gives you precise control — great for low-level communication like IoT sensors, binary files, or encrypted payloads 🔐</div>",
+      "image": "https://i.imgur.com/v7Vmwus.png",
+      "audio": "https://audio-url-host/server-write-syntax.mp3"
+    },
+    {
+      "title": "📦 Real-World Example: Sending Binary Sensor Data",
+      "content": "<div class='card'>Let’s say you want to send raw bytes from a temperature sensor, 10 times per second:</div>\n<pre>\nbyte temp = readSensor();\nclient.write(temp);\n</pre>\n<div class='card'>This might be used in a fast remote monitoring dashboard — where JSON or text would be too slow ⚡</div>",
+      "image": "https://i.imgur.com/B2rL20l.png",
+      "audio": "https://audio-url-host/server-write-example.mp3"
+    },
+    {
+      "title": "🆚 When to Use write() Instead of print()",
+      "content": "<div class='card'><code>write()</code> sends raw bytes 🔢 — <code>print()</code> sends readable text 💬</div>\n<div class='card'>Use <code>write()</code> when:</div>\n<ul>\n<li>⚡ You need fast, efficient communication</li>\n<li>🔢 You’re sending binary data</li>\n<li>📦 You don’t want formatting or line breaks</li>\n</ul>\n<div class='card'>Use <code>print()</code> when you're building a webpage or sending human-readable output 📃</div>",
+      "image": "https://i.imgur.com/g4mdpY2.png",
+      "audio": "https://audio-url-host/server-write-vs-print.mp3"
+    },
+    {
+      "title": "🎮 Game: Write or Print?",
+      "content": "<div class='card'>You want to send a temperature number that looks like “Temp: 23°C”. Which one do you use?</div>\n<div class='card'>A. write()<br>B. print()<br>C. digitalWrite()<br>D. sendBytes()</div>\n<div class='card'><input id='writeQuiz' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! You use print() for formatted, readable text.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/vhKx6tu.png",
+      "audio": "https://audio-url-host/server-write-quiz.mp3"
+    },
+    {
+      "title": "⚠️ Tips for write(): Watch Buffer Size",
+      "content": "<div class='card'>Since <code>write()</code> works at a lower level, there’s no automatic formatting or buffering.</div>\n<div class='card'>Make sure:</div>\n<ul>\n<li>📐 You send correct byte sizes</li>\n<li>📏 You don't overflow the client buffer</li>\n<li>🧪 You test on real devices for consistent results</li>\n</ul>\n<div class='card'>It’s powerful — but advanced. Use wisely! 🧠</div>",
+      "image": "https://i.imgur.com/2ib9kUe.png",
+      "audio": "https://audio-url-host/server-write-tips.mp3"
+    }
+  ]
+}
+,{
+  "title": "server.print() — Making Arduino Speak Like a Website",
+  "lessons": [
+    {
+      "title": "🧾 What is server.print()?",
+      "content": "<div class='card'><code>server.print()</code> (or more precisely, <code>client.print()</code> used on the object from <code>server.available()</code>) is how your Arduino sends readable text to the connected client.</div>\n<div class='card'>It’s perfect for sending HTML, sensor values, text messages, and more 📃</div>\n<pre>\nclient.print(\"Hello World!\");\n</pre>\n<div class='card'>This shows up in the user’s browser like a mini web page!</div>",
+      "image": "https://i.imgur.com/ArxEkdn.png",
+      "audio": "https://audio-url-host/server-print-intro.mp3"
+    },
+    {
+      "title": "📐 Syntax & Flexibility",
+      "content": "<div class='card'>You can print:</div>\n<ul>\n<li>📊 Numbers</li>\n<li>🔤 Strings</li>\n<li>🧮 Floats (even with precision!)</li>\n</ul>\n<pre>\nclient.print(3.14159, 2); // prints 3.14\nclient.print(\"Temp: \");\nclient.print(25);\nclient.print(\" °C\");\n</pre>\n<div class='card'>Everything gets sent exactly as it would appear in a serial monitor — but this time, it reaches the user's browser!</div>",
+      "image": "https://i.imgur.com/jPCULyn.png",
+      "audio": "https://audio-url-host/server-print-syntax.mp3"
+    },
+    {
+      "title": "🖼️ Example: Simple Web Page in Arduino",
+      "content": "<div class='card'>You can literally make Arduino act like a mini web server!</div>\n<pre>\nclient.print(\"<html><body>\");\nclient.print(\"<h1>Hello!</h1>\");\nclient.print(\"<p>Temp: \");\nclient.print(temp);\nclient.print(\" °C</p>\");\nclient.print(\"</body></html>\");\n</pre>\n<div class='card'>Load this in your browser: http://your-arduino-ip</div>",
+      "image": "https://i.imgur.com/NzMoS8u.png",
+      "audio": "https://audio-url-host/server-print-example.mp3"
+    },
+    {
+      "title": "🧠 When to Use print() vs. write()",
+      "content": "<div class='card'><code>print()</code> is great for readable text and formatted values.</div>\n<div class='card'><code>write()</code> is better for raw bytes or advanced protocols.</div>\n<ul>\n<li>🌐 Use <code>print()</code> for HTML pages</li>\n<li>💬 Use it to send sensor messages</li>\n<li>📡 Use it to simulate a real HTTP server</li>\n</ul>",
+      "image": "https://i.imgur.com/bGib1oa.png",
+      "audio": "https://audio-url-host/server-print-vs-write.mp3"
+    },
+    {
+      "title": "🎮 Game: Will This Work?",
+      "content": "<div class='card'>What happens when you write this?</div>\n<pre>\nclient.print(\"<h1>Hello!</h1>\");\n</pre>\n<div class='card'>A. It sends a valid HTML header<br>B. It prints raw data<br>C. It breaks<br>D. It only works in Serial</div>\n<div class='card'><input id='printGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! It sends HTML that browsers understand.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/qGoOmMZ.png",
+      "audio": "https://audio-url-host/server-print-quiz.mp3"
+    },
+    {
+      "title": "🪄 Pro Tip: Use print() to Serve Anything",
+      "content": "<div class='card'>With <code>print()</code>, you can simulate REST APIs too:</div>\n<pre>\nclient.print(\"{\\\"temp\\\": \");\nclient.print(temp);\nclient.print(\"}\");\n</pre>\n<div class='card'>Now you’re serving JSON from Arduino! 📡</div>\n<div class='card'>Browsers, apps, or other microcontrollers can fetch your data!</div>",
+      "image": "https://i.imgur.com/bDJWkco.png",
+      "audio": "https://audio-url-host/server-print-tip.mp3"
+    }
+  ]
+}
+,{
+  "title": "server.println() — Send Clean, Line-by-Line Responses Like a Pro",
+  "lessons": [
+    {
+      "title": "🧼 What is println()?",
+      "content": "<div class='card'><code>println()</code> works just like <code>print()</code> — but adds a <b>newline character</b> at the end.</div>\n<div class='card'>It's perfect for sending data in a structured, readable format 📑</div>\n<pre>\nclient.println(\"Temperature: 25°C\");\nclient.println(\"Humidity: 52%\");\n</pre>\n<div class='card'>The user sees it line by line — like a terminal or clean browser display.</div>",
+      "image": "https://i.imgur.com/34SMPMQ.png",
+      "audio": "https://audio-url-host/server-println-intro.mp3"
+    },
+    {
+      "title": "📦 What's Sent Under the Hood?",
+      "content": "<div class='card'><code>client.println(\"Hello\")</code> sends this:</div>\n<pre>\nHello\\r\\n\n</pre>\n<div class='card'>That’s a carriage return and newline — most browsers and text parsers understand it as “new line here.”</div>\n<div class='card'>Great for CSVs, sensor dumps, debug logs, or REST-like responses 🧠</div>",
+      "image": "https://i.imgur.com/W8WVNzd.png",
+      "audio": "https://audio-url-host/server-println-format.mp3"
+    },
+    {
+      "title": "🧪 Example: Streaming Data to Browser",
+      "content": "<div class='card'>This example will output sensor data every second to your browser:</div>\n<pre>\nclient.println(\"Temp: 25°C\");\ndelay(1000);\nclient.println(\"Temp: 26°C\");\n</pre>\n<div class='card'>You can even simulate logs or a terminal with this behavior!</div>",
+      "image": "https://i.imgur.com/pvEBEGT.png",
+      "audio": "https://audio-url-host/server-println-example.mp3"
+    },
+    {
+      "title": "🆚 print() vs. println() — Use Cases",
+      "content": "<div class='card'>Use <code>print()</code> when:</div>\n<ul>\n<li>You’re building a full sentence or HTML on one line</li>\n</ul>\n<div class='card'>Use <code>println()</code> when:</div>\n<ul>\n<li>You want readable, line-separated data</li>\n<li>You’re outputting logs, sensor streams, JSON lines</li>\n</ul>\n<pre>\nclient.print(\"Temp: \");\nclient.println(25);\n</pre>",
+      "image": "https://i.imgur.com/ydN3P2L.png",
+      "audio": "https://audio-url-host/server-println-compare.mp3"
+    },
+    {
+      "title": "🎮 Game: Print or Println?",
+      "content": "<div class='card'>You’re building a real-time sensor stream. Which do you choose?</div>\n<pre>\nTemp: 25°C\\n\nTemp: 26°C\\n\n</pre>\n<div class='card'>A. print()<br>B. println()<br>C. write()<br>D. Serial.write()</div>\n<div class='card'><input id='printlnGame' placeholder='Your answer...' style='width:100%'>\n<button class='gaming-btn' onclick='alert(\"✅ Correct! Use println() for line-by-line output.\")'>Submit</button></div>",
+      "image": "https://i.imgur.com/Db8Jalv.png",
+      "audio": "https://audio-url-host/server-println-quiz.mp3"
+    },
+    {
+      "title": "💬 Bonus: HTML + println() = Cleaner Pages",
+      "content": "<div class='card'>When building HTML responses, mixing <code>print()</code> and <code>println()</code> makes code cleaner:</div>\n<pre>\nclient.println(\"<html><body>\");\nclient.print(\"<h1>Temp: \");\nclient.print(temp);\nclient.println(\" °C</h1>\");\nclient.println(\"</body></html>\");\n</pre>\n<div class='card'>Much easier to read and maintain!</div>",
+      "image": "https://i.imgur.com/OLqtQ8N.png",
+      "audio": "https://audio-url-host/server-println-tip.mp3"
+    }
+  ]
+}
+
+  ]
 }
 
   ]
