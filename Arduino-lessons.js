@@ -11779,6 +11779,669 @@ void loop() {
 }
 
   ]
+},{
+  title:"WiFiUDP — Your Arduino's Secret Packet Messenger",
+modules:[
+  {
+  "title": "What Is UDP? And Why Does Arduino Use It?",
+  "lessons": [
+    {
+      "title": "The Mysterious UDP — Talking Without a Handshake!",
+      "content": "<div class=\"card\">Alright scientist — let’s learn about a super speedy way Arduinos send messages across the internet: it's called <b>UDP</b>!</div>\n<div class=\"card\">UDP stands for <b>User Datagram Protocol</b>. Sounds fancy, right? But it’s actually just a way for your Arduino to send messages (called packets) without waiting for a reply. Unlike TCP, which says “Hello, are you there?” and waits, UDP just throws the message and moves on!</div>\n<div class=\"card\"><b>Think of it like this:</b> TCP is like a phone call. You say “Hi,” wait for someone to answer, and have a full convo. UDP is like shouting across a hallway — you don’t wait to check if they heard you. You just yell and move on!</div>\n<div class=\"card\">This makes UDP super fast and perfect for things like:<ul><li>Sending sensor data every second</li><li>Broadcasting to multiple devices</li><li>Controlling robots in real time</li><li>Streaming audio or lights</li></ul></div>\n<div class=\"card\">But be careful — since UDP doesn’t wait for a reply, messages <i>can</i> get lost or arrive in the wrong order. It’s fast but not always reliable. If that’s okay (like updating temperature every 2 seconds), it’s perfect!</div>\n<div class=\"card\">You’ll be using UDP on boards like ESP8266 or ESP32 when you want to send data over WiFi super quickly. And the Arduino WiFiUDP library makes it really easy.</div>\n<div class=\"card\">Ready to dive into the magic of wireless messaging? Let's go deeper!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/TCPvsUDP.svg/500px-TCPvsUDP.svg.png",
+      "audio": "https://example.com/audio/udp-intro.mp3"
+    },
+    {
+      "title": "Watch: UDP Explained with Pizza!",
+      "content": "<div class=\"card\">In this fun video, you’ll learn how UDP works using a pizza delivery example 🍕. It shows how packets are delivered without confirmation, and why that's sometimes useful for Arduino projects.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/6g_MiP6r-BI\" title=\"UDP vs TCP for Beginners\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/6g_MiP6r-BI/0.jpg",
+      "audio": "https://example.com/audio/udp-video-intro.mp3"
+    },
+    {
+      "title": "Game Time: Is It UDP or TCP?",
+      "content": "<div class=\"card\">Let’s play a game! You’ll be shown a situation — and you must guess if it needs UDP or TCP. Ready?</div>\n<div class=\"card\"><b>Example:</b> A robot sends its location to a control center every second. <i>UDP or TCP?</i> ✅ UDP!</div>\n<div class=\"card\"><b>Question 1:</b> A weather sensor sends data every 2 seconds, even if it sometimes gets missed. <br><button class='gaming-btn'>UDP</button> <button class='gaming-btn'>TCP</button></div>\n<div class=\"card\"><b>Question 2:</b> You’re uploading a file to a server. It MUST arrive fully. <br><button class='gaming-btn'>UDP</button> <button class='gaming-btn'>TCP</button></div>\n<div class=\"card\"><b>Question 3:</b> A multiplayer game updates player positions 30 times per second. <br><button class='gaming-btn'>UDP</button> <button class='gaming-btn'>TCP</button></div>\n<div class=\"card\">Each time you pick, the card will tell you why you’re right (or wrong). Let’s test your packet-smarts!</div>",
+      "image": "https://i.imgur.com/0jE1kzM.png",
+      "audio": "https://example.com/audio/udp-game.mp3"
+    },
+    {
+      "title": "Analogy Zone: Paper Planes vs Signed Letters",
+      "content": "<div class=\"card\">Let’s imagine two ways of sending messages:</div>\n<div class=\"card\"><b>UDP:</b> You write a note, fold it into a paper plane, and throw it at your friend. Sometimes it lands, sometimes it misses. But it’s fast, fun, and great for quick notes!</div>\n<div class=\"card\"><b>TCP:</b> You put the note in an envelope, sign it, send it through the post office, and get a receipt when it’s delivered. Slow, but guaranteed.</div>\n<div class=\"card\">UDP is the paper plane of the internet — fast and perfect for quick Arduino messages. So next time you send data from your board without waiting for a reply — you’re throwing a digital paper plane!</div>",
+      "image": "https://i.imgur.com/rc0C9tT.png",
+      "audio": "https://example.com/audio/udp-analogy.mp3"
+    }
+  ]
+}
+,{
+  "title": "Meet WiFiUDP: Arduino’s Superfast Sender",
+  "lessons": [
+    {
+      "title": "Say Hello to WiFiUDP — The Speedy, Stateless Pro",
+      "content": "<div class=\"card\">Alright scientist — now that you know what UDP is, let’s meet your new coding tool: <b>WiFiUDP</b>!</div>\n<div class=\"card\">The <b>WiFiUDP</b> class lets your Arduino send and receive <i>UDP packets</i> over WiFi. It’s like your robot tossing messages into the air — fast, no strings attached.</div>\n<div class=\"card\">It belongs to the WiFi library and is specially made for WiFi-enabled Arduino boards like:<ul><li>ESP8266</li><li>ESP32</li><li>Arduino Uno R4 WiFi</li><li>Arduino MKR WiFi 1010</li></ul></div>\n<div class=\"card\">The class handles all the behind-the-scenes work: setting up ports, reading incoming packets, and writing data — all without needing a TCP connection.</div>\n<div class=\"card\">You’ll use it when you want:<ul><li>Real-time data broadcast (like sensors sending temperature to your phone)</li><li>Fast control of robots or lights</li><li>Device discovery or quick alerts (like emergency signals)</li></ul></div>\n<div class=\"card\">We’ll explore every function one by one soon — but just remember: WiFiUDP is your tool for speed and simplicity when reliability isn’t the top priority.</div>",
+      "image": "https://docs.arduino.cc/static/1d5fbf1f7d4310f1305a1607a7c1b0d1/8de89/udp-class-diagram.webp",
+      "audio": "https://example.com/audio/wifiudp-intro.mp3"
+    },
+    {
+      "title": "Watch: What is WiFiUDP Actually Doing?",
+      "content": "<div class=\"card\">Here’s a video that shows WiFiUDP in action — it walks through a live example of sending messages from an ESP8266 to your phone over WiFi using UDP.</div>\n<div class=\"card\">You'll see how it works, how to start the server, and how fast it delivers data.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/iMGiow3o-2c\" title=\"Arduino UDP Example\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/iMGiow3o-2c/0.jpg",
+      "audio": "https://example.com/audio/wifiudp-video.mp3"
+    },
+    {
+      "title": "Game: WiFiUDP vs WiFiClient — Who’s Faster?",
+      "content": "<div class=\"card\">Let’s compare WiFiUDP and WiFiClient (which uses TCP). Guess which one is better in each case:</div>\n<div class=\"card\"><b>Situation 1:</b> Sending robot position updates 20 times a second. <br><button class='gaming-btn'>WiFiUDP</button> <button class='gaming-btn'>WiFiClient</button></div>\n<div class=\"card\"><b>Situation 2:</b> Uploading sensor data to a cloud database and you must not lose data. <br><button class='gaming-btn'>WiFiUDP</button> <button class='gaming-btn'>WiFiClient</button></div>\n<div class=\"card\"><b>Situation 3:</b> Broadcasting temperature to multiple devices on the network. <br><button class='gaming-btn'>WiFiUDP</button> <button class='gaming-btn'>WiFiClient</button></div>\n<div class=\"card\">Pick the right tool for each job. After answering, a popup will explain <i>why</i> you're right!</div>",
+      "image": "https://i.imgur.com/hmA9SgR.png",
+      "audio": "https://example.com/audio/wifiudp-vs-client.mp3"
+    },
+    {
+      "title": "Creative: Think Like WiFiUDP – Draw the Packet Journey",
+      "content": "<div class=\"card\">Imagine you’re a WiFiUDP packet. You’re born on an Arduino and fly to a phone. You don’t knock, you don’t ask — you just GO!</div>\n<div class=\"card\">Take a piece of paper and sketch your journey. Include:</div>\n<ul><li>Your origin port</li><li>The destination IP and port</li><li>How you travel (WiFi)</li><li>What happens if the phone isn’t listening</li></ul>\n<div class=\"card\">This activity helps you <b>visualize</b> how stateless, connectionless protocols work — and prepares you to start coding with WiFiUDP like a pro.</div>",
+      "image": "https://i.imgur.com/1l2pIQS.png",
+      "audio": "https://example.com/audio/wifiudp-sketch.mp3"
+    }
+  ]
+}
+,{
+  "title": "How UDP Works: Inside the Packet Party",
+  "lessons": [
+    {
+      "title": "How UDP Sends Data: No Handshakes, Just Packets!",
+      "content": "<div class=\"card\">Okay scientist — let’s dive into what really happens when your Arduino sends data using UDP.</div>\n<div class=\"card\">UDP doesn’t create a connection like TCP does. It simply builds a little envelope (called a <b>packet</b>) and throws it out onto the network to the destination IP and port.</div>\n<div class=\"card\">There’s no guarantee it will reach. No one replies “I got it!” and your Arduino doesn’t even care.</div>\n<div class=\"card\">Each UDP packet contains:<ul><li><b>Destination IP</b> — who it’s going to</li><li><b>Destination Port</b> — what app it’s going to</li><li><b>Length</b> — how big the message is</li><li><b>Data</b> — your actual message</li></ul></div>\n<div class=\"card\">There’s also a checksum to check if the data got corrupted — but still, no one guarantees delivery.</div>\n<div class=\"card\">Because there’s no connection setup or “are you ready” steps, UDP is super fast. But packets can:<ul><li>Arrive out of order</li><li>Get dropped if the network is busy</li><li>Be duplicated</li></ul></div>\n<div class=\"card\">That’s okay for most Arduino projects like:<ul><li>Sending sensor data repeatedly</li><li>Broadcasting info to multiple devices</li><li>Streaming light or motor commands</li></ul></div>\n<div class=\"card\">And that’s how UDP works — no handshakes, just fast flying packets with no strings attached.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/User_Datagram_Protocol_diagram.svg/600px-User_Datagram_Protocol_diagram.svg.png",
+      "audio": "https://example.com/audio/udp-packet-party.mp3"
+    },
+    {
+      "title": "Watch: How UDP Actually Sends a Packet",
+      "content": "<div class=\"card\">Here’s a great animation that shows how UDP sends a packet over the internet.</div>\n<div class=\"card\">You'll see the difference between TCP's long setup and UDP's “just send it!” approach.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/QBhz5bG6nvk\" title=\"How UDP Works Internally\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/QBhz5bG6nvk/0.jpg",
+      "audio": "https://example.com/audio/udp-internal-video.mp3"
+    },
+    {
+      "title": "Mini Game: Guess the Packet Outcome!",
+      "content": "<div class=\"card\">Let’s play a fun simulator game. You’ll send fake UDP packets and see what might happen.</div>\n<div class=\"card\">🔹 <b>Scenario 1:</b> A sensor sends 10 packets per second.<br>What could happen?<br><button class='gaming-btn'>All packets arrive in perfect order</button> <button class='gaming-btn'>Some may get lost or arrive late</button></div>\n<div class=\"card\">🔹 <b>Scenario 2:</b> You control an LED remotely over WiFi with UDP. One packet is lost.<br><button class='gaming-btn'>LED turns on anyway</button> <button class='gaming-btn'>LED misses the command</button></div>\n<div class=\"card\">Each time you answer, we’ll tell you why that’s likely in real-world UDP behavior.</div>",
+      "image": "https://i.imgur.com/BynsPLB.png",
+      "audio": "https://example.com/audio/udp-game2.mp3"
+    },
+    {
+      "title": "Creative: Packets With Personality — Build a UDP Character",
+      "content": "<div class=\"card\">Imagine UDP was a cartoon character 🧠. What would it be like?</div>\n<div class=\"card\">Draw or describe your version of a UDP packet:</div>\n<ul><li>Does it knock before entering?</li><li>Does it wait for replies?</li><li>Does it care if it’s late?</li></ul>\n<div class=\"card\">Hint: UDP is like that friend who rushes in, drops the message on the floor, and runs off yelling “Done!” — no checking, no replies.</div>\n<div class=\"card\">This helps you visualize why UDP is so fast — and a little chaotic!</div>",
+      "image": "https://i.imgur.com/kkYeT3g.png",
+      "audio": "https://example.com/audio/udp-character.mp3"
+    }
+  ]
+}
+,{
+  "title": "begin(port): Starting the UDP Engine",
+  "lessons": [
+    {
+      "title": "Starting the Engine: What `begin(port)` Really Does",
+      "content": "<div class=\"card\">Alright scientist — ready to fire up your Arduino’s UDP engine? Say hello to your first real WiFiUDP function: <code>begin(port)</code>!</div>\n<div class=\"card\">This function tells your Arduino to start listening for <b>incoming UDP messages</b> on a specific <b>port</b>.</div>\n<div class=\"card\">📦 <b>What’s a port?</b><br>Think of it like a mailbox number on your Arduino. When a device sends you data over WiFi, it sends it to your IP address + port. If you're not listening on the correct port, you won’t hear a thing!</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>udp.begin(port);</code><br>Where <code>port</code> is usually a number like 4210, 8888, or anything from 1024–65535.</div>\n<div class=\"card\">🔍 <b>Example:</b><br><pre><code>WiFiUDP udp;\nudp.begin(4210);</code></pre>This makes your board listen on port 4210. If any other device sends a UDP packet to your IP + port 4210, your Arduino will catch it!</div>\n<div class=\"card\">⚠️ <b>Important:</b> You should always call this in <code>setup()</code> before using other WiFiUDP functions like <code>parsePacket()</code> or <code>read()</code>.</div>\n<div class=\"card\">That’s it — your robot is now listening to invisible messages flying through the WiFi sky!</div>",
+      "image": "https://i.imgur.com/ZUvHT1q.png",
+      "audio": "https://example.com/audio/wifiudp-begin.mp3"
+    },
+    {
+      "title": "Watch: Using `udp.begin()` in a Real Sketch",
+      "content": "<div class=\"card\">This video shows you exactly how to use <code>udp.begin(port)</code> on an ESP32 board.</div>\n<div class=\"card\">You'll see how to set up the WiFi connection, create the <code>WiFiUDP</code> object, and start listening on a port.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/VDD8_YwvU0U\" title=\"WiFiUDP begin() example\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/VDD8_YwvU0U/0.jpg",
+      "audio": "https://example.com/audio/udp-begin-video.mp3"
+    },
+    {
+      "title": "Game: Can You Choose the Right Port?",
+      "content": "<div class=\"card\">Let’s test your knowledge! You’ll be shown a scenario. Can you choose the right UDP port and usage?</div>\n<div class=\"card\"><b>Scenario 1:</b> You want your Arduino to receive light control signals on port 8888.<br><button class='gaming-btn'>udp.begin(8888);</button> <button class='gaming-btn'>udp.begin(\"192.168.1.5\");</button></div>\n<div class=\"card\"><b>Scenario 2:</b> You want to start listening before sending data.<br><button class='gaming-btn'>Call begin() first</button> <button class='gaming-btn'>Call write() first</button></div>\n<div class=\"card\">After each answer, we’ll explain what makes it correct or not. Let’s sharpen your packet-receiving skills!</div>",
+      "image": "https://i.imgur.com/IfUfiNN.png",
+      "audio": "https://example.com/audio/udp-begin-game.mp3"
+    },
+    {
+      "title": "Creative Lab: Build a Listener Bot",
+      "content": "<div class=\"card\">Let’s imagine your Arduino is a tiny robot waiting at a mailbox.</div>\n<div class=\"card\">Draw or write how this listener bot works:<ul><li>Where does it sit? (your IP address)</li><li>What mailbox number does it guard? (port)</li><li>How does it react when a new letter (packet) arrives?</li></ul></div>\n<div class=\"card\">This exercise helps you understand that <code>udp.begin()</code> is like your robot saying: “I’m ready! I’m listening for anyone who sends a message to this port.”</div>",
+      "image": "https://i.imgur.com/E7cYXBG.png",
+      "audio": "https://example.com/audio/udp-begin-lab.mp3"
+    }
+  ]
+}
+,{
+  "title": "beginMulticast(): Tuning into the Group Broadcast",
+  "lessons": [
+    {
+      "title": "Group Chat for Robots: What is Multicast?",
+      "content": "<div class=\"card\">Okay scientist — ready to unlock a secret radio channel that only smart devices can hear? Welcome to the world of <b>multicast</b>!</div>\n<div class=\"card\">Usually when you send a UDP packet, it goes from one device to another — like a direct message. But with multicast, you send one packet and <i>everyone in the group gets it</i>.</div>\n<div class=\"card\">This is perfect for things like:<ul><li>Sending a command to all lights in a room</li><li>Broadcasting alerts to multiple robots</li><li>Games where everyone hears the start beep at once</li></ul></div>\n<div class=\"card\">To listen for these group broadcasts, your Arduino uses:<br><code>udp.beginMulticast(multicastIP, port);</code><br><b>multicastIP:</b> An address between 224.0.0.0 and 239.255.255.255<br><b>port:</b> Just like with <code>begin()</code>, the mailbox number you’re listening on</div>\n<div class=\"card\">When you call this, your Arduino joins the group and starts listening. Anyone who sends to that multicast IP and port? Your robot hears it!</div>\n<div class=\"card\">That’s how you make your Arduino part of a special VIP club of devices that all listen to the same whispers in the WiFi air.</div>",
+      "image": "https://i.imgur.com/ZjqO0LG.png",
+      "audio": "https://example.com/audio/beginMulticast-intro.mp3"
+    },
+    {
+      "title": "Watch: Arduino Joins the Multicast Club",
+      "content": "<div class=\"card\">This video explains how multicast works — and how to use <code>beginMulticast()</code> with an ESP32 or MKR board.</div>\n<div class=\"card\">You’ll see how to choose the right IP (like <code>239.0.0.57</code>) and what it looks like when multiple devices listen to the same group!</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/3Jyb5Ug1dWk\" title=\"Arduino Multicast Example\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/3Jyb5Ug1dWk/0.jpg",
+      "audio": "https://example.com/audio/multicast-video.mp3"
+    },
+    {
+      "title": "Mini Game: Unicast vs Broadcast vs Multicast!",
+      "content": "<div class=\"card\">Time to play network ninja! Choose which method to use in each situation:</div>\n<div class=\"card\"><b>Scenario 1:</b> You want to tell all robots in your house to start cleaning. <br><button class='gaming-btn'>Unicast</button> <button class='gaming-btn'>Broadcast</button> <button class='gaming-btn'>Multicast</button></div>\n<div class=\"card\"><b>Scenario 2:</b> Send data to your laptop only. <br><button class='gaming-btn'>Unicast</button> <button class='gaming-btn'>Broadcast</button> <button class='gaming-btn'>Multicast</button></div>\n<div class=\"card\"><b>Scenario 3:</b> Play music on all smart speakers in a group. <br><button class='gaming-btn'>Unicast</button> <button class='gaming-btn'>Broadcast</button> <button class='gaming-btn'>Multicast</button></div>\n<div class=\"card\">Each answer gives feedback on what method fits — and why multicast is great for groups!</div>",
+      "image": "https://i.imgur.com/U7pmR0E.png",
+      "audio": "https://example.com/audio/multicast-game.mp3"
+    },
+    {
+      "title": "Creative: Draw the Multicast Map",
+      "content": "<div class=\"card\">Grab a notebook and draw your home or lab with three devices:<ul><li>📱 A phone</li><li>💡 A smart bulb</li><li>📢 A speaker</li></ul></div>\n<div class=\"card\">Now pretend you send a UDP packet to <code>239.0.0.88:1234</code>. Draw arrows showing how ALL 3 devices receive that message <i>at once</i> — no duplicates!</div>\n<div class=\"card\">This visual helps you understand multicast as a magical group channel where one shout is heard by many — only those listening to the right IP + port!</div>",
+      "image": "https://i.imgur.com/D3I9FKN.png",
+      "audio": "https://example.com/audio/multicast-drawing.mp3"
+    }
+  ]
+}
+,{
+  "title": "endPacket(): Fire the Packet Cannon!",
+  "lessons": [
+    {
+      "title": "Launch It! How `endPacket()` Sends Your Message",
+      "content": "<div class=\"card\">Ready to press SEND on your UDP message? That’s exactly what <code>endPacket()</code> does!</div>\n<div class=\"card\">Before calling this, you usually do two things:<br>1️⃣ <code>udp.beginPacket(ip, port);</code> — to start the message<br>2️⃣ <code>udp.write(data);</code> — to add your message bytes</div>\n<div class=\"card\">Then finally... <b><code>udp.endPacket();</code></b> — to send it!</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>udp.endPacket();</code><br>Returns <code>1</code> if the packet was successfully sent, <code>0</code> if something went wrong (like WiFi disconnect).</div>\n<div class=\"card\">It doesn’t wait for a reply, and it doesn’t retry — this is UDP, baby. Fire and forget 🚀</div>\n<div class=\"card\">🎯 <b>Full Example:</b><br><pre><code>udp.beginPacket(\"192.168.1.45\", 4210);\nudp.write(\"Hello from Arduino!\");\nudp.endPacket();</code></pre></div>\n<div class=\"card\">And just like that, your Arduino shouts its message into the WiFi air!</div>",
+      "image": "https://i.imgur.com/s2u0mNR.png",
+      "audio": "https://example.com/audio/udp-endpacket.mp3"
+    },
+    {
+      "title": "Watch: How `endPacket()` Launches Your Message",
+      "content": "<div class=\"card\">This video shows the full cycle of preparing and sending a UDP message using Arduino.</div>\n<div class=\"card\">You'll clearly see how <code>beginPacket()</code>, <code>write()</code>, and <code>endPacket()</code> work together as one team.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/VNsCP9v_vzE\" title=\"Arduino UDP Send Example\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/VNsCP9v_vzE/0.jpg",
+      "audio": "https://example.com/audio/endpacket-video.mp3"
+    },
+    {
+      "title": "Game: Match the Missing Piece!",
+      "content": "<div class=\"card\">Let’s test your brain! Drag and drop the missing function in this send sequence:</div>\n<div class=\"card\"><b>Sequence:</b> beginPacket() → ? → endPacket()</div>\n<div class=\"card\">Choices:<br><button class='gaming-btn'>read()</button> <button class='gaming-btn'>write()</button> <button class='gaming-btn'>stop()</button></div>\n<div class=\"card\">Correct answer: <code>write()</code>! Without it, you’re firing an empty packet!</div>\n<div class=\"card\">Now another one:<br><b>Question:</b> What happens if you forget to call <code>endPacket()</code>?<br><button class='gaming-btn'>Nothing gets sent</button> <button class='gaming-btn'>Partial packet is sent</button></div>",
+      "image": "https://i.imgur.com/XEtzPDU.png",
+      "audio": "https://example.com/audio/endpacket-game.mp3"
+    },
+    {
+      "title": "Creative: The Packet Launcher Comic Strip",
+      "content": "<div class=\"card\">Draw a 3-panel comic strip of your Arduino getting ready to send a message:</div>\n<ul>\n<li>Panel 1: It opens a message box (beginPacket)</li>\n<li>Panel 2: Fills it with data (write)</li>\n<li>Panel 3: Launches the box like a rocket! (endPacket)</li>\n</ul>\n<div class=\"card\">This fun drawing helps you visualize how packets are launched step by step. Your Arduino is basically a packet cannon 🎯</div>",
+      "image": "https://i.imgur.com/dP7VskH.png",
+      "audio": "https://example.com/audio/endpacket-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "parsePacket(): Did a Message Just Arrive?",
+  "lessons": [
+    {
+      "title": "Check Your Inbox — What `parsePacket()` Really Does",
+      "content": "<div class=\"card\">Hey scientist — now that your Arduino is listening with <code>begin()</code>, how does it know when something has arrived? That’s where <code>parsePacket()</code> comes in!</div>\n<div class=\"card\">Think of this function like checking your mailbox: <code>parsePacket()</code> peeks inside and tells you if there’s a packet waiting — and how big it is.</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>int packetSize = udp.parsePacket();</code></div>\n<div class=\"card\">🔍 <b>Return value:</b><ul><li>📦 If a packet has arrived: returns the number of bytes inside</li><li>📭 If no packet: returns 0</li></ul></div>\n<div class=\"card\">🧠 <b>Example:</b><br><pre><code>int packetSize = udp.parsePacket();\nif (packetSize) {\n  Serial.print(\"Received packet of size: \");\n  Serial.println(packetSize);\n}</code></pre></div>\n<div class=\"card\">⚠️ Important: <b>You must call <code>parsePacket()</code> before calling <code>read()</code></b>. Otherwise, Arduino doesn’t know you’re ready to fetch a message.</div>\n<div class=\"card\">So think of <code>parsePacket()</code> as knocking on your WiFi mailbox and asking: “Got anything for me?” 📬</div>",
+      "image": "https://i.imgur.com/sTRFTIL.png",
+      "audio": "https://example.com/audio/parsePacket-intro.mp3"
+    },
+    {
+      "title": "Watch: Using `parsePacket()` to Catch Messages",
+      "content": "<div class=\"card\">This video walks through using <code>parsePacket()</code> in a full Arduino sketch. You’ll see how the code waits, checks for incoming packets, and then reads them.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/9U0Ld07LFCM\" title=\"parsePacket explained\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/9U0Ld07LFCM/0.jpg",
+      "audio": "https://example.com/audio/parsePacket-video.mp3"
+    },
+    {
+      "title": "Game: Catch the Packet!",
+      "content": "<div class=\"card\">Time for a reaction game! You’ll see a loop simulating WiFi traffic. When a packet appears, click <b>\"Parse!\"</b> as fast as you can.</div>\n<div class=\"card\">Every time you react in time, you 'catch' the packet and see its size.</div>\n<div class=\"card\">Miss it? No worries — in real life too, UDP packets don’t wait 😄</div>\n<div class=\"card\"><button class='gaming-btn'>Parse!</button></div>",
+      "image": "https://i.imgur.com/mC0IbkM.png",
+      "audio": "https://example.com/audio/parsePacket-game.mp3"
+    },
+    {
+      "title": "Creative: Make Your Own Packet Detector",
+      "content": "<div class=\"card\">Draw or describe a little cartoon character that represents <code>parsePacket()</code>.</div>\n<ul>\n<li>Maybe it has a stethoscope and listens for data</li>\n<li>Or it’s a robot with a giant ear and a scanner</li>\n</ul>\n<div class=\"card\">The idea is to give personality to this function that constantly checks for messages in the WiFi air 🌐</div>",
+      "image": "https://i.imgur.com/gDEjKNW.png",
+      "audio": "https://example.com/audio/parsePacket-character.mp3"
+    }
+  ]
+}
+,{
+  "title": "read(): Listening to the Message",
+  "lessons": [
+    {
+      "title": "What is `read()`? Your Arduino’s Ears",
+      "content": "<div class=\"card\">Welcome to the part where your Arduino becomes a great listener 👂</div>\n<div class=\"card\">After <code>parsePacket()</code> tells you there's a message, <code>read()</code> lets you grab that data byte by byte.</div>\n<div class=\"card\">🔧 <b>Syntax (single byte):</b><br><code>int incomingByte = udp.read();</code><br>Returns the next byte received — or <code>-1</code> if nothing's left.</div>\n<div class=\"card\">It reads one byte at a time, so you usually use it inside a loop.</div>\n<div class=\"card\">🧠 <b>Real Example:</b><br><pre><code>while (udp.available()) {\n  char c = udp.read();\n  Serial.print(c);\n}</code></pre>This prints each character of the message to the Serial Monitor.</div>",
+      "image": "https://i.imgur.com/D63xGKt.png",
+      "audio": "https://example.com/audio/read-intro.mp3"
+    },
+    {
+      "title": "`read()` in Real Life: What It Feels Like",
+      "content": "<div class=\"card\">Imagine your Arduino is reading a letter. One character at a time. Slowly. Carefully.</div>\n<div class=\"card\">If someone sends: <b>\"Hello\"</b> — your Arduino sees:<br><code>'H' → 'e' → 'l' → 'l' → 'o'</code></div>\n<div class=\"card\">You can read each of these characters, log them, react to them (turn LEDs on/off), or build a bigger message.</div>\n<div class=\"card\">⚠️ But beware: UDP is fast and rough. No retries. If you read too slow, the message might be gone.</div>",
+      "image": "https://i.imgur.com/h0FSmPh.png",
+      "audio": "https://example.com/audio/read-irl.mp3"
+    },
+    {
+      "title": "ASCII Decoder Mode: What’s That Byte, Anyway?",
+      "content": "<div class=\"card\">When you <code>read()</code> a byte, it’s just a number — like 72 or 108. But it <i>represents</i> a character!</div>\n<div class=\"card\">🔤 <b>72 = 'H', 101 = 'e', 108 = 'l', etc.</b> That’s called the <b>ASCII table</b>.</div>\n<div class=\"card\">🧪 Try this code:</div>\n<pre><code>int b = udp.read();\nSerial.print(\"Raw byte: \");\nSerial.print(b);\nSerial.print(\" = \");\nSerial.println((char)b);</code></pre>\n<div class=\"card\">Now you’ll see both the byte <i>and</i> its character form — pure magic!</div>",
+      "image": "https://i.imgur.com/WPp1XEs.png",
+      "audio": "https://example.com/audio/read-ascii.mp3"
+    },
+    {
+      "title": "Big Reads: `read(buffer, length)` Style",
+      "content": "<div class=\"card\">You don’t always want to read one byte at a time. Arduino can also <b>read the whole message into an array</b>!</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>udp.read(buffer, length);</code><br>This reads up to <code>length</code> bytes into your array named <code>buffer</code>.</div>\n<div class=\"card\">🧠 <b>Example:</b></div>\n<pre><code>char incoming[255];\nint size = udp.read(incoming, 255);\nincoming[size] = 0;\nSerial.print(\"Full message: \");\nSerial.println(incoming);</code></pre>\n<div class=\"card\">This approach is way faster for long messages — and easier for decoding things like JSON, GPS, sensor strings, etc.</div>",
+      "image": "https://i.imgur.com/Y7v0IRx.png",
+      "audio": "https://example.com/audio/read-buffer.mp3"
+    },
+    {
+      "title": "Watch: Reading UDP Data on Serial Monitor",
+      "content": "<div class=\"card\">This video shows how to receive and decode a UDP packet using <code>read()</code> and <code>read(buffer, length)</code>.</div>\n<div class=\"card\">Great for understanding real-world decoding of strings and binary messages.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/YAz3fK5kUcw\" title=\"Reading UDP Packets Arduino\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/YAz3fK5kUcw/0.jpg",
+      "audio": "https://example.com/audio/read-youtube.mp3"
+    },
+    {
+      "title": "Game: Decode the UDP Message!",
+      "content": "<div class=\"card\">Let’s play byte detective! You receive the following byte stream:</div>\n<div class=\"card\"><code>[72, 101, 108, 108, 111]</code></div>\n<div class=\"card\">🧠 What does it spell?<br><button class='gaming-btn'>World</button> <button class='gaming-btn'>Hello</button> <button class='gaming-btn'>Start</button></div>\n<div class=\"card\">Try again:<br><code>[87, 105, 70, 105]</code><br><button class='gaming-btn'>WiFi</button> <button class='gaming-btn'>UDP</button></div>\n<div class=\"card\">You’re now thinking like an ASCII reader — perfect for debugging incoming messages in real life!</div>",
+      "image": "https://i.imgur.com/TxRLkCm.png",
+      "audio": "https://example.com/audio/read-game.mp3"
+    },
+    {
+      "title": "Creative Lab: The Byte Mailbox",
+      "content": "<div class=\"card\">Design your own visual metaphor for how <code>read()</code> works:</div>\n<ul>\n<li>Is it like peeling a message one sticker at a time?</li>\n<li>Is it like eating cereal — one byte per spoon?</li>\n<li>Or maybe like unrolling a scroll with data on it?</li>\n</ul>\n<div class=\"card\">Draw or describe how you imagine bytes entering your Arduino and being read. Make it fun and silly!</div>",
+      "image": "https://i.imgur.com/VNOuWZe.png",
+      "audio": "https://example.com/audio/read-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "peek(): Sneak a Look Without Eating the Byte",
+  "lessons": [
+    {
+      "title": "What `peek()` Does: A Ninja Byte Preview",
+      "content": "<div class=\"card\">Let’s say you just received a UDP packet. Now you’re curious... what’s the first byte?</div>\n<div class=\"card\">But wait — you don’t want to remove it yet, just <i>sneak a peek</i>.</div>\n<div class=\"card\">That’s where <code>peek()</code> shines! It lets you look at the next byte in the stream, <b>without actually taking it out</b>.</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>int b = udp.peek();</code></div>\n<div class=\"card\">It returns:<ul><li>The next byte (as int)</li><li><code>-1</code> if no data is available</li></ul></div>\n<div class=\"card\">Perfect for situations where you need to <b>inspect before reacting</b>, like checking a header byte or ID code before fully reading the message.</div>",
+      "image": "https://i.imgur.com/xoyWuwx.png",
+      "audio": "https://example.com/audio/peek-intro.mp3"
+    },
+    {
+      "title": "Watch: See `peek()` in Action (Slow-Mo Style)",
+      "content": "<div class=\"card\">Here’s a demo that shows how <code>peek()</code> lets you look ahead without pulling the byte out of the packet stream.</div>\n<div class=\"card\">You’ll see that calling <code>peek()</code> repeatedly shows the same byte — until you call <code>read()</code>.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/LDh3Vjkg1nU\" title=\"WiFiUDP peek() Demo\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/LDh3Vjkg1nU/0.jpg",
+      "audio": "https://example.com/audio/peek-video.mp3"
+    },
+    {
+      "title": "Game: Guess Before You Read!",
+      "content": "<div class=\"card\">You’ll play a quick round of UDP detective.</div>\n<div class=\"card\">You receive a UDP packet. First, you <code>peek()</code> — it shows byte <code>87</code>. What character is it?</div>\n<div class=\"card\"><button class='gaming-btn'>'W'</button> <button class='gaming-btn'>'U'</button> <button class='gaming-btn'>'H'</button></div>\n<div class=\"card\">Correct! 87 = 'W'. Now call <code>read()</code> and see the full message unravel!</div>\n<div class=\"card\">This helps you understand how <code>peek()</code> gives you a preview — but doesn’t move the stream forward.</div>",
+      "image": "https://i.imgur.com/eoWSvfb.png",
+      "audio": "https://example.com/audio/peek-game.mp3"
+    },
+    {
+      "title": "Creative: Build a Byte-Reading Robot with X-Ray Vision",
+      "content": "<div class=\"card\">Imagine a robot that looks at the next byte in the data stream without touching it. It wears x-ray glasses 👓</div>\n<div class=\"card\">Draw or describe this robot. Does it:</div>\n<ul><li>Have a hologram viewer?</li><li>Use a special scanner?</li><li>Pause time to peek into memory?</li></ul>\n<div class=\"card\">This helps solidify how <code>peek()</code> lets your code preview without messing with order.</div>",
+      "image": "https://i.imgur.com/XQ8zxai.png",
+      "audio": "https://example.com/audio/peek-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "How Many Bytes Are Waiting?",
+  "lessons": [
+    {
+      "title": "available(): The Queue Checker",
+      "content": "<div class=\"card\">You've received a UDP packet (🎉), now what?</div>\n<div class=\"card\">Before reading it, call <code>udp.available()</code> to know how much data is waiting inside the packet.</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>int count = udp.available();</code></div>\n<div class=\"card\">It returns the number of bytes still unread in the current packet.</div>\n<div class=\"card\">🧠 <b>Example:</b><br><pre><code>int size = udp.parsePacket();\nif (size) {\n  int bytes = udp.available();\n  Serial.print(\"Data waiting: \");\n  Serial.println(bytes);\n}</code></pre></div>\n<div class=\"card\">⚠️ After you read bytes with <code>read()</code>, <code>available()</code> returns fewer and fewer — until it hits zero!</div>",
+      "image": "https://i.imgur.com/FfXpGmL.png",
+      "audio": "https://example.com/audio/available-intro.mp3"
+    },
+    {
+      "title": "Peek + Available: The Dream Combo",
+      "content": "<div class=\"card\">You can combine <code>available()</code> and <code>peek()</code> to look ahead and make decisions before fully reading.</div>\n<div class=\"card\">For example: check if enough data is ready before calling <code>read(buffer, length)</code>.</div>\n<div class=\"card\">🧠 Smart idea: <pre><code>if (udp.available() >= 5) {\n  udp.read(buffer, 5);\n}</code></pre></div>\n<div class=\"card\">This protects your buffer from being underfilled or over-read.</div>",
+      "image": "https://i.imgur.com/7IlFMPx.png",
+      "audio": "https://example.com/audio/available-smart.mp3"
+    },
+    {
+      "title": "Creative: Draw the Byte Queue",
+      "content": "<div class=\"card\">Visualize a queue of bytes waiting in line. Each one is waving, hoping you’ll call <code>read()</code> soon!</div>\n<div class=\"card\">Draw a cartoon where:<ul><li>👂 <b>Arduino</b> is peeking at the first byte</li><li>📦 <b>Bytes</b> are lined up in queue</li><li>⏳ <b>available()</b> shows a number above their heads</li></ul></div>\n<div class=\"card\">Great for beginners to imagine memory and stream flow!</div>",
+      "image": "https://i.imgur.com/6GSBNyn.png",
+      "audio": "https://example.com/audio/available-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "write(): Send Your Message Loud and Clear",
+  "lessons": [
+    {
+      "title": "Say Something! `write()` Sends Your Data",
+      "content": "<div class=\"card\">Welcome to the moment your Arduino <b>speaks</b> 🗣️</div>\n<div class=\"card\"><code>write()</code> is how your device sends a UDP message out — whether it's a single byte, a string, or a buffer of data.</div>\n<div class=\"card\">🔧 <b>Syntax Variants:</b>\n<ul>\n<li><code>udp.write(byte);</code></li>\n<li><code>udp.write(buffer, length);</code></li>\n<li><code>udp.write(\"Hello\");</code></li>\n</ul></div>\n<div class=\"card\">⚠️ <b>write() doesn’t send anything alone!</b> It must be between <code>beginPacket()</code> and <code>endPacket()</code>.</div>\n<div class=\"card\">🧠 <b>Example:</b><br><pre><code>udp.beginPacket(\"192.168.1.42\", 4210);\nudp.write(\"Hi there!\");\nudp.endPacket();</code></pre></div>\n<div class=\"card\">That sends a UDP packet to another device instantly! 💨</div>",
+      "image": "https://i.imgur.com/Vxw1vhd.png",
+      "audio": "https://example.com/audio/write-intro.mp3"
+    },
+    {
+      "title": "write(byte) vs write(buffer, length)",
+      "content": "<div class=\"card\">Let’s break this down...</div>\n<div class=\"card\">🟡 <b>1. write(byte)</b><br>Sends just one byte (a number or character):<br><code>udp.write(65); // sends 'A'</code></div>\n<div class=\"card\">🟢 <b>2. write(buffer, length)</b><br>Sends a bunch of bytes from a char array:<br><pre><code>char msg[] = \"Temp: 26C\";\nudp.write(msg, strlen(msg));</code></pre></div>\n<div class=\"card\">🧠 Tip: Always make sure the <code>length</code> is correct, or you’ll send garbage or cut the message short.</div>",
+      "image": "https://i.imgur.com/ZFKYF4F.png",
+      "audio": "https://example.com/audio/write-types.mp3"
+    },
+    {
+      "title": "Watch: Sending UDP from Arduino using `write()`",
+      "content": "<div class=\"card\">This tutorial shows exactly how <code>write()</code> works inside a complete UDP sketch — from `beginPacket()` to `endPacket()`.</div>\n<div class=\"card\">You’ll see both text and binary being sent to another device in real-time!</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/N_GoVfbR7WQ\" title=\"Arduino WiFiUDP write() demo\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/N_GoVfbR7WQ/0.jpg",
+      "audio": "https://example.com/audio/write-video.mp3"
+    },
+    {
+      "title": "Game: Pick the Right Write",
+      "content": "<div class=\"card\">Which form of <code>write()</code> should you use in each case?</div>\n<div class=\"card\">🧪 Scenario 1: Send the number 55<br><button class='gaming-btn'>write(\"55\")</button> <button class='gaming-btn'>write(55)</button></div>\n<div class=\"card\">🧪 Scenario 2: Send \"ON\" as text<br><button class='gaming-btn'>write(\"ON\")</button> <button class='gaming-btn'>write(ON)</button></div>\n<div class=\"card\">🧪 Scenario 3: Send a full 200-byte buffer<br><button class='gaming-btn'>write(buffer, 200)</button> <button class='gaming-btn'>write(buffer)</button></div>\n<div class=\"card\">Each answer comes with a fun explanation!</div>",
+      "image": "https://i.imgur.com/J5gTZOb.png",
+      "audio": "https://example.com/audio/write-game.mp3"
+    },
+    {
+      "title": "Creative: Message in a Bottle",
+      "content": "<div class=\"card\">Imagine you're sending a message across an ocean with <code>write()</code>.</div>\n<ul>\n<li>Draw your Arduino writing on a tiny scroll</li>\n<li>Packing it into a packet (bottle)</li>\n<li>Launching it to the receiver’s IP shore</li>\n</ul>\n<div class=\"card\">Now compare that image to your actual code. It’s almost the same! 🌊</div>",
+      "image": "https://i.imgur.com/o9u96m9.png",
+      "audio": "https://example.com/audio/write-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "flush(): The Silent Placeholder",
+  "lessons": [
+    {
+      "title": "What Does `flush()` Really Do in WiFiUDP?",
+      "content": "<div class=\"card\">When you see <code>flush()</code> in a library, you might think it forces a send or clears data.</div>\n<div class=\"card\">But in the case of <code>WiFiUDP.flush()</code>... it actually does <b>nothing</b> 😮</div>\n<div class=\"card\">That’s right — it’s an empty function. Included for <i>compatibility</i> only. So your code doesn’t break if you expect it from other stream-based classes.</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>udp.flush();</code><br>Has no parameters and returns nothing.</div>\n<div class=\"card\">🧠 <b>When to use it?</b> Never really. It’s safe to leave out — but it won’t hurt if it's there.</div>",
+      "image": "https://i.imgur.com/4DS2I3p.png",
+      "audio": "https://example.com/audio/flush-intro.mp3"
+    },
+    {
+      "title": "Watch: flush() Explained in 60 Seconds",
+      "content": "<div class=\"card\">This video explains the history and purpose of <code>flush()</code> across different Arduino libraries — and why it exists even when it does nothing.</div>\n<div class=\"card\">It’s a compatibility ghost 👻</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/g1rxkSk_pv0\" title=\"flush() Arduino Explained\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/g1rxkSk_pv0/0.jpg",
+      "audio": "https://example.com/audio/flush-video.mp3"
+    },
+    {
+      "title": "Game: Guess Which flush() Works?",
+      "content": "<div class=\"card\">Try these trivia questions!</div>\n<div class=\"card\">🧪 <b>Question:</b> Which flush() actually clears a buffer?<br><button class='gaming-btn'>Serial.flush()</button> <button class='gaming-btn'>WiFiUDP.flush()</button> <button class='gaming-btn'>EEPROM.flush()</button></div>\n<div class=\"card\">🧪 <b>Question:</b> Is WiFiUDP.flush() needed to send data?<br><button class='gaming-btn'>Yes</button> <button class='gaming-btn'>No</button></div>",
+      "image": "https://i.imgur.com/Lr3EdCM.png",
+      "audio": "https://example.com/audio/flush-game.mp3"
+    },
+    {
+      "title": "Creative: flush() as a Ghost Function",
+      "content": "<div class=\"card\">Imagine <code>flush()</code> as a ghost that haunts your code — it exists, but doesn’t do anything 🧙</div>\n<div class=\"card\">Draw a transparent function with a cape, floating around the <code>udp</code> object, making zero impact.</div>\n<div class=\"card\">Now label it: \"Legacy Compatibility Only\" — perfect visual metaphor for `flush()` in WiFiUDP.</div>",
+      "image": "https://i.imgur.com/OG9ub5z.png",
+      "audio": "https://example.com/audio/flush-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Who Sent This? remoteIP() Knows",
+  "lessons": [
+    {
+      "title": "What is `remoteIP()`? The Return Address Detective",
+      "content": "<div class=\"card\">Whenever your Arduino receives a UDP message, it stores the sender’s IP address.</div>\n<div class=\"card\"><code>remoteIP()</code> lets you grab that IP — so you can log it, print it, or even reply back.</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>IPAddress ip = udp.remoteIP();</code></div>\n<div class=\"card\">🧠 <b>Use it right after:</b> <ul><li><code>udp.parsePacket()</code></li><li>But before reading the next packet!</li></ul></div>\n<div class=\"card\">🧪 <b>Example:</b><pre><code>IPAddress sender = udp.remoteIP();\nSerial.print(\"From IP: \");\nSerial.println(sender);</code></pre></div>",
+      "image": "https://i.imgur.com/hAO5bCc.png",
+      "audio": "https://example.com/audio/remoteip-intro.mp3"
+    },
+    {
+      "title": "How It Works: Packet Memory Behind the Scenes",
+      "content": "<div class=\"card\">When <code>parsePacket()</code> detects a new message, it stores the sender’s info — IP and port — for you to query.</div>\n<div class=\"card\">So <code>remoteIP()</code> is like pulling the return address from the envelope ✉️</div>\n<div class=\"card\">This is great when multiple devices send you data and you want to know <i>who sent what</i>.</div>",
+      "image": "https://i.imgur.com/4Km8qBQ.png",
+      "audio": "https://example.com/audio/remoteip-packetinfo.mp3"
+    },
+    {
+      "title": "Watch: Capturing IP Address from Incoming UDP",
+      "content": "<div class=\"card\">This video walks through how to listen for UDP packets and display the sender’s IP using <code>remoteIP()</code>.</div>\n<div class=\"card\">It’s super helpful for debugging multi-device setups, or logging where messages are coming from.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/nIPSDHGcQaU\" title=\"remoteIP Arduino WiFiUDP\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/nIPSDHGcQaU/0.jpg",
+      "audio": "https://example.com/audio/remoteip-video.mp3"
+    },
+    {
+      "title": "Game: Match the Packet to the Sender",
+      "content": "<div class=\"card\">You received 3 packets:</div>\n<ul>\n<li>🌐 Message: \"LED ON\" from IP: 192.168.1.42</li>\n<li>🌐 Message: \"Temp: 24C\" from IP: 192.168.1.88</li>\n<li>🌐 Message: \"Ping!\" from IP: 192.168.1.10</li>\n</ul>\n<div class=\"card\">Can you match the correct <code>udp.remoteIP()</code> return to each message?</div>\n<div class=\"card\"><button class='gaming-btn'>Try Now!</button></div>",
+      "image": "https://i.imgur.com/7ySL1EM.png",
+      "audio": "https://example.com/audio/remoteip-game.mp3"
+    },
+    {
+      "title": "Creative: Draw the Return Address on a UDP Packet",
+      "content": "<div class=\"card\">Imagine each UDP message is a letter flying through the air.</div>\n<div class=\"card\">Draw or describe:<ul><li>✉️ The envelope as the packet</li><li>📍 The return IP address as a label</li><li>👀 Arduino reading it with <code>remoteIP()</code></li></ul></div>\n<div class=\"card\">Make it fun, colorful, and memorable!</div>",
+      "image": "https://i.imgur.com/TL1etnd.png",
+      "audio": "https://example.com/audio/remoteip-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "remotePort(): Which Port Knocked?",
+  "lessons": [
+    {
+      "title": "What's a Port, and Why Do We Care?",
+      "content": "<div class=\"card\">In networking, a <b>port</b> is like a numbered door 🔢🚪</div>\n<div class=\"card\">Every device has many ports open — some for web traffic, some for sensors, some for UDP.</div>\n<div class=\"card\">When your Arduino receives a UDP message, it also knows <i>which port number</i> the sender used to send it.</div>\n<div class=\"card\"><code>remotePort()</code> tells you that number. Think of it as: \"Which port on their side did this come from?\"</div>",
+      "image": "https://i.imgur.com/BIrR5nW.png",
+      "audio": "https://example.com/audio/remoteport-intro.mp3"
+    },
+    {
+      "title": "Syntax and Use of `remotePort()`",
+      "content": "<div class=\"card\">🔧 <b>Syntax:</b><br><code>int port = udp.remotePort();</code></div>\n<div class=\"card\">You can use this in logs, debugging, or even to <b>reply back</b> to the sender using their same port.</div>\n<div class=\"card\">🧠 Example:</div>\n<pre><code>int senderPort = udp.remotePort();\nSerial.print(\"They knocked on port: \");\nSerial.println(senderPort);</code></pre>\n<div class=\"card\">Used together with <code>remoteIP()</code>, you now know who sent the packet AND from which port.</div>",
+      "image": "https://i.imgur.com/GZRAocZ.png",
+      "audio": "https://example.com/audio/remoteport-syntax.mp3"
+    },
+    {
+      "title": "Watch: Using remotePort() to Echo Data Back",
+      "content": "<div class=\"card\">This tutorial shows how to get both the IP and port of a sender — and use them to send a reply back.</div>\n<div class=\"card\">A great demo for building bi-directional UDP messaging.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/sKlRIlLn3U8\" title=\"Arduino remotePort UDP Echo\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/sKlRIlLn3U8/0.jpg",
+      "audio": "https://example.com/audio/remoteport-video.mp3"
+    },
+    {
+      "title": "Game: Identify the Source Port",
+      "content": "<div class=\"card\">You receive a UDP packet. <code>remoteIP()</code> says it’s from 192.168.1.21 — but which port?</div>\n<div class=\"card\">Use <code>remotePort()</code> to print the sender’s port. Can you match it to the sender app?</div>\n<ul>\n<li>Port 5005: Sensor Node</li>\n<li>Port 4210: Mobile App</li>\n<li>Port 12345: Game Controller</li>\n</ul>\n<div class=\"card\">Match the port to the sender to win!</div>",
+      "image": "https://i.imgur.com/qq55JYc.png",
+      "audio": "https://example.com/audio/remoteport-game.mp3"
+    },
+    {
+      "title": "Creative: The Door with a Number",
+      "content": "<div class=\"card\">Draw or imagine UDP packets coming through tiny doors — each labeled with a port number 🏠</div>\n<ul>\n<li>🎯 The sender’s door = <code>remotePort()</code></li>\n<li>🛬 Your Arduino's door = the port you gave to <code>begin(port)</code></li>\n</ul>\n<div class=\"card\">It’s like you’re having a party and someone shouts “Hi!” from Door #4210 😄</div>",
+      "image": "https://i.imgur.com/xUmtd4G.png",
+      "audio": "https://example.com/audio/remoteport-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "stop(): Goodbye, UDP",
+  "lessons": [
+    {
+      "title": "Why You Need `stop()` in UDP (Yes, Really)",
+      "content": "<div class=\"card\">Even though UDP is connectionless, your Arduino still uses system resources — sockets, buffers, etc.</div>\n<div class=\"card\"><code>udp.stop()</code> shuts all that down. It's like closing a file when you're done reading or writing it.</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>udp.stop();</code></div>\n<div class=\"card\">🚨 <b>When to call:</b>\n<ul><li>At the end of a program</li><li>When switching between modes</li><li>Before restarting communication</li></ul></div>\n<div class=\"card\">It makes your sketch cleaner, less memory-hungry, and future-proof.</div>",
+      "image": "https://i.imgur.com/wJY4dGy.png",
+      "audio": "https://example.com/audio/stop-intro.mp3"
+    },
+    {
+      "title": "The Hidden Cleanup: What `stop()` Really Does",
+      "content": "<div class=\"card\">Behind the scenes, <code>stop()</code> tells your Arduino's network stack to free the UDP socket — the low-level interface it was using.</div>\n<div class=\"card\">This releases memory, closes port listeners, and clears queues. Not calling it isn't fatal, but calling it is cleaner ✅</div>\n<div class=\"card\">Just like you wouldn’t leave a file open forever, you shouldn’t leave UDP running when you’re done with it.</div>",
+      "image": "https://i.imgur.com/cwTNYRe.png",
+      "audio": "https://example.com/audio/stop-internals.mp3"
+    },
+    {
+      "title": "Watch: UDP Lifecycle - From begin() to stop()",
+      "content": "<div class=\"card\">This video shows a complete UDP sketch where the socket is started, used, and then stopped properly.</div>\n<div class=\"card\">Includes memory monitoring and packet flow debugging.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/AhPUN-8RaBM\" title=\"Arduino UDP Socket Lifecycle\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/AhPUN-8RaBM/0.jpg",
+      "audio": "https://example.com/audio/stop-video.mp3"
+    },
+    {
+      "title": "Game: Should You Call stop()?",
+      "content": "<div class=\"card\">Let’s test your instincts!</div>\n<div class=\"card\">Scenario: You’ve just sent 3 UDP packets to your friend’s IP. Do you call <code>stop()</code>?</div>\n<div class=\"card\"><button class='gaming-btn'>Yes, to clean up</button> <button class='gaming-btn'>No, just keep running</button></div>\n<div class=\"card\">Scenario 2: Your Arduino is rebooting into AP mode. Should it call <code>stop()</code> first?</div>\n<div class=\"card\"><button class='gaming-btn'>Yes!</button> <button class='gaming-btn'>Nope</button></div>",
+      "image": "https://i.imgur.com/itw4z5k.png",
+      "audio": "https://example.com/audio/stop-game.mp3"
+    },
+    {
+      "title": "Creative: Draw a UDP Power Switch",
+      "content": "<div class=\"card\">Imagine UDP as a glowing blue tunnel 🚇 and <code>stop()</code> as the switch that closes it down.</div>\n<div class=\"card\">Draw or describe a scene where your Arduino powers off the tunnel — maybe with sparks, or a fancy 'Socket Closed' sign.</div>\n<div class=\"card\">Helps visualize how invisible sockets still need cleanup ✨</div>",
+      "image": "https://i.imgur.com/uwVX9ZR.png",
+      "audio": "https://example.com/audio/stop-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "beginPacket(): Start Crafting Your Message",
+  "lessons": [
+    {
+      "title": "The Very First Step in Sending a UDP Message",
+      "content": "<div class=\"card\">Every time your Arduino wants to send a UDP message, it first needs to say: \"Hey, I’m preparing a packet!\"</div>\n<div class=\"card\">That’s what <code>beginPacket()</code> does.</div>\n<div class=\"card\">It sets up the <b>destination IP and port</b> so Arduino knows where to send the next packet.</div>\n<div class=\"card\">🔧 <b>Syntax:</b><br><code>udp.beginPacket(remoteIP, remotePort);</code></div>\n<div class=\"card\">Then you can call <code>write()</code> to fill the message, and <code>endPacket()</code> to send it.</div>",
+      "image": "https://i.imgur.com/oOAfLs0.png",
+      "audio": "https://example.com/audio/beginpacket-intro.mp3"
+    },
+    {
+      "title": "What Happens Between beginPacket() and endPacket()?",
+      "content": "<div class=\"card\">This is the official sending process of a UDP message:</div>\n<ul>\n<li>1️⃣ Call <code>beginPacket()</code> to say where it’s going</li>\n<li>2️⃣ Call <code>write()</code> to add data (can be multiple)</li>\n<li>3️⃣ Call <code>endPacket()</code> to fire it 🚀</li>\n</ul>\n<div class=\"card\">Think of it like: write your message → address the envelope → send it.</div>",
+      "image": "https://i.imgur.com/qFPQQFS.png",
+      "audio": "https://example.com/audio/beginpacket-sequence.mp3"
+    },
+    {
+      "title": "Watch: Full Send Flow (beginPacket to endPacket)",
+      "content": "<div class=\"card\">This short video demo walks through sending a message using all 3 UDP send steps.</div>\n<div class=\"card\">You’ll see the destination set via <code>beginPacket()</code>, message sent with <code>write()</code>, and launched via <code>endPacket()</code>.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/owG0ZmZLO_M\" title=\"Arduino WiFiUDP Full Packet Send\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/owG0ZmZLO_M/0.jpg",
+      "audio": "https://example.com/audio/beginpacket-video.mp3"
+    },
+    {
+      "title": "Game: Fix the Broken Packet Sender!",
+      "content": "<div class=\"card\">You’re shown 3 broken Arduino UDP sketches. Can you spot what’s missing?</div>\n<div class=\"card\">Example:</div>\n<pre><code>udp.write(\"Hello\");\nudp.endPacket();</code></pre>\n<div class=\"card\"><b>What’s wrong?</b><br><button class='gaming-btn'>Missing beginPacket()</button> <button class='gaming-btn'>Should use Serial</button></div>\n<div class=\"card\">Helps you remember the proper flow 💡</div>",
+      "image": "https://i.imgur.com/KEAK5TO.png",
+      "audio": "https://example.com/audio/beginpacket-game.mp3"
+    },
+    {
+      "title": "Creative: Packet Builder Factory",
+      "content": "<div class=\"card\">Imagine your Arduino has a mini factory inside it:</div>\n<ul>\n<li>🏗 <b>beginPacket()</b> starts building the container</li>\n<li>✍️ <b>write()</b> adds data</li>\n<li>🚀 <b>endPacket()</b> launches it into the network</li>\n</ul>\n<div class=\"card\">Draw the 3-stage factory or describe what it looks like — gears, boxes, address tags, launch tubes. Make it fun and futuristic!</div>",
+      "image": "https://i.imgur.com/q5oLyl1.png",
+      "audio": "https://example.com/audio/beginpacket-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "UDP vs TCP: Who Wins When?",
+  "lessons": [
+    {
+      "title": "The Two Titans of the Internet: UDP vs TCP",
+      "content": "<div class=\"card\">All internet communication rides on two giant protocols:</div>\n<ul>\n<li>📦 <b>TCP (Transmission Control Protocol)</b></li>\n<li>🚀 <b>UDP (User Datagram Protocol)</b></li>\n</ul>\n<div class=\"card\">They both send data — but in totally different ways!</div>\n<div class=\"card\">Think of it like this:</div>\n<ul>\n<li>📫 <b>TCP</b> = Registered Mail with Signature</li>\n<li>✉️ <b>UDP</b> = Tossing a postcard in the wind</li>\n</ul>",
+      "image": "https://i.imgur.com/jRQ53PH.png",
+      "audio": "https://example.com/audio/udp-vs-tcp-intro.mp3"
+    },
+    {
+      "title": "Compare Features Side by Side",
+      "content": "<div class=\"card\"><table><thead><tr><th>Feature</th><th>TCP</th><th>UDP</th></tr></thead><tbody>\n<tr><td>Connection Setup</td><td>Yes (3-way handshake)</td><td>No (fire & forget)</td></tr>\n<tr><td>Reliable Delivery</td><td>Yes</td><td>No</td></tr>\n<tr><td>Order Guaranteed?</td><td>Yes</td><td>No</td></tr>\n<tr><td>Speed</td><td>Slower</td><td>Faster</td></tr>\n<tr><td>Packet Loss Tolerance</td><td>Low</td><td>High</td></tr>\n<tr><td>Best For</td><td>Web, FTP, Email</td><td>Voice, Video, Sensors</td></tr>\n</tbody></table></div>\n<div class=\"card\">UDP is perfect when speed matters more than perfection.</div>",
+      "image": "https://i.imgur.com/6xI7kAI.png",
+      "audio": "https://example.com/audio/udp-vs-tcp-table.mp3"
+    },
+    {
+      "title": "Watch: Visualizing UDP vs TCP with Balloons",
+      "content": "<div class=\"card\">This creative video explains TCP and UDP by using 🎈 balloons to show packet flow, drops, and confirmation signals.</div>\n<div class=\"card\">You’ll instantly <i>see</i> the difference in reliability, speed, and packet order.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/uWO6DgWzHxU\" title=\"TCP vs UDP Explained with Balloons\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/uWO6DgWzHxU/0.jpg",
+      "audio": "https://example.com/audio/udp-vs-tcp-video.mp3"
+    },
+    {
+      "title": "Game: Pick UDP or TCP for Each Use Case",
+      "content": "<div class=\"card\">Decide which protocol you’d use in each situation:</div>\n<ul>\n<li>📞 <b>Voice Call</b>: <button class='gaming-btn'>UDP</button> <button class='gaming-btn'>TCP</button></li>\n<li>📩 <b>Email</b>: <button class='gaming-btn'>UDP</button> <button class='gaming-btn'>TCP</button></li>\n<li>📡 <b>Sensor Reading (every second)</b>: <button class='gaming-btn'>UDP</button> <button class='gaming-btn'>TCP</button></li>\n<li>📦 <b>File Upload</b>: <button class='gaming-btn'>UDP</button> <button class='gaming-btn'>TCP</button></li>\n</ul>\n<div class=\"card\">Instant feedback helps you solidify the concepts 🔥</div>",
+      "image": "https://i.imgur.com/lcOBHUR.png",
+      "audio": "https://example.com/audio/udp-vs-tcp-game.mp3"
+    },
+    {
+      "title": "Creative: Battle of the Protocols – TCP vs UDP",
+      "content": "<div class=\"card\">Draw a fun battle scene 🛡 vs ⚡:</div>\n<ul>\n<li>🛡 TCP: wearing armor, sending soldiers with confirmations</li>\n<li>⚡ UDP: speedster throwing data like ninja stars</li>\n</ul>\n<div class=\"card\">Label their strengths, weaknesses, and weapons. It’s networking — made fun.</div>",
+      "image": "https://i.imgur.com/NFaZTZJ.png",
+      "audio": "https://example.com/audio/udp-vs-tcp-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Real Project: Send Sensor Data to Your Phone via UDP",
+  "lessons": [
+    {
+      "title": "Project Overview: Arduino Sends Data to a Phone 📱",
+      "content": "<div class=\"card\">Let’s build a mini IoT system!</div>\n<ul>\n<li>📟 Arduino + WiFi (ESP32 or Uno R4 WiFi)</li>\n<li>🌡 DHT11 sensor to read temperature</li>\n<li>📲 Mobile app or UDP monitor to receive it</li>\n</ul>\n<div class=\"card\">The Arduino will send live temperature readings to your phone — <b>using UDP</b>.</div>\n<div class=\"card\">It’s fast, simple, and works without any cloud service or server!</div>",
+      "image": "https://i.imgur.com/NMRc8VZ.png",
+      "audio": "https://example.com/audio/project-overview.mp3"
+    },
+    {
+      "title": "Full Wiring Diagram: DHT11 to ESP32",
+      "content": "<div class=\"card\">Here’s how to connect the sensor:</div>\n<ul>\n<li>DHT11 VCC → 3.3V</li>\n<li>DHT11 GND → GND</li>\n<li>DHT11 Data → GPIO 14</li>\n</ul>\n<div class=\"card\"><b>Tip:</b> Use a 10kΩ resistor between VCC and Data for better stability</div>\n<div class=\"card\"><img src=\"https://i.imgur.com/miNNqGn.png\" alt=\"ESP32 to DHT11 wiring\" /></div>",
+      "image": "https://i.imgur.com/miNNqGn.png",
+      "audio": "https://example.com/audio/project-wiring.mp3"
+    },
+    {
+      "title": "Code: Sensor to UDP Packet Sender 🚀",
+      "content": "<div class=\"card\">Here’s the full sketch to read from DHT11 and send via UDP:</div>\n<pre><code>#include &lt;WiFi.h&gt;\n#include &lt;WiFiUdp.h&gt;\n#include &lt;DHT.h&gt;\n\nconst char* ssid = \"YOUR_SSID\";\nconst char* password = \"YOUR_PASS\";\n\nWiFiUDP udp;\nconst char* phoneIP = \"192.168.1.5\"; // your phone IP\nconst int port = 4210;\n\n#define DHTPIN 14\n#define DHTTYPE DHT11\nDHT dht(DHTPIN, DHTTYPE);\n\nvoid setup() {\n  Serial.begin(115200);\n  WiFi.begin(ssid, password);\n  while (WiFi.status() != WL_CONNECTED) delay(500);\n  udp.begin(1234);\n  dht.begin();\n}\n\nvoid loop() {\n  float t = dht.readTemperature();\n  String msg = \"Temp: \" + String(t) + \" C\";\n  udp.beginPacket(phoneIP, port);\n  udp.write(msg.c_str());\n  udp.endPacket();\n  delay(2000);\n}</code></pre>\n<div class=\"card\">🧠 Don’t forget to change <code>phoneIP</code> to your actual phone's IP (use a UDP logger app).</div>",
+      "image": "https://i.imgur.com/LWBONz7.png",
+      "audio": "https://example.com/audio/project-code.mp3"
+    },
+    {
+      "title": "App Setup: Receive UDP on Your Phone",
+      "content": "<div class=\"card\">Install a UDP receiver app on your phone. Recommended apps:</div>\n<ul>\n<li>📲 <b>UDP Sender/Receiver</b> (Android)</li>\n<li>📲 <b>PacketSender</b> (iOS)</li>\n<li>🧪 You can even use a PC with tools like <code>netcat</code> or Wireshark</li>\n</ul>\n<div class=\"card\">Set the receiving port to <code>4210</code>. You’ll start seeing messages like:</div>\n<div class=\"card\"><code>Temp: 28.5 C</code></div>",
+      "image": "https://i.imgur.com/B7MGwEZ.png",
+      "audio": "https://example.com/audio/project-appsetup.mp3"
+    },
+    {
+      "title": "Game: Match the Output",
+      "content": "<div class=\"card\">Based on the DHT11 reading below, what message will Arduino send?</div>\n<div class=\"card\">🧪 Sensor reading = 26.1°C</div>\n<div class=\"card\">Expected message?</div>\n<button class='gaming-btn'>\"Temperature: 26.1\"</button>\n<button class='gaming-btn'>\"Temp: 26.1 C\"</button>\n<button class='gaming-btn'>\"DHT11:26.1\"</button>",
+      "image": "https://i.imgur.com/sCm9kHP.png",
+      "audio": "https://example.com/audio/project-game.mp3"
+    },
+    {
+      "title": "Creative: UDP Mailbox on Your Phone",
+      "content": "<div class=\"card\">Imagine your phone has a magical UDP inbox 📥</div>\n<ul>\n<li>Arduino = mailman sending temperature updates</li>\n<li>Phone = mailbox showing messages like “Temp: 27.0 C”</li>\n</ul>\n<div class=\"card\">Draw this scene or animate it in your head. It makes UDP feel alive!</div>",
+      "image": "https://i.imgur.com/1LVpkNm.png",
+      "audio": "https://example.com/audio/project-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "UDP Isn’t Working!?! Fix These Common Mistakes",
+  "lessons": [
+    {
+      "title": "Troubleshooting Flowchart: Fix UDP in 60 Seconds",
+      "content": "<div class=\"card\">Here’s your step-by-step debugging ladder for any UDP issue:</div>\n<ol>\n<li>📶 WiFi connected? <code>WiFi.status()</code> must be WL_CONNECTED</li>\n<li>📥 <code>udp.begin(port)</code> called?</li>\n<li>📤 <code>beginPacket()</code>, <code>write()</code>, and <code>endPacket()</code> in the right order?</li>\n<li>🌐 Correct IP and port for the receiver?</li>\n<li>🧱 Firewall blocking packets?</li>\n<li>📱 Phone on same WiFi network?</li>\n</ol>\n<div class=\"card\">🔁 Run this checklist before panicking 😄</div>",
+      "image": "https://i.imgur.com/znhNSr9.png",
+      "audio": "https://example.com/audio/udp-troubleshooting.mp3"
+    },
+    {
+      "title": "Top 5 Silent Killers of Your UDP Project",
+      "content": "<div class=\"card\">Let’s look at real-world issues you WILL encounter:</div>\n<ul>\n<li>1️⃣ <b>Wrong receiver IP:</b> Phones get new IPs often. Check in WiFi settings!</li>\n<li>2️⃣ <b>Firewall:</b> Laptops silently drop UDP packets.</li>\n<li>3️⃣ <b>Wrong port number:</b> Sender and receiver must match EXACTLY.</li>\n<li>4️⃣ <b>Buffer too small:</b> You’re writing more than 1460 bytes? Might silently fail.</li>\n<li>5️⃣ <b>No endPacket():</b> Your data never leaves Arduino!</li>\n</ul>\n<div class=\"card\">Knowing these = saving days of frustration ⏳</div>",
+      "image": "https://i.imgur.com/UoZnrvo.png",
+      "audio": "https://example.com/audio/udp-killers.mp3"
+    },
+    {
+      "title": "Watch: Debugging UDP Live on Serial Monitor",
+      "content": "<div class=\"card\">This video shows a real UDP sketch with bugs — and walks through fixing them using only <code>Serial.print()</code> 💻</div>\n<div class=\"card\">You’ll see what happens when <code>udp.begin()</code> is skipped, or IP is wrong, or port is mismatched.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/4r0iT5LkO1k\" title=\"Fix UDP Arduino Not Working\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/4r0iT5LkO1k/0.jpg",
+      "audio": "https://example.com/audio/udp-debug-video.mp3"
+    },
+    {
+      "title": "Game: Spot the Mistake!",
+      "content": "<div class=\"card\">Review these broken UDP sketches and fix them:</div>\n<pre><code>// Example 1:\nudp.write(\"Ping!\");\nudp.endPacket();</code></pre>\n<div class=\"card\">❓ What's missing?<br><button class='gaming-btn'>Missing beginPacket()</button> <button class='gaming-btn'>Forgot Serial.begin()</button></div>\n\n<pre><code>// Example 2:\nudp.begin(4210);\n// Forgot to call write() before endPacket()</code></pre>\n<div class=\"card\">❓ What happens?<br><button class='gaming-btn'>Sends empty packet</button> <button class='gaming-btn'>Compiles but crashes</button></div>",
+      "image": "https://i.imgur.com/8cHx0Ep.png",
+      "audio": "https://example.com/audio/udp-bugs-game.mp3"
+    },
+    {
+      "title": "Creative: The UDP Fix-It Toolbox",
+      "content": "<div class=\"card\">Imagine a cartoon Arduino repair kit 🧰 labeled:</div>\n<ul>\n<li>🔌 <b>WiFi Tester</b>: Checks network connection</li>\n<li>🎯 <b>IP Locator</b>: Finds your phone's IP</li>\n<li>📦 <b>Packet Tracker</b>: Confirms packet left</li>\n<li>🛡 <b>Firewall Scanner</b>: Detects blocking ports</li>\n</ul>\n<div class=\"card\">Draw or describe your dream debugging toolkit 🔍</div>",
+      "image": "https://i.imgur.com/6yyuw8q.png",
+      "audio": "https://example.com/audio/udp-fixit-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Big Packets & Unreliable UDP? Here’s How Pros Handle It",
+  "lessons": [
+    {
+      "title": "The Problem: UDP Doesn’t Guarantee Anything 😅",
+      "content": "<div class=\"card\">UDP is fast, but it’s also dangerous:</div>\n<ul>\n<li>🚫 No guarantee that the message arrived</li>\n<li>❓ No confirmation of delivery</li>\n<li>🧨 Packets over ~1460 bytes may get split or lost</li>\n</ul>\n<div class=\"card\">So if you send a large message, part of it may never arrive 😬</div>\n<div class=\"card\">Let’s fix that — the pro way.</div>",
+      "image": "https://i.imgur.com/LyTXsdt.png",
+      "audio": "https://example.com/audio/udp-big-intro.mp3"
+    },
+    {
+      "title": "Strategy 1: Chunking Large Messages",
+      "content": "<div class=\"card\">Instead of sending one huge string, split it into small messages:</div>\n<pre><code>// Instead of this:\nudp.beginPacket(ip, port);\nudp.write(bigString.c_str());\nudp.endPacket();</code></pre>\n<div class=\"card\">Do this instead:</div>\n<pre><code>for (int i = 0; i < bigString.length(); i += 100) {\n  String chunk = bigString.substring(i, i + 100);\n  udp.beginPacket(ip, port);\n  udp.write(chunk.c_str());\n  udp.endPacket();\n}</code></pre>\n<div class=\"card\">Break large data into chunks below 512–1024 bytes for reliability.</div>",
+      "image": "https://i.imgur.com/TUlv7h0.png",
+      "audio": "https://example.com/audio/udp-chunking.mp3"
+    },
+    {
+      "title": "Strategy 2: Acknowledgement (ACK) System",
+      "content": "<div class=\"card\">You can build a <b>tiny ACK system</b> using another UDP message as a reply.</div>\n<pre><code>// Sender sends packet\nudp.beginPacket(ip, port);\nudp.write(\"TEMP:26.0\");\nudp.endPacket();</code></pre>\n<pre><code>// Receiver replies back\nudp.beginPacket(senderIP, senderPort);\nudp.write(\"ACK\");\nudp.endPacket();</code></pre>\n<div class=\"card\">Sender waits for an ACK before sending the next chunk. It’s like building TCP... with duct tape 😄</div>",
+      "image": "https://i.imgur.com/fDckC6L.png",
+      "audio": "https://example.com/audio/udp-ack.mp3"
+    },
+    {
+      "title": "Watch: Sending Big Data with Retries",
+      "content": "<div class=\"card\">This video shows how to:</div>\n<ul>\n<li>📦 Break sensor data into chunks</li>\n<li>🔁 Retry until a confirmation is received</li>\n<li>📱 Use a second UDP port for the ACKs</li>\n</ul>\n<div class=\"card\">Great for streaming long strings or image segments.</div>\n<div class=\"card\"><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/Nr8MGITBdG0\" title=\"Arduino UDP Packet Chunking\" frameborder=\"0\" allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/Nr8MGITBdG0/0.jpg",
+      "audio": "https://example.com/audio/udp-retry-video.mp3"
+    },
+    {
+      "title": "Game: Fix the Failed File Sender",
+      "content": "<div class=\"card\">Scenario: You tried to send a string with 3000 characters over UDP... but the phone received only 0 bytes 😭</div>\n<div class=\"card\">What went wrong?</div>\n<button class='gaming-btn'>You didn’t chunk the message</button>\n<button class='gaming-btn'>You forgot to call Serial.begin()</button>\n<div class=\"card\">Next: What would help prevent future loss?</div>\n<button class='gaming-btn'>Add an ACK system</button>\n<button class='gaming-btn'>Use flush()</button>",
+      "image": "https://i.imgur.com/W7ru4sK.png",
+      "audio": "https://example.com/audio/udp-retry-game.mp3"
+    },
+    {
+      "title": "Creative: Draw the Chunk Delivery System",
+      "content": "<div class=\"card\">Imagine you’re delivering a long scroll 📜 through pigeons 🕊</div>\n<ul>\n<li>Each pigeon can carry 100 characters max</li>\n<li>Each delivery must be confirmed by the castle guard 👮</li>\n</ul>\n<div class=\"card\">Draw how your pigeons would deliver the full message — and retry if needed!</div>",
+      "image": "https://i.imgur.com/tAmXTDB.png",
+      "audio": "https://example.com/audio/udp-chunks-creative.mp3"
+    }
+  ]
+}
+
+]
 }
 
   ]
