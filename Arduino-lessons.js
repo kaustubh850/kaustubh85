@@ -1548,6 +1548,618 @@ Try changing <code>delay(500)</code> to <code>delay(100)</code> and see what hap
 
       ]
     },{
+      title:"Core Concepts You Must Master (Advanced Essentials)",
+      modules:[
+        {
+  "title": "GPIO in Arduino — The Foundation of Hardware Control",
+  "lessons": [
+    {
+      "title": "What is GPIO?",
+      "content": "<div class='card'>🔌 GPIO stands for: <b>General Purpose Input/Output</b></div>\n<div class='card'>Each pin on your Arduino board is like a switchable wire.</div>\n<ul>\n  <li>📤 You can <b>send out signals</b> with it → OUTPUT mode</li>\n  <li>📥 Or <b>listen to signals</b> coming in → INPUT mode</li>\n</ul>\n<pre><code>pinMode(8, OUTPUT);  // LED\npinMode(2, INPUT);   // Button</code></pre>\n<div class='card'>🧠 GPIO pins are how Arduino <b>touches and senses the world</b>.</div>",
+      "image": "https://i.imgur.com/KYKrOq3.png",
+      "audio": "https://example.com/audio/gpio-what-is.mp3"
+    },
+    {
+      "title": "How GPIO Works (Voltage Logic)",
+      "content": "<div class='card'>⚡ A GPIO pin sends or receives voltage:</div>\n<ul>\n  <li><code>digitalWrite(HIGH)</code> → 5V (or 3.3V)</li>\n  <li><code>digitalWrite(LOW)</code> → 0V (GND)</li>\n</ul>\n<img src='https://i.imgur.com/YDNuW0k.png' style='width:100%;'>\n<div class='card'>When reading input:</div>\n<ul>\n  <li>🟢 HIGH → voltage detected</li>\n  <li>⚫ LOW → no voltage</li>\n</ul>\n<pre><code>int value = digitalRead(2);\nif (value == HIGH) { ... }</code></pre>",
+      "image": "https://i.imgur.com/YDNuW0k.png",
+      "audio": "https://example.com/audio/gpio-voltage.mp3"
+    },
+    {
+      "title": "Watch: GPIO in Action (LED + Button)",
+      "content": "<div class='card'>🎥 This demo shows:</div>\n<ul>\n  <li>How output controls LEDs</li>\n  <li>How input reads buttons</li>\n  <li>How pinMode sets the behavior</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/MmgCkI7T4ZI' title='GPIO Explained for Beginners - Arduino' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/MmgCkI7T4ZI/0.jpg",
+      "audio": "https://example.com/audio/video-gpio.mp3"
+    },
+    {
+      "title": "Game: Set the Right pinMode()",
+      "content": "<div class='card'>🎮 Decide what the pin should be used for:</div>\n<ul>\n  <li>🔴 LED</li>\n  <li>🟢 Button</li>\n</ul>\n<pre><code>pinMode(3, ______);</code></pre>\n<ul>\n  <li><button class='gaming-btn'>OUTPUT</button></li>\n  <li><button class='gaming-btn'>INPUT</button></li>\n</ul>\n<div class='card'>✨ Understand what each mode really does to the pin!</div>",
+      "image": "https://i.imgur.com/4lvh0gc.png",
+      "audio": "https://example.com/audio/game-gpio.mp3"
+    },
+    {
+      "title": "Creative: Imagine Arduino Without GPIO",
+      "content": "<div class='card'>🧠 What if Arduino couldn’t talk to the world?</div>\n<ul>\n  <li>No button input</li>\n  <li>No LED output</li>\n  <li>No sensor reads</li>\n  <li>No relay triggers</li>\n</ul>\n<div class='card'>🔍 Realize: <b>GPIO is the foundation of physical computing.</b></div>\n<pre><code>digitalWrite(pin, HIGH);\ndigitalRead(pin);\npinMode(pin, INPUT);</code></pre>",
+      "image": "https://i.imgur.com/xKYvN2A.png",
+      "audio": "https://example.com/audio/gpio-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Bits & Bytes — The Building Blocks of Arduino Logic",
+  "lessons": [
+    {
+      "title": "What is a Bit?",
+      "content": "<div class='card'>🧠 A <b>bit</b> is the smallest unit of memory in Arduino — it’s either <code>0</code> or <code>1</code>.</div>\n<ul>\n  <li>💡 <code>0</code> = OFF (no current)</li>\n  <li>💡 <code>1</code> = ON (voltage present)</li>\n</ul>\n<div class='card'>This is how the Arduino stores logic, sensor values, commands, and even sound.</div>",
+      "image": "https://i.imgur.com/9Aiiycd.png",
+      "audio": "https://example.com/audio/bit-definition.mp3"
+    },
+    {
+      "title": "What is a Byte?",
+      "content": "<div class='card'>🧱 A <b>byte</b> = 8 bits</div>\n<ul>\n  <li>📦 It’s the standard unit used in microcontrollers</li>\n  <li>🧮 Can hold values from <b>0 to 255</b></li>\n</ul>\n<pre><code>byte x = 255;  // 11111111 in binary\nbyte y = 0;    // 00000000 in binary</code></pre>\n<img src='https://i.imgur.com/1ac4XNd.png' style='width:100%;'>\n<div class='card'>💡 Every variable is made of bytes — even <code>int</code> is 2 bytes (16 bits)</div>",
+      "image": "https://i.imgur.com/1ac4XNd.png",
+      "audio": "https://example.com/audio/byte-definition.mp3"
+    },
+    {
+      "title": "Watch: Bits & Bytes in Memory (Animated)",
+      "content": "<div class='card'>🎥 Watch this animation:</div>\n<ul>\n  <li>See how <code>10101010</code> is stored</li>\n  <li>Visualize memory and binary math</li>\n  <li>Understand why 255 is max for a byte</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/wgbV6DLVezo' title='Bits and Bytes - Binary for Beginners' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/wgbV6DLVezo/0.jpg",
+      "audio": "https://example.com/audio/binary-video.mp3"
+    },
+    {
+      "title": "Game: Binary to Decimal Challenge",
+      "content": "<div class='card'>🎮 Convert this byte to a number:</div>\n<pre><code>byte b = B11001010;</code></pre>\n<div class='card'>What is the decimal value?</div>\n<ul>\n  <li><button class='gaming-btn'>202</button></li>\n  <li><button class='gaming-btn'>154</button></li>\n  <li><button class='gaming-btn'>99</button></li>\n</ul>\n<div class='card'>✨ Learn to <b>see binary</b> like Arduino does.</div>",
+      "image": "https://i.imgur.com/zmd7b0g.png",
+      "audio": "https://example.com/audio/game-binary.mp3"
+    },
+    {
+      "title": "Creative: Controlling Pins with Bits",
+      "content": "<div class='card'>🛠️ Imagine:</div>\n<p>Each bit of a byte controls a pin (like PORTD on AVR):</p>\n<pre><code>// 0b10101010 means:\n// ON OFF ON OFF ON OFF ON OFF</code></pre>\n<div class='card'>⚙️ Microcontrollers often use <code>PORTD = B10101010</code> to control all 8 pins at once!</div>",
+      "image": "https://i.imgur.com/N0nbjXW.png",
+      "audio": "https://example.com/audio/creative-bits.mp3"
+    }
+  ]
+}
+,{
+  "title": "ASCII — The Language of Characters in Arduino",
+  "lessons": [
+    {
+      "title": "What is ASCII?",
+      "content": "<div class='card'>🧠 <b>ASCII</b> stands for: <b>American Standard Code for Information Interchange</b>.</div>\n<div class='card'>It's a 7-bit code where every <b>letter, digit, symbol</b> is stored as a number.</div>\n<ul>\n  <li><code>'A'</code> = 65</li>\n  <li><code>'B'</code> = 66</li>\n  <li><code>'a'</code> = 97</li>\n  <li><code>'0'</code> = 48</li>\n</ul>\n<pre><code>char letter = 'A';\nSerial.print(letter);  // Sends 65</code></pre>",
+      "image": "https://i.imgur.com/uh3q6u0.png",
+      "audio": "https://example.com/audio/ascii-intro.mp3"
+    },
+    {
+      "title": "How Arduino Sends ASCII Over Serial",
+      "content": "<div class='card'>📤 When you write:</div>\n<pre><code>Serial.print('H');</code></pre>\n<p>Arduino actually sends this byte:</p>\n<pre><code>01001000  // Binary for 72 (ASCII for 'H')</code></pre>\n<img src='https://i.imgur.com/0Dd8pvq.png' style='width:100%;'>\n<div class='card'>💡 <b>Serial terminals decode that byte</b> and show it as a character.</div>",
+      "image": "https://i.imgur.com/0Dd8pvq.png",
+      "audio": "https://example.com/audio/ascii-serial.mp3"
+    },
+    {
+      "title": "Watch: ASCII Explained with Serial Monitor",
+      "content": "<div class='card'>🎥 Watch how ASCII codes are used in real-time:</div>\n<ul>\n  <li>Print characters</li>\n  <li>Print their ASCII value using <code>Serial.println(int(char))</code></li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/vl2Xv2rx82Q' title='ASCII for Beginners - Arduino Serial Monitor Demo' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/vl2Xv2rx82Q/0.jpg",
+      "audio": "https://example.com/audio/ascii-video.mp3"
+    },
+    {
+      "title": "Game: Match Character to ASCII Code",
+      "content": "<div class='card'>🎮 What is the ASCII value of <code>'Z'</code>?</div>\n<ul>\n  <li><button class='gaming-btn'>90</button></li>\n  <li><button class='gaming-btn'>122</button></li>\n  <li><button class='gaming-btn'>75</button></li>\n</ul>\n<div class='card'>🧠 Want a shortcut? Capital letters start at 65. Lowercase start at 97!</div>",
+      "image": "https://i.imgur.com/rrfhMfP.png",
+      "audio": "https://example.com/audio/game-ascii.mp3"
+    },
+    {
+      "title": "Creative: Decode a Message Using ASCII",
+      "content": "<div class='card'>🧩 Hidden message:</div>\n<pre><code>char msg[] = { 72, 101, 108, 108, 111 };</code></pre>\n<div class='card'>What does this print?</div>\n<pre><code>Serial.println(msg);</code></pre>\n<div class='card'>🧠 ASCII lets you send messages in <b>pure numbers</b>. Cool, right?</div>",
+      "image": "https://i.imgur.com/bk2s2rE.png",
+      "audio": "https://example.com/audio/creative-ascii.mp3"
+    }
+  ]
+}
+,{
+  "title": "Classes in Arduino — Unlocking Object-Oriented Thinking",
+  "lessons": [
+    {
+      "title": "What is a Class?",
+      "content": "<div class='card'>🧠 A <b>class</b> is like a blueprint for a custom data type.</div>\n<ul>\n  <li>📦 It holds variables (data)</li>\n  <li>🔧 And functions (behavior)</li>\n</ul>\n<pre><code>class RobotArm {\n  int position;\n  void moveTo(int p) {...}\n};</code></pre>\n<div class='card'>You can create many <b>objects</b> from a class, each one with its own data!</div>",
+      "image": "https://i.imgur.com/70ZaZoM.png",
+      "audio": "https://example.com/audio/class-basic.mp3"
+    },
+    {
+      "title": "Meet Serial: A Real Class in Arduino",
+      "content": "<div class='card'>💬 Ever seen:</div>\n<pre><code>Serial.begin(9600);\nSerial.print(\"Hello\");</code></pre>\n<div class='card'>💡 <b>Serial</b> is an <b>object</b> of a class called <code>HardwareSerial</code>.</div>\n<img src='https://i.imgur.com/CFY83aH.png' style='width:100%;'>\n<p>It holds data about the USB port, and functions to print and transmit bytes.</p>",
+      "image": "https://i.imgur.com/CFY83aH.png",
+      "audio": "https://example.com/audio/class-serial.mp3"
+    },
+    {
+      "title": "Watch: Class, Object, and Dot Explained Visually",
+      "content": "<div class='card'>🎥 Watch this animation:</div>\n<ul>\n  <li>How a class defines structure</li>\n  <li>How <code>object.function()</code> works</li>\n  <li>Why <code>WiFi.status()</code> or <code>Mouse.move()</code> are object calls</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/MuBzVM0VlqY' title='What is a class and object - Visual OOP for Arduino' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/MuBzVM0VlqY/0.jpg",
+      "audio": "https://example.com/audio/class-video.mp3"
+    },
+    {
+      "title": "Game: Which One Is a Class Method?",
+      "content": "<div class='card'>🎮 Which of these are methods (functions) from a class?</div>\n<ul>\n  <li><button class='gaming-btn'>digitalWrite()</button></li>\n  <li><button class='gaming-btn'>Serial.print()</button></li>\n  <li><button class='gaming-btn'>delay()</button></li>\n</ul>\n<div class='card'>✅ Class methods are called using <code>object.method()</code></div>",
+      "image": "https://i.imgur.com/vVaC9id.png",
+      "audio": "https://example.com/audio/game-class.mp3"
+    },
+    {
+      "title": "Creative: Define Your First Class in Arduino",
+      "content": "<div class='card'>🧠 Try creating this:</div>\n<pre><code>class Light {\n  int brightness;\n  void turnOn() {...}\n  void fadeOut() {...}\n};</code></pre>\n<div class='card'>✨ You just created your own object with memory and behavior!</div>\n<pre><code>Light room;\nroom.turnOn();</code></pre>",
+      "image": "https://i.imgur.com/FvJ8gLD.png",
+      "audio": "https://example.com/audio/class-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Arduino Platforms — AVR, megaAVR, and Beyond",
+  "lessons": [
+    {
+      "title": "What is a Platform in Arduino?",
+      "content": "<div class='card'>🧠 In Arduino, a <b>platform</b> is the full package of:</div>\n<ul>\n  <li>📦 The microcontroller chip</li>\n  <li>⚙️ Its architecture (8-bit, 32-bit, etc)</li>\n  <li>🛠️ The compiler & uploader tools</li>\n</ul>\n<pre><code>// Example: Arduino UNO\nPlatform: AVR\nChip: ATmega328P</code></pre>\n<div class='card'>Every board runs on a platform. Not all platforms are equal.</div>",
+      "image": "https://i.imgur.com/6rHo1TI.png",
+      "audio": "https://example.com/audio/platforms-intro.mp3"
+    },
+    {
+      "title": "Meet the Popular Platforms",
+      "content": "<div class='card'>🔍 Some common Arduino platforms:</div>\n<ul>\n  <li><b>AVR</b> → UNO, Nano, Pro Mini</li>\n  <li><b>megaAVR</b> → Uno WiFi Rev2, Nano Every</li>\n  <li><b>SAMD</b> → MKR boards, Zero</li>\n  <li><b>ESP32</b> → IoT boards (not official Arduino, but popular)</li>\n  <li><b>MBed</b> → Portenta, Nano 33 BLE</li>\n</ul>\n<img src='https://i.imgur.com/fRtXK0b.png' style='width:100%;'>\n<div class='card'>Each has different memory, speed, and capabilities.</div>",
+      "image": "https://i.imgur.com/fRtXK0b.png",
+      "audio": "https://example.com/audio/platforms-list.mp3"
+    },
+    {
+      "title": "Watch: AVR vs SAMD vs ESP vs MBed",
+      "content": "<div class='card'>🎥 This breakdown shows:</div>\n<ul>\n  <li>How AVR differs from 32-bit SAMD</li>\n  <li>Why ESP32 has WiFi & BLE</li>\n  <li>Performance, power, and compatibility</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/tGyx3v7UJzM' title='Arduino Boards Compared - Which Platform for What?' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/tGyx3v7UJzM/0.jpg",
+      "audio": "https://example.com/audio/video-platforms.mp3"
+    },
+    {
+      "title": "Game: Match the Board to Its Platform",
+      "content": "<div class='card'>🎮 Which platform does this board use?</div>\n<pre><code>Board: Arduino MKR WiFi 1010</code></pre>\n<ul>\n  <li><button class='gaming-btn'>AVR</button></li>\n  <li><button class='gaming-btn'>SAMD</button></li>\n  <li><button class='gaming-btn'>ESP</button></li>\n</ul>\n<div class='card'>✅ It's SAMD! That means it's 32-bit, fast, and has native USB.</div>",
+      "image": "https://i.imgur.com/T8tkvoP.png",
+      "audio": "https://example.com/audio/game-platform.mp3"
+    },
+    {
+      "title": "Creative: Choosing the Right Platform",
+      "content": "<div class='card'>🛠️ Your Project: Battery-powered robot + Bluetooth</div>\n<p>Which board do you pick?</p>\n<ul>\n  <li>UNO (AVR)</li>\n  <li>Nano 33 BLE (MBed)</li>\n  <li>ESP8266</li>\n</ul>\n<div class='card'>🎯 Learn how to <b>match your board to your needs</b> based on the platform!</div>",
+      "image": "https://i.imgur.com/7GkhGKa.png",
+      "audio": "https://example.com/audio/creative-platform.mp3"
+    }
+  ]
+}
+,{
+  "title": "Printing to Other Devices — LCDs, Bluetooth, OLEDs & More",
+  "lessons": [
+    {
+      "title": "Why Serial Monitor Is Not Enough",
+      "content": "<div class='card'>When you're starting out with Arduino, it's natural to use <code>Serial.print()</code> to show values like temperature, button state, or motor speed. The Serial Monitor becomes your best friend.</div>\n\n<div class='card'>But in the real world, most Arduino projects are not plugged into a computer all the time. Your robot won’t have a USB cable dragging behind it on the battlefield. Your weather station won’t carry a laptop just to see the temperature.</div>\n\n<div class='card'>Here’s where other output methods shine — displays, wireless communication, or physical indicators like buzzers. These let your project share data with humans and other machines, even when there’s no PC involved.</div>\n\n<ul>\n  <li>🟦 LCDs: Show text-based data</li>\n  <li>🟨 OLEDs: Display beautiful pixels</li>\n  <li>🟩 Bluetooth: Send data to phones</li>\n  <li>🟥 SD Cards: Store logs for later</li>\n</ul>\n\n<div class='card'>Your journey as a real-world maker begins when you learn to communicate beyond Serial Monitor.</div>",
+      "image": "https://i.imgur.com/B9YptEh.png",
+      "audio": "https://example.com/audio/print-why-not-serial.mp3"
+    },
+    {
+      "title": "LCDs: Text Displays for Live Feedback",
+      "content": "<div class='card'>LCDs (Liquid Crystal Displays) are one of the most beginner-friendly output devices. They are cheap, available in 16x2 or 20x4 characters, and perfect for projects like weather stations, clocks, or score counters.</div>\n\n<div class='card'>To use one, you’ll need the <code>LiquidCrystal</code> library and some jumper wires. If you're using an I2C adapter, it only needs 4 pins (GND, VCC, SDA, SCL), which saves a lot of space on your board.</div>\n\n<pre><code>#include &lt;LiquidCrystal_I2C.h&gt;\nLiquidCrystal_I2C lcd(0x27, 16, 2);\n\nvoid setup() {\n  lcd.init();\n  lcd.backlight();\n  lcd.print(\"Temp: 27C\");\n}</code></pre>\n\n<div class='card'>🧠 LCDs are great when your Arduino is mounted in a permanent project, like a smart plant monitor, where you want to quickly glance and see the reading.</div>",
+      "image": "https://i.imgur.com/XJSjIP5.png",
+      "audio": "https://example.com/audio/print-lcd.mp3"
+    },
+    {
+      "title": "OLEDs: Compact & Powerful Displays",
+      "content": "<div class='card'>OLEDs (Organic Light Emitting Diodes) offer a crisp, pixel-based interface. Unlike LCDs, they can show graphics, custom fonts, animations, and even logos. Perfect for projects where aesthetics and data density matter.</div>\n\n<div class='card'>A typical 128x64 OLED connects via I2C and requires the <code>Adafruit_SSD1306</code> and <code>Adafruit_GFX</code> libraries.</div>\n\n<pre><code>#include &lt;Adafruit_SSD1306.h&gt;\nAdafruit_SSD1306 display(128, 64, &Wire, -1);\n\nvoid setup() {\n  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);\n  display.clearDisplay();\n  display.setTextSize(1);\n  display.setTextColor(WHITE);\n  display.setCursor(0,0);\n  display.println(\"Hello OLED\");\n  display.display();\n}</code></pre>\n\n<div class='card'>OLEDs are perfect for wearables, smart watches, real-time graphs, or custom UI dashboards. You can even draw smiley faces or battery indicators!</div>",
+      "image": "https://i.imgur.com/OM2OqIv.png",
+      "audio": "https://example.com/audio/print-oled.mp3"
+    },
+    {
+      "title": "Printing Over Bluetooth to Mobile",
+      "content": "<div class='card'>Imagine your robot sending live sensor data to your phone. With Bluetooth modules like HC-05 or using native Bluetooth on an ESP32 board, this becomes simple.</div>\n\n<div class='card'>You pair the module with your phone (like a wireless headphone), and open a terminal app like Bluetooth Terminal or RoboRemo. Arduino uses <code>Serial.print()</code> just like normal — but it goes wirelessly!</div>\n\n<pre><code>// HC-05 is connected to Serial\nSerial.begin(9600);\nSerial.print(\"Distance: 15cm\");</code></pre>\n\n<div class='card'>🔗 This is awesome for mobile apps, remote control, or debugging without needing cables. Also works well with custom Android interfaces or even Unity games!</div>",
+      "image": "https://i.imgur.com/VqRIxPZ.png",
+      "audio": "https://example.com/audio/print-bluetooth.mp3"
+    },
+    {
+      "title": "Game: Choose Your Output Device",
+      "content": "<div class='card'>🎮 What would you use in this case?</div>\n<pre><code>Project: A wearable heart monitor</code></pre>\n<ul>\n  <li><button class='gaming-btn'>16x2 LCD</button></li>\n  <li><button class='gaming-btn'>OLED Display</button></li>\n  <li><button class='gaming-btn'>HC-05 Bluetooth Module</button></li>\n</ul>\n<div class='card'>🧠 Hint: Space is tight. Power is limited. User wants real-time data on wrist or mobile.</div>",
+      "image": "https://i.imgur.com/4lvh0gc.png",
+      "audio": "https://example.com/audio/print-game.mp3"
+    }
+  ]
+}
+,{
+  "title": "Serial vs UART — What’s the Difference & How Are They Related?",
+  "lessons": [
+    {
+      "title": "What is UART?",
+      "content": "<div class='card'>UART stands for <b>Universal Asynchronous Receiver Transmitter</b>. It is a hardware circuit inside a microcontroller that sends and receives serial data — bit by bit — over two wires: TX (Transmit) and RX (Receive).</div>\n\n<div class='card'>It uses no clock signal. Instead, both devices agree on a baud rate (like 9600 bps) and send 1s and 0s in time.</div>\n\n<pre><code>TX (Arduino) ───> RX (Bluetooth)\nRX (Arduino) <─── TX (Bluetooth)</code></pre>\n\n<ul>\n  <li>⚙️ It’s low-level, efficient, and built into many chips</li>\n  <li>📡 It talks to GSM modules, GPS, Bluetooth, etc.</li>\n</ul>",
+      "image": "https://i.imgur.com/rGEnPYf.png",
+      "audio": "https://example.com/audio/uart-definition.mp3"
+    },
+    {
+      "title": "What is Serial in Arduino?",
+      "content": "<div class='card'>In Arduino, <code>Serial</code> is an <b>object</b> of the <code>HardwareSerial</code> class. It uses the UART hardware to send/receive bytes, but also handles USB conversion if needed.</div>\n\n<div class='card'>On UNO, Nano, and Mega:</div>\n<ul>\n  <li><code>Serial</code> uses UART via USB-to-Serial chip (like CH340)</li>\n  <li>You communicate via Serial Monitor</li>\n</ul>\n\n<div class='card'>On boards like ESP32, <code>Serial</code> still uses UART — but there are multiple UARTs!</div>\n\n<pre><code>Serial.begin(9600);\nSerial.print(\"Hello World\");</code></pre>\n\n<p>This sends bytes over UART — and if USB is connected, it shows in Serial Monitor.</p>",
+      "image": "https://i.imgur.com/Jr8IsEb.png",
+      "audio": "https://example.com/audio/serial-definition.mp3"
+    },
+    {
+      "title": "Watch: Serial vs UART Explained Visually",
+      "content": "<div class='card'>🎥 Confused about UART vs Serial.print()? This video shows:</div>\n<ul>\n  <li>Hardware TX/RX pins</li>\n  <li>Serial Monitor and USB chips</li>\n  <li>SoftwareSerial vs HardwareSerial</li>\n</ul>\n\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/Xkcxi9kLFXc' title='UART vs Serial Arduino Explained Visually' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/Xkcxi9kLFXc/0.jpg",
+      "audio": "https://example.com/audio/serial-vs-uart-video.mp3"
+    },
+    {
+      "title": "Game: Is This Serial or UART?",
+      "content": "<div class='card'>🎮 What is this describing?</div>\n<pre><code>TX pin sends bits, RX receives bits, no USB involved</code></pre>\n<ul>\n  <li><button class='gaming-btn'>Serial</button></li>\n  <li><button class='gaming-btn'>UART</button></li>\n</ul>\n\n<div class='card'>✅ That’s UART — physical wires doing async data exchange.</div>",
+      "image": "https://i.imgur.com/VdOshLh.png",
+      "audio": "https://example.com/audio/game-serial-uart.mp3"
+    },
+    {
+      "title": "Creative: What If There's No UART Left?",
+      "content": "<div class='card'>💡 Problem:</div>\n<p>Your board has one UART. You’re using it for Serial Monitor. But you also want to connect a Bluetooth module via TX/RX.</p>\n<p>Solution?</p>\n<pre><code>#include &lt;SoftwareSerial.h&gt;\nSoftwareSerial BT(10, 11);\nBT.begin(9600);\nBT.print(\"Hello!\");</code></pre>\n\n<div class='card'>✨ <b>SoftwareSerial</b> lets you create a virtual UART using digital pins! This way, your project can talk to multiple devices without hardware limits.</div>",
+      "image": "https://i.imgur.com/B7Yc4MF.png",
+      "audio": "https://example.com/audio/softwareserial.mp3"
+    }
+  ]
+}
+,{
+  "title": "Networking Basics — IP, Ports, Protocols & How Arduino Talks Over WiFi",
+  "lessons": [
+    {
+      "title": "What Happens When Arduino Connects to WiFi?",
+      "content": "<div class='card'>When you run <code>WiFi.begin(\"MyWiFi\", \"pass\")</code>, Arduino connects to your router like any other device.</div>\n\n<ul>\n  <li>🔌 It uses radio waves (2.4GHz typically)</li>\n  <li>🎟️ It gets a unique <b>IP address</b> from the router</li>\n  <li>🧭 It can now send/receive packets</li>\n</ul>\n\n<div class='card'>But unlike a browser, Arduino has no fancy UI. You write code to connect, send, receive, and manage the low-level protocol yourself!</div>\n\n<pre><code>WiFi.begin(\"MyNetwork\", \"password\");\nwhile (WiFi.status() != WL_CONNECTED) {\n  delay(500);\n}</code></pre>\n\n<div class='card'>Once connected, you can view its IP using <code>WiFi.localIP()</code></div>",
+      "image": "https://i.imgur.com/t7rEnsd.png",
+      "audio": "https://example.com/audio/network-connect.mp3"
+    },
+    {
+      "title": "IP Address vs MAC Address",
+      "content": "<div class='card'>🧠 Every device on a network needs a unique identity. It has:</div>\n<ul>\n  <li>🟦 <b>MAC Address:</b> Hardware address (burned into the chip)</li>\n  <li>🟩 <b>IP Address:</b> Network address (assigned by router)</li>\n</ul>\n\n<pre><code>// Example MAC and IP\nMAC: 98:CD:AC:23:9F:A7\nIP: 192.168.1.54</code></pre>\n\n<div class='card'>🔗 MAC stays constant, IP can change. The router uses MAC to assign IP dynamically (DHCP).</div>\n<p>You can print your MAC using:</p>\n<pre><code>Serial.println(WiFi.macAddress());</code></pre>",
+      "image": "https://i.imgur.com/m8U0vDs.png",
+      "audio": "https://example.com/audio/mac-vs-ip.mp3"
+    },
+    {
+      "title": "Ports & Protocols — What Are They?",
+      "content": "<div class='card'>Think of your Arduino as a hotel with many rooms (ports). Each type of data — like web traffic, time sync, sensor data — enters through a specific port.</div>\n\n<ul>\n  <li>🌐 Port 80 → HTTP (web pages)</li>\n  <li>📨 Port 1883 → MQTT (IoT messages)</li>\n  <li>🕒 Port 123 → NTP (network time)</li>\n</ul>\n\n<div class='card'>Your code must specify which port it’s sending to. This tells the server what kind of data it is.</div>\n<pre><code>UDP.beginPacket(\"192.168.1.2\", 123);\nUDP.write(data);\nUDP.endPacket();</code></pre>",
+      "image": "https://i.imgur.com/hYVy8CQ.png",
+      "audio": "https://example.com/audio/network-ports.mp3"
+    },
+    {
+      "title": "Watch: Packets, TCP, UDP Explained",
+      "content": "<div class='card'>🎥 Understand how Arduino sends bytes over the internet:</div>\n<ul>\n  <li>🧱 Packets & payloads</li>\n  <li>🔁 TCP vs ✈️ UDP</li>\n  <li>📬 Headers, destination IP, ports</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/5iFHMoS2uA8' title='TCP vs UDP Explained Visually (IoT & Arduino Edition)' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/5iFHMoS2uA8/0.jpg",
+      "audio": "https://example.com/audio/video-packets.mp3"
+    },
+    {
+      "title": "Creative: Trace a Packet from Arduino to Server",
+      "content": "<div class='card'>🧠 Imagine this:</div>\n<pre><code>Arduino → Router → Internet → NTP Server\nPort: 123\nProtocol: UDP</code></pre>\n\n<div class='card'>Arduino wants to get the current time.</div>\n<ul>\n  <li>It sends a 48-byte packet</li>\n  <li>Includes its IP + port</li>\n  <li>The server replies with a packet holding UTC time</li>\n</ul>\n\n<p>This is how network-enabled Arduinos stay in sync, control devices, or log data globally!</p>",
+      "image": "https://i.imgur.com/3llPbwb.png",
+      "audio": "https://example.com/audio/trace-packet.mp3"
+    }
+  ]
+}
+,{
+  "title": "Headers in Networking — The Metadata of Every Message",
+  "lessons": [
+    {
+      "title": "What Are Headers? (Real-World Analogy)",
+      "content": "<div class='card'>Imagine you're sending a birthday card to your friend. Before the postman delivers it, they need to know:</div>\n<ul>\n  <li>📮 Who is the sender?</li>\n  <li>🏠 What is the destination address?</li>\n  <li>📦 Is this express or normal delivery?</li>\n</ul>\n\n<div class='card'>These details go on the <b>envelope</b>, not inside the letter. In networking, this envelope is called a <b>header</b>.</div>\n\n<p>Headers are bits of information sent before your actual data. They help routers, servers, and devices understand how to handle the data.</p>\n<pre><code>Header → Who it's from, where it's going, what type of data\nBody → The actual message (like \"Turn on LED\")</code></pre>",
+      "image": "https://i.imgur.com/OE1HvLe.png",
+      "audio": "https://example.com/audio/header-intro.mp3"
+    },
+    {
+      "title": "Where Are Headers Used in Arduino?",
+      "content": "<div class='card'>Headers exist in <b>every network communication</b> Arduino makes.</div>\n<p>Whether you're using:</p>\n<ul>\n  <li>🌐 HTTP (e.g. GET or POST request)</li>\n  <li>📡 UDP packets (e.g. NTP request)</li>\n  <li>☁️ MQTT messages</li>\n</ul>\n\n<p>Arduino may not manually write all headers — many are handled by the WiFi or HTTP library — but they’re always part of the message.</p>\n\n<pre><code>GET /led/on HTTP/1.1\nHost: 192.168.1.7\nUser-Agent: Arduino/1.0</code></pre>\n\n<div class='card'>🧠 Arduino builds this and sends it. The server reads the headers and decides what to do.</div>",
+      "image": "https://i.imgur.com/v20tOxg.png",
+      "audio": "https://example.com/audio/header-arduino.mp3"
+    },
+    {
+      "title": "Watch: Visualizing Headers in Real Time",
+      "content": "<div class='card'>🎥 This video shows what headers look like when Arduino sends a request to a server:</div>\n<ul>\n  <li>🧾 HTTP headers</li>\n  <li>📍 Destination IP and port</li>\n  <li>📦 How headers and body are separated</li>\n</ul>\n\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/McM3pQkQW8Q' title='What are Headers in HTTP and Networking?' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/McM3pQkQW8Q/0.jpg",
+      "audio": "https://example.com/audio/video-headers.mp3"
+    },
+    {
+      "title": "Game: Header or Data?",
+      "content": "<div class='card'>🎮 Which part is the header?</div>\n<pre><code>Host: example.com\nUser-Agent: Arduino/1.1\n\n{\"temperature\": 22}</code></pre>\n<ul>\n  <li><button class='gaming-btn'>Line 1 and 2</button></li>\n  <li><button class='gaming-btn'>Line 3</button></li>\n</ul>\n<div class='card'>✅ Correct! Lines 1 and 2 are headers. Line 3 is the actual data (body).</div>",
+      "image": "https://i.imgur.com/q6OM5dI.png",
+      "audio": "https://example.com/audio/header-game.mp3"
+    },
+    {
+      "title": "Creative: Arduino Sends Weather Data to Server",
+      "content": "<div class='card'>🌦️ Imagine your Arduino is sending weather data to an API:</div>\n<pre><code>POST /weather HTTP/1.1\nHost: myserver.com\nContent-Type: application/json\nContent-Length: 20\n\n{\"temp\":23,\"hum\":55}</code></pre>\n\n<div class='card'>🧠 Here, the top 4 lines are headers. The server uses them to:</div>\n<ul>\n  <li>📁 Route the request to the correct function</li>\n  <li>🧾 Expect a JSON body</li>\n  <li>🧮 Know how many bytes to read</li>\n</ul>\n\n<p>This is how professional IoT works — data + metadata, always together.</p>",
+      "image": "https://i.imgur.com/TCWuzD3.png",
+      "audio": "https://example.com/audio/header-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "What is an API? And How Arduino Can Talk to the Cloud",
+  "lessons": [
+    {
+      "title": "What is an API? (Real World Analogy)",
+      "content": "<div class='card'>📲 API stands for <b>Application Programming Interface</b>.</div>\n\n<div class='card'>Let’s say you walk into a restaurant. You don’t go into the kitchen. You don’t need to know how they cook. You just read the menu, place an order, and the waiter brings the food.</div>\n\n<p><b>API is that menu + waiter.</b></p>\n<ul>\n  <li>🍔 Menu = List of available services</li>\n  <li>📝 Order = Request you send</li>\n  <li>👨‍🍳 Kitchen = The server</li>\n</ul>\n\n<div class='card'>When Arduino talks to a weather API, it's like saying: “Hey! What’s the temperature in Delhi right now?” — and the server replies in JSON.</div>",
+      "image": "https://i.imgur.com/jVkdjJr.png",
+      "audio": "https://example.com/audio/api-intro.mp3"
+    },
+    {
+      "title": "How Arduino Uses an API (Weather Example)",
+      "content": "<div class='card'>Let’s say you want your Arduino to display today’s weather on an OLED screen. First, you need a weather API — like OpenWeatherMap.</div>\n\n<p>Here’s what Arduino does:</p>\n<ol>\n  <li>Connects to WiFi</li>\n  <li>Builds an HTTP GET request</li>\n  <li>Sends it to the API server</li>\n  <li>Receives JSON data like:<br><code>{\"temp\":29,\"humidity\":76}</code></li>\n  <li>Parses it, and shows it on screen</li>\n</ol>\n\n<pre><code>client.print(\"GET /data?city=Delhi HTTP/1.1\\r\\nHost: api.weather.com\\r\\n\\r\\n\");</code></pre>\n\n<div class='card'>💡 You just built a smart weather device using an API.</div>",
+      "image": "https://i.imgur.com/fuFvxwZ.png",
+      "audio": "https://example.com/audio/api-weather.mp3"
+    },
+    {
+      "title": "Watch: APIs Explained Visually (Arduino-Friendly)",
+      "content": "<div class='card'>🎥 Learn how APIs work step-by-step:</div>\n<ul>\n  <li>What is a REST API?</li>\n  <li>How to use GET and POST?</li>\n  <li>Arduino + HTTPClient Demo</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/7YcW25PHnAA' title='API Explained for Beginners (Arduino & IoT)' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/7YcW25PHnAA/0.jpg",
+      "audio": "https://example.com/audio/api-video.mp3"
+    },
+    {
+      "title": "Game: Is This an API Call?",
+      "content": "<div class='card'>🎮 Which of these is a real API call?</div>\n<pre><code>A. client.print(\"GET /data?led=on HTTP/1.1\\r\\nHost: 192.168.1.20\\r\\n\\r\\n\");\nB. digitalWrite(LED_BUILTIN, HIGH);</code></pre>\n<ul>\n  <li><button class='gaming-btn'>A</button></li>\n  <li><button class='gaming-btn'>B</button></li>\n</ul>\n<div class='card'>✅ Correct! A is a request sent to an API server. B is just turning on a pin.</div>",
+      "image": "https://i.imgur.com/E7HcoKj.png",
+      "audio": "https://example.com/audio/api-game.mp3"
+    },
+    {
+      "title": "Creative: Controlling Arduino from a Mobile App via API",
+      "content": "<div class='card'>💡 You can also build an API server <b>inside Arduino</b>!</div>\n<p>Imagine this:</p>\n<ul>\n  <li>Your phone sends a request like <code>/led/on</code></li>\n  <li>Arduino parses the path</li>\n  <li>It turns on a light!</li>\n</ul>\n\n<p>This is how many smart home projects work:</p>\n<pre><code>if (request.indexOf(\"/led/on\") != -1) {\n  digitalWrite(LED_BUILTIN, HIGH);\n}</code></pre>\n\n<div class='card'>📱 API is the bridge between your app and your robot.</div>",
+      "image": "https://i.imgur.com/Sf06KUX.png",
+      "audio": "https://example.com/audio/api-arduino-server.mp3"
+    }
+  ]
+}
+,{
+  "title": "What is a Server? (And How Arduino Can Become One)",
+  "lessons": [
+    {
+      "title": "What is a Server? (Real World Analogy)",
+      "content": "<div class='card'>🧠 Think of a server like a librarian in a huge library.</div>\n<ul>\n  <li>📚 You walk in and ask, \"Do you have the book on Arduino?\"</li>\n  <li>🧾 The librarian checks the database and hands you the book</li>\n</ul>\n\n<p>📡 In networking, a server is a device that <b>listens for requests</b> from clients and <b>responds with data</b>.</p>\n\n<div class='card'>So when you visit <code>https://openai.com</code>, your browser sends a request to OpenAI’s server. The server responds with the website content.</div>\n\n<p><b>Key Idea:</b> Servers wait. Clients request.</p>",
+      "image": "https://i.imgur.com/q38eiZw.png",
+      "audio": "https://example.com/audio/server-analogy.mp3"
+    },
+    {
+      "title": "Can Arduino Be a Server?",
+      "content": "<div class='card'>YES, it can! Arduino (or ESP32) can become a web server on your local WiFi.</div>\n<ul>\n  <li>🌐 It waits for requests like <code>/led/on</code></li>\n  <li>💡 It responds with HTML, JSON, or just \"OK\"</li>\n</ul>\n\n<pre><code>#include &lt;WiFi.h&gt;\nWiFiServer server(80);\n\nvoid setup() {\n  WiFi.begin(ssid, pass);\n  server.begin();\n}\n\nvoid loop() {\n  WiFiClient client = server.available();\n  if (client) {\n    // handle request\n  }\n}</code></pre>\n\n<div class='card'>📲 You can now control your Arduino with your phone, just by typing its IP!</div>",
+      "image": "https://i.imgur.com/5Zs3VvY.png",
+      "audio": "https://example.com/audio/server-arduino.mp3"
+    },
+    {
+      "title": "Watch: Arduino as a Web Server (Live Demo)",
+      "content": "<div class='card'>🎥 Watch this video to see:</div>\n<ul>\n  <li>ESP32 serving HTML pages</li>\n  <li>Controlling LED via browser</li>\n  <li>Creating routes like <code>/on</code>, <code>/off</code></li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/8jMrHeHdzJ0' title='Arduino ESP32 Web Server Tutorial' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/8jMrHeHdzJ0/0.jpg",
+      "audio": "https://example.com/audio/server-video.mp3"
+    },
+    {
+      "title": "Game: Server or Client?",
+      "content": "<div class='card'>🎮 Who is the client in this situation?</div>\n<pre><code>Arduino receives a request: /led/on\nArduino turns on LED and replies \"OK\"</code></pre>\n<ul>\n  <li><button class='gaming-btn'>Arduino</button></li>\n  <li><button class='gaming-btn'>Mobile browser</button></li>\n</ul>\n<div class='card'>✅ Correct! The mobile browser is the <b>client</b>, Arduino is the <b>server</b>.</div>",
+      "image": "https://i.imgur.com/y9kGW4K.png",
+      "audio": "https://example.com/audio/server-game.mp3"
+    },
+    {
+      "title": "Creative: Make Arduino a Smart Home Hub",
+      "content": "<div class='card'>🏠 Let’s say you want Arduino to control your smart lights.</div>\n<p>It can act as a server that accepts:</p>\n<ul>\n  <li><code>/light1/on</code></li>\n  <li><code>/light2/off</code></li>\n</ul>\n\n<p>Your mobile app or browser becomes the client. Each request turns lights on/off!</p>\n\n<pre><code>if (request.indexOf(\"/light1/on\") != -1) {\n  digitalWrite(light1, HIGH);\n}</code></pre>\n\n<div class='card'>🎯 You’ve built your own IoT server with Arduino!</div>",
+      "image": "https://i.imgur.com/wFZUPWS.png",
+      "audio": "https://example.com/audio/server-smart-home.mp3"
+    }
+  ]
+}
+,{
+  "title": "AVRDUDE — The Hidden Tool Behind Uploading Arduino Code",
+  "lessons": [
+    {
+      "title": "What is AVRDUDE? (Simple Analogy)",
+      "content": "<div class='card'>Imagine you write a secret message on paper (your sketch), and you want to send it into a tiny brain (Arduino chip).</div>\n\n<p>But the brain doesn’t understand text. It needs machine code. And it can’t read files by itself.</p>\n\n<div class='card'><b>So you call AVRDUDE.</b> It:</div>\n<ul>\n  <li>📦 Packs your code into a binary format</li>\n  <li>🚚 Delivers it into the chip’s memory via USB</li>\n  <li>🧠 Wakes up the Arduino and says “new program!”</li>\n</ul>\n\n<p>💡 AVRDUDE = AVR Downloader UploaDEr.</p>",
+      "image": "https://i.imgur.com/fPyTZeC.png",
+      "audio": "https://example.com/audio/avrdude-analogy.mp3"
+    },
+    {
+      "title": "When Does AVRDUDE Run?",
+      "content": "<div class='card'>Every time you click <b>Upload</b> in the Arduino IDE, AVRDUDE is working behind the scenes.</div>\n\n<p>It:</p>\n<ol>\n  <li>Finds your board's COM port</li>\n  <li>Identifies the microcontroller (e.g., ATmega328P)</li>\n  <li>Erases the previous sketch</li>\n  <li>Writes the new hex file</li>\n  <li>Verifies it byte by byte</li>\n</ol>\n\n<pre><code>avrdude: writing flash memory... done\navrdude: verifying... success</code></pre>\n\n<div class='card'>🛠️ If you unplug the USB or select the wrong port, AVRDUDE fails — and throws errors!</div>",
+      "image": "https://i.imgur.com/k6xMRAa.png",
+      "audio": "https://example.com/audio/avrdude-working.mp3"
+    },
+    {
+      "title": "Watch: What is AVRDUDE? And What Happens When You Upload Code",
+      "content": "<div class='card'>🎥 This video walks you through:</div>\n<ul>\n  <li>How sketches turn into HEX files</li>\n  <li>How AVRDUDE flashes them into the chip</li>\n  <li>Why bootloaders matter</li>\n</ul>\n\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/xOhbV-eFBRQ' title='AVRDUDE Explained Simply (for Arduino)' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/xOhbV-eFBRQ/0.jpg",
+      "audio": "https://example.com/audio/avrdude-video.mp3"
+    },
+    {
+      "title": "Game: Is This an AVRDUDE Job?",
+      "content": "<div class='card'>🎮 What does AVRDUDE actually do?</div>\n<pre><code>A. Compile the C++ sketch\nB. Send compiled code to the microcontroller\nC. Control the LED blink timing</code></pre>\n<ul>\n  <li><button class='gaming-btn'>A</button></li>\n  <li><button class='gaming-btn'>B</button></li>\n  <li><button class='gaming-btn'>C</button></li>\n</ul>\n<div class='card'>✅ Correct: <b>B</b> — AVRDUDE <b>sends the compiled machine code</b> into the microcontroller’s memory.</div>",
+      "image": "https://i.imgur.com/GrNz14R.png",
+      "audio": "https://example.com/audio/avrdude-game.mp3"
+    },
+    {
+      "title": "Creative: If You Didn’t Have AVRDUDE…",
+      "content": "<div class='card'>Imagine a world without AVRDUDE. You’d have to:</div>\n<ul>\n  <li>Convert code manually into machine language</li>\n  <li>Use a special programmer (like USBasp)</li>\n  <li>Directly talk to the chip's memory blocks</li>\n</ul>\n\n<p>😨 It’d be a nightmare!</p>\n\n<div class='card'>💾 Thanks to AVRDUDE, uploading code is one click away. Appreciate it next time you hit “Upload”.</div>",
+      "image": "https://i.imgur.com/PoYxKBi.png",
+      "audio": "https://example.com/audio/avrdude-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "What Are AVR Boards? (And How They’re Different from ESP32 or ARM)",
+  "lessons": [
+    {
+      "title": "What is AVR? (The Chip Family Arduino Was Born On)",
+      "content": "<div class='card'>🧠 AVR is a family of microcontrollers designed by Atmel (now part of Microchip).</div>\n<p>Boards like:</p>\n<ul>\n  <li>Arduino UNO</li>\n  <li>Arduino Nano</li>\n  <li>Arduino Mega</li>\n</ul>\n<p>are all built using AVR chips like ATmega328P or ATmega2560.</p>\n\n<div class='card'>AVR chips are 8-bit, run at 16 MHz, and have limited RAM (2 KB to 8 KB).</div>\n<p>But they’re <b>super reliable</b> for learning, blinking LEDs, sensors, and serial control!</p>",
+      "image": "https://i.imgur.com/pNFcHXI.png",
+      "audio": "https://example.com/audio/avr-intro.mp3"
+    },
+    {
+      "title": "How Is AVR Different From ESP32 and ARM Boards?",
+      "content": "<div class='card'>Let’s compare:</div>\n<table>\n<tr><th>Feature</th><th>AVR</th><th>ESP32</th></tr>\n<tr><td>Speed</td><td>16 MHz</td><td>240 MHz (Dual Core)</td></tr>\n<tr><td>WiFi/Bluetooth</td><td>No</td><td>Yes, built-in</td></tr>\n<tr><td>RAM</td><td>2 KB</td><td>520 KB</td></tr>\n<tr><td>Power Use</td><td>Low</td><td>Moderate</td></tr>\n<tr><td>Ease of Use</td><td>Great for beginners</td><td>More powerful, more complex</td></tr>\n</table>\n\n<div class='card'>AVR = 🧱 Foundation\nESP32 = 🧠 Smart building</div>",
+      "image": "https://i.imgur.com/K6c2uID.png",
+      "audio": "https://example.com/audio/avr-vs-esp32.mp3"
+    },
+    {
+      "title": "Watch: Choosing Between AVR and ESP32 (For Projects)",
+      "content": "<div class='card'>🎥 This video compares:</div>\n<ul>\n  <li>When to use UNO</li>\n  <li>When to upgrade to ESP32 or STM32</li>\n  <li>Project examples</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/XkVxW6aB6k4' title='AVR vs ESP32 vs ARM Boards' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/XkVxW6aB6k4/0.jpg",
+      "audio": "https://example.com/audio/avr-compare-video.mp3"
+    },
+    {
+      "title": "Game: AVR or Not?",
+      "content": "<div class='card'>🎮 Is this board based on AVR?</div>\n<pre><code>A. Arduino UNO\nB. ESP32 DevKit\nC. Arduino Mega\nD. NodeMCU</code></pre>\n<ul>\n  <li><button class='gaming-btn'>A & C</button></li>\n  <li><button class='gaming-btn'>B & D</button></li>\n</ul>\n<div class='card'>✅ Correct! A & C (UNO & Mega) are AVR. B & D use ESP (non-AVR).</div>",
+      "image": "https://i.imgur.com/Djys4yo.png",
+      "audio": "https://example.com/audio/avr-game.mp3"
+    },
+    {
+      "title": "Creative: Choosing the Right Board for Your Project",
+      "content": "<div class='card'>🛠️ Suppose you're building:</div>\n<ul>\n  <li>✅ A smart home hub → ESP32 (needs WiFi)</li>\n  <li>✅ A blinking light art → UNO (simple)</li>\n  <li>✅ A camera streaming bot → ESP32-CAM</li>\n  <li>✅ A 16-sensor robot → Arduino Mega</li>\n</ul>\n\n<p>Know your board — like knowing the right tool in a toolbox.</p>\n<div class='card'>💡 Pro tip: AVR is easy to learn. ESP32 is the future. Both are awesome!</div>",
+      "image": "https://i.imgur.com/YThMnwz.png",
+      "audio": "https://example.com/audio/choose-board.mp3"
+    }
+  ]
+}
+,{
+  "title": "What Are Packets in Networking? (And What’s Inside Them)",
+  "lessons": [
+    {
+      "title": "What Are Packets? (Real World Analogy)",
+      "content": "<div class='card'>📦 Think of a packet as a mini Amazon box.</div>\n<p>When you order something big — like a 5-book set — it’s often split into separate boxes.</p>\n<ul>\n  <li>📬 Each box has an address</li>\n  <li>📎 A label showing what it contains</li>\n  <li>🔢 A sequence number like \"Box 2 of 5\"</li>\n</ul>\n\n<div class='card'>In networking, a packet works the same way. Your full message is broken into smaller <b>packets</b>, and each travels across the internet — even on different routes.</div>",
+      "image": "https://i.imgur.com/ZC6jbmJ.png",
+      "audio": "https://example.com/audio/packets-analogy.mp3"
+    },
+    {
+      "title": "What’s Inside a Packet?",
+      "content": "<div class='card'>Every packet has two parts:</div>\n<ul>\n  <li><b>Header</b> — like the shipping label</li>\n  <li><b>Payload</b> — the actual data (like sensor reading)</li>\n</ul>\n\n<pre><code>[Header]\nSource IP: 192.168.0.10\nDest IP: 192.168.0.4\nLength: 32 bytes\n\n[Payload]\n{\"temperature\":26}</code></pre>\n\n<p>🧠 Routers read the <b>header</b>. Your app reads the <b>payload</b>.</p>",
+      "image": "https://i.imgur.com/xGZp2Zz.png",
+      "audio": "https://example.com/audio/packets-header.mp3"
+    },
+    {
+      "title": "Arduino and Packets: Real Examples",
+      "content": "<div class='card'>When Arduino uses <code>WiFiUDP</code>, it sends packets — one per message.</div>\n<pre><code>udp.beginPacket(serverIP, port);\nudp.write(\"PING\");\nudp.endPacket();</code></pre>\n\n<p>This sends a <b>UDP packet</b> with the message \"PING\" to a server.</p>\n\n<p>💡 UDP packets are fast but not guaranteed. No delivery confirmation.</p>\n\n<div class='card'>Arduino also receives packets, one by one:</div>\n<pre><code>int len = udp.parsePacket();\nudp.read(buffer, len);</code></pre>",
+      "image": "https://i.imgur.com/Z2jxXgy.png",
+      "audio": "https://example.com/audio/arduino-packets.mp3"
+    },
+    {
+      "title": "Watch: Packets Explained With Real Network Visualizer",
+      "content": "<div class='card'>🎥 This video shows:</div>\n<ul>\n  <li>How packets move across the web</li>\n  <li>TCP vs UDP packet differences</li>\n  <li>Headers, payloads, fragmentation</li>\n</ul>\n\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/pWq1N9fO5OQ' title='Networking Packets Explained Simply' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/pWq1N9fO5OQ/0.jpg",
+      "audio": "https://example.com/audio/packets-video.mp3"
+    },
+    {
+      "title": "Game: Which Part is the Packet?",
+      "content": "<div class='card'>🎮 Which part is NOT inside a packet?</div>\n<pre><code>A. Destination IP\nB. Message (\"Turn on\")\nC. Baud Rate\nD. Packet Length</code></pre>\n<ul>\n  <li><button class='gaming-btn'>C</button></li>\n  <li><button class='gaming-btn'>A</button></li>\n</ul>\n<div class='card'>✅ Correct! Baud rate is for serial, not inside a network packet.</div>",
+      "image": "https://i.imgur.com/IBIp7We.png",
+      "audio": "https://example.com/audio/packets-game.mp3"
+    },
+    {
+      "title": "Creative: Sending Sensor Data as a Packet",
+      "content": "<div class='card'>🌡️ Let’s say Arduino wants to send temperature to a server.</div>\n<p>It builds a packet like:</p>\n<pre><code>Header:\n  To: 192.168.0.4\n  Length: 20\n\nPayload:\n  {\"temp\": 27.5}</code></pre>\n<p>That single packet goes through the router and reaches your cloud dashboard!</p>\n<div class='card'>This is the magic behind every IoT device 🌐</div>",
+      "image": "https://i.imgur.com/dCeKQKw.png",
+      "audio": "https://example.com/audio/packet-sensor.mp3"
+    }
+  ]
+}
+,{
+  "title": "What Are Datasheets? (And How to Read Them Like a Pro)",
+  "lessons": [
+    {
+      "title": "What Is a Datasheet? (Real World Analogy)",
+      "content": "<div class='card'>📘 A datasheet is like a blueprint, manual, and dictionary — all in one — for an electronic component.</div>\n\n<p>Imagine buying a fancy smart microwave. Wouldn’t you want to know:</p>\n<ul>\n  <li>⚡ Its power input</li>\n  <li>📡 Wireless features</li>\n  <li>🕹️ What buttons do what</li>\n</ul>\n\n<p>That’s exactly what a datasheet does, but for microcontrollers and ICs!</p>\n<div class='card'>It’s published by the chip’s manufacturer (e.g., Microchip for ATmega328P).</div>",
+      "image": "https://i.imgur.com/mYrgYoA.png",
+      "audio": "https://example.com/audio/datasheet-what.mp3"
+    },
+    {
+      "title": "What Does a Datasheet Contain?",
+      "content": "<div class='card'>Here’s what you’ll usually find:</div>\n<ul>\n  <li>📍 Pinout diagrams (what each pin does)</li>\n  <li>⚡ Voltage & current limits</li>\n  <li>⏱️ Timers and clock info</li>\n  <li>🧮 Memory map (SRAM, EEPROM, Flash)</li>\n  <li>🧠 Special features like ADCs, UART, SPI</li>\n</ul>\n\n<pre><code>Pin 1: RESET\nPin 2: RX (UART receive)\nPin 3: TX (UART transmit)</code></pre>\n\n<div class='card'>It's technical, but once you learn to navigate it, you become unstoppable 🚀</div>",
+      "image": "https://i.imgur.com/NfnRUdx.png",
+      "audio": "https://example.com/audio/datasheet-contains.mp3"
+    },
+    {
+      "title": "How to Read a Datasheet (With ATmega328P Example)",
+      "content": "<div class='card'>Let’s decode one together: the ATmega328P (used in Arduino UNO).</div>\n\n<p>Search for:</p>\n<ul>\n  <li><b>Pinout diagram</b> (Page 2-3)</li>\n  <li><b>Memory layout</b> (Flash, SRAM, EEPROM)</li>\n  <li><b>Electrical characteristics</b> (Max current per pin = 40 mA)</li>\n</ul>\n\n<p>🔍 Use <code>Ctrl+F</code> to jump to keywords like: UART, Timer1, ADC, SPI.</p>\n<div class='card'>📄 [PDF Link: <a href='https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf' target='_blank'>ATmega328P Datasheet</a>]</div>",
+      "image": "https://i.imgur.com/b90fLEL.png",
+      "audio": "https://example.com/audio/datasheet-read.mp3"
+    },
+    {
+      "title": "Watch: Reading Datasheets Like a Hardware Pro",
+      "content": "<div class='card'>🎥 Learn how engineers decode datasheets:</div>\n<ul>\n  <li>What to skip</li>\n  <li>What’s most important</li>\n  <li>How to apply it in your own circuits</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/4QquZlBbdY0' title='How to Read Datasheets for Microcontrollers' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/4QquZlBbdY0/0.jpg",
+      "audio": "https://example.com/audio/datasheet-video.mp3"
+    },
+    {
+      "title": "Game: Is It From the Datasheet?",
+      "content": "<div class='card'>🎮 Is this info found in the ATmega328P datasheet?</div>\n<pre><code>A. Maximum input voltage = 5.5V\nB. WiFi version = 802.11n\nC. SRAM size = 2 KB</code></pre>\n<ul>\n  <li><button class='gaming-btn'>A & C</button></li>\n  <li><button class='gaming-btn'>B</button></li>\n</ul>\n<div class='card'>✅ Correct! A & C are from the datasheet. B is for WiFi chips, not AVR.</div>",
+      "image": "https://i.imgur.com/h7Ee9Lt.png",
+      "audio": "https://example.com/audio/datasheet-game.mp3"
+    },
+    {
+      "title": "Creative: Use the Datasheet to Fix a Bug",
+      "content": "<div class='card'>🤔 Your servo motor connected to pin D11 isn't responding. What do you do?</div>\n<ul>\n  <li>You check the datasheet and learn that D11 shares Timer2.</li>\n  <li>You realize another interrupt is using it.</li>\n  <li>You switch to D9, which is cleaner.</li>\n</ul>\n\n<p>📘 This is how pros debug real-world hardware. Datasheets are their secret weapon.</p>\n<div class='card'>💡 Learn to read it once — and you’ll solve problems faster than any forum.</div>",
+      "image": "https://i.imgur.com/QpdIvEz.png",
+      "audio": "https://example.com/audio/datasheet-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "What Is an Object? (In Programming & Arduino)",
+  "lessons": [
+    {
+      "title": "What Is an Object? (Real-World Analogy)",
+      "content": "<div class='card'>🚗 An object in programming is like a car in real life.</div>\n<ul>\n  <li>It has <b>properties</b>: color, speed, fuel</li>\n  <li>It has <b>actions</b>: accelerate, brake, honk</li>\n</ul>\n\n<p>In code, we can turn this into an object:</p>\n<pre><code>Car myCar;\nmyCar.speed = 0;\nmyCar.accelerate();</code></pre>\n\n<p>This is object-oriented programming. You create objects, set properties, and call functions — just like real life.</p>",
+      "image": "https://i.imgur.com/6ZJK9sm.png",
+      "audio": "https://example.com/audio/object-analogy.mp3"
+    },
+    {
+      "title": "How Arduino Uses Objects Everywhere",
+      "content": "<div class='card'>📦 You’ve already used objects — without knowing it!</div>\n<p>These are all objects:</p>\n<ul>\n  <li><code>Serial</code> — an object that handles USB serial communication</li>\n  <li><code>WiFiClient</code> — an object that connects to internet servers</li>\n  <li><code>LiquidCrystal lcd</code> — an object controlling the LCD screen</li>\n</ul>\n\n<pre><code>Serial.begin(9600);\nSerial.println(\"Hello!\");</code></pre>\n<p>Here, <code>Serial</code> is an object with a method <code>println()</code></p>",
+      "image": "https://i.imgur.com/fZ7rNFn.png",
+      "audio": "https://example.com/audio/arduino-objects.mp3"
+    },
+    {
+      "title": "Watch: Objects Explained With Arduino Code",
+      "content": "<div class='card'>🎥 This video breaks down:</div>\n<ul>\n  <li>How <code>Serial</code> and <code>lcd</code> are objects</li>\n  <li>What is a method and what is a property</li>\n  <li>How objects make code modular and clean</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/ax5nZ24-Vz8' title='Objects in Arduino' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/ax5nZ24-Vz8/0.jpg",
+      "audio": "https://example.com/audio/objects-video.mp3"
+    },
+    {
+      "title": "Game: Is It an Object or a Variable?",
+      "content": "<div class='card'>🎮 Guess which ones are objects:</div>\n<pre><code>A. int x = 5;\nB. WiFiClient client;\nC. client.connect();\nD. float temp = 22.3;</code></pre>\n<ul>\n  <li><button class='gaming-btn'>Only B & C</button></li>\n  <li><button class='gaming-btn'>All are objects</button></li>\n</ul>\n<div class='card'>✅ Correct: B & C are objects or object-related. A & D are just primitive variables.</div>",
+      "image": "https://i.imgur.com/ZZNsnjX.png",
+      "audio": "https://example.com/audio/objects-game.mp3"
+    },
+    {
+      "title": "Creative: Make Your Own Object Class in Arduino",
+      "content": "<div class='card'>Let’s make an object for a smart fan:</div>\n<pre><code>class Fan {\n  public:\n    int speed;\n    void turnOn() {\n      // Code to start fan\n    }\n    void turnOff() {\n      // Code to stop fan\n    }\n};\n\nFan roomFan;</code></pre>\n<p>Now you can do:</p>\n<pre><code>roomFan.turnOn();\nroomFan.speed = 3;</code></pre>\n\n<div class='card'>🛠️ You’ve built your own custom object class! That's pro-level coding 🔥</div>",
+      "image": "https://i.imgur.com/s0FwK6P.png",
+      "audio": "https://example.com/audio/object-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Distinguishing Serial vs UART — What’s the Difference & How Are They Related?",
+  "lessons": [
+    {
+      "title": "What is UART? (Think of It Like a Phone Chip)",
+      "content": "<div class='card'>📡 UART = Universal Asynchronous Receiver-Transmitter</div>\n\n<p>It's a tiny hardware chip or circuit inside your Arduino board. Its job:</p>\n<ul>\n  <li>🧠 Convert data between digital <code>0s & 1s</code> and serial signal</li>\n  <li>📞 Control timing, start/stop bits, and error checks</li>\n</ul>\n\n<p><b>Analogy:</b> If you're texting a friend:</p>\n<ul>\n  <li>Your brain = Serial function (what you want to say)</li>\n  <li>Your phone = UART (how it sends/receives bits over signal)</li>\n</ul>",
+      "image": "https://i.imgur.com/yZ7y0mB.png",
+      "audio": "https://example.com/audio/uart-explained.mp3"
+    },
+    {
+      "title": "What is Serial? (And Why It’s Not UART)",
+      "content": "<div class='card'>📤 Serial is a <b>protocol</b> or <b>software feature</b> in Arduino</div>\n<p>It lets you send text/data like:</p>\n<pre><code>Serial.begin(9600);\nSerial.println(\"Temperature: 27.5°C\");</code></pre>\n<p>It uses the UART hardware underneath — but <b>Serial</b> is part of your Arduino <b>sketch</b> and <b>library</b>.</p>\n<p>So technically:</p>\n<ul>\n  <li>Serial = commands in your code</li>\n  <li>UART = electronics that make those signals real</li>\n</ul>",
+      "image": "https://i.imgur.com/A2LgAYY.png",
+      "audio": "https://example.com/audio/serial-not-uart.mp3"
+    },
+    {
+      "title": "Watch: UART vs Serial — Arduino Serial Explained Visually",
+      "content": "<div class='card'>🎥 This video compares:</div>\n<ul>\n  <li>What UART does in the chip</li>\n  <li>What Serial.print() really does</li>\n  <li>Why serial needs baud rate and timing</li>\n</ul>\n\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/b7O_0QK1gNo' title='UART vs Serial - What's the Difference?' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/b7O_0QK1gNo/0.jpg",
+      "audio": "https://example.com/audio/uart-vs-serial.mp3"
+    },
+    {
+      "title": "Game: Serial or UART?",
+      "content": "<div class='card'>🎮 Is this feature part of Serial or UART?</div>\n<pre><code>A. Serial.begin(9600);\nB. Start Bit and Stop Bit\nC. Voltage Level Conversions\nD. Serial.println(\"Hello\")</code></pre>\n<ul>\n  <li><button class='gaming-btn'>A & D = Serial</button></li>\n  <li><button class='gaming-btn'>B & C = UART</button></li>\n</ul>\n<div class='card'>✅ Perfect! A & D are code-level. B & C are hardware-level UART features.</div>",
+      "image": "https://i.imgur.com/UnSk2Aq.png",
+      "audio": "https://example.com/audio/serial-vs-uart-game.mp3"
+    },
+    {
+      "title": "Creative: What Happens When You Serial.print()",
+      "content": "<div class='card'>Let’s trace the journey of <code>Serial.print(\"Hi\")</code></div>\n<ul>\n  <li>🧠 Your code writes to Serial buffer</li>\n  <li>⚙️ UART converts bytes into timed pulses</li>\n  <li>📤 Arduino TX pin sends it to USB-Serial converter</li>\n  <li>💻 Your PC receives the message on COM port</li>\n</ul>\n<p>💡 This teamwork between Serial (code) and UART (hardware) makes Arduino talk to your PC!</p>",
+      "image": "https://i.imgur.com/0xqNi5K.png",
+      "audio": "https://example.com/audio/serial-uart-creative.mp3"
+    }
+  ]
+}
+,
+      ]
+    },{
   title: "Arduino Coding: Speak Like a Board",
   modules:[
     {
@@ -12445,7 +13057,859 @@ modules:[
 },{
   title:"Writing Programs in Arduino: From Zero to Code Master",
 modules:[
-  
+  {
+  "title": "From Idea to Code: How Programmers Think",
+  "lessons": [
+    {
+      "title": "What It Means to 'Think Like a Programmer'",
+      "content": "<div class='card'>Imagine someone says: \"I want the fan to turn on when it gets hot.\" 🔥</div>\n<div class='card'>A programmer doesn't just say \"okay.\" A programmer thinks:</div>\n<ul>\n  <li>How do I <b>sense temperature</b>?</li>\n  <li>What is <b>hot</b>? (above 30°C?)</li>\n  <li>How do I <b>control the fan</b>? (relay? motor?)</li>\n  <li>When and how often do I <b>check the temperature</b>?</li>\n</ul>\n<div class='card'>👉 This thinking is what real coding is: <b>breaking down problems</b> into steps that Arduino understands.</div>",
+      "image": "https://i.imgur.com/NrRlRhE.png",
+      "audio": "https://example.com/audio/think-like-programmer.mp3"
+    },
+    {
+      "title": "The 5-Step Process: Turning Ideas into Arduino Code",
+      "content": "<div class='card'>Every project idea can be turned into code using this:</div>\n<ol>\n  <li><b>1. Describe the idea</b> (in simple English)</li>\n  <li><b>2. Find the inputs</b> (buttons, sensors, etc.)</li>\n  <li><b>3. Define the outputs</b> (LEDs, motors, etc.)</li>\n  <li><b>4. Write the logic</b> (if X, then Y)</li>\n  <li><b>5. Translate into code</b></li>\n</ol>\n<div class='card'>💡 Example: “If the button is pressed, turn the buzzer on.”</div>\n<ul>\n  <li>Input: button</li>\n  <li>Output: buzzer</li>\n  <li>Logic: if pressed → on</li>\n  <li>Code: <code>if (digitalRead(btn) == HIGH) { digitalWrite(buzz, HIGH); }</code></li>\n</ul>",
+      "image": "https://i.imgur.com/V5L8NZa.png",
+      "audio": "https://example.com/audio/idea-to-code.mp3"
+    },
+    {
+      "title": "Watch: How I Turned a Simple Idea into a Sketch",
+      "content": "<div class='card'>In this video, you’ll watch someone turn this idea ⬇️ into working code:</div>\n<div class='card'><b>“Blink LED when button is held down.”</b></div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/OzCa9_1v7L8' title='From Idea to Arduino Code' frameborder='0' allowfullscreen></iframe></div>\n<div class='card'>Watch how they plan, write, test, and fix — all in a few minutes!</div>",
+      "image": "https://img.youtube.com/vi/OzCa9_1v7L8/0.jpg",
+      "audio": "https://example.com/audio/video-from-idea.mp3"
+    },
+    {
+      "title": "Game: Match the Idea to the Logic",
+      "content": "<div class='card'>🎮 Ready to test your thinking?</div>\n<div class='card'>Match the idea on the left to the logic on the right:</div>\n<ul>\n  <li><b>1.</b> Light turns on when it’s dark → <button class='gaming-btn'>if LDR < 300 → LED HIGH</button></li>\n  <li><b>2.</b> Fan turns off when it’s cool → <button class='gaming-btn'>if temp < 25 → fan LOW</button></li>\n  <li><b>3.</b> Sound buzzer on motion → <button class='gaming-btn'>if PIR HIGH → buzzer HIGH</button></li>\n</ul>\n<div class='card'>💥 Tip: This is what programming really is — matching real-world to code!</div>",
+      "image": "https://i.imgur.com/SpxzFeL.png",
+      "audio": "https://example.com/audio/match-the-logic.mp3"
+    },
+    {
+      "title": "Creative: Turn This Real Idea Into Logic",
+      "content": "<div class='card'>💡 Imagine this situation:</div>\n<div class='card'>“When someone enters the room, the lights should turn on and a chime should play.”</div>\n<div class='card'>Your challenge: break this into programming logic.</div>\n<ol>\n  <li>What input is needed?</li>\n  <li>What outputs are used?</li>\n  <li>What’s the condition?</li>\n  <li>Write it in plain English: <code>If ___ then ___</code></li>\n</ol>\n<div class='card'>You just designed your first smart home sketch 🏠⚡</div>",
+      "image": "https://i.imgur.com/pnXLDi7.png",
+      "audio": "https://example.com/audio/real-idea-to-logic.mp3"
+    }
+  ]
+}
+,{
+  "title": "Planning the Flow: Before You Write Code",
+  "lessons": [
+    {
+      "title": "Why Planning Is the Secret Weapon of All Great Coders",
+      "content": "<div class='card'>Beginner programmers just jump into writing code... and then get stuck 🫠</div>\n<div class='card'>Pro coders plan the logic <b>before</b> writing anything.</div>\n<ul>\n  <li>What should happen first?</li>\n  <li>What conditions or checks are needed?</li>\n  <li>What actions follow?</li>\n</ul>\n<div class='card'>Coding without planning is like building a robot without a map 🗺️</div>\n<div class='card'>👑 Your brain is the real IDE. Use it first.</div>",
+      "image": "https://i.imgur.com/s7uGYo4.png",
+      "audio": "https://example.com/audio/planning-is-power.mp3"
+    },
+    {
+      "title": "The 3 Tools of Planning: Words, Boxes, Steps",
+      "content": "<div class='card'>To plan code, use:</div>\n<ul>\n  <li>🧠 <b>Pseudocode</b> — write steps in simple English</li>\n  <li>📦 <b>Flowcharts</b> — draw boxes with arrows</li>\n  <li>🔁 <b>Step Lists</b> — number each action</li>\n</ul>\n<div class='card'>Example Idea: “Turn on fan when temp > 30°C”</div>\n<div class='card'>🧠 Pseudocode:<br><code>Read temperature → If > 30 → Turn fan ON → Else → Turn fan OFF</code></div>\n<div class='card'>📦 Flowchart: [Start] → [Read temp] → [Is temp > 30?] → Yes → [Fan ON] → No → [Fan OFF]</div>\n<div class='card'>🔢 Steps:\n<ol>\n<li>Start</li>\n<li>Read sensor</li>\n<li>Check condition</li>\n<li>Decide output</li>\n</ol></div>",
+      "image": "https://i.imgur.com/8LuA2xG.png",
+      "audio": "https://example.com/audio/tools-of-planning.mp3"
+    },
+    {
+      "title": "Watch: Plan Before You Code (Live Walkthrough)",
+      "content": "<div class='card'>This video shows someone turning this idea:</div>\n<div class='card'><b>“When motion is detected, turn on LED and buzzer for 3 seconds.”</b></div>\n<div class='card'>…into:</div>\n<ul>\n  <li>🧠 Clear pseudocode</li>\n  <li>📦 A simple flowchart</li>\n  <li>💻 And then working code</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/IAwqzGp5nnc' title='Plan before Arduino code' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/IAwqzGp5nnc/0.jpg",
+      "audio": "https://example.com/audio/plan-to-code-video.mp3"
+    },
+    {
+      "title": "Game: Fix This Messy Plan",
+      "content": "<div class='card'>🎮 Here’s a broken plan. Can you fix it?</div>\n<div class='card'><b>Broken Pseudocode:</b><br>Turn LED on → Read button → Turn LED off → If pressed</div>\n<div class='card'>🛠️ Your Job: Rearrange these steps using the buttons below</div>\n<ul>\n  <li><button class='gaming-btn'>Read button</button></li>\n  <li><button class='gaming-btn'>If pressed → Turn LED on</button></li>\n  <li><button class='gaming-btn'>Else → Turn LED off</button></li>\n</ul>\n<div class='card'>Now THAT is programmer thinking 👏</div>",
+      "image": "https://i.imgur.com/r06mrDu.png",
+      "audio": "https://example.com/audio/game-fix-the-plan.mp3"
+    },
+    {
+      "title": "Creative: Make a Plan for This Real-World Scenario",
+      "content": "<div class='card'>🧠 Your challenge: Plan this behavior without writing a single line of code:</div>\n<div class='card'>“If it’s dark and someone moves in the room, turn on the light and play a melody.”</div>\n<ol>\n  <li>Write a step-by-step plan (words only)</li>\n  <li>Optional: draw a flowchart on paper</li>\n  <li>Optional: turn it into pseudocode</li>\n</ol>\n<div class='card'>You’ve now learned the skill every real-world robotics engineer uses daily 💪</div>",
+      "image": "https://i.imgur.com/NcyM5wn.png",
+      "audio": "https://example.com/audio/creative-plan-challenge.mp3"
+    }
+  ]
+}
+,{
+  "title": "Inputs → Logic → Outputs: The Core Structure of Every Program",
+  "lessons": [
+    {
+      "title": "The Golden Rule of Arduino Programming",
+      "content": "<div class='card'>Every Arduino sketch is built like this:</div>\n<div class='card'><b>INPUT → LOGIC → OUTPUT</b></div>\n<ul>\n  <li>🎛️ <b>Input:</b> Something you sense (button, sensor, etc.)</li>\n  <li>🧠 <b>Logic:</b> What your code decides (if, else, conditions)</li>\n  <li>💡 <b>Output:</b> What your Arduino does (LED, buzzer, motor)</li>\n</ul>\n<div class='card'>This is how your sketch becomes a brain 🧠 for your robot.</div>",
+      "image": "https://i.imgur.com/9vCRo95.png",
+      "audio": "https://example.com/audio/input-logic-output.mp3"
+    },
+    {
+      "title": "Example: Smart Room Light",
+      "content": "<div class='card'>Let’s build a small example: Smart room light 💡</div>\n<div class='card'>Goal: When it’s dark and someone enters the room, turn on the light.</div>\n<ul>\n  <li><b>Inputs:</b> LDR (light sensor) and PIR (motion sensor)</li>\n  <li><b>Logic:</b> if LDR < 300 AND PIR == HIGH → Turn LED ON</li>\n  <li><b>Output:</b> LED</li>\n</ul>\n<pre><code>int ldr = analogRead(A0);\nint pir = digitalRead(2);\nif (ldr < 300 && pir == HIGH) {\n  digitalWrite(13, HIGH);\n} else {\n  digitalWrite(13, LOW);\n}</code></pre>\n<div class='card'>🧠 This is the full loop: Sense → Decide → Act.</div>",
+      "image": "https://i.imgur.com/jr3AhqM.png",
+      "audio": "https://example.com/audio/smart-light-example.mp3"
+    },
+    {
+      "title": "Watch: Building a Full Input-Logic-Output Sketch",
+      "content": "<div class='card'>In this video, you'll see someone write a full sketch using this structure:</div>\n<ul>\n  <li>Button as input</li>\n  <li>Check press → count how many</li>\n  <li>Turn LED on after 3 presses</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/RS0DfSvJUPM' title='Arduino Input Logic Output Sketch' frameborder='0' allowfullscreen></iframe></div>\n<div class='card'>💡 This model works for every project you’ll ever build!</div>",
+      "image": "https://img.youtube.com/vi/RS0DfSvJUPM/0.jpg",
+      "audio": "https://example.com/audio/video-input-logic-output.mp3"
+    },
+    {
+      "title": "Game: What Goes Where?",
+      "content": "<div class='card'>🧠 Match the following with Input / Logic / Output</div>\n<ul>\n  <li>Button press → <button class='gaming-btn'>Input</button></li>\n  <li>If temp > 30 → <button class='gaming-btn'>Logic</button></li>\n  <li>Turn fan on → <button class='gaming-btn'>Output</button></li>\n  <li>Check if motion detected → <button class='gaming-btn'>Input</button></li>\n  <li>Turn LED off → <button class='gaming-btn'>Output</button></li>\n  <li>If light < 300 → <button class='gaming-btn'>Logic</button></li>\n</ul>\n<div class='card'>👏 You now see how sketches are structured in your mind before they’re typed.</div>",
+      "image": "https://i.imgur.com/tM2oTlt.png",
+      "audio": "https://example.com/audio/game-what-goes-where.mp3"
+    },
+    {
+      "title": "Creative: Break This Real Project Into 3 Parts",
+      "content": "<div class='card'>Here’s a challenge:</div>\n<div class='card'><b>“Build an alarm system that plays a sound when someone opens the door while it’s dark.”</b></div>\n<ol>\n  <li>What is the <b>input</b>?</li>\n  <li>What is the <b>logic</b>?</li>\n  <li>What is the <b>output</b>?</li>\n</ol>\n<div class='card'>💬 Try writing it like this:<br><code>If PIR == HIGH and LDR < 300 → play buzzer</code></div>\n<div class='card'>You're now thinking like a product designer 🚨</div>",
+      "image": "https://i.imgur.com/NpTcMb3.png",
+      "audio": "https://example.com/audio/creative-input-logic-output.mp3"
+    }
+  ]
+}
+,{
+  "title": "Use What You Know: Combining Variables, Conditions, and Loops",
+  "lessons": [
+    {
+      "title": "You're Ready to Combine Everything",
+      "content": "<div class='card'>You’ve learned about:</div>\n<ul>\n  <li><code>int</code> and <code>bool</code> variables</li>\n  <li><code>if</code> and <code>else</code> logic</li>\n  <li><code>for</code> and <code>while</code> loops</li>\n</ul>\n<div class='card'>🧠 Now it’s time to use them <b>together</b> to build full programs.</div>\n<div class='card'>This is where your brain shifts from <i>learning syntax</i> to <i>building systems</i>.</div>\n<div class='card'>⚙️ Think of variables like memory, conditions like decisions, and loops like machines running over and over.</div>",
+      "image": "https://i.imgur.com/K5K95F9.png",
+      "audio": "https://example.com/audio/combine-all-knowledge.mp3"
+    },
+    {
+      "title": "Real Project: LED Counter Button",
+      "content": "<div class='card'>🎯 Goal: When a button is pressed 3 times, turn the LED ON for 5 seconds, then OFF again.</div>\n<ul>\n  <li><b>Input:</b> Button</li>\n  <li><b>Logic:</b> Count presses, check when it hits 3</li>\n  <li><b>Output:</b> LED stays ON for 5 seconds</li>\n</ul>\n<pre><code>int count = 0;\nbool ledOn = false;\n\nvoid loop() {\n  if (digitalRead(btnPin) == HIGH) {\n    count++;\n    delay(200); // debounce\n  }\n\n  if (count == 3 && !ledOn) {\n    digitalWrite(ledPin, HIGH);\n    ledOn = true;\n    delay(5000);\n    digitalWrite(ledPin, LOW);\n  }\n}</code></pre>\n<div class='card'>💡 This combines <b>variables, logic, conditions, delay, flags</b> — everything you know!</div>",
+      "image": "https://i.imgur.com/wJD41XP.png",
+      "audio": "https://example.com/audio/led-counter-example.mp3"
+    },
+    {
+      "title": "Watch: Combining Variables, If, and Loops in a Real Sketch",
+      "content": "<div class='card'>📺 Watch how we build a sketch that:</div>\n<ul>\n  <li>Reads a button input</li>\n  <li>Uses a variable to count presses</li>\n  <li>Uses <code>if</code> and <code>else</code> to decide what happens</li>\n  <li>Uses <code>for</code> to blink LED X times</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/2DyaF5XYosY' title='Combining Programming Concepts in Arduino' frameborder='0' allowfullscreen></iframe></div>\n<div class='card'>🧱 This is how all pro sketches are built: by stacking simple blocks.</div>",
+      "image": "https://img.youtube.com/vi/2DyaF5XYosY/0.jpg",
+      "audio": "https://example.com/audio/combo-video-lesson.mp3"
+    },
+    {
+      "title": "Game: Build the Sketch Block by Block",
+      "content": "<div class='card'>🎮 Here’s a fun challenge:</div>\n<div class='card'>Recreate a program idea by choosing the right building blocks in order.</div>\n<ul>\n  <li><button class='gaming-btn'>Declare a counter variable</button></li>\n  <li><button class='gaming-btn'>Check if button is pressed</button></li>\n  <li><button class='gaming-btn'>Increase counter</button></li>\n  <li><button class='gaming-btn'>If counter == 3 → Turn LED ON</button></li>\n  <li><button class='gaming-btn'>Wait 5s → Turn LED OFF</button></li>\n</ul>\n<div class='card'>This is real sketch planning 👏</div>",
+      "image": "https://i.imgur.com/VAM5HNj.png",
+      "audio": "https://example.com/audio/game-combine-code.mp3"
+    },
+    {
+      "title": "Creative: Invent Your Own Logic Machine",
+      "content": "<div class='card'>🧠 Use your imagination:</div>\n<div class='card'>“A streetlight that slowly increases brightness each time motion is detected, and resets after 10 seconds of silence.”</div>\n<ol>\n  <li>Use a variable to track brightness level</li>\n  <li>Use PIR sensor for motion</li>\n  <li>Use <code>millis()</code> to check time</li>\n  <li>Use <code>analogWrite()</code> to fade LED</li>\n</ol>\n<div class='card'>🔥 This is next-level thinking. You’re designing real-world systems now.</div>",
+      "image": "https://i.imgur.com/h7OnGdB.png",
+      "audio": "https://example.com/audio/creative-fade-logic.mp3"
+    }
+  ]
+}
+,{
+  "title": "Your First Combined Sketch: Full Project Walkthrough",
+  "lessons": [
+    {
+      "title": "The Project: A Smart Desk Lamp",
+      "content": "<div class='card'>Goal: Make a lamp that turns ON automatically for 30 seconds when:</div>\n<ul>\n  <li>🌙 It's dark</li>\n  <li>🚶‍♂️ Someone is nearby</li>\n</ul>\n<div class='card'>We'll use:</div>\n<ul>\n  <li>LDR → senses light</li>\n  <li>PIR → senses motion</li>\n  <li>LED → simulates the lamp</li>\n  <li><code>millis()</code> → tracks 30 seconds</li>\n</ul>\n<div class='card'>This sketch uses all your powers combined 🧠⚡</div>",
+      "image": "https://i.imgur.com/NVZ7Ekn.png",
+      "audio": "https://example.com/audio/smart-lamp-project-intro.mp3"
+    },
+    {
+      "title": "Planning It Like a Programmer",
+      "content": "<div class='card'>🧠 Step-by-step thinking:</div>\n<ol>\n  <li>Check light using <code>analogRead()</code></li>\n  <li>Check motion using <code>digitalRead()</code></li>\n  <li>If both are true → turn lamp ON</li>\n  <li>Use <code>millis()</code> to turn OFF after 30 sec</li>\n</ol>\n<div class='card'>🧱 Planning:</div>\n<pre><code>if (dark && motion && !lampOn) {\n  turn lamp ON\n  record current time\n  set lampOn = true\n}\n\nif (lampOn && millis() - time > 30000) {\n  turn lamp OFF\n  set lampOn = false\n}</code></pre>",
+      "image": "https://i.imgur.com/ZVGYYOh.png",
+      "audio": "https://example.com/audio/project-planning.mp3"
+    },
+    {
+      "title": "Watch: Writing the Full Sketch (Live)",
+      "content": "<div class='card'>🎥 In this video, you’ll watch someone build the entire Smart Lamp sketch from scratch:</div>\n<ul>\n  <li>Setup the pins and sensors</li>\n  <li>Plan and debug the logic</li>\n  <li>Handle timing using <code>millis()</code></li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/Iv_-XvteY8s' title='Smart Lamp Arduino Project Build' frameborder='0' allowfullscreen></iframe></div>\n<div class='card'>💡 You'll see exactly how a real sketch is born — from mind to machine.</div>",
+      "image": "https://img.youtube.com/vi/Iv_-XvteY8s/0.jpg",
+      "audio": "https://example.com/audio/video-smart-lamp.mp3"
+    },
+    {
+      "title": "Game: Drag the Code Blocks to Rebuild the Logic",
+      "content": "<div class='card'>🎮 Drag these blocks in order to rebuild the lamp logic:</div>\n<ul>\n  <li><button class='gaming-btn'>If it’s dark and motion is detected</button></li>\n  <li><button class='gaming-btn'>Turn on LED</button></li>\n  <li><button class='gaming-btn'>Save millis() timestamp</button></li>\n  <li><button class='gaming-btn'>If time passed > 30s</button></li>\n  <li><button class='gaming-btn'>Turn off LED</button></li>\n</ul>\n<div class='card'>You're now thinking like a machine — and building like a developer 🧱</div>",
+      "image": "https://i.imgur.com/I4wHvRE.png",
+      "audio": "https://example.com/audio/game-drag-lamp-logic.mp3"
+    },
+    {
+      "title": "Creative: Modify This Project for Real Life",
+      "content": "<div class='card'>💡 Think about how this project could be used in:</div>\n<ul>\n  <li>🚪 An automatic entry light system</li>\n  <li>🛏️ A nightlight that activates on movement</li>\n  <li>🚶‍♀️ A corridor lamp that resets after 60 seconds</li>\n</ul>\n<div class='card'>🛠 Challenge: What if you add a light intensity slider? Or switch behavior if it's day?</div>\n<div class='card'>✨ You’re not just coding — you’re inventing real-world systems.</div>",
+      "image": "https://i.imgur.com/8dOcrp9.png",
+      "audio": "https://example.com/audio/creative-modify-lamp.mp3"
+    }
+  ]
+}
+,{
+  "title": "Fixing Broken Code: Learn to Debug Like a Developer",
+  "lessons": [
+    {
+      "title": "What Is Debugging (and Why It's 80% of Programming)",
+      "content": "<div class='card'>🧠 Debugging = Finding and fixing errors in your logic, not just syntax.</div>\n<ul>\n  <li>Code compiles but doesn’t work? → You have a logic bug.</li>\n  <li>Sensor not acting right? → Test the values.</li>\n  <li>Output stuck ON? → Your conditions are wrong.</li>\n</ul>\n<div class='card'>Pro coders don’t panic. They <b>observe</b>, <b>test</b>, <b>log</b>, <b>fix</b>.</div>\n<div class='card'>🪛 Your best tool = <code>Serial.print()</code> + a calm brain.</div>",
+      "image": "https://i.imgur.com/MNZmVeo.png",
+      "audio": "https://example.com/audio/what-is-debugging.mp3"
+    },
+    {
+      "title": "Case Study: The Broken Light",
+      "content": "<div class='card'>🤖 Sketch Description:</div>\n<pre><code>int light = analogRead(A0);\nint motion = digitalRead(2);\nif (light < 300 && motion == HIGH) {\n  digitalWrite(13, HIGH);\n}\n</code></pre>\n<div class='card'>❌ Problem: LED just stays ON even when motion stops.</div>\n<div class='card'>🧠 Clues:</div>\n<ul>\n  <li>No else statement</li>\n  <li>Motion stays HIGH for ~5 seconds</li>\n  <li>No reset logic</li>\n</ul>\n<div class='card'>💡 Fix: Add <code>else { digitalWrite(13, LOW); }</code></div>",
+      "image": "https://i.imgur.com/2A7L8W5.png",
+      "audio": "https://example.com/audio/case-study-broken-light.mp3"
+    },
+    {
+      "title": "Watch: Debugging in Action (Serial Monitor Style)",
+      "content": "<div class='card'>🎥 Watch how a developer debugged a broken light project using <code>Serial.print()</code>:</div>\n<ul>\n  <li>Print sensor values live</li>\n  <li>Check PIR timings</li>\n  <li>See LDR values change in real time</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/dh4Z1W1v4uM' title='Arduino Debugging with Serial Monitor' frameborder='0' allowfullscreen></iframe></div>\n<div class='card'>🧰 Serial is your flashlight inside the dark code cave 🕵️‍♂️</div>",
+      "image": "https://img.youtube.com/vi/dh4Z1W1v4uM/0.jpg",
+      "audio": "https://example.com/audio/video-debugging-serial.mp3"
+    },
+    {
+      "title": "Game: Find the Bug (Real Sketch)",
+      "content": "<div class='card'>🧪 You’re given this sketch:</div>\n<pre><code>int btn = digitalRead(4);\nif (btn == HIGH) {\n  digitalWrite(13, HIGH);\n}\n</code></pre>\n<div class='card'>💣 Problem: LED turns on randomly. Not reliable.</div>\n<ul>\n  <li><button class='gaming-btn'>Use INPUT_PULLUP</button></li>\n  <li><button class='gaming-btn'>Check for bouncing</button></li>\n  <li><button class='gaming-btn'>Add else → LED off</button></li>\n</ul>\n<div class='card'>🛠 You’ve now debugged real-world button bounce and pullup errors!</div>",
+      "image": "https://i.imgur.com/LsHtImu.png",
+      "audio": "https://example.com/audio/game-find-the-bug.mp3"
+    },
+    {
+      "title": "Creative: Teach Someone How to Debug",
+      "content": "<div class='card'>🎓 Now you’re the teacher. Explain this to a friend:</div>\n<ul>\n  <li>How do you check sensor values?</li>\n  <li>What do you do when something “acts weird”?</li>\n  <li>What are your 3-step debugging habits?</li>\n</ul>\n<div class='card'>🧠 Tip: If you can teach it, you’ve mastered it.</div>",
+      "image": "https://i.imgur.com/sYMMEux.png",
+      "audio": "https://example.com/audio/creative-teach-debugging.mp3"
+    }
+  ]
+}
+,{
+  "title": "Structuring Big Code: Functions, Spacing, and Logic Blocks",
+  "lessons": [
+    {
+      "title": "Why Big Code Needs Structure",
+      "content": "<div class='card'>🚨 Here's the truth: Most beginner code becomes unreadable fast.</div>\n<ul>\n  <li>No spacing</li>\n  <li>Random names</li>\n  <li>100+ lines in one <code>loop()</code></li>\n</ul>\n<div class='card'>👨‍💻 Pro coders use:</div>\n<ul>\n  <li>🧱 Functions to group logic</li>\n  <li>📄 Clean spacing for readability</li>\n  <li>🔖 Smart naming for memory</li>\n</ul>\n<div class='card'>Clean code = calm brain = zero bugs 🧘</div>",
+      "image": "https://i.imgur.com/s9fJzqv.png",
+      "audio": "https://example.com/audio/why-structure-code.mp3"
+    },
+    {
+      "title": "Example: Messy Code vs Structured Code",
+      "content": "<div class='card'>🧪 Both codes do the same job: Turn fan + LED ON if temp > 30°C & button pressed</div>\n\n<div class='card'><b>Messy:</b></div>\n<pre><code>if (analogRead(A0) > 600 && digitalRead(4)==HIGH){\n  digitalWrite(6,HIGH);\n  digitalWrite(13,HIGH);\n}</code></pre>\n\n<div class='card'><b>Structured:</b></div>\n<pre><code>int readTemperature() {\n  return analogRead(A0);\n}\n\nbool isButtonPressed() {\n  return digitalRead(4) == HIGH;\n}\n\nvoid activateCoolingSystem() {\n  digitalWrite(6, HIGH);\n  digitalWrite(13, HIGH);\n}\n\nvoid loop() {\n  if (readTemperature() > 600 && isButtonPressed()) {\n    activateCoolingSystem();\n  }\n}</code></pre>\n<div class='card'>💡 Same logic. But one you can understand later, and one you'll want to delete 😅</div>",
+      "image": "https://i.imgur.com/rcchdX5.png",
+      "audio": "https://example.com/audio/code-cleanup-comparison.mp3"
+    },
+    {
+      "title": "Watch: From Messy Sketch to Modular Project",
+      "content": "<div class='card'>📺 Watch this transformation:</div>\n<ul>\n  <li>Start with a 100-line mess</li>\n  <li>Break into clean functions</li>\n  <li>Group logic by purpose</li>\n  <li>Improve readability with spacing & comments</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/Ldo7nEOGCI4' title='Arduino Modular Code Tutorial' frameborder='0' allowfullscreen></iframe></div>\n<div class='card'>🏗️ This is what scalable programming feels like.</div>",
+      "image": "https://img.youtube.com/vi/Ldo7nEOGCI4/0.jpg",
+      "audio": "https://example.com/audio/modular-video-tutorial.mp3"
+    },
+    {
+      "title": "Game: Match the Function to Its Job",
+      "content": "<div class='card'>🎮 Match the following custom functions to what they do:</div>\n<ul>\n  <li><code>readLDR()</code> → <button class='gaming-btn'>Reads light sensor</button></li>\n  <li><code>isMotionDetected()</code> → <button class='gaming-btn'>Checks PIR sensor</button></li>\n  <li><code>turnOnAlarm()</code> → <button class='gaming-btn'>Activates buzzer and LED</button></li>\n  <li><code>resetTimer()</code> → <button class='gaming-btn'>Saves current millis()</button></li>\n</ul>\n<div class='card'>🧠 Each function should <i>do one thing well</i>. That's the rule.</div>",
+      "image": "https://i.imgur.com/xkXZCHs.png",
+      "audio": "https://example.com/audio/game-match-functions.mp3"
+    },
+    {
+      "title": "Creative: Turn Any Sketch Into Clean Modular Code",
+      "content": "<div class='card'>💥 Challenge: Take a past sketch (like LED or buzzer control) and refactor it:</div>\n<ol>\n  <li>Create 2–3 functions for grouped tasks</li>\n  <li>Use meaningful names</li>\n  <li>Clean up the <code>loop()</code> so it only has decisions</li>\n</ol>\n<div class='card'>You’ve now leveled up from “coder” to “programmer.”</div>",
+      "image": "https://i.imgur.com/gUOKQ61.png",
+      "audio": "https://example.com/audio/creative-refactor-challenge.mp3"
+    }
+  ]
+}
+,{
+  "title": "Structuring Big Code: Functions, Layout, and Logic Blocks",
+  "lessons": [
+    {
+      "title": "Why Structure Matters (Even in Small Projects)",
+      "content": "<div class='card'>Code gets messy fast — especially when you keep adding logic.</div>\n<div class='card'>That's why pro coders split behavior into <b>clear functions and sections</b>.</div>\n<ul>\n  <li>🧱 Makes code easy to understand</li>\n  <li>🔄 Allows reuse of blocks</li>\n  <li>🐞 Easier to debug and test each part</li>\n</ul>\n<div class='card'>💡 Structure is not decoration — it's survival.</div>",
+      "image": "https://i.imgur.com/DeEq8Re.png",
+      "audio": "https://example.com/audio/why-structure.mp3"
+    },
+    {
+      "title": "Meet Functions: Code’s Favorite Lego Block",
+      "content": "<div class='card'>A <b>function</b> is a mini-program inside your program.</div>\n<pre><code>void checkTemperature() {\n  int temp = analogRead(A0);\n  if (temp > 500) {\n    digitalWrite(fan, HIGH);\n  } else {\n    digitalWrite(fan, LOW);\n  }\n}</code></pre>\n<div class='card'>Then inside <code>loop()</code>, you just call:</div>\n<pre><code>checkTemperature();</code></pre>\n<div class='card'>📦 Functions let you name logic and reuse it anywhere!</div>",
+      "image": "https://i.imgur.com/ymFyFBS.png",
+      "audio": "https://example.com/audio/functions-explained.mp3"
+    },
+    {
+      "title": "Watch: Clean Up Messy Code with Functions",
+      "content": "<div class='card'>🎥 In this video, you’ll watch a cluttered 80-line sketch turn into a clean, organized structure:</div>\n<ul>\n  <li>Separate input reading</li>\n  <li>Split logic handling</li>\n  <li>Use helper functions like <code>controlLED()</code>, <code>readButton()</code></li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/R2iI1e1OGj4' title='Structuring Arduino Code With Functions' frameborder='0' allowfullscreen></iframe></div>\n<div class='card'>🧠 The same logic. 10x cleaner. This is pro-level structure.</div>",
+      "image": "https://img.youtube.com/vi/R2iI1e1OGj4/0.jpg",
+      "audio": "https://example.com/audio/structure-video.mp3"
+    },
+    {
+      "title": "Game: Break This Code Into Functions",
+      "content": "<div class='card'>🎮 You’re given a single big sketch — can you break it into proper functions?</div>\n<pre><code>void loop() {\n  // Read button\n  // Turn LED ON if pressed\n  // Wait 2 seconds\n  // Turn OFF\n}</code></pre>\n<div class='card'>Drag these to form your structured plan:</div>\n<ul>\n  <li><button class='gaming-btn'>readButton()</button></li>\n  <li><button class='gaming-btn'>turnLedOn()</button></li>\n  <li><button class='gaming-btn'>waitTwoSeconds()</button></li>\n  <li><button class='gaming-btn'>turnLedOff()</button></li>\n</ul>\n<div class='card'>🥇 Your logic is now reusable, testable, and clean.</div>",
+      "image": "https://i.imgur.com/44YajxL.png",
+      "audio": "https://example.com/audio/game-split-functions.mp3"
+    },
+    {
+      "title": "Creative: Design Your Own Function-Based Sketch",
+      "content": "<div class='card'>🛠 Challenge:</div>\n<div class='card'>Design a sketch that controls a mini robot:</div>\n<ul>\n  <li>Check if obstacle is in front</li>\n  <li>Decide whether to turn or go forward</li>\n  <li>Move the motors accordingly</li>\n</ul>\n<div class='card'>Make functions like:</div>\n<ul>\n  <li><code>checkObstacle()</code></li>\n  <li><code>turnLeft()</code></li>\n  <li><code>goForward()</code></li>\n</ul>\n<div class='card'>🎯 This is how large systems are built — piece by piece.</div>",
+      "image": "https://i.imgur.com/1MleGPN.png",
+      "audio": "https://example.com/audio/creative-motor-functions.mp3"
+    }
+  ]
+}
+,{
+  "title": "Using millis() to Replace delay(): Non-Blocking Programming",
+  "lessons": [
+    {
+      "title": "Why delay() Is a Trap",
+      "content": "<div class='card'>😴 <code>delay()</code> stops everything. It freezes your Arduino until the time is up.</div>\n<pre><code>digitalWrite(LED, HIGH);\ndelay(1000); // ← Nothing else runs during this</code></pre>\n<div class='card'>💡 Real projects need multitasking: read sensors, flash LEDs, move motors — all at once.</div>\n<div class='card'><b>Solution: Use <code>millis()</code> to check the time — not stop the time.</b></div>",
+      "image": "https://i.imgur.com/jUQfpqT.png",
+      "audio": "https://example.com/audio/delay-problem.mp3"
+    },
+    {
+      "title": "Understanding millis(): Arduino’s Timer Clock",
+      "content": "<div class='card'>⏱️ <code>millis()</code> = number of milliseconds since the Arduino turned ON.</div>\n<pre><code>unsigned long now = millis();\nif (now - lastTime > interval) {\n  // Time to do something\n  lastTime = now;\n}</code></pre>\n<ul>\n  <li>Use one <code>lastTime</code> variable for each thing you want to time</li>\n  <li>Compare with <code>millis()</code> to check if enough time has passed</li>\n</ul>\n<div class='card'>💡 Think of it as a stopwatch running in the background.</div>",
+      "image": "https://i.imgur.com/fxgQRew.png",
+      "audio": "https://example.com/audio/millis-intro.mp3"
+    },
+    {
+      "title": "Watch: Blinking 2 LEDs with millis()",
+      "content": "<div class='card'>🎥 This video walks through replacing <code>delay()</code> with <code>millis()</code> in a real sketch:</div>\n<ul>\n  <li>Red LED blinks every 1000ms</li>\n  <li>Green LED blinks every 3000ms</li>\n  <li>No freezing. Both blink independently.</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/NQjy1OL9AS8' title='Arduino millis() Tutorial - Blinking Without delay()' frameborder='0' allowfullscreen></iframe></div>\n<div class='card'>🔥 This is how real robots multitask.</div>",
+      "image": "https://img.youtube.com/vi/NQjy1OL9AS8/0.jpg",
+      "audio": "https://example.com/audio/video-millis-blink.mp3"
+    },
+    {
+      "title": "Game: Match millis() Code Pieces",
+      "content": "<div class='card'>🎮 Drag the correct pieces to build a non-blocking blink logic:</div>\n<ul>\n  <li><button class='gaming-btn'>if (millis() - lastBlink > interval)</button></li>\n  <li><button class='gaming-btn'>toggleLED()</button></li>\n  <li><button class='gaming-btn'>lastBlink = millis()</button></li>\n</ul>\n<div class='card'>🧠 This is the new way of thinking — time as a comparison, not a pause.</div>",
+      "image": "https://i.imgur.com/JT7B2jx.png",
+      "audio": "https://example.com/audio/game-match-millis.mp3"
+    },
+    {
+      "title": "Creative: Build a Smart Traffic Light",
+      "content": "<div class='card'>🚦 Challenge:</div>\n<ul>\n  <li>Red ON for 5s</li>\n  <li>Green ON for 3s</li>\n  <li>Yellow ON for 2s</li>\n  <li>Repeat the cycle forever</li>\n</ul>\n<div class='card'>💡 Can’t use <code>delay()</code>. Use <code>millis()</code> + state tracking + clever logic.</div>\n<div class='card'>🎯 You’re now simulating real-world timed behavior.</div>",
+      "image": "https://i.imgur.com/EL0okpL.png",
+      "audio": "https://example.com/audio/creative-millis-trafficlight.mp3"
+    }
+  ]
+}
+,{
+  "title": "Multi-Input Logic: Handling Multiple Sensors Together",
+  "lessons": [
+    {
+      "title": "Why Multi-Input Logic Is the Real Deal",
+      "content": "<div class='card'>Most projects need more than one sensor. That's where logic trees come in 🧠🌲</div>\n<ul>\n  <li>Motion + Light → Control a lamp</li>\n  <li>Button + Temp + Time → Activate fan</li>\n  <li>PIR + LDR + Door Switch → Trigger alarm</li>\n</ul>\n<div class='card'>You’ll now write smarter conditions like:</div>\n<pre><code>if (isNight() && motionDetected && doorOpen) {\n  triggerAlarm();\n}</code></pre>",
+      "image": "https://i.imgur.com/Jq8s0EV.png",
+      "audio": "https://example.com/audio/multi-input-logic.mp3"
+    },
+    {
+      "title": "Writing Real Logic Trees in Arduino",
+      "content": "<div class='card'>Let’s simulate this:</div>\n<ul>\n  <li><b>LDR</b>: Light sensor (night = analogRead &lt; 300)</li>\n  <li><b>PIR</b>: Motion sensor (motion = HIGH)</li>\n  <li><b>Switch</b>: Door (pressed = LOW with pull-up)</li>\n</ul>\n<div class='card'>Example Code:</div>\n<pre><code>bool isNight = analogRead(A0) &lt; 300;\nbool motion = digitalRead(2);\nbool doorOpen = digitalRead(3) == LOW;\n\nif (isNight && motion == HIGH && doorOpen) {\n  digitalWrite(buzzer, HIGH);\n}</code></pre>\n<div class='card'>💡 You’re now writing real smart decisions 🔍</div>",
+      "image": "https://i.imgur.com/7JuyvKw.png",
+      "audio": "https://example.com/audio/logic-tree-example.mp3"
+    },
+    {
+      "title": "Watch: Smart Light + Motion + Door Logic Build",
+      "content": "<div class='card'>🎥 This video shows you how to build a smart security lamp using:</div>\n<ul>\n  <li>Motion sensor (PIR)</li>\n  <li>Light sensor (LDR)</li>\n  <li>Door switch</li>\n  <li>millis() for non-blocking timers</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/gzQErC9PZFo' title='Arduino Smart Multi-Sensor System' frameborder='0' allowfullscreen></iframe></div>\n<div class='card'>📦 This is how real logic-based products work.</div>",
+      "image": "https://img.youtube.com/vi/gzQErC9PZFo/0.jpg",
+      "audio": "https://example.com/audio/video-multi-sensor.mp3"
+    },
+    {
+      "title": "Game: Build the Right Condition",
+      "content": "<div class='card'>🎮 Match the sensors to the logic:</div>\n<ul>\n  <li>LDR value &lt; 300</li>\n  <li>PIR == HIGH</li>\n  <li>doorSwitch == LOW</li>\n</ul>\n<div class='card'>Now select the correct condition block:</div>\n<ul>\n  <li><button class='gaming-btn'>if (ldr &lt; 300 && motion && !doorClosed)</button></li>\n  <li><button class='gaming-btn'>if (door == LOW &amp;&amp; motion == HIGH &amp;&amp; light &lt; 300)</button></li>\n</ul>\n<div class='card'>🧠 You’re thinking like an automation designer now.</div>",
+      "image": "https://i.imgur.com/WlgEymf.png",
+      "audio": "https://example.com/audio/game-multi-input.mp3"
+    },
+    {
+      "title": "Creative: Design a Room Automation System",
+      "content": "<div class='card'>🏠 Design a system for this:</div>\n<ul>\n  <li>It's night (light sensor)</li>\n  <li>You entered (motion)</li>\n  <li>Fan should turn on only if button is held for 2 sec</li>\n</ul>\n<div class='card'>🧠 Plan your condition flow:</div>\n<ul>\n  <li>What triggers what?</li>\n  <li>How will time be tracked?</li>\n  <li>What happens if one input fails?</li>\n</ul>\n<div class='card'>🎯 You're building systems, not just circuits.</div>",
+      "image": "https://i.imgur.com/yj0STtv.png",
+      "audio": "https://example.com/audio/creative-multilogic.mp3"
+    }
+  ]
+}
+,{
+  "title": "Mode Switching: Toggle Between Behaviors with One Button",
+  "lessons": [
+    {
+      "title": "What Is a Mode, Really?",
+      "content": "<div class='card'>🎮 Modes are just <b>states</b> in your code.</div>\n<ul>\n  <li>🔁 State 0: OFF</li>\n  <li>🔁 State 1: AUTO</li>\n  <li>🔁 State 2: MANUAL</li>\n</ul>\n<div class='card'>Each press of a button <b>increments</b> the state, then <b>wraps back</b> to 0.</div>\n<pre><code>int mode = 0;\n\nif (buttonPressed) {\n  mode++;\n  if (mode &gt; 2) mode = 0;\n}</code></pre>\n<div class='card'>💡 You just built a 3-mode system from 1 button.</div>",
+      "image": "https://i.imgur.com/zHRoY5A.png",
+      "audio": "https://example.com/audio/mode-intro.mp3"
+    },
+    {
+      "title": "Writing a Mode-Based Sketch: Fan Modes",
+      "content": "<div class='card'>Let’s control a fan with 3 modes:</div>\n<ul>\n  <li><b>Mode 0:</b> OFF</li>\n  <li><b>Mode 1:</b> Auto (temp &gt; 30 → ON)</li>\n  <li><b>Mode 2:</b> Manual ON</li>\n</ul>\n<div class='card'>Here’s how the logic looks:</div>\n<pre><code>switch (mode) {\n  case 0:\n    digitalWrite(fan, LOW);\n    break;\n  case 1:\n    if (readTemp() &gt; 30) digitalWrite(fan, HIGH);\n    else digitalWrite(fan, LOW);\n    break;\n  case 2:\n    digitalWrite(fan, HIGH);\n    break;\n}</code></pre>\n<div class='card'>🎛️ Add button debounce and timing with <code>millis()</code> to polish it!</div>",
+      "image": "https://i.imgur.com/DdnNdKn.png",
+      "audio": "https://example.com/audio/mode-switch-fan.mp3"
+    },
+    {
+      "title": "Watch: Arduino Mode System (1 Button, 3 Modes)",
+      "content": "<div class='card'>🎥 Watch this real-life build:</div>\n<ul>\n  <li>1 push button</li>\n  <li>3 LEDs (for mode indicator)</li>\n  <li>Fan control depending on temp + mode</li>\n</ul>\n<div class='card'>Learn:</div>\n<ul>\n  <li>State variables</li>\n  <li>Mode cycling</li>\n  <li>How to plan real user behavior</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/rug_HyYhPzA' title='Arduino Mode Toggle Button System' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/rug_HyYhPzA/0.jpg",
+      "audio": "https://example.com/audio/mode-switch-video.mp3"
+    },
+    {
+      "title": "Game: Match Button Press to Mode",
+      "content": "<div class='card'>🎮 How many button presses to reach this mode?</div>\n<ul>\n  <li>Start: mode = 0 (OFF)</li>\n  <li>Press → ?</li>\n</ul>\n<pre><code>Press 1 → AUTO\nPress 2 → MANUAL\nPress 3 → OFF again</code></pre>\n<div class='card'>🎯 Mode = (mode + 1) % 3</div>\n<ul>\n  <li><button class='gaming-btn'>Right Logic!</button></li>\n</ul>",
+      "image": "https://i.imgur.com/Z5PSINe.png",
+      "audio": "https://example.com/audio/mode-game.mp3"
+    },
+    {
+      "title": "Creative: Design Your Own Multi-Mode System",
+      "content": "<div class='card'>🏗️ Challenge:</div>\n<ul>\n  <li>Build a 4-mode light system:</li>\n  <li>0 = OFF</li>\n  <li>1 = Nightlight</li>\n  <li>2 = Flash mode</li>\n  <li>3 = Sound reactive</li>\n</ul>\n<div class='card'>🎛️ Use one button. Show current mode with LEDs.</div>\n<div class='card'>Write your logic plan. Use <code>switch()</code> and <code>millis()</code> if needed.</div>",
+      "image": "https://i.imgur.com/TDUQVCF.png",
+      "audio": "https://example.com/audio/mode-challenge.mp3"
+    }
+  ]
+}
+,{
+  "title": "Smart Loops: Using Loops to Do More Than Just Repeat",
+  "lessons": [
+    {
+      "title": "Loops That Actually Do Things",
+      "content": "<div class='card'>🌀 Arduino gives you 3 loop types:</div>\n<ul>\n  <li><b>for</b>: Counted loops → do X, N times</li>\n  <li><b>while</b>: Wait till something becomes true</li>\n  <li><b>do...while</b>: Always run once, then keep going if needed</li>\n</ul>\n<pre><code>// Blink LED 5 times\nfor (int i = 0; i &lt; 5; i++) {\n  digitalWrite(LED, HIGH);\n  delay(500);\n  digitalWrite(LED, LOW);\n  delay(500);\n}</code></pre>\n<div class='card'>💡 You can do fades, sequences, animations, effects!</div>",
+      "image": "https://i.imgur.com/Ev62BeY.png",
+      "audio": "https://example.com/audio/smart-loops-intro.mp3"
+    },
+    {
+      "title": "Using while() to Pause Until a Condition",
+      "content": "<div class='card'>Let’s wait until a button is pressed:</div>\n<pre><code>while (digitalRead(buttonPin) == HIGH) {\n  // Do nothing\n}</code></pre>\n<div class='card'>🚦 Sketch pauses here until the condition becomes false.</div>\n<div class='card'>You can use this to:</div>\n<ul>\n  <li>Wait for user interaction</li>\n  <li>Delay logic until sensor triggers</li>\n  <li>Hold an effect until reset</li>\n</ul>",
+      "image": "https://i.imgur.com/DmOqFRz.png",
+      "audio": "https://example.com/audio/while-loop-usage.mp3"
+    },
+    {
+      "title": "Watch: LED Effects and Loops in Action",
+      "content": "<div class='card'>🎥 In this project, we:</div>\n<ul>\n  <li>Make 3 LEDs animate in sequence</li>\n  <li>Use `for` for chasing effect</li>\n  <li>Use `while` to pause on a button</li>\n  <li>Use `do...while` to guarantee 1 flash</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/dBRB4ZWm1fE' title='Smart Loop Effects with Arduino' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/dBRB4ZWm1fE/0.jpg",
+      "audio": "https://example.com/audio/video-loop-effects.mp3"
+    },
+    {
+      "title": "Game: Choose the Right Loop",
+      "content": "<div class='card'>🎮 Match the goal to the loop:</div>\n<ul>\n  <li><b>Blink LED 10 times</b> → <button class='gaming-btn'>for</button></li>\n  <li><b>Wait until button press</b> → <button class='gaming-btn'>while</button></li>\n  <li><b>Play a tone at least once</b> → <button class='gaming-btn'>do...while</button></li>\n</ul>\n<div class='card'>🧠 You’ve now weaponized your repetition logic.</div>",
+      "image": "https://i.imgur.com/LC1lwG3.png",
+      "audio": "https://example.com/audio/game-loop-match.mp3"
+    },
+    {
+      "title": "Creative: Build a Sequence-Based Light Show",
+      "content": "<div class='card'>🛠️ Challenge:</div>\n<ul>\n  <li>Use 4 LEDs</li>\n  <li>Use <code>for</code> to create a forward-backward chasing effect</li>\n  <li>Use <code>while</code> to pause the animation until LDR &lt; 300</li>\n</ul>\n<pre><code>// Idea starter\nfor (int i = 0; i &lt; 4; i++) {\n  digitalWrite(leds[i], HIGH);\n  delay(200);\n  digitalWrite(leds[i], LOW);\n}</code></pre>\n<div class='card'>💡 Your project just learned how to <b>dance</b>.</div>",
+      "image": "https://i.imgur.com/TK4cKAT.png",
+      "audio": "https://example.com/audio/creative-lightshow.mp3"
+    }
+  ]
+},
+{
+  "title": "Condition Trees: Writing Nested Ifs and Smarter Decisions",
+  "lessons": [
+    {
+      "title": "What’s a Condition Tree?",
+      "content": "<div class='card'>🌳 A condition tree is a logic chain that checks one thing → then checks another → then acts.</div>\n<pre><code>if (night) {\n  if (motionDetected) {\n    turnLightOn();\n  } else {\n    turnLightOff();\n  }\n} else {\n  ignoreMotion();\n}</code></pre>\n<div class='card'>🧠 Each decision leads to the next branch — like a tree!</div>",
+      "image": "https://i.imgur.com/gnUVS6X.png",
+      "audio": "https://example.com/audio/condition-tree-intro.mp3"
+    },
+    {
+      "title": "Using else if for Multiple Paths",
+      "content": "<div class='card'>Want to handle 3 or more possibilities?</div>\n<pre><code>if (temp &gt; 40) {\n  turnFanHigh();\n} else if (temp &gt; 30) {\n  turnFanMedium();\n} else {\n  turnFanLow();\n}</code></pre>\n<div class='card'>🎛️ Use <code>else if</code> to make clean, readable choices — like menus in a machine.</div>",
+      "image": "https://i.imgur.com/6eqOdqy.png",
+      "audio": "https://example.com/audio/else-if-explained.mp3"
+    },
+    {
+      "title": "Watch: Condition Tree with Sensor + Button",
+      "content": "<div class='card'>🎥 See how to:</div>\n<ul>\n  <li>Combine light sensor (LDR)</li>\n  <li>Motion sensor (PIR)</li>\n  <li>Manual override button</li>\n</ul>\n<div class='card'>Then build this logic:</div>\n<pre><code>if (isNight) {\n  if (motion) turnOn(); else turnOff();\n} else if (manualMode) {\n  forceLightOn();\n} else {\n  doNothing();\n}</code></pre>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/iqZ7XZMEwZk' title='Building Smart If Trees - Arduino Tutorial' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/iqZ7XZMEwZk/0.jpg",
+      "audio": "https://example.com/audio/condition-tree-video.mp3"
+    },
+    {
+      "title": "Game: Build the Logic Tree",
+      "content": "<div class='card'>🎮 Match this behavior to the right structure:</div>\n<ul>\n  <li>Night + Motion = ON</li>\n  <li>Day = Do Nothing</li>\n  <li>Button press = Override</li>\n</ul>\n<div class='card'>Which one is correct?</div>\n<ul>\n  <li><button class='gaming-btn'>if (night &amp;&amp; motion) {...}</button></li>\n  <li><button class='gaming-btn'>else if (buttonPressed) {...}</button></li>\n  <li><button class='gaming-btn'>else {...}</button></li>\n</ul>",
+      "image": "https://i.imgur.com/cxgoITR.png",
+      "audio": "https://example.com/audio/game-logic-tree.mp3"
+    },
+    {
+      "title": "Creative: Design a 5-Level Smart Decision System",
+      "content": "<div class='card'>🛠️ Challenge:</div>\n<ul>\n  <li>LDR: Night detection</li>\n  <li>PIR: Motion detection</li>\n  <li>Temp sensor</li>\n  <li>Button: Manual override</li>\n  <li>Switch: Maintenance Mode</li>\n</ul>\n<div class='card'>🎯 Plan your condition tree and sketch:</div>\n<pre><code>// Example path:\nif (manualMode) {\n  ...\n} else if (maintenance) {\n  ...\n} else if (isNight &amp;&amp; motion &amp;&amp; temp &gt; 30) {\n  ...\n}</code></pre>",
+      "image": "https://i.imgur.com/kmeZW6X.png",
+      "audio": "https://example.com/audio/creative-condition-tree.mp3"
+    }
+  ]
+}
+,{
+  "title": "Smart Output Control: Fade, Pulse, Toggle, Timed Output",
+  "lessons": [
+    {
+      "title": "Making Your Outputs Behave Smartly",
+      "content": "<div class='card'>💡 Arduino isn’t just about ON/OFF. It can:</div>\n<ul>\n  <li>✨ Fade lights</li>\n  <li>🔔 Pulse buzzers</li>\n  <li>🕹️ Toggle states</li>\n  <li>⏱️ Turn ON for 5s, then OFF</li>\n</ul>\n<div class='card'>Let’s turn you from output-user to output-artist 🎨</div>",
+      "image": "https://i.imgur.com/F4kU8JP.png",
+      "audio": "https://example.com/audio/output-intro.mp3"
+    },
+    {
+      "title": "Fading with analogWrite(): Smooth Control",
+      "content": "<div class='card'>🎛️ Use PWM pins to fade:</div>\n<pre><code>for (int brightness = 0; brightness &lt;= 255; brightness++) {\n  analogWrite(ledPin, brightness);\n  delay(10);\n}</code></pre>\n<div class='card'>This smoothly increases LED brightness. Reverse it to fade out.</div>\n<ul>\n  <li>Pin must support PWM (~ symbol)</li>\n  <li>Use <code>analogWrite()</code> from 0 (OFF) to 255 (FULL)</li>\n</ul>",
+      "image": "https://i.imgur.com/XFuOfh1.png",
+      "audio": "https://example.com/audio/fade-analogwrite.mp3"
+    },
+    {
+      "title": "Timed Pulse Effects with millis()",
+      "content": "<div class='card'>Let’s create a buzzer that:</div>\n<ul>\n  <li>Turns ON for 200ms</li>\n  <li>OFF for 200ms</li>\n  <li>Repeats for 5s</li>\n</ul>\n<pre><code>if (millis() - lastPulse &gt; 200) {\n  toggleBuzzer();\n  lastPulse = millis();\n}</code></pre>\n<div class='card'>⏱️ Combine this with a 5s overall timer for full control.</div>",
+      "image": "https://i.imgur.com/CLgDyz1.png",
+      "audio": "https://example.com/audio/millis-pulse.mp3"
+    },
+    {
+      "title": "Watch: Smart Alarm Output - Fade + Pulse + Timeout",
+      "content": "<div class='card'>🎥 Watch this system:</div>\n<ul>\n  <li>Motion detected</li>\n  <li>LED fades in-out</li>\n  <li>Buzzer pulses</li>\n  <li>After 5s → system resets</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/fHU4rIxKh5o' title='Arduino Smart Alarm Output Demo' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/fHU4rIxKh5o/0.jpg",
+      "audio": "https://example.com/audio/video-smartoutput.mp3"
+    },
+    {
+      "title": "Game: Build a Fading LED + Timer Output",
+      "content": "<div class='card'>🎮 Assemble the logic:</div>\n<ul>\n  <li><button class='gaming-btn'>analogWrite()</button> for brightness</li>\n  <li><button class='gaming-btn'>millis() - startTime</button> for timer</li>\n  <li><button class='gaming-btn'>state = !state</button> for toggle</li>\n</ul>\n<div class='card'>You’re learning how to make machines feel alive 🤖💡</div>",
+      "image": "https://i.imgur.com/LNpoTu0.png",
+      "audio": "https://example.com/audio/game-output.mp3"
+    },
+    {
+      "title": "Creative: Simulate a Real Machine’s Feedback",
+      "content": "<div class='card'>🔧 Design a system that:</div>\n<ul>\n  <li>Fades a light when charging</li>\n  <li>Pulses a buzzer every 1s while waiting</li>\n  <li>Plays a 3-pulse “done” tone when finished</li>\n</ul>\n<div class='card'>Can you coordinate all this with millis(), analogWrite(), and state?</div>",
+      "image": "https://i.imgur.com/6AvP5Dl.png",
+      "audio": "https://example.com/audio/creative-smartoutput.mp3"
+    }
+  ]
+}
+,{
+  "title": "Making Arduino Wait and Listen: Flags, State Control, Event Waiting",
+  "lessons": [
+    {
+      "title": "Why delay() Is Not Enough",
+      "content": "<div class='card'>⏸️ delay() freezes the entire brain of Arduino.</div>\n<div class='card'>Real devices need to <b>wait without blocking</b>.</div>\n<ul>\n  <li>👂 Wait for motion</li>\n  <li>🛑 Don’t freeze other tasks</li>\n  <li>✅ Only act when something happens</li>\n</ul>\n<div class='card'>That’s where <b>flags</b> and <b>state control</b> come in.</div>",
+      "image": "https://i.imgur.com/VJrliFs.png",
+      "audio": "https://example.com/audio/waiting-why-flags.mp3"
+    },
+    {
+      "title": "Using Flags: Your First State Machine",
+      "content": "<div class='card'>🏷️ A flag is a boolean:</div>\n<pre><code>bool lightOn = false;</code></pre>\n<div class='card'>When motion is detected:</div>\n<pre><code>if (motionDetected &amp;&amp; !lightOn) {\n  digitalWrite(LED, HIGH);\n  lightOn = true;\n}</code></pre>\n<div class='card'>When button is pressed:</div>\n<pre><code>if (digitalRead(button) == LOW) {\n  digitalWrite(LED, LOW);\n  lightOn = false;\n}</code></pre>\n<div class='card'>🎯 Now Arduino knows what state it's in. It waits smartly.</div>",
+      "image": "https://i.imgur.com/uxdtVRu.png",
+      "audio": "https://example.com/audio/flag-example.mp3"
+    },
+    {
+      "title": "Watch: Event-Based Control Demo - Motion + Button Reset",
+      "content": "<div class='card'>🎥 Real example:</div>\n<ul>\n  <li>Motion sensor turns ON LED</li>\n  <li>LED stays ON until button is pressed</li>\n  <li>No delay()</li>\n  <li>Just smart event control</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/xHXXntEkgOY' title='Arduino Wait For Event with Flags and State' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/xHXXntEkgOY/0.jpg",
+      "audio": "https://example.com/audio/video-wait-listen.mp3"
+    },
+    {
+      "title": "Game: Fix the Bad Logic (Replace delay with Flag)",
+      "content": "<div class='card'>🎮 Can you fix this bad code?</div>\n<pre><code>if (motion) {\n  digitalWrite(LED, HIGH);\n  delay(5000);\n  digitalWrite(LED, LOW);\n}</code></pre>\n<div class='card'>🛑 This blocks everything for 5s!</div>\n<div class='card'>✅ Replace with:</div>\n<ul>\n  <li><button class='gaming-btn'>flag + millis()</button></li>\n  <li><button class='gaming-btn'>check condition every loop()</button></li>\n</ul>",
+      "image": "https://i.imgur.com/mF6fpNp.png",
+      "audio": "https://example.com/audio/game-flag-fix.mp3"
+    },
+    {
+      "title": "Creative: Design an Event-Driven Door System",
+      "content": "<div class='card'>🔧 System Goals:</div>\n<ul>\n  <li>IR sensor detects hand → Unlocks door (LED ON)</li>\n  <li>Stays unlocked until button is pressed</li>\n  <li>Then resets and waits again</li>\n</ul>\n<div class='card'>🎯 Plan your logic with flags:</div>\n<ul>\n  <li><code>bool unlocked = false;</code></li>\n  <li>Use <code>if</code> blocks to manage transitions</li>\n</ul>\n<pre><code>if (irDetected &amp;&amp; !unlocked) {...}\nif (buttonPressed &amp;&amp; unlocked) {...}</code></pre>",
+      "image": "https://i.imgur.com/GLGnRIT.png",
+      "audio": "https://example.com/audio/creative-door-flag.mp3"
+    }
+  ]
+}
+,{
+  "title": "Smart Serial Debugging: Catching Bugs Like Sherlock",
+  "lessons": [
+    {
+      "title": "Why Serial Debugging Matters",
+      "content": "<div class='card'>🤯 Arduino has no screen.</div>\n<div class='card'>So when things go wrong... it’s silent.</div>\n<div class='card'>🔎 Serial is your voice. It shows:</div>\n<ul>\n  <li>What values you’re reading</li>\n  <li>Which code paths are being followed</li>\n  <li>When functions are called</li>\n</ul>\n<pre><code>Serial.print(\"Temp: \");\nSerial.println(tempValue);</code></pre>\n<div class='card'>🧠 This tells you: Is your sensor even working?</div>",
+      "image": "https://i.imgur.com/0Y8PeaY.png",
+      "audio": "https://example.com/audio/serial-debug-intro.mp3"
+    },
+    {
+      "title": "Debugging a Fan Not Turning On",
+      "content": "<div class='card'>🛠️ Your code:</div>\n<pre><code>if (temp &gt; 30) {\n  digitalWrite(fanPin, HIGH);\n}</code></pre>\n<div class='card'>🧪 Add:</div>\n<pre><code>Serial.print(\"Temp: \");\nSerial.println(temp);\nSerial.print(\"Fan State: \");\nSerial.println(digitalRead(fanPin));</code></pre>\n<div class='card'>Now you’ll know:</div>\n<ul>\n  <li>What temp value is being read</li>\n  <li>Whether the fan pin was activated</li>\n</ul>",
+      "image": "https://i.imgur.com/Q0NdrkA.png",
+      "audio": "https://example.com/audio/fan-debug.mp3"
+    },
+    {
+      "title": "Watch: Sherlock-Style Debugging on Arduino",
+      "content": "<div class='card'>🎥 Watch this:</div>\n<ul>\n  <li>Sensor isn’t working?</li>\n  <li>Flag not flipping?</li>\n  <li>Code not running?</li>\n</ul>\n<div class='card'>Use Serial like a detective uses clues.</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/6KMqPQuZ-Gk' title='Serial Debugging Like a Pro - Arduino Tutorial' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/6KMqPQuZ-Gk/0.jpg",
+      "audio": "https://example.com/audio/video-serial-debug.mp3"
+    },
+    {
+      "title": "Game: Fix the Broken Logic with Serial Clues",
+      "content": "<div class='card'>🎮 Challenge:</div>\n<p>Your motor isn’t running. What do you check?</p>\n<ul>\n  <li><button class='gaming-btn'>Print motorPin value</button></li>\n  <li><button class='gaming-btn'>Print logic variables</button></li>\n  <li><button class='gaming-btn'>Print sensor input</button></li>\n</ul>\n<div class='card'>🧠 Serial is how you hear what your Arduino is thinking.</div>",
+      "image": "https://i.imgur.com/wXTwGaf.png",
+      "audio": "https://example.com/audio/serial-game.mp3"
+    },
+    {
+      "title": "Creative: Make a Serial Log Like a Story",
+      "content": "<div class='card'>🧠 Try this advanced logging technique:</div>\n<pre><code>Serial.println(\"--- SYSTEM STARTING ---\");\nSerial.print(\"Temp: \"); Serial.println(temp);\nSerial.print(\"Motion: \"); Serial.println(motion);\nSerial.println(\"Checking Conditions...\");\n\nif (temp &gt; 30 &amp;&amp; motion) {\n  Serial.println(\"Fan ON: Hot and Moving\");\n}</code></pre>\n<div class='card'>💬 Now your serial log <b>reads like a story</b> — and tells you everything.</div>",
+      "image": "https://i.imgur.com/qJm6jIb.png",
+      "audio": "https://example.com/audio/serial-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Reusable Code: Functions, Clean Structure, and Modular Thinking",
+  "lessons": [
+    {
+      "title": "Why Functions Matter",
+      "content": "<div class='card'>🤯 Writing everything inside <code>loop()</code> leads to spaghetti code.</div>\n<div class='card'>🎯 Functions help you:</div>\n<ul>\n  <li>🧱 Organize logic into blocks</li>\n  <li>🔁 Reuse actions easily</li>\n  <li>🧹 Keep code clean and readable</li>\n</ul>\n<pre><code>void blinkLED(int pin, int delayTime) {\n  digitalWrite(pin, HIGH);\n  delay(delayTime);\n  digitalWrite(pin, LOW);\n  delay(delayTime);\n}</code></pre>",
+      "image": "https://i.imgur.com/HXDU7ID.png",
+      "audio": "https://example.com/audio/functions-intro.mp3"
+    },
+    {
+      "title": "Building a Clean Program Structure",
+      "content": "<div class='card'>🎯 Structure your sketch like this:</div>\n<pre><code>void setup() {\n  // Setup code\n}\n\nvoid loop() {\n  int temp = readTemperature();\n  controlFan(temp);\n  logStatus(temp);\n}\n\nint readTemperature() {\n  // return temp from sensor\n}\n\nvoid controlFan(int temp) {\n  // control logic\n}</code></pre>\n<div class='card'>🧠 This is readable. Reusable. Elegant.</div>",
+      "image": "https://i.imgur.com/ZKLFU5Y.png",
+      "audio": "https://example.com/audio/clean-structure.mp3"
+    },
+    {
+      "title": "Watch: How to Write Modular Arduino Code",
+      "content": "<div class='card'>🎥 Watch this sketch evolve:</div>\n<ul>\n  <li>Starts messy</li>\n  <li>Gets cleaned into functions</li>\n  <li>Becomes readable & maintainable</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/6YQAr2iK_jU' title='Modular Arduino Code Explained' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/6YQAr2iK_jU/0.jpg",
+      "audio": "https://example.com/audio/video-modular-code.mp3"
+    },
+    {
+      "title": "Game: Split the Code Into Functions",
+      "content": "<div class='card'>🎮 Which part should be a function?</div>\n<pre><code>digitalWrite(pin, HIGH);\ndelay(500);\ndigitalWrite(pin, LOW);\ndelay(500);</code></pre>\n<ul>\n  <li><button class='gaming-btn'>Yes → make blinkLED()</button></li>\n  <li><button class='gaming-btn'>No → leave as-is</button></li>\n</ul>\n<div class='card'>✨ Learn to refactor like a pro.</div>",
+      "image": "https://i.imgur.com/Bp1WXMp.png",
+      "audio": "https://example.com/audio/game-refactor.mp3"
+    },
+    {
+      "title": "Creative: Design a Mini Framework for Smart Devices",
+      "content": "<div class='card'>🛠️ Imagine:</div>\n<ul>\n  <li><code>readSensor()</code></li>\n  <li><code>processData()</code></li>\n  <li><code>actuateOutput()</code></li>\n  <li><code>logData()</code></li>\n</ul>\n<pre><code>loop() {\n  float light = readSensor();\n  String status = processData(light);\n  actuateOutput(status);\n  logData(light, status);\n}</code></pre>\n<div class='card'>🔥 This is how scalable systems are born.</div>",
+      "image": "https://i.imgur.com/W8V6sHL.png",
+      "audio": "https://example.com/audio/creative-functions.mp3"
+    }
+  ]
+},{
+  "title": "Handling Inputs Like a Pro: Debouncing, State Change, Edge Detection",
+  "lessons": [
+    {
+      "title": "Why Button Presses Aren’t Simple",
+      "content": "<div class='card'>🧐 A button is noisy.</div>\n<div class='card'>When you press it, it doesn't just go LOW. It bounces on/off like crazy:</div>\n<img src='https://i.imgur.com/jyW8sPN.png' style='width:100%;'>\n<div class='card'>That’s called <b>bouncing</b>. If you don’t fix it, your code may read 5 presses when you did only 1!</div>",
+      "image": "https://i.imgur.com/jyW8sPN.png",
+      "audio": "https://example.com/audio/debounce-why.mp3"
+    },
+    {
+      "title": "Debouncing Using millis(): Clean Input",
+      "content": "<div class='card'>🛠️ Use this structure:</div>\n<pre><code>if (buttonPressed) {\n  if (millis() - lastPressTime &gt; 200) {\n    toggleLED();\n    lastPressTime = millis();\n  }\n}</code></pre>\n<div class='card'>⏱️ This gives a 200ms “cooldown” after each press. Prevents bounce glitches.</div>",
+      "image": "https://i.imgur.com/ZFQbK41.png",
+      "audio": "https://example.com/audio/debounce-code.mp3"
+    },
+    {
+      "title": "Edge Detection: Reacting Only to Press-Down",
+      "content": "<div class='card'>🏁 This is what pros do:</div>\n<pre><code>if (currState == LOW &amp;&amp; lastState == HIGH) {\n  // Just pressed\n  toggleLED();\n}</code></pre>\n<pre><code>lastState = currState;</code></pre>\n<div class='card'>This checks for <b>edge change</b> — LOW only when it just changed from HIGH → LOW</div>",
+      "image": "https://i.imgur.com/NLoSh3K.png",
+      "audio": "https://example.com/audio/edge-detect.mp3"
+    },
+    {
+      "title": "Watch: Debounce + Edge Detection Real Demo",
+      "content": "<div class='card'>🎥 This shows:</div>\n<ul>\n  <li>Button bounce glitch in action</li>\n  <li>Using millis() to debounce</li>\n  <li>Detecting press-only transitions</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/oW-dl7N43OI' title='Debounce and Edge Detection on Arduino' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/oW-dl7N43OI/0.jpg",
+      "audio": "https://example.com/audio/debounce-video.mp3"
+    },
+    {
+      "title": "Game: Choose the Right Logic for Toggle Switch",
+      "content": "<div class='card'>🎮 When button is pressed:</div>\n<ul>\n  <li>🔁 If logic is wrong, LED keeps blinking</li>\n  <li>✅ If right, LED toggles once</li>\n</ul>\n<div class='card'>Pick the best one:</div>\n<ul>\n  <li><button class='gaming-btn'>if (digitalRead(btn) == LOW)</button></li>\n  <li><button class='gaming-btn'>if (curr == LOW &amp;&amp; last == HIGH)</button></li>\n  <li><button class='gaming-btn'>delay(100); toggle();</button></li>\n</ul>",
+      "image": "https://i.imgur.com/Hak1g3Y.png",
+      "audio": "https://example.com/audio/game-debounce.mp3"
+    },
+    {
+      "title": "Creative: Build a Debounced Control Panel",
+      "content": "<div class='card'>🛠️ Challenge:</div>\n<ul>\n  <li>Button A = Toggle LED</li>\n  <li>Button B = Start Timer (Only once!)</li>\n  <li>Button C = Reset Everything</li>\n</ul>\n<div class='card'>🎯 All inputs must be edge-detected and debounced!</div>",
+      "image": "https://i.imgur.com/B3hzDVP.png",
+      "audio": "https://example.com/audio/creative-debounce.mp3"
+    }
+  ]
+}
+,{
+  "title": "Using State Machines to Handle Complex Behavior",
+  "lessons": [
+    {
+      "title": "Why State Machines?",
+      "content": "<div class='card'>❓ Ever had to switch between 3+ modes in Arduino?</div>\n<div class='card'>If you use <code>if</code> for everything, it becomes messy fast.</div>\n<pre><code>if (mode == 1) {...}\nelse if (mode == 2) {...}\nelse if (mode == 3) {...}</code></pre>\n<div class='card'>🎯 A <b>state machine</b> is a cleaner way to manage multi-step logic:</div>\n<ul>\n  <li>🏁 One active state</li>\n  <li>🎛️ Transitions based on events</li>\n  <li>🧠 Clear logic separation</li>\n</ul>",
+      "image": "https://i.imgur.com/BjSPiER.png",
+      "audio": "https://example.com/audio/why-state-machine.mp3"
+    },
+    {
+      "title": "Basic State Machine Structure in Arduino",
+      "content": "<div class='card'>🎯 Example:</div>\n<pre><code>int state = 0;\n\nvoid loop() {\n  switch (state) {\n    case 0:\n      // Idle\n      if (buttonPressed) state = 1;\n      break;\n    case 1:\n      // Move\n      if (distance &lt; 10) state = 2;\n      break;\n    case 2:\n      // Stop + Alarm\n      break;\n  }\n}</code></pre>\n<div class='card'>🧠 Now your robot behaves like a flowchart.</div>",
+      "image": "https://i.imgur.com/WSKNLJ2.png",
+      "audio": "https://example.com/audio/basic-state-arduino.mp3"
+    },
+    {
+      "title": "Watch: State Machine in Action (Traffic Light Example)",
+      "content": "<div class='card'>🎥 See how this traffic light switches states:</div>\n<ul>\n  <li>Green → Yellow → Red → Green...</li>\n  <li>Each state lasts for fixed time</li>\n  <li>All cleanly managed with <code>switch()</code></li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/EJblzV78bp0' title='State Machines on Arduino: Traffic Light Demo' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/EJblzV78bp0/0.jpg",
+      "audio": "https://example.com/audio/video-state-machine.mp3"
+    },
+    {
+      "title": "Game: Fix This Broken State Flow",
+      "content": "<div class='card'>🎮 Challenge:</div>\n<p>This state machine gets stuck after 1st state. Fix it!</p>\n<pre><code>switch (state) {\n  case 0:\n    if (button) state = 1;\n    break;\n  case 1:\n    Serial.println(\"Hello\");\n    // state = ??? missing\n    break;\n}</code></pre>\n<ul>\n  <li><button class='gaming-btn'>Add: state = 0</button></li>\n  <li><button class='gaming-btn'>Add: break</button></li>\n  <li><button class='gaming-btn'>Add: state++</button></li>\n</ul>",
+      "image": "https://i.imgur.com/yx6mf7c.png",
+      "audio": "https://example.com/audio/game-statefix.mp3"
+    },
+    {
+      "title": "Creative: Design a 4-Mode Robot Brain",
+      "content": "<div class='card'>🛠️ Your robot has:</div>\n<ul>\n  <li>Idle Mode</li>\n  <li>Move Forward</li>\n  <li>Obstacle Avoid</li>\n  <li>Dance Mode</li>\n</ul>\n<p>Write a switch-case loop that:</p>\n<ul>\n  <li>Handles each mode separately</li>\n  <li>Switches mode on button press</li>\n</ul>\n<pre><code>case 0: stop(); break;\ncase 1: forward(); break;\ncase 2: avoid(); break;\ncase 3: dance(); break;</code></pre>",
+      "image": "https://i.imgur.com/5zF4Qov.png",
+      "audio": "https://example.com/audio/creative-robot-state.mp3"
+    }
+  ]
+}
+,{
+  "title": "Avoiding Repetition with Functions — DRY Programming in Arduino",
+  "lessons": [
+    {
+      "title": "Why Repetition Kills Code (And Time)",
+      "content": "<div class='card'>🧱 Imagine writing <code>digitalWrite(LED_BUILTIN, HIGH); delay(500); digitalWrite(LED_BUILTIN, LOW); delay(500);</code> ten times in a row...</div>\n<p>Now imagine having to change that timing later. Ten edits. Ten chances to mess up.</p>\n<div class='card'>⚠️ This is how spaghetti code begins — with tiny innocent repetition.</div>\n<p>The solution? Use <b>functions</b> to organize, reuse, and simplify your code.</p>",
+      "image": "https://i.imgur.com/m3Nc1KU.png",
+      "audio": "https://example.com/audio/dr-function-repetition.mp3"
+    },
+    {
+      "title": "Creating Your Own Function (Real Example)",
+      "content": "<div class='card'>Let’s create a <code>blinkLED()</code> function:</div>\n<pre><code>void blinkLED() {\n  digitalWrite(LED_BUILTIN, HIGH);\n  delay(500);\n  digitalWrite(LED_BUILTIN, LOW);\n  delay(500);\n}</code></pre>\n<p>Now use it like this:</p>\n<pre><code>void loop() {\n  blinkLED();\n  blinkLED();\n}</code></pre>\n<div class='card'>🎯 Much cleaner. Much easier to edit or expand later.</div>",
+      "image": "https://i.imgur.com/JCoacQ6.png",
+      "audio": "https://example.com/audio/dr-function-create.mp3"
+    },
+    {
+      "title": "Watch: DRY Coding with Arduino Functions",
+      "content": "<div class='card'>🎥 Watch how to convert messy repeated code into beautiful custom functions:</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/sfEje5vD1Fo' title='Arduino Custom Functions - DRY Code' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/sfEje5vD1Fo/0.jpg",
+      "audio": "https://example.com/audio/dr-function-video.mp3"
+    },
+    {
+      "title": "Game: Spot the Repetition",
+      "content": "<div class='card'>🎮 Which lines should go inside a function?</div>\n<pre><code>digitalWrite(13, HIGH);\ndelay(200);\ndigitalWrite(13, LOW);\ndelay(200);\ndigitalWrite(13, HIGH);\ndelay(200);\ndigitalWrite(13, LOW);\ndelay(200);</code></pre>\n<p>Hint: Anything that repeats more than once should probably be a function!</p>\n<button class='gaming-btn'>Convert to blinkLED()</button>",
+      "image": "https://i.imgur.com/TfZHXia.png",
+      "audio": "https://example.com/audio/dr-function-game.mp3"
+    },
+    {
+      "title": "Creative: DRY Your Real-World Project",
+      "content": "<div class='card'>🛠️ You’re building a robot with multiple sensors and outputs.</div>\n<ul>\n  <li>It checks for distance</li>\n  <li>If too close, it stops and beeps</li>\n  <li>If clear, it moves and flashes LEDs</li>\n</ul>\n<p>Instead of rewriting the same <code>beep()</code> or <code>flash()</code> code everywhere, make it a function!</p>\n<div class='card'>💡 You’ve now unlocked DRY programming — the foundation of pro-grade Arduino coding.</div>",
+      "image": "https://i.imgur.com/lK7xvx3.png",
+      "audio": "https://example.com/audio/dr-function-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Writing Comments Like a Pro — Your Future Self Will Thank You",
+  "lessons": [
+    {
+      "title": "Why Comments Are Power (Future You Will Forget Everything)",
+      "content": "<div class='card'>🧠 Imagine reading your code after 6 months:</div>\n<p><code>digitalWrite(6, HIGH); delay(370);</code></p>\n<p>Do you remember why pin 6? Or why 370ms?</p>\n<p><b>Comments</b> make your code readable and explain your logic to others — or to your future self!</p>\n<pre><code>// Turn on motor for 370ms to complete half rotation\ndigitalWrite(6, HIGH);\ndelay(370);</code></pre>\n<div class='card'>🎯 That one line of comment saves minutes of confusion later.</div>",
+      "image": "https://i.imgur.com/SHZ5hKk.png",
+      "audio": "https://example.com/audio/comments-importance.mp3"
+    },
+    {
+      "title": "Single-Line vs Multi-Line Comments",
+      "content": "<div class='card'>🖊️ Two types of comments in Arduino C++:</div>\n<ul>\n  <li><b>Single-line</b>: <code>// This is one line comment</code></li>\n  <li><b>Multi-line</b>: <code>/* This is a longer comment\nthat spans multiple lines */</code></li>\n</ul>\n<p>Use single-line for quick notes. Use multi-line for section headers or block explanations.</p>",
+      "image": "https://i.imgur.com/T5A4ff0.png",
+      "audio": "https://example.com/audio/comments-types.mp3"
+    },
+    {
+      "title": "Watch: Clean Code and Comments in Arduino Projects",
+      "content": "<div class='card'>🎥 This video shows how to make large Arduino projects easier to read using smart comments.</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/YcTrFTaX0cE' title='Writing Good Comments - Arduino Coding Tips' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/YcTrFTaX0cE/0.jpg",
+      "audio": "https://example.com/audio/comments-video.mp3"
+    },
+    {
+      "title": "Game: Match the Code to the Right Comment",
+      "content": "<div class='card'>🎮 What’s the most helpful comment here?</div>\n<pre><code>for (int i = 0; i < 3; i++) {\n  digitalWrite(ledPin, HIGH);\n  delay(300);\n  digitalWrite(ledPin, LOW);\n  delay(300);\n}</code></pre>\n<ul>\n  <li><button class='gaming-btn'>// Flash LED 3 times</button></li>\n  <li><button class='gaming-btn'>// i is a counter</button></li>\n</ul>\n<div class='card'>✅ Best comment describes what the code achieves, not just what variables mean.</div>",
+      "image": "https://i.imgur.com/bU1QUeY.png",
+      "audio": "https://example.com/audio/comments-game.mp3"
+    },
+    {
+      "title": "Creative: Add Comments to an Old Sketch",
+      "content": "<div class='card'>🛠️ Go back to one of your earlier sketches with no comments.</div>\n<p>Ask yourself:</p>\n<ul>\n  <li>What is this code supposed to do?</li>\n  <li>What are the tricky or important parts?</li>\n  <li>Can I group things with comment headings?</li>\n</ul>\n<p>Clean, commented code = professional code.</p>\n<div class='card'>🧼 Just like clean hardware wiring, your code should look neat and make sense to humans too.</div>",
+      "image": "https://i.imgur.com/oEzWZMk.png",
+      "audio": "https://example.com/audio/comments-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Naming Like a Pro — Variables, Functions, Pins, and Everything",
+  "lessons": [
+    {
+      "title": "Why Good Names Matter (More Than You Think)",
+      "content": "<div class='card'>👀 Code is read more often than it's written.</div>\n<p>If your variable is called <code>x</code>, no one (not even future-you) will know what it stores.</p>\n<pre><code>int ms = 30; // What does 'ms' mean?</code></pre>\n<p>But this is better:</p>\n<pre><code>int motorSpeed = 30;</code></pre>\n<div class='card'>🎯 Good names make debugging faster, logic clearer, and teamwork smoother.</div>",
+      "image": "https://i.imgur.com/jWxHKaN.png",
+      "audio": "https://example.com/audio/naming-importance.mp3"
+    },
+    {
+      "title": "How to Name Variables and Functions",
+      "content": "<div class='card'>✅ Basic naming rules:</div>\n<ul>\n  <li>Use <b>camelCase</b> like <code>motorSpeed</code></li>\n  <li>Use <b>verbs for functions</b> like <code>blinkLED()</code> or <code>readSensor()</code></li>\n  <li>Use <b>nouns for variables</b> like <code>temperature</code> or <code>ledPin</code></li>\n  <li>Avoid <code>x, y, z, a1, b2</code> unless you're plotting graphs or math</li>\n</ul>\n<p>And always match the name to what it does. No lies!</p>",
+      "image": "https://i.imgur.com/NdG2PSB.png",
+      "audio": "https://example.com/audio/naming-rules.mp3"
+    },
+    {
+      "title": "Watch: Clean Naming Examples from Real Arduino Projects",
+      "content": "<div class='card'>🎥 See how great naming improves understanding and reduces bugs:</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/tMIk2ZYmgJk' title='Arduino Variable Naming Tips' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/tMIk2ZYmgJk/0.jpg",
+      "audio": "https://example.com/audio/naming-video.mp3"
+    },
+    {
+      "title": "Game: Match the Name to the Purpose",
+      "content": "<div class='card'>🎮 Which of these names is best?</div>\n<pre><code>// Controlling a servo angle\nA. int s;\nB. int servo;\nC. int servoAngle;</code></pre>\n<ul>\n  <li><button class='gaming-btn'>A: s</button></li>\n  <li><button class='gaming-btn'>B: servo</button></li>\n  <li><button class='gaming-btn'>C: servoAngle ✅</button></li>\n</ul>\n<p><b>Why?</b> Because it says what it is, and what it stores. 💯</p>",
+      "image": "https://i.imgur.com/UtaAKOm.png",
+      "audio": "https://example.com/audio/naming-game.mp3"
+    },
+    {
+      "title": "Creative: Rename a Messy Sketch",
+      "content": "<div class='card'>🛠️ Take any old Arduino sketch where variables are like <code>x, y, temp1</code>.</div>\n<p>Now:</p>\n<ul>\n  <li>Rename every variable to be self-explanatory</li>\n  <li>Rename functions to use action verbs</li>\n  <li>Group pin variables together at the top</li>\n</ul>\n<p><b>Result:</b> Same sketch. Totally upgraded readability. 🔥</p>",
+      "image": "https://i.imgur.com/nZxK6Ax.png",
+      "audio": "https://example.com/audio/naming-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Return Values — Getting Results Back from Functions Like a Real Programmer",
+  "lessons": [
+    {
+      "title": "What Is a Return Value, and Why It’s Awesome",
+      "content": "<div class='card'>📦 A return value is the result a function gives you back.</div>\n<pre><code>int getTemperature() {\n  int t = analogRead(A0);\n  return t;\n}</code></pre>\n<p>Now you can call <code>getTemperature()</code> anywhere and get the latest reading.</p>\n<pre><code>int temp = getTemperature();</code></pre>\n<div class='card'>🎯 Return values = reusable, clean, powerful code.</div>",
+      "image": "https://i.imgur.com/2XBKmYB.png",
+      "audio": "https://example.com/audio/return-value-intro.mp3"
+    },
+    {
+      "title": "Creating a Function with a Return Type",
+      "content": "<div class='card'>🧱 The format:</div>\n<pre><code>[type] functionName() {\n  return something;\n}</code></pre>\n<p>Examples:</p>\n<pre><code>bool isObstacleDetected() {\n  return digitalRead(2) == LOW;\n}</code></pre>\n<pre><code>float getVoltage() {\n  return analogRead(A1) * (5.0 / 1023.0);\n}</code></pre>\n<p><b>Use:</b></p>\n<pre><code>if (isObstacleDetected()) {\n  stopMotor();\n}</code></pre>",
+      "image": "https://i.imgur.com/wEElW8e.png",
+      "audio": "https://example.com/audio/return-value-structure.mp3"
+    },
+    {
+      "title": "Watch: Functions That Return Values",
+      "content": "<div class='card'>🎥 Watch how pro Arduino users build sensor-reading functions with returns:</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/lFtqGC0rGPM' title='Arduino Return Values Tutorial' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/lFtqGC0rGPM/0.jpg",
+      "audio": "https://example.com/audio/return-value-video.mp3"
+    },
+    {
+      "title": "Game: Return or Void?",
+      "content": "<div class='card'>🎮 Does this function return a value?</div>\n<pre><code>void blinkLED() {\n  digitalWrite(13, HIGH);\n  delay(200);\n  digitalWrite(13, LOW);\n  delay(200);\n}</code></pre>\n<ul>\n  <li><button class='gaming-btn'>❌ No, it's void — it just performs an action</button></li>\n</ul>\n<pre><code>int readLight() {\n  return analogRead(A3);\n}</code></pre>\n<ul>\n  <li><button class='gaming-btn'>✅ Yes, this one returns an int</button></li>\n</ul>",
+      "image": "https://i.imgur.com/Wlre3Ry.png",
+      "audio": "https://example.com/audio/return-value-game.mp3"
+    },
+    {
+      "title": "Creative: Build a Smart Sensor Reader",
+      "content": "<div class='card'>🛠️ Let’s say you have:</div>\n<ul>\n  <li>IR Sensor</li>\n  <li>Ultrasonic Sensor</li>\n  <li>Temperature Sensor</li>\n</ul>\n<p>Write a function for each that returns:</p>\n<pre><code>bool isNearWall()\nint getTemperatureC()\nfloat measureDistance()</code></pre>\n<p>Now you can plug these into logic like:</p>\n<pre><code>if (isNearWall() && getTemperatureC() &gt; 30) {\n  stopMotor();\n}</code></pre>\n<p>🎯 Real programs need real data. Return values make it elegant and powerful.</p>",
+      "image": "https://i.imgur.com/jEpmtzO.png",
+      "audio": "https://example.com/audio/return-value-creative.mp3"
+    }
+  ]
+},{
+  "title": "Parameters — Giving Your Functions Superpowers",
+  "lessons": [
+    {
+      "title": "What Are Parameters? Why They Matter",
+      "content": "<div class='card'>🎯 Parameters let you control what a function does — from the outside.</div>\n<pre><code>void blinkLED(int delayTime) {\n  digitalWrite(LED_BUILTIN, HIGH);\n  delay(delayTime);\n  digitalWrite(LED_BUILTIN, LOW);\n  delay(delayTime);\n}</code></pre>\n<p>Now you can do:</p>\n<pre><code>blinkLED(100); // fast\nblinkLED(1000); // slow</code></pre>\n<p><b>One function, infinite uses.</b></p>",
+      "image": "https://i.imgur.com/srZLlf1.png",
+      "audio": "https://example.com/audio/parameters-intro.mp3"
+    },
+    {
+      "title": "Declaring and Using Parameters (Syntax Mastery)",
+      "content": "<div class='card'>🔧 Basic format:</div>\n<pre><code>void functionName(type paramName) {\n  // use paramName inside here\n}</code></pre>\n<p>Examples:</p>\n<ul>\n  <li><code>void setSpeed(int motorSpeed)</code></li>\n  <li><code>void showMessage(String message)</code></li>\n  <li><code>void turnOnPin(int pin)</code></li>\n</ul>\n<p>Each time you call the function, you send different data — and the function adapts.</p>",
+      "image": "https://i.imgur.com/MR4m3pa.png",
+      "audio": "https://example.com/audio/parameters-syntax.mp3"
+    },
+    {
+      "title": "Watch: Arduino Parameters Explained With Examples",
+      "content": "<div class='card'>🎥 This video shows how to pass values into functions like a pro:</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/OQmJbq9RMvE' title='Arduino Function Parameters' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/OQmJbq9RMvE/0.jpg",
+      "audio": "https://example.com/audio/parameters-video.mp3"
+    },
+    {
+      "title": "Game: Customize the Blink Function",
+      "content": "<div class='card'>🎮 Add parameters to this function:</div>\n<pre><code>void blink() {\n  digitalWrite(13, HIGH);\n  delay(500);\n  digitalWrite(13, LOW);\n  delay(500);\n}</code></pre>\n<p>Convert it to accept a pin and a delay time!</p>\n<pre><code>void blink(int pin, int delayTime) {\n  digitalWrite(pin, HIGH);\n  delay(delayTime);\n  digitalWrite(pin, LOW);\n  delay(delayTime);\n}</code></pre>\n<div class='card'>✅ Now it works with any pin, any speed!</div>",
+      "image": "https://i.imgur.com/JTbhGNR.png",
+      "audio": "https://example.com/audio/parameters-game.mp3"
+    },
+    {
+      "title": "Creative: Make a Multi-Purpose LED Function",
+      "content": "<div class='card'>🛠️ Build a single LED control function that:</div>\n<ul>\n  <li>Takes a pin</li>\n  <li>How many times to blink</li>\n  <li>How fast to blink</li>\n</ul>\n<p>Signature could look like:</p>\n<pre><code>void blinkLED(int pin, int times, int speed)</code></pre>\n<p>Now you can do:</p>\n<pre><code>blinkLED(12, 5, 100);</code></pre>\n<p>💡 This is how reusable hardware libraries are built.</p>",
+      "image": "https://i.imgur.com/Qr07RIK.png",
+      "audio": "https://example.com/audio/parameters-creative.mp3"
+    }
+  ]
+}
+
+
+
 ]
 }
 
