@@ -13911,6 +13911,124 @@ modules:[
 
 
 ]
+},{
+  title:"Sensor Central: Eyes, Ears & Sixth Senses",
+  modules:[
+    {
+  "title": "Ultrasonic Sensor HC-SR04 – The Echo Explorer",
+  "lessons": [
+    {
+      "title": "What is the HC-SR04 Ultrasonic Sensor?",
+      "content": "<div class='card'>The HC-SR04 is a popular distance measuring sensor. It works like a bat or dolphin — using sound waves to detect objects. It sends a quick ultrasonic burst and listens for the echo. Based on how long the echo takes to come back, it calculates the distance.</div>\n\n<div class='card'>It’s used in robots, obstacle detection, parking systems, water tanks, and more. This sensor can measure distances from about 2 cm to 400 cm with good accuracy. It’s affordable, reliable, and a perfect sensor to begin your journey into the world of electronics.</div>",
+      "image": "https://example.com/hcsr04_intro.png",
+      "audio": "https://example.com/audio/hcsr04_intro.mp3"
+    },
+    {
+      "title": "How the Ultrasonic Sensor Actually Works",
+      "content": "<div class='card'>The HC-SR04 has two main parts: a transmitter (T) and a receiver (R). The transmitter sends out sound waves at 40kHz, which are inaudible to humans. When these waves hit an object, they bounce back and are picked up by the receiver.</div>\n\n<div class='card'>The sensor then measures how long the sound took to return. Since we know the speed of sound (about 343 meters per second), we can calculate the distance using this formula:\n\n<b>Distance (cm) = (Time (µs) / 2) ÷ 29.1</b></div>\n\n<div class='card'>We divide by 2 because the sound travels to the object and back.</div>",
+      "image": "https://example.com/hcsr04_working.png",
+      "audio": "https://example.com/audio/hcsr04_working.mp3"
+    },
+    {
+      "title": "Pin Diagram: Know Your Sensor Legs",
+      "content": "<div class='card'>The HC-SR04 has 4 pins:\n\n- <b>VCC</b> – Connect to 5V\n- <b>TRIG</b> – Trigger pin (input)\n- <b>ECHO</b> – Echo pin (output)\n- <b>GND</b> – Ground</div>\n\n<div class='card'>Be careful when wiring. TRIG and ECHO are not the same. One sends, one receives.\n\nIf you're using a 3.3V microcontroller like ESP32, use a voltage divider on the ECHO line to avoid damaging it — it outputs 5V.</div>",
+      "image": "https://example.com/hcsr04_pinout.png",
+      "audio": "https://example.com/audio/hcsr04_pinout.mp3"
+    },
+    {
+      "title": "Ultrasonic Timing Explained",
+      "content": "<div class='card'>The timing is everything for this sensor.\n\n- You set the TRIG pin HIGH for 10 microseconds.\n- That starts the sound wave.\n- Then, you wait for the ECHO pin to go HIGH.\n- The duration it stays HIGH = time taken for sound to travel to the object and back.</div>\n\n<div class='card'>This is why accurate microsecond delays are used in code. Even a tiny mistake in timing will give wrong distance readings.</div>",
+      "image": "https://example.com/hcsr04_timing.png",
+      "audio": "https://example.com/audio/hcsr04_timing.mp3"
+    },
+    {
+      "title": "The First Minimal Arduino Code",
+      "content": "<div class='card'>Here’s a basic working code:</div>\n\n<div class='card'>\n<pre>\nconst int trigPin = 9;\nconst int echoPin = 10;\n\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(trigPin, OUTPUT);\n  pinMode(echoPin, INPUT);\n}\n\nvoid loop() {\n  digitalWrite(trigPin, LOW);\n  delayMicroseconds(2);\n  digitalWrite(trigPin, HIGH);\n  delayMicroseconds(10);\n  digitalWrite(trigPin, LOW);\n\n  long duration = pulseIn(echoPin, HIGH);\n  int distance = duration * 0.034 / 2;\n  Serial.println(distance);\n  delay(500);\n}\n</pre>\n</div>\n\n<div class='card'>This triggers the sensor, listens for the echo, converts it into centimeters, and prints the result.</div>",
+      "image": "https://example.com/hcsr04_code1.png",
+      "audio": "https://example.com/audio/hcsr04_code1.mp3"
+    },
+    {
+      "title": "Line-by-Line Code Explanation",
+      "content": "<div class='card'>Let’s break down the code:\n\n- <b>pulseIn(echoPin, HIGH)</b> — Measures how long ECHO stays HIGH.\n- <b>distance = duration * 0.034 / 2</b> — Converts time to distance.\n- <b>Serial.println(distance)</b> — Prints the result in cm.</div>\n\n<div class='card'>The number 0.034 comes from the speed of sound (343 m/s = 0.034 cm/µs).</div>",
+      "image": "https://example.com/hcsr04_linebyline.png",
+      "audio": "https://example.com/audio/hcsr04_linebyline.mp3"
+    },
+    {
+      "title": "Understanding pulseIn() Function",
+      "content": "<div class='card'>The <b>pulseIn()</b> function is key. It listens on a pin and returns how long the pulse was HIGH (in microseconds).\n\nYou use this to measure how long the echo took to return. It's built-in and very reliable — no extra libraries needed!</div>",
+      "image": "https://example.com/hcsr04_pulsein.png",
+      "audio": "https://example.com/audio/hcsr04_pulsein.mp3"
+    },
+    {
+      "title": "Accuracy Tips and Limitations",
+      "content": "<div class='card'>Accuracy can be affected by:\n- Angle of the object\n- Air temperature (speed of sound varies)\n- Soft surfaces (like cloth) that absorb sound\n- Power supply noise</div>\n\n<div class='card'>Best practice: Always mount the sensor straight, avoid objects at sharp angles, and test on solid, flat surfaces for calibration.</div>",
+      "image": "https://example.com/hcsr04_accuracy.png",
+      "audio": "https://example.com/audio/hcsr04_accuracy.mp3"
+    },
+    {
+      "title": "Common Problems and Fixes",
+      "content": "<div class='card'>🛠 Getting 0 or very high values?\n\nTry these:\n- Check TRIG and ECHO pins are not swapped\n- Use <b>delayMicroseconds(2)</b> before TRIG HIGH\n- Add a small <b>delay(500)</b> between readings\n- Power it from 5V (not 3.3V)</div>\n\n<div class='card'>Still broken? Try replacing the sensor — they’re cheap, but not very durable.</div>",
+      "image": "https://example.com/hcsr04_troubleshoot.png",
+      "audio": "https://example.com/audio/hcsr04_troubleshoot.mp3"
+    },
+    {
+      "title": "Understanding the Echo Pulse Width",
+      "content": "<div class='card'>The ECHO pulse width is proportional to distance. So:\n\n- Closer object → short pulse\n- Far object → long pulse\n\nToo long? Arduino will timeout (max around 38ms = 400cm)</div>\n\n<div class='card'>Always make sure to add a timeout in pulseIn like this:\n<code>pulseIn(echoPin, HIGH, 30000);</code>\nTo avoid your code hanging if there's no echo.</div>",
+      "image": "https://example.com/hcsr04_pulsewidth.png",
+      "audio": "https://example.com/audio/hcsr04_pulsewidth.mp3"
+    },
+    {
+      "title": "Using the NewPing Library (Optional)",
+      "content": "<div class='card'>The <b>NewPing</b> library simplifies HC-SR04 usage and adds built-in timeouts and smoothing.</div>\n\n<div class='card'>Install from: Sketch → Include Library → Manage Libraries → Search “NewPing”\n\nSample code:\n<pre>\n#include <NewPing.h>\nNewPing sonar(9, 10, 400);\n\nvoid loop() {\n  Serial.println(sonar.ping_cm());\n  delay(500);\n}\n</pre></div>",
+      "image": "https://example.com/hcsr04_newping.png",
+      "audio": "https://example.com/audio/hcsr04_newping.mp3"
+    },
+    {
+      "title": "Reading the HC-SR04 Datasheet (Simplified)",
+      "content": "<div class='card'>The datasheet says:\n- Operating voltage: 5V\n- Measuring range: 2cm to 400cm\n- Measuring angle: 15°\n- Accuracy: ±3mm</div>\n\n<div class='card'>Always test the real-world accuracy yourself. Use a ruler and compare results for calibration.</div>",
+      "image": "https://example.com/hcsr04_datasheet.png",
+      "audio": "https://example.com/audio/hcsr04_datasheet.mp3"
+    },
+    {
+      "title": "Sensor Variants: Other Ultrasonics",
+      "content": "<div class='card'>The HC-SR04 is common, but not the only one:\n\n- JSN-SR04T: Waterproof version\n- SRF05: Higher accuracy\n- SRF-04: Older model\n\nSome use analog output, others support I2C or serial output.</div>\n\n<div class='card'>Always double-check pinout and logic levels for each variant.</div>",
+      "image": "https://example.com/hcsr04_variants.png",
+      "audio": "https://example.com/audio/hcsr04_variants.mp3"
+    },
+    {
+      "title": "Digital vs Analog Sensors: Which One Is HC-SR04?",
+      "content": "<div class='card'>The HC-SR04 is a digital sensor. It doesn’t give voltage levels — it gives a timed pulse.\n\nYou have to convert that pulse time to a distance using math.</div>\n\n<div class='card'>Analog distance sensors (like Sharp IR) give variable voltage instead. So remember — HC-SR04 is digital.</div>",
+      "image": "https://example.com/hcsr04_digital.png",
+      "audio": "https://example.com/audio/hcsr04_digital.mp3"
+    },
+    {
+      "title": "Internal Circuit: What’s Inside the HC-SR04?",
+      "content": "<div class='card'>Inside the sensor, there’s:\n- A 40kHz oscillator\n- An amplifier for the echo\n- A timing IC\n- Transmitter + Receiver ceramics\n\nIt’s a complete mini sonar system in one compact unit!</div>",
+      "image": "https://example.com/hcsr04_internal.png",
+      "audio": "https://example.com/audio/hcsr04_internal.mp3"
+    },
+    {
+      "title": "Best Practices for Reliable Readings",
+      "content": "<div class='card'>To get the best readings:\n- Keep the sensor level\n- Add delays between readings\n- Avoid heat sources\n- Use averaging for stable output</div>\n\n<div class='card'>You can also reduce noise by using a capacitor (100uF) between VCC and GND.</div>",
+      "image": "https://example.com/hcsr04_bestpractice.png",
+      "audio": "https://example.com/audio/hcsr04_bestpractice.mp3"
+    },
+    {
+      "title": "What Kind of Data Will You See?",
+      "content": "<div class='card'>When everything is working, you’ll see distance values in cm printed on the Serial Monitor:\n\n22\n23\n23\n22\n\nThat means the object is about 22–23 cm away. Smooth values are good. If you see 0 or 300+, something’s wrong.</div>",
+      "image": "https://example.com/hcsr04_data.png",
+      "audio": "https://example.com/audio/hcsr04_data.mp3"
+    },
+    {
+      "title": "Test Your Sensor Without Code",
+      "content": "<div class='card'>Want to test if the sensor is working? Use a multimeter!\n\n1. Connect power\n2. Trigger the TRIG pin manually (briefly connect to 5V)\n3. Observe voltage change on ECHO pin\n\nNo change = sensor might be dead or facing an open space.</div>",
+      "image": "https://example.com/hcsr04_manualtest.png",
+      "audio": "https://example.com/audio/hcsr04_manualtest.mp3"
+    }
+  ]
+}
+,
+  ]
 }
 
   ]
