@@ -13912,6 +13912,596 @@ modules:[
 
 ]
 },{
+  title:"Core Components: The Building Blocks of Electronics",
+  modules:[
+    {
+  "title": "Resistors: The Voltage Droppers",
+  "lessons": [
+    {
+      "title": "What is a Resistor?",
+      "content": "<div class='card'>🔌 A <b>resistor</b> is a passive electrical component that <b>limits or reduces the flow of electric current</b>.</div>\n<div class='card'>⚙️ In a circuit, it's used to protect sensitive components like LEDs from too much current.</div>\n<div class='card'>💡 Think of it like a traffic police officer — slowing down vehicles (electrons) so they don’t cause accidents (burnouts).</div>\n<div class='card'>📐 The unit of resistance is the <b>Ohm (Ω)</b>, and the main formula is Ohm’s Law:</div>\n<pre><code>V = I × R</code></pre>\n<div class='card'>Where V is voltage, I is current, and R is resistance.</div>\n<div class='card'>🔍 Resistors come in many sizes, powers, and types — fixed, variable (potentiometers), and more!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Resistors.jpg/640px-Resistors.jpg",
+      "audio": "https://example.com/audio/what-is-a-resistor.mp3"
+    },
+    {
+      "title": "Watch: Resistors Explained Visually",
+      "content": "<div class='card'>🎥 Want to see resistors in action?</div>\n<div class='card'>Watch this video for a visual explanation of how resistors work, why we use them, and how they save your components!</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/GcN5FrIIhNs' title='What is a Resistor? - Electronics Basics' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/GcN5FrIIhNs/0.jpg",
+      "audio": "https://example.com/audio/resistor-video.mp3"
+    },
+    {
+      "title": "🎮 Game: Choose the Right Resistor!",
+      "content": "<div class='card'>🧪 You want to power a red LED (max 2V) using a 5V Arduino pin. Choose the best resistor:</div>\n<ul>\n  <li><button class='gaming-btn'>100Ω</button></li>\n  <li><button class='gaming-btn'>330Ω ✅</button></li>\n  <li><button class='gaming-btn'>10kΩ</button></li>\n</ul>\n<div class='card'>🧠 Explanation:</div>\n<div class='card'>The voltage drop needed = 5V - 2V = 3V</div>\n<div class='card'>To limit current to ~10mA: <code>R = V/I = 3V / 0.01A = 300Ω</code>, so 330Ω is closest!</div>",
+      "image": "https://i.imgur.com/L5ZS1ZH.png",
+      "audio": "https://example.com/audio/resistor-game.mp3"
+    },
+    {
+      "title": "🎨 Creative: Decode the Color Bands",
+      "content": "<div class='card'>🎨 Resistors have colored stripes that tell you their resistance value. It’s called the <b>color code</b>.</div>\n<div class='card'>Example:</div>\n<pre><code>Brown - Black - Red - Gold = 1kΩ ±5%</code></pre>\n<div class='card'>💡 Try this interactive site to practice decoding:</div>\n<div class='card'><a href='https://www.digikey.com/en/resources/conversion-calculators/conversion-calculator-resistor-color-code' target='_blank'>🎯 DigiKey Color Code Calculator</a></div>\n<div class='card'>🧠 Bonus Tip: The 4th band tells the tolerance — how accurate the resistor is!</div>",
+      "image": "https://www.electronics-notes.com/images/electronic_components/passive/resistor/resistor-color-code-01a.svg",
+      "audio": "https://example.com/audio/color-code.mp3"
+    }
+  ]
+}
+,{
+  "title": "Diodes: One-Way Electric Doors",
+  "lessons": [
+    {
+      "title": "What is a Diode?",
+      "content": "<div class='card'>🚪 A <b>diode</b> is like a one-way electric door — it only allows current to flow in one direction.</div>\n<div class='card'>🔁 If current tries to go the wrong way, the diode blocks it completely.</div>\n<div class='card'>⚡ Diodes protect circuits from reverse voltage damage, convert AC to DC, and are even used to emit light (LEDs).</div>\n<div class='card'>📐 <b>Symbol:</b> A triangle pointing into a line</div>\n<pre><code>→|─</code></pre>\n<div class='card'>📏 <b>Unit:</b> No specific unit. But they have ratings like:</div>\n<ul>\n  <li>Max current (e.g., 1A)</li>\n  <li>Max reverse voltage (e.g., 50V)</li>\n</ul>\n<div class='card'>💡 <b>Fun fact:</b> An LED is just a diode that glows when current flows!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Diode_symbol.svg/1024px-Diode_symbol.svg.png",
+      "audio": "https://example.com/audio/what-is-a-diode.mp3"
+    },
+    {
+      "title": "Watch: Diodes Explained Visually",
+      "content": "<div class='card'>🎥 This video gives a beautiful visual of how diodes work, including how they block reverse current and where they’re used in real life.</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/mq_JU2tBq5I' title='What is a Diode? | Electronics Basics' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/mq_JU2tBq5I/0.jpg",
+      "audio": "https://example.com/audio/diode-video.mp3"
+    },
+    {
+      "title": "🎮 Game: Which Way Will It Flow?",
+      "content": "<div class='card'>🚦 You have a diode in your circuit. Current is trying to enter from the cathode and exit from the anode. What happens?</div>\n<ul>\n  <li><button class='gaming-btn'>It flows normally</button></li>\n  <li><button class='gaming-btn'>It gets blocked ✅</button></li>\n  <li><button class='gaming-btn'>It reverses direction</button></li>\n</ul>\n<div class='card'>🧠 Diodes allow current from Anode → Cathode only. Reversing that = blocked!</div>",
+      "image": "https://i.imgur.com/SBKY0Te.png",
+      "audio": "https://example.com/audio/diode-game.mp3"
+    },
+    {
+      "title": "Creative: The Real-Life Use of Diodes",
+      "content": "<div class='card'>🔋 <b>Use case:</b> You connect a battery backward in a circuit... 💥 Oh no! Components can burn!</div>\n<div class='card'>🛡️ <b>Solution:</b> Add a diode in reverse across power lines. It blocks bad voltage and <b>protects your Arduino</b>.</div>\n<div class='card'>🔧 This is called a <b>flyback diode</b> when used with motors, relays, or inductive loads.</div>\n<pre><code>// Flyback diode example\n// Always put the diode across motor terminals\n\n+5V ----->|----- MOTOR ---- GND</code></pre>\n<div class='card'>✅ Diodes are your circuit’s silent bodyguards.</div>",
+      "image": "https://www.electronics-notes.com/images/electronic_components/semiconductors/diode/flyback-diode-circuit.svg",
+      "audio": "https://example.com/audio/diode-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Potentiometers: Twist to Control",
+  "lessons": [
+    {
+      "title": "What is a Potentiometer?",
+      "content": "<div class='card'>🔁 A <b>potentiometer</b> (or \"pot\") is a special type of variable resistor. You can adjust its resistance by rotating or sliding it.</div>\n<div class='card'>🌀 It has <b>three terminals:</b></div>\n<ul>\n  <li>One end connects to power</li>\n  <li>The other end to ground</li>\n  <li>The middle pin (wiper) gives an output voltage that varies as you turn it</li>\n</ul>\n<div class='card'>📉 <b>Output:</b> A changing voltage, perfect for analog input like volume knobs, brightness controls, and more.</div>\n<pre><code>Arduino reads this using analogRead(pin);</code></pre>\n<div class='card'>🎯 Used in joysticks, sliders, tuners, and even in measuring distance in DIY robotics!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Potentiometer.jpg/640px-Potentiometer.jpg",
+      "audio": "https://example.com/audio/what-is-potentiometer.mp3"
+    },
+    {
+      "title": "Watch: Potentiometer in Action",
+      "content": "<div class='card'>🎥 Here’s a quick and clear video showing how potentiometers work, how to wire them, and what Arduino sees when you turn the knob.</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/VN2aB-G4K0c' title='Potentiometer Tutorial for Arduino' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/VN2aB-G4K0c/0.jpg",
+      "audio": "https://example.com/audio/pot-video.mp3"
+    },
+    {
+      "title": "🎮 Game: Which Pin is Which?",
+      "content": "<div class='card'>🎛️ A potentiometer has 3 pins. Which one gives the <b>variable output</b> based on knob position?</div>\n<ul>\n  <li><button class='gaming-btn'>Left pin</button></li>\n  <li><button class='gaming-btn'>Middle pin ✅</button></li>\n  <li><button class='gaming-btn'>Right pin</button></li>\n</ul>\n<div class='card'>🧠 The middle pin is called the <b>wiper</b> — it \"slides\" across the resistor and gives the variable voltage.</div>",
+      "image": "https://i.imgur.com/SB80EvN.png",
+      "audio": "https://example.com/audio/potentiometer-game.mp3"
+    },
+    {
+      "title": "Creative: Make a Volume Knob with Arduino",
+      "content": "<div class='card'>🔊 Use a potentiometer as a volume control knob by adjusting PWM output!</div>\n<pre><code>// Connect middle pin to A0\nint sensorValue = analogRead(A0);\nint pwm = map(sensorValue, 0, 1023, 0, 255);\nanalogWrite(ledPin, pwm);</code></pre>\n<div class='card'>💡 The more you turn the knob, the brighter the LED — or louder a speaker (if connected).</div>\n<div class='card'>🎯 This is how real volume knobs work!</div>",
+      "image": "https://cdn.sparkfun.com//assets/parts/1/1/8/9/8/10976-01.jpg",
+      "audio": "https://example.com/audio/potentiometer-creative.mp3"
+    }
+  ]
+}
+,{
+  "title": "Relays: Tiny Switches for Big Power",
+  "lessons": [
+    {
+      "title": "What is a Relay?",
+      "content": "<div class='card'>🌀 A <b>relay</b> is an electrically operated switch. It lets you control high-voltage or high-current devices using a low-voltage signal — like from an Arduino!</div>\n<div class='card'>⚙️ Inside, there's an <b>electromagnet</b> that pulls a switch when energized.</div>\n<div class='card'>🔁 When you apply a voltage to its coil, it <b>closes or opens contacts</b>, turning something ON or OFF.</div>\n<pre><code>[Arduino Pin] ➝ [Relay Module] ➝ [AC Load]</code></pre>\n<div class='card'>💡 It lets your 5V Arduino safely control 230V appliances, fans, bulbs, and more!</div>",
+      "image": "https://www.electronics-tutorials.ws/blog/wp-content/uploads/2018/05/relay1.jpg",
+      "audio": "https://example.com/audio/relay-intro.mp3"
+    },
+    {
+      "title": "Types of Relays: SPST, SPDT & More",
+      "content": "<div class='card'>🔀 Relays come in different <b>contact arrangements</b>. Here's what the common types mean:</div>\n<ul>\n  <li><b>SPST</b>: Single Pole Single Throw – simple ON/OFF switch</li>\n  <li><b>SPDT</b>: Single Pole Double Throw – switch between two circuits</li>\n  <li><b>DPDT</b>: Double Pole Double Throw – two SPDT switches in one</li>\n</ul>\n<div class='card'>🎯 For Arduino, we usually use <b>SPDT or SPST relays</b> on modules with driver circuits and flyback diodes.</div>\n<div class='card'>🔌 These are called “relay modules” and have VCC, GND, and IN pins.</div>",
+      "image": "https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/types-of-relay.png",
+      "audio": "https://example.com/audio/relay-types.mp3"
+    },
+    {
+      "title": "Watch: How a Relay Works Internally",
+      "content": "<div class='card'>🎥 This short video shows the <b>internal working of a relay</b> — how the coil, armature, spring, and contacts operate.</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/CqJU5kpfPks' title='How Relays Work' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/CqJU5kpfPks/0.jpg",
+      "audio": "https://example.com/audio/relay-video.mp3"
+    },
+    {
+      "title": "Controlling a Relay with Arduino",
+      "content": "<div class='card'>📟 To control a relay from Arduino, connect the <b>IN pin</b> to a digital output pin.</div>\n<div class='card'>The relay module already has a transistor and flyback diode built-in — so you can control it safely!</div>\n<pre><code>int relayPin = 8;\nvoid setup() {\n  pinMode(relayPin, OUTPUT);\n}\nvoid loop() {\n  digitalWrite(relayPin, HIGH);  // Turn ON\n  delay(1000);\n  digitalWrite(relayPin, LOW);   // Turn OFF\n  delay(1000);\n}</code></pre>\n<div class='card'>💡 When the relay clicks, it's physically changing its contact — that's real hardware magic!</div>",
+      "image": "https://lastminuteengineers.com/wp-content/uploads/arduino-relay-module-featured-image.png",
+      "audio": "https://example.com/audio/relay-arduino.mp3"
+    },
+    {
+      "title": "🎮 Game: Will the Relay Trigger?",
+      "content": "<div class='card'>⚡ Your Arduino sends <b>LOW</b> signal to the relay's IN pin. The module is active LOW. What happens?</div>\n<ul>\n  <li><button class='gaming-btn'>Relay stays OFF</button></li>\n  <li><button class='gaming-btn'>Relay turns ON ✅</button></li>\n  <li><button class='gaming-btn'>Arduino restarts</button></li>\n</ul>\n<div class='card'>🧠 Most relay modules are <b>active LOW</b> — meaning IN=LOW activates the relay.</div>",
+      "image": "https://i.imgur.com/ZDA7cg2.png",
+      "audio": "https://example.com/audio/relay-game.mp3"
+    },
+    {
+      "title": "Real-World Project: Control an AC Bulb with Relay",
+      "content": "<div class='card'>💡 Want to control a 230V AC lamp using Arduino? Here’s how you do it safely:</div>\n<ul>\n  <li>Connect the AC lamp in series with the relay’s NO (Normally Open) and COM terminals</li>\n  <li>Use a 5V relay module with optocoupler</li>\n  <li>Power the relay separately from Arduino (optional but safer)</li>\n</ul>\n<div class='card'>⚠️ Never touch AC wires when the circuit is powered!</div>\n<div class='card'>✅ With one line of code, you're switching home appliances with logic. That's the power of embedded systems!</div>",
+      "image": "https://static.electropeak.com/tutorial/Control-Lamp-Relay-Arduino.jpg",
+      "audio": "https://example.com/audio/relay-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "Bright Light Basics: Mastering the LED",
+  "lessons": [
+    {
+      "title": "What is an LED?",
+      "content": "<div class='card'>💡 LED stands for <b>Light Emitting Diode</b>.</div>\n<div class='card'>It’s a special type of diode that emits light when current flows through it.</div>\n<div class='card'>Just like all diodes, it only allows current to flow in <b>one direction</b>.</div>\n<div class='card'>But instead of blocking or passing current silently like a normal diode, it <b>glows</b>.</div>\n<div class='card'>📏 An LED typically drops ~2V forward voltage and needs current limiting.</div>",
+      "image": "https://i.imgur.com/VxwR8Zj.png",
+      "audio": "https://example.com/audio/led-what-is.mp3"
+    },
+    {
+      "title": "How is an LED Similar to a Diode?",
+      "content": "<div class='card'>🧬 Internally, an LED is just like a diode — a P-N junction.</div>\n<div class='card'>When forward biased, electrons cross the junction and recombine, releasing energy.</div>\n<div class='card'>In a normal diode, that energy becomes heat.</div>\n<div class='card'>💡 But in an LED, the junction is designed to emit <b>photons (light)</b> instead!</div>\n<div class='card'>So yes — every LED is a diode, but not every diode can glow!</div>",
+      "image": "https://i.imgur.com/FSRDEkp.png",
+      "audio": "https://example.com/audio/led-vs-diode.mp3"
+    },
+    {
+      "title": "How to Use an LED with Arduino",
+      "content": "<div class='card'>🛠️ Typical circuit: Arduino pin → resistor → LED → GND.</div>\n<pre><code>int ledPin = 9;\n\nvoid setup() {\n  pinMode(ledPin, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(ledPin, HIGH);\n  delay(1000);\n  digitalWrite(ledPin, LOW);\n  delay(1000);\n}</code></pre>\n<div class='card'>🧠 Always use a resistor (220Ω–1kΩ) to protect the LED from too much current.</div>",
+      "image": "https://i.imgur.com/Nf9qvPH.png",
+      "audio": "https://example.com/audio/led-arduino-use.mp3"
+    },
+    {
+      "title": "Watch: LED Working Explained",
+      "content": "<div class='card'>🎥 Visualize how LEDs glow from a physics POV.</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/VwD9QGFG-3Y' title='How LEDs Work - Practical Engineering' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/VwD9QGFG-3Y/0.jpg",
+      "audio": "https://example.com/audio/led-video.mp3"
+    },
+    {
+      "title": "Game: Fix the LED Circuit",
+      "content": "<div class='card'>🎮 Which wire is wrong?</div>\n<p>Click the correct fix:</p>\n<ul>\n  <li><button class='gaming-btn'>Reversed LED direction</button></li>\n  <li><button class='gaming-btn'>No resistor used</button></li>\n  <li><button class='gaming-btn'>Wrong pin in code</button></li>\n</ul>\n<div class='card'>🔍 All are issues! LED won’t work unless circuit and code are both right.</div>",
+      "image": "https://i.imgur.com/mZemDUU.png",
+      "audio": "https://example.com/audio/led-game.mp3"
+    },
+    {
+      "title": "Creative: Build a Blinking Light Show",
+      "content": "<div class='card'>🪩 Use 3–5 LEDs and create a light pattern.</div>\n<pre><code>int leds[] = {3, 5, 6};\n\nvoid setup() {\n  for (int i = 0; i < 3; i++) {\n    pinMode(leds[i], OUTPUT);\n  }\n}\n\nvoid loop() {\n  for (int i = 0; i < 3; i++) {\n    digitalWrite(leds[i], HIGH);\n    delay(200);\n    digitalWrite(leds[i], LOW);\n  }\n}</code></pre>\n<div class='card'>✨ This creates a sequence — like a simple light animation.</div>",
+      "image": "https://i.imgur.com/oeuByFS.png",
+      "audio": "https://example.com/audio/led-creative.mp3"
+    }
+  ]
+},{
+  "title": "Storing Charge: Understanding Capacitors",
+  "lessons": [
+    {
+      "title": "What is a Capacitor?",
+      "content": "<div class='card'>⚡ A <b>capacitor</b> is an electronic component that stores <b>electrical energy</b> temporarily in an electric field.</div>\n<div class='card'>It consists of two conductive plates separated by an insulating material called a <b>dielectric</b>.</div>\n<div class='card'>When voltage is applied, the plates store opposite charges. Once full, it resists more current from flowing.</div>\n<div class='card'>Capacitance is measured in <b>Farads (F)</b>. Typical values for Arduino use are in μF or nF.</div>\n<div class='card'>🔋 You can think of it like a mini battery that charges and discharges <b>very quickly</b>.</div>",
+      "image": "https://i.imgur.com/VGh9tBS.png",
+      "audio": "https://example.com/audio/capacitor-intro.mp3"
+    },
+    {
+      "title": "Capacitor vs Battery",
+      "content": "<div class='card'>🔋 <b>Batteries</b> store energy chemically and release it slowly.</div>\n<div class='card'>⚡ <b>Capacitors</b> store energy electrostatically and release it rapidly.</div>\n<div class='card'>📉 Capacitors charge/discharge in milliseconds, perfect for filtering and timing.</div>\n<div class='card'>But they can't hold large amounts of charge for long like batteries.</div>\n<div class='card'>Each has its role — capacitors smooth out power, batteries provide it steadily.</div>",
+      "image": "https://i.imgur.com/3ZVDtwJ.png",
+      "audio": "https://example.com/audio/cap-vs-battery.mp3"
+    },
+    {
+      "title": "Using Capacitors with Arduino",
+      "content": "<div class='card'>🛠️ Capacitors are often used to:</div>\n<ul>\n  <li>✨ Debounce switches</li>\n  <li>⚡ Smooth out voltage ripples</li>\n  <li>📶 Filter signals</li>\n  <li>⏱️ Create timing circuits (RC timers)</li>\n</ul>\n<div class='card'>Try placing a capacitor between GND and 5V when powering your Arduino via an unstable source.</div>\n<div class='card'>It'll absorb voltage dips and reduce random resets or noise.</div>",
+      "image": "https://i.imgur.com/QMy7OAI.png",
+      "audio": "https://example.com/audio/cap-arduino-use.mp3"
+    },
+    {
+      "title": "Watch: Capacitors Explained Visually",
+      "content": "<div class='card'>🎥 This animated video shows exactly how capacitors work in real-time and why they matter.</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/9ckpQW9sdUg' title='How Capacitors Work - Techquickie' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/9ckpQW9sdUg/0.jpg",
+      "audio": "https://example.com/audio/capacitor-video.mp3"
+    },
+    {
+      "title": "Game: Charge Me Up!",
+      "content": "<div class='card'>🎮 Choose the correct behavior of a capacitor in each situation:</div>\n<ul>\n  <li><button class='gaming-btn'>Acts as a wire when fully charged</button></li>\n  <li><button class='gaming-btn'>Blocks DC after charging</button></li>\n  <li><button class='gaming-btn'>Passes AC easily</button></li>\n  <li><button class='gaming-btn'>Stores charge like a mini battery</button></li>\n</ul>\n<div class='card'>🧠 Hint: All are true in certain contexts! Can you find out when?</div>",
+      "image": "https://i.imgur.com/eZCy6eT.png",
+      "audio": "https://example.com/audio/capacitor-game.mp3"
+    },
+    {
+      "title": "Creative: Build an LED Delay Circuit",
+      "content": "<div class='card'>🧪 Want to see capacitors in action? Try this!</div>\n<div class='card'>Connect an LED with a capacitor in parallel. When you power off, the LED will stay lit for a moment using the capacitor's charge.</div>\n<pre><code>// No code! Just try it physically:\n// 5V → Resistor → LED → GND\n//          |\n//       Capacitor (e.g. 470μF) across LED terminals</code></pre>\n<div class='card'>🕒 The bigger the capacitor, the longer the LED glows after disconnect!</div>",
+      "image": "https://i.imgur.com/2cmEZKh.png",
+      "audio": "https://example.com/audio/capacitor-experiment.mp3"
+    }
+  ]
+}
+,{
+  "title": "Magnetic Masters: Understanding Inductors",
+  "lessons": [
+    {
+      "title": "What is an Inductor?",
+      "content": "<div class='card'>🌀 An <b>inductor</b> is a passive electronic component that stores energy in a magnetic field when current flows through it.</div>\n<div class='card'>It usually looks like a coil of wire and is based on the principle of <b>electromagnetic induction</b>.</div>\n<div class='card'>When current changes, the inductor resists this change by generating an opposite voltage — called <b>self-induction</b>.</div>\n<div class='card'>Its value is measured in <b>Henries (H)</b>, usually in mH or μH for Arduino circuits.</div>\n<div class='card'>🔁 Inductors are key in filtering, energy storage, transformers, and RF circuits.</div>",
+      "image": "https://i.imgur.com/Frq1BeM.png",
+      "audio": "https://example.com/audio/inductor-intro.mp3"
+    },
+    {
+      "title": "Inductor vs Capacitor",
+      "content": "<div class='card'>⚖️ Both inductors and capacitors store energy — but in different ways.</div>\n<ul>\n  <li>⚡ <b>Capacitor:</b> Stores energy in an <b>electric field</b></li>\n  <li>🧲 <b>Inductor:</b> Stores energy in a <b>magnetic field</b></li>\n</ul>\n<div class='card'>Capacitors resist changes in <b>voltage</b>, while inductors resist changes in <b>current</b>.</div>\n<div class='card'>Together, they form powerful circuits like filters, oscillators, and transformers.</div>",
+      "image": "https://i.imgur.com/UM0znjM.png",
+      "audio": "https://example.com/audio/inductor-vs-capacitor.mp3"
+    },
+    {
+      "title": "How Inductors Work",
+      "content": "<div class='card'>🔍 When current flows through an inductor, a magnetic field is created around its coil.</div>\n<div class='card'>If the current suddenly increases or decreases, the inductor opposes this change — like inertia in physics!</div>\n<div class='card'>This is why inductors are used in circuits to <b>smooth out spikes</b> or <b>filter noise</b>.</div>\n<div class='card'>⚠️ The voltage across an inductor can become high if current changes suddenly (e.g., switching off a relay).</div>",
+      "image": "https://i.imgur.com/YzeKMww.png",
+      "audio": "https://example.com/audio/inductor-how-it-works.mp3"
+    },
+    {
+      "title": "Inductors with Arduino",
+      "content": "<div class='card'>🛠️ Inductors aren’t directly used in simple Arduino sketches, but they’re key in many modules:</div>\n<ul>\n  <li>🔊 <b>Buzzers</b> – use inductance to produce sound</li>\n  <li>💡 <b>Boost converters</b> – step up voltage using inductors</li>\n  <li>📡 <b>RF modules</b> – use coils for tuning signals</li>\n</ul>\n<div class='card'>Try experimenting with an inductor in a basic LC (inductor-capacitor) circuit and see how it behaves with analogRead().</div>",
+      "image": "https://i.imgur.com/zQ3u6Ed.png",
+      "audio": "https://example.com/audio/inductor-arduino.mp3"
+    },
+    {
+      "title": "Watch: Inductors Explained Visually",
+      "content": "<div class='card'>🎥 Let’s see inductors in action. This video shows how they behave in circuits, and how they react to current changes.</div>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/BjHDEkDA-3o' title='Inductors Explained - The basics how inductors work working principle' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/BjHDEkDA-3o/0.jpg",
+      "audio": "https://example.com/audio/inductor-video.mp3"
+    },
+    {
+      "title": "Game: What Does the Inductor Do?",
+      "content": "<div class='card'>🧠 Test your understanding! Select what the inductor does in each case:</div>\n<ul>\n  <li><button class='gaming-btn'>Opposes changes in current</button></li>\n  <li><button class='gaming-btn'>Creates magnetic fields</button></li>\n  <li><button class='gaming-btn'>Used in boost converters</button></li>\n  <li><button class='gaming-btn'>Blocks AC and passes DC</button></li>\n</ul>\n<div class='card'>💡 Think carefully — not all are always true!</div>",
+      "image": "https://i.imgur.com/MDZlZL3.png",
+      "audio": "https://example.com/audio/inductor-quiz.mp3"
+    },
+    {
+      "title": "Experiment: Magnetic Snap with Relay!",
+      "content": "<div class='card'>🎯 Want to see inductance in action? Try this mini project:</div>\n<div class='card'>Use an inductor (or a relay coil) and suddenly break the circuit. You'll hear a tiny spark or feel a snap — that’s back EMF!</div>\n<pre><code>// No code, just this setup:\n// Power → Relay coil or Inductor → Switch → GND\n// Quickly turn OFF the switch and observe!</code></pre>\n<div class='card'>⚠️ Warning: Use a diode across the coil to protect Arduino from voltage spikes!</div>",
+      "image": "https://i.imgur.com/kyl4cYk.png",
+      "audio": "https://example.com/audio/inductor-experiment.mp3"
+    }
+  ]
+}
+,{
+  "title": "Thermistors: Sensing Temperature with Resistance Magic",
+  "lessons": [
+    {
+      "title": "What is a Thermistor?",
+      "content": "<div class='card'>🌡️ A thermistor is a type of resistor whose resistance changes with temperature.</div>\n<div class='card'>There are 2 types of thermistors:</div>\n<ul>\n  <li>🔻 <b>NTC (Negative Temperature Coefficient):</b> Resistance decreases as temperature increases.</li>\n  <li>🔺 <b>PTC (Positive Temperature Coefficient):</b> Resistance increases as temperature increases.</li>\n</ul>\n<div class='card'>Most Arduino projects use <b>NTC</b> thermistors to measure rising temperature.</div>\n<div class='card'>They are cheap, small, and analog — perfect for sensing the environment!</div>",
+      "image": "https://i.imgur.com/Gpp1PKU.png",
+      "audio": "https://example.com/audio/thermistor-intro.mp3"
+    },
+    {
+      "title": "How a Thermistor Works (Internals)",
+      "content": "<div class='card'>🧪 Thermistors are made using metal oxides.</div>\n<div class='card'>These materials change how easily electricity flows through them as temperature rises.</div>\n<div class='card'>NTC: Hot = more current passes (lower resistance)</div>\n<div class='card'>PTC: Hot = less current passes (higher resistance)</div>\n<div class='card'>This change is non-linear but predictable.</div>\n<div class='card'>You read it via <code>analogRead()</code> on Arduino to measure voltage across a divider circuit.</div>",
+      "image": "https://i.imgur.com/6mvG7cA.png",
+      "audio": "https://example.com/audio/thermistor-working.mp3"
+    },
+    {
+      "title": "Using a Thermistor with Arduino",
+      "content": "<div class='card'>🔌 To use a thermistor with Arduino, create a <b>voltage divider</b>:</div>\n<pre><code>[ +5V ]---[ Thermistor ]---[ 10kΩ Resistor ]---[ GND ]\n                          |\n                       A0 (Analog Pin)</code></pre>\n<div class='card'>Then read the analog value like this:</div>\n<pre><code>int sensorValue = analogRead(A0);\nfloat voltage = sensorValue * (5.0 / 1023.0);</code></pre>\n<div class='card'>You can even convert it to temperature using lookup tables or the Steinhart-Hart equation!</div>",
+      "image": "https://i.imgur.com/YFCdVdK.png",
+      "audio": "https://example.com/audio/thermistor-arduino.mp3"
+    },
+    {
+      "title": "Game: Predict the Resistance!",
+      "content": "<div class='card'>🎮 Can you guess what happens to resistance?</div>\n<p>It's an NTC thermistor. The room is getting hotter.</p>\n<ul>\n  <li><button class='gaming-btn'>Resistance goes up ❌</button></li>\n  <li><button class='gaming-btn'>Resistance goes down ✅</button></li>\n  <li><button class='gaming-btn'>Resistance stays constant ❌</button></li>\n</ul>\n<div class='card'>🧠 The key to NTC is that resistance <b>drops</b> as it heats.</div>",
+      "image": "https://i.imgur.com/e52X1J6.png",
+      "audio": "https://example.com/audio/thermistor-game.mp3"
+    },
+    {
+      "title": "Watch: How to Use a Thermistor with Arduino",
+      "content": "<div class='card'>🎥 In this video, you'll see:</div>\n<ul>\n  <li>Thermistor + Arduino wiring</li>\n  <li>How to use analogRead()</li>\n  <li>Converting to temperature</li>\n  <li>Displaying temperature on Serial Monitor</li>\n</ul>\n<div class='card'><iframe width='100%' height='315' src='https://www.youtube.com/embed/TN9b0Qk3Kxk' title='Thermistor Arduino Tutorial' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/TN9b0Qk3Kxk/0.jpg",
+      "audio": "https://example.com/audio/thermistor-video.mp3"
+    },
+    {
+      "title": "Creative: Make a Fire Warning System!",
+      "content": "<div class='card'>💡 Use a thermistor to build a basic fire alert:</div>\n<ul>\n  <li>Set a threshold temp (e.g. 50°C)</li>\n  <li>If the reading crosses it, turn on a buzzer + red LED</li>\n</ul>\n<pre><code>if (tempC > 50) {\n  digitalWrite(buzzerPin, HIGH);\n  digitalWrite(ledPin, HIGH);\n}</code></pre>\n<div class='card'>This is a life-saving real-world application.</div>\n<div class='card'>🔥 Try expanding it with LCD display or serial alerts!</div>",
+      "image": "https://i.imgur.com/zMcV8Dd.png",
+      "audio": "https://example.com/audio/thermistor-project.mp3"
+    }
+  ]
+},{
+  "title": "Piezo Buzzer: Sound from Vibration",
+  "lessons": [
+    {
+      "title": "Introduction to Piezo Buzzers",
+      "content": "<div class='card'>🔊 A Piezo Buzzer is an audio signaling device that creates sound using the <b>piezoelectric effect</b> — converting electrical energy into mechanical vibration.</div>\n<div class='card'>💡 Inside, a piezoelectric crystal deforms when voltage is applied, generating rapid vibrations that produce sound waves.</div>\n<div class='card'>🎵 It doesn't require an amplifier or complex circuitry — just a square wave signal from your Arduino to produce tones!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Piezo_buzzer.jpg/800px-Piezo_buzzer.jpg",
+      "audio": "https://example.com/audio/intro-piezo.mp3"
+    },
+    {
+      "title": "How It Works with Arduino",
+      "content": "<div class='card'>👨‍💻 Connect the Piezo buzzer's + pin to an Arduino PWM pin (like D9), and - to GND.</div>\n<div class='card'>📐 You can control its tone using the <code>tone()</code> and <code>noTone()</code> functions in Arduino.</div>\n<div class='card'>Example Code:</div>\n<div class='card'><pre>void setup() {\n  pinMode(9, OUTPUT);\n  tone(9, 1000); // 1000 Hz tone\n  delay(1000);\n  noTone(9);\n}</pre></div>",
+      "image": "https://www.theengineeringprojects.com/wp-content/uploads/2020/07/Arduino-Piezo-Buzzer-Circuit-Diagram.jpg",
+      "audio": "https://example.com/audio/how-it-works.mp3"
+    },
+    {
+      "title": "🎮 Game: Buzzer Frequency Challenge",
+      "content": "<div class='card'>🔢 You control a piezo buzzer's frequency using buttons! Guess the right frequency to play a hidden melody.</div>\n<div class='card'><button class='gaming-btn'>Start Game</button></div>",
+      "image": "https://www.researchgate.net/profile/Rokeya-Aktar/publication/359784537/figure/fig3/AS:1137333600937984@1648970400956/Flowchart-of-piezoelectric-buzzer-playing-melody.png",
+      "audio": "https://example.com/audio/game-instructions.mp3"
+    },
+    {
+      "title": "🎥 Video: Understanding Piezo Buzzers",
+      "content": "<div class='card'>Watch this tutorial to hear a piezo buzzer in action, learn about its construction, and test it with Arduino!</div>\n<div class='card'><iframe width='100%' height='215' src='https://www.youtube.com/embed/eZz6H8ODkbI' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/eZz6H8ODkbI/0.jpg",
+      "audio": "https://example.com/audio/video-summary.mp3"
+    },
+    {
+      "title": "Real-World Project: Alarm System with Piezo",
+      "content": "<div class='card'>🛡️ Use a piezo buzzer with a motion sensor to build a basic security system.</div>\n<div class='card'>When motion is detected, the buzzer rings to alert the user — perfect beginner project!</div>\n<div class='card'><pre>// With PIR motion sensor\nvoid loop() {\n  if (digitalRead(PIR_PIN) == HIGH) {\n    tone(9, 2000);\n  } else {\n    noTone(9);\n  }\n}</pre></div>",
+      "image": "https://www.circuitdigest.com/sites/default/files/projectimage_mic/Arduino-Piezo-Buzzer-Alarm.jpg",
+      "audio": "https://example.com/audio/alarm-project.mp3"
+    }
+  ]
+}
+,{
+  "title": "RGB LED: A Rainbow in One Light",
+  "lessons": [
+    {
+      "title": "What is an RGB LED?",
+      "content": "<div class='card'>🌈 An RGB LED combines <b>Red</b>, <b>Green</b>, and <b>Blue</b> LEDs into a single package.</div>\n<div class='card'>By adjusting the brightness of each color using PWM (Pulse Width Modulation), we can create almost any color!</div>\n<div class='card'>There are two types: <b>Common Anode</b> and <b>Common Cathode</b>.</div>\n<div class='card'>🔍 Common Anode: all anodes (+) connected together.\n🔍 Common Cathode: all cathodes (-) connected together.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/RGB_LED.jpg/800px-RGB_LED.jpg",
+      "audio": "https://example.com/audio/intro-rgb.mp3"
+    },
+    {
+      "title": "How to Wire an RGB LED",
+      "content": "<div class='card'>🔌 Connect each of the three color pins (R, G, B) to PWM-capable Arduino pins through 220Ω resistors.</div>\n<div class='card'>The common pin (either anode or cathode) goes to 5V (for common anode) or GND (for common cathode).</div>\n<div class='card'>📌 Arduino Pins: Red - D9, Green - D10, Blue - D11</div>\n<div class='card'><pre>void setup() {\n  pinMode(9, OUTPUT);\n  pinMode(10, OUTPUT);\n  pinMode(11, OUTPUT);\n}</pre></div>",
+      "image": "https://lastminuteengineers.com/wp-content/uploads/arduino/RGB-LED-Pinout.jpg",
+      "audio": "https://example.com/audio/wiring-rgb.mp3"
+    },
+    {
+      "title": "Creating Colors with Code",
+      "content": "<div class='card'>🎨 By varying the intensity of Red, Green, and Blue, you mix colors just like on a screen.</div>\n<div class='card'><pre>// Set RGB to purple\nanalogWrite(9, 128);  // Red\nanalogWrite(10, 0);   // Green\nanalogWrite(11, 128); // Blue</pre></div>\n<div class='card'>Try values between 0-255 for each channel. You can create cool fading effects too!</div>",
+      "image": "https://www.circuitdigest.com/sites/default/files/projectimage_mic/RGB-LED-Fading-using-Arduino.jpg",
+      "audio": "https://example.com/audio/color-mixing.mp3"
+    },
+    {
+      "title": "🎮 Game: RGB Color Match",
+      "content": "<div class='card'>🧠 Try to match the displayed color using RGB sliders!</div>\n<div class='card'>Guess the right Red, Green, and Blue values. Each round gets harder!</div>\n<div class='card'><button class='gaming-btn'>Play RGB Match</button></div>",
+      "image": "https://wokwi.com/_next/image?url=https%3A%2F%2Fwokwi.com%2Fdocs%2Frgb-led%2Frgb-led-demo.png&w=3840&q=75",
+      "audio": "https://example.com/audio/game-rgb.mp3"
+    },
+    {
+      "title": "🎥 Video: How RGB LEDs Work",
+      "content": "<div class='card'>Watch this to see how RGB LEDs can blend colors, how to connect them, and make them react to sound and light.</div>\n<div class='card'><iframe width='100%' height='215' src='https://www.youtube.com/embed/HNShgDrKfVw' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/HNShgDrKfVw/0.jpg",
+      "audio": "https://example.com/audio/rgb-video.mp3"
+    },
+    {
+      "title": "Creative Project: Mood Lamp",
+      "content": "<div class='card'>🛋️ Build a soft-glow RGB LED mood lamp with Arduino that changes colors slowly or based on sensor input (like a temperature sensor).</div>\n<div class='card'><pre>void loop() {\n  for (int i = 0; i < 256; i++) {\n    analogWrite(9, i);\n    analogWrite(10, 255 - i);\n    analogWrite(11, i / 2);\n    delay(10);\n  }\n}</pre></div>",
+      "image": "https://www.theengineeringprojects.com/wp-content/uploads/2018/04/RGB-LED-Mood-Lamp.jpg",
+      "audio": "https://example.com/audio/mood-lamp.mp3"
+    }
+  ]
+}
+,{
+  "title": "Active Buzzer: Ready-to-Ring Beeper",
+  "lessons": [
+    {
+      "title": "What is an Active Buzzer?",
+      "content": "<div class='card'>🔔 An Active Buzzer is a component that generates a sound (usually a fixed tone) when powered. No PWM or complex signal is needed — just a HIGH signal!</div>\n<div class='card'>Unlike Passive Buzzers, Active Buzzers have an internal oscillator — they handle sound generation by themselves.</div>\n<div class='card'>🧠 Think of it like a mini speaker that rings the moment you apply 5V!</div>",
+      "image": "https://components101.com/sites/default/files/component_pin/Active-Buzzer-Pinout.jpg",
+      "audio": "https://example.com/audio/active-buzzer-intro.mp3"
+    },
+    {
+      "title": "Wiring an Active Buzzer with Arduino",
+      "content": "<div class='card'>🔌 Connect the longer pin (+) to a digital pin like D9. The shorter pin (-) goes to GND.</div>\n<div class='card'>You can turn it ON with <code>digitalWrite(9, HIGH);</code> and OFF with <code>digitalWrite(9, LOW);</code></div>\n<div class='card'>💡 TIP: No resistors needed. Just plug and beep!</div>",
+      "image": "https://circuitdigest.com/sites/default/files/projectimage_mic/Buzzer-with-Arduino-UNO-Circuit-Diagram.jpg",
+      "audio": "https://example.com/audio/wiring-active-buzzer.mp3"
+    },
+    {
+      "title": "Code Example: Alarm Beep",
+      "content": "<div class='card'>🚨 Want to make a simple alarm? This code turns the buzzer ON and OFF every 500ms.</div>\n<div class='card'><pre>void setup() {\n  pinMode(9, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(9, HIGH);\n  delay(500);\n  digitalWrite(9, LOW);\n  delay(500);\n}</pre></div>\n<div class='card'>⏱️ Use this for alerts, timers, or feedback sounds.</div>",
+      "image": "https://www.electronicwings.com/public/images/user_images/images/Arduino/Buzzer/Buzzer%20Pin%20Configuration.PNG",
+      "audio": "https://example.com/audio/active-buzzer-code.mp3"
+    },
+    {
+      "title": "🎮 Game: Buzzer Rhythm Challenge",
+      "content": "<div class='card'>🎵 Match the blinking LED to the buzzer rhythm! Tap the button at the right time to sync.</div>\n<div class='card'><button class='gaming-btn'>Play Buzzer Rhythm</button></div>\n<div class='card'>Challenge your ears and timing skills! 🔥</div>",
+      "image": "https://cdn.sparkfun.com/assets/9/7/5/e/0/52622ee1757b7fc43c8b4568.png",
+      "audio": "https://example.com/audio/buzzer-game.mp3"
+    },
+    {
+      "title": "🎥 Video: Active vs Passive Buzzer",
+      "content": "<div class='card'>🧐 Ever confused between Active and Passive buzzers? Watch this to clearly understand the difference and applications.</div>\n<div class='card'><iframe width='100%' height='215' src='https://www.youtube.com/embed/BiY1QxS0J3o' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/BiY1QxS0J3o/0.jpg",
+      "audio": "https://example.com/audio/video-buzzer.mp3"
+    },
+    {
+      "title": "Project Idea: Door Alarm System",
+      "content": "<div class='card'>🚪 Add an active buzzer to your door alarm project. When someone opens the door (triggered by IR or magnetic sensor), the buzzer rings loudly.</div>\n<div class='card'>Use <code>if(sensorTriggered) digitalWrite(buzzerPin, HIGH);</code> to activate it.</div>\n<div class='card'>Perfect for DIY security systems.</div>",
+      "image": "https://i.ytimg.com/vi/4jzKUlE7DJc/maxresdefault.jpg",
+      "audio": "https://example.com/audio/door-alarm.mp3"
+    }
+  ]
+},{
+  "title": "ICs (Integrated Circuits): Brains in a Chip!",
+  "lessons": [
+    {
+      "title": "What is an IC?",
+      "content": "<div class='card'>🧠 An Integrated Circuit (IC) is a tiny silicon chip that contains millions of transistors, resistors, capacitors, and other components — all packed into one little black package.</div>\n<div class='card'>ICs are the heart of modern electronics. They can act like amplifiers, logic gates, timers, microcontrollers (like your Arduino!), or even computers.</div>\n<div class='card'>They’re often called 'chips' and come in many shapes: DIP (dual in-line), SMD (surface mount), etc.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/01/DIP_IC_Chip.jpg",
+      "audio": "https://example.com/audio/what-is-ic.mp3"
+    },
+    {
+      "title": "How Do ICs Work?",
+      "content": "<div class='card'>🔍 Inside an IC, microscopic circuits handle electrical signals — processing, amplifying, or controlling them.</div>\n<div class='card'>For example:\n<ul>\n<li>555 IC = Timer</li>\n<li>7400 = Logic Gate</li>\n<li>ATmega328P = Arduino’s brain</li>\n</ul></div>\n<div class='card'>Power goes in via VCC & GND pins, and the other pins do specific jobs depending on the IC’s purpose.</div>",
+      "image": "https://i.stack.imgur.com/5cIYl.png",
+      "audio": "https://example.com/audio/ic-working.mp3"
+    },
+    {
+      "title": "Understanding IC Pinout and Datasheets",
+      "content": "<div class='card'>📄 Every IC has a datasheet — a document that tells you what each pin does, voltage limits, timings, and more.</div>\n<div class='card'>🔌 Most ICs are numbered counter-clockwise from the dot or notch. Always check the orientation!</div>\n<div class='card'>🧰 You MUST refer to the datasheet before using any unknown IC.</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/IC_pinout_numbering.svg/1200px-IC_pinout_numbering.svg.png",
+      "audio": "https://example.com/audio/ic-pinout.mp3"
+    },
+    {
+      "title": "Example: 555 Timer IC",
+      "content": "<div class='card'>⏱️ The 555 Timer is one of the most famous ICs ever. It can act as a timer, pulse generator, or oscillator.</div>\n<div class='card'>Pinout:</div>\n<ul>\n<li>Pin 1: GND</li>\n<li>Pin 2: Trigger</li>\n<li>Pin 3: Output</li>\n<li>Pin 4: Reset</li>\n<li>Pin 5: Control Voltage</li>\n<li>Pin 6: Threshold</li>\n<li>Pin 7: Discharge</li>\n<li>Pin 8: VCC</li>\n</ul>\n<div class='card'>With just a few external resistors and capacitors, you can make it blink an LED or create alarms!</div>",
+      "image": "https://www.build-electronic-circuits.com/wp-content/uploads/2019/04/555-timer-pinout.jpg",
+      "audio": "https://example.com/audio/555-timer.mp3"
+    },
+    {
+      "title": "🎥 Video: IC Basics Explained",
+      "content": "<div class='card'>👨‍🏫 Watch this clear and simple explanation of what ICs are, how they work, and why they’re revolutionary.</div>\n<div class='card'><iframe width='100%' height='215' src='https://www.youtube.com/embed/EeGqO0_8jvI' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/EeGqO0_8jvI/0.jpg",
+      "audio": "https://example.com/audio/ic-video.mp3"
+    },
+    {
+      "title": "🎮 Game: IC Detective!",
+      "content": "<div class='card'>🕵️‍♂️ Can you guess the function of the IC based on its pinout and label?</div>\n<div class='card'><button class='gaming-btn'>Play IC Detective!</button></div>\n<div class='card'>Try identifying ICs like 555, 7400, and ATmega328P. Become a chip master!</div>",
+      "image": "https://www.electronics-notes.com/images/electronic_components/integrated-circuits/ic-02a-s.jpg",
+      "audio": "https://example.com/audio/ic-game.mp3"
+    },
+    {
+      "title": "Common ICs You’ll Meet in Arduino Projects",
+      "content": "<div class='card'>🧩 Here are a few important ICs used in Arduino-based projects:</div>\n<ul>\n<li><b>ATmega328P</b> – The brain of Arduino Uno</li>\n<li><b>74HC595</b> – Shift register for controlling many LEDs</li>\n<li><b>LM358</b> – Operational amplifier (Op-Amp IC)</li>\n<li><b>ULN2003</b> – Motor driver IC</li>\n<li><b>MAX7219</b> – 7-segment LED driver</li>\n</ul>\n<div class='card'>You'll see these over and over as you build complex circuits!</div>",
+      "image": "https://www.learningaboutelectronics.com/images/IC-package.jpg",
+      "audio": "https://example.com/audio/common-ics.mp3"
+    }
+  ]
+}
+,{
+  "title": "Jumper Wires: Your Circuit’s Highways!",
+  "lessons": [
+    {
+      "title": "What Are Jumper Wires?",
+      "content": "<div class='card'>🔌 Jumper wires are flexible insulated wires used to connect components on a breadboard or between modules without soldering.</div>\n<div class='card'>They come in 3 main types:\n<ul>\n<li><b>Male-to-Male (M-M)</b>: Used to connect two female headers</li>\n<li><b>Male-to-Female (M-F)</b>: Used for modules/sensors with male pins</li>\n<li><b>Female-to-Female (F-F)</b>: Used for boards like Raspberry Pi, which have male GPIO pins</li>\n</ul></div>",
+      "image": "https://components101.com/sites/default/files/component_pin/Jumper-Wires.jpg",
+      "audio": "https://example.com/audio/what-are-jumper-wires.mp3"
+    },
+    {
+      "title": "Why Jumper Wires Matter",
+      "content": "<div class='card'>🧠 Jumper wires are essential for prototyping. They let you build and modify circuits quickly — without solder or mess.</div>\n<div class='card'>They’re especially useful when working with breadboards or connecting Arduino pins to sensors, LEDs, buzzers, etc.</div>\n<div class='card'>With just jumper wires and a breadboard, you can test hundreds of circuit ideas in minutes!</div>",
+      "image": "https://i.pinimg.com/originals/8d/d9/10/8dd9103b30ef0658c779b6ffb26440c1.jpg",
+      "audio": "https://example.com/audio/why-jumper-wires.mp3"
+    },
+    {
+      "title": "How to Use Jumper Wires Safely",
+      "content": "<div class='card'>⚠️ Follow these jumper wire tips:</div>\n<ul>\n<li>Don't bend or stretch wires too hard.</li>\n<li>Never insert jumper wires into power outlets! Only breadboards or headers.</li>\n<li>Check wire colors — use red for VCC, black for GND, others for signal.</li>\n<li>Test wires if a circuit isn’t working. They can break internally.</li>\n</ul>\n<div class='card'>🧰 Always keep extras — jumper wires are the most frequently damaged parts during prototyping.</div>",
+      "image": "https://www.electronicshub.org/wp-content/uploads/2021/08/Jumper-Wires.jpg",
+      "audio": "https://example.com/audio/safety-jumper-wires.mp3"
+    },
+    {
+      "title": "🎥 Video: Jumper Wires in Action!",
+      "content": "<div class='card'>👀 Watch how jumper wires help connect modules like LEDs, sensors, and more on a breadboard.</div>\n<div class='card'><iframe width='100%' height='215' src='https://www.youtube.com/embed/i6sJQ9yRkfw' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/i6sJQ9yRkfw/0.jpg",
+      "audio": "https://example.com/audio/jumper-wire-video.mp3"
+    },
+    {
+      "title": "🎮 Game: Wire Wizard Challenge!",
+      "content": "<div class='card'>🎯 Can you pick the right jumper wire type for each connection?</div>\n<div class='card'><button class='gaming-btn'>Start Wire Wizard!</button></div>\n<div class='card'>Examples:\n<ul>\n<li>Arduino pin to Breadboard? (M-M)</li>\n<li>Arduino pin to sensor with male headers? (M-F)</li>\n<li>ESP32 GPIO to female breadboard? (F-M)</li>\n</ul></div>",
+      "image": "https://cdn.sparkfun.com//assets/parts/1/2/5/3/8/15393-Jumper_Wire_-_JST_SH_Female__Qwiic__to_Breadboard_Male_Header_4-Pin_-_Breadboard_View.jpg",
+      "audio": "https://example.com/audio/wire-game.mp3"
+    },
+    {
+      "title": "Jumper Wire Tips from Makers",
+      "content": "<div class='card'>👨‍🔧 Pro Tips:\n<ul>\n<li>Use colored wires to organize your circuits</li>\n<li>Label signal wires with masking tape</li>\n<li>Group wires with zip ties or cable sleeves</li>\n<li>Buy jumper wires in bundles with storage boxes</li>\n</ul></div>\n<div class='card'>💬 Maker wisdom: \"Good jumper wires = Happy debugging!\"</div>",
+      "image": "https://cdn.sparkfun.com//assets/parts/1/2/4/4/6/15127-Jumper_Wire_Kit_-_Standard_20_MCM_0.1_Headers_-_150mm_length.jpg",
+      "audio": "https://example.com/audio/maker-tips-jumpers.mp3"
+    }
+  ]
+}
+,{
+  "title": "DC Motors: Bringing Movement to Life!",
+  "lessons": [
+    {
+      "title": "What is a DC Motor?",
+      "content": "<div class='card'>⚙️ A DC motor (Direct Current motor) is an electric motor that converts electrical energy into mechanical rotation.</div>\n<div class='card'>DC motors are widely used in robotics, fans, toys, pumps, and almost every hobby electronics project that requires motion.</div>\n<div class='card'>When current flows through the motor, it generates a magnetic field, which rotates the internal shaft.</div>",
+      "image": "https://components101.com/sites/default/files/component_pin/DC-Motor-Pinout.jpg",
+      "audio": "https://example.com/audio/what-is-dc-motor.mp3"
+    },
+    {
+      "title": "Types of DC Motors",
+      "content": "<div class='card'>🧠 The two most common types of DC motors you'll encounter are:</div>\n<ul>\n<li><b>Brushed DC Motors</b>: Simple, cheap, used in most Arduino projects. Wear out over time due to brush friction.</li>\n<li><b>Brushless DC Motors (BLDC)</b>: More efficient, quieter, and long-lasting. Found in drones and modern appliances.</li>\n</ul>\n<div class='card'>For Arduino, brushed DC motors are the most beginner-friendly!</div>",
+      "image": "https://www.electronicshub.org/wp-content/uploads/2021/01/Types-of-DC-Motors.jpg",
+      "audio": "https://example.com/audio/types-of-dc-motors.mp3"
+    },
+    {
+      "title": "How to Use a DC Motor with Arduino",
+      "content": "<div class='card'>⚡ A DC motor cannot be powered directly from Arduino pins — it needs a motor driver (like L298N) or transistor circuit.</div>\n<div class='card'>🔧 You’ll also need external power (like a 9V battery) to drive the motor with enough torque.</div>\n<div class='card'>🧰 Here's a basic setup:\n<ol>\n<li>Connect motor terminals to L298N outputs</li>\n<li>Connect L298N inputs to Arduino digital pins</li>\n<li>Use a 9V battery to power the L298N motor VCC</li>\n<li>Use Arduino code to control speed and direction!</li>\n</ol></div>",
+      "image": "https://i.pinimg.com/originals/4f/b6/85/4fb68535406d302dd46cfda177a0c9ec.jpg",
+      "audio": "https://example.com/audio/dc-motor-setup.mp3"
+    },
+    {
+      "title": "🎥 Video: Control a DC Motor with Arduino",
+      "content": "<div class='card'>🎬 Learn how to rotate a DC motor in both directions using the L298N module and Arduino Uno!</div>\n<div class='card'><iframe width='100%' height='215' src='https://www.youtube.com/embed/LtlZ3a5pAWE' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/LtlZ3a5pAWE/0.jpg",
+      "audio": "https://example.com/audio/dc-motor-video.mp3"
+    },
+    {
+      "title": "🎮 Game: Motor Master!",
+      "content": "<div class='card'>🕹️ Match the DC motor component with its correct description!</div>\n<div class='card'>1️⃣ What controls direction? (L298N IN1/IN2)\n<br>2️⃣ What changes speed? (PWM on ENA)\n<br>3️⃣ Why use external power? (Arduino can't provide enough current)</div>\n<div class='card'><button class='gaming-btn'>Play Motor Master</button></div>",
+      "image": "https://i0.wp.com/makezine.com/wp-content/uploads/2021/01/dc_motor_project_2-1.jpg",
+      "audio": "https://example.com/audio/motor-game.mp3"
+    },
+    {
+      "title": "DC Motor Tips from Robotics Experts",
+      "content": "<div class='card'>🤖 Pro Tips:\n<ul>\n<li>Always use a diode across motor terminals to prevent back EMF damage.</li>\n<li>Use capacitors to reduce motor noise.</li>\n<li>Never power DC motors directly from Arduino!</li>\n<li>Use motor drivers like L298N, L9110S, or TB6612FNG.</li>\n<li>Adjust speed using <code>analogWrite()</code> PWM pins.</li>\n</ul></div>\n<div class='card'>🔧 \"Treat your motors right — and they’ll spin for you forever!\"</div>",
+      "image": "https://cdn.sparkfun.com/assets/parts/1/1/1/2/0/13825-04.jpg",
+      "audio": "https://example.com/audio/robotics-dc-tips.mp3"
+    }
+  ]
+}
+,{
+  "title": "Crystal Oscillator: The Timekeeper of Electronics",
+  "lessons": [
+    {
+      "title": "⏱️ What is a Crystal Oscillator?",
+      "content": "<div class='card'>A crystal oscillator is a device that uses the mechanical resonance of a vibrating crystal (usually quartz) to generate a precise frequency signal.</div>\n<div class='card'>In simpler words, it's like a very accurate electronic heartbeat — perfect for keeping time in watches, microcontrollers, clocks, and communication devices.</div>\n<div class='card'>In Arduino boards, the crystal oscillator helps maintain the timing for code execution and serial communication!</div>",
+      "image": "https://components101.com/sites/default/files/component_pin/Crystal-Oscillator-Pinout.jpg",
+      "audio": "https://example.com/audio/crystal-what.mp3"
+    },
+    {
+      "title": "⚡ How Does It Work?",
+      "content": "<div class='card'>The quartz inside the oscillator vibrates at a constant frequency when voltage is applied. This frequency is incredibly stable and accurate.</div>\n<div class='card'>It typically oscillates at 8 MHz or 16 MHz on an Arduino Uno board, creating a reliable timing signal used by the microcontroller's clock system.</div>\n<div class='card'>The oscillator is usually connected to the microcontroller's internal circuitry to control how fast it processes instructions.</div>",
+      "image": "https://www.researchgate.net/profile/Thanh-Nguyen-273/publication/354837548/figure/fig2/AS:1079361944082433@1632942798770/Working-principle-of-quartz-crystal-oscillator.png",
+      "audio": "https://example.com/audio/crystal-how.mp3"
+    },
+    {
+      "title": "🧩 Using Crystal Oscillator in Arduino",
+      "content": "<div class='card'>Most Arduino boards (like Uno and Nano) already have a crystal oscillator onboard (usually 16 MHz).</div>\n<div class='card'>You can also use external crystal oscillators when building custom Arduino boards or for precise timing circuits.</div>\n<div class='card'><b>Connection Tips:</b>\n<ul>\n<li>Connect the two pins of the crystal to XTAL1 and XTAL2 of the microcontroller</li>\n<li>Place 22pF capacitors between each pin and GND</li>\n<li>Keep the crystal as close as possible to the MCU</li>\n</ul></div>",
+      "image": "https://i.stack.imgur.com/UYu6g.png",
+      "audio": "https://example.com/audio/arduino-crystal.mp3"
+    },
+    {
+      "title": "🎥 Video: Understanding Crystal Oscillators",
+      "content": "<div class='card'>🎬 Learn how crystal oscillators keep accurate time and how they’re used in real-world electronics and Arduino boards.</div>\n<div class='card'><iframe width='100%' height='215' src='https://www.youtube.com/embed/fDbhOa46eFE' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/fDbhOa46eFE/0.jpg",
+      "audio": "https://example.com/audio/crystal-video.mp3"
+    },
+    {
+      "title": "🎮 Game: Timekeeper Challenge!",
+      "content": "<div class='card'>🕹️ Which statement is true?\n<ol>\n<li>Crystal oscillators create voltage spikes? ❌</li>\n<li>They keep precise timing by vibrating? ✅</li>\n<li>Arduino doesn't use them? ❌</li>\n</ol></div>\n<div class='card'><button class='gaming-btn'>Play Timekeeper Challenge</button></div>",
+      "image": "https://www.petervis.com/Raspberry_PI/images/crystal-oscillator/crystal-oscillator.png",
+      "audio": "https://example.com/audio/crystal-game.mp3"
+    },
+    {
+      "title": "🔬 Advanced Notes for Curious Minds",
+      "content": "<div class='card'>📚 Interesting facts:\n<ul>\n<li>Crystal oscillators can reach stability better than 0.001%!</li>\n<li>They are used in GPS, satellites, and spacecraft electronics!</li>\n<li>The sound frequency is in the MHz range — way beyond human hearing.</li>\n<li>They can be affected by temperature, which is why some versions are temperature-compensated (TCXO).</li>\n</ul></div>\n<div class='card'>🧠 Even though they're small, they hold time in their hands!</div>",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/89/Crystal_oscillator_10MHz_close-up.jpg",
+      "audio": "https://example.com/audio/crystal-tips.mp3"
+    }
+  ]
+}
+
+
+
+
+  ]
+},{
   title:"Sensor Central: Eyes, Ears & Sixth Senses",
   modules:[
     {
@@ -14027,7 +14617,560 @@ modules:[
     }
   ]
 }
-,
+,{
+  "title": "IR Obstacle Sensor – The Invisible Guard",
+  "lessons": [
+    {
+      "title": "What is an IR Obstacle Sensor?",
+      "content": "<div class='card'>The IR (Infrared) obstacle sensor is a small electronic module used to detect nearby objects without making contact. It does this by using a beam of invisible infrared light. This type of sensor is widely used in robotics, automation, touchless systems, and safety devices. IR obstacle sensors are cheap, reliable, and extremely easy to use with Arduino.</div>\n\n<div class='card'>Whenever you want a machine to detect the presence of something nearby — your hand, a wall, a surface — an IR sensor is one of the best tools to start with. It's often used in automatic soap dispensers, line-following robots, object detection systems, and even smart dustbins!</div>",
+      "image": "https://example.com/ir_intro.png",
+      "audio": "https://example.com/audio/ir_intro.mp3"
+    },
+    {
+      "title": "How Does the IR Sensor Work?",
+      "content": "<div class='card'>The IR sensor uses a simple principle: reflection. It has two main parts — an IR LED that emits invisible light and a photodiode that detects reflected light. When there's no object, the light travels away and doesn’t bounce back. But when something is close, the light reflects off it and hits the photodiode. That triggers the sensor’s output.</div>\n\n<div class='card'>This mechanism allows the sensor to act like an electronic eye. The sensor can tell if something is in front of it based on whether the light was reflected or not. Simple, but powerful!</div>",
+      "image": "https://example.com/ir_working.png",
+      "audio": "https://example.com/audio/ir_working.mp3"
+    },
+    {
+      "title": "What Kind of IR Sensor Is This?",
+      "content": "<div class='card'>This IR sensor is a <b>digital reflective infrared sensor</b>. That means it gives either HIGH (1) or LOW (0) on its output pin, depending on the reflection of infrared light.</div>\n\n<div class='card'>It is not a distance-measuring sensor. It only tells you if something is detected or not — like a YES or NO response. If you want analog distance, you'd need sensors like Sharp IR or ultrasonic ones like HC-SR04.</div>",
+      "image": "https://example.com/ir_type.png",
+      "audio": "https://example.com/audio/ir_type.mp3"
+    },
+    {
+      "title": "Pin Diagram of the IR Sensor Module",
+      "content": "<div class='card'>Typical IR obstacle sensors have 3 pins:\n\n- <b>VCC</b> — Connects to 5V supply\n- <b>GND</b> — Connects to ground\n- <b>OUT</b> — Digital output (HIGH or LOW)</div>\n\n<div class='card'>Some variants have an extra pin labeled EN (enable), which you can leave unused for basic operation. On the module, you'll also notice an IR LED (clear) and a photodiode (black), along with a potentiometer knob to adjust sensitivity.</div>",
+      "image": "https://example.com/ir_pinout.png",
+      "audio": "https://example.com/audio/ir_pinout.mp3"
+    },
+    {
+      "title": "How to Wire the IR Sensor with Arduino",
+      "content": "<div class='card'>Use jumper wires to connect:\n\n- VCC → 5V on Arduino\n- GND → GND on Arduino\n- OUT → Digital pin (e.g., D7)\n\nNo resistors or capacitors are needed for basic use. This sensor is very beginner-friendly.</div>\n\n<div class='card'>When wired correctly, the onboard LED will blink when an object is detected. This helps you test it even before coding!</div>",
+      "image": "https://example.com/ir_wiring.png",
+      "audio": "https://example.com/audio/ir_wiring.mp3"
+    },
+    {
+      "title": "First Arduino Code to Read IR Sensor",
+      "content": "<div class='card'>Here’s a simple sketch that reads the IR sensor and prints the value in the Serial Monitor:</div>\n<pre>\nint irSensor = 7;\n\nvoid setup() {\n  Serial.begin(9600);\n  pinMode(irSensor, INPUT);\n}\n\nvoid loop() {\n  int status = digitalRead(irSensor);\n  Serial.println(status);\n  delay(200);\n}</pre>\n<div class='card'>You’ll see “0” when something is detected and “1” when it’s clear.</div>",
+      "image": "https://example.com/ir_code1.png",
+      "audio": "https://example.com/audio/ir_code1.mp3"
+    },
+    {
+      "title": "How the Code Works",
+      "content": "<div class='card'>- <b>pinMode(irSensor, INPUT)</b> makes pin 7 a digital input.\n- <b>digitalRead(irSensor)</b> checks if the sensor output is HIGH or LOW.\n- <b>Serial.println(status)</b> prints the result to the Serial Monitor.\n- <b>delay(200)</b> gives a small pause to avoid flooding the output.</div>\n\n<div class='card'>You can use this logic in your robot or any interactive system!</div>",
+      "image": "https://example.com/ir_code_explained.png",
+      "audio": "https://example.com/audio/ir_code_explained.mp3"
+    },
+    {
+      "title": "What is a Potentiometer on the IR Sensor?",
+      "content": "<div class='card'>A potentiometer (also called a trim pot) is the blue screw on the sensor. It adjusts how sensitive the sensor is to reflection.</div>\n\n<div class='card'>Turn the screw slowly while testing — you'll notice the detection range change. Clockwise usually increases range, and counter-clockwise decreases it.</div>",
+      "image": "https://example.com/ir_potentiometer.png",
+      "audio": "https://example.com/audio/ir_potentiometer.mp3"
+    },
+    {
+      "title": "Detection Range and Field of View",
+      "content": "<div class='card'>The IR obstacle sensor typically detects objects within 2 to 30 cm. It works best with flat, reflective surfaces like white paper or your hand.</div>\n\n<div class='card'>Dark or absorbent materials (like black cloth) might reduce sensitivity. The detection angle is usually narrow — around 15°–25°.</div>",
+      "image": "https://example.com/ir_range.png",
+      "audio": "https://example.com/audio/ir_range.mp3"
+    },
+    {
+      "title": "Why Use IR Sensors in Robotics?",
+      "content": "<div class='card'>IR sensors are ideal for robotics because:\n- They’re cheap and fast\n- They work without contact\n- They use very little power\n\nThey're perfect for object detection, line following, proximity alerts, and edge detection.</div>",
+      "image": "https://example.com/ir_robotics.png",
+      "audio": "https://example.com/audio/ir_robotics.mp3"
+    },
+    {
+      "title": "How the IR Sensor Output Works",
+      "content": "<div class='card'>The sensor gives a DIGITAL output:\n\n- LOW (0) → Object detected\n- HIGH (1) → No object</div>\n\n<div class='card'>So, in Arduino logic, you usually check if digitalRead() is LOW to trigger actions like stopping a robot or opening a gate.</div>",
+      "image": "https://example.com/ir_output.png",
+      "audio": "https://example.com/audio/ir_output.mp3"
+    },
+    {
+      "title": "What Affects IR Detection?",
+      "content": "<div class='card'>Detection depends on:\n- Surface color and texture\n- Lighting conditions (IR sensors don’t like sunlight)\n- Sensor angle\n- Speed of object movement</div>\n\n<div class='card'>Always test the sensor in your real environment before finalizing any robot design!</div>",
+      "image": "https://example.com/ir_environment.png",
+      "audio": "https://example.com/audio/ir_environment.mp3"
+    },
+    {
+      "title": "IR Sensor and Ambient Light",
+      "content": "<div class='card'>Sunlight and strong artificial lights can interfere with IR sensors. That’s because these light sources contain infrared too.</div>\n\n<div class='card'>If your IR sensor is glitchy outdoors, try shielding it with black plastic or mounting it in a tube to block external light.</div>",
+      "image": "https://example.com/ir_sunlight.png",
+      "audio": "https://example.com/audio/ir_sunlight.mp3"
+    },
+    {
+      "title": "What is a Photodiode?",
+      "content": "<div class='card'>A photodiode is a light-sensing component. It conducts electricity differently based on how much light falls on it. In IR sensors, it’s used to detect reflected infrared rays.</div>\n\n<div class='card'>This is how the sensor knows if something is near — the photodiode acts like an IR-sensitive eye!</div>",
+      "image": "https://example.com/ir_photodiode.png",
+      "audio": "https://example.com/audio/ir_photodiode.mp3"
+    },
+    {
+      "title": "How to Test the Sensor Without Code",
+      "content": "<div class='card'>Connect the IR sensor to 5V and GND, and observe the onboard LED. When you place your hand in front, the LED should light up or go off depending on model.</div>\n\n<div class='card'>This quick test lets you know the sensor is working before coding anything.</div>",
+      "image": "https://example.com/ir_test.png",
+      "audio": "https://example.com/audio/ir_test.mp3"
+    },
+    {
+      "title": "What If It Always Reads HIGH or LOW?",
+      "content": "<div class='card'>If your sensor always gives HIGH or LOW:\n- Check if OUT pin is connected properly\n- Adjust the potentiometer\n- Try a different surface (avoid black)\n- Sensor might be faulty</div>\n\n<div class='card'>You can also use Serial.print() to debug values during operation.</div>",
+      "image": "https://example.com/ir_fix.png",
+      "audio": "https://example.com/audio/ir_fix.mp3"
+    },
+    {
+      "title": "Using IR Sensors with Interrupts",
+      "content": "<div class='card'>Advanced users can use <b>interrupts</b> on Arduino to detect object detection instantly. This way, your code doesn't have to constantly poll the sensor.</div>\n\n<div class='card'>This method is useful when your code has to do many things at once.</div>",
+      "image": "https://example.com/ir_interrupts.png",
+      "audio": "https://example.com/audio/ir_interrupts.mp3"
+    },
+    {
+      "title": "IR Sensors and PWM Pins: Any Conflict?",
+      "content": "<div class='card'>IR sensors don’t care about PWM or analog pins — they just need a digital input. You can connect them to any digital pin on Arduino.</div>\n\n<div class='card'>But avoid using pins already used by other time-sensitive functions like serial communication (pins 0 and 1).</div>",
+      "image": "https://example.com/ir_pwm.png",
+      "audio": "https://example.com/audio/ir_pwm.mp3"
+    },
+    {
+      "title": "IR Sensor Variants: A Quick Overview",
+      "content": "<div class='card'>Other types of IR sensors include:\n- Sharp IR sensors (analog output)\n- IR break beam sensors (used in counters)\n- IR thermometers (measure temperature)\n\nEach type has different use cases. This module is focused only on the digital obstacle sensor.</div>",
+      "image": "https://example.com/ir_variants.png",
+      "audio": "https://example.com/audio/ir_variants.mp3"
+    },
+    {
+      "title": "How to Calibrate the Sensor Correctly",
+      "content": "<div class='card'>To calibrate:\n- Place your target object at the desired distance\n- Turn the potentiometer slowly\n- Watch the onboard LED — it should toggle when object is detected\n\nOnce it toggles at your chosen distance, stop turning — you’re done!</div>",
+      "image": "https://example.com/ir_calibrate.png",
+      "audio": "https://example.com/audio/ir_calibrate.mp3"
+    },
+    {
+      "title": "IR Sensor Safety: Is It Harmful?",
+      "content": "<div class='card'>Nope! IR sensors emit low-energy, harmless infrared light — the same kind used in TV remotes. It’s not harmful to eyes or skin.</div>\n\n<div class='card'>Still, avoid staring directly into the LED for long durations, just like with any bright light source.</div>",
+      "image": "https://example.com/ir_safe.png",
+      "audio": "https://example.com/audio/ir_safe.mp3"
+    },
+    {
+      "title": "Wrap-Up: When to Use an IR Sensor",
+      "content": "<div class='card'>Use the IR sensor when you need simple, fast, and cheap object detection — especially for short range. It’s great for beginners and perfect for triggering events when something comes close.</div>\n\n<div class='card'>Avoid using it outdoors or for distance measurement — that’s where ultrasonic or analog sensors work better.</div>",
+      "image": "https://example.com/ir_summary.png",
+      "audio": "https://example.com/audio/ir_summary.mp3"
+    }
+  ]
+},{
+  "title": "DHT11 Sensor – The Weather Whisperer",
+  "lessons": [
+    {
+      "title": "What is the DHT11 Sensor?",
+      "content": "<div class='card'>The DHT11 is a digital sensor that measures two things: <b>temperature</b> and <b>humidity</b>. It's small, cheap, and widely used in weather stations, greenhouses, smart homes, and science experiments. Unlike analog sensors, it gives direct digital output — no need for ADC conversion!</div>\n\n<div class='card'>It has a blue plastic body, three or four pins (depending on model), and a small internal IC that handles measurement and communication.</div>",
+      "image": "https://example.com/dht11_intro.png",
+      "audio": "https://example.com/audio/dht11_intro.mp3"
+    },
+    {
+      "title": "What Can the DHT11 Measure?",
+      "content": "<div class='card'>🟦 <b>Temperature:</b> from 0°C to 50°C (±2°C accuracy)\n🟦 <b>Humidity:</b> from 20% to 90% (±5% accuracy)</div>\n\n<div class='card'>It updates once every second, which is enough for most hobby and learning projects. It doesn’t handle extreme environments, but it’s excellent for indoor sensing and learning!</div>",
+      "image": "https://example.com/dht11_range.png",
+      "audio": "https://example.com/audio/dht11_range.mp3"
+    },
+    {
+      "title": "How the DHT11 Works Inside",
+      "content": "<div class='card'>Inside the DHT11 are two important sensors:\n- A <b>thermistor</b> that measures temperature\n- A <b>capacitive humidity sensor</b> for detecting moisture in the air</div>\n\n<div class='card'>A small microcontroller reads these values, processes them, and sends them out in a special format using a single digital data pin. This means fewer wires and less headache for beginners!</div>",
+      "image": "https://example.com/dht11_internal.png",
+      "audio": "https://example.com/audio/dht11_internal.mp3"
+    },
+    {
+      "title": "Pin Diagram and Labeling",
+      "content": "<div class='card'>If you're using a DHT11 module, it usually has 3 pins:\n- VCC → Connects to 5V (or 3.3V)\n- DATA → Connects to Arduino digital pin\n- GND → Ground\n\nSome raw DHT11 sensors have 4 pins (with an extra NC pin). The pin order can vary, so always check your module’s silkscreen label or datasheet!</div>",
+      "image": "https://example.com/dht11_pins.png",
+      "audio": "https://example.com/audio/dht11_pins.mp3"
+    },
+    {
+      "title": "Wiring the DHT11 with Arduino",
+      "content": "<div class='card'>Here’s how to wire it:\n\n- VCC → 5V on Arduino\n- GND → GND on Arduino\n- DATA → Digital pin (e.g., D2)</div>\n\n<div class='card'>Some modules already have a pull-up resistor between DATA and VCC. If yours doesn’t, you’ll need a 10kΩ resistor there for stable communication.</div>",
+      "image": "https://example.com/dht11_wiring.png",
+      "audio": "https://example.com/audio/dht11_wiring.mp3"
+    },
+    {
+      "title": "Installing the DHT Library",
+      "content": "<div class='card'>To use the DHT11 easily, install the <b>DHT sensor library</b> by Adafruit:</div>\n\n<div class='card'>1. Open Arduino IDE\n2. Go to <b>Sketch > Include Library > Manage Libraries</b>\n3. Search for \"DHT sensor library by Adafruit\"\n4. Click Install</div>\n\n<div class='card'>Also install the <b>Adafruit Unified Sensor Library</b> when prompted.</div>",
+      "image": "https://example.com/dht11_library.png",
+      "audio": "https://example.com/audio/dht11_library.mp3"
+    },
+    {
+      "title": "First Arduino Code to Read DHT11",
+      "content": "<div class='card'>Here’s your first working sketch:</div>\n<pre>#include \"DHT.h\"\n#define DHTPIN 2\n#define DHTTYPE DHT11\n\nDHT dht(DHTPIN, DHTTYPE);\n\nvoid setup() {\n  Serial.begin(9600);\n  dht.begin();\n}\n\nvoid loop() {\n  float temp = dht.readTemperature();\n  float humid = dht.readHumidity();\n  Serial.print(\"Temp: \"); Serial.print(temp);\n  Serial.print(\" °C  Humidity: \"); Serial.print(humid);\n  Serial.println(\" %\");\n  delay(2000);\n}</pre>",
+      "image": "https://example.com/dht11_code1.png",
+      "audio": "https://example.com/audio/dht11_code1.mp3"
+    },
+    {
+      "title": "Line-by-Line Code Explanation",
+      "content": "<div class='card'>🟦 `#include \"DHT.h\"` – Includes the library\n🟦 `#define DHTPIN 2` – Sensor connected to pin D2\n🟦 `DHT dht(DHTPIN, DHTTYPE)` – Creates the sensor object\n🟦 `dht.readTemperature()` – Reads temperature in Celsius\n🟦 `dht.readHumidity()` – Reads humidity percentage</div>\n\n<div class='card'>You can also read temperature in Fahrenheit by passing true to `.readTemperature(true)`</div>",
+      "image": "https://example.com/dht11_explained.png",
+      "audio": "https://example.com/audio/dht11_explained.mp3"
+    },
+    {
+      "title": "Why Use a Library for DHT11?",
+      "content": "<div class='card'>The DHT11 uses a special digital protocol. Reading it manually would require precise microsecond timing — that’s tricky for beginners!</div>\n\n<div class='card'>The library handles all the low-level work: triggering the sensor, waiting for response, and converting the raw signal into usable numbers. It makes your life a LOT easier.</div>",
+      "image": "https://example.com/dht11_librarywhy.png",
+      "audio": "https://example.com/audio/dht11_librarywhy.mp3"
+    },
+    {
+      "title": "How Often Can You Read the DHT11?",
+      "content": "<div class='card'>You should wait at least 1–2 seconds between readings. If you try to read it faster, it might return old or invalid data.</div>\n\n<div class='card'>The library handles retry logic for you, but always give the sensor some time between measurements. It’s not a high-speed device.</div>",
+      "image": "https://example.com/dht11_timing.png",
+      "audio": "https://example.com/audio/dht11_timing.mp3"
+    },
+    {
+      "title": "What If You Get 'nan' or Error Values?",
+      "content": "<div class='card'>If `readTemperature()` or `readHumidity()` returns `nan`, that means \"not a number\". It usually happens when:\n- The sensor isn’t connected properly\n- Wrong pin is defined\n- Pull-up resistor is missing\n- Not enough time between reads</div>\n\n<div class='card'>Check wiring first. Then add more delay. And make sure you’re using the correct sensor type: DHT11 (not DHT22!)</div>",
+      "image": "https://example.com/dht11_nan.png",
+      "audio": "https://example.com/audio/dht11_nan.mp3"
+    },
+    {
+      "title": "Where Should You Mount the Sensor?",
+      "content": "<div class='card'>Avoid placing the DHT11 near hot components, windows, or heating vents. That will give inaccurate readings.</div>\n\n<div class='card'>For realistic measurements, mount it in open air, away from heat sources, and let it stabilize for a few minutes before reading values.</div>",
+      "image": "https://example.com/dht11_mounting.png",
+      "audio": "https://example.com/audio/dht11_mounting.mp3"
+    },
+    {
+      "title": "How the Capacitive Humidity Sensor Works",
+      "content": "<div class='card'>Inside the DHT11 is a tiny capacitor with a humidity-sensitive dielectric layer. As humidity changes, this layer changes how much charge it can hold — the sensor detects this variation to calculate humidity percentage.</div>\n\n<div class='card'>It’s simple physics — moisture affects capacitance, and the microcontroller interprets this to give you data!</div>",
+      "image": "https://example.com/dht11_capacitive.png",
+      "audio": "https://example.com/audio/dht11_capacitive.mp3"
+    },
+    {
+      "title": "How the Temperature Sensor Works",
+      "content": "<div class='card'>Temperature is measured using a <b>thermistor</b> — a resistor whose value changes with temperature. The DHT11’s microcontroller reads this change and converts it into degrees Celsius or Fahrenheit.</div>\n\n<div class='card'>Thermistors are cheap, reliable, and common in electronics. The DHT11 uses them internally, so you don’t have to do any analog math.</div>",
+      "image": "https://example.com/dht11_thermistor.png",
+      "audio": "https://example.com/audio/dht11_thermistor.mp3"
+    },
+    {
+      "title": "Can the DHT11 Be Powered with 3.3V?",
+      "content": "<div class='card'>Yes! The DHT11 works with both 5V and 3.3V. So it’s compatible with Arduino Uno (5V), ESP8266 (3.3V), and even Raspberry Pi.</div>\n\n<div class='card'>However, longer wires at 3.3V may cause instability. In that case, consider using a logic level converter or a sensor with built-in regulator.</div>",
+      "image": "https://example.com/dht11_voltage.png",
+      "audio": "https://example.com/audio/dht11_voltage.mp3"
+    },
+    {
+      "title": "How Accurate is the DHT11?",
+      "content": "<div class='card'>The DHT11 is not a lab-grade sensor. Its temperature accuracy is ±2°C, and humidity is ±5%. Good for hobby, not for medical or weather-grade use.</div>\n\n<div class='card'>If you need better accuracy, upgrade to DHT22 or use analog sensors like LM35 or BME280. But for learning, DHT11 is perfect.</div>",
+      "image": "https://example.com/dht11_accuracy.png",
+      "audio": "https://example.com/audio/dht11_accuracy.mp3"
+    },
+    {
+      "title": "DHT11 vs DHT22 – A Quick Comparison",
+      "content": "<div class='card'>| Feature     | DHT11       | DHT22       |\n|-------------|-------------|-------------|\n| Temp Range  | 0–50°C      | -40–80°C    |\n| Humidity    | 20–90%      | 0–100%      |\n| Accuracy    | ±2°C, ±5%   | ±0.5°C, ±2% |\n| Update Time | 1s          | 2s          |\n| Price       | Cheaper     | More costly |</div>",
+      "image": "https://example.com/dht11_vs_dht22.png",
+      "audio": "https://example.com/audio/dht11_vs_dht22.mp3"
+    },
+    {
+      "title": "Can You Read Multiple DHT11s?",
+      "content": "<div class='card'>Yes, you can connect multiple DHT11 sensors to different digital pins. Just create separate DHT objects in code, like:</div>\n<pre>DHT dht1(2, DHT11);\nDHT dht2(3, DHT11);</pre>\n\n<div class='card'>But don’t connect them to the same pin — each must have its own data line.</div>",
+      "image": "https://example.com/dht11_multi.png",
+      "audio": "https://example.com/audio/dht11_multi.mp3"
+    },
+    {
+      "title": "Summary – When to Use the DHT11",
+      "content": "<div class='card'>Use the DHT11 when:\n✅ You need simple indoor temp & humidity readings\n✅ You want minimal wiring\n✅ You’re building projects like weather stations, smart fans, or home automations\n\nAvoid it for:\n🚫 Precision measurements\n🚫 Outdoor long-distance use</div>",
+      "image": "https://example.com/dht11_summary.png",
+      "audio": "https://example.com/audio/dht11_summary.mp3"
+    }
+  ]
+}
+,{
+  "title": "LDR Sensor – The Light Listener",
+  "lessons": [
+    {
+      "title": "What is an LDR?",
+      "content": "<div class='card'>An LDR, or Light Dependent Resistor, is a special type of resistor that changes its resistance based on the amount of light falling on it. In bright light, it has low resistance. In darkness, its resistance becomes high. This behavior makes it perfect for detecting light levels with Arduino.</div>\n\n<div class='card'>LDRs are also called photoresistors and are widely used in solar lamps, smart streetlights, and auto-brightness systems.</div>",
+      "image": "https://example.com/ldr_intro.png",
+      "audio": "https://example.com/audio/ldr_intro.mp3"
+    },
+    {
+      "title": "How Does the LDR Work?",
+      "content": "<div class='card'>LDRs are made of a semiconductor material like cadmium sulfide (CdS). When light hits this material, electrons are freed and the resistance decreases. In the dark, fewer electrons are active, and resistance increases.</div>\n\n<div class='card'>So more light = less resistance. Less light = more resistance. Arduino measures this using voltage changes.</div>",
+      "image": "https://example.com/ldr_working.png",
+      "audio": "https://example.com/audio/ldr_working.mp3"
+    },
+    {
+      "title": "Understanding the Voltage Divider",
+      "content": "<div class='card'>LDRs are analog, so we use them in a <b>voltage divider</b> circuit to convert their resistance into voltage. This lets Arduino read light level as a value between 0–1023.</div>\n\n<div class='card'>You connect the LDR and a fixed resistor (like 10kΩ) in series between 5V and GND. The middle point goes to an analog pin. As light changes, the voltage at this point changes, and Arduino reads it.</div>",
+      "image": "https://example.com/ldr_voltage_divider.png",
+      "audio": "https://example.com/audio/ldr_voltage_divider.mp3"
+    },
+    {
+      "title": "LDR Pin Diagram",
+      "content": "<div class='card'>An LDR has no positive or negative pins. It’s a simple 2-pin resistor, and you can connect it either way. But in voltage divider setups, it matters which side goes to 5V and which to GND — because it affects whether the analog value increases or decreases with light.</div>",
+      "image": "https://example.com/ldr_pins.png",
+      "audio": "https://example.com/audio/ldr_pins.mp3"
+    },
+    {
+      "title": "Connecting LDR to Arduino",
+      "content": "<div class='card'>🟦 Connect LDR and 10kΩ resistor in series:\n- One leg of LDR → 5V\n- One leg of resistor → GND\n- Other legs joined together → A0</div>\n\n<div class='card'>This simple setup lets Arduino read light intensity on pin A0.</div>",
+      "image": "https://example.com/ldr_wiring.png",
+      "audio": "https://example.com/audio/ldr_wiring.mp3"
+    },
+    {
+      "title": "Basic Code to Read LDR",
+      "content": "<div class='card'>Here’s a basic sketch:</div>\n<pre>void setup() {\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  int light = analogRead(A0);\n  Serial.println(light);\n  delay(500);\n}</pre>\n<div class='card'>This prints values between 0 (dark) and 1023 (very bright).</div>",
+      "image": "https://example.com/ldr_code1.png",
+      "audio": "https://example.com/audio/ldr_code1.mp3"
+    },
+    {
+      "title": "Explaining the Code",
+      "content": "<div class='card'>🟦 `analogRead(A0)` reads the voltage from the voltage divider (0–5V), converted into 10-bit value (0–1023).\n🟦 `Serial.println(light)` prints the brightness level to the Serial Monitor.\n🟦 `delay(500)` gives you 2 readings per second.</div>\n\n<div class='card'>This is your light data in real-time!</div>",
+      "image": "https://example.com/ldr_code_explained.png",
+      "audio": "https://example.com/audio/ldr_code_explained.mp3"
+    },
+    {
+      "title": "What Do the Values Mean?",
+      "content": "<div class='card'>Analog values from the LDR circuit usually mean:\n- 0 → Dark\n- 512 → Medium light\n- 1023 → Very bright\n\nBut exact values depend on your resistor and ambient lighting. It’s best to test and calibrate!</div>",
+      "image": "https://example.com/ldr_values.png",
+      "audio": "https://example.com/audio/ldr_values.mp3"
+    },
+    {
+      "title": "Using Map() to Convert LDR Readings",
+      "content": "<div class='card'>To simplify readings, use the `map()` function:</div>\n<pre>int brightness = map(analogRead(A0), 0, 1023, 0, 100);</pre>\n\n<div class='card'>This gives you a percentage brightness from 0% to 100%, making it easier to display or use in logic.</div>",
+      "image": "https://example.com/ldr_map.png",
+      "audio": "https://example.com/audio/ldr_map.mp3"
+    },
+    {
+      "title": "What Resistor to Use with LDR?",
+      "content": "<div class='card'>A 10kΩ resistor works well for most indoor uses. But you can experiment:\n- Lower resistor (1kΩ): makes sensor more sensitive to light\n- Higher resistor (100kΩ): makes it more sensitive to dark\n\nTry different values to tune your system!</div>",
+      "image": "https://example.com/ldr_resistor.png",
+      "audio": "https://example.com/audio/ldr_resistor.mp3"
+    },
+    {
+      "title": "LDR vs Phototransistor",
+      "content": "<div class='card'>LDRs are slower and cheaper. Phototransistors are faster and more accurate, especially for fast-changing light like in remote controls.</div>\n\n<div class='card'>For learning and basic light sensing, LDR is perfect. For precision, go for phototransistors or photodiodes.</div>",
+      "image": "https://example.com/ldr_vs_phototransistor.png",
+      "audio": "https://example.com/audio/ldr_vs_phototransistor.mp3"
+    },
+    {
+      "title": "How Fast is the LDR?",
+      "content": "<div class='card'>LDRs are not super fast — they have a response time of 10–100 milliseconds. That’s fast enough for light-based triggers, but not for blinking lights or fast flickers.</div>\n\n<div class='card'>Don’t use LDRs for detecting remote signals or very quick changes.</div>",
+      "image": "https://example.com/ldr_speed.png",
+      "audio": "https://example.com/audio/ldr_speed.mp3"
+    },
+    {
+      "title": "Real-World Light Ranges",
+      "content": "<div class='card'>Here’s what you might see on your serial monitor:\n- Dark Room: 50–150\n- Normal Room: 300–600\n- Sunlight: 800–1023\n\nThese values vary based on resistor and wiring, so calibrate with real readings.</div>",
+      "image": "https://example.com/ldr_readings.png",
+      "audio": "https://example.com/audio/ldr_readings.mp3"
+    },
+    {
+      "title": "Can LDRs Work in Darkness?",
+      "content": "<div class='card'>Yes, they work in darkness — and that’s when their resistance is highest. The Arduino will read a low analog value, which you can use to trigger lights, alarms, etc.</div>",
+      "image": "https://example.com/ldr_darkness.png",
+      "audio": "https://example.com/audio/ldr_darkness.mp3"
+    },
+    {
+      "title": "LDR Safety and Lifespan",
+      "content": "<div class='card'>LDRs are passive components. They don’t emit anything, they don’t heat up, and they don’t wear out easily. They can last years in low-power projects.</div>\n\n<div class='card'>They’re safe, cheap, and reliable for students and hobbyists!</div>",
+      "image": "https://example.com/ldr_safety.png",
+      "audio": "https://example.com/audio/ldr_safety.mp3"
+    },
+    {
+      "title": "Common LDR Issues and Fixes",
+      "content": "<div class='card'>🛠️ Issues:\n- Always same reading? Check if analog pin is loose.\n- Jumping values? Add a small capacitor (like 100nF) to smooth it.\n- Weird values? Try a different resistor.</div>\n\n<div class='card'>Always read Serial Monitor and test under different lights before finalizing your code.</div>",
+      "image": "https://example.com/ldr_troubleshoot.png",
+      "audio": "https://example.com/audio/ldr_troubleshoot.mp3"
+    },
+    {
+      "title": "How to Calibrate the LDR",
+      "content": "<div class='card'>Use the Serial Monitor to note light values under different lighting conditions. Then set custom thresholds in code like:</div>\n<pre>if(light < 200){\n  // it's dark\n}</pre>\n\n<div class='card'>You can even print messages like “Day” or “Night” based on these values!</div>",
+      "image": "https://example.com/ldr_calibrate.png",
+      "audio": "https://example.com/audio/ldr_calibrate.mp3"
+    },
+    {
+      "title": "Can You Use LDR Without Resistor?",
+      "content": "<div class='card'>Technically, no. You need a resistor to create a voltage divider. Without it, Arduino will not get a voltage to measure — the input pin will float and return garbage values.</div>",
+      "image": "https://example.com/ldr_noresistor.png",
+      "audio": "https://example.com/audio/ldr_noresistor.mp3"
+    },
+    {
+      "title": "Wrap-Up: Why LDRs Are So Popular",
+      "content": "<div class='card'>LDRs are cheap, simple, reliable, and perfect for detecting ambient light. Whether you want to turn off LEDs during the day or trigger streetlamps at night — this little sensor has your back.</div>",
+      "image": "https://example.com/ldr_wrapup.png",
+      "audio": "https://example.com/audio/ldr_wrapup.mp3"
+    }
+  ]
+}
+,{
+  "title": "Sound Sensor – The Sound Seeker",
+  "lessons": [
+    {
+      "title": "What is a Sound Sensor Module?",
+      "content": "<div class='card'>A sound sensor module detects sound waves (like claps, knocks, or music) and converts them into electrical signals that your Arduino can understand. It uses a small microphone, usually an electret type, paired with an op-amp to detect sound energy.</div>\n\n<div class='card'>These sensors can be digital, analog, or both. They're great for projects like clap switches, noise alarms, and audio-reactive lights.</div>",
+      "image": "https://example.com/sound_intro.png",
+      "audio": "https://example.com/audio/sound_intro.mp3"
+    },
+    {
+      "title": "Types of Sound Sensors (Digital vs Analog)",
+      "content": "<div class='card'>🟢 <b>Digital Sound Sensor:</b> Gives HIGH or LOW depending on whether sound crosses a threshold.\n🟡 <b>Analog Sound Sensor:</b> Gives a continuous voltage representing the loudness of the sound.</div>\n\n<div class='card'>Some modules (like KY-038) offer <b>both outputs</b>, so you can choose how to read sound.</div>",
+      "image": "https://example.com/sound_types.png",
+      "audio": "https://example.com/audio/sound_types.mp3"
+    },
+    {
+      "title": "How Does the Sound Sensor Work?",
+      "content": "<div class='card'>At the core is an <b>electret condenser microphone</b> that picks up vibrations in the air. It produces a tiny voltage signal. This signal is amplified by an <b>op-amp</b> (like LM393) and fed to the analog and/or digital output pins.</div>\n\n<div class='card'>The louder the sound, the higher the analog signal. If it crosses a threshold set by a potentiometer, the digital pin goes HIGH.</div>",
+      "image": "https://example.com/sound_working.png",
+      "audio": "https://example.com/audio/sound_working.mp3"
+    },
+    {
+      "title": "Sound Sensor Pin Diagram",
+      "content": "<div class='card'>Most sound sensors have 4 pins:\n- VCC → Connect to 5V\n- GND → Ground\n- A0 → Analog output\n- D0 → Digital output</div>\n\n<div class='card'>You can use either A0 or D0 depending on your project. Some versions only have D0.</div>",
+      "image": "https://example.com/sound_pins.png",
+      "audio": "https://example.com/audio/sound_pins.mp3"
+    },
+    {
+      "title": "Wiring Sound Sensor with Arduino",
+      "content": "<div class='card'>Wiring it is easy:\n- VCC → 5V\n- GND → GND\n- A0 → A0 (for analog reading)\n- D0 → D2 (for digital reading)</div>\n\n<div class='card'>You can use either A0 or D0 — or both!</div>",
+      "image": "https://example.com/sound_wiring.png",
+      "audio": "https://example.com/audio/sound_wiring.mp3"
+    },
+    {
+      "title": "Reading Analog Values from Sound Sensor",
+      "content": "<div class='card'>Here’s a basic sketch to read analog sound levels:</div>\n<pre>void setup() {\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  int sound = analogRead(A0);\n  Serial.println(sound);\n  delay(100);\n}</pre>\n\n<div class='card'>You’ll get values from 0 (silence) to around 1023 (loud).</div>",
+      "image": "https://example.com/sound_code1.png",
+      "audio": "https://example.com/audio/sound_code1.mp3"
+    },
+    {
+      "title": "Reading Digital Values from Sound Sensor",
+      "content": "<div class='card'>Digital output is simpler. Here’s how to read it:</div>\n<pre>void setup() {\n  pinMode(2, INPUT);\n  Serial.begin(9600);\n}\n\nvoid loop() {\n  int status = digitalRead(2);\n  if (status == HIGH) {\n    Serial.println(\"Loud sound detected!\");\n  }\n  delay(100);\n}</pre>",
+      "image": "https://example.com/sound_code2.png",
+      "audio": "https://example.com/audio/sound_code2.mp3"
+    },
+    {
+      "title": "Adjusting Sensitivity with Potentiometer",
+      "content": "<div class='card'>The small screw on the sound sensor is a potentiometer. It controls the threshold level for the digital output. Turn it clockwise or anti-clockwise to change the trigger point.</div>\n\n<div class='card'>Use Serial Monitor to test the threshold under real conditions!</div>",
+      "image": "https://example.com/sound_potentiometer.png",
+      "audio": "https://example.com/audio/sound_potentiometer.mp3"
+    },
+    {
+      "title": "Understanding the Analog Readings",
+      "content": "<div class='card'>Analog values fluctuate with the sound's volume. Try clapping or speaking near the mic. Watch how values spike and fall.</div>\n\n<div class='card'>Use `map()` to convert the 0–1023 reading into a percentage or a brightness level for LEDs.</div>",
+      "image": "https://example.com/sound_analog_plot.png",
+      "audio": "https://example.com/audio/sound_analog_plot.mp3"
+    },
+    {
+      "title": "Sound Level Graph using Serial Plotter",
+      "content": "<div class='card'>Use the Arduino Serial Plotter to visualize live sound waves. Go to <b>Tools > Serial Plotter</b> after uploading your sketch. It will show the changing amplitude of sound in real time!</div>",
+      "image": "https://example.com/sound_serial_plotter.png",
+      "audio": "https://example.com/audio/sound_serial_plotter.mp3"
+    },
+    {
+      "title": "Why Use Analog Instead of Digital?",
+      "content": "<div class='card'>Analog gives more flexibility. You can detect volume, not just presence of sound. This is useful for sound-reactive brightness, visualizations, or noise detection thresholds.</div>\n\n<div class='card'>Digital is best for triggering events (like a clap to toggle a light).</div>",
+      "image": "https://example.com/sound_analog_vs_digital.png",
+      "audio": "https://example.com/audio/sound_analog_vs_digital.mp3"
+    },
+    {
+      "title": "Microphone Direction and Range",
+      "content": "<div class='card'>Electret microphones are directional — they pick up sound better from the front. Keep the mic facing the sound source. Ideal detection range is 0–2 feet for most hobby modules.</div>",
+      "image": "https://example.com/sound_direction.png",
+      "audio": "https://example.com/audio/sound_direction.mp3"
+    },
+    {
+      "title": "Clap Detection Code Logic",
+      "content": "<div class='card'>To detect a clap:\n- Monitor analog signal\n- If it crosses a certain threshold suddenly, trigger an event\n- Use `millis()` to ignore rapid false triggers</div>\n\n<div class='card'>You’ll learn more about this in future coding modules.</div>",
+      "image": "https://example.com/sound_clap.png",
+      "audio": "https://example.com/audio/sound_clap.mp3"
+    },
+    {
+      "title": "Common Mistakes with Sound Sensor",
+      "content": "<div class='card'>🛑 Not getting values?\n- Check if you're reading correct pin (A0 or D0)\n- Mic not facing sound?\n- Sensitivity too low?\n- Serial Monitor at right baud rate?</div>",
+      "image": "https://example.com/sound_errors.png",
+      "audio": "https://example.com/audio/sound_errors.mp3"
+    },
+    {
+      "title": "Can It Detect Music?",
+      "content": "<div class='card'>Yes, the analog output reacts to music! Play a song near the sensor and plot analog values — you’ll see the waveform dance in the Serial Plotter!</div>",
+      "image": "https://example.com/sound_music.png",
+      "audio": "https://example.com/audio/sound_music.mp3"
+    },
+    {
+      "title": "Op-Amp in Sound Sensors (LM393)",
+      "content": "<div class='card'>The LM393 dual comparator chip amplifies the mic signal and compares it with the threshold you set. It produces the HIGH/LOW signal for the digital output.</div>\n\n<div class='card'>You don’t need to code this — it happens inside the sensor automatically.</div>",
+      "image": "https://example.com/sound_opamp.png",
+      "audio": "https://example.com/audio/sound_opamp.mp3"
+    },
+    {
+      "title": "Filtering Sound Spikes with Smoothing",
+      "content": "<div class='card'>Analog readings from sound sensors can be noisy. You can average multiple readings to smooth the data:</div>\n<pre>int sum = 0;\nfor(int i=0; i<10; i++) {\n  sum += analogRead(A0);\n  delay(5);\n}\nint average = sum / 10;</pre>",
+      "image": "https://example.com/sound_smoothing.png",
+      "audio": "https://example.com/audio/sound_smoothing.mp3"
+    },
+    {
+      "title": "Why is My Sensor Always HIGH?",
+      "content": "<div class='card'>Check if the potentiometer is set too low. Try turning the screw slightly clockwise and observe the LED. If the onboard LED is always ON, it means the threshold is too low and triggering constantly.</div>",
+      "image": "https://example.com/sound_alwayshigh.png",
+      "audio": "https://example.com/audio/sound_alwayshigh.mp3"
+    },
+    {
+      "title": "Do You Need a Library for Sound Sensor?",
+      "content": "<div class='card'>No library needed! Everything is done using `analogRead()` and `digitalRead()` — the sensor just sends raw voltage or HIGH/LOW signals. You can write your own custom logic freely!</div>",
+      "image": "https://example.com/sound_nolibrary.png",
+      "audio": "https://example.com/audio/sound_nolibrary.mp3"
+    },
+    {
+      "title": "Final Thoughts – Power of Sound",
+      "content": "<div class='card'>Sound sensors give your robot ears! From detecting applause to reacting to music or monitoring noise pollution — this tiny microphone opens up a whole world of interaction for your Arduino projects.</div>",
+      "image": "https://example.com/sound_wrap.png",
+      "audio": "https://example.com/audio/sound_wrap.mp3"
+    }
+  ]
+}
+,{
+  "title": "Voltage Regulators: Keeping Power Steady",
+  "lessons": [
+    {
+      "title": "What are Voltage Regulators?",
+      "content": "<div class='card'>🔋 A Voltage Regulator is an electronic component that provides a constant output voltage — no matter how much the input voltage fluctuates.</div>\n<div class='card'>For example, if your Arduino project needs 5V, but your battery gives 9V, the regulator will bring it down to a steady 5V. ✨</div>\n<div class='card'>Voltage regulators prevent overvoltage damage to sensitive components.</div>\n<div class='card'>🧠 They're like water taps — allowing just the right amount of electricity to flow.</div>",
+      "image": "https://components101.com/sites/default/files/component_pin/7805-Voltage-Regulator-Pinout.jpg",
+      "audio": "https://example.com/audio/voltage-regulators-intro.mp3"
+    },
+    {
+      "title": "Types of Voltage Regulators",
+      "content": "<div class='card'>📚 There are mainly two types:</div>\n<div class='card'>1. <b>Linear Regulators</b> — Simple, but waste energy as heat (e.g., 7805 for 5V).</div>\n<div class='card'>2. <b>Switching Regulators (Buck, Boost)</b> — More efficient, but complex.</div>\n<div class='card'>🔧 Linear is great for beginners, while switching is better for high-efficiency circuits like LiPo batteries.</div>",
+      "image": "https://circuitdigest.com/sites/default/files/inlineimages/Types-of-Voltage-Regulators.jpg",
+      "audio": "https://example.com/audio/types-of-voltage-regulators.mp3"
+    },
+    {
+      "title": "Pinout of a 7805 Regulator",
+      "content": "<div class='card'>📌 The 7805 is a common linear voltage regulator that outputs 5V.</div>\n<div class='card'>It has 3 pins:\n<ul>\n  <li>Pin 1 → Input Voltage (7V–35V)</li>\n  <li>Pin 2 → Ground</li>\n  <li>Pin 3 → Output Voltage (5V)</li>\n</ul></div>\n<div class='card'>Use capacitors at input/output pins for better stability.</div>",
+      "image": "https://cdn.sparkfun.com//assets/parts/1/1/1/2/10969-00.jpg",
+      "audio": "https://example.com/audio/7805-pinout.mp3"
+    },
+    {
+      "title": "Circuit: Using a Voltage Regulator with Arduino",
+      "content": "<div class='card'>🔌 Connect a 9V battery to the 7805:</div>\n<div class='card'>1️⃣ IN pin gets the battery (+), GND goes to battery (-).</div>\n<div class='card'>2️⃣ OUT pin gives a stable 5V. Connect it to Arduino's 5V pin.</div>\n<div class='card'>3️⃣ Add 0.33μF and 0.1μF capacitors across IN-GND and OUT-GND respectively.</div>\n<div class='card'>Now your Arduino gets clean, stable power!</div>",
+      "image": "https://static.circuitdigest.com/tutorial_circuit/arduino-power-supply-using-7805-circuit.png",
+      "audio": "https://example.com/audio/voltage-regulator-circuit.mp3"
+    },
+    {
+      "title": "🎥 Video: How Voltage Regulators Work",
+      "content": "<div class='card'>👨‍🏫 This video explains both linear and switching regulators with great visuals and real-world circuits.</div>\n<div class='card'><iframe width='100%' height='215' src='https://www.youtube.com/embed/d1J9-vEoKvc' frameborder='0' allowfullscreen></iframe></div>",
+      "image": "https://img.youtube.com/vi/d1J9-vEoKvc/0.jpg",
+      "audio": "https://example.com/audio/voltage-regulators-video.mp3"
+    },
+    {
+      "title": "🎮 Game: Voltage Drop Challenge",
+      "content": "<div class='card'>⚡ Can you pick the right regulator for different input voltages?</div>\n<div class='card'><button class='gaming-btn'>Play Voltage Drop!</button></div>\n<div class='card'>Choose wisely to keep your Arduino safe!</div>",
+      "image": "https://www.build-electronic-circuits.com/wp-content/uploads/2020/08/Voltage-Regulator-7805.jpg",
+      "audio": "https://example.com/audio/voltage-game.mp3"
+    },
+    {
+      "title": "Bonus: Why Not Use Direct Power?",
+      "content": "<div class='card'>🔥 If you connect 9V directly to Arduino’s 5V pin — BOOM!🔥</div>\n<div class='card'>That's why regulators are essential. They <b>prevent overheating, overvoltage, and instability</b>.</div>\n<div class='card'>Always use a regulator when your source is above 5V!</div>",
+      "image": "https://cdn.electronicshub.org/wp-content/uploads/2016/04/Arduino-7805-Power-Supply-Circuit.jpg",
+      "audio": "https://example.com/audio/direct-power-warning.mp3"
+    },{
+  "title": "Are Sound Sensors Microphones?",
+  "content": "<div class='card'>Yes — most sound sensors <i>do</i> contain a microphone, usually a small round electret mic. But here's the truth: <b>they can hear, but they can't understand.</b></div>\n\n<div class='card'>A microphone inside the sensor picks up sound vibrations and converts them into tiny voltages. The sensor then amplifies this and gives it to your Arduino as either:\n- A fluctuating analog value (volume level)\n- A HIGH/LOW digital signal (sound/no sound)</div>\n\n<div class='card'>🛑 But this does <b>not</b> mean voice control!\n- The sensor has <b>no idea what words</b> you're saying.\n- It can't recognize speech, commands, or phrases.\n- It's like a doorbell — it knows you made noise, but not what kind.</div>\n\n<div class='card'>To actually do <b>voice recognition</b> or <b>speech commands</b>, you'd need:\n✅ A special microphone module (like Elechouse V3)\n✅ Or an external system like Google Assistant or Alexa\n✅ Or audio processing through a computer or ESP32 with machine learning</div>\n\n<div class='card'>So in short:\n✔️ Sound sensor = good for detecting loudness, claps, noise\n❌ Sound sensor = <b>not</b> for controlling devices with your voice</div>",
+  "image": "https://example.com/sound_sensor_not_voice_control.png",
+  "audio": "https://example.com/audio/sound_sensor_not_voice_control.mp3"
+}
+
+  ]
+}
+
+
   ]
 }
 
